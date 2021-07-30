@@ -8,35 +8,35 @@
             "is_files": [
                 {
                     "obj_name": "is_arg_types",
-                    "path": "./THUMB/is_arg_types.json",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_arg_types.json",
                     "loader_class": "",
                     "target_class": "",
                     "category": "args"
                 },
                 {
                     "obj_name": "is_entry_types",
-                    "path": "./THUMB/is_entry_types.json",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
                     "loader_class": "",
                     "target_class": "",
                     "category": "entries"
                 },
                 {
                     "obj_name": "is_op_codes",
-                    "path": "./THUMB/is_op_codes.json",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
                     "loader_class": "",
                     "target_class": "",
                     "category": "opcodes"
                 },
                 {
                     "obj_name": "is_registers",
-                    "path": "./THUMB/is_registers.json",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
                     "loader_class": "",
                     "target_class": "",
                     "category": "registers"
                 },
                 {
                     "obj_name": "is_valid_lines",
-                    "path": "./THUMB/is_valid_lines.json",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
                     "loader_class": "",
                     "target_class": "",
                     "category": "lines"
