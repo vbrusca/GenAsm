@@ -1,0 +1,2107 @@
+{
+  "set": "THUMB",
+  "endian": "BIG",
+  "pc_prefecth_bits": "32",
+  "pc_prefecth_bytes": "4",
+  "pc_alignment": "WORD",
+  "pc_bit1_zeroed": true,
+  "bit_series": {"bit_start": 0, "bit_stop": 15, "bit_len": 16},
+  "is_op_codes": [
+    {
+      "name": "LSL",
+      "arg_separator": ",",
+      "bit_rep": "00000",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset5",
+          "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+          "num_range": {"min_value": 0, "max_value": 31, "bit_len": 5, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "LSR",
+      "arg_separator": ",",
+      "bit_rep": "00001",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset5",
+          "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+          "num_range": {"min_value": 0, "max_value": 31, "bit_len": 5, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ASR",
+      "arg_separator": ",",
+      "bit_rep": "00010",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset5",
+          "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+          "num_range": {"min_value": 0, "max_value": 31, "bit_len": 5, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "0001100",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rn",
+          "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "0001110",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset3",
+          "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3},
+          "num_range": {"min_value": 0, "max_value": 7, "bit_len": 3, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "SUB",
+      "arg_separator": ",",
+      "bit_rep": "0001101",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rn",
+          "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "SUB",
+      "arg_separator": ",",
+      "bit_rep": "0001111",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
+      "args": [
+        {
+          "arg_index": 2,
+          "bit_index": 2,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset3",
+          "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3},
+          "num_range": {"min_value": 0, "max_value": 7, "bit_len": 3, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MOV",
+      "arg_separator": ",",
+      "bit_rep": "00100",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 127, "bit_len": 8, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMP",
+      "arg_separator": ",",
+      "bit_rep": "00101",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 127, "bit_len": 8, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "00110",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 127, "bit_len": 8, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "SUB",
+      "arg_separator": ",",
+      "bit_rep": "00111",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "NumberLow",
+          "is_arg_type": "Offset8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 127, "bit_len": 8, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "AND",
+      "arg_separator": ",",
+      "bit_rep": "0100000000",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "EOR",
+      "arg_separator": ",",
+      "bit_rep": "0100000001",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "LSL",
+      "arg_separator": ",",
+      "bit_rep": "0100000010",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "LSR",
+      "arg_separator": ",",
+      "bit_rep": "0100000011",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ASR",
+      "arg_separator": ",",
+      "bit_rep": "0100000100",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADC",
+      "arg_separator": ",",
+      "bit_rep": "0100000101",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "SBC",
+      "arg_separator": ",",
+      "bit_rep": "0100000110",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ROR",
+      "arg_separator": ",",
+      "bit_rep": "0100000111",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "TST",
+      "arg_separator": ",",
+      "bit_rep": "0100001000",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "NEG",
+      "arg_separator": ",",
+      "bit_rep": "0100001001",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMP",
+      "arg_separator": ",",
+      "bit_rep": "0100001010",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMN",
+      "arg_separator": ",",
+      "bit_rep": "0100001011",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ORR",
+      "arg_separator": ",",
+      "bit_rep": "0100001100",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MUL",
+      "arg_separator": ",",
+      "bit_rep": "0100001101",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "BIC",
+      "arg_separator": ",",
+      "bit_rep": "0100001110",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MVN",
+      "arg_separator": ",",
+      "bit_rep": "0100001111",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "0100010001",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "0100010010",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "0100010011",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMP",
+      "arg_separator": ",",
+      "bit_rep": "0100010101",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMP",
+      "arg_separator": ",",
+      "bit_rep": "0100010110",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "CMP",
+      "arg_separator": ",",
+      "bit_rep": "0100010111",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MOV",
+      "arg_separator": ",",
+      "bit_rep": "0100011001",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MOV",
+      "arg_separator": ",",
+      "bit_rep": "0100011010",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "MOV",
+      "arg_separator": ",",
+      "bit_rep": "0100011011",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "BX",
+      "arg_separator": ",",
+      "bit_rep": "0100011100",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "BX",
+      "arg_separator": ",",
+      "bit_rep": "0100011101",
+      "bit_series": {"bit_start": 6, "bit_stop": 15, "bit_len": 10},
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterHi",
+          "is_arg_type": "Hs",
+          "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+        }
+      ]
+    },
+    {
+      "name": "LDR",
+      "arg_separator": ",",
+      "bit_rep": "01001",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": -1,
+              "is_entry_type": "RegisterPc",
+              "is_arg_type": "Rpc",
+              "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 0,
+              "is_entry_type": "Number",
+              "is_arg_type": "Word8",
+              "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+              "num_range": {"min_value": 0, "max_value": 1020, "bit_len": 10, "twos_compliment": false, "alignment": "WORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STR",
+      "arg_separator": ",",
+      "bit_rep": "0101000",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STRB",
+      "arg_separator": ",",
+      "bit_rep": "0101010",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDR",
+      "arg_separator": ",",
+      "bit_rep": "0101100",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3},
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDRB",
+      "arg_separator": ",",
+      "bit_rep": "0101110",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STRH",
+      "arg_separator": ",",
+      "bit_rep": "0101001",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDRH",
+      "arg_separator": ",",
+      "bit_rep": "0101101",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDSB",
+      "arg_separator": ",",
+      "bit_rep": "0101011",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDSH",
+      "arg_separator": ",",
+      "bit_rep": "0101111",
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 8, "bit_len": 6},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Ro",
+              "bit_series": {"bit_start": 6, "bit_stop": 8, "bit_len": 3}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STR",
+      "arg_separator": ",",
+      "bit_rep": "01100",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 124, "bit_len": 7, "twos_compliment": false, "alignment": "WORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDR",
+      "arg_separator": ",",
+      "bit_rep": "01101",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 124, "bit_len": 7, "twos_compliment": false, "alignment": "WORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STRB",
+      "arg_separator": ",",
+      "bit_rep": "01110",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 31, "bit_len": 5, "twos_compliment": false, "alignment": "NATURAL"},
+              "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDRB",
+      "arg_separator": ",",
+      "bit_rep": "01111",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 31, "bit_len": 5, "twos_compliment": false, "alignment": "NATURAL"},
+              "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STRH",
+      "arg_separator": ",",
+      "bit_rep": "10000",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 62, "bit_len": 6, "twos_compliment": false, "alignment": "HALFWORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDRH",
+      "arg_separator": ",",
+      "bit_rep": "10001",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 1,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 3, "bit_stop": 10, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": 0,
+              "is_entry_type": "RegisterLow",
+              "is_arg_type": "Rb",
+              "bit_series": {"bit_start": 3, "bit_stop": 5, "bit_len": 3}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 1,
+              "is_entry_type": "Number",
+              "is_arg_type": "Offset5",
+              "bit_series": {"bit_start": 6, "bit_stop": 10, "bit_len": 5},
+              "num_range": {"min_value": 0, "max_value": 62, "bit_len": 5, "twos_compliment": false, "alignment": "HALFWORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STR",
+      "arg_separator": ",",
+      "bit_rep": "10010",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": -1,
+              "is_entry_type": "RegisterSp",
+              "is_arg_type": "Rs",
+              "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 0,
+              "is_entry_type": "Number",
+              "is_arg_type": "Word8",
+              "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+              "num_range": {"min_value": 0, "max_value": 1020, "bit_len": 10, "twos_compliment": false, "alignment": "WORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDR",
+      "arg_separator": ",",
+      "bit_rep": "10011",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Group",
+          "is_arg_type": "Group",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "sub_arg_separator": ",",
+          "sub_args": [
+            {
+              "arg_index": 0,
+              "bit_index": -1,
+              "is_entry_type": "RegisterSp",
+              "is_arg_type": "Rs",
+              "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+            },
+            {
+              "arg_index": 1,
+              "bit_index": 0,
+              "is_entry_type": "Number",
+              "is_arg_type": "Word8",
+              "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+              "num_range": {"min_value": 0, "max_value": 1020, "bit_len": 10, "twos_compliment": false, "alignment": "WORD"},
+              "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "10100",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": -1,
+          "is_entry_type": "RegisterPc",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+        },
+        {
+          "arg_index": 2,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Word8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 1020, "bit_len": 10, "twos_compliment": false, "alignment": "WORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "10101",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterLow",
+          "is_arg_type": "Rd",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": -1,
+          "is_entry_type": "RegisterSp",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+        },
+        {
+          "arg_index": 2,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Word8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 1020, "bit_len": 10, "twos_compliment": false, "alignment": "WORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "101100000",
+      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": -1,
+          "is_entry_type": "RegisterSp",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "SWord7",
+          "bit_series": {"bit_start": 0, "bit_stop": 6, "bit_len": 7},
+          "num_range": {"min_value": 0, "max_value": 508, "bit_len": 9, "twos_compliment": false, "alignment": "WORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+        }
+      ]
+    },
+    {
+      "name": "ADD",
+      "arg_separator": ",",
+      "bit_rep": "101100001",
+      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": -1,
+          "is_entry_type": "RegisterSp",
+          "is_arg_type": "Rs",
+          "bit_series": {"bit_start": -1, "bit_stop": -1, "bit_len": -1}
+        },
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "SWord7",
+          "bit_series": {"bit_start": 0, "bit_stop": 6, "bit_len": 7},
+          "num_range": {"min_value": -508, "max_value": 0, "bit_len": 9, "twos_compliment": false, "alignment": "WORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 2}
+        }
+      ]
+    },
+    {
+      "name": "PUSH",
+      "arg_separator": ",",
+      "bit_rep": "10110100",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "PUSH",
+      "arg_separator": ",",
+      "bit_rep": "10110101",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "POP",
+      "arg_separator": ",",
+      "bit_rep": "10111100",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "PUSH",
+      "arg_separator": ",",
+      "bit_rep": "10111101",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "STMIA",
+      "arg_separator": ",",
+      "bit_rep": "11000",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterWb",
+          "is_arg_type": "Rwb",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "LDMIA",
+      "arg_separator": ",",
+      "bit_rep": "11001",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 1,
+          "is_entry_type": "RegisterWb",
+          "is_arg_type": "Rwb",
+          "bit_series": {"bit_start": 8, "bit_stop": 10, "bit_len": 3}
+        },
+        {
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_type": "List",
+          "is_arg_type": "List",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "list_separator": ","
+        }
+      ]
+    },
+    {
+      "name": "BEQ",
+      "arg_separator": ",",
+      "bit_rep": "11010000",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BNE",
+      "arg_separator": ",",
+      "bit_rep": "11010001",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BCS",
+      "arg_separator": ",",
+      "bit_rep": "11010010",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BCC",
+      "arg_separator": ",",
+      "bit_rep": "11010011",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BMI",
+      "arg_separator": ",",
+      "bit_rep": "11010100",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BPL",
+      "arg_separator": ",",
+      "bit_rep": "11010101",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BVS",
+      "arg_separator": ",",
+      "bit_rep": "11010110",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BVC",
+      "arg_separator": ",",
+      "bit_rep": "11010111",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BHI",
+      "arg_separator": ",",
+      "bit_rep": "11011000",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BLS",
+      "arg_separator": ",",
+      "bit_rep": "11011001",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BGE",
+      "arg_separator": ",",
+      "bit_rep": "11011010",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BLT",
+      "arg_separator": ",",
+      "bit_rep": "11011011",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BGT",
+      "arg_separator": ",",
+      "bit_rep": "11011100",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BLE",
+      "arg_separator": ",",
+      "bit_rep": "11011101",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Label",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 9, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "RIGHT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "SWI",
+      "arg_separator": ",",
+      "bit_rep": "11011111",
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Value8",
+          "bit_series": {"bit_start": 0, "bit_stop": 7, "bit_len": 8},
+          "num_range": {"min_value": 0, "max_value": 255, "bit_len": 8, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "NONE", "shift_amount": 0}
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "arg_separator": ",",
+      "bit_rep": "11100",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset11",
+          "bit_series": {"bit_start": 0, "bit_stop": 10, "bit_len": 11},
+          "num_range": {"min_value": -2048, "max_value": 2048, "bit_len": 12, "twos_compliment": true, "alignment": "HALFWORD"},
+          "bit_shift": {"shift_dir": "LEFT", "shift_amount": 1}
+        }
+      ]
+    },
+    {
+      "name": "BL",
+      "arg_separator": ",",
+      "bit_rep": "11110",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset11",
+          "bit_series": {"bit_start": 0, "bit_stop": 10, "bit_len": 11},
+          "num_range": {"min_value": 0, "max_value": 2047, "bit_len": 11, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "LEFT", "shift_amount": 12}
+        }
+      ]
+    },
+    {
+      "name": "BL",
+      "arg_separator": ",",
+      "bit_rep": "11111",
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "args": [
+        {
+          "arg_index": 0,
+          "bit_index": 0,
+          "is_entry_type": "Number",
+          "is_arg_type": "Offset11",
+          "bit_series": {"bit_start": 0, "bit_stop": 10, "bit_len": 11},
+          "num_range": {"min_value": 0, "max_value": 4094, "bit_len": 12, "twos_compliment": false, "alignment": "NATURAL"},
+          "bit_shift": {"shift_dir": "LEFT", "shift_amount": 1}
+        }
+      ]
+    }
+  ]
+}

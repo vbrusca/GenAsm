@@ -1,0 +1,23 @@
+{
+  "is_arg_types": [
+    {"name": "Group", "is_entry_type": ["Group"]},
+    {"name": "Label", "is_entry_type": ["Label", "LabelNumericLocalRef"]},
+    {"name": "List", "is_entry_type": ["List"]},
+    {"name": "Offset3", "is_entry_type": ["Number"]},
+    {"name": "Offset5", "is_entry_type": ["Number"]},
+    {"name": "Offset8", "is_entry_type": ["Number"]},
+    {"name": "Offset11", "is_entry_type": ["Number"]},
+    {"name": "Rpc", "is_entry_type": ["RegisterPc"]},
+    {"name": "Rb", "is_entry_type": ["RegisterLow"]},
+    {"name": "Rwb", "is_entry_type": ["RegisterWB"]},
+    {"name": "Rd", "is_entry_type": ["RegisterLow"]},
+    {"name": "Rn", "is_entry_type": ["RegisterLow"]},
+    {"name": "Ro", "is_entry_type": ["RegisterLow"]},
+    {"name": "Rs", "is_entry_type": ["RegisterLow"]},
+    {"name": "Hd", "is_entry_type": ["RegisterHi"]},
+    {"name": "Hs", "is_entry_type": ["RegisterHi"]},
+    {"name": "SWord7", "is_entry_type": ["Number"]},
+    {"name": "Word8", "is_entry_type": ["Number"]},
+    {"name": "Value8", "is_entry_type": ["Number"]}
+  ]
+}

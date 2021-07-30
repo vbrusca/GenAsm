@@ -1,0 +1,15 @@
+{
+  "set": "THUMB",
+  "is_entry_types": [
+    "Comment",
+    "None",
+    "Label",
+    "OpCode",
+    "Register",
+    "Number",
+    "List",
+    "Group",
+    "LabelNumericLocal",
+    "LabelNumericLocalRef"
+  ]
+}

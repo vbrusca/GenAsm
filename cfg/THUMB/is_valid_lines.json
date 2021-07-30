@@ -1,0 +1,47 @@
+{
+  "set": "THUMB",
+  "is_valid_lines": [
+    [
+      {"is_entry_type": ["Comment"], "index": 0},
+      {"is_entry_type": ["None"], "index": 1},
+      {"is_entry_type": ["None"], "index": 2},
+      {"is_entry_type": ["None"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["Label"], "index": 0},
+      {"is_entry_type": ["None"], "index": 1},
+      {"is_entry_type": ["None"], "index": 2},
+      {"is_entry_type": ["None"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["Label"], "index": 0},
+      {"is_entry_type": ["None"], "index": 1},
+      {"is_entry_type": ["None"], "index": 2},
+      {"is_entry_type": ["Comment"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["LabelNumericLocal"], "index": 0},
+      {"is_entry_type": ["None"], "index": 1},
+      {"is_entry_type": ["None"], "index": 2},
+      {"is_entry_type": ["None"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["LabelNumericLocal"], "index": 0},
+      {"is_entry_type": ["None"], "index": 1},
+      {"is_entry_type": ["None"], "index": 2},
+      {"is_entry_type": ["Comment"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["None"], "index": 0},
+      {"is_entry_type": ["OpCode"], "index": 1},
+      {"is_entry_type": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWB", "Number", "List", "Group", "LabelNumericLocalRef"], "index": 2},
+      {"is_entry_type": ["None"], "index": 3}
+    ],
+    [
+      {"is_entry_type": ["None"], "index": 0},
+      {"is_entry_type": ["OpCode"], "index": 1},
+      {"is_entry_type": ["Register", "Number", "List", "Group", "LabelNumericLocalRef"], "index": 2},
+      {"is_entry_type": ["Comment"], "index": 3}
+    ]
+  ]
+}
