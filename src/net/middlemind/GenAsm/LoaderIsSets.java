@@ -21,14 +21,17 @@ public class LoaderIsSets implements Loader {
             jsonObj = gson.fromJson(json, jsonObj.getClass());
             jsonObj.name = targetClass;
             jsonObj.fileName = fileName;
-            
+            jsonObj.loader = getClass().getName();
+
             for(JsonObjIsSet entry : jsonObj.is_sets) {
                 entry.name = entry.getClass().getName();
                 entry.fileName = fileName;
+                entry.loader = getClass().getName();
                 
                 for(JsonObjIsFile fentry : entry.is_files) {
                     fentry.name = fentry.getClass().getName();
                     fentry.fileName = fileName;
+                    fentry.loader = getClass().getName();
                 }
             }
             

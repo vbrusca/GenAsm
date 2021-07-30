@@ -7,6 +7,17 @@ package net.middlemind.GenAsm;
 public class JsonObjBase implements JsonObj {
     public String name;
     public String fileName;
+    public String loader;
+    
+    @Override
+    public String GetLoader() {
+        return loader;
+    }
+    
+    @Override
+    public void SetLoader(String s) {
+        loader = s;
+    }    
     
     @Override
     public String GetName() {
@@ -14,17 +25,29 @@ public class JsonObjBase implements JsonObj {
     }
 
     @Override
+    public void SetName(String s) {
+        name = s;
+    }    
+    
+    @Override
     public String GetFileName() {
         return fileName;
-    }        
+    }
+    
+    @Override
+    public void SetFileName(String s) {
+        fileName = s;
+    }    
 
     @Override
     public void Print() {
-        Logger.wrl("Name: " + name + " FileName: " + fileName);
+        Print("");
     }
     
     @Override
     public void Print(String prefix) {
-        Logger.wrl(prefix + "Name: " + name + " FileName: " + fileName);
+        Logger.wrl(prefix + "Name: " + name);
+        Logger.wrl(prefix + "FileName: " + fileName);
+        Logger.wrl(prefix + "Loader: " + loader);
     }    
 }

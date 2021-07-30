@@ -21,6 +21,7 @@ public class LoaderBitSeries implements Loader {
             jsonObj = gson.fromJson(json, jsonObj.getClass());
             jsonObj.name = targetClass;
             jsonObj.fileName = fileName;
+            jsonObj.loader = getClass().getName();
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
