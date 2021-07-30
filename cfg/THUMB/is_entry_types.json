@@ -1,5 +1,5 @@
 {
-  "set": "THUMB",
+  "set_name": "THUMB",
   "is_entry_types": [
     {"name": "Comment", "txt_match": {"starts_with": [";"], "contains":["*"], "ends_with":["endl"]}},
     {"name": "None", "txt_match": {"starts_with": [""], "contains":[""], "ends_with":[""]}},

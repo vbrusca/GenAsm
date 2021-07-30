@@ -1,5 +1,5 @@
 {
-  "set": "THUMB",
+  "set_name": "THUMB",
   "endian": "BIG",
   "pc_prefecth_bits": "32",
   "pc_prefecth_bytes": "4",

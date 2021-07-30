@@ -1,5 +1,5 @@
 {
-  "set": "THUMB",
+  "set_name": "THUMB",
   "is_registers": [
     {"name": "R0", "bit_rep": "000", "bit_len": 3, "type":"LOW", "desc": "general purpose"},
     {"name": "R1", "bit_rep": "001", "bit_len": 3, "type":"LOW", "desc": "general purpose"},

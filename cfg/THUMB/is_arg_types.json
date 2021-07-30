@@ -1,4 +1,5 @@
 {
+  "set_name": "THUMB",
   "is_arg_types": [
     {"name": "Group", "is_entry_type": ["Group"]},
     {"name": "Label", "is_entry_type": ["Label", "LabelNumericLocalRef"]},

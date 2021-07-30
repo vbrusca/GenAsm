@@ -10,4 +10,8 @@ public interface Assembler {
     public void LineLexerize(String line, int lineNum);
     public void LineTokenize(String[] artifacts, int lineNum);
     public void LineParse(String[] tokens, int lineNum);
+    public boolean GetIsIsaDataLoaded();
+    public void SetIsIsaDataLoaded(boolean b);
+    public boolean GetIsAssemblyFileLoaded();
+    public void SetIsAssemblyFileLoaded(boolean b);
 }
