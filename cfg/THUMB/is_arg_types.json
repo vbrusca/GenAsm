@@ -1,4 +1,5 @@
 {
+  "obj_name": "is_arg_types",  
   "set_name": "THUMB",
   "is_arg_types": [
     {"name": "Group", "is_entry_types": ["Group"]},
@@ -18,7 +19,7 @@
     {"name": "Hd", "is_entry_types": ["RegisterHi"]},
     {"name": "Hs", "is_entry_types": ["RegisterHi"]},
     {"name": "SWord7", "is_entry_types": ["Number"]},
-    {"name": "Word8", "is_entry_typess": ["Number"]},
+    {"name": "Word8", "is_entry_types": ["Number"]},
     {"name": "Value8", "is_entry_types": ["Number"]}
   ]
 }

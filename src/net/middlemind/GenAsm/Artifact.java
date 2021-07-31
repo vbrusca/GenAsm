@@ -9,5 +9,6 @@ public class Artifact {
     public int posStop;
     public int len;
     public int lineNum;
+    public int index;
     public String payload;
 }

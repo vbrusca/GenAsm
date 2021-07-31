@@ -900,7 +900,7 @@
       "name": "LDR",
       "arg_separator": ",",
       "bit_rep": "01001",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -941,7 +941,7 @@
       "name": "STR",
       "arg_separator": ",",
       "bit_rep": "0101000",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -980,7 +980,7 @@
       "name": "STRB",
       "arg_separator": ",",
       "bit_rep": "0101010",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1019,14 +1019,14 @@
       "name": "LDR",
       "arg_separator": ",",
       "bit_rep": "0101100",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
           "bit_index": 0,
           "is_entry_type": "RegisterLow",
           "is_arg_type": "Rd",
-          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3},
+          "bit_series": {"bit_start": 0, "bit_stop": 2, "bit_len": 3}
         },
         {
           "arg_index": 1,
@@ -1058,7 +1058,7 @@
       "name": "LDRB",
       "arg_separator": ",",
       "bit_rep": "0101110",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1097,7 +1097,7 @@
       "name": "STRH",
       "arg_separator": ",",
       "bit_rep": "0101001",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1136,7 +1136,7 @@
       "name": "LDRH",
       "arg_separator": ",",
       "bit_rep": "0101101",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1175,7 +1175,7 @@
       "name": "LDSB",
       "arg_separator": ",",
       "bit_rep": "0101011",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1214,7 +1214,7 @@
       "name": "LDSH",
       "arg_separator": ",",
       "bit_rep": "0101111",
-      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7}
+      "bit_series": {"bit_start": 9, "bit_stop": 15, "bit_len": 7},
       "args": [
         {
           "arg_index": 0,
@@ -1253,7 +1253,7 @@
       "name": "STR",
       "arg_separator": ",",
       "bit_rep": "01100",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1294,7 +1294,7 @@
       "name": "LDR",
       "arg_separator": ",",
       "bit_rep": "01101",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1335,7 +1335,7 @@
       "name": "STRB",
       "arg_separator": ",",
       "bit_rep": "01110",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1376,7 +1376,7 @@
       "name": "LDRB",
       "arg_separator": ",",
       "bit_rep": "01111",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1417,7 +1417,7 @@
       "name": "STRH",
       "arg_separator": ",",
       "bit_rep": "10000",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1458,7 +1458,7 @@
       "name": "LDRH",
       "arg_separator": ",",
       "bit_rep": "10001",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1499,7 +1499,7 @@
       "name": "STR",
       "arg_separator": ",",
       "bit_rep": "10010",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1540,7 +1540,7 @@
       "name": "LDR",
       "arg_separator": ",",
       "bit_rep": "10011",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1581,7 +1581,7 @@
       "name": "ADD",
       "arg_separator": ",",
       "bit_rep": "10100",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1612,7 +1612,7 @@
       "name": "ADD",
       "arg_separator": ",",
       "bit_rep": "10101",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1643,7 +1643,7 @@
       "name": "ADD",
       "arg_separator": ",",
       "bit_rep": "101100000",
-      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9}
+      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9},
       "args": [
         {
           "arg_index": 0,
@@ -1667,7 +1667,7 @@
       "name": "ADD",
       "arg_separator": ",",
       "bit_rep": "101100001",
-      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9}
+      "bit_series": {"bit_start": 7, "bit_stop": 15, "bit_len": 9},
       "args": [
         {
           "arg_index": 0,
@@ -1691,7 +1691,7 @@
       "name": "PUSH",
       "arg_separator": ",",
       "bit_rep": "10110100",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1707,7 +1707,7 @@
       "name": "PUSH",
       "arg_separator": ",",
       "bit_rep": "10110101",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1723,7 +1723,7 @@
       "name": "POP",
       "arg_separator": ",",
       "bit_rep": "10111100",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1739,7 +1739,7 @@
       "name": "PUSH",
       "arg_separator": ",",
       "bit_rep": "10111101",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1755,7 +1755,7 @@
       "name": "STMIA",
       "arg_separator": ",",
       "bit_rep": "11000",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1778,7 +1778,7 @@
       "name": "LDMIA",
       "arg_separator": ",",
       "bit_rep": "11001",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -1801,7 +1801,7 @@
       "name": "BEQ",
       "arg_separator": ",",
       "bit_rep": "11010000",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1818,7 +1818,7 @@
       "name": "BNE",
       "arg_separator": ",",
       "bit_rep": "11010001",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1835,7 +1835,7 @@
       "name": "BCS",
       "arg_separator": ",",
       "bit_rep": "11010010",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1852,7 +1852,7 @@
       "name": "BCC",
       "arg_separator": ",",
       "bit_rep": "11010011",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1869,7 +1869,7 @@
       "name": "BMI",
       "arg_separator": ",",
       "bit_rep": "11010100",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1886,7 +1886,7 @@
       "name": "BPL",
       "arg_separator": ",",
       "bit_rep": "11010101",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1903,7 +1903,7 @@
       "name": "BVS",
       "arg_separator": ",",
       "bit_rep": "11010110",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1920,7 +1920,7 @@
       "name": "BVC",
       "arg_separator": ",",
       "bit_rep": "11010111",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1937,7 +1937,7 @@
       "name": "BHI",
       "arg_separator": ",",
       "bit_rep": "11011000",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1954,7 +1954,7 @@
       "name": "BLS",
       "arg_separator": ",",
       "bit_rep": "11011001",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1971,7 +1971,7 @@
       "name": "BGE",
       "arg_separator": ",",
       "bit_rep": "11011010",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -1988,7 +1988,7 @@
       "name": "BLT",
       "arg_separator": ",",
       "bit_rep": "11011011",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -2005,7 +2005,7 @@
       "name": "BGT",
       "arg_separator": ",",
       "bit_rep": "11011100",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -2022,7 +2022,7 @@
       "name": "BLE",
       "arg_separator": ",",
       "bit_rep": "11011101",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -2039,7 +2039,7 @@
       "name": "SWI",
       "arg_separator": ",",
       "bit_rep": "11011111",
-      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8}
+      "bit_series": {"bit_start": 8, "bit_stop": 15, "bit_len": 8},
       "args": [
         {
           "arg_index": 0,
@@ -2056,7 +2056,7 @@
       "name": "B",
       "arg_separator": ",",
       "bit_rep": "11100",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -2073,7 +2073,7 @@
       "name": "BL",
       "arg_separator": ",",
       "bit_rep": "11110",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,
@@ -2090,7 +2090,7 @@
       "name": "BL",
       "arg_separator": ",",
       "bit_rep": "11111",
-      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5}
+      "bit_series": {"bit_start": 11, "bit_stop": 15, "bit_len": 5},
       "args": [
         {
           "arg_index": 0,

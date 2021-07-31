@@ -38,14 +38,27 @@ public class GenAsm {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
             String asmTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_short.txt";
-
-            ArtifactLine line = new ArtifactLine();
-            line.lineNum = 0;
-            line.source = "LSR   R2, R5, #27   ; Logical shift right the contents";
-            line.len = line.source.length();
-            
             LexerSimple lex = new LexerSimple();
-            line.artifacts = lex.LineLexerize(line.source, line.lineNum);
+            ArrayList<ArtifactLine> lexedFile = null;
+            try {
+                lexedFile = lex.FileLexerize(FileLoader.Load(asmTestFile));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(lexedFile);
+            Logger.wr(jsonString);            
+            
+            /*
+            //SIMPLE LEXER TEST
+            String source = "LSR   R2, R5, #27   ; Logical shift right the contents";
+            int sourceLineNum = 0;
+            LexerSimple lex = new LexerSimple();
+            ArtifactLine line = lex.LineLexerize(source, sourceLineNum);
             
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
@@ -53,9 +66,10 @@ public class GenAsm {
             Gson gson = builder.create();            
             String jsonString = gson.toJson(line);
             Logger.wr(jsonString);
+            */
             
             /*
-            //JSON Loading Test
+            //JSON LOADING TEST
             String json = null;
             String test1 = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_bit_series.json";
             

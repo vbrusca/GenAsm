@@ -1,4 +1,5 @@
 {
+  "obj_name": "is_entry_types",  
   "set_name": "THUMB",
   "is_entry_types": [
     {"name": "Comment", "txt_match": {"starts_with": [";"], "contains":["*"], "ends_with":["endl"]}},
@@ -16,6 +17,6 @@
   ],
   "is_entry_group_types": [
     {"name": "List", "txt_match": {"starts_with": ["{"], "contains":["*"], "ends_with":["}"]}, "conatins": ["RegisterLow"]},
-    {"name": "Group", "txt_match": {"starts_with": ["["], "contains":["*"], "ends_with":["]"]}, "contains": ["RegisterSp", "RegisterPc", "RegisterLow", "Number"]},
+    {"name": "Group", "txt_match": {"starts_with": ["["], "contains":["*"], "ends_with":["]"]}, "contains": ["RegisterSp", "RegisterPc", "RegisterLow", "Number"]}
   ]
 }

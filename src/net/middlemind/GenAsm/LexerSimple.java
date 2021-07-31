@@ -1,6 +1,7 @@
 package net.middlemind.GenAsm;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,22 +10,48 @@ import java.util.ArrayList;
 public class LexerSimple implements Lexer {
 
     @Override
-    public ArrayList<Artifact> LineLexerize(String line, int lineNum) {
-        if(Utils.IsStringEmpty(line)) {
-            return new ArrayList<Artifact>();
+    public ArrayList<ArtifactLine> FileLexerize(List<String> file) {
+        ArrayList<ArtifactLine> ret = new ArrayList<>();
+        int count = 0;
+        
+        for(String s : file) {
+            ret.add(LineLexerize(s, count));
+            count++;
+        }
+        
+        return ret;
+    }    
+    
+    @Override
+    public ArtifactLine LineLexerize(String line, int lineNum) {
+        ArtifactLine ret = new ArtifactLine();
+        ret.source = line;
+        ret.lineNum = lineNum;
+            
+        if(Utils.IsStringEmpty(line)) {            
+            ret.payload = new ArrayList<Artifact>();
+            ret.sourceLen = 0;
+            return ret;
         } else {
-            ArrayList<Artifact> artifacts = new ArrayList<>();
+            ret.sourceLen = line.length();
+            ret.payload = new ArrayList<>();
+            
             char[] chars = line.toCharArray();
             boolean inArtifact = false;
             Artifact artifact = null;
             int i = 0;
+            int count = 0;
+            
             for(; i < chars.length; i++) {
                 if(inArtifact == true) {
                     if(chars[i] == ' ' || chars[i] == '\t') {
                         inArtifact = false;
                         artifact.posStop = (i - 1);
                         artifact.len = (i - artifact.posStart);
-                        artifacts.add(artifact);
+                        artifact.index = count;
+                        ret.payload.add(artifact);
+                        
+                        count++;
                         artifact = null;
                     } else {
                         artifact.payload += chars[i];                
@@ -47,10 +74,11 @@ public class LexerSimple implements Lexer {
             if(artifact != null) {
                 artifact.posStop = (i - 1);
                 artifact.len = (i - artifact.posStart);
-                artifacts.add(artifact);
+                artifact.index = count;
+                ret.payload.add(artifact);
             }
             
-            return artifacts;
+            return ret;
         }
     }    
 

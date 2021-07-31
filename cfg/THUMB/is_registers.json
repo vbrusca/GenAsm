@@ -1,4 +1,5 @@
 {
+  "obj_name": "is_registers",
   "set_name": "THUMB",
   "is_registers": [
     {"name": "R0", "bit_rep": "000", "bit_len": 3, "type":"LOW", "desc": "general purpose"},
@@ -19,6 +20,6 @@
     {"name": "R15", "bit_rep": "111", "bit_len": 3, "type":"HI", "desc": "program counter: During execution, PC does not contain the address of the currently executing instruction. The address of the currently executing instruction is typically PC–8 for ARM, or PC–4 for Thumb."},
     {"name": "SP", "bit_rep": "101", "bit_len": 3, "type":"HI", "desc": "implicit stack pointer"},
     {"name": "LR", "bit_rep": "110", "bit_len": 3, "type":"HI", "desc": "link register"},
-    {"name": "PC", "bit_rep": "111", "bit_len": 3, "type":"HI", "desc": "program counter: During execution, PC does not contain the address of the currently executing instruction. The address of the currently executing instruction is typically PC–8 for ARM, or PC–4 for Thumb."},
+    {"name": "PC", "bit_rep": "111", "bit_len": 3, "type":"HI", "desc": "program counter: During execution, PC does not contain the address of the currently executing instruction. The address of the currently executing instruction is typically PC–8 for ARM, or PC–4 for Thumb."}
   ]
 }
