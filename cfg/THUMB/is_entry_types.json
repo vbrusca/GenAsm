@@ -1,22 +1,136 @@
 {
-  "obj_name": "is_entry_types",  
-  "set_name": "THUMB",
-  "is_entry_types": [
-    {"name": "Comment", "txt_match": {"starts_with": [";"], "contains":["*"], "ends_with":["endl"]}},
-    {"name": "None", "txt_match": {"starts_with": [""], "contains":[""], "ends_with":[""]}},
-    {"name": "OpCode", "txt_match": {"starts_with": ["A-Z"], "contains":["A-Z"], "ends_with":[" "]}},
-    {"name": "RegisterWb", "txt_match": {"starts_with": ["R"], "contains":["0-7!"], "ends_with":[",", "endl", ";"]}},
-    {"name": "RegisterLow", "txt_match": {"starts_with": ["R"], "contains":["0-7"], "ends_with":[",", "endl", ";"]}},
-    {"name": "RegisterHi", "txt_match": {"starts_with": ["R"], "contains":["8-15"], "ends_with":[",", "endl", ";"]}},
-    {"name": "RegisterSp", "txt_match": {"starts_with": ["R"], "contains":["13"], "ends_with":[",", "endl", ";"]}},
-    {"name": "RegisterPc", "txt_match": {"starts_with": ["R"], "contains":["15"], "ends_with":[",", "endl", ";"]}},
-    {"name": "Number", "txt_match": {"starts_with": ["#0x", "#bx", "#"], "contains":["0-9"], "ends_with":[",", "endl", ";"]}},
-    {"name": "LabelNumericLocal", "txt_match": {"starts_with": ["_"], "contains":["0-9"], "ends_with":[" ", "endl", ";"]}},
-    {"name": "Label", "txt_match": {"starts_with": ["a-z"], "contains":["a-z"], "ends_with":[" ", "endl", ";"]}},
-    {"name": "LabelNumericLocalRef", "txt_match": {"starts_with": ["%FA", "%FT", "%BA", "%BT"], "contains":["0-9"], "ends_with":[" ", ",", "endl", ";"]}}
-  ],
-  "is_entry_group_types": [
-    {"name": "List", "txt_match": {"starts_with": ["{"], "contains":["*"], "ends_with":["}"]}, "conatins": ["RegisterLow"]},
-    {"name": "Group", "txt_match": {"starts_with": ["["], "contains":["*"], "ends_with":["]"]}, "contains": ["RegisterSp", "RegisterPc", "RegisterLow", "Number"]}
-  ]
+    "obj_name": "is_entry_types",  
+    "set_name": "THUMB",
+    "is_entry_types": [
+        {
+            "name": "Comment",
+            "category_class": "java.system.String",
+            "txt_match": {
+                "starts_with": [";"],
+                "contains": ["*"],
+                "ends_with": ["endl"]
+            }
+        },
+        {
+            "name": "None",
+            "category_class": "",            
+            "txt_match": {
+                "starts_with": [""],
+                "contains": [""],
+                "ends_with": [""]
+            }
+        },
+        {
+            "name": "OpCode",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
+            "txt_match": {
+                "starts_with": ["A-Z"],
+                "contains": ["A-Z"],
+                "ends_with": [" "]
+            }
+        },
+        {
+            "name": "RegisterWb",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["0-7!"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "RegisterLow",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["0-7"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "RegisterHi",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["8-15"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "RegisterSp",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["13"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "RegisterPc",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["15"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "Number",
+            "category_class": "java.system.Double",
+            "txt_match": {
+                "starts_with": ["#0x", "#bx", "#"],
+                "contains": ["0-9"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "name": "LabelNumericLocal",
+            "category_class": "java.system.String",
+            "txt_match": {
+                "starts_with": ["_"],
+                "contains": ["0-9"],
+                "ends_with": [" ", "endl", ";"]
+            }
+        },
+        {
+            "name": "Label",
+            "category_class": "java.system.String",            
+            "txt_match": {
+                "starts_with": ["a-z"],
+                "contains": ["a-z"],
+                "ends_with": [" ", "endl", ";"]
+            }
+        },
+        {
+            "name": "LabelNumericLocalRef",
+            "category_class": "net.middlemind.GenAsm.LabelNumLocalRefThumb",            
+            "txt_match": {
+                "starts_with": ["%FA", "%FT", "%BA", "%BT"],
+                "contains": ["0-9"],
+                "ends_with": [" ", ",", "endl", ";"]
+            }
+        }
+    ],
+    "is_entry_group_types": [
+        {
+            "name": "List",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "txt_match": {
+                "starts_with": ["{"],
+                "contains": ["*"],
+                "ends_with": ["}"]
+            },
+            "conatins": ["RegisterLow"]
+        },
+        {
+            "name": "Group",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",            
+            "txt_match": {
+                "starts_with": ["["],
+                "contains": ["*"],
+                "ends_with": ["]"]
+            },
+            "contains": ["RegisterSp", "RegisterPc", "RegisterLow", "Number"]
+        }
+    ]
 }

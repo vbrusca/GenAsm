@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class Token {
     public String name;
-    public String type;
     public Artifact artifact;
     public int lineNum;
     public int index;
     public Object payload;
-    public List<Token> args; 
+    public List<Token> args;
+    public Object value;
 }
