@@ -1,7 +1,10 @@
 package net.middlemind.GenAsm;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,8 +37,26 @@ public class GenAsm {
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
-            String json = null;
+            String asmTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_short.txt";
+
+            ArtifactLine line = new ArtifactLine();
+            line.lineNum = 0;
+            line.source = "LSR   R2, R5, #27   ; Logical shift right the contents";
+            line.len = line.source.length();
+            
+            LexerSimple lex = new LexerSimple();
+            line.artifacts = lex.LineLexerize(line.source, line.lineNum);
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(line);
+            Logger.wr(jsonString);
+            
             /*
+            //JSON Loading Test
+            String json = null;
             String test1 = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_bit_series.json";
             
             try {
@@ -67,6 +88,9 @@ public class GenAsm {
             }
             */
             
+            /*
+            //LOAD IS_SETS
+            String json = null;
             Class cTmp;
             LoaderIsSets ldrIsSets;
             
@@ -91,6 +115,7 @@ public class GenAsm {
                     JSON_OBJ_IS_SETS.Print();
                 }
             }
+            */
         }
     }
 }

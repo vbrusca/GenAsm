@@ -1,7 +1,6 @@
 package net.middlemind.GenAsm;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -10,7 +9,7 @@ import java.util.List;
 public class LexerSimple implements Lexer {
 
     @Override
-    public List<Artifact> LineLexerize(String line, int lineNum) {
+    public ArrayList<Artifact> LineLexerize(String line, int lineNum) {
         if(Utils.IsStringEmpty(line)) {
             return new ArrayList<Artifact>();
         } else {
@@ -18,12 +17,13 @@ public class LexerSimple implements Lexer {
             char[] chars = line.toCharArray();
             boolean inArtifact = false;
             Artifact artifact = null;
-            for(int i = 0; i < chars.length; i++) {
+            int i = 0;
+            for(; i < chars.length; i++) {
                 if(inArtifact == true) {
                     if(chars[i] == ' ' || chars[i] == '\t') {
                         inArtifact = false;
                         artifact.posStop = (i - 1);
-                        artifact.len = (artifact.posStop - artifact.posStart);
+                        artifact.len = (i - artifact.posStart);
                         artifacts.add(artifact);
                         artifact = null;
                     } else {
@@ -42,6 +42,12 @@ public class LexerSimple implements Lexer {
                         artifact.payload += chars[i];
                     }
                 }
+            }
+            
+            if(artifact != null) {
+                artifact.posStop = (i - 1);
+                artifact.len = (i - artifact.posStart);
+                artifacts.add(artifact);
             }
             
             return artifacts;
