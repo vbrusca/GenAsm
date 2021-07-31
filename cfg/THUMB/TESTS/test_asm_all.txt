@@ -1,0 +1,199 @@
+LSR   R2, R5, #27
+LSR   R2, R5, #27   ; Logical shift right the contents
+    LSR   R2, R5, #27
+    LSR   R2, R5, #27   ; Logical shift right the contents
+ LSR   R2, R5, #27
+ LSR   R2, R5, #27   ; Logical shift right the contents
+
+ADD R0, R3, R4
+ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
+    ADD R0, R3, R4
+    ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
+
+  ADD R0, R3, R4
+  ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
+
+SUB R6, R2, #6
+SUB R6, R2, #6  ; R6 := R2 - 6 and set condition codes.
+    SUB R6, R2, #6
+    SUB R6, R2, #6  ; R6 := R2 - 6 and set condition codes.
+  SUB R6, R2, #6
+  SUB R6, R2, #6  ; R6 := R2 - 6 and set condition codes.
+
+MOV   R0, #128
+CMP   R2, #62
+ADD   R1, #255
+SUB R6, #145
+
+        MOV   R0, #128 ; R0 := 128 and set condition codes ; Set condition codes on R2 - 62
+        CMP   R2, #62  ; R1 := R1 + 255 and set condition
+        ADD   R1, #255 ; codes
+        SUB R6, #145   ; R6 := R6 - 145 and set condition ; codes
+    MOV   R0, #128      ; R0 := 128 and set condition codes ; Set condition codes on R2 - 62
+    CMP   R2, #62       ; R1 := R1 + 255 and set condition
+    ADD   R1, #255      ; codes
+    SUB R6, #145        ; R6 := R6 - 145 and set condition ; codes
+
+EOR   R3, R4
+ROR   R1, R0
+NEG R5, R3
+CMP R2, R6
+MUL R0, R7
+
+  EOR   R3, R4
+  ROR   R1, R0
+  NEG R5, R3
+  CMP R2, R6
+  MUL R0, R7
+
+EOR   R3, R4   ; R3 := R3 EOR R4 and set condition codes
+ROR   R1, R0   ; Rotate Right R1 by the value in R0, store
+NEG R5, R3     ; the result in R1 and set condition codes
+CMP R2, R6     ; Subtract the contents of R3 from zero,
+MUL R0, R7     ; store the result in R5. Set condition codes ; ie R5 = -R3
+
+    EOR   R3, R4   ; R3 := R3 EOR R4 and set condition codes
+    ROR   R1, R0   ; Rotate Right R1 by the value in R0, store
+    NEG R5, R3     ; the result in R1 and set condition codes
+    CMP R2, R6     ; Subtract the contents of R3 from zero,
+    MUL R0, R7     ; store the result in R5. Set condition codes ; ie R5 = -R3
+
+ADD PC, R5
+CMP R4, R12
+MOV R15, R14
+
+ADD PC, R5 ; PC := PC + R5 but don't set the ; condition codes.
+CMP R4, R12 ; Set the condition codes on the ; result of R4 - R12.
+MOV R15, R14 ; Move R14 (LR) into R15 (PC)
+
+ADR      R1,outofTHUMB
+MOV R11,R1
+BX  R11 ; Transfer the contents of R11 into
+outofTHUMB
+
+LDR R3,[PC,#844]
+LDR R3,[PC,#844] ; Load into R3 the word found at the
+    LDR R3,[PC,#844]
+    LDR R3,[PC,#844] ; Load into R3 the word found at the
+
+STR   R3, [R2,R6]
+LDRB  R2, [R0,R7]
+
+  STR   R3, [R2,R6]
+  LDRB  R2, [R0,R7]
+
+STR   R3, [R2,R6]   ; Load into R2 the byte found at
+LDRB  R2, [R0,R7]   ; the address formed by adding
+
+STRH R4, [R3, R0]
+LDSB  R2, [R7, R1]
+LDSH  R3, [R4, R2]
+        STRH R4, [R3, R0]
+        LDSB  R2, [R7, R1]
+        LDSH  R3, [R4, R2]
+    STRH R4, [R3, R0]; Store the lower 16 bits of R4 at the
+    LDSB  R2, [R7, R1]; Load into R2 the sign extended byte
+    LDSH  R3, [R4, R2]; Load into R3 the sign extended halfword
+
+LDR R2, [R5,#116]
+STRB R1, [R0,#13]
+  LDR R2, [R5,#116]         ; Load into R2 the word found at the
+  STRB R1, [R0,#13]         ; Store the lower 8 bits of R1 at the
+
+STRH  R6, [R1, #56]
+LDRH R4, [R7, #4]
+
+
+        STRH  R6, [R1, #56] ; Store the lower 16 bits of R4 at
+                            ; the address formed by adding 56
+                            ; R1.
+                            ; Note that the THUMB opcode will ; contain 28 as the Offset5 value.
+
+        LDRH R4, [R7, #4] ; Load into R4 the halfword found at
+; the address formed by adding 4 to R7.
+; Note that the THUMB opcode will contain ; 2 as the Offset5 value.
+
+STR R4, [SP,#492] ; Store the contents of R4 at the address
+
+ADD   R2, PC, #572
+ADD   R6, SP, #212
+
+ADD SP, #268
+ADD SP, #-104
+ADD SP, #268; SP (R13) := SP + 268, but don't set
+ADD SP, #-104; SP (R13) := SP + 268, but don't set
+  ADD SP, #268  ; SP (R13) := SP + 268, but don't set
+  ADD SP, #-104 ; SP (R13) := SP + 268, but don't set
+
+PUSH {R0-R4,LR}
+POP   {R2,R6,PC}
+    PUSH {R0-R4,LR} ; Store R0,R1,R2,R3,R4 and R14 (LR) at
+    POP   {R2,R6,PC} ; Load R2,R6 and R15 (PC) from the stack
+ PUSH {R0-R4,LR}; Store R0,R1,R2,R3,R4 and R14 (LR) at
+ POP   {R2,R6,PC}; Load R2,R6 and R15 (PC) from the stack
+
+STMIA R0!, {R3-R7}
+STMIA R0!, {R3-R7} ; Store the contents of registers R3-R7
+STMIA R0!, {R3-R7}; Store the contents of registers R3-R7
+
+    CMP R0, #45
+    BGT over
+over
+
+  SWI 18 ; Take the software interrupt exception.
+SWI 18; Take the software interrupt exception.
+
+here B here
+  B jimmy
+jimmy
+
+        BL faraway
+next
+faraway
+
+        BL faraway ; Unconditionally Branch to 'faraway'
+    next; and place following instruction
+    faraway; Must be Half-word aligned.
+
+LSL Ra, Rb, LSL #n
+LSL Rt, Rb, #n
+ADD Ra, Rt, Rb
+LSL Rt, Rb, #n
+SUB Ra, Rt, Rb
+LSL Ra, Rb, #n
+MVN Ra, Ra
+LSL Rt, Rb, #n
+SUB Ra, Rb, Rt
+LSL Ra, Ra, #n
+
+signed_divide ; Signed divide of R1 by R0: returns quotient in R0, 
+; remainder in R1 
+; Get abs value of R0 into R3 ASR R2, R0, #31 ; Get 0 or -1 in R2 depending on sign of R0 
+EOR R0, R2 ; EOR with -1 (0xFFFFFFFF) if negative 
+SUB R3, R0, R2 ; and ADD 1 (SUB -1) to get abs value 
+
+udiv10
+; takes argument in a1
+; returns quotient in a1, remainder in a2
+_0 
+MOV     a2, a1
+LSR     a3, a1, #2
+SUB     a1, a3
+LSR     a3, a1, #4
+ADD     a1, a3
+LSR     a3, a1, #8
+ADD     a1, a3
+LSR     a3, a1, #16
+ADD     a1, a3
+LSR     a1, #3
+ASL     a3, a1, #2
+ADD     a3, a1
+ASL     a3, #1
+SUB     a2, a3
+CMP     a2, #10
+BLT     %FT0
+ADD     a1, #1
+SUB     a2, #10
+MOV pc, lr 
+
+
