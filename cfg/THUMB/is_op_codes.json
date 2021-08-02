@@ -4,8 +4,9 @@
     "endian": "BIG",
     "pc_prefecth_bits": "32",
     "pc_prefecth_bytes": "4",
+    "pc_prefecth_words": "2",
     "pc_alignment": "WORD",
-    "pc_bit1_zeroed": true,
+    "pc_lsb_zeroed": true,
     "bit_series": {
         "bit_start": 0,
         "bit_stop": 15,
@@ -16,7 +17,11 @@
             "obj_name": "is_op_code",
             "op_code_name": "LSL",
             "arg_separator": ",",
-            "bit_rep": "00000",
+            "bit_rep": {
+                "bit_string": "00000",
+                "bit_int": 0,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -76,7 +81,11 @@
             "obj_name": "is_op_code",
             "op_code_name": "LSR",
             "arg_separator": ",",
-            "bit_rep": "00001",
+            "bit_rep": {
+                "bit_string": "00001",
+                "bit_int": 1,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -137,6 +146,11 @@
             "op_code_name": "ASR",
             "arg_separator": ",",
             "bit_rep": "00010",
+            "bit_rep": {
+                "bit_string": "00010",
+                "bit_int": 2,
+                "bit_len": 5
+            },            
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -196,7 +210,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "0001100",
+            "bit_rep": {
+                "bit_string": "0001100",
+                "bit_int": 12,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -245,7 +263,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "0001110",
+            "bit_rep": {
+                "bit_string": "0001110",
+                "bit_int": 14,
+                "bit_len": 7
+            },            
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -305,7 +327,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
             "arg_separator": ",",
-            "bit_rep": "0001101",
+            "bit_rep": {
+                "bit_string": "0001101",
+                "bit_int": 13,
+                "bit_len": 7
+            },            
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -354,7 +380,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
             "arg_separator": ",",
-            "bit_rep": "0001111",
+            "bit_rep": {
+                "bit_string": "0001111",
+                "bit_int": 15,
+                "bit_len": 7
+            },            
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -414,7 +444,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
             "arg_separator": ",",
-            "bit_rep": "00100",
+            "bit_rep": {
+                "bit_string": "00100",
+                "bit_int": 4,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -462,7 +496,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
             "arg_separator": ",",
-            "bit_rep": "00101",
+            "bit_rep": {
+                "bit_string": "00101",
+                "bit_int": 5,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -510,7 +548,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "00110",
+            "bit_rep": {
+                "bit_string": "00110",
+                "bit_int": 6,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -558,7 +600,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
             "arg_separator": ",",
-            "bit_rep": "00111",
+            "bit_rep": {
+                "bit_string": "00111",
+                "bit_int": 7,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -606,7 +652,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "AND",
             "arg_separator": ",",
-            "bit_rep": "0100000000",
+            "bit_rep": {
+                "bit_string": "0100000000",
+                "bit_int": 256,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -643,7 +693,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "EOR",
             "arg_separator": ",",
-            "bit_rep": "0100000001",
+            "bit_rep": {
+                "bit_string": "0100000001",
+                "bit_int": 257,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -680,7 +734,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LSL",
             "arg_separator": ",",
-            "bit_rep": "0100000010",
+            "bit_rep": {
+                "bit_string": "0100000010",
+                "bit_int": 258,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -717,7 +775,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LSR",
             "arg_separator": ",",
-            "bit_rep": "0100000011",
+            "bit_rep": {
+                "bit_string": "0100000011",
+                "bit_int": 259,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -754,7 +816,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ASR",
             "arg_separator": ",",
-            "bit_rep": "0100000100",
+            "bit_rep": {
+                "bit_string": "0100000100",
+                "bit_int": 260,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -791,7 +857,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADC",
             "arg_separator": ",",
-            "bit_rep": "0100000101",
+            "bit_rep": {
+                "bit_string": "0100000101",
+                "bit_int": 261,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -828,7 +898,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "SBC",
             "arg_separator": ",",
-            "bit_rep": "0100000110",
+            "bit_rep": {
+                "bit_string": "0100000110",
+                "bit_int": 262,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -865,7 +939,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ROR",
             "arg_separator": ",",
-            "bit_rep": "0100000111",
+            "bit_rep": {
+                "bit_string": "0100000111",
+                "bit_int": 263,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -902,7 +980,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "TST",
             "arg_separator": ",",
-            "bit_rep": "0100001000",
+            "bit_rep": {
+                "bit_string": "0100001000",
+                "bit_int": 264,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -939,7 +1021,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "NEG",
             "arg_separator": ",",
-            "bit_rep": "0100001001",
+            "bit_rep": {
+                "bit_string": "0100001001",
+                "bit_int": 265,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -976,7 +1062,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
             "arg_separator": ",",
-            "bit_rep": "0100001010",
+            "bit_rep": {
+                "bit_string": "0100001010",
+                "bit_int": 266,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1013,7 +1103,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMN",
             "arg_separator": ",",
-            "bit_rep": "0100001011",
+            "bit_rep": {
+                "bit_string": "0100001011",
+                "bit_int": 267,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1050,7 +1144,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ORR",
             "arg_separator": ",",
-            "bit_rep": "0100001100",
+            "bit_rep": {
+                "bit_string": "0100001100",
+                "bit_int": 268,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1087,7 +1185,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MUL",
             "arg_separator": ",",
-            "bit_rep": "0100001101",
+            "bit_rep": {
+                "bit_string": "0100001101",
+                "bit_int": 269,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1124,7 +1226,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BIC",
             "arg_separator": ",",
-            "bit_rep": "0100001110",
+            "bit_rep": {
+                "bit_string": "0100001110",
+                "bit_int": 270,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1161,7 +1267,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MVN",
             "arg_separator": ",",
-            "bit_rep": "0100001111",
+            "bit_rep": {
+                "bit_string": "0100001111",
+                "bit_int": 271,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1198,7 +1308,11 @@
             "obj_name": "is_op_code", 
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "0100010001",
+            "bit_rep": {
+                "bit_string": "0100010001",
+                "bit_int": 273,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1235,7 +1349,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "0100010010",
+            "bit_rep": {
+                "bit_string": "0100010010",
+                "bit_int": 274,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1272,7 +1390,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "0100010011",
+            "bit_rep": {
+                "bit_string": "0100010011",
+                "bit_int": 275,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1309,7 +1431,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
             "arg_separator": ",",
-            "bit_rep": "0100010101",
+            "bit_rep": {
+                "bit_string": "0100010101",
+                "bit_int": 277,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1346,7 +1472,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
             "arg_separator": ",",
-            "bit_rep": "0100010110",
+            "bit_rep": {
+                "bit_string": "0100010110",
+                "bit_int": 278,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1383,7 +1513,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
             "arg_separator": ",",
-            "bit_rep": "0100010111",
+            "bit_rep": {
+                "bit_string": "0100010111",
+                "bit_int": 279,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1420,7 +1554,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
             "arg_separator": ",",
-            "bit_rep": "0100011001",
+            "bit_rep": {
+                "bit_string": "0100011001",
+                "bit_int": 281,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1457,7 +1595,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
             "arg_separator": ",",
-            "bit_rep": "0100011010",
+            "bit_rep": {
+                "bit_string": "0100011010",
+                "bit_int": 282,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1494,7 +1636,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
             "arg_separator": ",",
-            "bit_rep": "0100011011",
+            "bit_rep": {
+                "bit_string": "0100011011",
+                "bit_int": 283,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1531,7 +1677,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BX",
             "arg_separator": ",",
-            "bit_rep": "0100011100",
+            "bit_rep": {
+                "bit_string": "0100011100",
+                "bit_int": 284,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1556,7 +1706,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BX",
             "arg_separator": ",",
-            "bit_rep": "0100011101",
+            "bit_rep": {
+                "bit_string": "0100011101",
+                "bit_int": 285,
+                "bit_len": 10
+            },
             "bit_series": {
                 "bit_start": 6,
                 "bit_stop": 15,
@@ -1581,7 +1735,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
             "arg_separator": ",",
-            "bit_rep": "01001",
+            "bit_rep": {
+                "bit_string": "01001",
+                "bit_int": 9,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -1656,7 +1814,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
             "arg_separator": ",",
-            "bit_rep": "0101000",
+            "bit_rep": {
+                "bit_string": "0101000",
+                "bit_int": 40,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -1720,7 +1882,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
             "arg_separator": ",",
-            "bit_rep": "0101010",
+            "bit_rep": {
+                "bit_string": "0101010",
+                "bit_int": 42,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -1784,7 +1950,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
             "arg_separator": ",",
-            "bit_rep": "0101100",
+            "bit_rep": {
+                "bit_string": "0101100",
+                "bit_int": 44,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -1848,7 +2018,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
             "arg_separator": ",",
-            "bit_rep": "0101110",
+            "bit_rep": {
+                "bit_string": "0101110",
+                "bit_int": 46,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -1912,7 +2086,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
             "arg_separator": ",",
-            "bit_rep": "0101001",
+            "bit_rep": {
+                "bit_string": "0101001",
+                "bit_int": 41,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -1976,7 +2154,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
             "arg_separator": ",",
-            "bit_rep": "0101101",
+            "bit_rep": {
+                "bit_string": "0101101",
+                "bit_int": 45,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -2040,7 +2222,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDSB",
             "arg_separator": ",",
-            "bit_rep": "0101011",
+            "bit_rep": {
+                "bit_string": "0101011",
+                "bit_int": 43,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -2104,7 +2290,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDSH",
             "arg_separator": ",",
-            "bit_rep": "0101111",
+            "bit_rep": {
+                "bit_string": "0101111",
+                "bit_int": 47,
+                "bit_len": 7
+            },
             "bit_series": {
                 "bit_start": 9,
                 "bit_stop": 15,
@@ -2168,7 +2358,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
             "arg_separator": ",",
-            "bit_rep": "01100",
+            "bit_rep": {
+                "bit_string": "01100",
+                "bit_int": 12,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2243,7 +2437,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
             "arg_separator": ",",
-            "bit_rep": "01101",
+            "bit_rep": {
+                "bit_string": "01101",
+                "bit_int": 13,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2318,7 +2516,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
             "arg_separator": ",",
-            "bit_rep": "01110",
+            "bit_rep": {
+                "bit_string": "01110",
+                "bit_int": 14,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2393,7 +2595,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
             "arg_separator": ",",
-            "bit_rep": "01111",
+            "bit_rep": {
+                "bit_string": "01111",
+                "bit_int": 15,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2468,7 +2674,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
             "arg_separator": ",",
-            "bit_rep": "10000",
+            "bit_rep": {
+                "bit_string": "10000",
+                "bit_int": 16,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2543,7 +2753,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
             "arg_separator": ",",
-            "bit_rep": "10001",
+            "bit_rep": {
+                "bit_string": "10001",
+                "bit_int": 17,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2618,7 +2832,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
             "arg_separator": ",",
-            "bit_rep": "10010",
+            "bit_rep": {
+                "bit_string": "10010",
+                "bit_int": 18,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2693,7 +2911,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
             "arg_separator": ",",
-            "bit_rep": "10011",
+            "bit_rep": {
+                "bit_string": "10011",
+                "bit_int": 19,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2768,7 +2990,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "10100",
+            "bit_rep": {
+                "bit_string": "10100",
+                "bit_int": 20,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2828,7 +3054,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "10101",
+            "bit_rep": {
+                "bit_string": "10101",
+                "bit_int": 21,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -2888,7 +3118,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "101100000",
+            "bit_rep": {
+                "bit_string": "101100000",
+                "bit_int": 352,
+                "bit_len": 9
+            },
             "bit_series": {
                 "bit_start": 7,
                 "bit_stop": 15,
@@ -2936,7 +3170,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
             "arg_separator": ",",
-            "bit_rep": "101100001",
+            "bit_rep": {
+                "bit_string": "101100001",
+                "bit_int": 353,
+                "bit_len": 9
+            },
             "bit_series": {
                 "bit_start": 7,
                 "bit_stop": 15,
@@ -2984,7 +3222,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
             "arg_separator": ",",
-            "bit_rep": "10110100",
+            "bit_rep": {
+                "bit_string": "10110100",
+                "bit_int": 180,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3010,7 +3252,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
             "arg_separator": ",",
-            "bit_rep": "10110101",
+            "bit_rep": {
+                "bit_string": "10110101",
+                "bit_int": 181,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3036,7 +3282,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "POP",
             "arg_separator": ",",
-            "bit_rep": "10111100",
+            "bit_rep": {
+                "bit_string": "10111100",
+                "bit_int": 188,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3062,7 +3312,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
             "arg_separator": ",",
-            "bit_rep": "10111101",
+            "bit_rep": {
+                "bit_string": "10111101",
+                "bit_int": 189,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3088,7 +3342,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "STMIA",
             "arg_separator": ",",
-            "bit_rep": "11000",
+            "bit_rep": {
+                "bit_string": "11000",
+                "bit_int": 24,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -3126,7 +3384,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "LDMIA",
             "arg_separator": ",",
-            "bit_rep": "11001",
+            "bit_rep": {
+                "bit_string": "11001",
+                "bit_int": 25,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -3164,7 +3426,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BEQ",
             "arg_separator": ",",
-            "bit_rep": "11010000",
+            "bit_rep": {
+                "bit_string": "11010000",
+                "bit_int": 208,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3200,7 +3466,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BNE",
             "arg_separator": ",",
-            "bit_rep": "11010001",
+            "bit_rep": {
+                "bit_string": "11010001",
+                "bit_int": 209,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3236,7 +3506,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BCS",
             "arg_separator": ",",
-            "bit_rep": "11010010",
+            "bit_rep": {
+                "bit_string": "11010010",
+                "bit_int": 210,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3272,7 +3546,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BCC",
             "arg_separator": ",",
-            "bit_rep": "11010011",
+            "bit_rep": {
+                "bit_string": "11010011",
+                "bit_int": 211,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3308,7 +3586,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BMI",
             "arg_separator": ",",
-            "bit_rep": "11010100",
+            "bit_rep": {
+                "bit_string": "11010100",
+                "bit_int": 212,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3344,7 +3626,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BPL",
             "arg_separator": ",",
-            "bit_rep": "11010101",
+            "bit_rep": {
+                "bit_string": "11010101",
+                "bit_int": 213,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3380,7 +3666,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BVS",
             "arg_separator": ",",
-            "bit_rep": "11010110",
+            "bit_rep": {
+                "bit_string": "11010110",
+                "bit_int": 214,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3416,7 +3706,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BVC",
             "arg_separator": ",",
-            "bit_rep": "11010111",
+            "bit_rep": {
+                "bit_string": "11010111",
+                "bit_int": 215,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3452,7 +3746,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BHI",
             "arg_separator": ",",
-            "bit_rep": "11011000",
+            "bit_rep": {
+                "bit_string": "11011000",
+                "bit_int": 216,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3488,7 +3786,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BLS",
             "arg_separator": ",",
-            "bit_rep": "11011001",
+            "bit_rep": {
+                "bit_string": "11011001",
+                "bit_int": 217,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3524,7 +3826,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BGE",
             "arg_separator": ",",
-            "bit_rep": "11011010",
+            "bit_rep": {
+                "bit_string": "11011010",
+                "bit_int": 218,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3560,7 +3866,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BLT",
             "arg_separator": ",",
-            "bit_rep": "11011011",
+            "bit_rep": {
+                "bit_string": "11011011",
+                "bit_int": 219,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3596,7 +3906,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BGT",
             "arg_separator": ",",
-            "bit_rep": "11011100",
+            "bit_rep": {
+                "bit_string": "11011100",
+                "bit_int": 220,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3632,7 +3946,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BLE",
             "arg_separator": ",",
-            "bit_rep": "11011101",
+            "bit_rep": {
+                "bit_string": "11011101",
+                "bit_int": 221,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3668,7 +3986,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "SWI",
             "arg_separator": ",",
-            "bit_rep": "11011111",
+            "bit_rep": {
+                "bit_string": "11011111",
+                "bit_int": 223,
+                "bit_len": 8
+            },
             "bit_series": {
                 "bit_start": 8,
                 "bit_stop": 15,
@@ -3704,7 +4026,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "B",
             "arg_separator": ",",
-            "bit_rep": "11100",
+            "bit_rep": {
+                "bit_string": "11100",
+                "bit_int": 28,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -3740,7 +4066,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BL",
             "arg_separator": ",",
-            "bit_rep": "11110",
+            "bit_rep": {
+                "bit_string": "11110",
+                "bit_int": 30,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,
@@ -3776,7 +4106,11 @@
             "obj_name": "is_op_code",  
             "op_code_name": "BL",
             "arg_separator": ",",
-            "bit_rep": "11111",
+            "bit_rep": {
+                "bit_string": "11111",
+                "bit_int": 31,
+                "bit_len": 5
+            },
             "bit_series": {
                 "bit_start": 11,
                 "bit_stop": 15,

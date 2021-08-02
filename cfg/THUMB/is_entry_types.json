@@ -5,7 +5,7 @@
         {
             "obj_name": "is_entry_type",
             "type_name": "Comment",
-            "category_class": "java.system.String",
+            "category_class": "java.lang.String",
             "txt_match": {
                 "starts_with": [";"],
                 "contains": ["*"],
@@ -15,7 +15,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "None",
-            "category_class": "",            
+            "category_class": "java.lang.Object",            
             "txt_match": {
                 "starts_with": [""],
                 "contains": [""],
@@ -85,7 +85,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "Number",
-            "category_class": "java.system.Double",
+            "category_class": "java.lang.Double",
             "txt_match": {
                 "starts_with": ["#0x", "#bx", "#"],
                 "contains": ["0-9"],
@@ -95,7 +95,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "LabelNumericLocal",
-            "category_class": "java.system.String",
+            "category_class": "java.lang.String",
             "txt_match": {
                 "starts_with": ["_"],
                 "contains": ["0-9"],
@@ -105,7 +105,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "Label",
-            "category_class": "java.system.String",            
+            "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["a-z"],
                 "contains": ["a-z"],

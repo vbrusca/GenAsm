@@ -40,9 +40,7 @@ public class LoaderIsEntryTypes implements Loader {
                 entry.txt_match.fileName = fileName;
                 entry.txt_match.loader = getClass().getName();
             }
-            
-            jsonObj.LinkGroups();
-            
+                        
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
