@@ -37,6 +37,35 @@ public class GenAsm {
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
+            
+            /*
+            //JSON LOADING TEST IS ENTRY TYPES
+            String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json";
+            String json = "";
+            try {
+                json = FileLoader.LoadStr(jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            LoaderIsEntryTypes loader = new LoaderIsEntryTypes();
+            JsonObjIsEntryTypes entryTypes = null;
+            try {            
+                entryTypes = loader.ParseJson(json, "net.middlemind.GenAsm.JsonObjIsEntryTypes", jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(entryTypes);
+            Logger.wr(jsonString);            
+            */
+            
+            /*
+            //SIMPLE LEXER FILE TEST
             String asmTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_short.txt";
             LexerSimple lex = new LexerSimple();
             ArrayList<ArtifactLine> lexedFile = null;
@@ -51,7 +80,8 @@ public class GenAsm {
             
             Gson gson = builder.create();            
             String jsonString = gson.toJson(lexedFile);
-            Logger.wr(jsonString);            
+            Logger.wr(jsonString);
+            */
             
             /*
             //SIMPLE LEXER TEST
@@ -69,7 +99,7 @@ public class GenAsm {
             */
             
             /*
-            //JSON LOADING TEST
+            //JSON LOADING TEST BIT SERIES
             String json = null;
             String test1 = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_bit_series.json";
             
@@ -103,7 +133,7 @@ public class GenAsm {
             */
             
             /*
-            //LOAD IS_SETS
+            //JSON LOADING TEST IS_SETS
             String json = null;
             Class cTmp;
             LoaderIsSets ldrIsSets;

@@ -3,7 +3,8 @@
     "set_name": "THUMB",
     "is_entry_types": [
         {
-            "name": "Comment",
+            "obj_name": "is_entry_type",
+            "type_name": "Comment",
             "category_class": "java.system.String",
             "txt_match": {
                 "starts_with": [";"],
@@ -12,7 +13,8 @@
             }
         },
         {
-            "name": "None",
+            "obj_name": "is_entry_type",            
+            "type_name": "None",
             "category_class": "",            
             "txt_match": {
                 "starts_with": [""],
@@ -21,7 +23,8 @@
             }
         },
         {
-            "name": "OpCode",
+            "obj_name": "is_entry_type",            
+            "type_name": "OpCode",
             "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
             "txt_match": {
                 "starts_with": ["A-Z"],
@@ -30,7 +33,8 @@
             }
         },
         {
-            "name": "RegisterWb",
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterWb",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -39,7 +43,8 @@
             }
         },
         {
-            "name": "RegisterLow",
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterLow",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -48,7 +53,8 @@
             }
         },
         {
-            "name": "RegisterHi",
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -57,7 +63,8 @@
             }
         },
         {
-            "name": "RegisterSp",
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterSp",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -66,7 +73,8 @@
             }
         },
         {
-            "name": "RegisterPc",
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterPc",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -75,7 +83,8 @@
             }
         },
         {
-            "name": "Number",
+            "obj_name": "is_entry_type",            
+            "type_name": "Number",
             "category_class": "java.system.Double",
             "txt_match": {
                 "starts_with": ["#0x", "#bx", "#"],
@@ -84,7 +93,8 @@
             }
         },
         {
-            "name": "LabelNumericLocal",
+            "obj_name": "is_entry_type",            
+            "type_name": "LabelNumericLocal",
             "category_class": "java.system.String",
             "txt_match": {
                 "starts_with": ["_"],
@@ -93,7 +103,8 @@
             }
         },
         {
-            "name": "Label",
+            "obj_name": "is_entry_type",            
+            "type_name": "Label",
             "category_class": "java.system.String",            
             "txt_match": {
                 "starts_with": ["a-z"],
@@ -102,7 +113,8 @@
             }
         },
         {
-            "name": "LabelNumericLocalRef",
+            "obj_name": "is_entry_type",            
+            "type_name": "LabelNumericLocalRef",
             "category_class": "net.middlemind.GenAsm.LabelNumLocalRefThumb",            
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
@@ -113,17 +125,19 @@
     ],
     "is_entry_group_types": [
         {
-            "name": "List",
+            "obj_name": "is_entry_group_type",
+            "type_name": "List",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
             "txt_match": {
                 "starts_with": ["{"],
                 "contains": ["*"],
                 "ends_with": ["}"]
             },
-            "conatins": ["RegisterLow"]
+            "contains": ["RegisterLow"]
         },
         {
-            "name": "Group",
+            "obj_name": "is_entry_group_type",            
+            "type_name": "Group",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",            
             "txt_match": {
                 "starts_with": ["["],

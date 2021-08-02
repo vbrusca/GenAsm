@@ -19,8 +19,8 @@ public class JsonObjIsSets extends JsonObjBase {
     public void Print(String prefix) {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjectName: " + obj_name);
-        Logger.wrl(prefix + "IsSets:");
         
+        Logger.wrl(prefix + "IsSets:");
         for(JsonObjIsSet entry : is_sets) {
             Logger.wrl("");
             entry.Print(prefix + "\t");

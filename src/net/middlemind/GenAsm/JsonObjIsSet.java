@@ -22,9 +22,9 @@ public class JsonObjIsSet extends JsonObjBase {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjectName: " + obj_name);
         Logger.wrl(prefix + "SetName: " + set_name);
-        Logger.wrl(prefix + "AssemblerClass: " + assembler_class);        
+        Logger.wrl(prefix + "AssemblerClass: " + assembler_class);
+        
         Logger.wrl(prefix + "IsFiles:");
-
         for(JsonObjIsFile entry : is_files) {
             Logger.wrl("");
             entry.Print(prefix + "\t");
