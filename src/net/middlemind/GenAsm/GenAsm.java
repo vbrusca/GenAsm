@@ -16,6 +16,7 @@ public class GenAsm {
     public static String ASM_SETS_LOADER_CLASS = "";
     public static String ASM_SETS_TARGET_CLASS = "";
     public static JsonObjIsSets ASM_SETS = null;
+    public static JsonObjIsSet ASM_SET = null;    
     public static String ASM_ASSEMBLER_CLASS = "";
     public static Assembler ASM_ASSEMBLER = null;
     
@@ -26,6 +27,7 @@ public class GenAsm {
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.LoaderIsSets";
             ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjIsSets";
             ASM_SETS = null;
+            ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.AssemblerThumb";
             ASM_ASSEMBLER = null;
         } else {
@@ -34,6 +36,7 @@ public class GenAsm {
             ASM_SETS_LOADER_CLASS = args[2];
             ASM_SETS_TARGET_CLASS = args[3];
             ASM_SETS = null;
+            ASM_SET = null;            
             ASM_ASSEMBLER_CLASS = args[4];
             ASM_ASSEMBLER = null;            
         }
@@ -45,6 +48,58 @@ public class GenAsm {
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
+            
+            /*
+            //JSON LOADING TEST IS ARG TYPES
+            String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json";
+            String json = "";
+            try {
+                json = FileLoader.LoadStr(jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            LoaderIsRegisters loader = new LoaderIsRegisters();
+            JsonObjIsRegisters entryTypes = null;
+            try {            
+                entryTypes = loader.ParseJson(json, "net.middlemind.GenAsm.JsonObjIsRegisters", jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(entryTypes);
+            Logger.wr(jsonString);            
+            */
+
+            /*
+            //JSON LOADING TEST IS ARG TYPES
+            String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_arg_types.json";
+            String json = "";
+            try {
+                json = FileLoader.LoadStr(jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            LoaderIsArgTypes loader = new LoaderIsArgTypes();
+            JsonObjIsArgTypes entryTypes = null;
+            try {            
+                entryTypes = loader.ParseJson(json, "net.middlemind.GenAsm.JsonObjIsArgTypes", jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(entryTypes);
+            Logger.wr(jsonString);
+            */
             
             /*
             //JSON LOADING TEST IS ENTRY TYPES
@@ -140,34 +195,47 @@ public class GenAsm {
             }
             */
             
-            /*
-            //JSON LOADING TEST IS_SETS
-            String json = null;
+            String json;
             Class cTmp;
             LoaderIsSets ldrIsSets;
+            Assembler assm;
             
             try {
                 json = FileLoader.LoadStr(ASM_SETS_FILE_NAME);
             } catch (IOException e) {
-                json = null;
+                Logger.wrl("Error could not load is_sets file " + ASM_SETS_FILE_NAME);
+                e.printStackTrace();
+                return;
             }
             
             if(!Utils.IsStringEmpty(json)) {
                 try {
                     cTmp = Class.forName(ASM_SETS_LOADER_CLASS);
                     ldrIsSets = (LoaderIsSets)cTmp.getDeclaredConstructor().newInstance();
-                    JSON_OBJ_IS_SETS = (JsonObjIsSets)ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
+                    ASM_SETS = (JsonObjIsSets)ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
+                            
+                    cTmp = Class.forName(ASM_ASSEMBLER_CLASS);
+                    assm = (Assembler)cTmp.getDeclaredConstructor().newInstance();
+                    
+                    for(JsonObjIsSet entry : ASM_SETS.is_sets) {
+                        if(entry.set_name.equals(ASM_TARGET_SET)) {
+                            ASM_SET = entry;
+                            break;
+                        }
+                    }
+                    
+                    if(ASM_SET != null) {
+                        assm.RunAssembler(ASM_SET);
+                    } else {
+                        Logger.wrl("Error could not find assembler set named " + ASM_TARGET_SET);
+                    }
+                    
                 } catch (LoaderException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     Logger.wrl("Error could not instantiate loader class " + ASM_SETS_LOADER_CLASS);
                     e.printStackTrace();
                     return;
-                }
-                
-                if(JSON_OBJ_IS_SETS != null) {
-                    JSON_OBJ_IS_SETS.Print();
-                }
+                }                
             }
-            */
         }
     }
 }

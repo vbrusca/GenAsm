@@ -20,6 +20,7 @@ public class AssemblerThumb implements Assembler {
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet) {
         isaDataSet = jsonIsSet;
+        Logger.wrl("RunAssembler: Start");
     }    
     
     /* DATA FILE METHODS */

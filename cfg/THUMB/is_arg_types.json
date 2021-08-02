@@ -50,7 +50,7 @@
         {
             "obj_name": "is_arg_type",            
             "arg_name": "Rwb",
-            "is_entry_types": ["RegisterWB"]
+            "is_entry_types": ["RegisterWb"]
         },
         {
             "obj_name": "is_arg_type",            
