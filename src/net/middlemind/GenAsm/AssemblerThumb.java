@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class AssemblerThumb implements Assembler {
 
+    public JsonObjIsSet isaDataSet;
     public boolean isaDataLoaded;
     public boolean isaDataParsed;
     public boolean isaDataLinked;
@@ -15,6 +16,11 @@ public class AssemblerThumb implements Assembler {
     public boolean assemblyFileLexerized;
     public boolean assemblyFileTokenized;
     public boolean assemblyFileParsed;    
+    
+    @Override
+    public void RunAssembler(JsonObjIsSet jsonIsSet) {
+        isaDataSet = jsonIsSet;
+    }    
     
     /* DATA FILE METHODS */
     @Override
@@ -62,12 +68,12 @@ public class AssemblerThumb implements Assembler {
     /* BOOLEAN INDICATORS GET/SET METHODS */
     @Override
     public boolean GetIsAssemblyFileLexerized() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return assemblyFileLexerized;
     }
 
     @Override
     public void SetIsAssemblyFileLexerized(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        assemblyFileLexerized = b;
     }
 
     @Override
@@ -82,22 +88,22 @@ public class AssemblerThumb implements Assembler {
     
     @Override
     public boolean GetIsAssemblyFileTokenized() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return assemblyFileTokenized;
     }
 
     @Override
     public void SetIsAssemblyFileTokenized(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        assemblyFileTokenized = b;
     }    
     
     @Override
     public boolean GetIsAssemblyFileParsed() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return assemblyFileParsed;
     }
 
     @Override
     public void SetIsAssemblyFileParsed(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        assemblyFileParsed = b;
     }
 
     @Override
@@ -112,22 +118,21 @@ public class AssemblerThumb implements Assembler {
     
     @Override
     public boolean GetIsIsaDataParsed() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isaDataParsed;
     }
 
     @Override
     public void SetIsIsaDataParsed(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        isaDataParsed = b;
     }
-    
     
     @Override
     public boolean GetIsIsaDataLinked() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isaDataLinked;
     }
 
     @Override
     public void SetIsIsaDataLinked(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
+        isaDataLinked = b;
+    }
 }

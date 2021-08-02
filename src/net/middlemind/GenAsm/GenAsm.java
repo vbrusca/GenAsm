@@ -15,7 +15,9 @@ public class GenAsm {
     public static String ASM_TARGET_SET = "";
     public static String ASM_SETS_LOADER_CLASS = "";
     public static String ASM_SETS_TARGET_CLASS = "";
-    public static JsonObjIsSets JSON_OBJ_IS_SETS = null;
+    public static JsonObjIsSets ASM_SETS = null;
+    public static String ASM_ASSEMBLER_CLASS = "";
+    public static Assembler ASM_ASSEMBLER = null;
     
     public static void main(String[] args) {
         if(args == null || args.length < 2) {
@@ -23,11 +25,17 @@ public class GenAsm {
             ASM_TARGET_SET = "THUMB";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.LoaderIsSets";
             ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjIsSets";
+            ASM_SETS = null;
+            ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.AssemblerThumb";
+            ASM_ASSEMBLER = null;
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
             ASM_SETS_LOADER_CLASS = args[2];
             ASM_SETS_TARGET_CLASS = args[3];
+            ASM_SETS = null;
+            ASM_ASSEMBLER_CLASS = args[4];
+            ASM_ASSEMBLER = null;            
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
