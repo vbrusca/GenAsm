@@ -1,6 +1,6 @@
 package net.middlemind.GenAsm;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -10,5 +10,5 @@ public class ArtifactLine {
     public int lineNum;
     public int sourceLen;
     public String source;
-    public ArrayList<Artifact> payload;
+    public List<Artifact> payload;
 }
