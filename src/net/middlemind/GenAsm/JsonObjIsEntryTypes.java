@@ -15,12 +15,12 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     
     public void LinkGroups() {
         for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
-            entry.linkedContains = new Hashtable<String, JsonObjIsEntryType>();
+            entry.linked_contains = new Hashtable<String, JsonObjIsEntryType>();
             for(String s : entry.contains) {
                 boolean found = false;
                 for(JsonObjIsEntryType lentry : is_entry_types) {
                     if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
-                        entry.linkedContains.put(s, lentry);
+                        entry.linked_contains.put(s, lentry);
                         found = true;
                         break;
                     }

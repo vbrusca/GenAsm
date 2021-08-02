@@ -7,13 +7,9 @@ import java.util.Map;
  *
  * @author Victor G. Brusca, Middlemind Games  08/02/2021 7:27 PM EST
  */
-public class JsonObjIsEntryGroupType extends JsonObjBase {
-    public String obj_name;
-    public String type_name;
-    public String category_class;
-    public JsonObjTxtMatch txt_match;
+public class JsonObjIsEntryGroupType extends JsonObjIsEntryType {
     public List<String> contains;
-    public Map<String, JsonObjIsEntryType> linkedContains;
+    public Map<String, JsonObjIsEntryType> linked_contains;
     
     @Override
     public void Print() {
@@ -23,17 +19,13 @@ public class JsonObjIsEntryGroupType extends JsonObjBase {
     @Override
     public void Print(String prefix) {
         super.Print(prefix);
-        Logger.wrl(prefix + "ObjectName: " + obj_name);
-        Logger.wrl(prefix + "TxtMatch: ");
-        txt_match.Print(prefix + "\t");
-        
         Logger.wrl(prefix + "Contains:");        
         for(String s : contains) {
             Logger.wrl(prefix + "\t" + s);
         }
 
         Logger.wrl(prefix + "LinkedContains:");        
-        for(String s : linkedContains.keySet()) {
+        for(String s : linked_contains.keySet()) {
             Logger.wrl(prefix + "\t" + s);
         }        
     }    
