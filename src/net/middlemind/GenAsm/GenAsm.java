@@ -48,7 +48,6 @@ public class GenAsm {
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
-            
             /*
             //JSON LOADING TEST IS ARG TYPES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json";
@@ -72,9 +71,12 @@ public class GenAsm {
             
             Gson gson = builder.create();            
             String jsonString = gson.toJson(entryTypes);
-            Logger.wr(jsonString);            
+            Logger.wr(jsonString);
+            Logger.wrl("");
+            Logger.wrl("");
+            entryTypes.Print();
             */
-
+            
             /*
             //JSON LOADING TEST IS ARG TYPES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_arg_types.json";
@@ -99,9 +101,11 @@ public class GenAsm {
             Gson gson = builder.create();            
             String jsonString = gson.toJson(entryTypes);
             Logger.wr(jsonString);
+            Logger.wrl("");
+            Logger.wrl("");
+            entryTypes.Print();
             */
             
-            /*
             //JSON LOADING TEST IS ENTRY TYPES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json";
             String json = "";
@@ -125,7 +129,9 @@ public class GenAsm {
             Gson gson = builder.create();            
             String jsonString = gson.toJson(entryTypes);
             Logger.wr(jsonString);            
-            */
+            Logger.wrl("");
+            Logger.wrl("");
+            entryTypes.Print();
             
             /*
             //SIMPLE LEXER FILE TEST
@@ -195,6 +201,8 @@ public class GenAsm {
             }
             */
             
+            /*
+            //MAIN PROCESSING
             String json;
             Class cTmp;
             LoaderIsSets ldrIsSets;
@@ -236,6 +244,7 @@ public class GenAsm {
                     return;
                 }                
             }
+            */
         }
     }
 }

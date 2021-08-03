@@ -27,6 +27,10 @@ public class LoaderIsRegisters implements Loader {
                 entry.name = entry.getClass().getName();
                 entry.fileName = fileName;
                 entry.loader = getClass().getName();
+                
+                entry.bit_rep.name = entry.getClass().getName();
+                entry.bit_rep.fileName = fileName;
+                entry.bit_rep.loader = getClass().getName();                
             }
             
             return jsonObj;

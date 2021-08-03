@@ -24,9 +24,11 @@ public class JsonObjIsEntryGroupType extends JsonObjIsEntryType {
             Logger.wrl(prefix + "\t" + s);
         }
 
-        Logger.wrl(prefix + "LinkedContains:");        
-        for(String s : linked_contains.keySet()) {
-            Logger.wrl(prefix + "\t" + s);
-        }        
+        if(linked_contains != null) {
+            Logger.wrl(prefix + "LinkedContains:");        
+            for(String s : linked_contains.keySet()) {
+                Logger.wrl(prefix + "\t" + s);
+            }
+        }
     }    
 }

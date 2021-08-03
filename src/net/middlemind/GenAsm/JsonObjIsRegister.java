@@ -9,4 +9,20 @@ public class JsonObjIsRegister extends JsonObjBase {
     public String obj_name;
     public JsonObjBitRep bit_rep;
     public String desc;
+    
+    @Override
+    public void Print() {
+        Print("");
+    }    
+    
+    @Override
+    public void Print(String prefix) {
+        super.Print(prefix);
+        Logger.wrl(prefix + "RegisterName: " + register_name);
+        Logger.wrl(prefix + "ObjName: " + obj_name);
+        Logger.wrl(prefix + "Description: " + desc);
+        
+        Logger.wrl(prefix + "BitRep:");
+        bit_rep.Print(prefix + "\t");
+    }     
 }

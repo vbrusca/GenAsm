@@ -19,7 +19,7 @@ public class JsonObjIsEntryType extends JsonObjBase {
     public void Print(String prefix) {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjectName: " + obj_name);
-        Logger.wrl(prefix + "TypeName: " + obj_name);        
+        Logger.wrl(prefix + "TypeName: " + obj_name);  
         
         Logger.wrl(prefix + "TxtMatch: ");
         txt_match.Print(prefix + "\t");        

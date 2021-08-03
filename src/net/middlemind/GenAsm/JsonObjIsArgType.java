@@ -28,9 +28,11 @@ public class JsonObjIsArgType extends JsonObjBase {
             Logger.wrl(prefix + "\t" + s);
         }
 
-        Logger.wrl(prefix + "LinkedIsEntryTypes:");        
-        for(JsonObjIsEntryType entry : linked_is_entry_types) {
-            Logger.wrl(prefix + "\t" + entry.type_name);
+        if(linked_is_entry_types != null) {
+            Logger.wrl(prefix + "LinkedIsEntryTypes:");
+            for(JsonObjIsEntryType entry : linked_is_entry_types) {
+                Logger.wrl(prefix + "\t" + entry.type_name);
+            }
         }
     }    
 }
