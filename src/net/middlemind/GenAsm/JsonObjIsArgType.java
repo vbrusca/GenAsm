@@ -34,5 +34,5 @@ public class JsonObjIsArgType extends JsonObjBase {
                 Logger.wrl(prefix + "\t" + entry.type_name);
             }
         }
-    }    
+    }
 }

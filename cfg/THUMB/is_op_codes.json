@@ -2,9 +2,9 @@
     "obj_name": "is_op_codes",
     "set_name": "THUMB",
     "endian": "BIG",
-    "pc_prefecth_bits": "32",
-    "pc_prefecth_bytes": "4",
-    "pc_prefecth_words": "2",
+    "pc_prefecth_bits": 32,
+    "pc_prefecth_bytes": 4,
+    "pc_prefecth_words": 2,
     "pc_alignment": "WORD",
     "pc_lsb_zeroed": true,
     "bit_series": {

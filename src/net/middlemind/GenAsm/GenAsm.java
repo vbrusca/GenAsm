@@ -106,6 +106,7 @@ public class GenAsm {
             entryTypes.Print();
             */
             
+            /*
             //JSON LOADING TEST IS ENTRY TYPES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json";
             String json = "";
@@ -132,6 +133,7 @@ public class GenAsm {
             Logger.wrl("");
             Logger.wrl("");
             entryTypes.Print();
+            */
             
             /*
             //SIMPLE LEXER FILE TEST
