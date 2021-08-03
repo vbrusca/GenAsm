@@ -12,6 +12,7 @@ public class LoaderIsValidLines implements Loader {
     
     @Override
     public JsonObjIsValidLines ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+        Logger.wrl("LoaderIsValidLines: ParseJson");
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       

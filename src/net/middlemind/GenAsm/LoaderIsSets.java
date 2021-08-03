@@ -12,6 +12,7 @@ public class LoaderIsSets implements Loader {
 
     @Override
     public JsonObjIsSets ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+        Logger.wrl("LoaderIsSets: ParseJson");
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       

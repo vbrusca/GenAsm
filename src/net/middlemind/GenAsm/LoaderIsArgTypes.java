@@ -12,6 +12,7 @@ public class LoaderIsArgTypes implements Loader {
     
     @Override
     public JsonObjIsArgTypes ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+        Logger.wrl("LoaderIsArgTypes: ParseJson");
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       

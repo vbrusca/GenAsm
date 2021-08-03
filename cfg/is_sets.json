@@ -4,41 +4,40 @@
         {
             "obj_name": "is_set",
             "set_name": "THUMB",
-            "assembler_class": "",
             "is_files": [
                 {
                     "obj_name": "is_arg_types",
                     "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_arg_types.json",
-                    "loader_class": "",
-                    "target_class": "",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsArgTypes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsArgTypes",
                     "category": "args"
                 },
                 {
                     "obj_name": "is_entry_types",
                     "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
-                    "loader_class": "",
-                    "target_class": "",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsEntryTypes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsEntryTypes",
                     "category": "entries"
                 },
                 {
                     "obj_name": "is_op_codes",
                     "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
-                    "loader_class": "",
-                    "target_class": "",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsOpCodes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsOpCodes",
                     "category": "opcodes"
                 },
                 {
                     "obj_name": "is_registers",
                     "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
-                    "loader_class": "",
-                    "target_class": "",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsRegisters",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsRegisters",
                     "category": "registers"
                 },
                 {
                     "obj_name": "is_valid_lines",
                     "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
-                    "loader_class": "",
-                    "target_class": "",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsValidLines",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsValidLines",
                     "category": "lines"
                 }
             ]

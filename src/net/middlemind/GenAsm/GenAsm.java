@@ -232,7 +232,6 @@ public class GenAsm {
             }
             */
             
-            /*
             //MAIN PROCESSING
             String json;
             Class cTmp;
@@ -242,7 +241,7 @@ public class GenAsm {
             try {
                 json = FileLoader.LoadStr(ASM_SETS_FILE_NAME);
             } catch (IOException e) {
-                Logger.wrl("Error could not load is_sets file " + ASM_SETS_FILE_NAME);
+                Logger.wrl("GenAsm: Main: Error: Could not load is_sets file " + ASM_SETS_FILE_NAME);
                 e.printStackTrace();
                 return;
             }
@@ -251,13 +250,14 @@ public class GenAsm {
                 try {
                     cTmp = Class.forName(ASM_SETS_LOADER_CLASS);
                     ldrIsSets = (LoaderIsSets)cTmp.getDeclaredConstructor().newInstance();
-                    ASM_SETS = (JsonObjIsSets)ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
+                    ASM_SETS = ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
                             
                     cTmp = Class.forName(ASM_ASSEMBLER_CLASS);
                     assm = (Assembler)cTmp.getDeclaredConstructor().newInstance();
                     
                     for(JsonObjIsSet entry : ASM_SETS.is_sets) {
                         if(entry.set_name.equals(ASM_TARGET_SET)) {
+                            Logger.wrl("GenAsm: Main: Found instruction set entry " + ASM_TARGET_SET);
                             ASM_SET = entry;
                             break;
                         }
@@ -266,16 +266,14 @@ public class GenAsm {
                     if(ASM_SET != null) {
                         assm.RunAssembler(ASM_SET);
                     } else {
-                        Logger.wrl("Error could not find assembler set named " + ASM_TARGET_SET);
+                        Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
                     }
-                    
                 } catch (LoaderException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                    Logger.wrl("Error could not instantiate loader class " + ASM_SETS_LOADER_CLASS);
+                    Logger.wrl("GenAsm: Main: Error: could not instantiate loader class " + ASM_SETS_LOADER_CLASS);
                     e.printStackTrace();
                     return;
-                }                
+                }
             }
-            */
         }
     }
 }

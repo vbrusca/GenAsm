@@ -12,5 +12,6 @@ public interface JsonObj {
     public String GetFileName();
     public void SetFileName(String s);
     public void Print();
-    public void Print(String prefix);    
+    public void Print(String prefix);
+    public void Link(JsonObj linkData) throws JsonObjLinkException;    
 }

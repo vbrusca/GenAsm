@@ -9,7 +9,6 @@ import java.util.List;
 public class JsonObjIsSet extends JsonObjBase {
     public String obj_name;
     public String set_name;
-    public String assembler_class;
     public List<JsonObjIsFile> is_files;
     
     @Override
@@ -22,7 +21,6 @@ public class JsonObjIsSet extends JsonObjBase {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjectName: " + obj_name);
         Logger.wrl(prefix + "SetName: " + set_name);
-        Logger.wrl(prefix + "AssemblerClass: " + assembler_class);
         
         Logger.wrl(prefix + "IsFiles:");
         for(JsonObjIsFile entry : is_files) {

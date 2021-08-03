@@ -12,12 +12,13 @@ public class JsonObjIsArgTypes extends JsonObjBase {
     public String set_name;
     public List<JsonObjIsArgType> is_arg_types;
     
-    public void LinkArgTypes(JsonObjIsEntryTypes entryTypes) {
+    @Override
+    public void Link(JsonObj linkData) throws JsonObjLinkException {
         for(JsonObjIsArgType entry : is_arg_types) {
             entry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();
             for(String s : entry.is_entry_types) {
                 boolean found = false;
-                for(JsonObjIsEntryType lentry : entryTypes.is_entry_types) {
+                for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
                     if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
                         entry.linked_is_entry_types.add(lentry);
                         found = true;
@@ -26,7 +27,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
                 }
                 
                 if(!found) {
-                    for(JsonObjIsEntryGroupType lentry : entryTypes.is_entry_group_types) {
+                    for(JsonObjIsEntryGroupType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
                         if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
                             entry.linked_is_entry_types.add(lentry);
                             found = true;
@@ -36,7 +37,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
                 }
                 
                 if(!found) {
-                    Logger.wrl("JsonObjIsArgTypes: LinkArgTypes: Warning: Could not find JsonObjIsEntryType, group or single, object with name " + s);
+                    throw new JsonObjLinkException("JsonObjIsArgTypes: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
                 }
             }
         }

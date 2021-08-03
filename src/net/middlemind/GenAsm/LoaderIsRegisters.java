@@ -12,6 +12,7 @@ public class LoaderIsRegisters implements Loader {
     
     @Override
     public JsonObjIsRegisters ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+        Logger.wrl("LoaderIsRegisters: ParseJson");
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       

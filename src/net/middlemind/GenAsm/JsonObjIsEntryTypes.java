@@ -14,12 +14,13 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public List<JsonObjIsEntryGroupType> is_entry_group_types;
     public String null_entry_type = "None";
     
-    public void LinkEntryGroupTypes() {
+    @Override
+    public void Link(JsonObj linkData) throws JsonObjLinkException {
         for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
             entry.linked_contains = new Hashtable<String, JsonObjIsEntryType>();
             for(String s : entry.contains) {
                 boolean found = false;
-                for(JsonObjIsEntryType lentry : is_entry_types) {
+                for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
                     if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
                         entry.linked_contains.put(s, lentry);
                         found = true;
@@ -28,7 +29,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
                 }
                 
                 if(!found) {
-                    Logger.wrl("JsonObjIsEntryTypes: LinkEntryGroupTypes: Warning: Could not find JsonObjIsEntryType object with name " + s);
+                    throw new JsonObjLinkException("JsonObjIsEntryTypes: Link: Error: Could not find JsonObjIsEntryType object with name " + s);
                 }
             }
         }

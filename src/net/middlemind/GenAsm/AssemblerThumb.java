@@ -1,7 +1,11 @@
 package net.middlemind.GenAsm;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  *
@@ -11,131 +15,58 @@ public class AssemblerThumb implements Assembler {
 
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
-    public boolean isaDataLoaded;
-    public boolean isaDataParsed;
-    public boolean isaDataLinked;
-    public boolean assemblyFileLoaded;
-    public boolean assemblyFileLexerized;
-    public boolean assemblyFileTokenized;
-    public boolean assemblyFileParsed;    
+    public Map<String, Loader> isaLoader;
+    public Map<String, String> jsonSource;
+    public JsonObjIsEntryTypes jsonObjIsEntryTypes;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet) {
+        Logger.wrl("AssemblerThumb: RunAssembler: Start");
+        jsonSource = new Hashtable<String, String>();
+        isaLoader = new Hashtable<String, Loader>();        
+        isaData = new Hashtable<String, JsonObj>();
         isaDataSet = jsonIsSet;
-        Logger.wrl("RunAssembler: Start");
-    }    
-    
-    /* DATA FILE METHODS */
-    @Override
-    public JsonObjIsSet FilesIsaDataLoad(JsonObjIsSet jsonIsSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public JsonObjIsSet FilesIsaDataParse(JsonObjIsSet jsonIsSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public JsonObjIsSet FilesIsaDataLink(JsonObjIsSet jsonIsSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /* ASSEMBLY FILE METHODS */
-    @Override
-    public List<String> FileAssemblyLoad(String file) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<ArtifactLine> FileAssemblyLexerize(List<String> file) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<TokenLine> FileAssemblyTokenize(List<ArtifactLine> file) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /* ASSEMBLY LINE METHODS */
-    @Override
-    public ArtifactLine LineLexerize(String line, int lineNum) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public TokenLine LineTokenize(ArtifactLine line, int lineNum) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /* BOOLEAN INDICATORS GET/SET METHODS */
-    @Override
-    public boolean GetIsAssemblyFileLexerized() {
-        return assemblyFileLexerized;
-    }
-
-    @Override
-    public void SetIsAssemblyFileLexerized(boolean b) {
-        assemblyFileLexerized = b;
-    }
-
-    @Override
-    public boolean GetIsAssemblyFileLoaded() {
-        return assemblyFileLoaded;
-    }
-
-    @Override
-    public void SetIsAssemblyFileLoaded(boolean b) {
-        assemblyFileLoaded = b;
-    }    
-    
-    @Override
-    public boolean GetIsAssemblyFileTokenized() {
-        return assemblyFileTokenized;
-    }
-
-    @Override
-    public void SetIsAssemblyFileTokenized(boolean b) {
-        assemblyFileTokenized = b;
-    }    
-    
-    @Override
-    public boolean GetIsAssemblyFileParsed() {
-        return assemblyFileParsed;
-    }
-
-    @Override
-    public void SetIsAssemblyFileParsed(boolean b) {
-        assemblyFileParsed = b;
-    }
-
-    @Override
-    public boolean GetIsIsaDataLoaded() {
-        return isaDataLoaded;
-    }
-
-    @Override
-    public void SetIsIsaDataLoaded(boolean b) {
-        isaDataLoaded = b;
-    }
-    
-    @Override
-    public boolean GetIsIsaDataParsed() {
-        return isaDataParsed;
-    }
-
-    @Override
-    public void SetIsIsaDataParsed(boolean b) {
-        isaDataParsed = b;
-    }
-    
-    @Override
-    public boolean GetIsIsaDataLinked() {
-        return isaDataLinked;
-    }
-
-    @Override
-    public void SetIsIsaDataLinked(boolean b) {
-        isaDataLinked = b;
+        
+        for(JsonObjIsFile entry : isaDataSet.is_files) {
+            try {
+                Class cTmp = Class.forName(entry.loader_class);
+                Loader ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
+                String json;
+                String jsonName;
+                JsonObj jsonObj;
+                
+                isaLoader.put(entry.loader_class, ldr);
+                Logger.wrl("AssemblerThumb: RunAssembler: Loader created " + entry.loader_class);
+                
+                json = FileLoader.LoadStr(entry.path);
+                jsonSource.put(entry.path, json);
+                Logger.wrl("AssemblerThumb: RunAssembler: Json loaded " + entry.path);
+                                
+                jsonObj = ldr.ParseJson(json, entry.target_class, entry.path);
+                jsonName = jsonObj.GetName();
+                isaData.put(jsonName, jsonObj);
+                Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as " + entry.target_class);
+                
+                if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsEntryTypes")) {
+                    jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
+                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
+                }                
+            } catch (LoaderException | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not instantiate loader class " + entry.loader_class);
+                e.printStackTrace();
+                return;
+            }
+        }
+        
+        for(String s : isaData.keySet()) {
+            try {
+                JsonObj jsonObj = isaData.get(s);
+                jsonObj.Link(jsonObjIsEntryTypes);
+            } catch (JsonObjLinkException e) {
+                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link " + s);
+                e.printStackTrace();
+                return;                
+            }
+        }
     }
 }

@@ -50,4 +50,9 @@ public class JsonObjBase implements JsonObj {
         Logger.wrl(prefix + "FileName: " + fileName);
         Logger.wrl(prefix + "Loader: " + loader);
     }    
+
+    @Override
+    public void Link(JsonObj linkData) throws JsonObjLinkException {
+        Logger.wrl("JsonObjBase: Link: Do nothing...");
+    }
 }
