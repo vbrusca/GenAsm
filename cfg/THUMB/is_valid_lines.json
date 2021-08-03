@@ -4,181 +4,205 @@
     "min_line_entries": 1,
     "max_line_entries": 4,
     "is_valid_lines": [
-        [
-            {
-                "obj_name": "is_valid_line",
-                "is_entry_types": ["Comment"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Label"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Label"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Comment"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["LabelNumericLocal"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["LabelNumericLocal"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Comment"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["OpCode"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWB", "Number", "List", "Group", "LabelNumericLocalRef"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["OpCode"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Register", "Number", "List", "Group", "LabelNumericLocalRef"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["Comment"],
-                "index": 3
-            }
-        ],
-        [
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 0
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 1
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 2
-            },
-            {
-                "obj_name": "is_valid_line",                
-                "is_entry_types": ["None"],
-                "index": 3
-            }
-        ]
-    ]
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["Comment"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Label"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Label"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Comment"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["LabelNumericLocal"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["LabelNumericLocal"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Comment"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["OpCode"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWB", "Number", "List", "Group", "LabelNumericLocalRef"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["OpCode"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Register", "Number", "List", "Group", "LabelNumericLocalRef"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Comment"],
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        }
+    ]    
 }

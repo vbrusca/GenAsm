@@ -16,29 +16,31 @@ public class JsonObjIsValidLines extends JsonObjBase {
     
     public void LinkValidLines(JsonObjIsEntryTypes entryTypes) {
         for(JsonObjIsValidLine entry : is_valid_lines) {
-            entry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();
-            for(String s : entry.is_entry_types) {
-                boolean found = false;
-                for(JsonObjIsEntryType lentry : entryTypes.is_entry_types) {
-                    if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
-                        entry.linked_is_entry_types.add(lentry);
-                        found = true;
-                        break;
-                    }
-                }
-                
-                if(!found) {
-                    for(JsonObjIsEntryGroupType lentry : entryTypes.is_entry_group_types) {
-                        if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
-                            entry.linked_is_entry_types.add(lentry);
+            for(JsonObjIsValidLineEntry lentry : entry.is_valid_line) {
+                lentry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();
+                for(String s : lentry.is_entry_types) {
+                    boolean found = false;
+                    for(JsonObjIsEntryType llentry : entryTypes.is_entry_types) {
+                        if(!Utils.IsStringEmpty(llentry.type_name) && llentry.type_name.equals(s)) {
+                            lentry.linked_is_entry_types.add(llentry);
                             found = true;
                             break;
                         }
                     }
-                }
                 
-                if(!found) {
-                    Logger.wrl("JsonObjIsValidLines: LinkValidLines: Warning: Could not find JsonObjIsEntryType, group or single, object with name " + s);
+                    if(!found) {
+                        for(JsonObjIsEntryGroupType llentry : entryTypes.is_entry_group_types) {
+                            if(!Utils.IsStringEmpty(llentry.type_name) && llentry.type_name.equals(s)) {
+                                lentry.linked_is_entry_types.add(llentry);
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(!found) {
+                        Logger.wrl("JsonObjIsValidLines: LinkValidLines: Warning: Could not find JsonObjIsEntryType, group or single, object with name " + s);
+                    }
                 }
             }
         }

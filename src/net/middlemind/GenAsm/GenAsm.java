@@ -49,6 +49,35 @@ public class GenAsm {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
             /*
+            //JSON LOADING TEST IS VALID LINES
+            String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json";
+            String json = "";
+            try {
+                json = FileLoader.LoadStr(jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            LoaderIsValidLines loader = new LoaderIsValidLines();
+            JsonObjIsValidLines entryTypes = null;
+            try {            
+                entryTypes = loader.ParseJson(json, "net.middlemind.GenAsm.JsonObjIsValidLines", jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(entryTypes);
+            Logger.wr(jsonString);
+            Logger.wrl("");
+            Logger.wrl("");
+            entryTypes.Print();            
+            */
+
+            /*
             //JSON LOADING TEST IS ARG TYPES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json";
             String json = "";
