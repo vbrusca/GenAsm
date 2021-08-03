@@ -11,7 +11,8 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
-    public List<JsonObjIsEntryGroupType> is_entry_group_types;    
+    public List<JsonObjIsEntryGroupType> is_entry_group_types;
+    public String null_entry_type = "None";
     
     public void LinkEntryGroupTypes() {
         for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
