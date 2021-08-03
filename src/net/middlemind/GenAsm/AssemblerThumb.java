@@ -1,6 +1,7 @@
 package net.middlemind.GenAsm;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -9,6 +10,7 @@ import java.util.List;
 public class AssemblerThumb implements Assembler {
 
     public JsonObjIsSet isaDataSet;
+    public Map<String, JsonObj> isaData;
     public boolean isaDataLoaded;
     public boolean isaDataParsed;
     public boolean isaDataLinked;
