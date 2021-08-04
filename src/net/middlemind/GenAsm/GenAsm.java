@@ -19,9 +19,10 @@ public class GenAsm {
     public static JsonObjIsSet ASM_SET = null;    
     public static String ASM_ASSEMBLER_CLASS = "";
     public static Assembler ASM_ASSEMBLER = null;
+    public static String ASM_ASSEMBLY_SOURCE_FILE = "";
     
     public static void main(String[] args) {
-        if(args == null || args.length < 2) {
+        if(args == null || args.length < 5) {
             ASM_SETS_FILE_NAME = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.LoaderIsSets";
@@ -30,6 +31,7 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.AssemblerThumb";
             ASM_ASSEMBLER = null;
+            ASM_ASSEMBLY_SOURCE_FILE = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_short.txt";
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
@@ -38,7 +40,8 @@ public class GenAsm {
             ASM_SETS = null;
             ASM_SET = null;            
             ASM_ASSEMBLER_CLASS = args[4];
-            ASM_ASSEMBLER = null;            
+            ASM_ASSEMBLER = null;
+            ASM_ASSEMBLY_SOURCE_FILE = args[5];
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
@@ -293,7 +296,7 @@ public class GenAsm {
                     }
                     
                     if(ASM_SET != null) {
-                        assm.RunAssembler(ASM_SET);
+                        assm.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE);
                     } else {
                         Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
                     }

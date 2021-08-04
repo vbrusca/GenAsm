@@ -3,9 +3,7 @@ package net.middlemind.GenAsm;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 
 /**
  *
@@ -20,13 +18,14 @@ public class AssemblerThumb implements Assembler {
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
     
     @Override
-    public void RunAssembler(JsonObjIsSet jsonIsSet) {
+    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
         Logger.wrl("AssemblerThumb: RunAssembler: Start");
         jsonSource = new Hashtable<String, String>();
         isaLoader = new Hashtable<String, Loader>();        
         isaData = new Hashtable<String, JsonObj>();
         isaDataSet = jsonIsSet;
         
+        //Process JsonObjIsSet's file entries and load then parse the json object data
         for(JsonObjIsFile entry : isaDataSet.is_files) {
             try {
                 Class cTmp = Class.forName(entry.loader_class);
@@ -58,6 +57,7 @@ public class AssemblerThumb implements Assembler {
             }
         }
         
+        //Link loaded json object data
         for(String s : isaData.keySet()) {
             try {
                 JsonObj jsonObj = isaData.get(s);
@@ -68,5 +68,8 @@ public class AssemblerThumb implements Assembler {
                 return;                
             }
         }
+        
+        //Load and lexerize the assembly source file
+        
     }
 }
