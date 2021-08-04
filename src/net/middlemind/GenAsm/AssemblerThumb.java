@@ -3,6 +3,7 @@ package net.middlemind.GenAsm;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,6 +17,9 @@ public class AssemblerThumb implements Assembler {
     public Map<String, Loader> isaLoader;
     public Map<String, String> jsonSource;
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
+    public String asmSourceFile;
+    public List<String> asmSourceData;
+    public List<ArtifactLine> asmSourceLexed;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
@@ -24,8 +28,19 @@ public class AssemblerThumb implements Assembler {
         isaLoader = new Hashtable<String, Loader>();        
         isaData = new Hashtable<String, JsonObj>();
         isaDataSet = jsonIsSet;
+        asmSourceFile = assemblySourceFile;
         
         //Process JsonObjIsSet's file entries and load then parse the json object data
+        LoadAndParseJsonObjData();
+        
+        //Link loaded json object data
+        LinkJsonObjData();
+        
+        //Load and lexerize the assembly source file
+        LoadAndLexAssemblySource();
+    }
+    
+    public void LoadAndParseJsonObjData() {
         for(JsonObjIsFile entry : isaDataSet.is_files) {
             try {
                 Class cTmp = Class.forName(entry.loader_class);
@@ -55,9 +70,10 @@ public class AssemblerThumb implements Assembler {
                 e.printStackTrace();
                 return;
             }
-        }
-        
-        //Link loaded json object data
+        }        
+    }
+    
+    public void LinkJsonObjData() {
         for(String s : isaData.keySet()) {
             try {
                 JsonObj jsonObj = isaData.get(s);
@@ -67,9 +83,10 @@ public class AssemblerThumb implements Assembler {
                 e.printStackTrace();
                 return;                
             }
-        }
-        
-        //Load and lexerize the assembly source file
+        }        
+    }
+    
+    public void LoadAndLexAssemblySource() {
         
     }
 }
