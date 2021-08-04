@@ -144,7 +144,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWB", "Number", "List", "Group", "LabelNumericLocalRef"],
+                    "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "List", "Group", "LabelNumericLocalRef"],
                     "index": 2
                 },
                 {

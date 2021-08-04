@@ -19,6 +19,65 @@ public class JsonObjIsOpCodes extends JsonObjBase {
     public List<JsonObjIsOpCode> is_op_codes;
     
     @Override
+    public void Link(JsonObj linkData) throws JsonObjLinkException {
+        for(JsonObjIsOpCode entry : is_op_codes) {
+            for(JsonObjIsOpCodeArg lentry : entry.args) {
+                boolean found = false;
+                for(JsonObjIsEntryType llentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
+                    if(!Utils.IsStringEmpty(lentry.is_entry_type) && lentry.is_entry_type.equals(llentry.type_name)) {
+                        lentry.linked_is_entry_type = llentry;
+                        found = true;
+                        break;
+                    }
+                }
+
+                for(JsonObjIsEntryGroupType llentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
+                    if(!Utils.IsStringEmpty(lentry.is_entry_type) && lentry.is_entry_type.equals(llentry.type_name)) {
+                        lentry.linked_is_entry_type = llentry;
+                        found = true;
+                        break;
+                    }
+                }                
+                
+                if(!found) {
+                    throw new JsonObjLinkException("JsonObjIsOpCodes: Link: Error: Could not find JsonObjIsEntryType object with name " + lentry.is_entry_type);
+                }
+                
+                RecursiveSubArgLinking(lentry.sub_args, (JsonObjIsEntryTypes)linkData);
+            }
+        }
+    }    
+    
+    private void RecursiveSubArgLinking(List<JsonObjIsOpCodeArg> sub_args, JsonObjIsEntryTypes linkData) throws JsonObjLinkException {
+        if(sub_args != null) {
+            for(JsonObjIsOpCodeArg entry : sub_args) {
+                boolean found = false;
+                for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
+                    if(!Utils.IsStringEmpty(entry.is_entry_type) && entry.is_entry_type.equals(lentry.type_name)) {
+                        entry.linked_is_entry_type = lentry;
+                        found = true;
+                        break;
+                    }                    
+                }
+                
+                for(JsonObjIsEntryGroupType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
+                    if(!Utils.IsStringEmpty(entry.is_entry_type) && entry.is_entry_type.equals(lentry.type_name)) {
+                        entry.linked_is_entry_type = lentry;
+                        found = true;
+                        break;
+                    }
+                }                
+                
+                if(!found) {
+                    throw new JsonObjLinkException("JsonObjIsOpCodes: RecursiveSubArgLinking: Error: Could not find JsonObjIsEntryType object with name " + entry.is_entry_type);
+                }
+                
+                RecursiveSubArgLinking(entry.sub_args, linkData);                
+            }
+        }
+    }
+    
+    @Override
     public void Print() {
         Print("");
     }    

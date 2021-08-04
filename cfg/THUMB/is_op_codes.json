@@ -614,7 +614,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "NumberLow",
+                    "is_entry_type": "Number",
                     "is_arg_type": "Offset8",
                     "bit_series": {
                         "bit_start": 0,

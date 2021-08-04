@@ -3,6 +3,7 @@ package net.middlemind.GenAsm;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 /**
  *
@@ -56,25 +57,7 @@ public class LoaderIsOpCodes implements Loader {
                         }
 
                         if(lentry.sub_args != null) {
-                            for(JsonObjIsOpCodeArg llentry : lentry.sub_args) {
-                                llentry.name = llentry.getClass().getName();
-                                llentry.fileName = fileName;
-                                llentry.loader = getClass().getName();
-                                llentry.bit_series.name = llentry.bit_series.getClass().getName();
-                                llentry.bit_series.fileName = fileName;
-                                llentry.bit_series.loader = getClass().getName();
-                                if(llentry.num_range != null) {
-                                    llentry.num_range.name = llentry.num_range.getClass().getName();
-                                    llentry.num_range.fileName = fileName;
-                                    llentry.num_range.loader = getClass().getName();
-                                }
-                                
-                                if(llentry.bit_shift != null) {
-                                    llentry.bit_shift.name = llentry.bit_shift.getClass().getName();
-                                    llentry.bit_shift.fileName = fileName;
-                                    llentry.bit_shift.loader = getClass().getName();
-                                }
-                            }
+                            RecursiveSubArgProcessing(lentry.sub_args, fileName);
                         }
                     }
                 }
@@ -83,6 +66,33 @@ public class LoaderIsOpCodes implements Loader {
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
+        }
+    }
+    
+    private void RecursiveSubArgProcessing(List<JsonObjIsOpCodeArg> sub_args, String fileName) {
+        if(sub_args != null) {
+            for(JsonObjIsOpCodeArg llentry : sub_args) {
+                llentry.name = llentry.getClass().getName();
+                llentry.fileName = fileName;
+                llentry.loader = getClass().getName();
+                llentry.bit_series.name = llentry.bit_series.getClass().getName();
+                llentry.bit_series.fileName = fileName;
+                llentry.bit_series.loader = getClass().getName();
+
+                if(llentry.num_range != null) {
+                    llentry.num_range.name = llentry.num_range.getClass().getName();
+                    llentry.num_range.fileName = fileName;
+                    llentry.num_range.loader = getClass().getName();
+                }
+
+                if(llentry.bit_shift != null) {
+                    llentry.bit_shift.name = llentry.bit_shift.getClass().getName();
+                    llentry.bit_shift.fileName = fileName;
+                    llentry.bit_shift.loader = getClass().getName();
+                }
+                
+                RecursiveSubArgProcessing(llentry.sub_args, fileName);
+            }
         }
     }
 }

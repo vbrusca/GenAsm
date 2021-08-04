@@ -54,6 +54,16 @@
         },
         {
             "obj_name": "is_entry_type",            
+            "type_name": "Register",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["0-7"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
             "type_name": "RegisterHi",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
