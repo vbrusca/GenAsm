@@ -12,7 +12,6 @@ public class LoaderIsEntryTypes implements Loader {
 
     @Override
     public JsonObjIsEntryTypes ParseJson(String json, String targetClass, String fileName) throws LoaderException {
-        Logger.wrl("LoaderIsEntryTypes: ParseJson");
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       

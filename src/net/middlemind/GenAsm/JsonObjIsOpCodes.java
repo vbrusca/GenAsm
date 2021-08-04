@@ -16,7 +16,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
     public String pc_alignment;
     public boolean pc_lsb_zeroed;
     public JsonObjBitSeries bit_series;
-    public List<JsonObjIsOpCodes> is_op_codes;
+    public List<JsonObjIsOpCode> is_op_codes;
     
     @Override
     public void Print() {
@@ -39,7 +39,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
         bit_series.Print(prefix + "\t");
         
         Logger.wrl(prefix + "IsOpCodes:");
-        for(JsonObjIsOpCodes entry : is_op_codes) {
+        for(JsonObjIsOpCode entry : is_op_codes) {
             Logger.wrl("");
             entry.Print(prefix + "\n");
         }
