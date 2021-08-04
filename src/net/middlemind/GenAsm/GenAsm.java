@@ -49,6 +49,31 @@ public class GenAsm {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
             //TODO: JSON LOADING TEST IS OP CODES
+            String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json";
+            String json = "";
+            try {
+                json = FileLoader.LoadStr(jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            LoaderIsOpCodes loader = new LoaderIsOpCodes();
+            JsonObjIsOpCodes entryTypes = null;
+            try {            
+                entryTypes = loader.ParseJson(json, "net.middlemind.GenAsm.JsonObjIsOpCodes", jsonTestFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
+            
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            
+            Gson gson = builder.create();            
+            String jsonString = gson.toJson(entryTypes);
+            Logger.wr(jsonString);
+            Logger.wrl("");
+            Logger.wrl("");
+            entryTypes.Print();            
             
             /*
             //JSON LOADING TEST IS VALID LINES
@@ -76,7 +101,7 @@ public class GenAsm {
             Logger.wr(jsonString);
             Logger.wrl("");
             Logger.wrl("");
-            entryTypes.Print();            
+            entryTypes.Print();
             */
 
             /*
@@ -234,6 +259,7 @@ public class GenAsm {
             }
             */
             
+            /*
             //MAIN PROCESSING
             String json;
             Class cTmp;
@@ -276,6 +302,7 @@ public class GenAsm {
                     return;
                 }
             }
+            */
         }
     }
 }

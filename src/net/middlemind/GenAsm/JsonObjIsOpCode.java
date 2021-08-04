@@ -25,15 +25,19 @@ public class JsonObjIsOpCode extends JsonObjBase {
         Logger.wrl(prefix + "OpCodeName: " + op_code_name);
         
         Logger.wrl(prefix + "BitRep:");
-        bit_rep.Print(prefix + "\n");
+        bit_rep.Print(prefix + "\t");
         
         Logger.wrl(prefix + "BitSeries:");
-        bit_series.Print(prefix + "\n");
+        bit_series.Print(prefix + "\t");
         
         Logger.wrl(prefix + "Args:");
-        for(JsonObjIsOpCodeArg entry : args) {
-            Logger.wrl("");
-            entry.Print(prefix + "\n");
+        if(args != null) {
+            for(JsonObjIsOpCodeArg entry : args) {
+                Logger.wrl("");
+                entry.Print(prefix + "\t");
+            }
+        } else {
+            Logger.wrl(prefix + "\tnull");            
         }
     }    
 }

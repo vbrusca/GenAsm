@@ -145,7 +145,6 @@
             "obj_name": "is_op_code",  
             "op_code_name": "ASR",
             "arg_separator": ",",
-            "bit_rep": "00010",
             "bit_rep": {
                 "bit_string": "00010",
                 "bit_int": 2,

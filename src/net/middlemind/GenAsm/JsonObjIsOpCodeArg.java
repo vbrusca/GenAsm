@@ -33,24 +33,36 @@ public class JsonObjIsOpCodeArg extends JsonObjBase {
         
         if(linked_is_entry_type != null) {
             Logger.wrl(prefix + "LinkedIsEntryType:");
-            linked_is_entry_type.Print(prefix + "\n");
+            linked_is_entry_type.Print(prefix + "\t");
         }
         
         Logger.wrl(prefix + "BitSeries:");
-        bit_series.Print(prefix + "\n");
+        bit_series.Print(prefix + "\t");
         
         Logger.wrl(prefix + "NumRange:");
-        num_range.Print(prefix + "\n");
+        if(num_range != null) {
+            num_range.Print(prefix + "\t");
+        } else {
+            Logger.wrl(prefix + "\tnull");            
+        }
         
         Logger.wrl(prefix + "BitShift:");
-        bit_shift.Print(prefix + "\n");
+        if(bit_shift != null) {
+            bit_shift.Print(prefix + "\t");
+        } else {
+            Logger.wrl(prefix + "\tnull");            
+        }
         
         Logger.wrl(prefix + "SubArgSeparator: " + sub_arg_separator);
 
         Logger.wrl(prefix + "SubArgs:");
-        for(JsonObjIsOpCodeArg entry : sub_args) {
-            Logger.wrl("");
-            entry.Print(prefix + "\n");
+        if(sub_args != null) {
+            for(JsonObjIsOpCodeArg entry : sub_args) {
+                Logger.wrl("");
+                entry.Print(prefix + "\t");
+            }
+        } else {
+            Logger.wrl(prefix + "\tnull");
         }
     }
 }

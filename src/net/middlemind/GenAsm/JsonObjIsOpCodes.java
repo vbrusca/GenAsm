@@ -41,7 +41,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
         Logger.wrl(prefix + "IsOpCodes:");
         for(JsonObjIsOpCode entry : is_op_codes) {
             Logger.wrl("");
-            entry.Print(prefix + "\n");
+            entry.Print(prefix + "\t");
         }
     }    
 }
