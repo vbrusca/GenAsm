@@ -48,6 +48,8 @@ public class GenAsm {
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
+            //TODO: JSON LOADING TEST IS OP CODES
+            
             /*
             //JSON LOADING TEST IS VALID LINES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json";
