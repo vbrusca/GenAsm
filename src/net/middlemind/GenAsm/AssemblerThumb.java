@@ -17,9 +17,11 @@ public class AssemblerThumb implements Assembler {
     public Map<String, Loader> isaLoader;
     public Map<String, String> jsonSource;
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
+
     public String asmSourceFile;
     public List<String> asmSourceData;
-    public List<ArtifactLine> asmSourceLexed;
+    public List<ArtifactLine> asmLexedData;
+    public List<TokenLine> asmTokenedData;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
@@ -89,7 +91,8 @@ public class AssemblerThumb implements Assembler {
     public void LoadAndLexAssemblySource() {
         try {
             asmSourceData = FileLoader.Load(asmSourceFile);
-            
+            LexerSimple lex = new LexerSimple();
+            asmLexedData = lex.FileLexerize(asmSourceData);
         } catch (IOException e) {
             Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file " + asmSourceFile);
             e.printStackTrace();
