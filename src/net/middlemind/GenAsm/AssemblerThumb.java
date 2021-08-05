@@ -87,6 +87,13 @@ public class AssemblerThumb implements Assembler {
     }
     
     public void LoadAndLexAssemblySource() {
-        
+        try {
+            asmSourceData = FileLoader.Load(asmSourceFile);
+            
+        } catch (IOException e) {
+            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file " + asmSourceFile);
+            e.printStackTrace();
+            return;            
+        }
     }
 }
