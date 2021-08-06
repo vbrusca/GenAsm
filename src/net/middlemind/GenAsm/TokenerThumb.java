@@ -10,78 +10,160 @@ import java.util.List;
 public class TokenerThumb implements Tokener {
 
     @Override
-    public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) {
+    public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws TokenerNotFoundException {
         JsonObjIsEntryTypes types = (JsonObjIsEntryTypes)entryTypes;
-        
-        for(Artifact art : line.payload) {
-            boolean found = false;
-            String payload = art.payload;
+        boolean found = false;
+        String payload = "";
+        TokenLine ret = new TokenLine();
             
-            //Find NON-group matches
-            for(JsonObjIsEntryType typeNgrp : types.is_entry_types) {
-                boolean lfound = false;
-                int withStartsLen = 0;
-                int withEndsLen = 0;
-                String payloadContains = "";
-                
-                //Check for starting string match
-                for(String withStarts : typeNgrp.txt_match.starts_with) {
-                    withStartsLen = withStarts.length();
-                    if(payload.indexOf(withStarts) == 0) {
-                        lfound = true;
+        try {
+            for(Artifact art : line.payload) {
+                found = false;
+                payload = art.payload;
+
+                //Find NON-group matches
+                for(JsonObjIsEntryType typeNgrp : types.is_entry_types) {
+                    boolean lfound = false;
+                    int withStartsLen = 0;
+                    int withEndsLen = 0;
+                    String payloadContains = "";
+
+                    //Check for starting string match
+                    for(String withStarts : typeNgrp.txt_match.starts_with) {
+                        withStartsLen = withStarts.length();
+                        if(withStarts.equals(JsonObjTxtMatch.special_wild_card)) {
+                            //Match anything
+                            lfound = true;
+                            break;
+                        } else if(withStarts.equals(JsonObjTxtMatch.special_end_line)) {
+                            //Adjust for system line separator
+                            withStarts = System.lineSeparator();
+                            withStartsLen = withStarts.length();
+                            if(payload.indexOf(withStarts) == 0) {
+                                lfound = true;
+                                break;
+                            }
+                        } else if(withStarts.length() > 1 && withStarts.contains(JsonObjTxtMatch.special_range)) {                    
+                            if(Character.isDigit(withStarts.charAt(0))) {
+                                //Found numeric range
+                                //First entry must match
+                                int[] range = Utils.GetIntsFromRange(withStarts);
+                            } else if(withStarts.equals("a-z")) {
+                                //Found lower case character range
+                                //First entry must match
+                            } else if(withStarts.equals("A-Z")) {                                
+                                //Found upper case character range
+                                //First entry must match
+                            }
+                        } else {
+                            if(payload.indexOf(withStarts) == 0) {
+                                lfound = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    //Check for ending string match
+                    if(lfound) {
+                        lfound = false;
+                        for(String withEnds : typeNgrp.txt_match.ends_with) {
+                            withEndsLen = withEnds.length();
+                            if(withEnds.equals(JsonObjTxtMatch.special_wild_card)) {
+                                //Match anything
+                                lfound = true;
+                                break;
+                            } else if(withEnds.equals(JsonObjTxtMatch.special_end_line)) {
+                                //Adjust for system line separator
+                                withEnds = System.lineSeparator();
+                                withEndsLen = withEnds.length();
+                                if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
+                                    lfound = true;
+                                    break;
+                                }
+                            } else if(withEnds.length() > 1 && withEnds.contains(JsonObjTxtMatch.special_range)) {
+                                if(Character.isDigit(withEnds.charAt(0))) {
+                                    //Found numeric range
+                                    //Last entry must match
+                                    int[] range = Utils.GetIntsFromRange(withEnds);
+                                } else if(withEnds.equals("a-z")) {
+                                    //Found lower case character range
+                                    //Last entry must match
+                                } else if(withEnds.equals("A-Z")) {                                
+                                    //Found upper case character range
+                                    //Last entry must match
+                                }
+                            } else {
+                                if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
+                                    lfound = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    //Check for containing string match
+                    if(lfound) {
+                        lfound = false;
+                        payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
+                        for(String withContains : typeNgrp.txt_match.contains) {
+                            if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
+                                //Match anything
+                                lfound = true;
+                                break;
+                            } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
+                                //Match system end line
+                                //All entries must match
+                            } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
+                                if(Character.isDigit(withContains.charAt(0))) {
+                                    //Found numeric range
+                                    //All entries must match
+                                    int[] range = Utils.GetIntsFromRange(withContains);
+                                } else if(withContains.equals("a-z")) {
+                                    //Found lower case character range
+                                    //All entries must match
+                                } else if(withContains.equals("A-Z")) {                                
+                                    //Found upper case character range
+                                    //All entries must match
+                                }
+                            } else {
+                                //All entries must match
+                            }
+                        }                    
+                    }
+
+                    if(lfound) {
+                        found = true;
                         break;
                     }
                 }
-                
-                //Check for ending string match
-                if(lfound) {
-                    lfound = false;
-                    for(String withEnds : typeNgrp.txt_match.ends_with) {
-                        withEndsLen = withEnds.length();
-                        if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
-                            lfound = true;
-                            break;
-                        }
+
+                if(!found) {
+                    //Find group matches
+                    for(JsonObjIsEntryType typeGrp : types.is_entry_group_types) {
+
                     }
                 }
-                
-                //Check for containing string match
-                if(lfound) {
-                    lfound = false;
-                    payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
-                    for(String withContains : typeNgrp.txt_match.contains) {
-                        if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
-                            //Match anything
-                            
-                        } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
-                            //Match system end line
-                            
-                        } else if(withContains.contains(JsonObjTxtMatch.special_range)) {
-                            if(Character.isDigit(withContains.charAt(0))) {
-                                //Found numeric range
-                                
-                            } else if(Character.isLowerCase(withContains.charAt(0))) {
-                                //Found lower case character range
-                                
-                            } else if(Character.isUpperCase(withContains.charAt(0))) {                                
-                                //Found upper case character range
-                                
-                            }
-                        }
-                    }                    
-                }
-                
             }
-            
-            //Find group matches
-            for(JsonObjIsEntryType typeGrp : types.is_entry_group_types) {
-                
-            }            
+
+            if(!found) {
+                throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum);
+            }
+
+            return ret;
+        } catch (MalformedRangeException e) {
+            e.printStackTrace();
+            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum);            
         }
     }
 
     @Override
-    public List<TokenLine> FileTokenize(List<ArtifactLine> file, JsonObj entryTypes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<TokenLine> FileTokenize(List<ArtifactLine> file, JsonObj entryTypes) throws TokenerNotFoundException {
+        int lineNum = 0;
+        ArrayList<TokenLine> ret = new ArrayList<>();
+        for(ArtifactLine art : file) {
+            ret.add(LineTokenize(art, lineNum, entryTypes));
+            lineNum++;
+        }
+        return ret;
     }
 }
