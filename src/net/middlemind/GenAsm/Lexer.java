@@ -9,6 +9,4 @@ import java.util.List;
 public interface Lexer {
     public ArtifactLine LineLexerize(String line, int lineNum);
     public List<ArtifactLine> FileLexerize(List<String> file);
-    public void Print();
-    public void Print(String prefix);
 }

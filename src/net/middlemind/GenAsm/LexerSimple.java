@@ -80,15 +80,5 @@ public class LexerSimple implements Lexer {
             
             return ret;
         }
-    }    
-
-    @Override
-    public void Print() {
-        Print("");
-    }
-
-    @Override
-    public void Print(String prefix) {
-        
     }
 }

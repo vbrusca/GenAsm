@@ -10,12 +10,9 @@ public class JsonObjTxtMatch extends JsonObjBase {
     public List<String> starts_with;
     public List<String> contains;
     public List<String> ends_with;
-    public String special_wild_card = "*";
-    public String special_end_line = "endl";
-    public String special_num_range = "#-#";
-    public String special_range = "@-@";    
-    public String special_int = "#";
-    public String special_char = "@";
+    public static String special_wild_card = "*";
+    public static String special_end_line = "endl";
+    public static String special_range = "-";
     
     @Override
     public void Print() {

@@ -1,5 +1,7 @@
 package net.middlemind.GenAsm;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
@@ -40,6 +42,17 @@ public class AssemblerThumb implements Assembler {
         
         //Load and lexerize the assembly source file
         LoadAndLexAssemblySource();
+        PrintObject(asmLexedData, "Assembly Lexed Data");
+    }
+    
+    public void PrintObject(Object obj, String name) {
+        Logger.wrl("AssemblerThumb: PrintObject: Name: " + name);
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+            
+        Gson gson = builder.create();            
+        String jsonString = gson.toJson(obj);
+        Logger.wr(jsonString);        
     }
     
     public void LoadAndParseJsonObjData() {
@@ -76,6 +89,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     public void LinkJsonObjData() {
+        Logger.wrl("AssemblerThumb: LinkJsonObjData");
         for(String s : isaData.keySet()) {
             try {
                 JsonObj jsonObj = isaData.get(s);
@@ -88,9 +102,12 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
-    public void LoadAndLexAssemblySource() {
+    public void LoadAndLexAssemblySource() {        
         try {
+            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
             asmSourceData = FileLoader.Load(asmSourceFile);
+            
+            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lex assembly source file");
             LexerSimple lex = new LexerSimple();
             asmLexedData = lex.FileLexerize(asmSourceData);
         } catch (IOException e) {
