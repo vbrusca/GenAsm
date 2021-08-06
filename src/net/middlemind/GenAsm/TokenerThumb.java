@@ -48,12 +48,26 @@ public class TokenerThumb implements Tokener {
                                 //Found numeric range
                                 //First entry must match
                                 int[] range = Utils.GetIntsFromRange(withStarts);
+                                int j = Utils.GetIntFromChar(payload.charAt(0));
+                                if(j >= range[0] && j <= range[1]) {
+                                    lfound = true;
+                                    break;
+                                }
+                                                             
                             } else if(withStarts.equals("a-z")) {
                                 //Found lower case character range
                                 //First entry must match
+                                if(Character.isLowerCase(payload.charAt(0))) {
+                                    lfound = true;
+                                    break;
+                                }
                             } else if(withStarts.equals("A-Z")) {                                
                                 //Found upper case character range
                                 //First entry must match
+                                if(Character.isUpperCase(payload.charAt(0))) {
+                                    lfound = true;
+                                    break;
+                                }                                
                             }
                         } else {
                             if(payload.indexOf(withStarts) == 0) {
@@ -85,12 +99,26 @@ public class TokenerThumb implements Tokener {
                                     //Found numeric range
                                     //Last entry must match
                                     int[] range = Utils.GetIntsFromRange(withEnds);
+                                    int j = Utils.GetIntFromChar(payload.charAt(payload.length() - 1));
+                                    if(j >= range[0] && j <= range[1]) {
+                                        lfound = true;
+                                        break;
+                                    }
+                                    
                                 } else if(withEnds.equals("a-z")) {
                                     //Found lower case character range
                                     //Last entry must match
+                                    if(Character.isLowerCase(payload.charAt(payload.length() - 1))) {
+                                        lfound = true;
+                                        break;
+                                    }
                                 } else if(withEnds.equals("A-Z")) {                                
                                     //Found upper case character range
                                     //Last entry must match
+                                    if(Character.isUpperCase(payload.charAt(payload.length() - 1))) {
+                                        lfound = true;
+                                        break;
+                                    }
                                 }
                             } else {
                                 if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
@@ -118,6 +146,20 @@ public class TokenerThumb implements Tokener {
                                     //Found numeric range
                                     //All entries must match
                                     int[] range = Utils.GetIntsFromRange(withContains);
+                                    char[] chars = payloadContains.toCharArray();
+                                    boolean llfound = true;
+                                    for(char c : chars) {
+                                        int j = Utils.GetIntFromChar(c);
+                                        if(!(j >= range[0] && j <= range[1])) {
+                                            llfound = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if(llfound) {
+                                        lfound = true;
+                                        break;
+                                    }                                    
                                 } else if(withContains.equals("a-z")) {
                                     //Found lower case character range
                                     //All entries must match

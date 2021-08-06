@@ -33,4 +33,14 @@ public class Utils {
         
         return ret;
     }
+    
+    public static int GetIntFromChar(char c) throws MalformedRangeException {
+        int ret = 0;
+        try {
+            ret = Integer.parseInt(c + "");
+        } catch(NumberFormatException e) {
+            throw new MalformedRangeException("The character provided could not be converted to a digit, " + c);
+        }
+        return ret;
+    }    
 }
