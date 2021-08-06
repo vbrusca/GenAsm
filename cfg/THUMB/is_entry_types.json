@@ -29,7 +29,7 @@
             "txt_match": {
                 "starts_with": ["A-Z"],
                 "contains": ["A-Z"],
-                "ends_with": [" "]
+                "ends_with": ["A-Z"]
             }
         },
         {
@@ -38,8 +38,8 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["0-7!"],
-                "ends_with": [",", "endl", ";"]
+                "contains": ["0-7"],
+                "ends_with": ["!,", "!endl", "!;"]
             }
         },
         {
@@ -99,7 +99,7 @@
             "txt_match": {
                 "starts_with": ["#0x", "#bx", "#"],
                 "contains": ["0-9"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": ["0-9", ",", "endl", ";"]
             }
         },
         {
@@ -109,7 +109,7 @@
             "txt_match": {
                 "starts_with": ["_"],
                 "contains": ["0-9"],
-                "ends_with": [" ", "endl", ";"]
+                "ends_with": ["0-9", "endl", ";"]
             }
         },
         {
@@ -119,7 +119,7 @@
             "txt_match": {
                 "starts_with": ["a-z"],
                 "contains": ["a-z"],
-                "ends_with": [" ", "endl", ";"]
+                "ends_with": ["a-z", "endl", ";"]
             }
         },
         {
@@ -129,7 +129,7 @@
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
                 "contains": ["0-9"],
-                "ends_with": [" ", ",", "endl", ";"]
+                "ends_with": ["0-9", ",", "endl", ";"]
             }
         }
     ],

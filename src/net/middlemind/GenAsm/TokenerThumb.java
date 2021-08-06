@@ -14,10 +14,17 @@ public class TokenerThumb implements Tokener {
         JsonObjIsEntryTypes types = (JsonObjIsEntryTypes)entryTypes;
         boolean found = false;
         String payload = "";
-        TokenLine ret = new TokenLine();
         Artifact current = null;
         String compare = null;
-
+        JsonObjIsEntryType compareType = null;
+        int count = 0;
+        
+        TokenLine ret = new TokenLine();
+        ret.lineNum = lineNum;
+        ret.source = line;
+        ret.sourceLen = line.payload.size();
+        ret.payload = new ArrayList<>();
+        
         try {
             for(Artifact art : line.payload) {
                 current = art;
@@ -30,6 +37,7 @@ public class TokenerThumb implements Tokener {
                     int withStartsLen = 0;
                     int withEndsLen = 0;
                     String payloadContains = "";
+                    compareType = typeNgrp;
 
                     //Check for starting string match
                     for(String withStarts : typeNgrp.txt_match.starts_with) {
@@ -104,7 +112,7 @@ public class TokenerThumb implements Tokener {
                                     //Found numeric range
                                     //Last entry must match
                                     int[] range = Utils.GetIntsFromRange(withEnds);
-                                    int j = Utils.GetIntFromChar(payload.charAt(payload.length() - 1));
+                                    int j = Utils.GetIntFromChar(payload.charAt(payload.length() - 1));                                    
                                     if(j >= range[0] && j <= range[1]) {
                                         lfound = true;
                                         break;
@@ -126,7 +134,7 @@ public class TokenerThumb implements Tokener {
                                     }
                                 }
                             } else {
-                                if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
+                                if(payload.indexOf(withEnds) == (payload.length() - withEndsLen)) {
                                     lfound = true;
                                     break;
                                 }
@@ -137,7 +145,7 @@ public class TokenerThumb implements Tokener {
                     //Check for containing string match
                     if(lfound) {
                         lfound = false;
-                        if(payloadContains.length() >= withStartsLen + withEndsLen) {
+                        if(payload.length() >= withStartsLen + withEndsLen) {
                             payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
                         }
 
@@ -170,6 +178,7 @@ public class TokenerThumb implements Tokener {
                                     int[] range = Utils.GetIntsFromRange(withContains);
                                     char[] chars = payloadContains.toCharArray();
                                     boolean llfound = true;
+                                    
                                     for(char c : chars) {
                                         int j = Utils.GetIntFromChar(c);
                                         if(!(j >= range[0] && j <= range[1])) {
@@ -243,13 +252,26 @@ public class TokenerThumb implements Tokener {
                 if(!found) {
                     //Find group matches
                     for(JsonObjIsEntryType typeGrp : types.is_entry_group_types) {
-
+                        compareType = typeGrp;
                     }
                 }
-            }
 
-            if(!found) {
-                throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);
+                Token tmb = new Token();                
+                tmb.payloadArtifact = art;
+                tmb.index = count;
+                tmb.lineNum = lineNum;
+                tmb.payloadSource = payload;
+                if(!found || compareType == null) {
+                    tmb.name = "Unknown";
+                    tmb.payloadType = null;
+                } else {
+                    tmb.name = compareType.type_name;
+                    tmb.payloadType = compareType;
+                }
+                tmb.argTokens = new ArrayList<>();
+                
+                ret.payload.add(tmb);                
+                count++;
             }
 
             return ret;

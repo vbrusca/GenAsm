@@ -14,7 +14,7 @@ public class Utils {
     }
     
     public static int[] GetIntsFromRange(String range) throws MalformedRangeException {
-        int[] ret = new int[2];
+        int[] ret = new int[2];        
         String[] strInts = range.split(JsonObjTxtMatch.special_range);
         if(strInts.length == 2) {
             try {
@@ -30,7 +30,6 @@ public class Utils {
         } else {
             throw new MalformedRangeException("The range string provided is not properly formed, " + range);
         }
-        
         return ret;
     }
     

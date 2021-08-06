@@ -41,12 +41,16 @@ public class AssemblerThumb implements Assembler {
         LinkJsonObjData();
         
         //Load and lexerize the assembly source file
-        LoadAndLexAssemblySource();
+        LoadAndLexerizeAssemblySource();
         Logger.wrl("");
-        PrintObject(asmLexedData, "Assembly Lexed Data");
+        Logger.wrl("");        
+        PrintObject(asmLexedData, "Assembly Lexerized Data");
         
+        //Tokenize the lexerized artifacts
         TokenizeLexerArtifacts();
         Logger.wrl("");
+        Logger.wrl("");
+        PrintObject(asmTokenedData, "Assembly Tokenized Data");        
     }
     
     public void PrintObject(Object obj, String name) {
@@ -106,7 +110,7 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
-    public void LoadAndLexAssemblySource() {        
+    public void LoadAndLexerizeAssemblySource() {        
         try {
             Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
             asmSourceData = FileLoader.Load(asmSourceFile);
@@ -124,7 +128,7 @@ public class AssemblerThumb implements Assembler {
     public void TokenizeLexerArtifacts() {
         try {
             TokenerThumb tok = new TokenerThumb();
-            tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
+            asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
         } catch (TokenerNotFoundException e) {
             Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts: Error: Could not tokenize lexed artifacts");
             e.printStackTrace();
