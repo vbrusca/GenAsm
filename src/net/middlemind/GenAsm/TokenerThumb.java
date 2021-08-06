@@ -15,9 +15,12 @@ public class TokenerThumb implements Tokener {
         boolean found = false;
         String payload = "";
         TokenLine ret = new TokenLine();
-            
+        Artifact current = null;
+        String compare = null;
+
         try {
             for(Artifact art : line.payload) {
+                current = art;
                 found = false;
                 payload = art.payload;
 
@@ -30,6 +33,7 @@ public class TokenerThumb implements Tokener {
 
                     //Check for starting string match
                     for(String withStarts : typeNgrp.txt_match.starts_with) {
+                        compare = withStarts;
                         withStartsLen = withStarts.length();
                         if(withStarts.equals(JsonObjTxtMatch.special_wild_card)) {
                             //Match anything
@@ -53,7 +57,7 @@ public class TokenerThumb implements Tokener {
                                     lfound = true;
                                     break;
                                 }
-                                                             
+
                             } else if(withStarts.equals("a-z")) {
                                 //Found lower case character range
                                 //First entry must match
@@ -81,6 +85,7 @@ public class TokenerThumb implements Tokener {
                     if(lfound) {
                         lfound = false;
                         for(String withEnds : typeNgrp.txt_match.ends_with) {
+                            compare = withEnds;
                             withEndsLen = withEnds.length();
                             if(withEnds.equals(JsonObjTxtMatch.special_wild_card)) {
                                 //Match anything
@@ -104,7 +109,7 @@ public class TokenerThumb implements Tokener {
                                         lfound = true;
                                         break;
                                     }
-                                    
+
                                 } else if(withEnds.equals("a-z")) {
                                     //Found lower case character range
                                     //Last entry must match
@@ -132,8 +137,12 @@ public class TokenerThumb implements Tokener {
                     //Check for containing string match
                     if(lfound) {
                         lfound = false;
-                        payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
+                        if(payloadContains.length() >= withStartsLen + withEndsLen) {
+                            payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
+                        }
+
                         for(String withContains : typeNgrp.txt_match.contains) {
+                            compare = withContains;
                             if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
                                 //Match anything
                                 lfound = true;
@@ -141,6 +150,19 @@ public class TokenerThumb implements Tokener {
                             } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
                                 //Match system end line
                                 //All entries must match
+                                char[] chars = payloadContains.toCharArray();
+                                boolean llfound = true;
+                                for(char c : chars) {
+                                    if((c + "").equals(System.lineSeparator())) {
+                                        llfound = false;
+                                        break;
+                                    }
+                                }
+
+                                if(llfound) {
+                                    lfound = true;
+                                    break;
+                                }
                             } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
                                 if(Character.isDigit(withContains.charAt(0))) {
                                     //Found numeric range
@@ -163,12 +185,51 @@ public class TokenerThumb implements Tokener {
                                 } else if(withContains.equals("a-z")) {
                                     //Found lower case character range
                                     //All entries must match
+                                    char[] chars = payloadContains.toCharArray();
+                                    boolean llfound = true;
+                                    for(char c : chars) {
+                                        if(Character.isLowerCase(c)) {
+                                            llfound = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if(llfound) {
+                                        lfound = true;
+                                        break;
+                                    }
                                 } else if(withContains.equals("A-Z")) {                                
                                     //Found upper case character range
                                     //All entries must match
+                                    char[] chars = payloadContains.toCharArray();
+                                    boolean llfound = true;
+                                    for(char c : chars) {
+                                        if(Character.isUpperCase(c)) {
+                                            llfound = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if(llfound) {
+                                        lfound = true;
+                                        break;
+                                    }                                        
                                 }
                             } else {
                                 //All entries must match
+                                char[] chars = payloadContains.toCharArray();
+                                boolean llfound = true;
+                                for(char c : chars) {
+                                    if((c + "").equals(withContains)) {
+                                        llfound = false;
+                                        break;
+                                    }
+                                }
+
+                                if(llfound) {
+                                    lfound = true;
+                                    break;
+                                }                                    
                             }
                         }                    
                     }
@@ -188,13 +249,16 @@ public class TokenerThumb implements Tokener {
             }
 
             if(!found) {
-                throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum);
+                throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);
             }
 
             return ret;
         } catch (MalformedRangeException e) {
             e.printStackTrace();
-            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum);            
+            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);
+        } catch(Exception e) {
+            e.printStackTrace();
+            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);                
         }
     }
 

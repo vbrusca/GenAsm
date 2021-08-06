@@ -42,7 +42,11 @@ public class AssemblerThumb implements Assembler {
         
         //Load and lexerize the assembly source file
         LoadAndLexAssemblySource();
+        Logger.wrl("");
         PrintObject(asmLexedData, "Assembly Lexed Data");
+        
+        TokenizeLexerArtifacts();
+        Logger.wrl("");
     }
     
     public void PrintObject(Object obj, String name) {
@@ -114,6 +118,17 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file " + asmSourceFile);
             e.printStackTrace();
             return;            
+        }
+    }
+    
+    public void TokenizeLexerArtifacts() {
+        try {
+            TokenerThumb tok = new TokenerThumb();
+            tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
+        } catch (TokenerNotFoundException e) {
+            Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts: Error: Could not tokenize lexed artifacts");
+            e.printStackTrace();
+            
         }
     }
 }
