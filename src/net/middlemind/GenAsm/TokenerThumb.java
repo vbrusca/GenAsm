@@ -203,7 +203,7 @@ public class TokenerThumb implements Tokener {
                                         char[] chars = payloadContains.toCharArray();
                                         boolean llfound = true;
                                         for(char c : chars) {
-                                            if(Character.isLowerCase(c)) {
+                                            if(!Character.isLowerCase(c)) {
                                                 llfound = false;
                                                 break;
                                             }
@@ -219,7 +219,7 @@ public class TokenerThumb implements Tokener {
                                         char[] chars = payloadContains.toCharArray();
                                         boolean llfound = true;
                                         for(char c : chars) {
-                                            if(Character.isUpperCase(c)) {
+                                            if(!Character.isUpperCase(c)) {
                                                 llfound = false;
                                                 break;
                                             }
@@ -235,7 +235,7 @@ public class TokenerThumb implements Tokener {
                                     char[] chars = payloadContains.toCharArray();
                                     boolean llfound = true;
                                     for(char c : chars) {
-                                        if((c + "").equals(withContains)) {
+                                        if(!(c + "").equals(withContains)) {
                                             llfound = false;
                                             break;
                                         }

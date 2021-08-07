@@ -1,0 +1,4044 @@
+[
+  {
+    "lineNum" : 0,
+    "sourceLen" : 8,
+    "source" : {
+      "lineNum" : 0,
+      "sourceLen" : 39,
+      "source" : "; Valid line test index 0, comment only",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 0,
+          "len" : 1,
+          "lineNum" : 0,
+          "index" : 0,
+          "payload" : ";"
+        },
+        {
+          "posStart" : 2,
+          "posStop" : 6,
+          "len" : 5,
+          "lineNum" : 0,
+          "index" : 1,
+          "payload" : "Valid"
+        },
+        {
+          "posStart" : 8,
+          "posStop" : 11,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 2,
+          "payload" : "line"
+        },
+        {
+          "posStart" : 13,
+          "posStop" : 16,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 3,
+          "payload" : "test"
+        },
+        {
+          "posStart" : 18,
+          "posStop" : 22,
+          "len" : 5,
+          "lineNum" : 0,
+          "index" : 4,
+          "payload" : "index"
+        },
+        {
+          "posStart" : 24,
+          "posStop" : 25,
+          "len" : 2,
+          "lineNum" : 0,
+          "index" : 5,
+          "payload" : "0,"
+        },
+        {
+          "posStart" : 27,
+          "posStop" : 33,
+          "len" : 7,
+          "lineNum" : 0,
+          "index" : 6,
+          "payload" : "comment"
+        },
+        {
+          "posStart" : 35,
+          "posStop" : 38,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 7,
+          "payload" : "only"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 0,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Comment"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Comment",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  ";"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "*",
+                  "endl"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 0,
+          "len" : 1,
+          "lineNum" : 0,
+          "index" : 0,
+          "payload" : ";"
+        },
+        "payloadSource" : ";",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 1,
+        "payloadArtifact" : {
+          "posStart" : 2,
+          "posStop" : 6,
+          "len" : 5,
+          "lineNum" : 0,
+          "index" : 1,
+          "payload" : "Valid"
+        },
+        "payloadSource" : "Valid",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 2,
+        "payloadArtifact" : {
+          "posStart" : 8,
+          "posStop" : 11,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 2,
+          "payload" : "line"
+        },
+        "payloadSource" : "line",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 3,
+        "payloadArtifact" : {
+          "posStart" : 13,
+          "posStop" : 16,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 3,
+          "payload" : "test"
+        },
+        "payloadSource" : "test",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 4,
+        "payloadArtifact" : {
+          "posStart" : 18,
+          "posStop" : 22,
+          "len" : 5,
+          "lineNum" : 0,
+          "index" : 4,
+          "payload" : "index"
+        },
+        "payloadSource" : "index",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 5,
+        "payloadArtifact" : {
+          "posStart" : 24,
+          "posStop" : 25,
+          "len" : 2,
+          "lineNum" : 0,
+          "index" : 5,
+          "payload" : "0,"
+        },
+        "payloadSource" : "0,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 6,
+        "payloadArtifact" : {
+          "posStart" : 27,
+          "posStop" : 33,
+          "len" : 7,
+          "lineNum" : 0,
+          "index" : 6,
+          "payload" : "comment"
+        },
+        "payloadSource" : "comment",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 0,
+        "index" : 7,
+        "payloadArtifact" : {
+          "posStart" : 35,
+          "posStop" : 38,
+          "len" : 4,
+          "lineNum" : 0,
+          "index" : 7,
+          "payload" : "only"
+        },
+        "payloadSource" : "only",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 1,
+    "sourceLen" : 1,
+    "source" : {
+      "lineNum" : 1,
+      "sourceLen" : 9,
+      "source" : "labeltest",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 8,
+          "len" : 9,
+          "lineNum" : 1,
+          "index" : 0,
+          "payload" : "labeltest"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 1,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Label"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Label",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  "a-z"
+                ],
+                "contains" : [
+                  "a-z"
+                ],
+                "ends_with" : [
+                  "a-z",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "Label",
+        "lineNum" : 1,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 8,
+          "len" : 9,
+          "lineNum" : 1,
+          "index" : 0,
+          "payload" : "labeltest"
+        },
+        "payloadSource" : "labeltest",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Label",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              "a-z"
+            ],
+            "contains" : [
+              "a-z"
+            ],
+            "ends_with" : [
+              "a-z",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 2,
+    "sourceLen" : 8,
+    "source" : {
+      "lineNum" : 2,
+      "sourceLen" : 58,
+      "source" : "labelcommenttest    ;Valid line index 2; label and comment",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 15,
+          "len" : 16,
+          "lineNum" : 2,
+          "index" : 0,
+          "payload" : "labelcommenttest"
+        },
+        {
+          "posStart" : 20,
+          "posStop" : 25,
+          "len" : 6,
+          "lineNum" : 2,
+          "index" : 1,
+          "payload" : ";Valid"
+        },
+        {
+          "posStart" : 27,
+          "posStop" : 30,
+          "len" : 4,
+          "lineNum" : 2,
+          "index" : 2,
+          "payload" : "line"
+        },
+        {
+          "posStart" : 32,
+          "posStop" : 36,
+          "len" : 5,
+          "lineNum" : 2,
+          "index" : 3,
+          "payload" : "index"
+        },
+        {
+          "posStart" : 38,
+          "posStop" : 39,
+          "len" : 2,
+          "lineNum" : 2,
+          "index" : 4,
+          "payload" : "2;"
+        },
+        {
+          "posStart" : 41,
+          "posStop" : 45,
+          "len" : 5,
+          "lineNum" : 2,
+          "index" : 5,
+          "payload" : "label"
+        },
+        {
+          "posStart" : 47,
+          "posStop" : 49,
+          "len" : 3,
+          "lineNum" : 2,
+          "index" : 6,
+          "payload" : "and"
+        },
+        {
+          "posStart" : 51,
+          "posStop" : 57,
+          "len" : 7,
+          "lineNum" : 2,
+          "index" : 7,
+          "payload" : "comment"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 2,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Label"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Label",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  "a-z"
+                ],
+                "contains" : [
+                  "a-z"
+                ],
+                "ends_with" : [
+                  "a-z",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Comment"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Comment",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  ";"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "*",
+                  "endl"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "Label",
+        "lineNum" : 2,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 15,
+          "len" : 16,
+          "lineNum" : 2,
+          "index" : 0,
+          "payload" : "labelcommenttest"
+        },
+        "payloadSource" : "labelcommenttest",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Label",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              "a-z"
+            ],
+            "contains" : [
+              "a-z"
+            ],
+            "ends_with" : [
+              "a-z",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 1,
+        "payloadArtifact" : {
+          "posStart" : 20,
+          "posStop" : 25,
+          "len" : 6,
+          "lineNum" : 2,
+          "index" : 1,
+          "payload" : ";Valid"
+        },
+        "payloadSource" : ";Valid",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 2,
+        "payloadArtifact" : {
+          "posStart" : 27,
+          "posStop" : 30,
+          "len" : 4,
+          "lineNum" : 2,
+          "index" : 2,
+          "payload" : "line"
+        },
+        "payloadSource" : "line",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 3,
+        "payloadArtifact" : {
+          "posStart" : 32,
+          "posStop" : 36,
+          "len" : 5,
+          "lineNum" : 2,
+          "index" : 3,
+          "payload" : "index"
+        },
+        "payloadSource" : "index",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 4,
+        "payloadArtifact" : {
+          "posStart" : 38,
+          "posStop" : 39,
+          "len" : 2,
+          "lineNum" : 2,
+          "index" : 4,
+          "payload" : "2;"
+        },
+        "payloadSource" : "2;",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 5,
+        "payloadArtifact" : {
+          "posStart" : 41,
+          "posStop" : 45,
+          "len" : 5,
+          "lineNum" : 2,
+          "index" : 5,
+          "payload" : "label"
+        },
+        "payloadSource" : "label",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 6,
+        "payloadArtifact" : {
+          "posStart" : 47,
+          "posStop" : 49,
+          "len" : 3,
+          "lineNum" : 2,
+          "index" : 6,
+          "payload" : "and"
+        },
+        "payloadSource" : "and",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 2,
+        "index" : 7,
+        "payloadArtifact" : {
+          "posStart" : 51,
+          "posStop" : 57,
+          "len" : 7,
+          "lineNum" : 2,
+          "index" : 7,
+          "payload" : "comment"
+        },
+        "payloadSource" : "comment",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 3,
+    "sourceLen" : 1,
+    "source" : {
+      "lineNum" : 3,
+      "sourceLen" : 2,
+      "source" : "_0",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 1,
+          "len" : 2,
+          "lineNum" : 3,
+          "index" : 0,
+          "payload" : "_0"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 3,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "LabelNumericLocal"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "LabelNumericLocal",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  "_"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "LabelNumericLocal",
+        "lineNum" : 3,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 1,
+          "len" : 2,
+          "lineNum" : 3,
+          "index" : 0,
+          "payload" : "_0"
+        },
+        "payloadSource" : "_0",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "LabelNumericLocal",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              "_"
+            ],
+            "contains" : [
+              "0-9"
+            ],
+            "ends_with" : [
+              "0-9",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 4,
+    "sourceLen" : 12,
+    "source" : {
+      "lineNum" : 4,
+      "sourceLen" : 65,
+      "source" : "_1 ;    Valid line test index 4, label numeric local with comment",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 1,
+          "len" : 2,
+          "lineNum" : 4,
+          "index" : 0,
+          "payload" : "_1"
+        },
+        {
+          "posStart" : 3,
+          "posStop" : 3,
+          "len" : 1,
+          "lineNum" : 4,
+          "index" : 1,
+          "payload" : ";"
+        },
+        {
+          "posStart" : 8,
+          "posStop" : 12,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 2,
+          "payload" : "Valid"
+        },
+        {
+          "posStart" : 14,
+          "posStop" : 17,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 3,
+          "payload" : "line"
+        },
+        {
+          "posStart" : 19,
+          "posStop" : 22,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 4,
+          "payload" : "test"
+        },
+        {
+          "posStart" : 24,
+          "posStop" : 28,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 5,
+          "payload" : "index"
+        },
+        {
+          "posStart" : 30,
+          "posStop" : 31,
+          "len" : 2,
+          "lineNum" : 4,
+          "index" : 6,
+          "payload" : "4,"
+        },
+        {
+          "posStart" : 33,
+          "posStop" : 37,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 7,
+          "payload" : "label"
+        },
+        {
+          "posStart" : 39,
+          "posStop" : 45,
+          "len" : 7,
+          "lineNum" : 4,
+          "index" : 8,
+          "payload" : "numeric"
+        },
+        {
+          "posStart" : 47,
+          "posStop" : 51,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 9,
+          "payload" : "local"
+        },
+        {
+          "posStart" : 53,
+          "posStop" : 56,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 10,
+          "payload" : "with"
+        },
+        {
+          "posStart" : 58,
+          "posStop" : 64,
+          "len" : 7,
+          "lineNum" : 4,
+          "index" : 11,
+          "payload" : "comment"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 4,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "LabelNumericLocal"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "LabelNumericLocal",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  "_"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Comment"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Comment",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  ";"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "*",
+                  "endl"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "LabelNumericLocal",
+        "lineNum" : 4,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 1,
+          "len" : 2,
+          "lineNum" : 4,
+          "index" : 0,
+          "payload" : "_1"
+        },
+        "payloadSource" : "_1",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "LabelNumericLocal",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              "_"
+            ],
+            "contains" : [
+              "0-9"
+            ],
+            "ends_with" : [
+              "0-9",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 1,
+        "payloadArtifact" : {
+          "posStart" : 3,
+          "posStop" : 3,
+          "len" : 1,
+          "lineNum" : 4,
+          "index" : 1,
+          "payload" : ";"
+        },
+        "payloadSource" : ";",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 2,
+        "payloadArtifact" : {
+          "posStart" : 8,
+          "posStop" : 12,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 2,
+          "payload" : "Valid"
+        },
+        "payloadSource" : "Valid",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 3,
+        "payloadArtifact" : {
+          "posStart" : 14,
+          "posStop" : 17,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 3,
+          "payload" : "line"
+        },
+        "payloadSource" : "line",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 4,
+        "payloadArtifact" : {
+          "posStart" : 19,
+          "posStop" : 22,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 4,
+          "payload" : "test"
+        },
+        "payloadSource" : "test",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 5,
+        "payloadArtifact" : {
+          "posStart" : 24,
+          "posStop" : 28,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 5,
+          "payload" : "index"
+        },
+        "payloadSource" : "index",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 6,
+        "payloadArtifact" : {
+          "posStart" : 30,
+          "posStop" : 31,
+          "len" : 2,
+          "lineNum" : 4,
+          "index" : 6,
+          "payload" : "4,"
+        },
+        "payloadSource" : "4,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 7,
+        "payloadArtifact" : {
+          "posStart" : 33,
+          "posStop" : 37,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 7,
+          "payload" : "label"
+        },
+        "payloadSource" : "label",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 8,
+        "payloadArtifact" : {
+          "posStart" : 39,
+          "posStop" : 45,
+          "len" : 7,
+          "lineNum" : 4,
+          "index" : 8,
+          "payload" : "numeric"
+        },
+        "payloadSource" : "numeric",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 9,
+        "payloadArtifact" : {
+          "posStart" : 47,
+          "posStop" : 51,
+          "len" : 5,
+          "lineNum" : 4,
+          "index" : 9,
+          "payload" : "local"
+        },
+        "payloadSource" : "local",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 10,
+        "payloadArtifact" : {
+          "posStart" : 53,
+          "posStop" : 56,
+          "len" : 4,
+          "lineNum" : 4,
+          "index" : 10,
+          "payload" : "with"
+        },
+        "payloadSource" : "with",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 4,
+        "index" : 11,
+        "payloadArtifact" : {
+          "posStart" : 58,
+          "posStop" : 64,
+          "len" : 7,
+          "lineNum" : 4,
+          "index" : 11,
+          "payload" : "comment"
+        },
+        "payloadSource" : "comment",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 5,
+    "sourceLen" : 4,
+    "source" : {
+      "lineNum" : 5,
+      "sourceLen" : 21,
+      "source" : "    LSR   R2, R5, #27",
+      "payload" : [
+        {
+          "posStart" : 4,
+          "posStop" : 6,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 0,
+          "payload" : "LSR"
+        },
+        {
+          "posStart" : 10,
+          "posStop" : 12,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 1,
+          "payload" : "R2,"
+        },
+        {
+          "posStart" : 14,
+          "posStop" : 16,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 2,
+          "payload" : "R5,"
+        },
+        {
+          "posStart" : 18,
+          "posStop" : 20,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 3,
+          "payload" : "#27"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 5,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "OpCode"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "OpCode",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsOpCode",
+              "txt_match" : {
+                "starts_with" : [
+                  "A-Z"
+                ],
+                "contains" : [
+                  "A-Z"
+                ],
+                "ends_with" : [
+                  "A-Z"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "RegisterPc",
+            "RegisterSp",
+            "RegisterHi",
+            "RegisterLow",
+            "RegisterWb",
+            "Number",
+            "List",
+            "Group",
+            "LabelNumericLocalRef"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterPc",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "15"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterSp",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "13"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterHi",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "8-15"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterLow",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "0-7"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterWb",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "0-7"
+                ],
+                "ends_with" : [
+                  "!,",
+                  "!endl",
+                  "!;"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Number",
+              "category_class" : "java.lang.Double",
+              "txt_match" : {
+                "starts_with" : [
+                  "#0x",
+                  "#bx",
+                  "#"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "contains" : [
+                "RegisterLow"
+              ],
+              "linked_contains" : {
+                "RegisterLow" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterLow",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "0-7"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                }
+              },
+              "obj_name" : "is_entry_group_type",
+              "type_name" : "List",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "txt_match" : {
+                "starts_with" : [
+                  "{"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "}"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "contains" : [
+                "RegisterSp",
+                "RegisterPc",
+                "RegisterLow",
+                "Number"
+              ],
+              "linked_contains" : {
+                "RegisterLow" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterLow",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "0-7"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "RegisterSp" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterSp",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "13"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "Number" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "Number",
+                  "category_class" : "java.lang.Double",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "#0x",
+                      "#bx",
+                      "#"
+                    ],
+                    "contains" : [
+                      "0-9"
+                    ],
+                    "ends_with" : [
+                      "0-9",
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "RegisterPc" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterPc",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "15"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                }
+              },
+              "obj_name" : "is_entry_group_type",
+              "type_name" : "Group",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "txt_match" : {
+                "starts_with" : [
+                  "["
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "]"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "LabelNumericLocalRef",
+              "category_class" : "net.middlemind.GenAsm.LabelNumLocalRefThumb",
+              "txt_match" : {
+                "starts_with" : [
+                  "%FA",
+                  "%FT",
+                  "%BA",
+                  "%BT"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "OpCode",
+        "lineNum" : 5,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 4,
+          "posStop" : 6,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 0,
+          "payload" : "LSR"
+        },
+        "payloadSource" : "LSR",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "OpCode",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsOpCode",
+          "txt_match" : {
+            "starts_with" : [
+              "A-Z"
+            ],
+            "contains" : [
+              "A-Z"
+            ],
+            "ends_with" : [
+              "A-Z"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "RegisterLow",
+        "lineNum" : 5,
+        "index" : 1,
+        "payloadArtifact" : {
+          "posStart" : 10,
+          "posStop" : 12,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 1,
+          "payload" : "R2,"
+        },
+        "payloadSource" : "R2,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "RegisterLow",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+          "txt_match" : {
+            "starts_with" : [
+              "R"
+            ],
+            "contains" : [
+              "0-7"
+            ],
+            "ends_with" : [
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "RegisterLow",
+        "lineNum" : 5,
+        "index" : 2,
+        "payloadArtifact" : {
+          "posStart" : 14,
+          "posStop" : 16,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 2,
+          "payload" : "R5,"
+        },
+        "payloadSource" : "R5,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "RegisterLow",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+          "txt_match" : {
+            "starts_with" : [
+              "R"
+            ],
+            "contains" : [
+              "0-7"
+            ],
+            "ends_with" : [
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Number",
+        "lineNum" : 5,
+        "index" : 3,
+        "payloadArtifact" : {
+          "posStart" : 18,
+          "posStop" : 20,
+          "len" : 3,
+          "lineNum" : 5,
+          "index" : 3,
+          "payload" : "#27"
+        },
+        "payloadSource" : "#27",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Number",
+          "category_class" : "java.lang.Double",
+          "txt_match" : {
+            "starts_with" : [
+              "#0x",
+              "#bx",
+              "#"
+            ],
+            "contains" : [
+              "0-9"
+            ],
+            "ends_with" : [
+              "0-9",
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 6,
+    "sourceLen" : 10,
+    "source" : {
+      "lineNum" : 6,
+      "sourceLen" : 54,
+      "source" : "LSR   R2, R5, #27   ; Logical shift right the contents",
+      "payload" : [
+        {
+          "posStart" : 0,
+          "posStop" : 2,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 0,
+          "payload" : "LSR"
+        },
+        {
+          "posStart" : 6,
+          "posStop" : 8,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 1,
+          "payload" : "R2,"
+        },
+        {
+          "posStart" : 10,
+          "posStop" : 12,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 2,
+          "payload" : "R5,"
+        },
+        {
+          "posStart" : 14,
+          "posStop" : 16,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 3,
+          "payload" : "#27"
+        },
+        {
+          "posStart" : 20,
+          "posStop" : 20,
+          "len" : 1,
+          "lineNum" : 6,
+          "index" : 4,
+          "payload" : ";"
+        },
+        {
+          "posStart" : 22,
+          "posStop" : 28,
+          "len" : 7,
+          "lineNum" : 6,
+          "index" : 5,
+          "payload" : "Logical"
+        },
+        {
+          "posStart" : 30,
+          "posStop" : 34,
+          "len" : 5,
+          "lineNum" : 6,
+          "index" : 6,
+          "payload" : "shift"
+        },
+        {
+          "posStart" : 36,
+          "posStop" : 40,
+          "len" : 5,
+          "lineNum" : 6,
+          "index" : 7,
+          "payload" : "right"
+        },
+        {
+          "posStart" : 42,
+          "posStop" : 44,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 8,
+          "payload" : "the"
+        },
+        {
+          "posStart" : 46,
+          "posStop" : 53,
+          "len" : 8,
+          "lineNum" : 6,
+          "index" : 9,
+          "payload" : "contents"
+        }
+      ]
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 6,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "OpCode"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "OpCode",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsOpCode",
+              "txt_match" : {
+                "starts_with" : [
+                  "A-Z"
+                ],
+                "contains" : [
+                  "A-Z"
+                ],
+                "ends_with" : [
+                  "A-Z"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "RegisterPc",
+            "RegisterSp",
+            "RegisterHi",
+            "RegisterLow",
+            "RegisterWb",
+            "Number",
+            "List",
+            "Group",
+            "LabelNumericLocalRef"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterPc",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "15"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterSp",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "13"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterHi",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "8-15"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterLow",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "0-7"
+                ],
+                "ends_with" : [
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "RegisterWb",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+              "txt_match" : {
+                "starts_with" : [
+                  "R"
+                ],
+                "contains" : [
+                  "0-7"
+                ],
+                "ends_with" : [
+                  "!,",
+                  "!endl",
+                  "!;"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Number",
+              "category_class" : "java.lang.Double",
+              "txt_match" : {
+                "starts_with" : [
+                  "#0x",
+                  "#bx",
+                  "#"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "contains" : [
+                "RegisterLow"
+              ],
+              "linked_contains" : {
+                "RegisterLow" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterLow",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "0-7"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                }
+              },
+              "obj_name" : "is_entry_group_type",
+              "type_name" : "List",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "txt_match" : {
+                "starts_with" : [
+                  "{"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "}"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "contains" : [
+                "RegisterSp",
+                "RegisterPc",
+                "RegisterLow",
+                "Number"
+              ],
+              "linked_contains" : {
+                "RegisterLow" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterLow",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "0-7"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "RegisterSp" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterSp",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "13"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "Number" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "Number",
+                  "category_class" : "java.lang.Double",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "#0x",
+                      "#bx",
+                      "#"
+                    ],
+                    "contains" : [
+                      "0-9"
+                    ],
+                    "ends_with" : [
+                      "0-9",
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                },
+                "RegisterPc" : {
+                  "obj_name" : "is_entry_type",
+                  "type_name" : "RegisterPc",
+                  "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+                  "txt_match" : {
+                    "starts_with" : [
+                      "R"
+                    ],
+                    "contains" : [
+                      "15"
+                    ],
+                    "ends_with" : [
+                      ",",
+                      "endl",
+                      ";"
+                    ],
+                    "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                    "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                    "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                  },
+                  "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+                  "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+                }
+              },
+              "obj_name" : "is_entry_group_type",
+              "type_name" : "Group",
+              "category_class" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "txt_match" : {
+                "starts_with" : [
+                  "["
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "]"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "LabelNumericLocalRef",
+              "category_class" : "net.middlemind.GenAsm.LabelNumLocalRefThumb",
+              "txt_match" : {
+                "starts_with" : [
+                  "%FA",
+                  "%FT",
+                  "%BA",
+                  "%BT"
+                ],
+                "contains" : [
+                  "0-9"
+                ],
+                "ends_with" : [
+                  "0-9",
+                  ",",
+                  "endl",
+                  ";"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "Comment"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "Comment",
+              "category_class" : "java.lang.String",
+              "txt_match" : {
+                "starts_with" : [
+                  ";"
+                ],
+                "contains" : [
+                  "*"
+                ],
+                "ends_with" : [
+                  "*",
+                  "endl"
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : [
+      {
+        "name" : "OpCode",
+        "lineNum" : 6,
+        "index" : 0,
+        "payloadArtifact" : {
+          "posStart" : 0,
+          "posStop" : 2,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 0,
+          "payload" : "LSR"
+        },
+        "payloadSource" : "LSR",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "OpCode",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsOpCode",
+          "txt_match" : {
+            "starts_with" : [
+              "A-Z"
+            ],
+            "contains" : [
+              "A-Z"
+            ],
+            "ends_with" : [
+              "A-Z"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "RegisterLow",
+        "lineNum" : 6,
+        "index" : 1,
+        "payloadArtifact" : {
+          "posStart" : 6,
+          "posStop" : 8,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 1,
+          "payload" : "R2,"
+        },
+        "payloadSource" : "R2,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "RegisterLow",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+          "txt_match" : {
+            "starts_with" : [
+              "R"
+            ],
+            "contains" : [
+              "0-7"
+            ],
+            "ends_with" : [
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "RegisterLow",
+        "lineNum" : 6,
+        "index" : 2,
+        "payloadArtifact" : {
+          "posStart" : 10,
+          "posStop" : 12,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 2,
+          "payload" : "R5,"
+        },
+        "payloadSource" : "R5,",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "RegisterLow",
+          "category_class" : "net.middlemind.GenAsm.JsonObjIsRegister",
+          "txt_match" : {
+            "starts_with" : [
+              "R"
+            ],
+            "contains" : [
+              "0-7"
+            ],
+            "ends_with" : [
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Number",
+        "lineNum" : 6,
+        "index" : 3,
+        "payloadArtifact" : {
+          "posStart" : 14,
+          "posStop" : 16,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 3,
+          "payload" : "#27"
+        },
+        "payloadSource" : "#27",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Number",
+          "category_class" : "java.lang.Double",
+          "txt_match" : {
+            "starts_with" : [
+              "#0x",
+              "#bx",
+              "#"
+            ],
+            "contains" : [
+              "0-9"
+            ],
+            "ends_with" : [
+              "0-9",
+              ",",
+              "endl",
+              ";"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 4,
+        "payloadArtifact" : {
+          "posStart" : 20,
+          "posStop" : 20,
+          "len" : 1,
+          "lineNum" : 6,
+          "index" : 4,
+          "payload" : ";"
+        },
+        "payloadSource" : ";",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 5,
+        "payloadArtifact" : {
+          "posStart" : 22,
+          "posStop" : 28,
+          "len" : 7,
+          "lineNum" : 6,
+          "index" : 5,
+          "payload" : "Logical"
+        },
+        "payloadSource" : "Logical",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 6,
+        "payloadArtifact" : {
+          "posStart" : 30,
+          "posStop" : 34,
+          "len" : 5,
+          "lineNum" : 6,
+          "index" : 6,
+          "payload" : "shift"
+        },
+        "payloadSource" : "shift",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 7,
+        "payloadArtifact" : {
+          "posStart" : 36,
+          "posStop" : 40,
+          "len" : 5,
+          "lineNum" : 6,
+          "index" : 7,
+          "payload" : "right"
+        },
+        "payloadSource" : "right",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 8,
+        "payloadArtifact" : {
+          "posStart" : 42,
+          "posStop" : 44,
+          "len" : 3,
+          "lineNum" : 6,
+          "index" : 8,
+          "payload" : "the"
+        },
+        "payloadSource" : "the",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      },
+      {
+        "name" : "Comment",
+        "lineNum" : 6,
+        "index" : 9,
+        "payloadArtifact" : {
+          "posStart" : 46,
+          "posStop" : 53,
+          "len" : 8,
+          "lineNum" : 6,
+          "index" : 9,
+          "payload" : "contents"
+        },
+        "payloadSource" : "contents",
+        "payloadType" : {
+          "obj_name" : "is_entry_type",
+          "type_name" : "Comment",
+          "category_class" : "java.lang.String",
+          "txt_match" : {
+            "starts_with" : [
+              ";"
+            ],
+            "contains" : [
+              "*"
+            ],
+            "ends_with" : [
+              "*",
+              "endl"
+            ],
+            "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+            "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+          },
+          "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+          "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+        },
+        "argTokens" : []
+      }
+    ]
+  },
+  {
+    "lineNum" : 7,
+    "sourceLen" : 0,
+    "source" : {
+      "lineNum" : 7,
+      "sourceLen" : 0,
+      "source" : "",
+      "payload" : []
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 7,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : []
+  },
+  {
+    "lineNum" : 8,
+    "sourceLen" : 0,
+    "source" : {
+      "lineNum" : 8,
+      "sourceLen" : 0,
+      "source" : "",
+      "payload" : []
+    },
+    "validLineEntry" : {
+      "obj_name" : "is_valid_line",
+      "index" : 7,
+      "is_valid_line" : [
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 0
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 1
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 2
+        },
+        {
+          "obj_name" : "is_valid_line_entry",
+          "is_entry_types" : [
+            "None"
+          ],
+          "linked_is_entry_types" : [
+            {
+              "obj_name" : "is_entry_type",
+              "type_name" : "None",
+              "category_class" : "java.lang.Object",
+              "txt_match" : {
+                "starts_with" : [
+                  ""
+                ],
+                "contains" : [
+                  ""
+                ],
+                "ends_with" : [
+                  ""
+                ],
+                "name" : "net.middlemind.GenAsm.JsonObjTxtMatch",
+                "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+              },
+              "name" : "net.middlemind.GenAsm.JsonObjIsEntryType",
+              "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader" : "net.middlemind.GenAsm.LoaderIsEntryTypes"
+            }
+          ],
+          "index" : 3
+        }
+      ],
+      "name" : "net.middlemind.GenAsm.JsonObjIsValidLine",
+      "fileName" : "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "loader" : "net.middlemind.GenAsm.LoaderIsValidLines"
+    },
+    "payload" : []
+  }
+]

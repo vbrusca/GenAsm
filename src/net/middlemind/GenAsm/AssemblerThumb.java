@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public class AssemblerThumb implements Assembler {
 
+    public static int IS_VALID_LINE_ENTRY_EMPTY = 7;
+    
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
     public Map<String, Loader> isaLoader;
@@ -43,27 +45,44 @@ public class AssemblerThumb implements Assembler {
         
         //Load and lexerize the assembly source file
         LoadAndLexerizeAssemblySource();
-        Logger.wrl("");
-        Logger.wrl("");        
-        PrintObject(asmLexedData, "Assembly Lexerized Data");
+        //Logger.wrl("");
+        //Logger.wrl("");        
+        //PrintObject(asmLexedData, "Assembly Lexerized Data");
         
         //Tokenize the lexerized artifacts
         TokenizeLexerArtifacts();
-        Logger.wrl("");
-        Logger.wrl("");
-        PrintObject(asmTokenedData, "Assembly Tokenized Data");
+        //Logger.wrl("");
+        //Logger.wrl("");
+        //PrintObject(asmTokenedData, "Assembly Tokenized Data");
         
         //Validate token lines
-        Logger.wrl("");
-        Logger.wrl("");        
+        //Logger.wrl("");
+        //Logger.wrl("");        
         if(ValidateTokenizedLines()) {
             Logger.wrl("Assembly lines validated successfully.");
         } else {
             Logger.wrl("Assembly lines are NOT valid.");            
         }
-        Logger.wrl("");
-        Logger.wrl("");
-        PrintObject(asmTokenedData, "Assembly Tokenized Data");        
+        //Logger.wrl("");
+        //Logger.wrl("");
+        //PrintObject(asmTokenedData, "Assembly Tokenized Data"); 
+        WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output.json");
+    }
+    
+    public void WriteObject(Object obj, String name, String fileName) {
+        Logger.wrl("AssemblerThumb: WriteObject: Name: " + name);
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+            
+        Gson gson = builder.create();            
+        String jsonString = gson.toJson(obj);
+
+        try {
+            FileUnloader.WriteStr(fileName, jsonString);
+        } catch(IOException e) {
+            e.printStackTrace();
+            Logger.wrl("AssemblerThumb: WriteObject: Could not write the target output file, " + fileName);
+        }
     }
     
     public void PrintObject(Object obj, String name) {
@@ -171,12 +190,17 @@ public class AssemblerThumb implements Assembler {
         return null;
     }
     
-    public boolean ValidateTokenizedLine(TokenLine tokenLine, JsonObjIsValidLines validLines) {
-        int tokenCount;
+    public boolean ValidateTokenizedLine(TokenLine tokenLine, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
+        int tokenCount = tokenLine.payload.size();
         int[] res;
         int currentIndex;
         int currentEntry;
         int count = 0;
+        
+        if(tokenCount == 0) {
+            tokenLine.validLineEntry = validLineEmpty;
+            return true;
+        }
         
         for(JsonObjIsValidLine validLine : validLines.is_valid_lines) {
             //Logger.wrl("Checking valid line entry: " + count);
@@ -220,9 +244,9 @@ public class AssemblerThumb implements Assembler {
         return false;
     }
     
-    public boolean ValidateTokenizedLines() {
+    public boolean ValidateTokenizedLines() {        
         for(TokenLine tokenLine : asmTokenedData) {
-            if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines)) {
+            if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(IS_VALID_LINE_ENTRY_EMPTY))) {
                 Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + ", '" + tokenLine.source.source + "'");
                 return false;
             }

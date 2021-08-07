@@ -1,1 +1,1 @@
-    LSR   R2, R5, #27   ; Logical shift right the contents
+labeltest

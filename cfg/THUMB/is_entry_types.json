@@ -9,7 +9,7 @@
             "txt_match": {
                 "starts_with": [";"],
                 "contains": ["*"],
-                "ends_with": ["endl"]
+                "ends_with": ["*", "endl"]
             }
         },
         {
