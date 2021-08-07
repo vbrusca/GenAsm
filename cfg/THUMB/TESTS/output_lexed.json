@@ -1,0 +1,143 @@
+[
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 0,
+    "sourceLen": 16,
+    "source": "LDR R3,[PC,#844]",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 2,
+        "len": 3,
+        "lineNum": 0,
+        "index": 0,
+        "payload": "LDR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 5,
+        "len": 2,
+        "lineNum": 0,
+        "index": 1,
+        "payload": "R3,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 7,
+        "posStop": 7,
+        "len": 1,
+        "lineNum": 0,
+        "index": 2,
+        "payload": "["
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 8,
+        "posStop": 9,
+        "len": 2,
+        "lineNum": 0,
+        "index": 3,
+        "payload": "PC,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 11,
+        "posStop": 14,
+        "len": 4,
+        "lineNum": 0,
+        "index": 4,
+        "payload": "#844"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 15,
+        "posStop": 0,
+        "len": 1,
+        "lineNum": 0,
+        "index": 5,
+        "payload": "]"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 1,
+    "sourceLen": 18,
+    "source": "STMIA R0!, {R3-R7}",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 4,
+        "len": 5,
+        "lineNum": 1,
+        "index": 0,
+        "payload": "STMIA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 6,
+        "posStop": 8,
+        "len": 3,
+        "lineNum": 1,
+        "index": 1,
+        "payload": "R0!,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 11,
+        "posStop": 11,
+        "len": 1,
+        "lineNum": 1,
+        "index": 2,
+        "payload": "{"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 1,
+        "index": 3,
+        "payload": "R3-R7"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 17,
+        "posStop": 0,
+        "len": 1,
+        "lineNum": 1,
+        "index": 4,
+        "payload": "}"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 2,
+    "sourceLen": 12,
+    "source": "BLT     %FT0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 2,
+        "len": 3,
+        "lineNum": 2,
+        "index": 0,
+        "payload": "BLT"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 8,
+        "posStop": 11,
+        "len": 4,
+        "lineNum": 2,
+        "index": 1,
+        "payload": "%FT0"
+      }
+    ]
+  }
+]

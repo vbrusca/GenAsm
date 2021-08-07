@@ -9,16 +9,28 @@ import java.util.List;
  */
 public class LexerSimple implements Lexer {
 
+    public static char[] SEPARATORS = { ',', ' ', '\t', ';' };
+    public static char[] STICKY_SEPARATORS = { ',', ';' };
+    public static char[] GROUP_START = { '[', '{' };
+    public static char[] GROUP_STOP = { ']', '}' };    
+    
+    private boolean Contains(char[] array, char subj) {
+        for(char c : array) {
+            if(c == subj) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     @Override
     public ArrayList<ArtifactLine> FileLexerize(List<String> file) {
         ArrayList<ArtifactLine> ret = new ArrayList<>();
         int count = 0;
-        
         for(String s : file) {
             ret.add(LineLexerize(s, count));
             count++;
         }
-        
         return ret;
     }    
     
@@ -29,7 +41,7 @@ public class LexerSimple implements Lexer {
         ret.lineNum = lineNum;
             
         if(Utils.IsStringEmpty(line)) {            
-            ret.payload = new ArrayList<Artifact>();
+            ret.payload = new ArrayList<>();
             ret.sourceLen = 0;
             return ret;
         } else {
@@ -44,29 +56,112 @@ public class LexerSimple implements Lexer {
             
             for(; i < chars.length; i++) {
                 if(inArtifact == true) {
-                    if(chars[i] == ' ' || chars[i] == '\t') {
+                    if(Contains(SEPARATORS, chars[i])) {
                         inArtifact = false;
                         artifact.posStop = (i - 1);
                         artifact.len = (i - artifact.posStart);
                         artifact.index = count;
-                        ret.payload.add(artifact);
                         
+                        if(Contains(STICKY_SEPARATORS, chars[i])) {
+                            artifact.payload += chars[i];
+                        }
+                        
+                        ret.payload.add(artifact);                        
                         count++;
                         artifact = null;
+                        
                     } else {
-                        artifact.payload += chars[i];                
+                        if(Contains(GROUP_START, chars[i])) {
+                            inArtifact = false;
+                            artifact.posStop = (i - 1);
+                            artifact.len = (i - artifact.posStart);
+                            artifact.index = count;
+
+                            if(Contains(STICKY_SEPARATORS, chars[i])) {
+                                artifact.payload += chars[i];
+                            }
+
+                            ret.payload.add(artifact);                        
+                            count++;
+                            artifact = null;                            
+                            
+                            artifact = new Artifact();
+                            artifact.lineNum = lineNum;
+                            artifact.posStart = i;
+                            artifact.posStop = i; 
+                            artifact.len = 1;
+                            artifact.index = count;
+                            artifact.payload = "" + chars[i];
+                            ret.payload.add(artifact);                        
+                            count++;
+                            artifact = null;
+
+                        } else if(Contains(GROUP_STOP, chars[i])) {
+                            inArtifact = false;
+                            artifact.posStop = (i - 1);
+                            artifact.len = (i - artifact.posStart);
+                            artifact.index = count;
+
+                            if(Contains(STICKY_SEPARATORS, chars[i])) {
+                                artifact.payload += chars[i];
+                            }
+
+                            ret.payload.add(artifact);                        
+                            count++;
+                            artifact = null;
+
+                            artifact = new Artifact();
+                            artifact.lineNum = lineNum;
+                            artifact.posStart = i;
+                            artifact.posStop = i;
+                            artifact.len = 1;
+                            artifact.index = count;                        
+                            artifact.payload = "" + chars[i];
+                            ret.payload.add(artifact);                        
+                            count++;
+                            artifact = null;
+                            
+                        } else {
+                            artifact.payload += chars[i];
+                        
+                        }
                     }
                 } else {
                     if(chars[i] == ' ' || chars[i] == '\t') {
                         //ignore whitespace
                         continue;
+                        
+                    } else if(Contains(GROUP_START, chars[i])) {
+                        artifact = new Artifact();
+                        artifact.lineNum = lineNum;
+                        artifact.posStart = i;
+                        artifact.posStop = i;
+                        artifact.len = 1;
+                        artifact.index = count;
+                        artifact.payload = "" + chars[i];
+                        ret.payload.add(artifact);                        
+                        count++;
+                        artifact = null;
+                        
+                    } else if(Contains(GROUP_STOP, chars[i])) {                        
+                        artifact = new Artifact();
+                        artifact.lineNum = lineNum;
+                        artifact.posStart = i;
+                        artifact.posStop = i;
+                        artifact.len = 1;
+                        artifact.index = count;                        
+                        artifact.payload = "" + chars[i];
+                        ret.payload.add(artifact);                        
+                        count++;
+                        artifact = null;                        
+                        
                     } else {
                         inArtifact = true;
                         artifact = new Artifact();
                         artifact.lineNum = lineNum;
                         artifact.posStart = i;
-                        artifact.payload = "";
-                        artifact.payload += chars[i];
+                        artifact.payload = "" + chars[i];
+                        
                     }
                 }
             }

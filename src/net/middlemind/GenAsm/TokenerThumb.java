@@ -12,7 +12,7 @@ public class TokenerThumb implements Tokener {
     @Override
     public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws ExceptionTokenerNotFound {
         JsonObjIsEntryTypes types = (JsonObjIsEntryTypes)entryTypes;
-        boolean found = false;
+        boolean found;
         String payload = "";
         Artifact current = null;
         String compare = null;

@@ -7,6 +7,7 @@ package net.middlemind.GenAsm;
 public class JsonObjIsEntryType extends JsonObjBase {
     public String obj_name;
     public String type_name;
+    public String category;
     public String category_class;
     public JsonObjTxtMatch txt_match;
     

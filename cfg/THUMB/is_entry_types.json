@@ -5,6 +5,7 @@
         {
             "obj_name": "is_entry_type",
             "type_name": "Comment",
+            "category": "Comment",
             "category_class": "java.lang.String",
             "txt_match": {
                 "starts_with": [";"],
@@ -15,6 +16,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "None",
+            "category": "Empty",
             "category_class": "java.lang.Object",            
             "txt_match": {
                 "starts_with": [""],
@@ -25,6 +27,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "OpCode",
+            "category": "OpCode",
             "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
             "txt_match": {
                 "starts_with": ["A-Z"],
@@ -35,6 +38,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterWb",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -45,6 +49,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterLow",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -55,6 +60,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "Register",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -65,6 +71,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterHi",
+            "category": "Arg",            
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -75,6 +82,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterSp",
+            "category": "Arg",            
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -85,6 +93,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterPc",
+            "category": "Arg",            
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
@@ -95,6 +104,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "Number",
+            "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
                 "starts_with": ["#0x", "#bx", "#"],
@@ -105,6 +115,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "LabelNumericLocal",
+            "category": "Label",
             "category_class": "java.lang.String",
             "txt_match": {
                 "starts_with": ["_"],
@@ -115,6 +126,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "Label",
+            "category": "Label",
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["a-z"],
@@ -125,6 +137,7 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "LabelNumericLocalRef",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.LabelNumLocalRefThumb",            
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
@@ -137,6 +150,7 @@
         {
             "obj_name": "is_entry_group_type",
             "type_name": "List",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
             "txt_match": {
                 "starts_with": ["{"],
@@ -148,6 +162,7 @@
         {
             "obj_name": "is_entry_group_type",            
             "type_name": "Group",
+            "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",            
             "txt_match": {
                 "starts_with": ["["],
