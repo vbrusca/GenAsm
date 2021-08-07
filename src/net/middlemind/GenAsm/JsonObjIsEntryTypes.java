@@ -11,12 +11,13 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
-    public List<JsonObjIsEntryGroupType> is_entry_group_types;
+    //public List<JsonObjIsEntryGroupTypeOLD> is_entry_group_types;
     public String null_entry_type = "None";
     
+    /*
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
-        for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
+        for(JsonObjIsEntryGroupTypeOLD entry : is_entry_group_types) {
             entry.linked_contains = new Hashtable<String, JsonObjIsEntryType>();
             for(String s : entry.contains) {
                 boolean found = false;
@@ -34,6 +35,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
             }
         }
     }
+    */
     
     @Override
     public void Print() {
@@ -52,10 +54,10 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
             entry.Print(prefix + "\t");
         }
         
-        Logger.wrl(prefix + "IsEntryGroupTypes:");        
-        for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
-            Logger.wrl("");
-            entry.Print(prefix + "\t");
-        }        
+        //Logger.wrl(prefix + "IsEntryGroupTypes:");        
+        //for(JsonObjIsEntryGroupTypeOLD entry : is_entry_group_types) {
+        //    Logger.wrl("");
+        //    entry.Print(prefix + "\t");
+        //}        
     }
 }

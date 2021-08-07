@@ -26,8 +26,9 @@ public class JsonObjIsArgTypes extends JsonObjBase {
                     }
                 }
                 
+                /*
                 if(!found) {
-                    for(JsonObjIsEntryGroupType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
+                    for(JsonObjIsEntryGroupTypeOLD lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
                         if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
                             entry.linked_is_entry_types.add(lentry);
                             found = true;
@@ -35,6 +36,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
                         }
                     }
                 }
+                */
                 
                 if(!found) {
                     throw new ExceptionJsonObjLink("JsonObjIsArgTypes: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);

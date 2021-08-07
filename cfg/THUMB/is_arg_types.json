@@ -5,7 +5,7 @@
         {
             "obj_name": "is_arg_type",
             "arg_name": "Group",
-            "is_entry_types": ["Group"]
+            "is_entry_types": ["GroupStart", "GroupStop"]
         },
         {
             "obj_name": "is_arg_type",            
@@ -15,7 +15,7 @@
         {
             "obj_name": "is_arg_type",            
             "arg_name": "List",
-            "is_entry_types": ["List"]
+            "is_entry_types": ["ListStart", "ListStop"]
         },
         {
             "obj_name": "is_arg_type",            
@@ -42,6 +42,16 @@
             "arg_name": "Rpc",
             "is_entry_types": ["RegisterPc"]
         },
+        {
+            "obj_name": "is_arg_type",            
+            "arg_name": "Rlr",
+            "is_entry_types": ["RegisterLr"]
+        },
+        {
+            "obj_name": "is_arg_type",            
+            "arg_name": "Rsp",
+            "is_entry_types": ["RegisterSp"]
+        },                
         {
             "obj_name": "is_arg_type",            
             "arg_name": "Rb",

@@ -53,7 +53,7 @@
       {
         "obj_name": "Artifact",
         "posStart": 15,
-        "posStop": 0,
+        "posStop": 15,
         "len": 1,
         "lineNum": 0,
         "index": 5,
@@ -106,7 +106,7 @@
       {
         "obj_name": "Artifact",
         "posStart": 17,
-        "posStop": 0,
+        "posStop": 17,
         "len": 1,
         "lineNum": 1,
         "index": 4,

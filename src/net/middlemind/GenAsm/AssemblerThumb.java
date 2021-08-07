@@ -50,7 +50,6 @@ public class AssemblerThumb implements Assembler {
         //PrintObject(asmLexedData, "Assembly Lexerized Data");
         WriteObject(asmLexedData, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
         
-        /*
         //Tokenize the lexerized artifacts
         TokenizeLexerArtifacts();
         //Logger.wrl("");
@@ -69,7 +68,6 @@ public class AssemblerThumb implements Assembler {
         //Logger.wrl("");
         //PrintObject(asmTokenedData, "Assembly Tokenized Data"); 
         WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
-        */
     }
     
     public void WriteObject(Object obj, String name, String fileName) {

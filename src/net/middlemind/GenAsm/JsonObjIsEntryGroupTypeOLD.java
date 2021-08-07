@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author Victor G. Brusca, Middlemind Games  08/02/2021 7:27 PM EST
  */
-public class JsonObjIsEntryGroupType extends JsonObjIsEntryType {
+public class JsonObjIsEntryGroupTypeOLD extends JsonObjIsEntryType {
     public List<String> contains;
     public Map<String, JsonObjIsEntryType> linked_contains;
     

@@ -1761,7 +1761,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 0,
@@ -1840,7 +1840,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -1908,7 +1908,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -1976,7 +1976,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2044,7 +2044,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2112,7 +2112,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2180,7 +2180,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2248,7 +2248,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2316,7 +2316,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2384,7 +2384,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2463,7 +2463,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2542,7 +2542,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2621,7 +2621,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2700,7 +2700,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2779,7 +2779,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 1,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 3,
@@ -2858,7 +2858,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 0,
@@ -2937,7 +2937,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "Group",
+                    "is_entry_type": "GroupStart",
                     "is_arg_type": "Group",
                     "bit_series": {
                         "bit_start": 0,
@@ -3236,7 +3236,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,
@@ -3266,7 +3266,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,
@@ -3296,7 +3296,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,
@@ -3326,7 +3326,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,
@@ -3368,7 +3368,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,
@@ -3410,7 +3410,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_type": "List",
+                    "is_entry_type": "ListStart",
                     "is_arg_type": "List",
                     "bit_series": {
                         "bit_start": 0,

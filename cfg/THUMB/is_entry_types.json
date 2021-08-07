@@ -92,6 +92,17 @@
         },
         {
             "obj_name": "is_entry_type",            
+            "type_name": "RegisterSp",
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["S"],
+                "contains": ["P"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
             "type_name": "RegisterPc",
             "category": "Arg",            
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
@@ -101,6 +112,28 @@
                 "ends_with": [",", "endl", ";"]
             }
         },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterPc",
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["P"],
+                "contains": ["C"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterLr",
+            "category": "Arg",      
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["L"],
+                "contains": ["R"],
+                "ends_with": [",", "endl", ";"]
+            }
+        },        
         {
             "obj_name": "is_entry_type",            
             "type_name": "Number",
@@ -144,32 +177,50 @@
                 "contains": ["0-9"],
                 "ends_with": ["0-9", ",", "endl", ";"]
             }
-        }
-    ],
-    "is_entry_group_types": [
+        },
         {
             "obj_name": "is_entry_group_type",
-            "type_name": "List",
+            "type_name": "ListStart",
             "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
             "txt_match": {
                 "starts_with": ["{"],
-                "contains": ["*"],
+                "contains": ["{"],
+                "ends_with": ["{"]
+            }
+        },
+        {
+            "obj_name": "is_entry_group_type",
+            "type_name": "ListStop",
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "txt_match": {
+                "starts_with": ["}"],
+                "contains": ["}"],
                 "ends_with": ["}"]
-            },
-            "contains": ["RegisterLow"]
+            }
         },
         {
             "obj_name": "is_entry_group_type",            
-            "type_name": "Group",
+            "type_name": "GroupStart",
             "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",            
             "txt_match": {
                 "starts_with": ["["],
-                "contains": ["*"],
+                "contains": ["["],
+                "ends_with": ["["]
+            }
+        },
+        {
+            "obj_name": "is_entry_group_type",            
+            "type_name": "GroupStop",
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "txt_match": {
+                "starts_with": ["]"],
+                "contains": ["]"],
                 "ends_with": ["]"]
-            },
-            "contains": ["RegisterSp", "RegisterPc", "RegisterLow", "Number"]
+            }
         }
     ]
 }

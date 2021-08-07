@@ -31,13 +31,15 @@ public class JsonObjIsOpCodes extends JsonObjBase {
                     }
                 }
 
-                for(JsonObjIsEntryGroupType llentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
+                /*
+                for(JsonObjIsEntryGroupTypeOLD llentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
                     if(!Utils.IsStringEmpty(lentry.is_entry_type) && lentry.is_entry_type.equals(llentry.type_name)) {
                         lentry.linked_is_entry_type = llentry;
                         found = true;
                         break;
                     }
                 }                
+                */
                 
                 if(!found) {
                     throw new ExceptionJsonObjLink("JsonObjIsOpCodes: Link: Error: Could not find JsonObjIsEntryType object with name " + lentry.is_entry_type);
@@ -60,13 +62,15 @@ public class JsonObjIsOpCodes extends JsonObjBase {
                     }                    
                 }
                 
-                for(JsonObjIsEntryGroupType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
+                /*
+                for(JsonObjIsEntryGroupTypeOLD lentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
                     if(!Utils.IsStringEmpty(entry.is_entry_type) && entry.is_entry_type.equals(lentry.type_name)) {
                         entry.linked_is_entry_type = lentry;
                         found = true;
                         break;
                     }
                 }                
+                */
                 
                 if(!found) {
                     throw new ExceptionJsonObjLink("JsonObjIsOpCodes: RecursiveSubArgLinking: Error: Could not find JsonObjIsEntryType object with name " + entry.is_entry_type);

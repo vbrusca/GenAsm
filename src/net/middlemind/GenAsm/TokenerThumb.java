@@ -255,12 +255,14 @@ public class TokenerThumb implements Tokener {
                         }
                     }
 
+                    /*
                     if(!found) {
                         //Find group matches
                         for(JsonObjIsEntryType typeGrp : types.is_entry_group_types) {
                             compareType = typeGrp;
                         }
                     }
+                    */
                 }
 
                 Token tmb = new Token();                

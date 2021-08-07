@@ -32,7 +32,8 @@ public class LoaderIsEntryTypes implements Loader {
                 entry.txt_match.loader = getClass().getName();
             }
             
-            for(JsonObjIsEntryGroupType entry : jsonObj.is_entry_group_types) {
+            /*
+            for(JsonObjIsEntryGroupTypeOLD entry : jsonObj.is_entry_group_types) {
                 entry.name = entry.getClass().getName();
                 entry.fileName = fileName;
                 entry.loader = getClass().getName();
@@ -40,7 +41,8 @@ public class LoaderIsEntryTypes implements Loader {
                 entry.txt_match.fileName = fileName;
                 entry.txt_match.loader = getClass().getName();
             }
-                        
+            */
+            
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new ExceptionLoader("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
