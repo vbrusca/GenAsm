@@ -10,7 +10,7 @@ import java.util.List;
 public class TokenerThumb implements Tokener {
 
     @Override
-    public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws TokenerNotFoundException {
+    public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws ExceptionTokenerNotFound {
         JsonObjIsEntryTypes types = (JsonObjIsEntryTypes)entryTypes;
         boolean found = false;
         String payload = "";
@@ -287,17 +287,17 @@ public class TokenerThumb implements Tokener {
             }
 
             return ret;
-        } catch (MalformedRangeException e) {
+        } catch (ExceptionMalformedRange e) {
             e.printStackTrace();
-            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);
+            throw new ExceptionTokenerNotFound("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);
         } catch(Exception e) {
             e.printStackTrace();
-            throw new TokenerNotFoundException("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);                
+            throw new ExceptionTokenerNotFound("Could not find token match for artifact, " + payload + ", at line number " + lineNum + " with artifact " + current.payload + " compared to " + compare);                
         }
     }
 
     @Override
-    public List<TokenLine> FileTokenize(List<ArtifactLine> file, JsonObj entryTypes) throws TokenerNotFoundException {
+    public List<TokenLine> FileTokenize(List<ArtifactLine> file, JsonObj entryTypes) throws ExceptionTokenerNotFound {
         int lineNum = 0;
         ArrayList<TokenLine> ret = new ArrayList<>();
         for(ArtifactLine art : file) {

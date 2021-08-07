@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 public class LoaderBitSeries implements Loader {
 
     @Override
-    public JsonObjBitSeries ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+    public JsonObjBitSeries ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       
@@ -24,7 +24,7 @@ public class LoaderBitSeries implements Loader {
             jsonObj.loader = getClass().getName();
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
+            throw new ExceptionLoader("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
         }
     }    
 }

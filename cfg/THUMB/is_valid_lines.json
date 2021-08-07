@@ -143,7 +143,7 @@
                     "index": 1
                 },
                 {
-                    "obj_name": "is_valid_line_entry",                
+                    "obj_name": "is_valid_line_entry",
                     "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "List", "Group", "LabelNumericLocalRef"],
                     "index": 2
                 },
@@ -168,8 +168,8 @@
                     "index": 1
                 },
                 {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["Register", "Number", "List", "Group", "LabelNumericLocalRef"],
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "List", "Group", "LabelNumericLocalRef"],
                     "index": 2
                 },
                 {

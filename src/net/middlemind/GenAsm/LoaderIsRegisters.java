@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 public class LoaderIsRegisters implements Loader {
     
     @Override
-    public JsonObjIsRegisters ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+    public JsonObjIsRegisters ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       
@@ -35,7 +35,7 @@ public class LoaderIsRegisters implements Loader {
             
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
+            throw new ExceptionLoader("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
         }
     }    
 }

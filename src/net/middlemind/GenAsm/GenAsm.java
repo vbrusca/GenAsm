@@ -300,7 +300,7 @@ public class GenAsm {
                     } else {
                         Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
                     }
-                } catch (LoaderException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                } catch (ExceptionLoader | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     Logger.wrl("GenAsm: Main: Error: could not instantiate loader class " + ASM_SETS_LOADER_CLASS);
                     e.printStackTrace();
                     return;

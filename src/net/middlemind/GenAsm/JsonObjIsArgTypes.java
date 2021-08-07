@@ -13,7 +13,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
     public List<JsonObjIsArgType> is_arg_types;
     
     @Override
-    public void Link(JsonObj linkData) throws JsonObjLinkException {
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsArgType entry : is_arg_types) {
             entry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();
             for(String s : entry.is_entry_types) {
@@ -37,7 +37,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
                 }
                 
                 if(!found) {
-                    throw new JsonObjLinkException("JsonObjIsArgTypes: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
+                    throw new ExceptionJsonObjLink("JsonObjIsArgTypes: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
                 }
             }
         }

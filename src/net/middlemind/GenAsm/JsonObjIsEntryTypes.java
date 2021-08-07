@@ -15,7 +15,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String null_entry_type = "None";
     
     @Override
-    public void Link(JsonObj linkData) throws JsonObjLinkException {
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsEntryGroupType entry : is_entry_group_types) {
             entry.linked_contains = new Hashtable<String, JsonObjIsEntryType>();
             for(String s : entry.contains) {
@@ -29,7 +29,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
                 }
                 
                 if(!found) {
-                    throw new JsonObjLinkException("JsonObjIsEntryTypes: Link: Error: Could not find JsonObjIsEntryType object with name " + s);
+                    throw new ExceptionJsonObjLink("JsonObjIsEntryTypes: Link: Error: Could not find JsonObjIsEntryType object with name " + s);
                 }
             }
         }

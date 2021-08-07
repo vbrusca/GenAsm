@@ -14,7 +14,7 @@ public class JsonObjIsValidLines extends JsonObjBase {
     public int max_line_entries;    
     public List<JsonObjIsValidLine> is_valid_lines;
     
-    public void Link(JsonObj linkData) throws JsonObjLinkException {
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsValidLine entry : is_valid_lines) {
             for(JsonObjIsValidLineEntry lentry : entry.is_valid_line) {
                 lentry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();
@@ -39,7 +39,7 @@ public class JsonObjIsValidLines extends JsonObjBase {
                     }
                     
                     if(!found) {
-                        throw new JsonObjLinkException("JsonObjIsValidLines: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
+                        throw new ExceptionJsonObjLink("JsonObjIsValidLines: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
                     }
                 }
             }

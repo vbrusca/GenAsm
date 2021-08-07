@@ -52,7 +52,7 @@ public class JsonObjBase implements JsonObj {
     }    
 
     @Override
-    public void Link(JsonObj linkData) throws JsonObjLinkException {
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         Logger.wrl("JsonObjBase: Link: Do nothing...");
     }
 }

@@ -19,7 +19,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
     public List<JsonObjIsOpCode> is_op_codes;
     
     @Override
-    public void Link(JsonObj linkData) throws JsonObjLinkException {
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsOpCode entry : is_op_codes) {
             for(JsonObjIsOpCodeArg lentry : entry.args) {
                 boolean found = false;
@@ -40,7 +40,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
                 }                
                 
                 if(!found) {
-                    throw new JsonObjLinkException("JsonObjIsOpCodes: Link: Error: Could not find JsonObjIsEntryType object with name " + lentry.is_entry_type);
+                    throw new ExceptionJsonObjLink("JsonObjIsOpCodes: Link: Error: Could not find JsonObjIsEntryType object with name " + lentry.is_entry_type);
                 }
                 
                 RecursiveSubArgLinking(lentry.sub_args, (JsonObjIsEntryTypes)linkData);
@@ -48,7 +48,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
         }
     }    
     
-    private void RecursiveSubArgLinking(List<JsonObjIsOpCodeArg> sub_args, JsonObjIsEntryTypes linkData) throws JsonObjLinkException {
+    private void RecursiveSubArgLinking(List<JsonObjIsOpCodeArg> sub_args, JsonObjIsEntryTypes linkData) throws ExceptionJsonObjLink {
         if(sub_args != null) {
             for(JsonObjIsOpCodeArg entry : sub_args) {
                 boolean found = false;
@@ -69,7 +69,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
                 }                
                 
                 if(!found) {
-                    throw new JsonObjLinkException("JsonObjIsOpCodes: RecursiveSubArgLinking: Error: Could not find JsonObjIsEntryType object with name " + entry.is_entry_type);
+                    throw new ExceptionJsonObjLink("JsonObjIsOpCodes: RecursiveSubArgLinking: Error: Could not find JsonObjIsEntryType object with name " + entry.is_entry_type);
                 }
                 
                 RecursiveSubArgLinking(entry.sub_args, linkData);                

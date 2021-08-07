@@ -10,5 +10,6 @@ public class TokenLine {
     public int lineNum;
     public int sourceLen;
     public ArtifactLine source;
+    public JsonObj validLineEntry;
     public List<Token> payload;    
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class LoaderIsOpCodes implements Loader {
 
     @Override
-    public JsonObjIsOpCodes ParseJson(String json, String targetClass, String fileName) throws LoaderException {
+    public JsonObjIsOpCodes ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       
@@ -65,7 +65,7 @@ public class LoaderIsOpCodes implements Loader {
                                     
             return jsonObj;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new LoaderException("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
+            throw new ExceptionLoader("Could not find target class, " + targetClass + ", in loader " + getClass().getName());
         }
     }
     

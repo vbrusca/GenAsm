@@ -19,6 +19,7 @@ public class AssemblerThumb implements Assembler {
     public Map<String, Loader> isaLoader;
     public Map<String, String> jsonSource;
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
+    public JsonObjIsValidLines jsonObjIsValidLines;
 
     public String asmSourceFile;
     public List<String> asmSourceData;
@@ -48,6 +49,18 @@ public class AssemblerThumb implements Assembler {
         
         //Tokenize the lexerized artifacts
         TokenizeLexerArtifacts();
+        Logger.wrl("");
+        Logger.wrl("");
+        PrintObject(asmTokenedData, "Assembly Tokenized Data");
+        
+        //Validate token lines
+        Logger.wrl("");
+        Logger.wrl("");        
+        if(ValidateTokenizedLines()) {
+            Logger.wrl("Assembly lines validated successfully.");
+        } else {
+            Logger.wrl("Assembly lines are NOT valid.");            
+        }
         Logger.wrl("");
         Logger.wrl("");
         PrintObject(asmTokenedData, "Assembly Tokenized Data");        
@@ -83,12 +96,16 @@ public class AssemblerThumb implements Assembler {
                 jsonName = jsonObj.GetName();
                 isaData.put(jsonName, jsonObj);
                 Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as " + entry.target_class);
+                Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry " + jsonName);
                 
                 if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsEntryTypes")) {
                     jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
-                }                
-            } catch (LoaderException | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsValidLines")) {
+                    jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
+                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
+                }             
+            } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                 Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not instantiate loader class " + entry.loader_class);
                 e.printStackTrace();
                 return;
@@ -102,7 +119,7 @@ public class AssemblerThumb implements Assembler {
             try {
                 JsonObj jsonObj = isaData.get(s);
                 jsonObj.Link(jsonObjIsEntryTypes);
-            } catch (JsonObjLinkException e) {
+            } catch (ExceptionJsonObjLink e) {
                 Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link " + s);
                 e.printStackTrace();
                 return;                
@@ -129,10 +146,87 @@ public class AssemblerThumb implements Assembler {
         try {
             TokenerThumb tok = new TokenerThumb();
             asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
-        } catch (TokenerNotFoundException e) {
+        } catch (ExceptionTokenerNotFound e) {
             Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts: Error: Could not tokenize lexed artifacts");
             e.printStackTrace();
             
         }
+    }
+    
+    public int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {
+        int count = 0;
+        //Logger.wrl("FindValidLineEntry for token: " + token.name);
+        for(JsonObjIsValidLineEntry validLineEntry : validLine.is_valid_line) {
+            for(String validLineEntryType : validLineEntry.is_entry_types) {
+                if(token.name.equals(validLineEntryType)) {
+                    if(count >= entry) {
+                        return new int[] { count, validLineEntry.index };
+                    } else {
+                        break;
+                    }
+                }
+            }
+            count++;
+        }
+        return null;
+    }
+    
+    public boolean ValidateTokenizedLine(TokenLine tokenLine, JsonObjIsValidLines validLines) {
+        int tokenCount;
+        int[] res;
+        int currentIndex;
+        int currentEntry;
+        int count = 0;
+        
+        for(JsonObjIsValidLine validLine : validLines.is_valid_lines) {
+            //Logger.wrl("Checking valid line entry: " + count);
+            res = null;
+            currentIndex = -1;
+            currentEntry = -1;
+            tokenCount = tokenLine.payload.size();
+            
+            for(Token token : tokenLine.payload) {            
+                res = FindValidLineEntry(validLine, token, currentEntry, currentIndex);
+                if(res == null) {
+                    break;
+                } else {
+                    //Logger.wrl("CurrentEntry: " + currentEntry + ", CurrentIndex: " + currentIndex + ", Res[0]: " + res[0] + ", Res[1]: " + res[1]);
+                }
+                    
+                if(currentIndex == -1) {
+                    currentIndex = res[1];
+                } 
+                    
+                if(currentEntry == -1) {
+                    currentEntry = res[0];
+                    tokenCount--;
+                } else {
+                    if(res[0] >= currentEntry) {
+                        currentIndex = res[0];
+                        tokenCount--;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            count++;
+            //Logger.wrl("TokenCount: " + tokenCount);
+            
+            if(tokenCount == 0) {
+                tokenLine.validLineEntry = validLine;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean ValidateTokenizedLines() {
+        for(TokenLine tokenLine : asmTokenedData) {
+            if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines)) {
+                Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + ", '" + tokenLine.source.source + "'");
+                return false;
+            }
+        }
+        return true;
     }
 }
