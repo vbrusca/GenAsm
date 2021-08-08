@@ -86,7 +86,7 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["13"],
+                "contains": ["13", "1"],
                 "ends_with": [",", "endl", ";", "3"]
             }
         },
@@ -108,7 +108,7 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["15"],
+                "contains": ["15", "1"],
                 "ends_with": [",", "endl", ";", "5"]
             }
         },
@@ -182,7 +182,7 @@
             "obj_name": "is_entry_group_type",
             "type_name": "ListStart",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["{"],
                 "contains": ["{"],
@@ -193,7 +193,7 @@
             "obj_name": "is_entry_group_type",
             "type_name": "ListStop",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["}"],
                 "contains": ["}"],
@@ -204,7 +204,7 @@
             "obj_name": "is_entry_group_type",            
             "type_name": "GroupStart",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",            
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",            
             "txt_match": {
                 "starts_with": ["["],
                 "contains": ["["],
@@ -215,7 +215,7 @@
             "obj_name": "is_entry_group_type",            
             "type_name": "GroupStop",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryGroupType",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["]"],
                 "contains": ["]"],

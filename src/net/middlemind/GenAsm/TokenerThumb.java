@@ -210,6 +210,7 @@ public class TokenerThumb implements Tokener {
 
                         //Check for containing string match
                         if(lfound) {
+                            /*
                             lfound = false;
                             if(payload.length() >= withStartsLen + withEndsLen) {
                                 payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
@@ -357,10 +358,103 @@ public class TokenerThumb implements Tokener {
                                     }
                                     
                                 }
-                            }                    
+                            }
+                            */
+                            
+                            lfound = false;
+                            if(payload.length() >= withStartsLen + withEndsLen) {
+                                payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
+                            }
+                            
+                            char[] chars = payloadContains.toCharArray();
+                            for(char c : chars) {
+                                boolean llfound = false;
+                                for(String withContains : type.txt_match.contains) {
+                                    compare = withContains;
+                                    if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
+                                        //Match anything
+                                        llfound = true;
+                                        break;
+
+                                    } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
+                                        //Match system end line
+                                        //All entries must match
+                                        if((c + "").equals(System.lineSeparator())) {
+                                            llfound = true;
+                                            break;
+                                        }
+
+                                    } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
+                                        if(Character.isDigit(withContains.charAt(0))) {
+                                            //Found numeric range
+                                            //All entries must match
+                                            int[] range = Utils.GetIntsFromRange(withContains);
+                                            int j = 0;
+
+                                            try {
+                                                j = Utils.GetIntFromChar(c);
+                                            } catch (ExceptionMalformedRange e) {
+                                                //do nothing
+                                            }
+
+                                            if(j >= range[0] && j <= range[1]) {
+                                                llfound = true;
+                                                break;
+                                            }
+
+                                        } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_range)) {
+                                            //Found lower case character range
+                                            //All entries must match
+                                            if(c == '_' || Character.isLowerCase(c)) {
+                                                llfound = true;
+                                                break;
+                                            }
+
+                                        } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
+                                            //Found lower case character range
+                                            //All entries must match
+                                            if(c == '_' || Character.isLowerCase(c) || Character.isDigit(c)) {
+                                                llfound = true;
+                                                break;
+                                            }
+
+                                        } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
+                                            //Found upper case character range
+                                            //All entries must match
+                                            if(c == '_' || Character.isUpperCase(c)) {
+                                                llfound = true;
+                                                break;
+                                            }
+
+                                        } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
+                                            //Found lower case character range
+                                            //All entries must match
+                                            if(c == '_' || Character.isUpperCase(c) || Character.isDigit(c)) {
+                                                llfound = true;
+                                                break;
+                                            }
+
+                                        }
+
+                                    } else {
+                                        //All entries must match
+                                        if((c + "").equals(withContains)) {
+                                            llfound = true;
+                                            break;
+                                        }
+
+                                    }
+                                }
+                                
+                                Logger.wrl("CompareType " + type.type_name + " lfound: " + lfound + " found: " + found + " payload: " + payload + " comparetype: " + compareType.name);                                
+                                if(llfound == false) {
+                                    lfound = false;
+                                    break;
+                                }                                
+                            }
                         }
 
-                        //Logger.wrl("CompareType " + type.type_name + " lfound: " + lfound + " found: " + found + " payload: " + payload + " comparetype: " + compareType.name);                        
+                        Logger.wrl("CompareType " + type.type_name + " lfound: " + lfound + " found: " + found + " payload: " + payload + " comparetype: " + compareType.name);
                         if(lfound) {
                             found = true;
                             break;

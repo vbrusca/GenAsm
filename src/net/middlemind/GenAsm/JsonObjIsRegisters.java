@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,24 @@ public class JsonObjIsRegisters extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsRegister> is_registers;
+    
+   @Override
+    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
+        for(JsonObjIsRegister entry : is_registers) {
+            boolean found = false;
+            for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
+                if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(entry.is_entry_type)) {
+                    entry.linked_is_entry_type = lentry;
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found) {
+                throw new ExceptionJsonObjLink("JsonObjIsRegisters: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + entry.is_entry_type);
+            }
+        }
+    }    
     
     @Override
     public void Print() {

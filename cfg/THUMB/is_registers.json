@@ -5,6 +5,7 @@
         {
             "register_name": "R0",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "000",
                 "bit_int": 0,
@@ -16,6 +17,7 @@
         {
             "register_name": "R1",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "001",
                 "bit_int": 1,
@@ -27,6 +29,7 @@
         {
             "register_name": "R2",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "010",
                 "bit_int": 2,
@@ -38,6 +41,7 @@
         {
             "register_name": "R3",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "011",
                 "bit_int": 3,
@@ -49,6 +53,7 @@
         {
             "register_name": "R4",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "100",
                 "bit_int": 4,
@@ -60,6 +65,7 @@
         {
             "register_name": "R5",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "101",
                 "bit_int": 5,
@@ -71,6 +77,7 @@
         {
             "register_name": "R6",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "110",
                 "bit_int": 6,
@@ -82,6 +89,7 @@
         {
             "register_name": "R7",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLow",
             "bit_rep": {
                 "bit_string": "111",
                 "bit_int": 7,
@@ -93,6 +101,7 @@
         {
             "register_name": "R8",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "000",
                 "bit_int": 0,
@@ -104,6 +113,7 @@
         {
             "register_name": "R9",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "001",
                 "bit_int": 1,
@@ -115,6 +125,7 @@
         {
             "register_name": "R10",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "010",
                 "bit_int": 2,
@@ -126,6 +137,7 @@
         {
             "register_name": "R11",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "011",
                 "bit_int": 3,
@@ -137,6 +149,7 @@
         {
             "register_name": "R12",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "100",
                 "bit_int": 4,
@@ -148,6 +161,7 @@
         {
             "register_name": "R13",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "101",
                 "bit_int": 5,
@@ -159,6 +173,7 @@
         {
             "register_name": "R14",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "110",
                 "bit_int": 6,
@@ -170,6 +185,7 @@
         {
             "register_name": "R15",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterHi",
             "bit_rep": {
                 "bit_string": "111",
                 "bit_int": 7,
@@ -181,6 +197,7 @@
         {
             "register_name": "SP",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterSp",
             "bit_rep": {
                 "bit_string": "101",
                 "bit_int": 5,
@@ -192,6 +209,7 @@
         {
             "register_name": "LR",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterLr",
             "bit_rep": {
                 "bit_string": "110",
                 "bit_int": 6,
@@ -203,6 +221,7 @@
         {
             "register_name": "PC",
             "obj_name": "is_register",
+            "is_entry_type": "RegisterPc",
             "bit_rep": {
                 "bit_string": "111",
                 "bit_int": 7,

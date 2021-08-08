@@ -7,6 +7,8 @@ package net.middlemind.GenAsm;
 public class JsonObjIsRegister extends JsonObjBase {
     public String register_name;
     public String obj_name;
+    public String is_entry_type;
+    public JsonObjIsEntryType linked_is_entry_type;
     public JsonObjBitRep bit_rep;
     public String desc;
     

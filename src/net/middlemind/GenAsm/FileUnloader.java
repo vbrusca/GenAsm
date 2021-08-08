@@ -12,7 +12,7 @@ import java.nio.file.StandardOpenOption;
  */
 public class FileUnloader {    
     public static void WriteStr(String file, String jsonString) throws IOException {
-        BufferedWriter bf = Files.newBufferedWriter(Paths.get(file), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+        BufferedWriter bf = Files.newBufferedWriter(Paths.get(file), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
         bf.write(jsonString);
         bf.flush();
         bf.close();
