@@ -10,7 +10,8 @@ import java.util.List;
 public class LexerSimple implements Lexer {
 
     public static char[] SEPARATORS = { ',', ' ', '\t', ';' };
-    public static char[] STICKY_SEPARATORS = { ',', ';' };
+    public static char[] STICKY_SEPARATORS = { ',' };
+    public static char[] NEW_ARTIFACT_SEPARATORS = { ';' };    
     public static char[] GROUP_START = { '[', '{' };
     public static char[] GROUP_STOP = { ']', '}' };    
     
@@ -69,6 +70,19 @@ public class LexerSimple implements Lexer {
                         ret.payload.add(artifact);                        
                         count++;
                         artifact = null;
+                        
+                        if(Contains(NEW_ARTIFACT_SEPARATORS, chars[i])) {
+                            artifact = new Artifact();
+                            artifact.lineNum = lineNum;
+                            artifact.posStart = i;
+                            artifact.posStop = i; 
+                            artifact.len = 1;
+                            artifact.index = count;
+                            artifact.payload = "" + chars[i];
+                            ret.payload.add(artifact);                        
+                            count++;
+                            artifact = null;                            
+                        }
                         
                     } else {
                         if(Contains(GROUP_START, chars[i])) {
@@ -170,6 +184,11 @@ public class LexerSimple implements Lexer {
                 artifact.posStop = (i - 1);
                 artifact.len = (i - artifact.posStart);
                 artifact.index = count;
+                
+                if(artifact.payload.indexOf(System.lineSeparator()) != (artifact.payload.length() - 1)) {
+                    artifact.payload += System.lineSeparator();
+                }
+                
                 ret.payload.add(artifact);
             }
             

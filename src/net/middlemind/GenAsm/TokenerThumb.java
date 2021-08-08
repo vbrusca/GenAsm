@@ -37,16 +37,15 @@ public class TokenerThumb implements Tokener {
                     compareType = commentType;
                     found = true;
                 } else {
-                    //Find NON-group matches
-                    for(JsonObjIsEntryType typeNgrp : types.is_entry_types) {
+                    for(JsonObjIsEntryType type : types.is_entry_types) {
                         boolean lfound = false;
                         int withStartsLen = 0;
                         int withEndsLen = 0;
                         String payloadContains = "";
-                        compareType = typeNgrp;
+                        compareType = type;
 
                         //Check for starting string match
-                        for(String withStarts : typeNgrp.txt_match.starts_with) {
+                        for(String withStarts : type.txt_match.starts_with) {
                             compare = withStarts;
                             withStartsLen = withStarts.length();
                             if(withStarts.equals(JsonObjTxtMatch.special_wild_card)) {
@@ -66,20 +65,26 @@ public class TokenerThumb implements Tokener {
                                     //Found numeric range
                                     //First entry must match
                                     int[] range = Utils.GetIntsFromRange(withStarts);
-                                    int j = Utils.GetIntFromChar(payload.charAt(0));
-                                    if(j >= range[0] && j <= range[1]) {
-                                        lfound = true;
-                                        break;
+                                    int j = 0;
+                                    
+                                    try {
+                                        j = Utils.GetIntFromChar(payload.charAt(0));
+                                        if(j >= range[0] && j <= range[1]) {
+                                            lfound = true;
+                                            break;
+                                        }
+                                    } catch (ExceptionMalformedRange e) {
+                                        //do nothing
                                     }
 
-                                } else if(withStarts.equals("a-z")) {
+                                } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                     //Found lower case character range
                                     //First entry must match
                                     if(Character.isLowerCase(payload.charAt(0))) {
                                         lfound = true;
                                         break;
                                     }
-                                } else if(withStarts.equals("A-Z")) {                                
+                                } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                     //Found upper case character range
                                     //First entry must match
                                     if(Character.isUpperCase(payload.charAt(0))) {
@@ -98,7 +103,7 @@ public class TokenerThumb implements Tokener {
                         //Check for ending string match
                         if(lfound) {
                             lfound = false;
-                            for(String withEnds : typeNgrp.txt_match.ends_with) {
+                            for(String withEnds : type.txt_match.ends_with) {
                                 compare = withEnds;
                                 withEndsLen = withEnds.length();
                                 if(withEnds.equals(JsonObjTxtMatch.special_wild_card)) {
@@ -109,32 +114,43 @@ public class TokenerThumb implements Tokener {
                                     //Adjust for system line separator
                                     withEnds = System.lineSeparator();
                                     withEndsLen = withEnds.length();
-                                    if(payload.indexOf(withEnds) == (payload.length() - 1 - withEndsLen)) {
+                                    //Logger.wrl("Payload: " + payload + ", " + payload.indexOf(withEnds) + ", " + payload.indexOf('\n'));
+                                    if(payload.indexOf(withEnds) == (payload.length() - withEndsLen)) {
                                         lfound = true;
                                         break;
                                     }
                                 } else if(withEnds.length() > 1 && withEnds.contains(JsonObjTxtMatch.special_range)) {
+                                    //Logger.wrl("Special range found: " + withEnds);
                                     if(Character.isDigit(withEnds.charAt(0))) {
                                         //Found numeric range
                                         //Last entry must match
                                         int[] range = Utils.GetIntsFromRange(withEnds);
-                                        int j = Utils.GetIntFromChar(payload.charAt(payload.length() - 1));                                    
-                                        if(j >= range[0] && j <= range[1]) {
-                                            lfound = true;
-                                            break;
+                                        int j = 0;
+                                        
+                                        try {
+                                            j = Utils.GetIntFromChar(payload.charAt(payload.length() - 1));
+                                            if(j >= range[0] && j <= range[1]) {
+                                                lfound = true;
+                                                break;
+                                            }
+                                        } catch (ExceptionMalformedRange e) {
+                                            //do nothing
                                         }
-
-                                    } else if(withEnds.equals("a-z")) {
+                                       
+                                    } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                         //Found lower case character range
                                         //Last entry must match
+                                        //Logger.wrl("SpecialLowercaseRange: " + payload.charAt(payload.length() - 1));
                                         if(Character.isLowerCase(payload.charAt(payload.length() - 1))) {
                                             lfound = true;
                                             break;
                                         }
-                                    } else if(withEnds.equals("A-Z")) {                                
+                                    } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                         //Found upper case character range
                                         //Last entry must match
+                                        //Logger.wrl("SpecialUppercaseRange: " + payload.charAt(payload.length() - 1));                                        
                                         if(Character.isUpperCase(payload.charAt(payload.length() - 1))) {
+                                            //Logger.wrl("SpecialUppercaseRange: true");
                                             lfound = true;
                                             break;
                                         }
@@ -155,7 +171,7 @@ public class TokenerThumb implements Tokener {
                                 payloadContains = payload.substring(withStartsLen, (payload.length() - withEndsLen));
                             }
 
-                            for(String withContains : typeNgrp.txt_match.contains) {
+                            for(String withContains : type.txt_match.contains) {
                                 compare = withContains;
                                 if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
                                     //Match anything
@@ -186,7 +202,15 @@ public class TokenerThumb implements Tokener {
                                         boolean llfound = true;
 
                                         for(char c : chars) {
-                                            int j = Utils.GetIntFromChar(c);
+                                            int j = 0;
+                                            
+                                            try {
+                                                j = Utils.GetIntFromChar(c);
+                                            } catch (ExceptionMalformedRange e) {
+                                                llfound = false;
+                                                break;
+                                            }
+                                            
                                             if(!(j >= range[0] && j <= range[1])) {
                                                 llfound = false;
                                                 break;
@@ -197,7 +221,7 @@ public class TokenerThumb implements Tokener {
                                             lfound = true;
                                             break;
                                         }                                    
-                                    } else if(withContains.equals("a-z")) {
+                                    } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                         //Found lower case character range
                                         //All entries must match
                                         char[] chars = payloadContains.toCharArray();
@@ -213,12 +237,14 @@ public class TokenerThumb implements Tokener {
                                             lfound = true;
                                             break;
                                         }
-                                    } else if(withContains.equals("A-Z")) {                                
+                                    } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                         //Found upper case character range
                                         //All entries must match
+                                        //Logger.wrl("SpecialUppercaseRange contains");
                                         char[] chars = payloadContains.toCharArray();
                                         boolean llfound = true;
                                         for(char c : chars) {
+                                            //Logger.wrl("SpecialUppercaseRange contains: " + c);                                            
                                             if(!Character.isUpperCase(c)) {
                                                 llfound = false;
                                                 break;
@@ -249,20 +275,12 @@ public class TokenerThumb implements Tokener {
                             }                    
                         }
 
+                        //Logger.wrl("CompareType " + type.type_name + " lfound: " + lfound + " found: " + found + " payload: " + payload + " comparetype: " + compareType.name);                        
                         if(lfound) {
                             found = true;
                             break;
                         }
                     }
-
-                    /*
-                    if(!found) {
-                        //Find group matches
-                        for(JsonObjIsEntryType typeGrp : types.is_entry_group_types) {
-                            compareType = typeGrp;
-                        }
-                    }
-                    */
                 }
 
                 Token tmb = new Token();                
@@ -271,6 +289,7 @@ public class TokenerThumb implements Tokener {
                 tmb.lineNum = lineNum;
                 tmb.payloadSource = payload;
                 if(!found || compareType == null) {
+                    //Logger.wrl("SpecialUppercaseRange set name: " + found + ", " + compareType);
                     tmb.name = "Unknown";
                     tmb.payloadType = null;
                 } else {

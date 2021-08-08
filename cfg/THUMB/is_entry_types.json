@@ -30,9 +30,9 @@
             "category": "OpCode",
             "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
             "txt_match": {
-                "starts_with": ["A-Z"],
-                "contains": ["A-Z"],
-                "ends_with": ["A-Z"]
+                "starts_with": ["A~Z"],
+                "contains": ["A~Z"],
+                "ends_with": ["A~Z"]
             }
         },
         {
@@ -42,8 +42,8 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["0-7"],
-                "ends_with": ["!,", "!endl", "!;"]
+                "contains": ["0~7"],
+                "ends_with": ["!,", "!endl", "!;", "!"]
             }
         },
         {
@@ -53,8 +53,8 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["0-7"],
-                "ends_with": [",", "endl", ";"]
+                "contains": ["0~7"],
+                "ends_with": [",", "endl", ";", "0~7"]
             }
         },
         {
@@ -64,8 +64,8 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["0-7"],
-                "ends_with": [",", "endl", ";"]
+                "contains": ["0~7"],
+                "ends_with": [",", "endl", ";", "0~7"]
             }
         },        
         {
@@ -75,8 +75,8 @@
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["8-15"],
-                "ends_with": [",", "endl", ";"]
+                "contains": ["8~15"],
+                "ends_with": [",", "endl", ";", "8~15"]
             }
         },
         {
@@ -87,7 +87,7 @@
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["13"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": [",", "endl", ";", "3"]
             }
         },
         {
@@ -98,7 +98,7 @@
             "txt_match": {
                 "starts_with": ["S"],
                 "contains": ["P"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": [",", "endl", ";", "P"]
             }
         },        
         {
@@ -109,7 +109,7 @@
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["15"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": [",", "endl", ";", "5"]
             }
         },
         {
@@ -120,7 +120,7 @@
             "txt_match": {
                 "starts_with": ["P"],
                 "contains": ["C"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": [",", "endl", ";", "C"]
             }
         },
         {
@@ -131,7 +131,7 @@
             "txt_match": {
                 "starts_with": ["L"],
                 "contains": ["R"],
-                "ends_with": [",", "endl", ";"]
+                "ends_with": [",", "endl", ";", "R"]
             }
         },        
         {
@@ -140,9 +140,9 @@
             "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
-                "starts_with": ["#0x", "#bx", "#"],
-                "contains": ["0-9"],
-                "ends_with": ["0-9", ",", "endl", ";"]
+                "starts_with": ["#0x", "#bx", "#-", "#"],
+                "contains": ["0~9"],
+                "ends_with": ["0~9", ",", "endl", ";"]
             }
         },
         {
@@ -152,8 +152,8 @@
             "category_class": "java.lang.String",
             "txt_match": {
                 "starts_with": ["_"],
-                "contains": ["0-9"],
-                "ends_with": ["0-9", "endl", ";"]
+                "contains": ["0~9"],
+                "ends_with": ["0~9", "endl", ";"]
             }
         },
         {
@@ -162,9 +162,9 @@
             "category": "Label",
             "category_class": "java.lang.String",            
             "txt_match": {
-                "starts_with": ["a-z"],
-                "contains": ["a-z"],
-                "ends_with": ["a-z", "endl", ";"]
+                "starts_with": ["a~z"],
+                "contains": ["a~z"],
+                "ends_with": ["a~z", "endl", ";"]
             }
         },
         {
@@ -174,8 +174,8 @@
             "category_class": "net.middlemind.GenAsm.LabelNumLocalRefThumb",            
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
-                "contains": ["0-9"],
-                "ends_with": ["0-9", ",", "endl", ";"]
+                "contains": ["0~9"],
+                "ends_with": ["0~9", ",", "endl", ";"]
             }
         },
         {

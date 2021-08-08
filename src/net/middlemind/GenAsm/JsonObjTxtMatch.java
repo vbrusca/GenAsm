@@ -12,9 +12,9 @@ public class JsonObjTxtMatch extends JsonObjBase {
     public List<String> ends_with;
     public static String special_wild_card = "*";
     public static String special_end_line = "endl";
-    public static String special_range = "-";
-    public static String special_lowercase_range = "a-z";
-    public static String special_uppercase_range = "A-Z";    
+    public static String special_range = "~";
+    public static String special_lowercase_range = "a~z";
+    public static String special_uppercase_range = "A~Z";    
     
     @Override
     public void Print() {
