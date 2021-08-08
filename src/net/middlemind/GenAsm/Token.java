@@ -8,12 +8,13 @@ import java.util.List;
  */
 public class Token {
     public String obj_name = "Token";
-    public String name;
+    public String type_name;
     public int lineNum;
     public int index;
     public Object value;
-    public Artifact payloadArtifact;    
-    public String payloadSource;
-    public JsonObj payloadType;
-    public List<Token> argTokens;
+    public Artifact artifact;    
+    public String source;
+    public JsonObj type;
+    public int payloadLen;
+    public List<Token> payload;
 }

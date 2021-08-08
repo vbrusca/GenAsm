@@ -8966,8 +8966,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 127,
-    "sourceLen": 24,
-    "source": "PUSH {R0,R1,R2,R3,R4,LR}",
+    "sourceLen": 15,
+    "source": "PUSH {R0-R4,LR}",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -8990,20 +8990,11 @@
       {
         "obj_name": "Artifact",
         "posStart": 6,
-        "posStop": 7,
-        "len": 2,
+        "posStop": 10,
+        "len": 5,
         "lineNum": 127,
         "index": 2,
-        "payload": "R0,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 9,
-        "posStop": 10,
-        "len": 2,
-        "lineNum": 127,
-        "index": 3,
-        "payload": "R1,"
+        "payload": "R0-R4,"
       },
       {
         "obj_name": "Artifact",
@@ -9011,43 +9002,16 @@
         "posStop": 13,
         "len": 2,
         "lineNum": 127,
-        "index": 4,
-        "payload": "R2,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 15,
-        "posStop": 16,
-        "len": 2,
-        "lineNum": 127,
-        "index": 5,
-        "payload": "R3,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 18,
-        "posStop": 19,
-        "len": 2,
-        "lineNum": 127,
-        "index": 6,
-        "payload": "R4,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 21,
-        "posStop": 22,
-        "len": 2,
-        "lineNum": 127,
-        "index": 7,
+        "index": 3,
         "payload": "LR"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 23,
-        "posStop": 23,
+        "posStart": 14,
+        "posStop": 14,
         "len": 1,
         "lineNum": 127,
-        "index": 8,
+        "index": 4,
         "payload": "}"
       }
     ]
@@ -9893,8 +9857,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 135,
-    "sourceLen": 67,
-    "source": "STMIA R0!, {R3,R4,R5,R6,R7} ; Store the contents of registers R3-R7",
+    "sourceLen": 58,
+    "source": "STMIA R0!, {R3-R7} ; Store the contents of registers R3-R7",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9926,118 +9890,82 @@
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 13,
-        "len": 2,
+        "posStop": 16,
+        "len": 5,
         "lineNum": 135,
         "index": 3,
-        "payload": "R3,"
+        "payload": "R3-R7"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 15,
-        "posStop": 16,
-        "len": 2,
-        "lineNum": 135,
-        "index": 4,
-        "payload": "R4,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 18,
-        "posStop": 19,
-        "len": 2,
-        "lineNum": 135,
-        "index": 5,
-        "payload": "R5,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 21,
-        "posStop": 22,
-        "len": 2,
-        "lineNum": 135,
-        "index": 6,
-        "payload": "R6,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 24,
-        "posStop": 25,
-        "len": 2,
-        "lineNum": 135,
-        "index": 7,
-        "payload": "R7"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 26,
-        "posStop": 26,
+        "posStart": 17,
+        "posStop": 17,
         "len": 1,
         "lineNum": 135,
-        "index": 8,
+        "index": 4,
         "payload": "}"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 28,
-        "posStop": 28,
+        "posStart": 19,
+        "posStop": 19,
         "len": 1,
         "lineNum": 135,
-        "index": 9,
+        "index": 5,
         "payload": ";"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 30,
-        "posStop": 34,
+        "posStart": 21,
+        "posStop": 25,
         "len": 5,
         "lineNum": 135,
-        "index": 10,
+        "index": 6,
         "payload": "Store"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 36,
-        "posStop": 38,
+        "posStart": 27,
+        "posStop": 29,
         "len": 3,
         "lineNum": 135,
-        "index": 11,
+        "index": 7,
         "payload": "the"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 40,
-        "posStop": 47,
+        "posStart": 31,
+        "posStop": 38,
         "len": 8,
         "lineNum": 135,
-        "index": 12,
+        "index": 8,
         "payload": "contents"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 49,
-        "posStop": 50,
+        "posStart": 40,
+        "posStop": 41,
         "len": 2,
         "lineNum": 135,
-        "index": 13,
+        "index": 9,
         "payload": "of"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 52,
-        "posStop": 60,
+        "posStart": 43,
+        "posStop": 51,
         "len": 9,
         "lineNum": 135,
-        "index": 14,
+        "index": 10,
         "payload": "registers"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 62,
-        "posStop": 66,
+        "posStart": 53,
+        "posStop": 57,
         "len": 5,
         "lineNum": 135,
-        "index": 15,
+        "index": 11,
         "payload": "R3-R7"
       }
     ]

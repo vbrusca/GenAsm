@@ -26,17 +26,6 @@
         },
         {
             "obj_name": "is_entry_type",            
-            "type_name": "OpCode",
-            "category": "OpCode",
-            "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
-            "txt_match": {
-                "starts_with": ["A~Z"],
-                "contains": ["A~Z"],
-                "ends_with": ["A~Z"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
             "type_name": "RegisterWb",
             "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
@@ -59,13 +48,24 @@
         },
         {
             "obj_name": "is_entry_type",            
-            "type_name": "Register",
+            "type_name": "RegisterRangeLow",
             "category": "Arg",
             "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["0~7"],
+                "contains": ["0~7", "-", "R"],
                 "ends_with": [",", "endl", ";", "0~7"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterRangeHi",
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["0~15", "-", "R"],
+                "ends_with": [",", "endl", ";", "8~15"]
             }
         },        
         {
@@ -221,6 +221,17 @@
                 "contains": ["]"],
                 "ends_with": ["]"]
             }
-        }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "OpCode",
+            "category": "OpCode",
+            "category_class": "net.middlemind.GenAsm.JsonObjIsOpCode",            
+            "txt_match": {
+                "starts_with": ["A~Z"],
+                "contains": ["A~Z"],
+                "ends_with": ["A~Z"]
+            }
+        }        
     ]
 }

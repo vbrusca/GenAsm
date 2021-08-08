@@ -9,7 +9,7 @@ import java.util.List;
 public class TokenLine {
     public String obj_name = "TokenLine";
     public int lineNum;
-    public int sourceLen;
+    public int payloadLen;
     public ArtifactLine source;
     public JsonObj validLineEntry;
     public List<Token> payload;    

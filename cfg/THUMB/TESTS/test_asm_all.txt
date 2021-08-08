@@ -125,7 +125,7 @@ ADD SP, #-104; SP (R13) := SP + 268, but don't set
   ADD SP, #268  ; SP (R13) := SP + 268, but don't set
   ADD SP, #-104 ; SP (R13) := SP + 268, but don't set
 
-PUSH {R0,R1,R2,R3,R4,LR}
+PUSH {R0-R4,LR}
 POP   {R2,R6,PC}
     PUSH {R0,R1,R2,R3,R4,LR} ; Store R0,R1,R2,R3,R4 and R14 (LR) at
     POP   {R2,R6,PC} ; Load R2,R6 and R15 (PC) from the stack
@@ -133,7 +133,7 @@ POP   {R2,R6,PC}
  POP   {R2,R6,PC}; Load R2,R6 and R15 (PC) from the stack
 
 STMIA R0!, {R3,R4,R5,R6,R7}
-STMIA R0!, {R3,R4,R5,R6,R7} ; Store the contents of registers R3-R7
+STMIA R0!, {R3-R7} ; Store the contents of registers R3-R7
 STMIA R0!, {R3,R4,R5,R6,R7}; Store the contents of registers R3-R7
 
     CMP R0, #45

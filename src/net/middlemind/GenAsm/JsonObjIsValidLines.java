@@ -8,6 +8,7 @@ import java.util.List;
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 10:21 AM EST
  */
 public class JsonObjIsValidLines extends JsonObjBase {
+    public static int ENTRY_LINE_EMPTY = 7;
     public String obj_name;
     public String set_name;
     public int min_line_entries;

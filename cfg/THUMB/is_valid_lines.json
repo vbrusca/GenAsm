@@ -150,7 +150,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
                     "index": 2
                 },
                 {
@@ -176,7 +176,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
                     "index": 2
                 },
                 {

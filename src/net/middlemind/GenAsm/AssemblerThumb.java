@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +15,13 @@ import java.util.Map;
  */
 public class AssemblerThumb implements Assembler {
 
-    public static int IS_VALID_LINE_ENTRY_EMPTY = 7;
-    
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
     public Map<String, Loader> isaLoader;
     public Map<String, String> jsonSource;
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
     public JsonObjIsValidLines jsonObjIsValidLines;
-
+    
     public String asmSourceFile;
     public List<String> asmSourceData;
     public List<ArtifactLine> asmLexedData;
@@ -52,22 +51,45 @@ public class AssemblerThumb implements Assembler {
         
         //Tokenize the lexerized artifacts
         TokenizeLexerArtifacts();
-        //Logger.wrl("");
-        //Logger.wrl("");
-        //PrintObject(asmTokenedData, "Assembly Tokenized Data");
         
         //Validate token lines
-        //Logger.wrl("");
-        //Logger.wrl("");
         if(ValidateTokenizedLines()) {
             Logger.wrl("Assembly lines validated successfully.");
         } else {
             Logger.wrl("Assembly lines are NOT valid.");            
         }
-        //Logger.wrl("");
-        //Logger.wrl("");
-        //PrintObject(asmTokenedData, "Assembly Tokenized Data"); 
-        WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
+    
+        CollapseCommentTokens();
+        //ExpandRegisterRangeToken();
+        //CollapseListAndGroupTokens();
+        WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");        
+    }
+    
+    public void CollapseCommentTokens() {
+        for(TokenLine line : asmTokenedData) {
+            boolean inComment = false;
+            Token commentRoot = null;
+            List<Token> clearTokens = new ArrayList<>();            
+            for(Token token : line.payload) {
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_COMMENT)) {
+                    if(!inComment) {
+                        commentRoot = token;
+                        commentRoot.payload = new ArrayList<>();                        
+                        inComment = true;
+                    } else {
+                        token.index = commentRoot.payload.size();
+                        commentRoot.payload.add(token);
+                        clearTokens.add(token);
+                    }                   
+                }
+            }
+            
+            if(inComment) {
+                commentRoot.payloadLen = commentRoot.payload.size();
+                line.payload.removeAll(clearTokens);
+                line.payloadLen = line.payload.size();
+            }
+        }
     }
     
     public void WriteObject(Object obj, String name, String fileName) {
@@ -178,7 +200,7 @@ public class AssemblerThumb implements Assembler {
         //Logger.wrl("FindValidLineEntry for token: " + token.name);
         for(JsonObjIsValidLineEntry validLineEntry : validLine.is_valid_line) {
             for(String validLineEntryType : validLineEntry.is_entry_types) {
-                if(token.name.equals(validLineEntryType)) {
+                if(token.type_name.equals(validLineEntryType)) {
                     if(count >= entry) {
                         return new int[] { count, validLineEntry.index };
                     } else {
@@ -247,7 +269,7 @@ public class AssemblerThumb implements Assembler {
     
     public boolean ValidateTokenizedLines() {        
         for(TokenLine tokenLine : asmTokenedData) {
-            if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(IS_VALID_LINE_ENTRY_EMPTY))) {
+            if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
                 Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + ", '" + tokenLine.source.source + "'");
                 return false;
             }
