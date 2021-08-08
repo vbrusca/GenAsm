@@ -15,6 +15,8 @@ public class JsonObjTxtMatch extends JsonObjBase {
     public static String special_range = "~";
     public static String special_lowercase_range = "a~z";
     public static String special_uppercase_range = "A~Z";    
+    public static String special_lowercase_num_range = "a~z0~9";
+    public static String special_uppercase_num_range = "A~Z0~9";    
     
     @Override
     public void Print() {

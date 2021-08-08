@@ -185,9 +185,9 @@ public class LexerSimple implements Lexer {
                 artifact.len = (i - artifact.posStart);
                 artifact.index = count;
                 
-                if(artifact.payload.indexOf(System.lineSeparator()) != (artifact.payload.length() - 1)) {
-                    artifact.payload += System.lineSeparator();
-                }
+                //if(artifact.payload.indexOf(System.lineSeparator()) != (artifact.payload.length() - 1)) {
+                //    artifact.payload += System.lineSeparator();
+                //}
                 
                 ret.payload.add(artifact);
             }

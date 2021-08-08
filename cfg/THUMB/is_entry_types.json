@@ -140,7 +140,7 @@
             "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
-                "starts_with": ["#0x", "#bx", "#-", "#"],
+                "starts_with": ["#0x", "#bx", "#-", "#", "0~9"],
                 "contains": ["0~9"],
                 "ends_with": ["0~9", ",", "endl", ";"]
             }
@@ -163,8 +163,8 @@
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["a~z"],
-                "contains": ["a~z"],
-                "ends_with": ["a~z", "endl", ";"]
+                "contains": ["a~z", "a~z0~9"],
+                "ends_with": ["a~z0~9", "a~z", "endl", ";", ","]
             }
         },
         {

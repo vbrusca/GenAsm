@@ -39,7 +39,7 @@
         "len": 3,
         "lineNum": 0,
         "index": 3,
-        "payload": "#27\n"
+        "payload": "#27"
       }
     ]
   },
@@ -137,7 +137,7 @@
         "len": 8,
         "lineNum": 1,
         "index": 9,
-        "payload": "contents\n"
+        "payload": "contents"
       }
     ]
   },
@@ -181,7 +181,7 @@
         "len": 3,
         "lineNum": 2,
         "index": 3,
-        "payload": "#27\n"
+        "payload": "#27"
       }
     ]
   },
@@ -279,7 +279,7 @@
         "len": 8,
         "lineNum": 3,
         "index": 9,
-        "payload": "contents\n"
+        "payload": "contents"
       }
     ]
   },
@@ -323,7 +323,7 @@
         "len": 3,
         "lineNum": 4,
         "index": 3,
-        "payload": "#27\n"
+        "payload": "#27"
       }
     ]
   },
@@ -421,7 +421,7 @@
         "len": 8,
         "lineNum": 5,
         "index": 9,
-        "payload": "contents\n"
+        "payload": "contents"
       }
     ]
   },
@@ -472,7 +472,7 @@
         "len": 2,
         "lineNum": 7,
         "index": 3,
-        "payload": "R4\n"
+        "payload": "R4"
       }
     ]
   },
@@ -642,7 +642,7 @@
         "len": 7,
         "lineNum": 8,
         "index": 17,
-        "payload": "result.\n"
+        "payload": "result."
       }
     ]
   },
@@ -686,7 +686,7 @@
         "len": 2,
         "lineNum": 9,
         "index": 3,
-        "payload": "R4\n"
+        "payload": "R4"
       }
     ]
   },
@@ -856,7 +856,7 @@
         "len": 7,
         "lineNum": 10,
         "index": 17,
-        "payload": "result.\n"
+        "payload": "result."
       }
     ]
   },
@@ -907,7 +907,7 @@
         "len": 2,
         "lineNum": 12,
         "index": 3,
-        "payload": "R4\n"
+        "payload": "R4"
       }
     ]
   },
@@ -1077,7 +1077,7 @@
         "len": 7,
         "lineNum": 13,
         "index": 17,
-        "payload": "result.\n"
+        "payload": "result."
       }
     ]
   },
@@ -1128,7 +1128,7 @@
         "len": 2,
         "lineNum": 15,
         "index": 3,
-        "payload": "#6\n"
+        "payload": "#6"
       }
     ]
   },
@@ -1262,7 +1262,7 @@
         "len": 6,
         "lineNum": 16,
         "index": 13,
-        "payload": "codes.\n"
+        "payload": "codes."
       }
     ]
   },
@@ -1306,7 +1306,7 @@
         "len": 2,
         "lineNum": 17,
         "index": 3,
-        "payload": "#6\n"
+        "payload": "#6"
       }
     ]
   },
@@ -1440,7 +1440,7 @@
         "len": 6,
         "lineNum": 18,
         "index": 13,
-        "payload": "codes.\n"
+        "payload": "codes."
       }
     ]
   },
@@ -1484,7 +1484,7 @@
         "len": 2,
         "lineNum": 19,
         "index": 3,
-        "payload": "#6\n"
+        "payload": "#6"
       }
     ]
   },
@@ -1618,7 +1618,7 @@
         "len": 6,
         "lineNum": 20,
         "index": 13,
-        "payload": "codes.\n"
+        "payload": "codes."
       }
     ]
   },
@@ -1660,7 +1660,7 @@
         "len": 4,
         "lineNum": 22,
         "index": 2,
-        "payload": "#128\n"
+        "payload": "#128"
       }
     ]
   },
@@ -1695,7 +1695,7 @@
         "len": 3,
         "lineNum": 23,
         "index": 2,
-        "payload": "#62\n"
+        "payload": "#62"
       }
     ]
   },
@@ -1730,7 +1730,7 @@
         "len": 4,
         "lineNum": 24,
         "index": 2,
-        "payload": "#255\n"
+        "payload": "#255"
       }
     ]
   },
@@ -1765,7 +1765,7 @@
         "len": 4,
         "lineNum": 25,
         "index": 2,
-        "payload": "#145\n"
+        "payload": "#145"
       }
     ]
   },
@@ -1951,7 +1951,7 @@
         "len": 2,
         "lineNum": 27,
         "index": 18,
-        "payload": "62\n"
+        "payload": "62"
       }
     ]
   },
@@ -2067,7 +2067,7 @@
         "len": 9,
         "lineNum": 28,
         "index": 11,
-        "payload": "condition\n"
+        "payload": "condition"
       }
     ]
   },
@@ -2120,7 +2120,7 @@
         "len": 5,
         "lineNum": 29,
         "index": 4,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -2254,7 +2254,7 @@
         "len": 5,
         "lineNum": 30,
         "index": 13,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -2433,7 +2433,7 @@
         "len": 2,
         "lineNum": 31,
         "index": 18,
-        "payload": "62\n"
+        "payload": "62"
       }
     ]
   },
@@ -2549,7 +2549,7 @@
         "len": 9,
         "lineNum": 32,
         "index": 11,
-        "payload": "condition\n"
+        "payload": "condition"
       }
     ]
   },
@@ -2602,7 +2602,7 @@
         "len": 5,
         "lineNum": 33,
         "index": 4,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -2736,7 +2736,7 @@
         "len": 5,
         "lineNum": 34,
         "index": 13,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -2778,7 +2778,7 @@
         "len": 2,
         "lineNum": 36,
         "index": 2,
-        "payload": "R4\n"
+        "payload": "R4"
       }
     ]
   },
@@ -2813,7 +2813,7 @@
         "len": 2,
         "lineNum": 37,
         "index": 2,
-        "payload": "R0\n"
+        "payload": "R0"
       }
     ]
   },
@@ -2848,7 +2848,7 @@
         "len": 2,
         "lineNum": 38,
         "index": 2,
-        "payload": "R3\n"
+        "payload": "R3"
       }
     ]
   },
@@ -2883,7 +2883,7 @@
         "len": 2,
         "lineNum": 39,
         "index": 2,
-        "payload": "R6\n"
+        "payload": "R6"
       }
     ]
   },
@@ -2918,7 +2918,7 @@
         "len": 2,
         "lineNum": 40,
         "index": 2,
-        "payload": "R7\n"
+        "payload": "R7"
       }
     ]
   },
@@ -2960,7 +2960,7 @@
         "len": 2,
         "lineNum": 42,
         "index": 2,
-        "payload": "R4\n"
+        "payload": "R4"
       }
     ]
   },
@@ -2995,7 +2995,7 @@
         "len": 2,
         "lineNum": 43,
         "index": 2,
-        "payload": "R0\n"
+        "payload": "R0"
       }
     ]
   },
@@ -3030,7 +3030,7 @@
         "len": 2,
         "lineNum": 44,
         "index": 2,
-        "payload": "R3\n"
+        "payload": "R3"
       }
     ]
   },
@@ -3065,7 +3065,7 @@
         "len": 2,
         "lineNum": 45,
         "index": 2,
-        "payload": "R6\n"
+        "payload": "R6"
       }
     ]
   },
@@ -3100,7 +3100,7 @@
         "len": 2,
         "lineNum": 46,
         "index": 2,
-        "payload": "R7\n"
+        "payload": "R7"
       }
     ]
   },
@@ -3232,7 +3232,7 @@
         "len": 5,
         "lineNum": 48,
         "index": 12,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -3357,7 +3357,7 @@
         "len": 5,
         "lineNum": 49,
         "index": 12,
-        "payload": "store\n"
+        "payload": "store"
       }
     ]
   },
@@ -3473,7 +3473,7 @@
         "len": 5,
         "lineNum": 50,
         "index": 11,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -3741,7 +3741,7 @@
         "len": 3,
         "lineNum": 52,
         "index": 16,
-        "payload": "-R3\n"
+        "payload": "-R3"
       }
     ]
   },
@@ -3873,7 +3873,7 @@
         "len": 5,
         "lineNum": 54,
         "index": 12,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -3998,7 +3998,7 @@
         "len": 5,
         "lineNum": 55,
         "index": 12,
-        "payload": "store\n"
+        "payload": "store"
       }
     ]
   },
@@ -4114,7 +4114,7 @@
         "len": 5,
         "lineNum": 56,
         "index": 11,
-        "payload": "codes\n"
+        "payload": "codes"
       }
     ]
   },
@@ -4382,7 +4382,7 @@
         "len": 3,
         "lineNum": 58,
         "index": 16,
-        "payload": "-R3\n"
+        "payload": "-R3"
       }
     ]
   },
@@ -4424,7 +4424,7 @@
         "len": 2,
         "lineNum": 60,
         "index": 2,
-        "payload": "R5\n"
+        "payload": "R5"
       }
     ]
   },
@@ -4459,7 +4459,7 @@
         "len": 3,
         "lineNum": 61,
         "index": 2,
-        "payload": "R12\n"
+        "payload": "R12"
       }
     ]
   },
@@ -4494,7 +4494,7 @@
         "len": 3,
         "lineNum": 62,
         "index": 2,
-        "payload": "R14\n"
+        "payload": "R14"
       }
     ]
   },
@@ -4653,7 +4653,7 @@
         "len": 6,
         "lineNum": 64,
         "index": 15,
-        "payload": "codes.\n"
+        "payload": "codes."
       }
     ]
   },
@@ -4805,7 +4805,7 @@
         "len": 4,
         "lineNum": 65,
         "index": 15,
-        "payload": "R12.\n"
+        "payload": "R12."
       }
     ]
   },
@@ -4903,7 +4903,7 @@
         "len": 4,
         "lineNum": 66,
         "index": 9,
-        "payload": "(PC)\n"
+        "payload": "(PC)"
       }
     ]
   },
@@ -4945,7 +4945,7 @@
         "len": 10,
         "lineNum": 68,
         "index": 2,
-        "payload": "outofthumb\n"
+        "payload": "outofthumb"
       }
     ]
   },
@@ -4980,7 +4980,7 @@
         "len": 2,
         "lineNum": 69,
         "index": 2,
-        "payload": "R1\n"
+        "payload": "R1"
       }
     ]
   },
@@ -5069,7 +5069,7 @@
         "len": 4,
         "lineNum": 70,
         "index": 8,
-        "payload": "into\n"
+        "payload": "into"
       }
     ]
   },
@@ -5086,7 +5086,7 @@
         "len": 10,
         "lineNum": 71,
         "index": 0,
-        "payload": "outofthumb\n"
+        "payload": "outofthumb"
       }
     ]
   },
@@ -5298,7 +5298,7 @@
         "len": 3,
         "lineNum": 74,
         "index": 14,
-        "payload": "the\n"
+        "payload": "the"
       }
     ]
   },
@@ -5503,7 +5503,7 @@
         "len": 3,
         "lineNum": 76,
         "index": 14,
-        "payload": "the\n"
+        "payload": "the"
       }
     ]
   },
@@ -5906,7 +5906,7 @@
         "len": 2,
         "lineNum": 84,
         "index": 13,
-        "payload": "at\n"
+        "payload": "at"
       }
     ]
   },
@@ -6022,7 +6022,7 @@
         "len": 6,
         "lineNum": 85,
         "index": 11,
-        "payload": "adding\n"
+        "payload": "adding"
       }
     ]
   },
@@ -6553,7 +6553,7 @@
         "len": 3,
         "lineNum": 93,
         "index": 15,
-        "payload": "the\n"
+        "payload": "the"
       }
     ]
   },
@@ -6687,7 +6687,7 @@
         "len": 4,
         "lineNum": 94,
         "index": 13,
-        "payload": "byte\n"
+        "payload": "byte"
       }
     ]
   },
@@ -6821,7 +6821,7 @@
         "len": 8,
         "lineNum": 95,
         "index": 13,
-        "payload": "halfword\n"
+        "payload": "halfword"
       }
     ]
   },
@@ -7095,7 +7095,7 @@
         "len": 3,
         "lineNum": 99,
         "index": 14,
-        "payload": "the\n"
+        "payload": "the"
       }
     ]
   },
@@ -7247,7 +7247,7 @@
         "len": 3,
         "lineNum": 100,
         "index": 15,
-        "payload": "the\n"
+        "payload": "the"
       }
     ]
   },
@@ -7535,7 +7535,7 @@
         "len": 2,
         "lineNum": 106,
         "index": 14,
-        "payload": "at\n"
+        "payload": "at"
       }
     ]
   },
@@ -7606,7 +7606,7 @@
         "len": 2,
         "lineNum": 107,
         "index": 6,
-        "payload": "56\n"
+        "payload": "56"
       }
     ]
   },
@@ -7632,7 +7632,7 @@
         "len": 3,
         "lineNum": 108,
         "index": 1,
-        "payload": "R1.\n"
+        "payload": "R1."
       }
     ]
   },
@@ -7766,7 +7766,7 @@
         "len": 6,
         "lineNum": 109,
         "index": 13,
-        "payload": "value.\n"
+        "payload": "value."
       }
     ]
   },
@@ -7907,7 +7907,7 @@
         "len": 2,
         "lineNum": 111,
         "index": 13,
-        "payload": "at\n"
+        "payload": "at"
       }
     ]
   },
@@ -7996,7 +7996,7 @@
         "len": 3,
         "lineNum": 112,
         "index": 8,
-        "payload": "R7.\n"
+        "payload": "R7."
       }
     ]
   },
@@ -8130,7 +8130,7 @@
         "len": 6,
         "lineNum": 113,
         "index": 13,
-        "payload": "value.\n"
+        "payload": "value."
       }
     ]
   },
@@ -8280,7 +8280,7 @@
         "len": 7,
         "lineNum": 115,
         "index": 14,
-        "payload": "address\n"
+        "payload": "address"
       }
     ]
   },
@@ -8331,7 +8331,7 @@
         "len": 4,
         "lineNum": 117,
         "index": 3,
-        "payload": "#572\n"
+        "payload": "#572"
       }
     ]
   },
@@ -8375,7 +8375,7 @@
         "len": 4,
         "lineNum": 118,
         "index": 3,
-        "payload": "#212\n"
+        "payload": "#212"
       }
     ]
   },
@@ -8417,7 +8417,7 @@
         "len": 4,
         "lineNum": 120,
         "index": 2,
-        "payload": "#268\n"
+        "payload": "#268"
       }
     ]
   },
@@ -8452,7 +8452,7 @@
         "len": 5,
         "lineNum": 121,
         "index": 2,
-        "payload": "#-104\n"
+        "payload": "#-104"
       }
     ]
   },
@@ -8577,7 +8577,7 @@
         "len": 3,
         "lineNum": 122,
         "index": 12,
-        "payload": "set\n"
+        "payload": "set"
       }
     ]
   },
@@ -8702,7 +8702,7 @@
         "len": 3,
         "lineNum": 123,
         "index": 12,
-        "payload": "set\n"
+        "payload": "set"
       }
     ]
   },
@@ -8827,7 +8827,7 @@
         "len": 3,
         "lineNum": 124,
         "index": 12,
-        "payload": "set\n"
+        "payload": "set"
       }
     ]
   },
@@ -8952,7 +8952,7 @@
         "len": 3,
         "lineNum": 125,
         "index": 12,
-        "payload": "set\n"
+        "payload": "set"
       }
     ]
   },
@@ -8966,8 +8966,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 127,
-    "sourceLen": 15,
-    "source": "PUSH {R0-R4,LR}",
+    "sourceLen": 24,
+    "source": "PUSH {R0,R1,R2,R3,R4,LR}",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -8990,11 +8990,20 @@
       {
         "obj_name": "Artifact",
         "posStart": 6,
-        "posStop": 10,
-        "len": 5,
+        "posStop": 7,
+        "len": 2,
         "lineNum": 127,
         "index": 2,
-        "payload": "R0-R4,"
+        "payload": "R0,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 9,
+        "posStop": 10,
+        "len": 2,
+        "lineNum": 127,
+        "index": 3,
+        "payload": "R1,"
       },
       {
         "obj_name": "Artifact",
@@ -9002,16 +9011,43 @@
         "posStop": 13,
         "len": 2,
         "lineNum": 127,
-        "index": 3,
+        "index": 4,
+        "payload": "R2,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 15,
+        "posStop": 16,
+        "len": 2,
+        "lineNum": 127,
+        "index": 5,
+        "payload": "R3,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 18,
+        "posStop": 19,
+        "len": 2,
+        "lineNum": 127,
+        "index": 6,
+        "payload": "R4,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 21,
+        "posStop": 22,
+        "len": 2,
+        "lineNum": 127,
+        "index": 7,
         "payload": "LR"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 14,
-        "posStop": 14,
+        "posStart": 23,
+        "posStop": 23,
         "len": 1,
         "lineNum": 127,
-        "index": 4,
+        "index": 8,
         "payload": "}"
       }
     ]
@@ -9081,8 +9117,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 129,
-    "sourceLen": 58,
-    "source": "    PUSH {R0-R4,LR} ; Store R0,R1,R2,R3,R4 and R14 (LR) at",
+    "sourceLen": 67,
+    "source": "    PUSH {R0,R1,R2,R3,R4,LR} ; Store R0,R1,R2,R3,R4 and R14 (LR) at",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9105,11 +9141,20 @@
       {
         "obj_name": "Artifact",
         "posStart": 10,
-        "posStop": 14,
-        "len": 5,
+        "posStop": 11,
+        "len": 2,
         "lineNum": 129,
         "index": 2,
-        "payload": "R0-R4,"
+        "payload": "R0,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 13,
+        "posStop": 14,
+        "len": 2,
+        "lineNum": 129,
+        "index": 3,
+        "payload": "R1,"
       },
       {
         "obj_name": "Artifact",
@@ -9117,62 +9162,62 @@
         "posStop": 17,
         "len": 2,
         "lineNum": 129,
-        "index": 3,
-        "payload": "LR"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 18,
-        "posStop": 18,
-        "len": 1,
-        "lineNum": 129,
         "index": 4,
-        "payload": "}"
+        "payload": "R2,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 20,
+        "posStart": 19,
         "posStop": 20,
-        "len": 1,
+        "len": 2,
         "lineNum": 129,
         "index": 5,
-        "payload": ";"
+        "payload": "R3,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 22,
-        "posStop": 26,
-        "len": 5,
+        "posStop": 23,
+        "len": 2,
         "lineNum": 129,
         "index": 6,
-        "payload": "Store"
+        "payload": "R4,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 28,
-        "posStop": 29,
+        "posStart": 25,
+        "posStop": 26,
         "len": 2,
         "lineNum": 129,
         "index": 7,
-        "payload": "R0,"
+        "payload": "LR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 27,
+        "posStop": 27,
+        "len": 1,
+        "lineNum": 129,
+        "index": 8,
+        "payload": "}"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 29,
+        "len": 1,
+        "lineNum": 129,
+        "index": 9,
+        "payload": ";"
       },
       {
         "obj_name": "Artifact",
         "posStart": 31,
-        "posStop": 32,
-        "len": 2,
-        "lineNum": 129,
-        "index": 8,
-        "payload": "R1,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 34,
         "posStop": 35,
-        "len": 2,
+        "len": 5,
         "lineNum": 129,
-        "index": 9,
-        "payload": "R2,"
+        "index": 10,
+        "payload": "Store"
       },
       {
         "obj_name": "Artifact",
@@ -9180,8 +9225,8 @@
         "posStop": 38,
         "len": 2,
         "lineNum": 129,
-        "index": 10,
-        "payload": "R3,"
+        "index": 11,
+        "payload": "R0,"
       },
       {
         "obj_name": "Artifact",
@@ -9189,44 +9234,71 @@
         "posStop": 41,
         "len": 2,
         "lineNum": 129,
-        "index": 11,
-        "payload": "R4"
+        "index": 12,
+        "payload": "R1,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 43,
-        "posStop": 45,
+        "posStop": 44,
+        "len": 2,
+        "lineNum": 129,
+        "index": 13,
+        "payload": "R2,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 46,
+        "posStop": 47,
+        "len": 2,
+        "lineNum": 129,
+        "index": 14,
+        "payload": "R3,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 49,
+        "posStop": 50,
+        "len": 2,
+        "lineNum": 129,
+        "index": 15,
+        "payload": "R4"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 52,
+        "posStop": 54,
         "len": 3,
         "lineNum": 129,
-        "index": 12,
+        "index": 16,
         "payload": "and"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 47,
-        "posStop": 49,
+        "posStart": 56,
+        "posStop": 58,
         "len": 3,
         "lineNum": 129,
-        "index": 13,
+        "index": 17,
         "payload": "R14"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 51,
-        "posStop": 54,
+        "posStart": 60,
+        "posStop": 63,
         "len": 4,
         "lineNum": 129,
-        "index": 14,
+        "index": 18,
         "payload": "(LR)"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 56,
-        "posStop": 57,
+        "posStart": 65,
+        "posStop": 66,
         "len": 2,
         "lineNum": 129,
-        "index": 15,
-        "payload": "at\n"
+        "index": 19,
+        "payload": "at"
       }
     ]
   },
@@ -9378,15 +9450,15 @@
         "len": 5,
         "lineNum": 130,
         "index": 15,
-        "payload": "stack\n"
+        "payload": "stack"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 131,
-    "sourceLen": 54,
-    "source": " PUSH {R0-R4,LR}; Store R0,R1,R2,R3,R4 and R14 (LR) at",
+    "sourceLen": 63,
+    "source": " PUSH {R0,R1,R2,R3,R4,LR}; Store R0,R1,R2,R3,R4 and R14 (LR) at",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9409,11 +9481,20 @@
       {
         "obj_name": "Artifact",
         "posStart": 7,
-        "posStop": 11,
-        "len": 5,
+        "posStop": 8,
+        "len": 2,
         "lineNum": 131,
         "index": 2,
-        "payload": "R0-R4,"
+        "payload": "R0,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 10,
+        "posStop": 11,
+        "len": 2,
+        "lineNum": 131,
+        "index": 3,
+        "payload": "R1,"
       },
       {
         "obj_name": "Artifact",
@@ -9421,62 +9502,62 @@
         "posStop": 14,
         "len": 2,
         "lineNum": 131,
-        "index": 3,
-        "payload": "LR"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 15,
-        "posStop": 15,
-        "len": 1,
-        "lineNum": 131,
         "index": 4,
-        "payload": "}"
+        "payload": "R2,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 16,
-        "posStop": 16,
-        "len": 1,
+        "posStop": 17,
+        "len": 2,
         "lineNum": 131,
         "index": 5,
-        "payload": ";"
+        "payload": "R3,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 18,
-        "posStop": 22,
-        "len": 5,
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
         "lineNum": 131,
         "index": 6,
-        "payload": "Store"
+        "payload": "R4,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 22,
+        "posStop": 23,
+        "len": 2,
+        "lineNum": 131,
+        "index": 7,
+        "payload": "LR"
       },
       {
         "obj_name": "Artifact",
         "posStart": 24,
-        "posStop": 25,
-        "len": 2,
+        "posStop": 24,
+        "len": 1,
         "lineNum": 131,
-        "index": 7,
-        "payload": "R0,"
+        "index": 8,
+        "payload": "}"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 25,
+        "posStop": 25,
+        "len": 1,
+        "lineNum": 131,
+        "index": 9,
+        "payload": ";"
       },
       {
         "obj_name": "Artifact",
         "posStart": 27,
-        "posStop": 28,
-        "len": 2,
-        "lineNum": 131,
-        "index": 8,
-        "payload": "R1,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 30,
         "posStop": 31,
-        "len": 2,
+        "len": 5,
         "lineNum": 131,
-        "index": 9,
-        "payload": "R2,"
+        "index": 10,
+        "payload": "Store"
       },
       {
         "obj_name": "Artifact",
@@ -9484,8 +9565,8 @@
         "posStop": 34,
         "len": 2,
         "lineNum": 131,
-        "index": 10,
-        "payload": "R3,"
+        "index": 11,
+        "payload": "R0,"
       },
       {
         "obj_name": "Artifact",
@@ -9493,44 +9574,71 @@
         "posStop": 37,
         "len": 2,
         "lineNum": 131,
-        "index": 11,
-        "payload": "R4"
+        "index": 12,
+        "payload": "R1,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 39,
-        "posStop": 41,
+        "posStop": 40,
+        "len": 2,
+        "lineNum": 131,
+        "index": 13,
+        "payload": "R2,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 42,
+        "posStop": 43,
+        "len": 2,
+        "lineNum": 131,
+        "index": 14,
+        "payload": "R3,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 45,
+        "posStop": 46,
+        "len": 2,
+        "lineNum": 131,
+        "index": 15,
+        "payload": "R4"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 48,
+        "posStop": 50,
         "len": 3,
         "lineNum": 131,
-        "index": 12,
+        "index": 16,
         "payload": "and"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 43,
-        "posStop": 45,
+        "posStart": 52,
+        "posStop": 54,
         "len": 3,
         "lineNum": 131,
-        "index": 13,
+        "index": 17,
         "payload": "R14"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 47,
-        "posStop": 50,
+        "posStart": 56,
+        "posStop": 59,
         "len": 4,
         "lineNum": 131,
-        "index": 14,
+        "index": 18,
         "payload": "(LR)"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 52,
-        "posStop": 53,
+        "posStart": 61,
+        "posStop": 62,
         "len": 2,
         "lineNum": 131,
-        "index": 15,
-        "payload": "at\n"
+        "index": 19,
+        "payload": "at"
       }
     ]
   },
@@ -9682,7 +9790,7 @@
         "len": 5,
         "lineNum": 132,
         "index": 15,
-        "payload": "stack\n"
+        "payload": "stack"
       }
     ]
   },
@@ -9696,8 +9804,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 134,
-    "sourceLen": 18,
-    "source": "STMIA R0!, {R3-R7}",
+    "sourceLen": 27,
+    "source": "STMIA R0!, {R3,R4,R5,R6,R7}",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9729,19 +9837,55 @@
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 16,
-        "len": 5,
+        "posStop": 13,
+        "len": 2,
         "lineNum": 134,
         "index": 3,
-        "payload": "R3-R7"
+        "payload": "R3,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 17,
-        "posStop": 17,
-        "len": 1,
+        "posStart": 15,
+        "posStop": 16,
+        "len": 2,
         "lineNum": 134,
         "index": 4,
+        "payload": "R4,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 18,
+        "posStop": 19,
+        "len": 2,
+        "lineNum": 134,
+        "index": 5,
+        "payload": "R5,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 21,
+        "posStop": 22,
+        "len": 2,
+        "lineNum": 134,
+        "index": 6,
+        "payload": "R6,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 134,
+        "index": 7,
+        "payload": "R7"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 26,
+        "posStop": 26,
+        "len": 1,
+        "lineNum": 134,
+        "index": 8,
         "payload": "}"
       }
     ]
@@ -9749,8 +9893,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 135,
-    "sourceLen": 58,
-    "source": "STMIA R0!, {R3-R7} ; Store the contents of registers R3-R7",
+    "sourceLen": 67,
+    "source": "STMIA R0!, {R3,R4,R5,R6,R7} ; Store the contents of registers R3-R7",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9782,91 +9926,127 @@
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 16,
-        "len": 5,
+        "posStop": 13,
+        "len": 2,
         "lineNum": 135,
         "index": 3,
-        "payload": "R3-R7"
+        "payload": "R3,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 17,
-        "posStop": 17,
-        "len": 1,
+        "posStart": 15,
+        "posStop": 16,
+        "len": 2,
         "lineNum": 135,
         "index": 4,
-        "payload": "}"
+        "payload": "R4,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 19,
+        "posStart": 18,
         "posStop": 19,
-        "len": 1,
+        "len": 2,
         "lineNum": 135,
         "index": 5,
-        "payload": ";"
+        "payload": "R5,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 21,
-        "posStop": 25,
-        "len": 5,
+        "posStop": 22,
+        "len": 2,
         "lineNum": 135,
         "index": 6,
+        "payload": "R6,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 135,
+        "index": 7,
+        "payload": "R7"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 26,
+        "posStop": 26,
+        "len": 1,
+        "lineNum": 135,
+        "index": 8,
+        "payload": "}"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 28,
+        "posStop": 28,
+        "len": 1,
+        "lineNum": 135,
+        "index": 9,
+        "payload": ";"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 30,
+        "posStop": 34,
+        "len": 5,
+        "lineNum": 135,
+        "index": 10,
         "payload": "Store"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 27,
-        "posStop": 29,
+        "posStart": 36,
+        "posStop": 38,
         "len": 3,
         "lineNum": 135,
-        "index": 7,
+        "index": 11,
         "payload": "the"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 31,
-        "posStop": 38,
+        "posStart": 40,
+        "posStop": 47,
         "len": 8,
         "lineNum": 135,
-        "index": 8,
+        "index": 12,
         "payload": "contents"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 40,
-        "posStop": 41,
+        "posStart": 49,
+        "posStop": 50,
         "len": 2,
         "lineNum": 135,
-        "index": 9,
+        "index": 13,
         "payload": "of"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 43,
-        "posStop": 51,
+        "posStart": 52,
+        "posStop": 60,
         "len": 9,
         "lineNum": 135,
-        "index": 10,
+        "index": 14,
         "payload": "registers"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 53,
-        "posStop": 57,
+        "posStart": 62,
+        "posStop": 66,
         "len": 5,
         "lineNum": 135,
-        "index": 11,
-        "payload": "R3-R7\n"
+        "index": 15,
+        "payload": "R3-R7"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 136,
-    "sourceLen": 57,
-    "source": "STMIA R0!, {R3-R7}; Store the contents of registers R3-R7",
+    "sourceLen": 66,
+    "source": "STMIA R0!, {R3,R4,R5,R6,R7}; Store the contents of registers R3-R7",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -9898,83 +10078,119 @@
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 16,
-        "len": 5,
+        "posStop": 13,
+        "len": 2,
         "lineNum": 136,
         "index": 3,
-        "payload": "R3-R7"
+        "payload": "R3,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 17,
-        "posStop": 17,
-        "len": 1,
+        "posStart": 15,
+        "posStop": 16,
+        "len": 2,
         "lineNum": 136,
         "index": 4,
-        "payload": "}"
+        "payload": "R4,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 18,
-        "posStop": 18,
-        "len": 1,
+        "posStop": 19,
+        "len": 2,
         "lineNum": 136,
         "index": 5,
-        "payload": ";"
+        "payload": "R5,"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 24,
-        "len": 5,
+        "posStart": 21,
+        "posStop": 22,
+        "len": 2,
         "lineNum": 136,
         "index": 6,
-        "payload": "Store"
+        "payload": "R6,"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 136,
+        "index": 7,
+        "payload": "R7"
       },
       {
         "obj_name": "Artifact",
         "posStart": 26,
-        "posStop": 28,
+        "posStop": 26,
+        "len": 1,
+        "lineNum": 136,
+        "index": 8,
+        "payload": "}"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 27,
+        "posStop": 27,
+        "len": 1,
+        "lineNum": 136,
+        "index": 9,
+        "payload": ";"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 33,
+        "len": 5,
+        "lineNum": 136,
+        "index": 10,
+        "payload": "Store"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 35,
+        "posStop": 37,
         "len": 3,
         "lineNum": 136,
-        "index": 7,
+        "index": 11,
         "payload": "the"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 30,
-        "posStop": 37,
+        "posStart": 39,
+        "posStop": 46,
         "len": 8,
         "lineNum": 136,
-        "index": 8,
+        "index": 12,
         "payload": "contents"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 39,
-        "posStop": 40,
+        "posStart": 48,
+        "posStop": 49,
         "len": 2,
         "lineNum": 136,
-        "index": 9,
+        "index": 13,
         "payload": "of"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 42,
-        "posStop": 50,
+        "posStart": 51,
+        "posStop": 59,
         "len": 9,
         "lineNum": 136,
-        "index": 10,
+        "index": 14,
         "payload": "registers"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 52,
-        "posStop": 56,
+        "posStart": 61,
+        "posStop": 65,
         "len": 5,
         "lineNum": 136,
-        "index": 11,
-        "payload": "R3-R7\n"
+        "index": 15,
+        "payload": "R3-R7"
       }
     ]
   },
@@ -10016,7 +10232,7 @@
         "len": 3,
         "lineNum": 138,
         "index": 2,
-        "payload": "#45\n"
+        "payload": "#45"
       }
     ]
   },
@@ -10042,7 +10258,7 @@
         "len": 4,
         "lineNum": 139,
         "index": 1,
-        "payload": "over\n"
+        "payload": "over"
       }
     ]
   },
@@ -10059,7 +10275,7 @@
         "len": 4,
         "lineNum": 140,
         "index": 0,
-        "payload": "over\n"
+        "payload": "over"
       }
     ]
   },
@@ -10146,7 +10362,7 @@
         "len": 10,
         "lineNum": 142,
         "index": 7,
-        "payload": "exception.\n"
+        "payload": "exception."
       }
     ]
   },
@@ -10226,7 +10442,7 @@
         "len": 10,
         "lineNum": 143,
         "index": 7,
-        "payload": "exception.\n"
+        "payload": "exception."
       }
     ]
   },
@@ -10240,22 +10456,22 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 145,
-    "sourceLen": 11,
-    "source": "here B here",
+    "sourceLen": 14,
+    "source": "  ;here B here",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 3,
-        "len": 4,
+        "posStart": 2,
+        "posStop": 6,
+        "len": 5,
         "lineNum": 145,
         "index": 0,
-        "payload": "here"
+        "payload": ";here"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 5,
-        "posStop": 5,
+        "posStart": 8,
+        "posStop": 8,
         "len": 1,
         "lineNum": 145,
         "index": 1,
@@ -10263,12 +10479,12 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 7,
-        "posStop": 10,
+        "posStart": 10,
+        "posStop": 13,
         "len": 4,
         "lineNum": 145,
         "index": 2,
-        "payload": "here\n"
+        "payload": "here"
       }
     ]
   },
@@ -10294,7 +10510,7 @@
         "len": 5,
         "lineNum": 146,
         "index": 1,
-        "payload": "jimmy\n"
+        "payload": "jimmy"
       }
     ]
   },
@@ -10311,7 +10527,7 @@
         "len": 5,
         "lineNum": 147,
         "index": 0,
-        "payload": "jimmy\n"
+        "payload": "jimmy"
       }
     ]
   },
@@ -10344,7 +10560,7 @@
         "len": 7,
         "lineNum": 149,
         "index": 1,
-        "payload": "faraway\n"
+        "payload": "faraway"
       }
     ]
   },
@@ -10361,7 +10577,7 @@
         "len": 4,
         "lineNum": 150,
         "index": 0,
-        "payload": "next\n"
+        "payload": "next"
       }
     ]
   },
@@ -10378,7 +10594,7 @@
         "len": 7,
         "lineNum": 151,
         "index": 0,
-        "payload": "faraway\n"
+        "payload": "faraway"
       }
     ]
   },
@@ -10456,7 +10672,7 @@
         "len": 9,
         "lineNum": 153,
         "index": 6,
-        "payload": "\u0027faraway\u0027\n"
+        "payload": "\u0027faraway\u0027"
       }
     ]
   },
@@ -10518,7 +10734,7 @@
         "len": 11,
         "lineNum": 154,
         "index": 5,
-        "payload": "instruction\n"
+        "payload": "instruction"
       }
     ]
   },
@@ -10580,7 +10796,7 @@
         "len": 8,
         "lineNum": 155,
         "index": 5,
-        "payload": "aligned.\n"
+        "payload": "aligned."
       }
     ]
   },
@@ -10594,8 +10810,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 157,
-    "sourceLen": 18,
-    "source": "LSL Ra, Rb, LSL #n",
+    "sourceLen": 14,
+    "source": "LSL ra, rb, #6",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10613,7 +10829,7 @@
         "len": 2,
         "lineNum": 157,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10622,25 +10838,16 @@
         "len": 2,
         "lineNum": 157,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 14,
-        "len": 3,
-        "lineNum": 157,
-        "index": 3,
-        "payload": "LSL"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 16,
-        "posStop": 17,
+        "posStop": 13,
         "len": 2,
         "lineNum": 157,
-        "index": 4,
-        "payload": "#n\n"
+        "index": 3,
+        "payload": "#6"
       }
     ]
   },
@@ -10648,7 +10855,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 158,
     "sourceLen": 14,
-    "source": "LSL Rt, Rb, #n",
+    "source": "LSL rt, rb, #8",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10666,7 +10873,7 @@
         "len": 2,
         "lineNum": 158,
         "index": 1,
-        "payload": "Rt,"
+        "payload": "rt,"
       },
       {
         "obj_name": "Artifact",
@@ -10675,7 +10882,7 @@
         "len": 2,
         "lineNum": 158,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
@@ -10684,7 +10891,7 @@
         "len": 2,
         "lineNum": 158,
         "index": 3,
-        "payload": "#n\n"
+        "payload": "#8"
       }
     ]
   },
@@ -10692,7 +10899,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 159,
     "sourceLen": 14,
-    "source": "ADD Ra, Rt, Rb",
+    "source": "ADD ra, rt, rb",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10710,7 +10917,7 @@
         "len": 2,
         "lineNum": 159,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10719,7 +10926,7 @@
         "len": 2,
         "lineNum": 159,
         "index": 2,
-        "payload": "Rt,"
+        "payload": "rt,"
       },
       {
         "obj_name": "Artifact",
@@ -10728,7 +10935,7 @@
         "len": 2,
         "lineNum": 159,
         "index": 3,
-        "payload": "Rb\n"
+        "payload": "rb"
       }
     ]
   },
@@ -10736,7 +10943,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 160,
     "sourceLen": 14,
-    "source": "LSL Rt, Rb, #n",
+    "source": "LSL rt, rb, #8",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10754,7 +10961,7 @@
         "len": 2,
         "lineNum": 160,
         "index": 1,
-        "payload": "Rt,"
+        "payload": "rt,"
       },
       {
         "obj_name": "Artifact",
@@ -10763,7 +10970,7 @@
         "len": 2,
         "lineNum": 160,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
@@ -10772,7 +10979,7 @@
         "len": 2,
         "lineNum": 160,
         "index": 3,
-        "payload": "#n\n"
+        "payload": "#8"
       }
     ]
   },
@@ -10780,7 +10987,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 161,
     "sourceLen": 14,
-    "source": "SUB Ra, Rt, Rb",
+    "source": "SUB ra, rt, rb",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10798,7 +11005,7 @@
         "len": 2,
         "lineNum": 161,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10807,7 +11014,7 @@
         "len": 2,
         "lineNum": 161,
         "index": 2,
-        "payload": "Rt,"
+        "payload": "rt,"
       },
       {
         "obj_name": "Artifact",
@@ -10816,7 +11023,7 @@
         "len": 2,
         "lineNum": 161,
         "index": 3,
-        "payload": "Rb\n"
+        "payload": "rb"
       }
     ]
   },
@@ -10824,7 +11031,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 162,
     "sourceLen": 14,
-    "source": "LSL Ra, Rb, #n",
+    "source": "LSL ra, rb, #4",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10842,7 +11049,7 @@
         "len": 2,
         "lineNum": 162,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10851,7 +11058,7 @@
         "len": 2,
         "lineNum": 162,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
@@ -10860,7 +11067,7 @@
         "len": 2,
         "lineNum": 162,
         "index": 3,
-        "payload": "#n\n"
+        "payload": "#4"
       }
     ]
   },
@@ -10868,7 +11075,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 163,
     "sourceLen": 10,
-    "source": "MVN Ra, Ra",
+    "source": "MVN ra, ra",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10886,7 +11093,7 @@
         "len": 2,
         "lineNum": 163,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10895,7 +11102,7 @@
         "len": 2,
         "lineNum": 163,
         "index": 2,
-        "payload": "Ra\n"
+        "payload": "ra"
       }
     ]
   },
@@ -10903,7 +11110,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 164,
     "sourceLen": 14,
-    "source": "LSL Rt, Rb, #n",
+    "source": "LSL rt, rb, #4",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10921,7 +11128,7 @@
         "len": 2,
         "lineNum": 164,
         "index": 1,
-        "payload": "Rt,"
+        "payload": "rt,"
       },
       {
         "obj_name": "Artifact",
@@ -10930,7 +11137,7 @@
         "len": 2,
         "lineNum": 164,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
@@ -10939,7 +11146,7 @@
         "len": 2,
         "lineNum": 164,
         "index": 3,
-        "payload": "#n\n"
+        "payload": "#4"
       }
     ]
   },
@@ -10947,7 +11154,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 165,
     "sourceLen": 14,
-    "source": "SUB Ra, Rb, Rt",
+    "source": "SUB ra, rb, rt",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -10965,7 +11172,7 @@
         "len": 2,
         "lineNum": 165,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -10974,7 +11181,7 @@
         "len": 2,
         "lineNum": 165,
         "index": 2,
-        "payload": "Rb,"
+        "payload": "rb,"
       },
       {
         "obj_name": "Artifact",
@@ -10983,7 +11190,7 @@
         "len": 2,
         "lineNum": 165,
         "index": 3,
-        "payload": "Rt\n"
+        "payload": "rt"
       }
     ]
   },
@@ -10991,7 +11198,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 166,
     "sourceLen": 14,
-    "source": "LSL Ra, Ra, #n",
+    "source": "LSL ra, ra, #2",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -11009,7 +11216,7 @@
         "len": 2,
         "lineNum": 166,
         "index": 1,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -11018,7 +11225,7 @@
         "len": 2,
         "lineNum": 166,
         "index": 2,
-        "payload": "Ra,"
+        "payload": "ra,"
       },
       {
         "obj_name": "Artifact",
@@ -11027,7 +11234,7 @@
         "len": 2,
         "lineNum": 166,
         "index": 3,
-        "payload": "#n\n"
+        "payload": "#2"
       }
     ]
   },
@@ -11665,7 +11872,7 @@
         "len": 6,
         "lineNum": 174,
         "index": 0,
-        "payload": "udiv10\n"
+        "payload": "udiv10"
       }
     ]
   },
@@ -11718,7 +11925,7 @@
         "len": 2,
         "lineNum": 175,
         "index": 4,
-        "payload": "a1\n"
+        "payload": "a1"
       }
     ]
   },
@@ -11798,7 +12005,7 @@
         "len": 2,
         "lineNum": 176,
         "index": 7,
-        "payload": "a2\n"
+        "payload": "a2"
       }
     ]
   },
@@ -11850,7 +12057,7 @@
         "len": 2,
         "lineNum": 178,
         "index": 2,
-        "payload": "a1\n"
+        "payload": "a1"
       }
     ]
   },
@@ -11894,7 +12101,7 @@
         "len": 2,
         "lineNum": 179,
         "index": 3,
-        "payload": "#2\n"
+        "payload": "#2"
       }
     ]
   },
@@ -11929,7 +12136,7 @@
         "len": 2,
         "lineNum": 180,
         "index": 2,
-        "payload": "a3\n"
+        "payload": "a3"
       }
     ]
   },
@@ -11973,7 +12180,7 @@
         "len": 2,
         "lineNum": 181,
         "index": 3,
-        "payload": "#4\n"
+        "payload": "#4"
       }
     ]
   },
@@ -12008,7 +12215,7 @@
         "len": 2,
         "lineNum": 182,
         "index": 2,
-        "payload": "a3\n"
+        "payload": "a3"
       }
     ]
   },
@@ -12052,7 +12259,7 @@
         "len": 2,
         "lineNum": 183,
         "index": 3,
-        "payload": "#8\n"
+        "payload": "#8"
       }
     ]
   },
@@ -12087,7 +12294,7 @@
         "len": 2,
         "lineNum": 184,
         "index": 2,
-        "payload": "a3\n"
+        "payload": "a3"
       }
     ]
   },
@@ -12131,7 +12338,7 @@
         "len": 3,
         "lineNum": 185,
         "index": 3,
-        "payload": "#16\n"
+        "payload": "#16"
       }
     ]
   },
@@ -12166,7 +12373,7 @@
         "len": 2,
         "lineNum": 186,
         "index": 2,
-        "payload": "a3\n"
+        "payload": "a3"
       }
     ]
   },
@@ -12201,7 +12408,7 @@
         "len": 2,
         "lineNum": 187,
         "index": 2,
-        "payload": "#3\n"
+        "payload": "#3"
       }
     ]
   },
@@ -12245,7 +12452,7 @@
         "len": 2,
         "lineNum": 188,
         "index": 3,
-        "payload": "#2\n"
+        "payload": "#2"
       }
     ]
   },
@@ -12280,7 +12487,7 @@
         "len": 2,
         "lineNum": 189,
         "index": 2,
-        "payload": "a1\n"
+        "payload": "a1"
       }
     ]
   },
@@ -12315,7 +12522,7 @@
         "len": 2,
         "lineNum": 190,
         "index": 2,
-        "payload": "#1\n"
+        "payload": "#1"
       }
     ]
   },
@@ -12350,7 +12557,7 @@
         "len": 2,
         "lineNum": 191,
         "index": 2,
-        "payload": "a3\n"
+        "payload": "a3"
       }
     ]
   },
@@ -12385,7 +12592,7 @@
         "len": 3,
         "lineNum": 192,
         "index": 2,
-        "payload": "#10\n"
+        "payload": "#10"
       }
     ]
   },
@@ -12411,7 +12618,7 @@
         "len": 4,
         "lineNum": 193,
         "index": 1,
-        "payload": "%FT0\n"
+        "payload": "%FT0"
       }
     ]
   },
@@ -12446,7 +12653,7 @@
         "len": 2,
         "lineNum": 194,
         "index": 2,
-        "payload": "#1\n"
+        "payload": "#1"
       }
     ]
   },
@@ -12481,7 +12688,7 @@
         "len": 3,
         "lineNum": 195,
         "index": 2,
-        "payload": "#10\n"
+        "payload": "#10"
       }
     ]
   },
@@ -12523,6 +12730,18 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 197,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 198,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  }
+]m": 197,
     "sourceLen": 0,
     "source": "",
     "payload": []

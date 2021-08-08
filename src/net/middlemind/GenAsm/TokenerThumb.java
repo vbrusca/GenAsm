@@ -80,17 +80,39 @@ public class TokenerThumb implements Tokener {
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                     //Found lower case character range
                                     //First entry must match
-                                    if(Character.isLowerCase(payload.charAt(0))) {
+                                    char lc = payload.charAt(0);
+                                    if(lc == '_' || Character.isLowerCase(lc)) {
                                         lfound = true;
                                         break;
                                     }
+                                    
+                                } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
+                                    //Found lower case character range
+                                    //First entry must match
+                                    char lc = payload.charAt(0);                                    
+                                    if(lc == '_' || Character.isLowerCase(lc) || Character.isDigit(lc)) {
+                                        lfound = true;
+                                        break;
+                                    }                                    
+                                    
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                     //Found upper case character range
                                     //First entry must match
-                                    if(Character.isUpperCase(payload.charAt(0))) {
+                                    char lc = payload.charAt(0);
+                                    if(lc == '_' || Character.isUpperCase(lc)) {
                                         lfound = true;
                                         break;
-                                    }                                
+                                    }
+                                    
+                                } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
+                                    //Found lower case character range
+                                    //First entry must match
+                                    char lc = payload.charAt(0);                                    
+                                    if(lc == '_' || Character.isUpperCase(lc) || Character.isDigit(lc)) {
+                                        lfound = true;
+                                        break;
+                                    }                                    
+                                                                        
                                 }
                             } else {
                                 if(payload.indexOf(withStarts) == 0) {
@@ -141,19 +163,41 @@ public class TokenerThumb implements Tokener {
                                         //Found lower case character range
                                         //Last entry must match
                                         //Logger.wrl("SpecialLowercaseRange: " + payload.charAt(payload.length() - 1));
-                                        if(Character.isLowerCase(payload.charAt(payload.length() - 1))) {
+                                        char lc = payload.charAt(payload.length() - 1);
+                                        if(lc == '_' || Character.isLowerCase(lc)) {
                                             lfound = true;
                                             break;
                                         }
+                                        
+                                    } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
+                                        //Found lower case character range
+                                        //First entry must match
+                                        char lc = payload.charAt(payload.length() - 1);
+                                        if(lc == '_' || Character.isLowerCase(lc) || Character.isDigit(lc)) {
+                                            lfound = true;
+                                            break;
+                                        }
+                                        
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                         //Found upper case character range
                                         //Last entry must match
                                         //Logger.wrl("SpecialUppercaseRange: " + payload.charAt(payload.length() - 1));                                        
-                                        if(Character.isUpperCase(payload.charAt(payload.length() - 1))) {
+                                        char lc = payload.charAt(payload.length() - 1);
+                                        if(lc == '_' || Character.isUpperCase(lc)) {
                                             //Logger.wrl("SpecialUppercaseRange: true");
                                             lfound = true;
                                             break;
                                         }
+                                        
+                                    } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
+                                        //Found lower case character range
+                                        //First entry must match
+                                        char lc = payload.charAt(payload.length() - 1);
+                                        if(lc == '_' || Character.isUpperCase(lc) || Character.isDigit(lc)) {
+                                            lfound = true;
+                                            break;
+                                        }                                        
+                                        
                                     }
                                 } else {
                                     if(payload.indexOf(withEnds) == (payload.length() - withEndsLen)) {
@@ -177,6 +221,7 @@ public class TokenerThumb implements Tokener {
                                     //Match anything
                                     lfound = true;
                                     break;
+                                    
                                 } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
                                     //Match system end line
                                     //All entries must match
@@ -193,6 +238,7 @@ public class TokenerThumb implements Tokener {
                                         lfound = true;
                                         break;
                                     }
+                                    
                                 } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
                                     if(Character.isDigit(withContains.charAt(0))) {
                                         //Found numeric range
@@ -220,14 +266,15 @@ public class TokenerThumb implements Tokener {
                                         if(llfound) {
                                             lfound = true;
                                             break;
-                                        }                                    
+                                        } 
+                                        
                                     } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                         //Found lower case character range
                                         //All entries must match
                                         char[] chars = payloadContains.toCharArray();
                                         boolean llfound = true;
                                         for(char c : chars) {
-                                            if(!Character.isLowerCase(c)) {
+                                            if(c != '_' && !Character.isLowerCase(c)) {
                                                 llfound = false;
                                                 break;
                                             }
@@ -237,6 +284,24 @@ public class TokenerThumb implements Tokener {
                                             lfound = true;
                                             break;
                                         }
+                                        
+                                    } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
+                                        //Found lower case character range
+                                        //All entries must match
+                                        char[] chars = payloadContains.toCharArray();
+                                        boolean llfound = true;
+                                        for(char c : chars) {
+                                            if(c != '_' && !Character.isLowerCase(c) && !Character.isDigit(c)) {
+                                                llfound = false;
+                                                break;
+                                            }
+                                        }
+
+                                        if(llfound) {
+                                            lfound = true;
+                                            break;
+                                        }
+                                        
                                     } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                         //Found upper case character range
                                         //All entries must match
@@ -245,7 +310,7 @@ public class TokenerThumb implements Tokener {
                                         boolean llfound = true;
                                         for(char c : chars) {
                                             //Logger.wrl("SpecialUppercaseRange contains: " + c);                                            
-                                            if(!Character.isUpperCase(c)) {
+                                            if(c != '_' && !Character.isUpperCase(c)) {
                                                 llfound = false;
                                                 break;
                                             }
@@ -254,8 +319,27 @@ public class TokenerThumb implements Tokener {
                                         if(llfound) {
                                             lfound = true;
                                             break;
-                                        }                                        
+                                        }
+                                        
+                                    } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
+                                        //Found lower case character range
+                                        //All entries must match
+                                        char[] chars = payloadContains.toCharArray();
+                                        boolean llfound = true;
+                                        for(char c : chars) {
+                                            if(c != '_' && !Character.isUpperCase(c) && !Character.isDigit(c)) {
+                                                llfound = false;
+                                                break;
+                                            }
+                                        }
+
+                                        if(llfound) {
+                                            lfound = true;
+                                            break;
+                                        }
+                                        
                                     }
+                                    
                                 } else {
                                     //All entries must match
                                     char[] chars = payloadContains.toCharArray();
@@ -270,7 +354,8 @@ public class TokenerThumb implements Tokener {
                                     if(llfound) {
                                         lfound = true;
                                         break;
-                                    }                                    
+                                    }
+                                    
                                 }
                             }                    
                         }
