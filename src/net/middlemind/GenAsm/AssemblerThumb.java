@@ -74,7 +74,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void CollapseListAndGroupTokens() {
+    public void CollapseListAndGroupTokens() throws ExceptionMissingClosingBracket, ExceptionListAndGroup {
         Logger.wrl("AssemblerThumb: CollapseListAndGroupTokens");        
         for(TokenLine line : asmTokenedData) {
             Token rootStartList = null;
@@ -89,6 +89,7 @@ public class AssemblerThumb implements Assembler {
             
             List<Token> clearTokensList = new ArrayList<>();
             List<Token> clearTokensGroup = new ArrayList<>();
+            int copyStart = -1;
             
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
@@ -108,6 +109,23 @@ public class AssemblerThumb implements Assembler {
                     rootStopIdxGroup = rootStopGroup.index;                    
                     
                 }
+            }
+            
+            if(rootStartIdxList != -1 && rootStartIdxList == -1) {
+                throw new ExceptionMissingClosingBracket("Could not find closing bracket for list.");
+                
+            } else if(rootStartIdxGroup != -1 && rootStartIdxGroup == -1) {
+                throw new ExceptionMissingClosingBracket("Could not find closing bracket for group.");
+                
+            } else if(rootStartIdxList != -1 && rootStartIdxList != -1 && rootStartIdxGroup != -1 && rootStartIdxGroup != -1) {
+                throw new ExceptionListAndGroup("Found list and group entries when only one is allowed.");
+
+            } else if(rootStartIdxList != -1 && rootStartIdxList != -1) {
+                copyStart = (rootStartIdxList + 1);
+                
+            } else if(rootStartIdxGroup != -1 && rootStartIdxGroup != -1) {
+                copyStart = (rootStartIdxGroup + 1);                
+                
             }
         }
     }    
