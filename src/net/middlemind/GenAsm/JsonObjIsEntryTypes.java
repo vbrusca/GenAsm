@@ -14,8 +14,10 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     //public List<JsonObjIsEntryGroupTypeOLD> is_entry_group_types;
     public static String ENTRY_TYPE_NAME_NULL = "None";
     public static String ENTRY_TYPE_NAME_COMMENT = "Comment";
-    public static String ENTRY_TYPE_NAME_REGISTER_RANGE_LOW = "RangisterRangeLow";
-    public static String ENTRY_TYPE_NAME_REGISTER_RANGE_HI = "RangisterRangeHi";    
+    public static String ENTRY_TYPE_NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
+    public static String ENTRY_TYPE_NAME_REGISTER_RANGE_HI = "RegisterRangeHi";
+    public static String ENTRY_TYPE_NAME_REGISTER_LOW = "RegisterLow";
+    public static String ENTRY_TYPE_NAME_REGISTER_HI = "RegisterHi";    
     
     /*
     @Override

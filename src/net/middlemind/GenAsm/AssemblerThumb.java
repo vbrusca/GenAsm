@@ -64,7 +64,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             //Second level token processing
             CollapseCommentTokens();
-            //ExpandRegisterRangeTokens();
+            ExpandRegisterRangeTokens();
             //CollapseListAndGroupTokens();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
 
@@ -74,63 +74,81 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void ExpandRegisterRangeTokens() {
-        Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
-        for(TokenLine line : asmTokenedData) {
-            boolean inRangeLow = false;
-            boolean inRangeHi = false;
-            Token rangeLowRoot = null;
-            Token rangeHiRoot = null;
-            List<Token> rangeLowAddTokens = new ArrayList<>();
-            List<Token> rangeHiAddTokens = new ArrayList<>();
-            
-            for(Token token : line.payload) {
-                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
-                    if(!inRangeLow) {
-                        rangeLowRoot = token;
-                        rangeLowRoot.payload = new ArrayList<>();                        
-                        
-                        String rangeStr = rangeLowRoot.source;
-                        rangeStr = rangeStr.replace(JsonObjIsRegisters.REGISTER_START_CHAR, "");
-                        int[] range = null;
-                        try {
-                            range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_RANGE_CHAR);
-                            for(int i = range[0]; i < range[1]; i++) {
-                                
+    public JsonObjIsEntryType FindEntryType(String entryName) throws ExceptionEntryNotFound {        
+        for(JsonObjIsEntryType entry : jsonObjIsEntryTypes.is_entry_types) {
+            if(entry.type_name.equals(entryName)) {
+                return entry;
+            }
+        }
+        
+        throw new ExceptionEntryNotFound("Could not find entry by name, " + entryName + ", in loaded entry types.");
+    }
+    
+    public void ExpandRegisterRangeTokens() throws Exception {
+        try {
+            Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
+            for(TokenLine line : asmTokenedData) {
+                boolean inRangeLow = false;
+                boolean inRangeHi = false;
+                Token rangeLowRoot = null;
+                Token rangeHiRoot = null;
+                List<Token> rangeLowAddTokens = new ArrayList<>();
+                List<Token> rangeHiAddTokens = new ArrayList<>();
+                JsonObjIsEntryType entryTypeRegLow = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW);
+                JsonObjIsEntryType entryTypeRegHi = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI);                
+
+                for(Token token : line.payload) {
+                    if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
+                        if(!inRangeLow) {
+                            rangeLowRoot = token;
+                            rangeLowRoot.payload = new ArrayList<>();                        
+
+                            String rangeStr = rangeLowRoot.source;
+                            rangeStr = rangeStr.replace(JsonObjIsRegisters.REGISTER_START_CHAR, "");
+                            int[] range = null;
+                            try {
+                                range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_RANGE_CHAR);
+                                for(int i = range[0]; i < range[1]; i++) {
+
+                                }
+                            } catch (ExceptionMalformedRange e) {
+
                             }
-                        } catch (ExceptionMalformedRange e) {
-                            
+
+                            inRangeLow = true;
+                        } else {
+                            token.index = rangeLowRoot.payload.size();
+                            rangeLowRoot.payload.add(token);
+                            //rangeLowAddTokens.add(token);
                         }
-                        
-                        inRangeLow = true;
-                    } else {
-                        token.index = rangeLowRoot.payload.size();
-                        rangeLowRoot.payload.add(token);
-                        //rangeLowAddTokens.add(token);
+                    } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
+                        if(!inRangeHi) {
+                            rangeHiRoot = token;
+                            rangeHiRoot.payload = new ArrayList<>();                        
+                            inRangeHi = true;
+                        } else {
+                            token.index = rangeHiRoot.payload.size();
+                            rangeHiRoot.payload.add(token);
+                            //rangeHiAddTokens.add(token);
+                        }                     
                     }
-                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
-                    if(!inRangeHi) {
-                        rangeHiRoot = token;
-                        rangeHiRoot.payload = new ArrayList<>();                        
-                        inRangeHi = true;
-                    } else {
-                        token.index = rangeHiRoot.payload.size();
-                        rangeHiRoot.payload.add(token);
-                        //rangeHiAddTokens.add(token);
-                    }                     
+                }
+
+                if(inRangeLow) {
+                    //rangeLowRoot.payloadLen = commentRoot.payload.size();
+                    //line.payload.removeAll(clearTokens);
+                    //line.payloadLen = line.payload.size();
+                } else if(inRangeHi) {
+                    //rangeLowRoot.payloadLen = commentRoot.payload.size();
+                    //line.payload.removeAll(clearTokens);
+                    //line.payloadLen = line.payload.size();                
                 }
             }
-            
-            if(inRangeLow) {
-                //rangeLowRoot.payloadLen = commentRoot.payload.size();
-                //line.payload.removeAll(clearTokens);
-                //line.payloadLen = line.payload.size();
-            } else if(inRangeHi) {
-                //rangeLowRoot.payloadLen = commentRoot.payload.size();
-                //line.payload.removeAll(clearTokens);
-                //line.payloadLen = line.payload.size();                
-            }
-        }        
+        } catch (ExceptionEntryNotFound e) {
+            Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken: Could not find required entry type.");
+            e.printStackTrace();
+            throw e;
+        }
     }
     
     public void CollapseCommentTokens() {
@@ -189,9 +207,9 @@ public class AssemblerThumb implements Assembler {
     }
     
     public void LoadAndParseJsonObjData() throws Exception {
-        Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
-        for(JsonObjIsFile entry : isaDataSet.is_files) {
-            try {
+        try {
+            Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
+            for(JsonObjIsFile entry : isaDataSet.is_files) {
                 Class cTmp = Class.forName(entry.loader_class);
                 Loader ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
                 String json;
@@ -217,12 +235,19 @@ public class AssemblerThumb implements Assembler {
                 } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsValidLines")) {
                     jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
-                }             
-            } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not instantiate loader class " + entry.loader_class);
-                e.printStackTrace();
-                throw e;
+                }
             }
+            
+            if(jsonObjIsEntryTypes == null) {
+                throw new ExceptionEntryNotFound("Could not find required JsonObjIsEntryTypes instance.");
+            } else if(jsonObjIsValidLines == null) {
+                throw new ExceptionEntryNotFound("Could not find required JsonObjIsValidLines instance.");                    
+            }
+            
+        } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not load and parse json data files.");
+            e.printStackTrace();
+            throw e;
         }        
     }
     

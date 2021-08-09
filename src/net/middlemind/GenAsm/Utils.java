@@ -12,7 +12,7 @@ public class Utils {
             return false;
         }
     }
-    
+        
     public static int[] GetIntsFromRange(String range) throws ExceptionMalformedRange {
         return GetIntsFromRange(range, JsonObjTxtMatch.special_range);
     }
