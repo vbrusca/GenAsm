@@ -90,6 +90,8 @@ public class AssemblerThumb implements Assembler {
             List<Token> clearTokensList = new ArrayList<>();
             List<Token> clearTokensGroup = new ArrayList<>();
             int copyStart = -1;
+            int copyEnd = -1;
+            int copyLen = -1;
             
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
@@ -122,9 +124,25 @@ public class AssemblerThumb implements Assembler {
 
             } else if(rootStartIdxList != -1 && rootStartIdxList != -1) {
                 copyStart = (rootStartIdxList + 1);
+                copyEnd = rootStopIdxList;
+                copyLen = (copyEnd - copyStart);
+                for(int i = copyStart; i < copyLen; i++) {
+                    clearTokensList.add(line.payload.remove(i));
+                }
+                line.payloadLen = line.payload.size();
+                rootStartList.payload.addAll(clearTokensList);
+                rootStartList.payloadLen = clearTokensList.size();
                 
             } else if(rootStartIdxGroup != -1 && rootStartIdxGroup != -1) {
                 copyStart = (rootStartIdxGroup + 1);                
+                copyEnd = rootStopIdxGroup;
+                copyLen = (copyEnd - copyStart);
+                for(int i = copyStart; i <= copyLen; i++) {
+                    clearTokensGroup.add(line.payload.remove(i));
+                }
+                line.payloadLen = line.payload.size();
+                rootStartGroup.payload.addAll(clearTokensGroup);
+                rootStartGroup.payloadLen = clearTokensGroup.size();
                 
             }
         }
