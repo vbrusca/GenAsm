@@ -28,19 +28,7 @@ public class JsonObjIsValidLines extends JsonObjBase {
                             break;
                         }
                     }
-                
-                    /*
-                    if(!found) {
-                        for(JsonObjIsEntryGroupTypeOLD llentry : ((JsonObjIsEntryTypes)linkData).is_entry_group_types) {
-                            if(!Utils.IsStringEmpty(llentry.type_name) && llentry.type_name.equals(s)) {
-                                lentry.linked_is_entry_types.add(llentry);
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-                    */
-                    
+                                    
                     if(!found) {
                         throw new ExceptionJsonObjLink("JsonObjIsValidLines: Link: Error: Could not find JsonObjIsEntryType, group or single, object with name " + s);
                     }

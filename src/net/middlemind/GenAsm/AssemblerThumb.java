@@ -65,7 +65,7 @@ public class AssemblerThumb implements Assembler {
             //Second level token processing
             CollapseCommentTokens();
             ExpandRegisterRangeTokens();
-            //CollapseListAndGroupTokens();
+            CollapseListAndGroupTokens();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
 
         } catch(Exception e) {
@@ -73,6 +73,44 @@ public class AssemblerThumb implements Assembler {
             e.printStackTrace();
         }
     }
+    
+    public void CollapseListAndGroupTokens() {
+        Logger.wrl("AssemblerThumb: CollapseListAndGroupTokens");        
+        for(TokenLine line : asmTokenedData) {
+            Token rootStartList = null;
+            int rootStartIdxList = -1;
+            Token rootStartGroup = null;
+            int rootStartIdxGroup = -1;
+
+            Token rootStopList = null;
+            int rootStopIdxList = -1;
+            Token rootStopGroup = null;
+            int rootStopIdxGroup = -1;
+            
+            List<Token> clearTokensList = new ArrayList<>();
+            List<Token> clearTokensGroup = new ArrayList<>();
+            
+            for(Token token : line.payload) {
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
+                    rootStartList = token;
+                    rootStartIdxList = rootStartList.index;
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {                    
+                    rootStartGroup = token;
+                    rootStartIdxGroup = rootStartGroup.index;
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
+                    rootStopList = token;
+                    rootStopIdxList = rootStopList.index;
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {                    
+                    rootStopGroup = token;
+                    rootStopIdxGroup = rootStopGroup.index;                    
+                    
+                }
+            }
+        }
+    }    
     
     public JsonObjIsEntryType FindEntryType(String entryName) throws ExceptionEntryNotFound {        
         for(JsonObjIsEntryType entry : jsonObjIsEntryTypes.is_entry_types) {

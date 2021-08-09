@@ -9,11 +9,12 @@ import java.util.List;
  */
 public class LexerSimple implements Lexer {
 
-    public static char[] SEPARATORS = { ',', ' ', '\t', ';' };
-    public static char[] STICKY_SEPARATORS = { ',' };
-    public static char[] NEW_ARTIFACT_SEPARATORS = { ';' };    
-    public static char[] GROUP_START = { '[', '{' };
-    public static char[] GROUP_STOP = { ']', '}' };    
+    public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
+    public static char[] CHAR_STICKY_SEPARATORS = { ',' };
+    public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
+    public static char[] CHAR_GROUP_START = { '[', '{' };
+    public static char[] CHAR_GROUP_STOP = { ']', '}' };
+    public static char[] CHAR_WHITE_SPACE = { ' ', '\t' };
     
     private boolean Contains(char[] array, char subj) {
         for(char c : array) {
@@ -57,13 +58,13 @@ public class LexerSimple implements Lexer {
             
             for(; i < chars.length; i++) {
                 if(inArtifact == true) {
-                    if(Contains(SEPARATORS, chars[i])) {
+                    if(Contains(CHAR_SEPARATORS, chars[i])) {
                         inArtifact = false;
                         artifact.posStop = (i - 1);
                         artifact.len = (i - artifact.posStart);
                         artifact.index = count;
                         
-                        if(Contains(STICKY_SEPARATORS, chars[i])) {
+                        if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                             artifact.payload += chars[i];
                         }
                         
@@ -71,7 +72,7 @@ public class LexerSimple implements Lexer {
                         count++;
                         artifact = null;
                         
-                        if(Contains(NEW_ARTIFACT_SEPARATORS, chars[i])) {
+                        if(Contains(CHAR_NEW_ARTIFACT_SEPARATORS, chars[i])) {
                             artifact = new Artifact();
                             artifact.lineNum = lineNum;
                             artifact.posStart = i;
@@ -85,13 +86,13 @@ public class LexerSimple implements Lexer {
                         }
                         
                     } else {
-                        if(Contains(GROUP_START, chars[i])) {
+                        if(Contains(CHAR_GROUP_START, chars[i])) {
                             inArtifact = false;
                             artifact.posStop = (i - 1);
                             artifact.len = (i - artifact.posStart);
                             artifact.index = count;
 
-                            if(Contains(STICKY_SEPARATORS, chars[i])) {
+                            if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                                 artifact.payload += chars[i];
                             }
 
@@ -110,13 +111,13 @@ public class LexerSimple implements Lexer {
                             count++;
                             artifact = null;
 
-                        } else if(Contains(GROUP_STOP, chars[i])) {
+                        } else if(Contains(CHAR_GROUP_STOP, chars[i])) {
                             inArtifact = false;
                             artifact.posStop = (i - 1);
                             artifact.len = (i - artifact.posStart);
                             artifact.index = count;
 
-                            if(Contains(STICKY_SEPARATORS, chars[i])) {
+                            if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                                 artifact.payload += chars[i];
                             }
 
@@ -141,11 +142,12 @@ public class LexerSimple implements Lexer {
                         }
                     }
                 } else {
-                    if(chars[i] == ' ' || chars[i] == '\t') {
+                    //if(chars[i] == ' ' || chars[i] == '\t') {
+                    if(Contains(CHAR_WHITE_SPACE, chars[i])) {
                         //ignore whitespace
                         continue;
                         
-                    } else if(Contains(GROUP_START, chars[i])) {
+                    } else if(Contains(CHAR_GROUP_START, chars[i])) {
                         artifact = new Artifact();
                         artifact.lineNum = lineNum;
                         artifact.posStart = i;
@@ -157,7 +159,7 @@ public class LexerSimple implements Lexer {
                         count++;
                         artifact = null;
                         
-                    } else if(Contains(GROUP_STOP, chars[i])) {                        
+                    } else if(Contains(CHAR_GROUP_STOP, chars[i])) {                        
                         artifact = new Artifact();
                         artifact.lineNum = lineNum;
                         artifact.posStart = i;
@@ -184,11 +186,6 @@ public class LexerSimple implements Lexer {
                 artifact.posStop = (i - 1);
                 artifact.len = (i - artifact.posStart);
                 artifact.index = count;
-                
-                //if(artifact.payload.indexOf(System.lineSeparator()) != (artifact.payload.length() - 1)) {
-                //    artifact.payload += System.lineSeparator();
-                //}
-                
                 ret.payload.add(artifact);
             }
             

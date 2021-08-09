@@ -11,37 +11,17 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
-    //public List<JsonObjIsEntryGroupTypeOLD> is_entry_group_types;
     public static String ENTRY_TYPE_NAME_NULL = "None";
     public static String ENTRY_TYPE_NAME_COMMENT = "Comment";
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_HI = "RegisterRangeHi";
     public static String ENTRY_TYPE_NAME_REGISTER_LOW = "RegisterLow";
-    public static String ENTRY_TYPE_NAME_REGISTER_HI = "RegisterHi";    
-    
-    /*
-    @Override
-    public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
-        for(JsonObjIsEntryGroupTypeOLD entry : is_entry_group_types) {
-            entry.linked_contains = new Hashtable<String, JsonObjIsEntryType>();
-            for(String s : entry.contains) {
-                boolean found = false;
-                for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
-                    if(!Utils.IsStringEmpty(lentry.type_name) && lentry.type_name.equals(s)) {
-                        entry.linked_contains.put(s, lentry);
-                        found = true;
-                        break;
-                    }
-                }
-                
-                if(!found) {
-                    throw new ExceptionJsonObjLink("JsonObjIsEntryTypes: Link: Error: Could not find JsonObjIsEntryType object with name " + s);
-                }
-            }
-        }
-    }
-    */
-    
+    public static String ENTRY_TYPE_NAME_REGISTER_HI = "RegisterHi";
+    public static String ENTRY_TYPE_NAME_START_LIST = "ListStart";
+    public static String ENTRY_TYPE_NAME_START_GROUP = "GroupStart";
+    public static String ENTRY_TYPE_NAME_STOP_LIST = "ListStop";
+    public static String ENTRY_TYPE_NAME_STOP_GROUP = "GroupStop";    
+        
     @Override
     public void Print() {
         Print("");
@@ -58,11 +38,5 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
             Logger.wrl("");
             entry.Print(prefix + "\t");
         }
-        
-        //Logger.wrl(prefix + "IsEntryGroupTypes:");        
-        //for(JsonObjIsEntryGroupTypeOLD entry : is_entry_group_types) {
-        //    Logger.wrl("");
-        //    entry.Print(prefix + "\t");
-        //}        
     }
 }
