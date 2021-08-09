@@ -84,67 +84,103 @@ public class AssemblerThumb implements Assembler {
         throw new ExceptionEntryNotFound("Could not find entry by name, " + entryName + ", in loaded entry types.");
     }
     
+    public String CleanRegisterRangeString(String range, String rangeDelim) {
+        String ret = "";
+        for(char c : range.toCharArray()) {
+            if((c + "").equals(rangeDelim) || Character.isDigit(c)) {
+                ret += c;
+            }
+        }
+        return ret;
+    }
+    
+    public void CleanTokenSource(Token token) {
+        if(token != null && !Utils.IsStringEmpty(token.source)) {
+            token.source = token.source.replace(JsonObjIsOpCode.DEFAULT_ARG_SEPARATOR, "");
+            token.source = token.source.replace(System.lineSeparator(), "");
+        }
+    }
+    
     public void ExpandRegisterRangeTokens() throws Exception {
         try {
             Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
             for(TokenLine line : asmTokenedData) {
-                boolean inRangeLow = false;
-                boolean inRangeHi = false;
-                Token rangeLowRoot = null;
-                Token rangeHiRoot = null;
-                List<Token> rangeLowAddTokens = new ArrayList<>();
-                List<Token> rangeHiAddTokens = new ArrayList<>();
+                int rangeRootIdxLow = 0;
+                int rangeRootIdxHi = 0;
+                Token rangeRootLow = null;                
+                Token rangeRootHi = null;
+                String rangeStr = "";
+                int[] range = null;
+                int count = 0;
+                Token newToken = null;
+                int i = 0;
+                
+                List<Token> rangeAddTokensLow = new ArrayList<>();
+                List<Token> rangeAddTokensHi = new ArrayList<>();                
                 JsonObjIsEntryType entryTypeRegLow = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW);
                 JsonObjIsEntryType entryTypeRegHi = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI);                
 
                 for(Token token : line.payload) {
+                    CleanTokenSource(token);
                     if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
-                        if(!inRangeLow) {
-                            rangeLowRoot = token;
-                            rangeLowRoot.payload = new ArrayList<>();                        
-
-                            String rangeStr = rangeLowRoot.source;
-                            rangeStr = rangeStr.replace(JsonObjIsRegisters.REGISTER_START_CHAR, "");
-                            int[] range = null;
-                            try {
-                                range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_RANGE_CHAR);
-                                for(int i = range[0]; i < range[1]; i++) {
-
-                                }
-                            } catch (ExceptionMalformedRange e) {
-
-                            }
-
-                            inRangeLow = true;
-                        } else {
-                            token.index = rangeLowRoot.payload.size();
-                            rangeLowRoot.payload.add(token);
-                            //rangeLowAddTokens.add(token);
+                        rangeRootLow = token;
+                        rangeRootIdxLow = rangeRootLow.index;
+                        rangeStr = rangeRootLow.source;
+                        rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                        range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                        count = 0;
+                        for(i = range[0]; i < range[1]; i++) {
+                            newToken = new Token();
+                            newToken.artifact = rangeRootLow.artifact;
+                            newToken.index = rangeRootLow.index + count;
+                            newToken.lineNum = rangeRootLow.lineNum;
+                            newToken.payload = new ArrayList<>();
+                            newToken.payloadLen = 0;
+                            newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                            newToken.type = entryTypeRegLow;
+                            newToken.type_name = entryTypeRegLow.type_name;
+                            rangeAddTokensLow.add(newToken);
+                            count++;
                         }
+
                     } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
-                        if(!inRangeHi) {
-                            rangeHiRoot = token;
-                            rangeHiRoot.payload = new ArrayList<>();                        
-                            inRangeHi = true;
-                        } else {
-                            token.index = rangeHiRoot.payload.size();
-                            rangeHiRoot.payload.add(token);
-                            //rangeHiAddTokens.add(token);
-                        }                     
+                        rangeRootHi = token;
+                        rangeRootIdxHi = rangeRootHi.index;
+                        rangeStr = rangeRootHi.source;
+                        rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                        range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                        count = 0;
+                        for(i = range[0]; i < range[1]; i++) {
+                            newToken = new Token();
+                            newToken.artifact = rangeRootHi.artifact;
+                            newToken.index = rangeRootHi.index + count;
+                            newToken.lineNum = rangeRootHi.lineNum;
+                            newToken.payload = new ArrayList<>();
+                            newToken.payloadLen = 0;
+                            newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                            newToken.type = entryTypeRegHi;
+                            newToken.type_name = entryTypeRegHi.type_name;
+                            rangeAddTokensHi.add(newToken);
+                            count++;
+                        }
+                        
                     }
                 }
-
-                if(inRangeLow) {
-                    //rangeLowRoot.payloadLen = commentRoot.payload.size();
-                    //line.payload.removeAll(clearTokens);
-                    //line.payloadLen = line.payload.size();
-                } else if(inRangeHi) {
-                    //rangeLowRoot.payloadLen = commentRoot.payload.size();
-                    //line.payload.removeAll(clearTokens);
-                    //line.payloadLen = line.payload.size();                
+                
+                if(rangeRootHi != null && rangeAddTokensHi != null && rangeAddTokensHi.size() > 0) {
+                    line.payload.addAll(rangeRootIdxHi + 1, rangeAddTokensHi);
+                    line.payload.remove(rangeRootHi);
+                    line.payloadLen = line.payload.size();
                 }
+                
+                if(rangeRootLow != null && rangeAddTokensLow != null && rangeAddTokensLow.size() > 0) {
+                    line.payload.addAll(rangeRootIdxLow + 1, rangeAddTokensLow);
+                    line.payload.remove(rangeRootLow);
+                    line.payloadLen = line.payload.size();                    
+                }                
+                
             }
-        } catch (ExceptionEntryNotFound e) {
+        } catch (ExceptionEntryNotFound | ExceptionMalformedRange e) {
             Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken: Could not find required entry type.");
             e.printStackTrace();
             throw e;

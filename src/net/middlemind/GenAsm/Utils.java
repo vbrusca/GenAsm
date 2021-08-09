@@ -25,14 +25,14 @@ public class Utils {
                 ret[0] = Integer.parseInt(strInts[0]);
                 ret[1] = Integer.parseInt(strInts[1]);                
             } catch(NumberFormatException e) {
-                throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range);
+                throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range + ", with delimiter '" + rangeDelim + "'");
             }
             
             if(ret[0] > ret[1]) {
-                throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range);
+                throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range + ", with delimiter '" + rangeDelim + "'");
             }
         } else {
-            throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range);
+            throw new ExceptionMalformedRange("The range string provided is not properly formed, " + range + ", with delimiter '" + rangeDelim + "'");
         }
         return ret;
     }

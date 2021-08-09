@@ -10,10 +10,11 @@ public class JsonObjIsRegisters extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsRegister> is_registers;
-    public static String REGISTER_START_CHAR = "R";
-    public static String REGISTER_RANGE_CHAR = "-";    
+    public static String REGISTER_CHAR_START = "R";
+    public static String REGISTER_CHAR_RANGE = "-";
+    public static String REGISTER_CHAR_SEPARATOR = ",";
     
-   @Override
+    @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsRegister entry : is_registers) {
             boolean found = false;
