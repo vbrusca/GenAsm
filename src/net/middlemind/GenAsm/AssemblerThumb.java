@@ -113,36 +113,51 @@ public class AssemblerThumb implements Assembler {
                 }
             }
             
-            if(rootStartIdxList != -1 && rootStartIdxList == -1) {
+            Logger.wrl((rootStartIdxList + 1) + ", " + rootStopIdxList);
+            if((rootStartIdxList != -1 && rootStopIdxList == -1) || (rootStartIdxList == -1 && rootStopIdxList != -1)) {
                 throw new ExceptionMissingClosingBracket("Could not find closing bracket for list.");
                 
-            } else if(rootStartIdxGroup != -1 && rootStartIdxGroup == -1) {
+            } else if((rootStartIdxGroup != -1 && rootStopIdxGroup == -1) || (rootStartIdxGroup == -1 && rootStopIdxGroup != -1)) {
                 throw new ExceptionMissingClosingBracket("Could not find closing bracket for group.");
                 
-            } else if(rootStartIdxList != -1 && rootStartIdxList != -1 && rootStartIdxGroup != -1 && rootStartIdxGroup != -1) {
+            } else if(rootStartIdxList != -1 && rootStopIdxList != -1 && rootStartIdxGroup != -1 && rootStopIdxGroup != -1) {
                 throw new ExceptionListAndGroup("Found list and group entries when only one is allowed.");
 
-            } else if(rootStartIdxList != -1 && rootStartIdxList != -1) {
+            } else if(rootStartIdxList != -1 && rootStopIdxList != -1) {
                 copyStart = (rootStartIdxList + 1);
                 copyEnd = rootStopIdxList;
                 copyLen = (copyEnd - copyStart);
-                for(int i = copyStart; i < copyLen; i++) {
-                    clearTokensList.add(line.payload.remove(i));
+                for(int i = copyStart; i <= (copyStart + copyLen); i++) {
+                    clearTokensList.add(line.payload.get(i));
                 }
+                line.payload.removeAll(clearTokensList);                
                 line.payloadLen = line.payload.size();
                 rootStartList.payload.addAll(clearTokensList);
                 rootStartList.payloadLen = clearTokensList.size();
                 
-            } else if(rootStartIdxGroup != -1 && rootStartIdxGroup != -1) {
+                int count = 0;
+                for(Token token : rootStartList.payload) {
+                    token.index = count;
+                    count++;
+                }
+                
+            } else if(rootStartIdxGroup != -1 && rootStopIdxGroup != -1) {
                 copyStart = (rootStartIdxGroup + 1);                
                 copyEnd = rootStopIdxGroup;
-                copyLen = (copyEnd - copyStart);
-                for(int i = copyStart; i <= copyLen; i++) {
-                    clearTokensGroup.add(line.payload.remove(i));
+                copyLen = (copyEnd - copyStart) + 1;
+                for(int i = copyStart; i <= (copyStart + copyLen); i++) {
+                    clearTokensGroup.add(line.payload.get(i));
                 }
+                line.payload.removeAll(clearTokensGroup);                
                 line.payloadLen = line.payload.size();
                 rootStartGroup.payload.addAll(clearTokensGroup);
                 rootStartGroup.payloadLen = clearTokensGroup.size();
+                
+                int count = 0;
+                for(Token token : rootStartGroup.payload) {
+                    token.index = count;
+                    count++;
+                }                
                 
             }
         }
@@ -245,12 +260,24 @@ public class AssemblerThumb implements Assembler {
                     line.payload.addAll(rangeRootIdxHi + 1, rangeAddTokensHi);
                     line.payload.remove(rangeRootHi);
                     line.payloadLen = line.payload.size();
+
+                    count = 0;
+                    for(Token token : line.payload) {
+                        token.index = count;
+                        count++;
+                    }
                 }
                 
                 if(rangeRootLow != null && rangeAddTokensLow != null && rangeAddTokensLow.size() > 0) {
                     line.payload.addAll(rangeRootIdxLow + 1, rangeAddTokensLow);
                     line.payload.remove(rangeRootLow);
-                    line.payloadLen = line.payload.size();                    
+                    line.payloadLen = line.payload.size();   
+                    
+                    count = 0;
+                    for(Token token : line.payload) {
+                        token.index = count;
+                        count++;
+                    }                    
                 }                
                 
             }
