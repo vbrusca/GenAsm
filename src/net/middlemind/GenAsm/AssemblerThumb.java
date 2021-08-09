@@ -29,43 +29,112 @@ public class AssemblerThumb implements Assembler {
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
-        Logger.wrl("AssemblerThumb: RunAssembler: Start");
-        jsonSource = new Hashtable<String, String>();
-        isaLoader = new Hashtable<String, Loader>();        
-        isaData = new Hashtable<String, JsonObj>();
-        isaDataSet = jsonIsSet;
-        asmSourceFile = assemblySourceFile;
-        
-        //Process JsonObjIsSet's file entries and load then parse the json object data
-        LoadAndParseJsonObjData();
-        
-        //Link loaded json object data
-        LinkJsonObjData();
-        
-        //Load and lexerize the assembly source file
-        LoadAndLexerizeAssemblySource();
-        //Logger.wrl("");
-        //Logger.wrl("");        
-        //PrintObject(asmLexedData, "Assembly Lexerized Data");
-        WriteObject(asmLexedData, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
-        
-        //Tokenize the lexerized artifacts
-        TokenizeLexerArtifacts();
-        
-        //Validate token lines
-        if(ValidateTokenizedLines()) {
-            Logger.wrl("Assembly lines validated successfully.");
-        } else {
-            Logger.wrl("Assembly lines are NOT valid.");            
+        try {
+            Logger.wrl("AssemblerThumb: RunAssembler: Start");
+            jsonSource = new Hashtable<String, String>();
+            isaLoader = new Hashtable<String, Loader>();        
+            isaData = new Hashtable<String, JsonObj>();
+            isaDataSet = jsonIsSet;
+            asmSourceFile = assemblySourceFile;
+
+            //Process JsonObjIsSet's file entries and load then parse the json object data
+            LoadAndParseJsonObjData();
+
+            //Link loaded json object data
+            Logger.wrl("");
+            LinkJsonObjData();
+
+            //Load and lexerize the assembly source file
+            Logger.wrl("");
+            LoadAndLexerizeAssemblySource();
+            WriteObject(asmLexedData, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
+
+            //Tokenize the lexerized artifacts
+            Logger.wrl("");
+            TokenizeLexerArtifacts();
+
+            //Validate token lines
+            Logger.wrl("");
+            if(ValidateTokenizedLines()) {
+                Logger.wrl("Assembly lines validated successfully.");
+            } else {
+                Logger.wrl("Assembly lines are NOT valid.");            
+            }
+
+            Logger.wrl("");
+            //Second level token processing
+            CollapseCommentTokens();
+            //ExpandRegisterRangeTokens();
+            //CollapseListAndGroupTokens();
+            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
+
+        } catch(Exception e) {
+            Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
+            e.printStackTrace();
         }
+    }
     
-        CollapseCommentTokens();
-        //ExpandRegisterRangeToken();
-        //CollapseListAndGroupTokens();
-        WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");        
+    public void ExpandRegisterRangeTokens() {
+        Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
+        for(TokenLine line : asmTokenedData) {
+            boolean inRangeLow = false;
+            boolean inRangeHi = false;
+            Token rangeLowRoot = null;
+            Token rangeHiRoot = null;
+            List<Token> rangeLowAddTokens = new ArrayList<>();
+            List<Token> rangeHiAddTokens = new ArrayList<>();
+            
+            for(Token token : line.payload) {
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
+                    if(!inRangeLow) {
+                        rangeLowRoot = token;
+                        rangeLowRoot.payload = new ArrayList<>();                        
+                        
+                        String rangeStr = rangeLowRoot.source;
+                        rangeStr = rangeStr.replace(JsonObjIsRegisters.REGISTER_START_CHAR, "");
+                        int[] range = null;
+                        try {
+                            range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_RANGE_CHAR);
+                            for(int i = range[0]; i < range[1]; i++) {
+                                
+                            }
+                        } catch (ExceptionMalformedRange e) {
+                            
+                        }
+                        
+                        inRangeLow = true;
+                    } else {
+                        token.index = rangeLowRoot.payload.size();
+                        rangeLowRoot.payload.add(token);
+                        //rangeLowAddTokens.add(token);
+                    }
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
+                    if(!inRangeHi) {
+                        rangeHiRoot = token;
+                        rangeHiRoot.payload = new ArrayList<>();                        
+                        inRangeHi = true;
+                    } else {
+                        token.index = rangeHiRoot.payload.size();
+                        rangeHiRoot.payload.add(token);
+                        //rangeHiAddTokens.add(token);
+                    }                     
+                }
+            }
+            
+            if(inRangeLow) {
+                //rangeLowRoot.payloadLen = commentRoot.payload.size();
+                //line.payload.removeAll(clearTokens);
+                //line.payloadLen = line.payload.size();
+            } else if(inRangeHi) {
+                //rangeLowRoot.payloadLen = commentRoot.payload.size();
+                //line.payload.removeAll(clearTokens);
+                //line.payloadLen = line.payload.size();                
+            }
+        }        
     }
     
     public void CollapseCommentTokens() {
+        Logger.wrl("AssemblerThumb: CollapseCommentTokens");        
         for(TokenLine line : asmTokenedData) {
             boolean inComment = false;
             Token commentRoot = null;
@@ -92,7 +161,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void WriteObject(Object obj, String name, String fileName) {
+    public void WriteObject(Object obj, String name, String fileName) throws Exception {
         Logger.wrl("AssemblerThumb: WriteObject: Name: " + name);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
@@ -105,6 +174,7 @@ public class AssemblerThumb implements Assembler {
         } catch(IOException e) {
             e.printStackTrace();
             Logger.wrl("AssemblerThumb: WriteObject: Could not write the target output file, " + fileName);
+            throw e;
         }
     }
     
@@ -118,7 +188,8 @@ public class AssemblerThumb implements Assembler {
         Logger.wr(jsonString);        
     }
     
-    public void LoadAndParseJsonObjData() {
+    public void LoadAndParseJsonObjData() throws Exception {
+        Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
         for(JsonObjIsFile entry : isaDataSet.is_files) {
             try {
                 Class cTmp = Class.forName(entry.loader_class);
@@ -150,12 +221,12 @@ public class AssemblerThumb implements Assembler {
             } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                 Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not instantiate loader class " + entry.loader_class);
                 e.printStackTrace();
-                return;
+                throw e;
             }
         }        
     }
     
-    public void LinkJsonObjData() {
+    public void LinkJsonObjData() throws Exception {
         Logger.wrl("AssemblerThumb: LinkJsonObjData");
         for(String s : isaData.keySet()) {
             try {
@@ -164,40 +235,40 @@ public class AssemblerThumb implements Assembler {
             } catch (ExceptionJsonObjLink e) {
                 Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link " + s);
                 e.printStackTrace();
-                return;                
+                throw e;
             }
         }        
     }
     
-    public void LoadAndLexerizeAssemblySource() {        
+    public void LoadAndLexerizeAssemblySource() throws Exception {        
         try {
             Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
             asmSourceData = FileLoader.Load(asmSourceFile);
             
-            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lex assembly source file");
+            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
             LexerSimple lex = new LexerSimple();
             asmLexedData = lex.FileLexerize(asmSourceData);
         } catch (IOException e) {
             Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file " + asmSourceFile);
             e.printStackTrace();
-            return;            
+            throw e;
         }
     }
     
-    public void TokenizeLexerArtifacts() {
+    public void TokenizeLexerArtifacts() throws Exception {
         try {
+            Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts");
             TokenerThumb tok = new TokenerThumb();
             asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
         } catch (ExceptionTokenerNotFound e) {
             Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts: Error: Could not tokenize lexed artifacts");
             e.printStackTrace();
-            
+            throw e;
         }
     }
     
     public int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {
         int count = 0;
-        //Logger.wrl("FindValidLineEntry for token: " + token.name);
         for(JsonObjIsValidLineEntry validLineEntry : validLine.is_valid_line) {
             for(String validLineEntryType : validLineEntry.is_entry_types) {
                 if(token.type_name.equals(validLineEntryType)) {
@@ -226,7 +297,6 @@ public class AssemblerThumb implements Assembler {
         }
         
         for(JsonObjIsValidLine validLine : validLines.is_valid_lines) {
-            //Logger.wrl("Checking valid line entry: " + count);
             res = null;
             currentIndex = -1;
             currentEntry = -1;
@@ -267,7 +337,8 @@ public class AssemblerThumb implements Assembler {
         return false;
     }
     
-    public boolean ValidateTokenizedLines() {        
+    public boolean ValidateTokenizedLines() {
+        Logger.wrl("AssemblerThumb: ValidateTokenizedLines");        
         for(TokenLine tokenLine : asmTokenedData) {
             if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
                 Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + ", '" + tokenLine.source.source + "'");

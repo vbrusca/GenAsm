@@ -18,6 +18,7 @@ public class TokenerThumb implements Tokener {
         String compare = null;
         String withResStarts = null;
         String withResEnds = null;
+        String withResContains = null;
         JsonObjIsEntryType compareType = null;
         int count = 0;
         boolean inComment = false;
@@ -43,6 +44,7 @@ public class TokenerThumb implements Tokener {
                         boolean lfound = false;
                         int withStartsLen = 0;
                         int withEndsLen = 0;
+                        int withContainsLen = 0;
                         String payloadContains = "";
                         compareType = type;
 
@@ -84,7 +86,7 @@ public class TokenerThumb implements Tokener {
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                     //Found lower case character range
                                     char lc = payload.charAt(0);
-                                    if(lc == '_' || Character.isLowerCase(lc)) {
+                                    if(Character.isLowerCase(lc)) {
                                         withStarts = (lc + "");
                                         withStartsLen = 1;                                        
                                         lfound = true;
@@ -93,8 +95,8 @@ public class TokenerThumb implements Tokener {
                                     
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
                                     //Found lower case character range
-                                    char lc = payload.charAt(0);                                    
-                                    if(lc == '_' || Character.isLowerCase(lc) || Character.isDigit(lc)) {
+                                    char lc = payload.charAt(0);
+                                    if(Character.isLowerCase(lc) || Character.isDigit(lc)) {
                                         withStarts = (lc + "");
                                         withStartsLen = 1;                                        
                                         lfound = true;
@@ -104,7 +106,7 @@ public class TokenerThumb implements Tokener {
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                     //Found upper case character range
                                     char lc = payload.charAt(0);
-                                    if(lc == '_' || Character.isUpperCase(lc)) {
+                                    if(Character.isUpperCase(lc)) {
                                         withStarts = (lc + "");
                                         withStartsLen = 1;                                        
                                         lfound = true;
@@ -113,8 +115,8 @@ public class TokenerThumb implements Tokener {
                                     
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
                                     //Found lower case character range
-                                    char lc = payload.charAt(0);                                    
-                                    if(lc == '_' || Character.isUpperCase(lc) || Character.isDigit(lc)) {
+                                    char lc = payload.charAt(0);
+                                    if(Character.isUpperCase(lc) || Character.isDigit(lc)) {
                                         withStarts = (lc + "");
                                         withStartsLen = 1;
                                         lfound = true;
@@ -160,7 +162,7 @@ public class TokenerThumb implements Tokener {
                                             j = Utils.GetIntFromChar(lc);
                                             if(Character.isDigit(lc) && j >= range[0] && j <= range[1]) {
                                                 withEnds = (j + "");
-                                                withEndsLen = 1;                                                
+                                                withEndsLen = 1;
                                                 lfound = true;
                                                 break;
                                             }
@@ -171,7 +173,7 @@ public class TokenerThumb implements Tokener {
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                         //Found lower case character range
                                         char lc = payload.charAt(payload.length() - 1);
-                                        if(lc == '_' || Character.isLowerCase(lc)) {
+                                        if(Character.isLowerCase(lc)) {
                                             withEnds = (lc + "");
                                             withEndsLen = 1;                                            
                                             lfound = true;
@@ -181,7 +183,7 @@ public class TokenerThumb implements Tokener {
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
                                         //Found lower case character range
                                         char lc = payload.charAt(payload.length() - 1);
-                                        if(lc == '_' || Character.isLowerCase(lc) || Character.isDigit(lc)) {
+                                        if(Character.isLowerCase(lc) || Character.isDigit(lc)) {
                                             withEnds = (lc + "");
                                             withEndsLen = 1;                                            
                                             lfound = true;
@@ -191,7 +193,7 @@ public class TokenerThumb implements Tokener {
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                         //Found upper case character range
                                         char lc = payload.charAt(payload.length() - 1);
-                                        if(lc == '_' || Character.isUpperCase(lc)) {
+                                        if(Character.isUpperCase(lc)) {
                                             withEnds = (lc + "");
                                             withEndsLen = 1;                                            
                                             lfound = true;
@@ -201,7 +203,7 @@ public class TokenerThumb implements Tokener {
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
                                         //Found lower case character range
                                         char lc = payload.charAt(payload.length() - 1);
-                                        if(lc == '_' || Character.isUpperCase(lc) || Character.isDigit(lc)) {
+                                        if(Character.isUpperCase(lc) || Character.isDigit(lc)) {
                                             withEnds = (lc + "");
                                             withEndsLen = 1;
                                             lfound = true;
@@ -227,7 +229,6 @@ public class TokenerThumb implements Tokener {
                             } else {
                                 payloadContains = payload;
                             }
-                            //Logger.wrl("Contains compare: " + payloadContains);                            
                                                         
                             if(type.txt_match.contains == null || type.txt_match.contains.isEmpty() || Utils.IsStringEmpty(payloadContains)) {
                                 lfound = true;
@@ -237,18 +238,19 @@ public class TokenerThumb implements Tokener {
                                 
                                 for(char c : chars) {
                                     llfound = false;
-                                    //Logger.wrl("Contains compare: Char: " + c + ", " + withResEnds + ", " + withResStarts);   
                                     for(String withContains : type.txt_match.contains) {
                                         compare = withContains;
+                                        withResContains = withContains;
+                                        withContainsLen = withContains.length();
                                         if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
                                             //Match anything
-                                            //Logger.wrl("Wild card");
                                             llfound = true;
                                             break;
 
                                         } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
                                             //Match system end line
-                                            //Logger.wrl("End line");                                            
+                                            withContains = System.lineSeparator();
+                                            withContainsLen = withContains.length();
                                             if((c + "").equals(System.lineSeparator())) {                                                
                                                 llfound = true;
                                                 break;
@@ -257,7 +259,6 @@ public class TokenerThumb implements Tokener {
                                         } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
                                             if(Character.isDigit(withContains.charAt(0))) {
                                                 //Found numeric range
-                                                //Logger.wrl("Numeric range");
                                                 int[] range = Utils.GetIntsFromRange(withContains);
                                                 int j = 0;
                                                 try {
@@ -267,38 +268,44 @@ public class TokenerThumb implements Tokener {
                                                 }
 
                                                 if(Character.isDigit(c) && j >= range[0] && j <= range[1]) {
+                                                    withContains = (j + "");
+                                                    withContainsLen = 1;
                                                     llfound = true;
                                                     break;
                                                 }
 
                                             } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                                 //Found lower case character range
-                                                //Logger.wrl("Lowercase range");
-                                                if(c == '_' || Character.isLowerCase(c)) {
+                                                if(Character.isLowerCase(c)) {
+                                                    withContains = (c + "");
+                                                    withContainsLen = 1;
                                                     llfound = true;
                                                     break;
                                                 }
 
                                             } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
                                                 //Found lower case character range
-                                                //Logger.wrl("Lowercase num range");
-                                                if(c == '_' || Character.isLowerCase(c) || Character.isDigit(c)) {
+                                                if(Character.isLowerCase(c) || Character.isDigit(c)) {
+                                                    withContains = (c + "");
+                                                    withContainsLen = 1;
                                                     llfound = true;
                                                     break;
                                                 }
 
                                             } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_range)) {                                
                                                 //Found upper case character range
-                                                //Logger.wrl("Uppercase range");
-                                                if(c == '_' || Character.isUpperCase(c)) {
+                                                if(Character.isUpperCase(c)) {
+                                                    withContains = (c + "");
+                                                    withContainsLen = 1;                                                    
                                                     llfound = true;
                                                     break;
                                                 }
 
                                             } else if(withContains.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
                                                 //Found lower case character range
-                                                //Logger.wrl("Uppercase num range");
-                                                if(c == '_' || Character.isUpperCase(c) || Character.isDigit(c)) {
+                                                if(Character.isUpperCase(c) || Character.isDigit(c)) {
+                                                    withContains = (c + "");
+                                                    withContainsLen = 1;                                                    
                                                     llfound = true;
                                                     break;
                                                 }
@@ -306,7 +313,6 @@ public class TokenerThumb implements Tokener {
                                             }
 
                                         } else {
-                                            //All entries must match
                                             if((c + "").equals(withContains)) {
                                                 llfound = true;
                                                 break;
@@ -347,7 +353,8 @@ public class TokenerThumb implements Tokener {
                     tmb.type_name = compareType.type_name;
                     tmb.type = compareType;
                 }
-                tmb.payload = new ArrayList<>();                
+                tmb.payload = new ArrayList<>();
+                
                 ret.payload.add(tmb);                
                 count++;
                 

@@ -1,6 +1,5 @@
 package net.middlemind.GenAsm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +10,8 @@ public class JsonObjIsRegisters extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsRegister> is_registers;
+    public static String REGISTER_START_CHAR = "R";
+    public static String REGISTER_RANGE_CHAR = "-";    
     
    @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {

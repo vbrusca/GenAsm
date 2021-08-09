@@ -163,8 +163,8 @@
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["a~z"],
-                "contains": ["a~z", "a~z0~9"],
-                "ends_with": ["a~z0~9", "a~z", "endl", ";", ","]
+                "contains": ["a~z", "a~z0~9", "_"],
+                "ends_with": ["a~z0~9", "a~z", "_", "endl", ";", ","]
             }
         },
         {

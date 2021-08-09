@@ -14,8 +14,12 @@ public class Utils {
     }
     
     public static int[] GetIntsFromRange(String range) throws ExceptionMalformedRange {
+        return GetIntsFromRange(range, JsonObjTxtMatch.special_range);
+    }
+    
+    public static int[] GetIntsFromRange(String range, String rangeDelim) throws ExceptionMalformedRange {
         int[] ret = new int[2];        
-        String[] strInts = range.split(JsonObjTxtMatch.special_range);
+        String[] strInts = range.split(rangeDelim);
         if(strInts.length == 2) {
             try {
                 ret[0] = Integer.parseInt(strInts[0]);
