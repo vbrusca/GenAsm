@@ -38,7 +38,7 @@ public class AssemblerThumb implements Assembler {
     public Map<String, Token> symbols2TokenLocal;
     public Map<String, TokenLine> symbols2LineLocal;
 
-    public Map<String, Map<String, TokenLine>> symbols2ChildrenLocal;    
+    public Map<String, Hashtable<String, TokenLine>> symbols2ChildrenLocal;    
 
     public static String DEFAULT_PARENT_LABEL_NAME = "main";
     
@@ -62,9 +62,7 @@ public class AssemblerThumb implements Assembler {
             symbols2LineLocal = new Hashtable<String, TokenLine>();
             symbols2TokenLocal = new Hashtable<String, Token>();
             
-            symbols2ChildrenLocal = new Hashtable<String, Map<String, TokenLine>>();
-
-
+            symbols2ChildrenLocal = new Hashtable<String, Hashtable<String, TokenLine>>();
             
             //Process JsonObjIsSet's file entries and load then parse the json object data
             LoadAndParseJsonObjData();
@@ -104,7 +102,15 @@ public class AssemblerThumb implements Assembler {
             for(int i = 0; i < symbols.size(); i++) {
                 String source = symbols.get(i);
                 int lineNum = symbols2LineNum.get(i);
-                Logger.wrl("Label: " + source + " LineNum: " + lineNum);
+                Token token = symbols2Token.get(source);
+                TokenLine line = symbols2Line.get(source);
+                
+                Hashtable<String, TokenLine> childLines = symbols2ChildrenLocal.get(source);
+                int childCount = 0;
+                if(childLines != null) {
+                    childCount = childLines.size();
+                }                
+                Logger.wrl("Label: " + source + " LineNum: " + lineNum + " TokenSource: " + token.source + " LineSource: " + line.source.source + " ChildLocalLabelCount: " + childCount);
             }
             
             Logger.wrl("");
@@ -114,7 +120,8 @@ public class AssemblerThumb implements Assembler {
                 String source = symbolsLocal.get(i);
                 int lineNum = symbols2LineNumLocal.get(i);
                 Token token = symbols2TokenLocal.get(source);
-                Logger.wrl("Label: " + source + " LineNum: " + lineNum + " ParentLabel: " + token.parentLabel + " ParentLineNum: " + token.parentLine.lineNum);
+                TokenLine line = symbols2LineLocal.get(source);
+                Logger.wrl("Label: " + source + " LineNum: " + lineNum + " ParentLabel: " + token.parentLabel + " ParentLineNum: " + token.parentLine.lineNum + " TokenSource: " + token.source + " LineSource: " + line.source.source);
             }
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
