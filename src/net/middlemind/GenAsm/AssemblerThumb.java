@@ -640,3 +640,4 @@ public class AssemblerThumb implements Assembler {
         return true;
     }
 }
+
