@@ -76,6 +76,16 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
+    public List<JsonObjIsOpCode> FindOpCodeMatches(String opCodeName, int argLen) {
+        List<JsonObjIsOpCode> ret = new ArrayList<>();
+        for(JsonObjIsOpCode opCode : jsonObjIsOpCodes.is_op_codes) {
+            if(opCode.op_code_name.equals(opCodeName) && opCode.arg_len == argLen) {
+                ret.add(opCode);
+            }
+        }
+        return ret;
+    }
+    
     public int CountArgTokens(List<Token> payload, int argCount) {
         for(Token token : payload) {
             if(token.type != null && ((JsonObjIsEntryType)token.type).category.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_CAT_ARG)) {
@@ -83,30 +93,47 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(token.payload != null && token.payload.size() > 0) {
-                argCount = CountArgTokens(token.payload, argCount);
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
+                    argCount++;
+                } else {
+                    argCount = CountArgTokens(token.payload, argCount);
+                }
             }
         }
         return argCount;
     }
     
-    public void PopulateOpCodeAndArgData() {
+    public void PopulateOpCodeAndArgData() throws ExceptionOpCodeNotFound {
         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
         boolean opCodeFound;
         String opCodeName;
+        int opCodeIdx;
+        int labelArgs;
         for(TokenLine line : asmTokenedData) {
             opCodeFound = false;
             opCodeName = null;
+            opCodeIdx = -1;
+            labelArgs = 0;
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
                     opCodeFound = true;
                     opCodeName = token.source;
-                    break;
+                    opCodeIdx = token.index;
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                    if(opCodeIdx != -1 && token.index > opCodeIdx) {
+                        labelArgs++;
+                    }
                 }
             }
             
             if(opCodeFound) {
                 line.payloadOpCode = opCodeName;
-                line.payloadLenArg = CountArgTokens(line.payload, 0);
+                line.payloadLenArg = CountArgTokens(line.payload, 0) + labelArgs;
+                line.opCodeMatches = FindOpCodeMatches(line.payloadOpCode, line.payloadLenArg);
+                
+                if(line.opCodeMatches == null || line.opCodeMatches.size() == 0) {
+                    throw new ExceptionOpCodeNotFound("Could not find a matching opCode entry for name " + line.payloadOpCode + " with argument count " + line.payloadLenArg + " at line " + line.lineNum + ", " + line.source.source);
+                }
             }
         }
     }

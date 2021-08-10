@@ -181,7 +181,7 @@
         {
             "obj_name": "is_entry_group_type",
             "type_name": "ListStart",
-            "category": "Arg",
+            "category": "List",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["{"],
@@ -192,7 +192,7 @@
         {
             "obj_name": "is_entry_group_type",
             "type_name": "ListStop",
-            "category": "Arg",
+            "category": "List",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["}"],
@@ -203,7 +203,7 @@
         {
             "obj_name": "is_entry_group_type",            
             "type_name": "GroupStart",
-            "category": "Arg",
+            "category": "Group",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",            
             "txt_match": {
                 "starts_with": ["["],
@@ -214,7 +214,7 @@
         {
             "obj_name": "is_entry_group_type",            
             "type_name": "GroupStop",
-            "category": "Arg",
+            "category": "Group",
             "category_class": "net.middlemind.GenAsm.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["]"],

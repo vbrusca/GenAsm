@@ -1771,7 +1771,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01001",
@@ -1851,7 +1851,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101000",
@@ -1920,7 +1920,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101010",
@@ -1989,7 +1989,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101100",
@@ -2058,7 +2058,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101110",
@@ -2127,7 +2127,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101001",
@@ -2196,7 +2196,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101101",
@@ -2265,7 +2265,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDSB",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101011",
@@ -2334,7 +2334,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDSH",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101111",
@@ -2403,7 +2403,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01100",
@@ -2483,7 +2483,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01101",
@@ -2563,7 +2563,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01110",
@@ -2643,7 +2643,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01111",
@@ -2723,7 +2723,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10000",
@@ -2803,7 +2803,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10001",
@@ -2883,7 +2883,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
-            "arg_len": 4,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10010",
@@ -2963,7 +2963,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
-            "arg_len": 2,
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10011",

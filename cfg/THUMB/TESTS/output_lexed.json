@@ -4917,22 +4917,22 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 68,
-    "sourceLen": 22,
-    "source": "ADR      R1,outofthumb",
+    "sourceLen": 68,
+    "source": ";ADR      R1,outofthumb - pseudo-instruction not currently supported",
     "payload": [
       {
         "obj_name": "Artifact",
         "posStart": 0,
-        "posStop": 2,
-        "len": 3,
+        "posStop": 3,
+        "len": 4,
         "lineNum": 68,
         "index": 0,
-        "payload": "ADR"
+        "payload": ";ADR"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 9,
-        "posStop": 10,
+        "posStart": 10,
+        "posStop": 11,
         "len": 2,
         "lineNum": 68,
         "index": 1,
@@ -4940,12 +4940,57 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 12,
-        "posStop": 21,
+        "posStart": 13,
+        "posStop": 22,
         "len": 10,
         "lineNum": 68,
         "index": 2,
         "payload": "outofthumb"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 24,
+        "len": 1,
+        "lineNum": 68,
+        "index": 3,
+        "payload": "-"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 26,
+        "posStop": 43,
+        "len": 18,
+        "lineNum": 68,
+        "index": 4,
+        "payload": "pseudo-instruction"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 45,
+        "posStop": 47,
+        "len": 3,
+        "lineNum": 68,
+        "index": 5,
+        "payload": "not"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 49,
+        "posStop": 57,
+        "len": 9,
+        "lineNum": 68,
+        "index": 6,
+        "payload": "currently"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 59,
+        "posStop": 67,
+        "len": 9,
+        "lineNum": 68,
+        "index": 7,
+        "payload": "supported"
       }
     ]
   },
@@ -12343,50 +12388,6 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 188,
-    "sourceLen": 18,
-    "source": "ASL     a3, a1, #2",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 2,
-        "len": 3,
-        "lineNum": 188,
-        "index": 0,
-        "payload": "ASL"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 8,
-        "posStop": 9,
-        "len": 2,
-        "lineNum": 188,
-        "index": 1,
-        "payload": "a3,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 12,
-        "posStop": 13,
-        "len": 2,
-        "lineNum": 188,
-        "index": 2,
-        "payload": "a1,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 16,
-        "posStop": 17,
-        "len": 2,
-        "lineNum": 188,
-        "index": 3,
-        "payload": "#2"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 189,
     "sourceLen": 14,
     "source": "ADD     a3, a1",
     "payload": [
@@ -12395,7 +12396,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 189,
+        "lineNum": 188,
         "index": 0,
         "payload": "ADD"
       },
@@ -12404,7 +12405,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 189,
+        "lineNum": 188,
         "index": 1,
         "payload": "a3,"
       },
@@ -12413,7 +12414,7 @@
         "posStart": 12,
         "posStop": 13,
         "len": 2,
-        "lineNum": 189,
+        "lineNum": 188,
         "index": 2,
         "payload": "a1"
       }
@@ -12421,42 +12422,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 190,
-    "sourceLen": 14,
-    "source": "ASL     a3, #1",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 2,
-        "len": 3,
-        "lineNum": 190,
-        "index": 0,
-        "payload": "ASL"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 8,
-        "posStop": 9,
-        "len": 2,
-        "lineNum": 190,
-        "index": 1,
-        "payload": "a3,"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 12,
-        "posStop": 13,
-        "len": 2,
-        "lineNum": 190,
-        "index": 2,
-        "payload": "#1"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 191,
+    "lineNum": 189,
     "sourceLen": 14,
     "source": "SUB     a2, a3",
     "payload": [
@@ -12465,7 +12431,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 191,
+        "lineNum": 189,
         "index": 0,
         "payload": "SUB"
       },
@@ -12474,7 +12440,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 191,
+        "lineNum": 189,
         "index": 1,
         "payload": "a2,"
       },
@@ -12483,7 +12449,7 @@
         "posStart": 12,
         "posStop": 13,
         "len": 2,
-        "lineNum": 191,
+        "lineNum": 189,
         "index": 2,
         "payload": "a3"
       }
@@ -12491,7 +12457,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 192,
+    "lineNum": 190,
     "sourceLen": 15,
     "source": "CMP     a2, #10",
     "payload": [
@@ -12500,7 +12466,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 192,
+        "lineNum": 190,
         "index": 0,
         "payload": "CMP"
       },
@@ -12509,7 +12475,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 192,
+        "lineNum": 190,
         "index": 1,
         "payload": "a2,"
       },
@@ -12518,7 +12484,7 @@
         "posStart": 12,
         "posStop": 14,
         "len": 3,
-        "lineNum": 192,
+        "lineNum": 190,
         "index": 2,
         "payload": "#10"
       }
@@ -12526,7 +12492,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 193,
+    "lineNum": 191,
     "sourceLen": 12,
     "source": "BLT     %FT0",
     "payload": [
@@ -12535,7 +12501,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 193,
+        "lineNum": 191,
         "index": 0,
         "payload": "BLT"
       },
@@ -12544,7 +12510,7 @@
         "posStart": 8,
         "posStop": 11,
         "len": 4,
-        "lineNum": 193,
+        "lineNum": 191,
         "index": 1,
         "payload": "%FT0"
       }
@@ -12552,7 +12518,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 194,
+    "lineNum": 192,
     "sourceLen": 14,
     "source": "ADD     a1, #1",
     "payload": [
@@ -12561,7 +12527,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 194,
+        "lineNum": 192,
         "index": 0,
         "payload": "ADD"
       },
@@ -12570,7 +12536,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 194,
+        "lineNum": 192,
         "index": 1,
         "payload": "a1,"
       },
@@ -12579,7 +12545,7 @@
         "posStart": 12,
         "posStop": 13,
         "len": 2,
-        "lineNum": 194,
+        "lineNum": 192,
         "index": 2,
         "payload": "#1"
       }
@@ -12587,7 +12553,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 195,
+    "lineNum": 193,
     "sourceLen": 15,
     "source": "SUB     a2, #10",
     "payload": [
@@ -12596,7 +12562,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 195,
+        "lineNum": 193,
         "index": 0,
         "payload": "SUB"
       },
@@ -12605,7 +12571,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 195,
+        "lineNum": 193,
         "index": 1,
         "payload": "a2,"
       },
@@ -12614,7 +12580,7 @@
         "posStart": 12,
         "posStop": 14,
         "len": 3,
-        "lineNum": 195,
+        "lineNum": 193,
         "index": 2,
         "payload": "#10"
       }
@@ -12622,7 +12588,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 196,
+    "lineNum": 194,
     "sourceLen": 11,
     "source": "MOV pc, lr ",
     "payload": [
@@ -12631,7 +12597,7 @@
         "posStart": 0,
         "posStop": 2,
         "len": 3,
-        "lineNum": 196,
+        "lineNum": 194,
         "index": 0,
         "payload": "MOV"
       },
@@ -12640,7 +12606,7 @@
         "posStart": 4,
         "posStop": 5,
         "len": 2,
-        "lineNum": 196,
+        "lineNum": 194,
         "index": 1,
         "payload": "pc,"
       },
@@ -12649,7 +12615,7 @@
         "posStart": 8,
         "posStop": 9,
         "len": 2,
-        "lineNum": 196,
+        "lineNum": 194,
         "index": 2,
         "payload": "lr"
       }
@@ -12657,21 +12623,21 @@
   },
   {
     "obj_name": "ArtifactLine",
+    "lineNum": 195,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 196,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
     "lineNum": 197,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 198,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 199,
     "sourceLen": 19,
     "source": "label MOV pc, lr   ",
     "payload": [
@@ -12680,7 +12646,7 @@
         "posStart": 0,
         "posStop": 4,
         "len": 5,
-        "lineNum": 199,
+        "lineNum": 197,
         "index": 0,
         "payload": "label"
       },
@@ -12689,7 +12655,7 @@
         "posStart": 6,
         "posStop": 8,
         "len": 3,
-        "lineNum": 199,
+        "lineNum": 197,
         "index": 1,
         "payload": "MOV"
       },
@@ -12698,7 +12664,7 @@
         "posStart": 10,
         "posStop": 11,
         "len": 2,
-        "lineNum": 199,
+        "lineNum": 197,
         "index": 2,
         "payload": "pc,"
       },
@@ -12707,7 +12673,7 @@
         "posStart": 14,
         "posStop": 15,
         "len": 2,
-        "lineNum": 199,
+        "lineNum": 197,
         "index": 3,
         "payload": "lr"
       }
@@ -12715,7 +12681,7 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 200,
+    "lineNum": 198,
     "sourceLen": 50,
     "source": "    label   ADD     a3, a1 ; takes argument in a1 ",
     "payload": [
@@ -12724,7 +12690,7 @@
         "posStart": 4,
         "posStop": 8,
         "len": 5,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 0,
         "payload": "label"
       },
@@ -12733,7 +12699,7 @@
         "posStart": 12,
         "posStop": 14,
         "len": 3,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 1,
         "payload": "ADD"
       },
@@ -12742,7 +12708,7 @@
         "posStart": 20,
         "posStop": 21,
         "len": 2,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 2,
         "payload": "a3,"
       },
@@ -12751,7 +12717,7 @@
         "posStart": 24,
         "posStop": 25,
         "len": 2,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 3,
         "payload": "a1"
       },
@@ -12760,7 +12726,7 @@
         "posStart": 27,
         "posStop": 27,
         "len": 1,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 4,
         "payload": ";"
       },
@@ -12769,7 +12735,7 @@
         "posStart": 29,
         "posStop": 33,
         "len": 5,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 5,
         "payload": "takes"
       },
@@ -12778,7 +12744,7 @@
         "posStart": 35,
         "posStop": 42,
         "len": 8,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 6,
         "payload": "argument"
       },
@@ -12787,7 +12753,7 @@
         "posStart": 44,
         "posStop": 45,
         "len": 2,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 7,
         "payload": "in"
       },
@@ -12796,7 +12762,7 @@
         "posStart": 47,
         "posStop": 48,
         "len": 2,
-        "lineNum": 200,
+        "lineNum": 198,
         "index": 8,
         "payload": "a1"
       }

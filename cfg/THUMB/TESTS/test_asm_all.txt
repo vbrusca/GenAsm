@@ -66,7 +66,7 @@ ADD PC, R5 ; PC := PC + R5 but don't set the ; condition codes.
 CMP R4, R12 ; Set the condition codes on the ; result of R4 - R12.
 MOV R15, R14 ; Move R14 (LR) into R15 (PC)
 
-ADR      R1,outofthumb
+;ADR      R1,outofthumb - pseudo-instruction not currently supported
 MOV R11,R1
 BX  R11 ; Transfer the contents of R11 into
 outofthumb
@@ -186,9 +186,7 @@ ADD     a1, a3
 LSR     a3, a1, #16
 ADD     a1, a3
 LSR     a1, #3
-ASL     a3, a1, #2
 ADD     a3, a1
-ASL     a3, #1
 SUB     a2, a3
 CMP     a2, #10
 BLT     %FT0

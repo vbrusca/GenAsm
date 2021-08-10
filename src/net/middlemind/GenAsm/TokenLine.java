@@ -14,5 +14,6 @@ public class TokenLine {
     public int payloadLenArg;
     public ArtifactLine source;
     public JsonObj validLineEntry;
-    public List<Token> payload;    
+    public List<Token> payload;
+    public List<JsonObjIsOpCode> opCodeMatches;
 }
