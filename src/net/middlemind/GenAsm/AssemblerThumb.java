@@ -113,7 +113,6 @@ public class AssemblerThumb implements Assembler {
                 }
             }
             
-            Logger.wrl((rootStartIdxList + 1) + ", " + rootStopIdxList);
             if((rootStartIdxList != -1 && rootStopIdxList == -1) || (rootStartIdxList == -1 && rootStopIdxList != -1)) {
                 throw new ExceptionMissingClosingBracket("Could not find closing bracket for list.");
                 
@@ -144,7 +143,7 @@ public class AssemblerThumb implements Assembler {
             } else if(rootStartIdxGroup != -1 && rootStopIdxGroup != -1) {
                 copyStart = (rootStartIdxGroup + 1);                
                 copyEnd = rootStopIdxGroup;
-                copyLen = (copyEnd - copyStart) + 1;
+                copyLen = (copyEnd - copyStart);
                 for(int i = copyStart; i <= (copyStart + copyLen); i++) {
                     clearTokensGroup.add(line.payload.get(i));
                 }

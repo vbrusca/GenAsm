@@ -197,3 +197,5 @@ SUB     a2, #10
 MOV pc, lr 
 
 
+label MOV pc, lr   
+    label   ADD     a3, a1 ; takes argument in a1 

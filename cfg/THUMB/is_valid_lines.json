@@ -7,6 +7,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 0,
+            "empty_line": true,
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",
@@ -33,6 +34,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 1,
+            "empty_line": true,            
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -59,6 +61,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 2,
+            "empty_line": true,            
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -85,6 +88,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 3,
+            "empty_line": true,            
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -111,6 +115,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 4,
+            "empty_line": true,            
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -137,6 +142,7 @@
         {
             "obj_name": "is_valid_line",
             "index": 5,
+            "empty_line": false,
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -163,6 +169,34 @@
         {
             "obj_name": "is_valid_line",
             "index": 6,
+            "empty_line": false,
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Label"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["OpCode"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
+        },        
+        {
+            "obj_name": "is_valid_line",
+            "index": 7,
+            "empty_line": false,
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
@@ -188,7 +222,35 @@
         },
         {
             "obj_name": "is_valid_line",
-            "index": 7,
+            "index": 8,
+            "empty_line": false,
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Label"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["OpCode"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Comment"],
+                    "index": 3
+                }
+            ]
+        },        
+        {
+            "obj_name": "is_valid_line",
+            "index": 9,
+            "empty_line": true,
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                

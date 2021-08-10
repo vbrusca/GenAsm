@@ -9,6 +9,7 @@ import java.util.List;
 public class JsonObjIsValidLine extends JsonObjBase {
     public String obj_name;
     public int index;
+    public boolean empty_line;
     public List<JsonObjIsValidLineEntry> is_valid_line;
     
     @Override
