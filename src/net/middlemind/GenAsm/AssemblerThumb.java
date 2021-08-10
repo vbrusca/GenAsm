@@ -27,8 +27,20 @@ public class AssemblerThumb implements Assembler {
     public List<String> asmSourceData;
     public List<ArtifactLine> asmLexedData;
     public List<TokenLine> asmTokenedData;
-    public Map<String, TokenLine> symbol2Line;
-    public Map<String, Map<String, TokenLine>> symbol2LineLocal;
+
+    public List<String> symbols;
+    public List<Integer> symbols2LineNum;    
+    public Map<String, Token> symbols2Token;
+    public Map<String, TokenLine> symbols2Line;
+    
+    public List<String> symbolsLocal;
+    public List<Integer> symbols2LineNumLocal;
+    public Map<String, Token> symbols2TokenLocal;
+    public Map<String, TokenLine> symbols2LineLocal;
+
+    public Map<String, Map<String, TokenLine>> symbols2ChildrenLocal;    
+
+    public static String DEFAULT_PARENT_LABEL_NAME = "main";
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
@@ -39,9 +51,21 @@ public class AssemblerThumb implements Assembler {
             isaData = new Hashtable<String, JsonObj>();
             isaDataSet = jsonIsSet;
             asmSourceFile = assemblySourceFile;
-            symbol2Line = new Hashtable<String, TokenLine>();
-            symbol2LineLocal = new Hashtable<>();
+            
+            symbols = new ArrayList<String>();
+            symbols2LineNum = new ArrayList<Integer>(); 
+            symbols2Line = new Hashtable<String, TokenLine>();
+            symbols2Token = new Hashtable<String, Token>();
+            
+            symbolsLocal = new ArrayList<String>();
+            symbols2LineNumLocal = new ArrayList<Integer>();            
+            symbols2LineLocal = new Hashtable<String, TokenLine>();
+            symbols2TokenLocal = new Hashtable<String, Token>();
+            
+            symbols2ChildrenLocal = new Hashtable<String, Map<String, TokenLine>>();
 
+
+            
             //Process JsonObjIsSet's file entries and load then parse the json object data
             LoadAndParseJsonObjData();
 
@@ -76,11 +100,22 @@ public class AssemblerThumb implements Assembler {
 
             Logger.wrl("");
             Logger.wrl("");
-            PrintObject(symbol2Line.keySet(), "Symbol To Line");
+            //PrintObject(symbols2Line.keySet(), "Symbol To Line");
+            for(int i = 0; i < symbols.size(); i++) {
+                String source = symbols.get(i);
+                int lineNum = symbols2LineNum.get(i);
+                Logger.wrl("Label: " + source + " LineNum: " + lineNum);
+            }
             
             Logger.wrl("");
             Logger.wrl("");
-            PrintObject(symbol2LineLocal.keySet(), "Symbol To Line Local");            
+            //PrintObject(symbols2LineLocal.keySet(), "Symbol To Line Local");
+            for(int i = 0; i < symbolsLocal.size(); i++) {
+                String source = symbolsLocal.get(i);
+                int lineNum = symbols2LineNumLocal.get(i);
+                Token token = symbols2TokenLocal.get(source);
+                Logger.wrl("Label: " + source + " LineNum: " + lineNum + " ParentLabel: " + token.parentLabel + " ParentLineNum: " + token.parentLine.lineNum);
+            }
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -122,8 +157,16 @@ public class AssemblerThumb implements Assembler {
         int labelArgs;
         String lastLabel = null;
         TokenLine lastLabelLine = null;
+        TokenLine firstLine = null;
         
         for(TokenLine line : asmTokenedData) {
+            if(firstLine == null) {
+                firstLine = line;
+                symbols2Line.put(DEFAULT_PARENT_LABEL_NAME, firstLine);
+                lastLabel = DEFAULT_PARENT_LABEL_NAME;
+                lastLabelLine = firstLine;
+            }
+            
             opCodeFound = false;
             opCodeName = null;
             opCodeIdx = -1;
@@ -142,42 +185,50 @@ public class AssemblerThumb implements Assembler {
                     if(token.index == 0) {
                         lastLabel = token.source;
                         lastLabelLine = line;
-                        if(symbol2Line.containsKey(token.source)) {
-                            TokenLine tmp = symbol2Line.get(token.source);
-                            symbol2Line.remove(token.source);
-                            symbol2Line.put(token.source, line);
+                        if(symbols2Line.containsKey(token.source)) {
+                            TokenLine tmp = symbols2Line.get(token.source);
+                            symbols2Line.remove(token.source);
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + tmp.lineNum);
                         } else {
-                            symbol2Line.put(token.source, line);
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
                         }
+                        symbols.add(token.source);
+                        symbols2LineNum.add(token.lineNum);
+                        symbols2Token.put(token.source, token);
+                        symbols2Line.put(token.source, line);
                     }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {                    
                     if(Utils.IsStringEmpty(lastLabel)) {
                         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");                        
                     } else {
-                        if(symbol2LineLocal.containsKey(lastLabel)) {
-                            Hashtable<String, TokenLine> parent = (Hashtable)symbol2LineLocal.get(lastLabel);
+                        if(symbols2ChildrenLocal.containsKey(lastLabel)) {
+                            Hashtable<String, TokenLine> parent = (Hashtable)symbols2ChildrenLocal.get(lastLabel);
                             if(parent.containsKey(token.source)) {
                                 TokenLine tmp = parent.get(token.source);
                                 parent.remove(token.source);
-                                parent.put(token.source, line);
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + tmp.lineNum);                            
                             } else {
-                                token.parentLabel = lastLabel;
-                                token.parentLine = lastLabelLine;
-                                parent.put(token.source, line);
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
                             }
+                            token.parentLabel = lastLabel;
+                            token.parentLine = lastLabelLine;
+                            parent.put(token.source, line);
+                            
                         } else {
                             token.parentLabel = lastLabel;
                             token.parentLine = lastLabelLine;                            
                             Hashtable<String, TokenLine> tmpHash = new Hashtable<>();
                             tmpHash.put(token.source, line);
-                            symbol2LineLocal.put(lastLabel, tmpHash);
+                            symbols2ChildrenLocal.put(lastLabel, tmpHash);
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Creating local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
+                        
                         }
+                        
+                        symbolsLocal.add(token.source);
+                        symbols2LineNumLocal.add(token.lineNum);
+                        symbols2TokenLocal.put(token.source, token);
+                        symbols2LineLocal.put(token.source, line);
                     }
                 }
             }
