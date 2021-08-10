@@ -15,6 +15,8 @@ public class Token {
     public Artifact artifact;    
     public String source;
     public JsonObj type;
+    public String parentLabel;
+    public TokenLine parentLine;
     public int payloadLen;
     public int payloadArgLen;
     public List<Token> payload;

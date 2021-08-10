@@ -27,6 +27,8 @@ public class AssemblerThumb implements Assembler {
     public List<String> asmSourceData;
     public List<ArtifactLine> asmLexedData;
     public List<TokenLine> asmTokenedData;
+    public Map<String, TokenLine> symbol2Line;
+    public Map<String, Map<String, TokenLine>> symbol2LineLocal;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
@@ -37,6 +39,8 @@ public class AssemblerThumb implements Assembler {
             isaData = new Hashtable<String, JsonObj>();
             isaDataSet = jsonIsSet;
             asmSourceFile = assemblySourceFile;
+            symbol2Line = new Hashtable<String, TokenLine>();
+            symbol2LineLocal = new Hashtable<>();
 
             //Process JsonObjIsSet's file entries and load then parse the json object data
             LoadAndParseJsonObjData();
@@ -70,6 +74,13 @@ public class AssemblerThumb implements Assembler {
             PopulateOpCodeAndArgData();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
 
+            Logger.wrl("");
+            Logger.wrl("");
+            PrintObject(symbol2Line.keySet(), "Symbol To Line");
+            
+            Logger.wrl("");
+            Logger.wrl("");
+            PrintObject(symbol2LineLocal.keySet(), "Symbol To Line Local");            
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -109,6 +120,9 @@ public class AssemblerThumb implements Assembler {
         String opCodeName;
         int opCodeIdx;
         int labelArgs;
+        String lastLabel = null;
+        TokenLine lastLabelLine = null;
+        
         for(TokenLine line : asmTokenedData) {
             opCodeFound = false;
             opCodeName = null;
@@ -119,9 +133,51 @@ public class AssemblerThumb implements Assembler {
                     opCodeFound = true;
                     opCodeName = token.source;
                     opCodeIdx = token.index;
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                     if(opCodeIdx != -1 && token.index > opCodeIdx) {
                         labelArgs++;
+                    }
+                    
+                    if(token.index == 0) {
+                        lastLabel = token.source;
+                        lastLabelLine = line;
+                        if(symbol2Line.containsKey(token.source)) {
+                            TokenLine tmp = symbol2Line.get(token.source);
+                            symbol2Line.remove(token.source);
+                            symbol2Line.put(token.source, line);
+                            Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + tmp.lineNum);
+                        } else {
+                            symbol2Line.put(token.source, line);
+                            Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
+                        }
+                    }
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {                    
+                    if(Utils.IsStringEmpty(lastLabel)) {
+                        Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");                        
+                    } else {
+                        if(symbol2LineLocal.containsKey(lastLabel)) {
+                            Hashtable<String, TokenLine> parent = (Hashtable)symbol2LineLocal.get(lastLabel);
+                            if(parent.containsKey(token.source)) {
+                                TokenLine tmp = parent.get(token.source);
+                                parent.remove(token.source);
+                                parent.put(token.source, line);
+                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + tmp.lineNum);                            
+                            } else {
+                                token.parentLabel = lastLabel;
+                                token.parentLine = lastLabelLine;
+                                parent.put(token.source, line);
+                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
+                            }
+                        } else {
+                            token.parentLabel = lastLabel;
+                            token.parentLine = lastLabelLine;                            
+                            Hashtable<String, TokenLine> tmpHash = new Hashtable<>();
+                            tmpHash.put(token.source, line);
+                            symbol2LineLocal.put(lastLabel, tmpHash);
+                            Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Creating local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
+                        }
                     }
                 }
             }
@@ -132,7 +188,7 @@ public class AssemblerThumb implements Assembler {
                 line.opCodeMatches = FindOpCodeMatches(line.payloadOpCode, line.payloadLenArg);
                 
                 if(line.opCodeMatches == null || line.opCodeMatches.size() == 0) {
-                    throw new ExceptionOpCodeNotFound("Could not find a matching opCode entry for name " + line.payloadOpCode + " with argument count " + line.payloadLenArg + " at line " + line.lineNum + ", " + line.source.source);
+                    throw new ExceptionOpCodeNotFound("Could not find a matching opCode entry for name '" + line.payloadOpCode + "' with argument count " + line.payloadLenArg + " at line " + line.lineNum + " with source text '" + line.source.source + "'");
                 }
             }
         }
@@ -233,7 +289,7 @@ public class AssemblerThumb implements Assembler {
             }
         }
         
-        throw new ExceptionEntryNotFound("Could not find entry by name, " + entryName + ", in loaded entry types.");
+        throw new ExceptionEntryNotFound("Could not find entry by name, '" + entryName + "', in loaded entry types.");
     }
     
     public String CleanRegisterRangeString(String range, String rangeDelim) {
@@ -391,13 +447,13 @@ public class AssemblerThumb implements Assembler {
             FileUnloader.WriteStr(fileName, jsonString);
         } catch(IOException e) {
             e.printStackTrace();
-            Logger.wrl("AssemblerThumb: WriteObject: Could not write the target output file, " + fileName);
+            Logger.wrl("AssemblerThumb: WriteObject: Could not write the target output file, '" + fileName + "'");
             throw e;
         }
     }
     
     public void PrintObject(Object obj, String name) {
-        Logger.wrl("AssemblerThumb: PrintObject: Name: " + name);
+        Logger.wrl("AssemblerThumb: PrintObject: Name: '" + name + "'");
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
             
@@ -417,17 +473,17 @@ public class AssemblerThumb implements Assembler {
                 JsonObj jsonObj;
                 
                 isaLoader.put(entry.loader_class, ldr);
-                Logger.wrl("AssemblerThumb: RunAssembler: Loader created " + entry.loader_class);
+                Logger.wrl("AssemblerThumb: RunAssembler: Loader created '" + entry.loader_class + "'");
                 
                 json = FileLoader.LoadStr(entry.path);
                 jsonSource.put(entry.path, json);
-                Logger.wrl("AssemblerThumb: RunAssembler: Json loaded " + entry.path);
+                Logger.wrl("AssemblerThumb: RunAssembler: Json loaded '" + entry.path + "'");
                                 
                 jsonObj = ldr.ParseJson(json, entry.target_class, entry.path);
                 jsonName = jsonObj.GetName();
                 isaData.put(jsonName, jsonObj);
-                Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as " + entry.target_class);
-                Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry " + jsonName);
+                Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as '" + entry.target_class + "'");
+                Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry '" + jsonName + "'");
                 
                 if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsEntryTypes")) {
                     jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
@@ -469,7 +525,7 @@ public class AssemblerThumb implements Assembler {
                 JsonObj jsonObj = isaData.get(s);
                 jsonObj.Link(jsonObjIsEntryTypes);
             } catch (ExceptionJsonObjLink e) {
-                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link " + s);
+                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link json object, '" + s + "'");
                 e.printStackTrace();
                 throw e;
             }
@@ -485,7 +541,7 @@ public class AssemblerThumb implements Assembler {
             LexerSimple lex = new LexerSimple();
             asmLexedData = lex.FileLexerize(asmSourceData);
         } catch (IOException e) {
-            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file " + asmSourceFile);
+            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file, '" + asmSourceFile + "'");
             e.printStackTrace();
             throw e;
         }
@@ -577,7 +633,7 @@ public class AssemblerThumb implements Assembler {
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");        
         for(TokenLine tokenLine : asmTokenedData) {
             if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
-                Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + ", '" + tokenLine.source.source + "'");
+                Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + " with source text, '" + tokenLine.source.source + "'");
                 return false;
             }
         }
