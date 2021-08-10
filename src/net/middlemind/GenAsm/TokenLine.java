@@ -17,4 +17,3 @@ public class TokenLine {
     public List<Token> payload;
     public List<JsonObjIsOpCode> opCodeMatches;
 }
-
