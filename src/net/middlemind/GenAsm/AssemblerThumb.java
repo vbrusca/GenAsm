@@ -96,59 +96,68 @@ public class AssemblerThumb implements Assembler {
             PopulateOpCodeAndArgData();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
 
-            Logger.wrl("");
-            Logger.wrl("----------- Symbols Global -----------");
-            for(int i = 0; i < symbols.size(); i++) {
-                String source = symbols.get(i);
-                int lineNum = symbols2LineNum.get(i);
-                Token token = symbols2Token.get(source);
-                TokenLine line = symbols2Line.get(source);                
-                Hashtable<String, TokenLine> childLines = symbols2ChildrenLocal.get(source);
-                
-                Logger.wrl("Index: " + i);
-                Logger.wrl("Label: " + source);
-                Logger.wrl("LineNum: " + lineNum);
-                Logger.wrl("TokenSource: '" + token.source + "'");
-                Logger.wrl("LineSource: '" + line.source.source + "'");
-                
-                if(childLines != null) {
-                    Logger.wrl("ChildLocalLabelCount: " + childLines.size());
-                    int count = 0;
-                    for(String s : childLines.keySet()) {
-                        TokenLine childLine = childLines.get(s);
-                        Logger.wrl("\tChildIndex: " + count);
-                        Logger.wrl("\tChildLineNum: " + childLine.lineNum);
-                        Logger.wrl("\tChildLineSource: " + childLine.source.source);
-                        Logger.wrl("");
-                        count++;
-                    }
-                } else {
-                    Logger.wrl("ChildLocalLabelCount: 0");                    
-                }
-                Logger.wrl("");
-            }
-            
-            Logger.wrl("");
-            Logger.wrl("----------- Symbols Local -----------");
-            for(int i = 0; i < symbolsLocal.size(); i++) {
-                String source = symbolsLocal.get(i);
-                int lineNum = symbols2LineNumLocal.get(i);
-                Token token = symbols2TokenLocal.get(source);
-                TokenLine line = symbols2LineLocal.get(source);
-                
-                Logger.wrl("Index: " + i);                
-                Logger.wrl("Label: " + source); 
-                Logger.wrl("LineNum: " + lineNum);
-                Logger.wrl("TokenSource: '" + token.source + "'");
-                Logger.wrl("LineSource: '" + line.source.source + "'");
-                Logger.wrl("ParentLabel: " + token.parentLabel);
-                Logger.wrl("ParentLineNum: " + token.parentLine.lineNum);                
-                Logger.wrl("");
-            }
+            PrintSymbolsData();
+            ValidateOpCodeLines();
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
         }
+    }
+    
+    public void ValidateOpCodeLines() {
+        
+    }
+    
+    public void PrintSymbolsData() {
+        Logger.wrl("");
+        Logger.wrl("----------- Symbols Global -----------");
+        for(int i = 0; i < symbols.size(); i++) {
+            String source = symbols.get(i);
+            int lineNum = symbols2LineNum.get(i);
+            Token token = symbols2Token.get(source);
+            TokenLine line = symbols2Line.get(source);                
+            Hashtable<String, TokenLine> childLines = symbols2ChildrenLocal.get(source);
+
+            Logger.wrl("Index: " + i);
+            Logger.wrl("Label: " + source);
+            Logger.wrl("LineNum: " + lineNum);
+            Logger.wrl("TokenSource: '" + token.source + "'");
+            Logger.wrl("LineSource: '" + line.source.source + "'");
+
+            if(childLines != null) {
+                Logger.wrl("ChildLocalLabelCount: " + childLines.size());
+                int count = 0;
+                for(String s : childLines.keySet()) {
+                    TokenLine childLine = childLines.get(s);
+                    Logger.wrl("\tChildIndex: " + count);
+                    Logger.wrl("\tChildLineNum: " + childLine.lineNum);
+                    Logger.wrl("\tChildLineSource: " + childLine.source.source);
+                    Logger.wrl("");
+                    count++;
+                }
+            } else {
+                Logger.wrl("ChildLocalLabelCount: 0");                    
+            }
+            Logger.wrl("");
+        }
+
+        Logger.wrl("");
+        Logger.wrl("----------- Symbols Local -----------");
+        for(int i = 0; i < symbolsLocal.size(); i++) {
+            String source = symbolsLocal.get(i);
+            int lineNum = symbols2LineNumLocal.get(i);
+            Token token = symbols2TokenLocal.get(source);
+            TokenLine line = symbols2LineLocal.get(source);
+
+            Logger.wrl("Index: " + i);                
+            Logger.wrl("Label: " + source); 
+            Logger.wrl("LineNum: " + lineNum);
+            Logger.wrl("TokenSource: '" + token.source + "'");
+            Logger.wrl("LineSource: '" + line.source.source + "'");
+            Logger.wrl("ParentLabel: " + token.parentLabel);
+            Logger.wrl("ParentLineNum: " + token.parentLine.lineNum);                
+            Logger.wrl("");
+        }        
     }
     
     public List<JsonObjIsOpCode> FindOpCodeMatches(String opCodeName, int argLen) {
