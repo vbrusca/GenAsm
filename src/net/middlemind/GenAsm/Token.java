@@ -16,5 +16,6 @@ public class Token {
     public String source;
     public JsonObj type;
     public int payloadLen;
+    public int payloadArgLen;
     public List<Token> payload;
 }

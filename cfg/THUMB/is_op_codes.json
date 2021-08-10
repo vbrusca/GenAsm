@@ -16,6 +16,7 @@
         {
             "obj_name": "is_op_code",
             "op_code_name": "LSL",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00000",
@@ -80,6 +81,7 @@
         {
             "obj_name": "is_op_code",
             "op_code_name": "LSR",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00001",
@@ -144,6 +146,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ASR",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00010",
@@ -208,6 +211,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0001100",
@@ -261,6 +265,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0001110",
@@ -325,6 +330,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0001101",
@@ -378,6 +384,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0001111",
@@ -442,6 +449,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00100",
@@ -494,6 +502,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00101",
@@ -546,6 +555,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00110",
@@ -598,6 +608,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "SUB",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "00111",
@@ -650,6 +661,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "AND",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000000",
@@ -691,6 +703,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "EOR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000001",
@@ -732,6 +745,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LSL",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000010",
@@ -773,6 +787,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LSR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000011",
@@ -814,6 +829,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ASR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000100",
@@ -855,6 +871,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADC",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000101",
@@ -896,6 +913,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "SBC",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000110",
@@ -937,6 +955,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ROR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100000111",
@@ -978,6 +997,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "TST",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001000",
@@ -1019,6 +1039,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "NEG",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001001",
@@ -1060,6 +1081,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001010",
@@ -1101,6 +1123,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMN",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001011",
@@ -1142,6 +1165,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ORR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001100",
@@ -1183,6 +1207,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MUL",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001101",
@@ -1224,6 +1249,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BIC",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001110",
@@ -1265,6 +1291,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MVN",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100001111",
@@ -1306,6 +1333,7 @@
         {
             "obj_name": "is_op_code", 
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010001",
@@ -1347,6 +1375,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010010",
@@ -1388,6 +1417,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010011",
@@ -1429,6 +1459,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010101",
@@ -1470,6 +1501,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010110",
@@ -1511,6 +1543,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "CMP",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100010111",
@@ -1552,6 +1585,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100011001",
@@ -1593,6 +1627,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100011010",
@@ -1634,6 +1669,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "MOV",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100011011",
@@ -1675,6 +1711,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BX",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100011100",
@@ -1704,6 +1741,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BX",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0100011101",
@@ -1733,6 +1771,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01001",
@@ -1812,6 +1851,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101000",
@@ -1880,6 +1920,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101010",
@@ -1948,6 +1989,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101100",
@@ -2016,6 +2058,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101110",
@@ -2084,6 +2127,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101001",
@@ -2152,6 +2196,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101101",
@@ -2220,6 +2265,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDSB",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101011",
@@ -2288,6 +2334,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDSH",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "0101111",
@@ -2356,6 +2403,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01100",
@@ -2435,6 +2483,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01101",
@@ -2514,6 +2563,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRB",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01110",
@@ -2593,6 +2643,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRB",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "01111",
@@ -2672,6 +2723,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STRH",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10000",
@@ -2751,6 +2803,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDRH",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10001",
@@ -2830,6 +2883,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "arg_len": 4,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10010",
@@ -2909,6 +2963,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDR",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10011",
@@ -2988,6 +3043,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10100",
@@ -3052,6 +3108,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10101",
@@ -3116,6 +3173,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "101100000",
@@ -3168,6 +3226,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "ADD",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "101100001",
@@ -3220,6 +3279,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10110100",
@@ -3250,6 +3310,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10110101",
@@ -3280,6 +3341,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "POP",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10111100",
@@ -3310,6 +3372,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "PUSH",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "10111101",
@@ -3340,6 +3403,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STMIA",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11000",
@@ -3382,6 +3446,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "LDMIA",
+            "arg_len": 2,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11001",
@@ -3424,6 +3489,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BEQ",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010000",
@@ -3464,6 +3530,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BNE",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010001",
@@ -3504,6 +3571,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BCS",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010010",
@@ -3544,6 +3612,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BCC",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010011",
@@ -3584,6 +3653,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BMI",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010100",
@@ -3624,6 +3694,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BPL",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010101",
@@ -3664,6 +3735,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BVS",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010110",
@@ -3704,6 +3776,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BVC",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11010111",
@@ -3744,6 +3817,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BHI",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011000",
@@ -3784,6 +3858,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BLS",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011001",
@@ -3824,6 +3899,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BGE",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011010",
@@ -3864,6 +3940,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BLT",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011011",
@@ -3904,6 +3981,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BGT",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011100",
@@ -3944,6 +4022,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BLE",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011101",
@@ -3984,6 +4063,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "SWI",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11011111",
@@ -4024,6 +4104,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "B",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11100",
@@ -4064,6 +4145,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BL",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11110",
@@ -4104,6 +4186,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "BL",
+            "arg_len": 1,
             "arg_separator": ",",
             "bit_rep": {
                 "bit_string": "11111",

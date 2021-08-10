@@ -21,6 +21,7 @@ public class AssemblerThumb implements Assembler {
     public Map<String, String> jsonSource;
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
     public JsonObjIsValidLines jsonObjIsValidLines;
+    public JsonObjIsOpCodes jsonObjIsOpCodes;    
     
     public String asmSourceFile;
     public List<String> asmSourceData;
@@ -61,16 +62,52 @@ public class AssemblerThumb implements Assembler {
                 Logger.wrl("Assembly lines are NOT valid.");            
             }
 
+            //Second level token processing            
             Logger.wrl("");
-            //Second level token processing
             CollapseCommentTokens();
             ExpandRegisterRangeTokens();
             CollapseListAndGroupTokens();
+            PopulateOpCodeAndArgData();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
 
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
+        }
+    }
+    
+    public int CountArgTokens(List<Token> payload, int argCount) {
+        for(Token token : payload) {
+            if(token.type != null && ((JsonObjIsEntryType)token.type).category.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_CAT_ARG)) {
+                argCount++;
+            }
+            
+            if(token.payload != null && token.payload.size() > 0) {
+                argCount = CountArgTokens(token.payload, argCount);
+            }
+        }
+        return argCount;
+    }
+    
+    public void PopulateOpCodeAndArgData() {
+        Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
+        boolean opCodeFound;
+        String opCodeName;
+        for(TokenLine line : asmTokenedData) {
+            opCodeFound = false;
+            opCodeName = null;
+            for(Token token : line.payload) {
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
+                    opCodeFound = true;
+                    opCodeName = token.source;
+                    break;
+                }
+            }
+            
+            if(opCodeFound) {
+                line.payloadOpCode = opCodeName;
+                line.payloadLenArg = CountArgTokens(line.payload, 0);
+            }
         }
     }
     
@@ -368,16 +405,27 @@ public class AssemblerThumb implements Assembler {
                 if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsEntryTypes")) {
                     jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
+                
                 } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsValidLines")) {
                     jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
+                
+                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsOpCodes")) {
+                    jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
+                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsOpCodes object, storing it...");                    
+                
                 }
             }
             
             if(jsonObjIsEntryTypes == null) {
                 throw new ExceptionEntryNotFound("Could not find required JsonObjIsEntryTypes instance.");
+            
             } else if(jsonObjIsValidLines == null) {
-                throw new ExceptionEntryNotFound("Could not find required JsonObjIsValidLines instance.");                    
+                throw new ExceptionEntryNotFound("Could not find required JsonObjIsValidLines instance.");
+            
+            } else if(jsonObjIsOpCodes == null) {
+                throw new ExceptionEntryNotFound("Could not find required JsonObjIsOpCodes instance.");                
+            
             }
             
         } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {

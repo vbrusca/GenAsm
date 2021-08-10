@@ -10,6 +10,8 @@ public class TokenLine {
     public String obj_name = "TokenLine";
     public int lineNum;
     public int payloadLen;
+    public String payloadOpCode;
+    public int payloadLenArg;
     public ArtifactLine source;
     public JsonObj validLineEntry;
     public List<Token> payload;    

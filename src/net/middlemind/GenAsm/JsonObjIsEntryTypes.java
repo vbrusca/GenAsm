@@ -1,6 +1,5 @@
 package net.middlemind.GenAsm;
 
-import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -11,6 +10,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
+    public static String ENTRY_TYPE_NAME_OPCODE = "OpCode";    
     public static String ENTRY_TYPE_NAME_NULL = "None";
     public static String ENTRY_TYPE_NAME_COMMENT = "Comment";
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
@@ -20,7 +20,8 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String ENTRY_TYPE_NAME_START_LIST = "ListStart";
     public static String ENTRY_TYPE_NAME_START_GROUP = "GroupStart";
     public static String ENTRY_TYPE_NAME_STOP_LIST = "ListStop";
-    public static String ENTRY_TYPE_NAME_STOP_GROUP = "GroupStop";    
+    public static String ENTRY_TYPE_NAME_STOP_GROUP = "GroupStop";
+    public static String ENTRY_TYPE_NAME_CAT_ARG = "Arg";    
         
     @Override
     public void Print() {

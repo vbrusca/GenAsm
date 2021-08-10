@@ -13,6 +13,7 @@ public class JsonObjIsOpCode extends JsonObjBase {
     public JsonObjBitRep bit_rep;
     public JsonObjBitSeries bit_series;
     public String arg_separator;
+    public int arg_len;
     public List<JsonObjIsOpCodeArg> args;
     
     @Override
