@@ -175,9 +175,7 @@ public class AssemblerThumb implements Assembler {
                             lsymbol.line = line;
                             lsymbol.lineNum = line.lineNum;
                             lsymbol.name = token.source;
-                            lsymbol.token = token;
-                            symbols.symbols.put(token.source, symbol);
-                            
+                            lsymbol.token = token;                            
                             symbol.symbols.put(token.source, lsymbol);
                             
                         } else {
