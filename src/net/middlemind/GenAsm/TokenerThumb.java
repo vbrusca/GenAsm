@@ -148,7 +148,7 @@ public class TokenerThumb implements Tokener {
                                     //Adjust for system line separator
                                     withEnds = System.lineSeparator();
                                     withEndsLen = withEnds.length();
-                                    if(payload.indexOf(withEnds) == (payload.length() - withEndsLen)) {
+                                    if(payload.indexOf(withEnds, 1) == (payload.length() - withEndsLen)) {
                                         lfound = true;
                                         break;
                                     }
@@ -212,7 +212,12 @@ public class TokenerThumb implements Tokener {
                                         
                                     }
                                 } else {
-                                    if(payload.indexOf(withEnds) == (payload.length() - withEndsLen)) {
+                                    int compStart = 0;
+                                    if(payload.length() > 1) {
+                                        compStart = 1;
+                                    }
+                                    
+                                    if(payload.indexOf(withEnds, compStart) == (payload.length() - withEndsLen)) {
                                         lfound = true;
                                         break;
                                     }

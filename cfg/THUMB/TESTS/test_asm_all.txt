@@ -1,3 +1,7 @@
+@TTL |AllOpCodeTests|
+        @AREA |Program|
+    @ENTRY
+
 LSR   R2, R5, #27
 LSR   R2, R5, #27   ; Logical shift right the contents
     LSR   R2, R5, #27
@@ -197,3 +201,5 @@ MOV pc, lr
 
 label MOV pc, lr   
     label   ADD     a3, a1 ; takes argument in a1 
+
+    @END

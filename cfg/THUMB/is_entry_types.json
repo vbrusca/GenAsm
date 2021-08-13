@@ -274,7 +274,7 @@
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["|"],
-                "contains": ["a~z", "|"],
+                "contains": ["a~z", "A~Z", "|"],
                 "ends_with": ["|", "endl"]
             }
         }

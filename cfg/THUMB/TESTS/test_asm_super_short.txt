@@ -1,1 +1,1 @@
-PUSH {R0-R4,LR}
+LDR R3,[PC,#844]

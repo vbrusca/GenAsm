@@ -273,6 +273,33 @@
                     "index": 3
                 }
             ]
+        },        
+        {
+            "obj_name": "is_valid_line",
+            "index": 10,
+            "empty_line": true,
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Directive"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Directive", "DirectiveString"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 2
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["None"],
+                    "index": 3
+                }
+            ]
         }
     ]    
 }

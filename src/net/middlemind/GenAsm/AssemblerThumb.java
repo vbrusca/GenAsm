@@ -56,13 +56,12 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             TokenizeLexerArtifacts();
 
+            Logger.wrl("");
+            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
+            
             //Validate token lines
             Logger.wrl("");
-            if(ValidateTokenizedLines()) {
-                Logger.wrl("Assembly lines validated successfully.");
-            } else {
-                Logger.wrl("Assembly lines are NOT valid.");            
-            }
+            ValidateTokenizedLines();
 
             //Second level token processing            
             Logger.wrl("");
@@ -744,13 +743,12 @@ public class AssemblerThumb implements Assembler {
         return false;
     }
     
-    public boolean ValidateTokenizedLines() {
+    public boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");        
         for(TokenLine tokenLine : asmTokenedData) {
             if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
-                Logger.wrl("AssemblerThumb: ValidateTokenizedLines: Error: Could not find a matching valid line for line number, " + tokenLine.lineNum + " with source text, '" + tokenLine.source.source + "'");
-                return false;
-            }
+                throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + tokenLine.lineNum + " with source text, '" + tokenLine.source.source + "'");
+             }
         }
         return true;
     }
