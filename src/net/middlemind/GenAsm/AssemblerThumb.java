@@ -91,6 +91,8 @@ public class AssemblerThumb implements Assembler {
         boolean argFound;
         boolean argFoundSub;
         boolean hasArgsSub;
+        int opCodeArgIdx = -1;
+        int opCodeArgIdxSub = -1;
         
         for(JsonObjIsOpCode opCode : opCodeMatches) {            
             opCodeArg = null;
@@ -101,6 +103,7 @@ public class AssemblerThumb implements Assembler {
             
             for(int i = 0; i < opCode.args.size(); i++) {
                 opCodeArg = opCode.args.get(i);
+                opCodeArgIdx = i;
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
@@ -108,10 +111,10 @@ public class AssemblerThumb implements Assembler {
                 }
                 
                 if(opCodeArg != null && argToken != null) {
-                    if(!opCodeArg.is_entry_type.equals(argToken.type_name)) {
-                        break;
-                    } else {
+                    if(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name)) {
                         argFound = true;
+                    } else {
+                        break;
                     }
                     
                     if(opCodeArg.sub_args != null && opCodeArg.sub_args.size() > 0) {
@@ -122,6 +125,7 @@ public class AssemblerThumb implements Assembler {
                         
                         for(int j = 0; j < opCodeArg.sub_args.size(); j++) {
                             opCodeArgSub = opCodeArg.sub_args.get(j);
+                            opCodeArgIdxSub = j;
                             if(argToken.payload != null && j < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j);
                             } else {
@@ -129,10 +133,10 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                if(!opCodeArg.is_entry_type.equals(argToken.type_name)) {
-                                    break;
-                                } else {
+                                if(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name)) {
                                     argFoundSub = true;
+                                } else {
+                                    break;
                                 }                     
                             }
                         }
@@ -151,7 +155,7 @@ public class AssemblerThumb implements Assembler {
             }
         }
         
-        throw new ExceptionOpCodeNotFound("Could not find an opCode that has matching arguments for line number " + opCodeToken.lineNum + " with opCode '" + opCodeToken.source + "'");
+        throw new ExceptionOpCodeNotFound("Could not find an opCode that has matching arguments for line number " + opCodeToken.lineNum + " with opCode '" + opCodeToken.source + "' at opCode argument index " + opCodeArgIdx + " with sub argument index " + opCodeArgIdxSub);
     }
     
     public void ValidateOpCodeLines() throws ExceptionOpCodeNotFound {

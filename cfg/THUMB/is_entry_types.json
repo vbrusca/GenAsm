@@ -1,6 +1,6 @@
 {
     "obj_name": "is_entry_types",  
-    "set_name": "THUMB",
+    "set_name": "THUMB_ARM7TDMI",
     "is_entry_types": [
         {
             "obj_name": "is_entry_type",

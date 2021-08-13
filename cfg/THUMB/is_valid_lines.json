@@ -1,6 +1,6 @@
 {
     "obj_name": "is_valid_lines",
-    "set_name": "THUMB",
+    "set_name": "THUMB_ARM7TDMI",
     "min_line_entries": 1,
     "max_line_entries": 4,
     "is_valid_lines": [

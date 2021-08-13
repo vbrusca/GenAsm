@@ -24,7 +24,7 @@ public class GenAsm {
     public static void main(String[] args) {
         if(args == null || args.length < 5) {
             ASM_SETS_FILE_NAME = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/is_sets.json";
-            ASM_TARGET_SET = "THUMB";
+            ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.LoaderIsSets";
             ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjIsSets";
             ASM_SETS = null;

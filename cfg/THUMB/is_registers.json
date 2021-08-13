@@ -1,6 +1,6 @@
 {
     "obj_name": "is_registers",
-    "set_name": "THUMB",
+    "set_name": "THUMB_ARM7TDMI",
     "is_registers": [
         {
             "register_name": "R0",

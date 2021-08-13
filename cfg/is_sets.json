@@ -3,7 +3,7 @@
     "is_sets": [
         {
             "obj_name": "is_set",
-            "set_name": "THUMB",
+            "set_name": "THUMB_ARM7TDMI",
             "is_files": [
                 {
                     "obj_name": "is_arg_types",

@@ -10,7 +10,7 @@ public class JsonObjIsOpCodeArg extends JsonObjBase {
     public String obj_name;
     public int arg_index;
     public int bit_index;
-    public String is_entry_type;
+    public List<String> is_entry_types;
     public JsonObjIsEntryType linked_is_entry_type;
     public JsonObjBitSeries bit_series;
     public JsonObjNumRange num_range;
@@ -29,7 +29,14 @@ public class JsonObjIsOpCodeArg extends JsonObjBase {
         Logger.wrl(prefix + "ObjName: " + obj_name);
         Logger.wrl(prefix + "ArgIndex: " + arg_index);
         Logger.wrl(prefix + "BitIndex: " + bit_index);
-        Logger.wrl(prefix + "IsEntryType: " + is_entry_type);
+        Logger.wrl(prefix + "IsEntryType:");
+        if(is_entry_types != null) {
+            for(String s : is_entry_types) {
+                Logger.wrl(prefix + "\t" + s);
+            }
+        } else {
+            Logger.wrl(prefix + "\tnull");
+        }        
         
         if(linked_is_entry_type != null) {
             Logger.wrl(prefix + "LinkedIsEntryType:");

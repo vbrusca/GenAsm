@@ -1,6 +1,6 @@
 {
     "obj_name": "is_arg_types",  
-    "set_name": "THUMB",
+    "set_name": "THUMB_ARM7TDMI",
     "is_arg_types": [
         {
             "obj_name": "is_arg_type",
