@@ -11,7 +11,7 @@ public class JsonObjIsOpCodeArg extends JsonObjBase {
     public int arg_index;
     public int bit_index;
     public List<String> is_entry_types;
-    public JsonObjIsEntryType linked_is_entry_type;
+    public List<JsonObjIsEntryType> linked_is_entry_types;
     public JsonObjBitSeries bit_series;
     public JsonObjNumRange num_range;
     public JsonObjBitShift bit_shift;
@@ -38,9 +38,14 @@ public class JsonObjIsOpCodeArg extends JsonObjBase {
             Logger.wrl(prefix + "\tnull");
         }        
         
-        if(linked_is_entry_type != null) {
-            Logger.wrl(prefix + "LinkedIsEntryType:");
-            linked_is_entry_type.Print(prefix + "\t");
+        if(linked_is_entry_types != null) {
+            Logger.wrl(prefix + "LinkedIsEntryTypes:");
+            for(JsonObjIsEntryType entry : linked_is_entry_types) {
+                Logger.wrl("");
+                entry.Print(prefix + "\t");
+            }
+        } else {
+            Logger.wrl(prefix + "\tnull");            
         }
         
         Logger.wrl(prefix + "BitSeries:");

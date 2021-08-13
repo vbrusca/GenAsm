@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,11 +25,12 @@ public class JsonObjIsOpCodes extends JsonObjBase {
             for(JsonObjIsOpCodeArg lentry : entry.args) {
                 boolean found = false;
                 String lastEntryType = "";
+                lentry.linked_is_entry_types = new ArrayList<>();
                 for(JsonObjIsEntryType llentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
                     lastEntryType = llentry.type_name;
                     for(String s : lentry.is_entry_types) {
                         if(!Utils.IsStringEmpty(s) && lentry.is_entry_types.contains(llentry.type_name)) {
-                            lentry.linked_is_entry_type = llentry;
+                            lentry.linked_is_entry_types.add(llentry);
                             found = true;
                             break;
                         }
@@ -49,11 +51,12 @@ public class JsonObjIsOpCodes extends JsonObjBase {
             for(JsonObjIsOpCodeArg entry : sub_args) {
                 boolean found = false;
                 String lastEntryType = "";
+                entry.linked_is_entry_types = new ArrayList<>();
                 for(JsonObjIsEntryType lentry : ((JsonObjIsEntryTypes)linkData).is_entry_types) {
                     lastEntryType = lentry.type_name;
                     for(String s : entry.is_entry_types) {
                         if(!Utils.IsStringEmpty(s) && entry.is_entry_types.contains(lentry.type_name)) {
-                            entry.linked_is_entry_type = lentry;
+                            entry.linked_is_entry_types.add(lentry);
                             found = true;
                             break;
                         }
