@@ -7,6 +7,7 @@ package net.middlemind.GenAsm;
 public class JsonObjIsEntryType extends JsonObjBase {
     public String obj_name;
     public String type_name;
+    public String type_category;
     public String category;
     public String category_class;
     public JsonObjTxtMatch txt_match;
@@ -20,7 +21,8 @@ public class JsonObjIsEntryType extends JsonObjBase {
     public void Print(String prefix) {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjectName: " + obj_name);
-        Logger.wrl(prefix + "TypeName: " + obj_name);  
+        Logger.wrl(prefix + "TypeName: " + type_name);
+        Logger.wrl(prefix + "TypeCategory: " + type_category);
         
         Logger.wrl(prefix + "TxtMatch: ");
         txt_match.Print(prefix + "\t");        

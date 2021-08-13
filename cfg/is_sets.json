@@ -39,6 +39,13 @@
                     "loader_class": "net.middlemind.GenAsm.LoaderIsValidLines",
                     "target_class": "net.middlemind.GenAsm.JsonObjIsValidLines",
                     "category": "lines"
+                },
+                {
+                    "obj_name": "is_directives",
+                    "path": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json",
+                    "loader_class": "net.middlemind.GenAsm.LoaderIsDirectives",
+                    "target_class": "net.middlemind.GenAsm.JsonObjIsDirectives",
+                    "category": "directives"
                 }
             ]
         }
