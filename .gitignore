@@ -23,7 +23,7 @@
 hs_err_pid*
 /build/
 /dist/
-cfg/THUMB/TESTS/output_tokened.json
+cfg/THUMB/TESTS/output_tokened*
 cfg/THUMB/TESTS/output_lexed.json
 cfg/THUMB/TESTS/output_symbols.json
 .DS_Store

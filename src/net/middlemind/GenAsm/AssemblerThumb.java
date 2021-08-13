@@ -66,23 +66,131 @@ public class AssemblerThumb implements Assembler {
 
             //Second level token processing            
             Logger.wrl("");
+            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+
             CollapseCommentTokens();
             ExpandRegisterRangeTokens();
             CollapseListAndGroupTokens();
             PopulateOpCodeAndArgData();
-            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened.json");
+            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
             WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");            
 
-
             ValidateOpCodeLines();
+            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
         }
     }
     
-    public void ValidateOpCodeLines() {
+    public JsonObjIsOpCode FindOpCodeArgMatches(List<JsonObjIsOpCode> opCodeMatches, List<Token> args, Token opCodeToken) throws ExceptionOpCodeNotFound {
+        JsonObjIsOpCodeArg opCodeArg;
+        JsonObjIsOpCodeArg opCodeArgSub;
+        Token argToken;
+        Token argTokenSub;
+        boolean argFound;
+        boolean argFoundSub;
+        boolean hasArgsSub;
         
+        for(JsonObjIsOpCode opCode : opCodeMatches) {            
+            opCodeArg = null;
+            argToken = null;
+            argFound = false;
+            argFoundSub = false;
+            hasArgsSub = false;
+            
+            for(int i = 0; i < opCode.args.size(); i++) {
+                opCodeArg = opCode.args.get(i);
+                if(i < args.size()) {
+                    argToken = args.get(i);
+                } else {
+                    break;
+                }
+                
+                if(opCodeArg != null && argToken != null) {
+                    if(!opCodeArg.is_entry_type.equals(argToken.type_name)) {
+                        break;
+                    } else {
+                        argFound = true;
+                    }
+                    
+                    if(opCodeArg.sub_args != null && opCodeArg.sub_args.size() > 0) {
+                        opCodeArgSub = null;
+                        argTokenSub = null;
+                        argFoundSub = false;
+                        hasArgsSub = true;
+                        
+                        for(int j = 0; j < opCodeArg.sub_args.size(); j++) {
+                            opCodeArgSub = opCodeArg.sub_args.get(j);
+                            if(argToken.payload != null && j < argToken.payload.size()) {
+                                argTokenSub = argToken.payload.get(j);
+                            } else {
+                                break;
+                            }
+                            
+                            if(opCodeArgSub != null && argTokenSub != null) {
+                                if(!opCodeArg.is_entry_type.equals(argToken.type_name)) {
+                                    break;
+                                } else {
+                                    argFoundSub = true;
+                                }                     
+                            }
+                        }
+                    }                    
+                }
+                
+                if(argFound && hasArgsSub && !argFoundSub) {
+                    break;
+                }
+            }
+            
+            if(argFound && !hasArgsSub && !argFoundSub) {
+                return opCode;                
+            } else if(argFound && hasArgsSub && argFoundSub) {
+                return opCode;
+            }
+        }
+        
+        throw new ExceptionOpCodeNotFound("Could not find an opCode that has matching arguments for line number " + opCodeToken.lineNum + " with opCode '" + opCodeToken.source + "'");
+    }
+    
+    public void ValidateOpCodeLines() throws ExceptionOpCodeNotFound {
+        Logger.wrl("AssemblerThumb: ValidateOpCodeLines"); 
+        boolean opCodeFound;
+        String opCodeName;
+        Token opCodeToken;
+        int opCodeIdx;
+        List<Token> args;
+        JsonObjIsOpCode opCode = null;
+        for(TokenLine line : asmTokenedData) {
+            if(line.opCodeMatches != null && line.opCodeMatches.size() > 1) {
+                opCodeFound = false;
+                opCodeName = null;
+                opCodeToken = null;
+                opCodeIdx = -1;
+                args = null;
+                for(Token token : line.payload) {
+                    if(!opCodeFound) {
+                        if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
+                            opCodeFound = true;
+                            opCodeName = token.source;
+                            opCodeToken = token;
+                            opCodeIdx = token.index;
+                            args = new ArrayList<>();
+                        }
+                    } else {
+                        //in args
+                        args.add(token);
+                    }
+                }
+                
+                if(opCodeFound && args != null && args.size() > 0) {
+                    opCode = FindOpCodeArgMatches(line.opCodeMatches, args, opCodeToken);
+                    line.opCodeMatches.clear();
+                    line.opCodeMatches.add(opCode);
+                }
+            }
+        }
     }
     
     public List<JsonObjIsOpCode> FindOpCodeMatches(String opCodeName, int argLen) {
