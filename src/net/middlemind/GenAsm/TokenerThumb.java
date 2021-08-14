@@ -16,6 +16,7 @@ import java.util.List;
 public class TokenerThumb implements Tokener {
 
     @Override
+    @SuppressWarnings({"CallToPrintStackTrace", "null"})
     public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws ExceptionNoTokenerFound {
         JsonObjIsEntryTypes types = (JsonObjIsEntryTypes)entryTypes;
         boolean found;

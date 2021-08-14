@@ -16,6 +16,7 @@ public class JsonObjIsArgTypes extends JsonObjBase {
     public List<JsonObjIsArgType> is_arg_types;
     
     @Override
+    @SuppressWarnings("Convert2Diamond")
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsArgType entry : is_arg_types) {
             entry.linked_is_entry_types = new ArrayList<JsonObjIsEntryType>();

@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  * @author Victor G. Brusca, Middlemind Games 07-19-2021 8:51 AM EST
  */
+@SuppressWarnings({"null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class GenAsm {
     public static String ASM_SETS_FILE_NAME = "";
     public static String ASM_TARGET_SET = "";

@@ -12,12 +12,15 @@ import net.middlemind.GenAsm.Utils;
  */
 public class JsonObjIsValidLines extends JsonObjBase {
     public static int ENTRY_LINE_EMPTY = 9;
+    public static int[] ENTRY_LINES_LABEL_EMPTY = {1, 2, 3};
     public String obj_name;
     public String set_name;
     public int min_line_entries;
     public int max_line_entries;    
     public List<JsonObjIsValidLine> is_valid_lines;
     
+    @Override
+    @SuppressWarnings("Convert2Diamond")
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsValidLine entry : is_valid_lines) {
             for(JsonObjIsValidLineEntry lentry : entry.is_valid_line) {

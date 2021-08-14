@@ -8,6 +8,16 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 7:04 AM EST
  */
 public class Utils {
+    public static boolean ContainsInt(int[] array, int target) {
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] == target) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    @SuppressWarnings("UnusedAssignment")
     public static String FormatHexString(String s, int len) {
         String ret = s;
         if(!IsStringEmpty(s)) {

@@ -8,7 +8,6 @@ import java.util.List;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 3:17 PM EST
  */
 public class LexerSimple implements Lexer {
-
     public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
     public static char[] CHAR_STICKY_SEPARATORS = { ',' };
     public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
@@ -37,6 +36,7 @@ public class LexerSimple implements Lexer {
     }    
     
     @Override
+    @SuppressWarnings({"UnnecessaryContinue", "UnusedAssignment", "null"})
     public ArtifactLine LineLexerize(String line, int lineNum) {
         ArtifactLine ret = new ArtifactLine();
         ret.source = line;

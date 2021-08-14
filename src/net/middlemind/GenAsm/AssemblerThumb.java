@@ -451,7 +451,7 @@ public class AssemblerThumb implements Assembler {
         for(String key : symbols.symbols.keySet()) {
             Symbol symbol = symbols.symbols.get(key);
             TokenLine line = asmTokenedData.get(symbol.lineNum);
-            if(line.validLineEntry.index == 1 || line.validLineEntry.index == 2 || line.validLineEntry.index == 3) {
+            if(Utils.ContainsInt(JsonObjIsValidLines.ENTRY_LINES_LABEL_EMPTY, line.validLineEntry.index)) {    
                 symbol.lineNumActive = FindNextOpCodeLine(symbol.lineNum, key);
                 symbol.isEmptyLineLabel = true;
                 Logger.wrl("Adjusting symbol line number from " + symbol.lineNum + " to " + symbol.lineNumActive + " due to symbol marking an empty line");
