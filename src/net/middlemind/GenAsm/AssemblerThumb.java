@@ -99,6 +99,10 @@ public class AssemblerThumb implements Assembler {
         boolean directiveFound = false;
         String directiveName = null;
         int directiveIdx = -1;
+        int reqDirectiveCount = requiredDirectives.size() - 1;
+        List<String> reqDirectives = new ArrayList<>(requiredDirectives);
+        int lastEntry = -1;
+        int lastEnd = -1;
         
         for(TokenLine line : asmTokenedData) {            
             directiveFound = false;
@@ -109,7 +113,26 @@ public class AssemblerThumb implements Assembler {
                     directiveFound = true;
                     directiveName = token.source;
                     directiveIdx = token.index;
+                 
+                    if(reqDirectives.contains(token.type_name)) {
+                        reqDirectives.remove(token.type_name);
+                        reqDirectiveCount--;
+                    }
                     
+                    if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
+                        if(lastEntry == -1) {
+                            lastEntry = token.index;
+                        } else {
+                            //TODO: throw exception malformed entry - end set
+                        }
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_END)) {
+                        lastEnd = token.index;
+                        if(lastEnd <= lastEntry) {
+                            //TODO: throw exception malformed entry - end set
+                        } else {
+                            lastEntry = -1;
+                        }
+                    }
                 }
             }
             
@@ -121,6 +144,10 @@ public class AssemblerThumb implements Assembler {
                 if(line.matchesDirective == null || line.matchesDirective.isEmpty()) {
                     throw new ExceptionNoOpCodeFound("Could not find a matching directive entry for name '" + line.payloadDirective + "' with argument count " + line.payloadLenArg + " at line " + line.lineNum + " with source text '" + line.source.source + "'");
                 }
+            }
+            
+            if(reqDirectiveCount > 0) {
+                
             }
         }
     }    
@@ -403,6 +430,8 @@ public class AssemblerThumb implements Assembler {
                         if(symbols.symbols.containsKey(token.source)) {
                             symbol = symbols.symbols.get(token.source);
                             symbols.symbols.remove(token.source);
+                            
+                            //TODO: throw label redefinition exception
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
                         } else {
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
@@ -417,12 +446,15 @@ public class AssemblerThumb implements Assembler {
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {                    
                     if(Utils.IsStringEmpty(lastLabel)) {
+                        //TODO: throw local label no parent exception
                         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");                        
                     } else {
                         if(symbols.symbols.containsKey(lastLabel)) {
                             symbol = symbols.symbols.get(lastLabel);
                             if(symbol.symbols.containsKey(token.source)) {
                                 symbol.symbols.remove(token.source);
+                                
+                                //TODO: throw label redefinition exception
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);                            
                             } else {
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");

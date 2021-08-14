@@ -11,6 +11,8 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsDirective> is_directives;
+    public static String DIRECTIVE_NAME_ENTRY = "@ENTRY";
+    public static String DIRECTIVE_NAME_END = "@END";    
  
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
