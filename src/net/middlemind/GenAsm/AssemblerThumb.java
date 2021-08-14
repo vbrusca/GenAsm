@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
 
 /**
  *
@@ -404,7 +405,7 @@ public class AssemblerThumb implements Assembler {
         }
     }    
     
-    public void ValidateOpCodeLines() throws ExceptionNoOpCodeFound {
+    public void ValidateOpCodeLines() throws ExceptionNoOpCodeFound, ExceptionNoOpCodeLineFound {
         Logger.wrl("AssemblerThumb: ValidateOpCodeLines"); 
         boolean opCodeFound = false;
         String opCodeName = null;
@@ -451,13 +452,16 @@ public class AssemblerThumb implements Assembler {
             Symbol symbol = symbols.symbols.get(key);
             TokenLine line = asmTokenedData.get(symbol.lineNum);
             if(line.validLineEntry.index == 1 || line.validLineEntry.index == 2 || line.validLineEntry.index == 3) {
-                symbol.lineNumActive = FindNextOpCodeLine(symbol.lineNum);
+                symbol.lineNumActive = FindNextOpCodeLine(symbol.lineNum, key);
                 symbol.isEmptyLineLabel = true;
+                Logger.wrl("Adjusting symbol line number from " + symbol.lineNum + " to " + symbol.lineNumActive + " due to symbol marking an empty line");
+            } else {
+                symbol.lineNumActive = symbol.lineNum;
             }
         }
     }
     
-    public int FindNextOpCodeLine(int lineNum) {
+    public int FindNextOpCodeLine(int lineNum, String label) throws ExceptionNoOpCodeLineFound {
         if(lineNum + 1 < asmTokenedData.size()) {
             for(int i = lineNum + 1; i < asmTokenedData.size(); i++) {
                 TokenLine line = asmTokenedData.get(i);
@@ -466,8 +470,7 @@ public class AssemblerThumb implements Assembler {
                 }
             }
         }
-        //TODO: possibly throw exception
-        return lineNum;
+        throw new ExceptionNoOpCodeLineFound("Could not find an OpCode line for label '" + label + "' on empty line " + lineNum);
     }
     
     public JsonObjIsOpCode FindOpCodeArgMatches(List<JsonObjIsOpCode> opCodeMatches, List<Token> args, Token opCodeToken) throws ExceptionNoOpCodeFound {
