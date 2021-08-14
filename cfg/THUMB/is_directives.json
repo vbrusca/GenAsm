@@ -19,7 +19,7 @@
         {
             "obj_name": "is_directive",
             "directive_name": "@THUMB",
-            "arg_len": 1,
+            "arg_len": 0,
             "args": [
             ],
             "description": "The THUMB directive instructs the assembler to interpret subsequent instructions as Thumb instructions."
@@ -41,7 +41,7 @@
         {
             "obj_name": "is_directive",
             "directive_name": "@ENTRY",
-            "arg_len": 1,
+            "arg_len": 0,
             "args": [
             ],
             "description": "The ENTRY directive declares an entry point to a program."
@@ -49,7 +49,7 @@
         {
             "obj_name": "is_directive",
             "directive_name": "@END",
-            "arg_len": 1,
+            "arg_len": 0,
             "args": [
             ],
             "description": "The END directive informs the assembler that it has reached the end of a source file."

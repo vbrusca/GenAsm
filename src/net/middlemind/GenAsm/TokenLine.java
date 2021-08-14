@@ -11,9 +11,11 @@ public class TokenLine {
     public int lineNum;
     public int payloadLen;
     public String payloadOpCode;
+    public String payloadDirective;
     public int payloadLenArg;
     public ArtifactLine source;
     public JsonObj validLineEntry;
     public List<Token> payload;
-    public List<JsonObjIsOpCode> opCodeMatches;
+    public List<JsonObjIsOpCode> matchesOpCode;
+    public List<JsonObjIsDirective> matchesDirective;    
 }

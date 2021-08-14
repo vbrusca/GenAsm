@@ -11,6 +11,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
     public static String ENTRY_TYPE_NAME_OPCODE = "OpCode";
+    public static String ENTRY_TYPE_NAME_DIRECTIVE = "Directive";    
     public static String ENTRY_TYPE_NAME_NULL = "None";
     public static String ENTRY_TYPE_NAME_LABEL = "Label";
     public static String ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF = "LabelNumericLocal";    
@@ -23,7 +24,8 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String ENTRY_TYPE_NAME_START_GROUP = "GroupStart";
     public static String ENTRY_TYPE_NAME_STOP_LIST = "ListStop";
     public static String ENTRY_TYPE_NAME_STOP_GROUP = "GroupStop";
-    public static String ENTRY_TYPE_NAME_CAT_ARG = "Arg";    
+    public static String ENTRY_TYPE_NAME_OPCODE_CAT_ARG = "Arg";
+    public static String ENTRY_TYPE_NAME_DIRECTIVE_CAT_ARG = "DirectiveArg";    
         
     @Override
     public void Print() {
