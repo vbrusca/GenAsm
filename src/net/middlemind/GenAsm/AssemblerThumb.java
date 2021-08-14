@@ -147,7 +147,7 @@ public class AssemblerThumb implements Assembler {
             
             if(lastArea != -1 && lastEntry != -1 && lastEnd == -1) {
                 if(line.payloadLen != 0 && !line.validLineEntry.empty_line) {
-                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), 4);
+                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), jsonObjIsOpCodes.pc_prefetch_words);
                     activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
                 }
             }
