@@ -138,11 +138,19 @@ public class AssemblerThumb implements Assembler {
         int lastEntry = -1;
         int lastEnd = -1;
         int lastArea = -1;
+        int activeLineCount = 0;
         
         for(TokenLine line : asmTokenedData) {            
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;
+            
+            if(lastArea != -1 && lastEntry != -1 && lastEnd == -1) {
+                if(line.payloadLen != 0 && !line.validLineEntry.empty_line) {
+                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), 4);
+                    activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
+                }
+            }
             
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
@@ -831,19 +839,19 @@ public class AssemblerThumb implements Assembler {
                 Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as '" + entry.target_class + "'");
                 Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry '" + jsonName + "'");
                 
-                if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsEntryTypes")) {
+                if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes")) {
                     jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
                 
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsValidLines")) {
+                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsValidLines")) {
                     jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
                 
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsOpCodes")) {
+                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsOpCodes")) {
                     jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsOpCodes object, storing it...");
                 
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.LoaderIsDirectives")) {
+                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsDirectives")) {
                     jsonObjIsDirectives = (JsonObjIsDirectives)jsonObj;
                     Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsDirectives object, storing it...");                    
                 }

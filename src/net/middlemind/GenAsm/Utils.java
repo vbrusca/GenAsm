@@ -8,6 +8,18 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 7:04 AM EST
  */
 public class Utils {
+    public static String FormatHexString(String s, int len) {
+        String ret = s;
+        if(!IsStringEmpty(s)) {
+            if(s.length() < len) {
+                for(int i = s.length(); i < len; i++) {
+                    ret = "0" + ret;
+                }
+            }
+        }
+        return ret = "0x" + ret;
+    }
+    
     public static boolean IsStringEmpty(String s) {
         if(s == null || s.equals("")) {
             return true;
