@@ -21,5 +21,8 @@ public class TokenLine {
     public JsonObjIsValidLine validLineEntry;
     public List<Token> payload;
     public List<JsonObjIsOpCode> matchesOpCode;
-    public List<JsonObjIsDirective> matchesDirective;    
+    public List<JsonObjIsDirective> matchesDirective;
+    public boolean isLineEmpty;
+    public boolean isLineOpCode;
+    public boolean isLineDirective;
 }

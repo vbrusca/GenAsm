@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/TokenLine.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/AssemblerThumb.java</file>
-            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json</file>
-            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/GenAsm.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/Utils.java</file>
         </group>
     </open-files>
 </project-private>

@@ -22,4 +22,6 @@ public class Symbol {
     public Token token;
     public int lineNum;
     public Map<String, Symbol> symbols = new Hashtable<>();
+    public int lineNumActive;
+    public boolean isEmptyLineLabel;
 }

@@ -21,4 +21,9 @@ public class Token {
     public int payloadLen;
     public int payloadArgLen;
     public List<Token> payload;
+    public boolean isArgOpCode;
+    public boolean isArgDirective;
+    public boolean isOpCode;
+    public boolean isDirective;
+    public boolean isComment;
 }

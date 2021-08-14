@@ -369,9 +369,16 @@ public class TokenerThumb implements Tokener {
                 ret.payload.add(tmb);                
                 count++;
                 
-                if(tmb.type_name.equals("Comment")) {
+                if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
+                    tmb.isOpCode = true;
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
+                    tmb.isDirective = true;
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_COMMENT)) {
+                    tmb.isComment = true;
                     commentType = compareType;
                     inComment = true;
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE_STRING)) {
+                    tmb.source = tmb.source.replace("|", "");
                 }
             }
 
