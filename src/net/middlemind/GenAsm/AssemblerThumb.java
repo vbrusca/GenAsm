@@ -695,7 +695,8 @@ public class AssemblerThumb implements Assembler {
         int[] res;
         int currentIndex;
         int currentEntry;
-        int count = 0;
+        //int count = 0;
+        int entries = 0;
         
         if(tokenCount == 0) {
             tokenLine.validLineEntry = validLineEmpty;
@@ -703,39 +704,65 @@ public class AssemblerThumb implements Assembler {
         }
         
         for(JsonObjIsValidLine validLine : validLines.is_valid_lines) {
+            //Logger.wrl("");
+            //Logger.wrl("");
+            //Logger.wrl("Index: " + validLine.index);
             res = null;
             currentIndex = -1;
             currentEntry = -1;
             tokenCount = tokenLine.payload.size();
+            entries = -1;
             
-            for(Token token : tokenLine.payload) {            
-                res = FindValidLineEntry(validLine, token, currentEntry, currentIndex);
+            for(Token token : tokenLine.payload) {
+                //Logger.wrl("TokenType: " + token.type_name);
+                res = FindValidLineEntry(validLine, token, currentEntry, 0);
                 if(res == null) {
+                    //Logger.wrl("null");
                     break;
                 } else {
-                    //Logger.wrl("CurrentEntry: " + currentEntry + ", CurrentIndex: " + currentIndex + ", Res[0]: " + res[0] + ", Res[1]: " + res[1]);
+                    //Logger.wrl("TokenCount: " + tokenCount + ", Entries: " + entries + ", CurrentEntry: " + currentEntry + ", CurrentIndex: " + currentIndex + ", Res[0]: " + res[0] + ", Res[1]: " + res[1]);
                 }
-                    
+                   
+                /*
                 if(currentIndex == -1) {
+                    entries = 1;
                     currentIndex = res[1];
-                } 
+                    tokenCount--;
+                } else {
+                    if(res[0] > currentIndex) {
+                        entries++;
+                    }                    
                     
+                    if(res[0] >= currentIndex) {
+                        currentIndex = res[0];
+                        tokenCount--;
+                    } else {
+                        break;
+                    }                    
+                }
+                */
+                
                 if(currentEntry == -1) {
+                    entries = 1;
                     currentEntry = res[0];
                     tokenCount--;
                 } else {
+                    if(res[0] > currentEntry) {
+                        entries++;
+                    }                    
+                    
                     if(res[0] >= currentEntry) {
-                        currentIndex = res[0];
+                        currentEntry = res[0];
                         tokenCount--;
                     } else {
                         break;
                     }
                 }
             }
-            count++;
-            //Logger.wrl("TokenCount: " + tokenCount);
+            //count++;
+            //Logger.wrl("TokenCount: " + tokenCount + " Entries: " + entries + " ValidLineEntries: " + validLine.is_valid_line.size());
             
-            if(tokenCount == 0) {
+            if(tokenCount == 0 && entries == validLine.is_valid_line.size()) {
                 tokenLine.validLineEntry = validLine;
                 return true;
             }

@@ -13,21 +13,6 @@
                     "obj_name": "is_valid_line_entry",
                     "is_entry_types": ["Comment"],
                     "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
                 }
             ]
         },
@@ -40,21 +25,6 @@
                     "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["Label"],
                     "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
                 }
             ]
         },
@@ -70,18 +40,8 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["Comment"],
-                    "index": 3
+                    "index": 1
                 }
             ]
         },
@@ -94,21 +54,6 @@
                     "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["LabelNumericLocal"],
                     "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
                 }
             ]
         },
@@ -124,18 +69,8 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["Comment"],
-                    "index": 3
+                    "index": 1
                 }
             ]
         },
@@ -146,23 +81,13 @@
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["OpCode"],
-                    "index": 1
+                    "index": 0
                 },
                 {
                     "obj_name": "is_valid_line_entry",
                     "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
+                    "index": 1
                 }
             ]
         },
@@ -185,11 +110,6 @@
                     "obj_name": "is_valid_line_entry",
                     "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
                     "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
                 }
             ]
         },        
@@ -200,23 +120,18 @@
             "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["OpCode"],
-                    "index": 1
+                    "index": 0
                 },
                 {
                     "obj_name": "is_valid_line_entry",
                     "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "Label"],
-                    "index": 2
+                    "index": 1
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
                     "is_entry_types": ["Comment"],
-                    "index": 3
+                    "index": 2
                 }
             ]
         },
@@ -252,26 +167,6 @@
             "index": 9,
             "empty_line": true,
             "is_valid_line": [
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 0
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 1
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
-                }
             ]
         },        
         {
@@ -286,18 +181,20 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["Directive", "DirectiveString"],
+                    "is_entry_types": ["DirectiveString"],
                     "index": 1
-                },
+                }
+            ]
+        },        
+        {
+            "obj_name": "is_valid_line",
+            "index": 11,
+            "empty_line": true,
+            "is_valid_line": [
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 2
-                },
-                {
-                    "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["None"],
-                    "index": 3
+                    "is_entry_types": ["Directive"],
+                    "index": 0
                 }
             ]
         }
