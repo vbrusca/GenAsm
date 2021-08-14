@@ -1,5 +1,9 @@
 package net.middlemind.GenAsm;
 
+import net.middlemind.GenAsm.Exceptions.ExceptionLoader;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsSets;
+import net.middlemind.GenAsm.Loaders.LoaderIsSets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -296,7 +300,7 @@ public class GenAsm {
                     }
                     
                     if(ASM_SET != null) {
-                        assm.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE);
+                        assm.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, null);
                     } else {
                         Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
                     }

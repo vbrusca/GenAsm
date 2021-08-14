@@ -156,8 +156,8 @@ next
 faraway
 
         BL faraway ; Unconditionally Branch to 'faraway'
-    next; and place following instruction
-    faraway; Must be Half-word aligned.
+    next1; and place following instruction
+    faraway1; Must be Half-word aligned.
 
 LSL ra, rb, #6
 LSL rt, rb, #8
@@ -200,6 +200,6 @@ MOV pc, lr
 
 
 label MOV pc, lr   
-    label   ADD     a3, a1 ; takes argument in a1 
+    label1   ADD     a3, a1 ; takes argument in a1 
 
     @END

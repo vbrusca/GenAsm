@@ -1,5 +1,8 @@
 package net.middlemind.GenAsm;
 
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCode;
+import net.middlemind.GenAsm.JsonObjs.JsonObj;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsDirective;
 import java.util.List;
 
 /**

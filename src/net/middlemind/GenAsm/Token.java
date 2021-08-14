@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+import net.middlemind.GenAsm.JsonObjs.JsonObj;
 import java.util.List;
 
 /**

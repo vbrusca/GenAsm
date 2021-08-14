@@ -1,5 +1,37 @@
 package net.middlemind.GenAsm;
 
+import net.middlemind.GenAsm.Exceptions.ExceptionRedefinitionOfAreaDirective;
+import net.middlemind.GenAsm.Exceptions.ExceptionMissingRequiredDirective;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoEntryFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionLoader;
+import net.middlemind.GenAsm.Exceptions.ExceptionRedefinitionOfLabel;
+import net.middlemind.GenAsm.Exceptions.ExceptionMalformedRange;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoClosingBracketFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionMalformedEntryEndDirectiveSet;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoValidLineFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoAreaDirectiveFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoTokenerFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoParentSymbolFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionListAndGroup;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionJsonObjLink;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoDirectiveFound;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryTypes;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsValidLineEntry;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsFile;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsValidLine;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsDirective;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodes;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCode;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsDirectiveArg;
+import net.middlemind.GenAsm.JsonObjs.JsonObj;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsValidLines;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegisters;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsDirectives;
+import net.middlemind.GenAsm.Loaders.Loader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -32,9 +64,11 @@ public class AssemblerThumb implements Assembler {
     public Symbols symbols;
     
     public List<String> requiredDirectives;
+    public int directiveLineEntry;
+    public int directiveLineEnd;
     
     @Override
-    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile) {
+    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) {
         try {
             Logger.wrl("AssemblerThumb: RunAssembler: Start");
             jsonSource = new Hashtable<String, String>();
@@ -94,7 +128,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void PopulateDirectiveAndArgData() throws ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound {
+    public void PopulateDirectiveAndArgData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
         boolean directiveFound = false;
         String directiveName = null;
@@ -103,35 +137,52 @@ public class AssemblerThumb implements Assembler {
         List<String> reqDirectives = new ArrayList<>(requiredDirectives);
         int lastEntry = -1;
         int lastEnd = -1;
+        int lastArea = -1;
         
         for(TokenLine line : asmTokenedData) {            
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;
+            
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
                     directiveFound = true;
                     directiveName = token.source;
                     directiveIdx = token.index;
                  
-                    if(reqDirectives.contains(token.type_name)) {
-                        reqDirectives.remove(token.type_name);
+                    if(reqDirectives.contains(token.source)) {
+                        reqDirectives.remove(token.source);
                         reqDirectiveCount--;
                     }
                     
-                    if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
-                        if(lastEntry == -1) {
-                            lastEntry = token.index;
+                    if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_AREA)) {
+                        if(lastArea == -1) {
+                            lastArea = line.lineNum;
                         } else {
-                            //TODO: throw exception malformed entry - end set
+                            throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNum + " with source " + line.source.source);
+                        }
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
+                        if(lastArea == -1) {
+                            throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
+                        } else if(lastEntry == -1) {
+                            lastEntry = line.lineNum;
+                        } else {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Found multiple ENTRY directives with a new entry on line " + line.lineNum + " with source " + line.source.source);
                         }
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_END)) {
-                        lastEnd = token.index;
-                        if(lastEnd <= lastEntry) {
-                            //TODO: throw exception malformed entry - end set
+                        if(lastArea == -1) {
+                            throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
+                        } else if(lastEntry == -1) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
+                        } else if(lastEnd == -1) {
+                            lastEnd = line.lineNum;
                         } else {
-                            lastEntry = -1;
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
+                        if(lastEnd <= lastEntry) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
+                        }                        
                     }
                 }
             }
@@ -145,10 +196,17 @@ public class AssemblerThumb implements Assembler {
                     throw new ExceptionNoOpCodeFound("Could not find a matching directive entry for name '" + line.payloadDirective + "' with argument count " + line.payloadLenArg + " at line " + line.lineNum + " with source text '" + line.source.source + "'");
                 }
             }
-            
-            if(reqDirectiveCount > 0) {
-                
+        }
+        
+        if(reqDirectiveCount > 0) {
+            String lmissing = "";
+            for(int i = 0; i < reqDirectives.size(); i++) {
+                lmissing += reqDirectives.get(i);
+                if(i < reqDirectives.size() - 1) {
+                    lmissing += ",";
+                }
             }
+            throw new ExceptionMissingRequiredDirective("Could not find required directive in the source file, '" + lmissing + "'");
         }
     }    
     
@@ -168,6 +226,7 @@ public class AssemblerThumb implements Assembler {
                 directiveToken = null;
                 directiveIdx = -1;
                 args = null;
+                
                 for(Token token : line.payload) {
                     if(!directiveFound) {
                         if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
@@ -178,7 +237,6 @@ public class AssemblerThumb implements Assembler {
                             args = new ArrayList<>();
                         }
                     } else {
-                        //in args
                         args.add(token);
                     }
                 }
@@ -201,7 +259,6 @@ public class AssemblerThumb implements Assembler {
         Token argToken = null;
         boolean argFound = false;
         int directiveArgIdx = -1;
-
         
         for(JsonObjIsDirective directive : directiveMatches) {            
             directiveArg = null;
@@ -211,6 +268,7 @@ public class AssemblerThumb implements Assembler {
             for(int i = 0; i < directive.args.size(); i++) {
                 directiveArg = directive.args.get(i);
                 directiveArgIdx = i;
+                
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
@@ -329,6 +387,7 @@ public class AssemblerThumb implements Assembler {
                 opCodeToken = null;
                 opCodeIdx = -1;
                 args = null;
+                
                 for(Token token : line.payload) {
                     if(!opCodeFound) {
                         if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
@@ -339,7 +398,6 @@ public class AssemblerThumb implements Assembler {
                             args = new ArrayList<>();
                         }
                     } else {
-                        //in args
                         args.add(token);
                     }
                 }
@@ -398,7 +456,7 @@ public class AssemblerThumb implements Assembler {
         return argCount;
     }
     
-    public void PopulateOpCodeAndArgData() throws ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound {
+    public void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound {
         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
         boolean opCodeFound = false;
         String opCodeName = null;
@@ -413,6 +471,7 @@ public class AssemblerThumb implements Assembler {
             opCodeName = null;
             opCodeIdx = -1;
             labelArgs = 0;
+            
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
                     opCodeFound = true;
@@ -428,11 +487,7 @@ public class AssemblerThumb implements Assembler {
                         lastLabel = token.source;
                         lastLabelLine = line;
                         if(symbols.symbols.containsKey(token.source)) {
-                            symbol = symbols.symbols.get(token.source);
-                            symbols.symbols.remove(token.source);
-                            
-                            //TODO: throw label redefinition exception
-                            Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
+                            throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
                         } else {
                             Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
                         }
@@ -446,16 +501,12 @@ public class AssemblerThumb implements Assembler {
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {                    
                     if(Utils.IsStringEmpty(lastLabel)) {
-                        //TODO: throw local label no parent exception
-                        Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");                        
+                        throw new ExceptionNoParentSymbolFound("No parent label found for local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");
                     } else {
                         if(symbols.symbols.containsKey(lastLabel)) {
                             symbol = symbols.symbols.get(lastLabel);
                             if(symbol.symbols.containsKey(token.source)) {
-                                symbol.symbols.remove(token.source);
-                                
-                                //TODO: throw label redefinition exception
-                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Warning local symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);                            
+                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
                             } else {
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
                             }
@@ -706,7 +757,8 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmTokenedData) {
             boolean inComment = false;
             Token commentRoot = null;
-            List<Token> clearTokens = new ArrayList<>();            
+            List<Token> clearTokens = new ArrayList<>();  
+            
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_COMMENT)) {
                     if(!inComment) {
@@ -876,7 +928,6 @@ public class AssemblerThumb implements Assembler {
     public boolean ValidateTokenizedLine(TokenLine tokenLine, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
         int tokenCount = tokenLine.payload.size();
         int[] res = null;
-        int currentIndex = -1;
         int currentEntry = -1;
         int entries = -1;
         
@@ -886,44 +937,17 @@ public class AssemblerThumb implements Assembler {
         }
         
         for(JsonObjIsValidLine validLine : validLines.is_valid_lines) {
-            //Logger.wrl("");
-            //Logger.wrl("");
-            //Logger.wrl("Index: " + validLine.index);
             res = null;
-            currentIndex = -1;
             currentEntry = -1;
             tokenCount = tokenLine.payload.size();
             entries = -1;
             
             for(Token token : tokenLine.payload) {
-                //Logger.wrl("TokenType: " + token.type_name);
                 res = FindValidLineEntry(validLine, token, currentEntry, 0);
                 if(res == null) {
-                    //Logger.wrl("null");
                     break;
-                } else {
-                    //Logger.wrl("TokenCount: " + tokenCount + ", Entries: " + entries + ", CurrentEntry: " + currentEntry + ", CurrentIndex: " + currentIndex + ", Res[0]: " + res[0] + ", Res[1]: " + res[1]);
                 }
-                   
-                /*
-                if(currentIndex == -1) {
-                    entries = 1;
-                    currentIndex = res[1];
-                    tokenCount--;
-                } else {
-                    if(res[0] > currentIndex) {
-                        entries++;
-                    }                    
-                    
-                    if(res[0] >= currentIndex) {
-                        currentIndex = res[0];
-                        tokenCount--;
-                    } else {
-                        break;
-                    }                    
-                }
-                */
-                
+
                 if(currentEntry == -1) {
                     entries = 1;
                     currentEntry = res[0];
@@ -941,7 +965,6 @@ public class AssemblerThumb implements Assembler {
                     }
                 }
             }
-            //Logger.wrl("TokenCount: " + tokenCount + " Entries: " + entries + " ValidLineEntries: " + validLine.is_valid_line.size());
             
             if(tokenCount == 0 && entries == validLine.is_valid_line.size()) {
                 tokenLine.validLineEntry = validLine;
@@ -952,7 +975,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     public boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
-        Logger.wrl("AssemblerThumb: ValidateTokenizedLines");        
+        Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
         for(TokenLine tokenLine : asmTokenedData) {
             if(!ValidateTokenizedLine(tokenLine, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + tokenLine.lineNum + " with source text, '" + tokenLine.source.source + "'");
