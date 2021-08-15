@@ -41,6 +41,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
 
 /**
  *
@@ -87,41 +88,56 @@ public class AssemblerThumb implements Assembler {
             requiredDirectives.add("@ENTRY");
             requiredDirectives.add("@END");            
             
-            //Process JsonObjIsSet's file entries and load then parse the json object data
+            Logger.wrl("");
+            Logger.wrl("STEP1: Process JsonObjIsSet's file entries and load then parse the json object data");
             LoadAndParseJsonObjData();
 
-            //Link loaded json object data
             Logger.wrl("");
+            Logger.wrl("STEP2: Link loaded json object data");
             LinkJsonObjData();
 
-            //Load and lexerize the assembly source file
             Logger.wrl("");
+            Logger.wrl("STEP3: Load and lexerize the assembly source file");           
             LoadAndLexerizeAssemblySource();
             WriteObject(asmLexedData, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
 
-            //Tokenize the lexerized artifacts
             Logger.wrl("");
+            Logger.wrl("STEP4: Tokenize the lexerized artifacts");
             TokenizeLexerArtifacts();
-
-            Logger.wrl("");
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
             
-            //Validate token lines
             Logger.wrl("");
+            Logger.wrl("STEP5: Validate token lines");
             ValidateTokenizedLines();
-
-            //Second level token processing            
-            Logger.wrl("");
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
 
+            Logger.wrl("");
+            Logger.wrl("STEP6: Combine comment tokens as children of the initial comment token");
             CollapseCommentTokens();
+            
+            Logger.wrl("");
+            Logger.wrl("STEP7: Expand register ranges into individual register entries");
             ExpandRegisterRangeTokens();
+            
+            Logger.wrl("");
+            Logger.wrl("STEP8: Combine list and group tokens as children of the initial list or group token");
             CollapseListAndGroupTokens();
+            
+            Logger.wrl("");
+            Logger.wrl("STEP9: Mark OpCode, OpCode argument, and register tokens");
             PopulateOpCodeAndArgData();
+            
+            Logger.wrl("");
+            Logger.wrl("STEP10: Mark directive and directive argument tokens");
             PopulateDirectiveAndArgData();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
 
-            ValidateOpCodeLines();        
+            Logger.wrl("");
+            Logger.wrl("STEP11: Validate OpCode lines against known OpCodes by comparing arguments");
+            ValidateOpCodeLines();
+            
+            Logger.wrl("");
+            Logger.wrl("STEP12: Validate directive lines against known directives by comparing arguments");
             ValidateDirectiveLines();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
             WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
@@ -337,6 +353,23 @@ public class AssemblerThumb implements Assembler {
             labelArgs = 0;
             
             for(Token token : line.payload) {
+                //MATCH REGISTERS
+                if(Utils.ContainsStr(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERS, token.type_name)) {
+                    String regCode = token.source;
+                    if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                        regCode = regCode.replace("!", "");
+                    }
+                    regCode = regCode.replace(" ", "");
+                    regCode = regCode.replace(",", "");
+                    
+                    for(JsonObjIsRegister register : jsonObjIsRegisters.is_registers) {
+                        if(register.register_name.equals(regCode)) {
+                            token.register = register;
+                            break;
+                        }
+                    }
+                }
+                
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
                     opCodeFound = true;
                     opCodeName = token.source;
@@ -506,7 +539,7 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         break;
                     }
-                    
+                                        
                     if(opCodeArg.sub_args != null && opCodeArg.sub_args.size() > 0) {
                         opCodeArgSub = null;
                         argTokenSub = null;
@@ -592,23 +625,39 @@ public class AssemblerThumb implements Assembler {
        
     //CLEAN TOKEN STRUCTURE
     public void CollapseListAndGroupTokens() throws ExceptionNoClosingBracketFound, ExceptionListAndGroup {
-        Logger.wrl("AssemblerThumb: CollapseListAndGroupTokens");        
-        for(TokenLine line : asmTokenedData) {
-            Token rootStartList = null;
-            int rootStartIdxList = -1;
-            Token rootStartGroup = null;
-            int rootStartIdxGroup = -1;
+        Logger.wrl("AssemblerThumb: CollapseListAndGroupTokens");
+        Token rootStartList = null;
+        int rootStartIdxList = -1;
+        Token rootStartGroup = null;
+        int rootStartIdxGroup = -1;
 
-            Token rootStopList = null;
-            int rootStopIdxList = -1;
-            Token rootStopGroup = null;
-            int rootStopIdxGroup = -1;
+        Token rootStopList = null;
+        int rootStopIdxList = -1;
+        Token rootStopGroup = null;
+        int rootStopIdxGroup = -1;
+
+        List<Token> clearTokensList = null;
+        List<Token> clearTokensGroup = null;
+        int copyStart = -1;
+        int copyEnd = -1;
+        int copyLen = -1;        
+        
+        for(TokenLine line : asmTokenedData) {
+            rootStartList = null;
+            rootStartIdxList = -1;
+            rootStartGroup = null;
+            rootStartIdxGroup = -1;
+
+            rootStopList = null;
+            rootStopIdxList = -1;
+            rootStopGroup = null;
+            rootStopIdxGroup = -1;
             
-            List<Token> clearTokensList = new ArrayList<>();
-            List<Token> clearTokensGroup = new ArrayList<>();
-            int copyStart = -1;
-            int copyEnd = -1;
-            int copyLen = -1;
+            clearTokensList = new ArrayList<>();
+            clearTokensGroup = new ArrayList<>();
+            copyStart = -1;
+            copyEnd = -1;
+            copyLen = -1;
             
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
@@ -706,110 +755,122 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void ExpandRegisterRangeTokens() throws Exception {
-        try {
-            Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
-            for(TokenLine line : asmTokenedData) {
-                int rangeRootIdxLow = 0;
-                int rangeRootIdxHi = 0;
-                Token rangeRootLow = null;                
-                Token rangeRootHi = null;
-                String rangeStr = "";
-                int[] range = null;
-                int count = 0;
-                Token newToken = null;
-                int i = 0;
-                
-                List<Token> rangeAddTokensLow = new ArrayList<>();
-                List<Token> rangeAddTokensHi = new ArrayList<>();                
-                JsonObjIsEntryType entryTypeRegLow = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW);
-                JsonObjIsEntryType entryTypeRegHi = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI);                
+    public void ExpandRegisterRangeTokens() throws ExceptionNoEntryFound, ExceptionMalformedRange {
+        Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
+        int rangeRootIdxLow = -1;
+        int rangeRootIdxHi = -1;
+        Token rangeRootLow = null;                
+        Token rangeRootHi = null;
+        String rangeStr = null;
+        int[] range = null;
+        int count = -1;
+        Token newToken = null;
+        int i = -1;
 
-                for(Token token : line.payload) {
-                    CleanTokenSource(token);
-                    if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
-                        rangeRootLow = token;
-                        rangeRootIdxLow = rangeRootLow.index;
-                        rangeStr = rangeRootLow.source;
-                        rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                        range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                        count = 0;
-                        for(i = range[0]; i < range[1]; i++) {
-                            newToken = new Token();
-                            newToken.artifact = rangeRootLow.artifact;
-                            newToken.index = rangeRootLow.index + count;
-                            newToken.lineNum = rangeRootLow.lineNum;
-                            newToken.payload = new ArrayList<>();
-                            newToken.payloadLen = 0;
-                            newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
-                            newToken.type = entryTypeRegLow;
-                            newToken.type_name = entryTypeRegLow.type_name;
-                            rangeAddTokensLow.add(newToken);
-                            count++;
-                        }
+        List<Token> rangeAddTokensLow = null;
+        List<Token> rangeAddTokensHi = null;                
+        JsonObjIsEntryType entryTypeRegLow = null;
+        JsonObjIsEntryType entryTypeRegHi = null;
+        
+        for(TokenLine line : asmTokenedData) {
+            rangeRootIdxLow = 0;
+            rangeRootIdxHi = 0;
+            rangeRootLow = null;                
+            rangeRootHi = null;
+            rangeStr = "";
+            range = null;
+            count = 0;
+            newToken = null;
+            i = 0;
 
-                    } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
-                        rangeRootHi = token;
-                        rangeRootIdxHi = rangeRootHi.index;
-                        rangeStr = rangeRootHi.source;
-                        rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                        range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                        count = 0;
-                        for(i = range[0]; i < range[1]; i++) {
-                            newToken = new Token();
-                            newToken.artifact = rangeRootHi.artifact;
-                            newToken.index = rangeRootHi.index + count;
-                            newToken.lineNum = rangeRootHi.lineNum;
-                            newToken.payload = new ArrayList<>();
-                            newToken.payloadLen = 0;
-                            newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
-                            newToken.type = entryTypeRegHi;
-                            newToken.type_name = entryTypeRegHi.type_name;
-                            rangeAddTokensHi.add(newToken);
-                            count++;
-                        }
-                        
-                    }
-                }
-                
-                if(rangeRootHi != null && rangeAddTokensHi != null && rangeAddTokensHi.size() > 0) {
-                    line.payload.addAll(rangeRootIdxHi + 1, rangeAddTokensHi);
-                    line.payload.remove(rangeRootHi);
-                    line.payloadLen = line.payload.size();
+            rangeAddTokensLow = new ArrayList<>();
+            rangeAddTokensHi = new ArrayList<>();                
+            entryTypeRegLow = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW);
+            entryTypeRegHi = FindEntryType(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI);                
 
+            for(Token token : line.payload) {
+                CleanTokenSource(token);
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_LOW)) {
+                    rangeRootLow = token;
+                    rangeRootIdxLow = rangeRootLow.index;
+                    rangeStr = rangeRootLow.source;
+                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
                     count = 0;
-                    for(Token token : line.payload) {
-                        token.index = count;
+                    for(i = range[0]; i < range[1]; i++) {
+                        newToken = new Token();
+                        newToken.artifact = rangeRootLow.artifact;
+                        newToken.index = rangeRootLow.index + count;
+                        newToken.lineNum = rangeRootLow.lineNum;
+                        newToken.payload = new ArrayList<>();
+                        newToken.payloadLen = 0;
+                        newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                        newToken.type = entryTypeRegLow;
+                        newToken.type_name = entryTypeRegLow.type_name;                            
+                        rangeAddTokensLow.add(newToken);
                         count++;
                     }
-                }
-                
-                if(rangeRootLow != null && rangeAddTokensLow != null && rangeAddTokensLow.size() > 0) {
-                    line.payload.addAll(rangeRootIdxLow + 1, rangeAddTokensLow);
-                    line.payload.remove(rangeRootLow);
-                    line.payloadLen = line.payload.size();   
-                    
+
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
+                    rangeRootHi = token;
+                    rangeRootIdxHi = rangeRootHi.index;
+                    rangeStr = rangeRootHi.source;
+                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
                     count = 0;
-                    for(Token token : line.payload) {
-                        token.index = count;
+                    for(i = range[0]; i < range[1]; i++) {
+                        newToken = new Token();
+                        newToken.artifact = rangeRootHi.artifact;
+                        newToken.index = rangeRootHi.index + count;
+                        newToken.lineNum = rangeRootHi.lineNum;
+                        newToken.payload = new ArrayList<>();
+                        newToken.payloadLen = 0;
+                        newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                        newToken.type = entryTypeRegHi;
+                        newToken.type_name = entryTypeRegHi.type_name;
+                        rangeAddTokensHi.add(newToken);
                         count++;
-                    }                    
-                }                
-                
+                    }
+
+                }
             }
-        } catch (ExceptionNoEntryFound | ExceptionMalformedRange e) {
-            Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken: Could not find required entry type.");
-            e.printStackTrace();
-            throw e;
+
+            if(rangeRootHi != null && rangeAddTokensHi != null && rangeAddTokensHi.size() > 0) {
+                line.payload.addAll(rangeRootIdxHi + 1, rangeAddTokensHi);
+                line.payload.remove(rangeRootHi);
+                line.payloadLen = line.payload.size();
+
+                count = 0;
+                for(Token token : line.payload) {
+                    token.index = count;
+                    count++;
+                }
+            }
+
+            if(rangeRootLow != null && rangeAddTokensLow != null && rangeAddTokensLow.size() > 0) {
+                line.payload.addAll(rangeRootIdxLow + 1, rangeAddTokensLow);
+                line.payload.remove(rangeRootLow);
+                line.payloadLen = line.payload.size();   
+
+                count = 0;
+                for(Token token : line.payload) {
+                    token.index = count;
+                    count++;
+                }                    
+            }
         }
     }
     
     public void CollapseCommentTokens() {
-        Logger.wrl("AssemblerThumb: CollapseCommentTokens");        
+        Logger.wrl("AssemblerThumb: CollapseCommentTokens");
+        boolean inComment = false;
+        Token commentRoot = null;
+        List<Token> clearTokens = null;  
+            
         for(TokenLine line : asmTokenedData) {
-            boolean inComment = false;
-            Token commentRoot = null;
-            List<Token> clearTokens = new ArrayList<>();  
+            inComment = false;
+            commentRoot = null;
+            clearTokens = new ArrayList<>();  
             
             for(Token token : line.payload) {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_COMMENT)) {
@@ -862,67 +923,66 @@ public class AssemblerThumb implements Assembler {
     }
     
     //LOAD, PARSE, LINK JSONOBJ DATA METHODS
-    public void LoadAndParseJsonObjData() throws Exception {
-        try {
-            Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
-            for(JsonObjIsFile entry : isaDataSet.is_files) {
-                Class cTmp = Class.forName(entry.loader_class);
-                Loader ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
-                String json = null;
-                String jsonName = null;
-                JsonObj jsonObj = null;
-                
-                isaLoader.put(entry.loader_class, ldr);
-                Logger.wrl("AssemblerThumb: RunAssembler: Loader created '" + entry.loader_class + "'");
-                
-                json = FileLoader.LoadStr(entry.path);
-                jsonSource.put(entry.path, json);
-                Logger.wrl("AssemblerThumb: RunAssembler: Json loaded '" + entry.path + "'");
-                                
-                jsonObj = ldr.ParseJson(json, entry.target_class, entry.path);
-                jsonName = jsonObj.GetName();
-                isaData.put(jsonName, jsonObj);
-                Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as '" + entry.target_class + "'");
-                Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry '" + jsonName + "'");
-                
-                if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes")) {
-                    jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
-                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
-                
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsValidLines")) {
-                    jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
-                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
-                
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsOpCodes")) {
-                    jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
-                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsOpCodes object, storing it...");
-                
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsDirectives")) {
-                    jsonObjIsDirectives = (JsonObjIsDirectives)jsonObj;
-                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsDirectives object, storing it...");
+    public void LoadAndParseJsonObjData() throws ExceptionNoEntryFound, ExceptionLoader, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
+        Class cTmp = null;
+        Loader ldr = null;
+        String json = null;
+        String jsonName = null;
+        JsonObj jsonObj = null;
+        
+        for(JsonObjIsFile entry : isaDataSet.is_files) {
+            cTmp = Class.forName(entry.loader_class);
+            ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
+            json = null;
+            jsonName = null;
+            jsonObj = null;
 
-                } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsRegisters")) {
-                    jsonObjIsRegisters = (JsonObjIsRegisters)jsonObj;
-                    Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsRegisters object, storing it...");                     
-                }
+            isaLoader.put(entry.loader_class, ldr);
+            Logger.wrl("AssemblerThumb: RunAssembler: Loader created '" + entry.loader_class + "'");
+
+            json = FileLoader.LoadStr(entry.path);
+            jsonSource.put(entry.path, json);
+            Logger.wrl("AssemblerThumb: RunAssembler: Json loaded '" + entry.path + "'");
+
+            jsonObj = ldr.ParseJson(json, entry.target_class, entry.path);
+            jsonName = jsonObj.GetName();
+            isaData.put(jsonName, jsonObj);
+            Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as '" + entry.target_class + "'");
+            Logger.wrl("AssemblerThumb: RunAssembler: Loading isaData with entry '" + jsonName + "'");
+
+            if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes")) {
+                jsonObjIsEntryTypes = (JsonObjIsEntryTypes)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEntryTypes object, storing it...");
+
+            } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsValidLines")) {
+                jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
+
+            } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsOpCodes")) {
+                jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsOpCodes object, storing it...");
+
+            } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsDirectives")) {
+                jsonObjIsDirectives = (JsonObjIsDirectives)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsDirectives object, storing it...");
+
+            } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsRegisters")) {
+                jsonObjIsRegisters = (JsonObjIsRegisters)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsRegisters object, storing it...");                     
             }
-            
-            if(jsonObjIsEntryTypes == null) {
-                throw new ExceptionNoEntryFound("Could not find required JsonObjIsEntryTypes instance.");
-            
-            } else if(jsonObjIsValidLines == null) {
-                throw new ExceptionNoEntryFound("Could not find required JsonObjIsValidLines instance.");
-            
-            } else if(jsonObjIsOpCodes == null) {
-                throw new ExceptionNoEntryFound("Could not find required JsonObjIsOpCodes instance.");                
-            
-            }
-            
-        } catch (ExceptionLoader | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-            Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not load and parse json data files.");
-            e.printStackTrace();
-            throw e;
-        }        
+        }
+
+        if(jsonObjIsEntryTypes == null) {
+            throw new ExceptionNoEntryFound("Could not find required JsonObjIsEntryTypes instance.");
+
+        } else if(jsonObjIsValidLines == null) {
+            throw new ExceptionNoEntryFound("Could not find required JsonObjIsValidLines instance.");
+
+        } else if(jsonObjIsOpCodes == null) {
+            throw new ExceptionNoEntryFound("Could not find required JsonObjIsOpCodes instance.");                
+
+        }
     }
     
     public void LinkJsonObjData() throws Exception {
@@ -940,32 +1000,20 @@ public class AssemblerThumb implements Assembler {
     }
     
     //LEX SOURCE CODE
-    public void LoadAndLexerizeAssemblySource() throws Exception {        
-        try {
-            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
-            asmSourceData = FileLoader.Load(asmSourceFile);
-            
-            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
-            LexerSimple lex = new LexerSimple();
-            asmLexedData = lex.FileLexerize(asmSourceData);
-        } catch (IOException e) {
-            Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Error: Could not load and lex assembly source file, '" + asmSourceFile + "'");
-            e.printStackTrace();
-            throw e;
-        }
+    public void LoadAndLexerizeAssemblySource() throws IOException {
+        Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
+        asmSourceData = FileLoader.Load(asmSourceFile);
+
+        Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
+        LexerSimple lex = new LexerSimple();
+        asmLexedData = lex.FileLexerize(asmSourceData);
     }
     
     //TOKENIZE AND VALIDATE LEXERIZED LINES
-    public void TokenizeLexerArtifacts() throws Exception {
-        try {
-            Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts");
-            TokenerThumb tok = new TokenerThumb();
-            asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
-        } catch (ExceptionNoTokenerFound e) {
-            Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts: Error: Could not tokenize lexed artifacts");
-            e.printStackTrace();
-            throw e;
-        }
+    public void TokenizeLexerArtifacts() throws ExceptionNoTokenerFound {
+        Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts");
+        TokenerThumb tok = new TokenerThumb();
+        asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
     }
     
     public int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {

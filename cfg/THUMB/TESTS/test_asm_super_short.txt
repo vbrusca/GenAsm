@@ -1,1 +1,7 @@
-label MOV pc, lr   
+@TTL |AllOpCodeTests|
+@AREA |Program|
+@ENTRY
+
+LSR   R2, R5, #27
+
+@END

@@ -1,7 +1,8 @@
 package net.middlemind.GenAsm;
 
-import net.middlemind.GenAsm.JsonObjs.JsonObj;
 import java.util.List;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
 
 /**
  *
@@ -10,20 +11,21 @@ import java.util.List;
 public class Token {
     public String obj_name = "Token";
     public String type_name;
+    public String source;
+    public String parentLabel;
+    public Object value;
     public int lineNum;
     public int index;
-    public Object value;
-    public Artifact artifact;    
-    public String source;
-    public JsonObj type;
-    public String parentLabel;
-    public TokenLine parentLine;
     public int payloadLen;
     public int payloadArgLen;
-    public List<Token> payload;
     public boolean isArgOpCode;
     public boolean isArgDirective;
     public boolean isOpCode;
     public boolean isDirective;
     public boolean isComment;
+    public Artifact artifact;
+    public JsonObjIsEntryType type;    
+    public TokenLine parentLine;
+    public JsonObjIsRegister register;    
+    public List<Token> payload;    
 }

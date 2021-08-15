@@ -8,6 +8,15 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 7:04 AM EST
  */
 public class Utils {
+    public static boolean ContainsStr(String[] array, String target) {
+        for(int i = 0; i < array.length; i++) {
+            if(array[i].equals(target)) {
+                return true;
+            }
+        }
+        return false;
+    }    
+    
     public static boolean ContainsInt(int[] array, int target) {
         for(int i = 0; i < array.length; i++) {
             if(array[i] == target) {
