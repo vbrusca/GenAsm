@@ -37,10 +37,12 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArgSorter;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
 
 /**
@@ -1097,6 +1099,16 @@ public class AssemblerThumb implements Assembler {
     public String BuildOpCode(TokenLine line) {
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
+            List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
+            List<Token> lineArgs = new ArrayList<>();            
+            Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter());
+            
+            for(Token token : line.payload) {
+                if(token.isArgOpCode) {
+                    lineArgs.add(token);
+                }
+            }
+            
         } else {
             //TODO: throw invalid opcode exception
         }
