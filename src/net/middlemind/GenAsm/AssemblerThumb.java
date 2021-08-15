@@ -1095,7 +1095,7 @@ public class AssemblerThumb implements Assembler {
 
     //BUILD OPCODE
     public String BuildOpCode(TokenLine line) {
-        if(!Utils.IsStringEmpty(line.payloadOpCode) && !line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
+        if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
         } else {
             //TODO: throw invalid opcode exception
