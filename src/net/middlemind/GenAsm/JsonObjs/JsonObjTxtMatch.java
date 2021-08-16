@@ -8,20 +8,20 @@ import net.middlemind.GenAsm.Logger;
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 7:37 AM EST
  */
 public class JsonObjTxtMatch extends JsonObjBase {
-    public List<String> starts_with;
-    public List<String> contains;
-    public List<String> ends_with;
-    public List<String> must_contain;
-    public List<String> must_not_contain;    
-    
     public static String special_wild_card = "*";
     public static String special_end_line = "endl";
     public static String special_range = "~";
     public static String special_lowercase_range = "a~z";
     public static String special_uppercase_range = "A~Z";    
     public static String special_lowercase_num_range = "a~z0~9";
-    public static String special_uppercase_num_range = "A~Z0~9";    
+    public static String special_uppercase_num_range = "A~Z0~9";
     
+    public List<String> starts_with;
+    public List<String> contains;
+    public List<String> ends_with;
+    public List<String> must_contain;
+    public List<String> must_not_contain;    
+
     @Override
     public void Print() {
         Print("");

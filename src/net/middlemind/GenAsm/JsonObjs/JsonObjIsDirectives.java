@@ -11,9 +11,6 @@ import net.middlemind.GenAsm.Utils;
  * @author Victor G. Brusca, Middlemind Games 07/31/2021 5:46 PM EST
  */
 public class JsonObjIsDirectives extends JsonObjBase {
-    public String obj_name;
-    public String set_name;
-    public List<JsonObjIsDirective> is_directives;
     public static String DIRECTIVE_NAME_ENTRY = "@ENTRY";
     public static String DIRECTIVE_NAME_AREA = "@AREA";    
     public static String DIRECTIVE_NAME_END = "@END";
@@ -21,6 +18,10 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String DIRECTIVE_NAME_DATA = "@DATA";
     public static String DIRECTIVE_NAME_READONLY = "@READONLY";
     public static String DIRECTIVE_NAME_READWRITE = "@READWRITE";
+    
+    public String obj_name;
+    public String set_name;
+    public List<JsonObjIsDirective> is_directives;
     
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {

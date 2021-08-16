@@ -10,12 +10,13 @@ import net.middlemind.GenAsm.Utils;
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 12:58 PM EST
  */
 public class JsonObjIsRegisters extends JsonObjBase {
-    public String obj_name;
-    public String set_name;
-    public List<JsonObjIsRegister> is_registers;
     public static String REGISTER_CHAR_START = "R";
     public static String REGISTER_CHAR_RANGE = "-";
     public static String REGISTER_CHAR_SEPARATOR = ",";
+    
+    public String obj_name;
+    public String set_name;
+    public List<JsonObjIsRegister> is_registers;
     
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {

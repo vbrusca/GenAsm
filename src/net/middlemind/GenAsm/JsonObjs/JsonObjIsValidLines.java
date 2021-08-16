@@ -13,6 +13,7 @@ import net.middlemind.GenAsm.Utils;
 public class JsonObjIsValidLines extends JsonObjBase {
     public static int ENTRY_LINE_EMPTY = 9;
     public static int[] ENTRY_LINES_LABEL_EMPTY = {1, 2, 3};
+    
     public String obj_name;
     public String set_name;
     public int min_line_entries;

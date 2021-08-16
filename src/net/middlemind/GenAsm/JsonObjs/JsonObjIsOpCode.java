@@ -9,6 +9,7 @@ import net.middlemind.GenAsm.Logger;
  */
 public class JsonObjIsOpCode extends JsonObjBase {
     public static String DEFAULT_ARG_SEPARATOR = ",";
+    
     public String obj_name;
     public String op_code_name;
     public String arg_separator;

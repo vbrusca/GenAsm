@@ -52,7 +52,9 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
  */
 @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
-
+    public static String ENDIAN_NAME_BIG = "BIG";
+    public static String ENDIAN_NAME_LITTLE = "LITTLE";    
+    
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
     public Map<String, Loader> isaLoader;
@@ -77,6 +79,10 @@ public class AssemblerThumb implements Assembler {
     public int lineLenBytes = 2;
     public int lineLenWords = 1;
     public JsonObjBitSeries lineBitSeries;
+    public int pcPreFetchBytes;
+    public int pcPreFetchWords;
+    public boolean isEndianBig = false;
+    public boolean isEndianLittle = true;    
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) {
@@ -1124,6 +1130,15 @@ public class AssemblerThumb implements Assembler {
             } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsOpCodes")) {
                 jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
                 lineBitSeries = jsonObjIsOpCodes.bit_series;
+                pcPreFetchBytes = jsonObjIsOpCodes.pc_prefetch_bytes;
+                pcPreFetchWords = jsonObjIsOpCodes.pc_prefetch_words;
+                if(jsonObjIsOpCodes.endian.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                    isEndianBig = true;
+                    isEndianLittle = false;
+                } else {
+                    isEndianBig = false;
+                    isEndianLittle = true;
+                }
                 Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsOpCodes object, storing it...");
 
             } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.LoaderIsDirectives")) {
