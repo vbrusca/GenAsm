@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class LexerSimple implements Lexer {
     public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
-    public static char[] CHAR_STICKY_SEPARATORS = { ',' };
+    public static char[] CHAR_STICKY_SEPARATORS = { };
     public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
     public static char[] CHAR_GROUP_START = { '[', '{' };
     public static char[] CHAR_GROUP_STOP = { ']', '}' };
@@ -142,7 +142,6 @@ public class LexerSimple implements Lexer {
                         }
                     }
                 } else {
-                    //if(chars[i] == ' ' || chars[i] == '\t') {
                     if(Contains(CHAR_WHITE_SPACE, chars[i])) {
                         //ignore whitespace
                         continue;

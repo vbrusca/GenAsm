@@ -64,9 +64,55 @@
                     "arg_index": 0,
                     "is_entry_types": ["DirectiveString"],                    
                     "is_arg_type": "String"
-                }
+                },
+                {
+                    "obj_name": "is_directive_arg",  
+                    "arg_index": 1,
+                    "is_entry_types": ["Directive"],                    
+                    "is_arg_type": "Directive",
+                    "is_arg_value": "@CODE"
+                },
+                {
+                    "obj_name": "is_directive_arg",  
+                    "arg_index": 2,
+                    "is_entry_types": ["Directive"],                    
+                    "is_arg_type": "Directive",
+                    "is_arg_value": "@READONLY"
+                }                
             ],
             "description": "The AREA directive instructs the assembler to assemble a new code or data section."
-        }
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@READONLY",
+            "arg_len": 0,
+            "args": [
+            ],
+            "description": "The READONLY directive indicates that this section must not be written to. This is the default for Code areas."
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@READWRITE",
+            "arg_len": 0,
+            "args": [
+            ],
+            "description": "The READWRITE directive indicates that this section can be read from and written to. This is the default for Data areas."
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@CODE",
+            "arg_len": 0,
+            "args": [
+            ],
+            "description": "Contains machine instructions. READONLY is the default."
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@DATA",
+            "arg_len": 0,
+            "args": [
+            ],
+            "description": "Contains data directive. READWRITE is the default."
+        }        
     ]
 }

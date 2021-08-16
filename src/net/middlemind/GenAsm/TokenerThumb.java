@@ -30,6 +30,7 @@ public class TokenerThumb implements Tokener {
         int count = 0;
         boolean inComment = false;
         JsonObjIsEntryType commentType = null;
+        boolean verbose = false;
         
         TokenLine ret = new TokenLine();
         ret.lineNum = lineNum;
@@ -64,14 +65,7 @@ public class TokenerThumb implements Tokener {
                                 //Match anything
                                 lfound = true;
                                 break;
-                            } else if(withStarts.equals(JsonObjTxtMatch.special_end_line)) {
-                                //Adjust for system line separator
-                                withStarts = System.lineSeparator();
-                                withStartsLen = withStarts.length();
-                                if(payload.indexOf(withStarts) == 0) {
-                                    lfound = true;
-                                    break;
-                                }
+
                             } else if(withStarts.length() > 1 && withStarts.contains(JsonObjTxtMatch.special_range)) {                    
                                 if(Character.isDigit(withStarts.charAt(0))) {
                                     //Found numeric range
@@ -138,8 +132,11 @@ public class TokenerThumb implements Tokener {
                                 }
                             }
                         }
-                        //Logger.wrl(current.payload + " Compare: '" + compare + "' Starts result: " + lfound + " CompareType: " + compareType.type_name);
-
+                        
+                        if(verbose) {
+                            Logger.wrl(current.payload + " Compare: '" + compare + "' Starts result: " + lfound + " CompareType: " + compareType.type_name);
+                        }
+                        
                         //Check for ending string match
                         if(lfound) {
                             lfound = false;
@@ -151,30 +148,26 @@ public class TokenerThumb implements Tokener {
                                     //Match anything
                                     lfound = true;
                                     break;
-                                } else if(withEnds.equals(JsonObjTxtMatch.special_end_line)) {
-                                    //Adjust for system line separator
-                                    withEnds = System.lineSeparator();
-                                    withEndsLen = withEnds.length();
-                                    if(payload.indexOf(withEnds, 1) == (payload.length() - withEndsLen)) {
-                                        lfound = true;
-                                        break;
-                                    }
+
                                 } else if(withEnds.length() > 1 && withEnds.contains(JsonObjTxtMatch.special_range)) {
                                     if(Character.isDigit(withEnds.charAt(0))) {
                                         //Found numeric range
                                         int[] range = Utils.GetIntsFromRange(withEnds);
-                                        int j = 0;
-                                        char lc = payload.charAt(payload.length() - 1);
-                                        try {
-                                            j = Utils.GetIntFromChar(lc);
-                                            if(Character.isDigit(lc) && j >= range[0] && j <= range[1]) {
-                                                withEnds = (j + "");
-                                                withEndsLen = 1;
-                                                lfound = true;
-                                                break;
+                                        for(int z = range[0]; z <= range[1]; z++) {
+                                            String zI = (z + "");
+                                            int j = 0;
+                                            String lc = payload.substring(payload.length() - zI.length());
+                                            try {
+                                                j = Utils.GetIntFromString(lc);
+                                                if(j >= range[0] && j <= range[1]) {
+                                                    withEnds = (j + "");
+                                                    withEndsLen = withEnds.length();
+                                                    lfound = true;
+                                                    break;
+                                                }
+                                            } catch (ExceptionMalformedRange e) {
+                                                //do nothing
                                             }
-                                        } catch (ExceptionMalformedRange e) {
-                                            //do nothing
                                         }
                                        
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_range)) {
@@ -231,8 +224,11 @@ public class TokenerThumb implements Tokener {
                                 }
                             }
                         }
-                        //Logger.wrl(current.payload + " Compare: '" + compare + "' Ends result: " + lfound + " CompareType: " + compareType.type_name);                        
-
+                        
+                        if(verbose) {
+                            Logger.wrl(current.payload + " Compare: '" + compare + "' Ends result: " + lfound + " CompareType: " + compareType.type_name);                        
+                        }
+                        
                         //Check for containing string match
                         if(lfound) {
                             lfound = false;
@@ -254,37 +250,32 @@ public class TokenerThumb implements Tokener {
                                         compare = withContains;
                                         withResContains = withContains;
                                         withContainsLen = withContains.length();
+                                        
                                         if(withContains.equals(JsonObjTxtMatch.special_wild_card)) {
                                             //Match anything
                                             llfound = true;
                                             break;
 
-                                        } else if(withContains.equals(JsonObjTxtMatch.special_end_line)) {
-                                            //Match system end line
-                                            withContains = System.lineSeparator();
-                                            withContainsLen = withContains.length();
-                                            if((c + "").equals(System.lineSeparator())) {                                                
-                                                llfound = true;
-                                                break;
-                                            }
-
                                         } else if(withContains.length() > 1 && withContains.contains(JsonObjTxtMatch.special_range)) {
                                             if(Character.isDigit(withContains.charAt(0))) {
                                                 //Found numeric range
                                                 int[] range = Utils.GetIntsFromRange(withContains);
-                                                int j = 0;
-                                                try {
-                                                    j = Utils.GetIntFromChar(c);
-                                                } catch (ExceptionMalformedRange e) {
-
-                                                }
-
-                                                if(Character.isDigit(c) && j >= range[0] && j <= range[1]) {
-                                                    withContains = (j + "");
-                                                    withContainsLen = 1;
-                                                    llfound = true;
-                                                    break;
-                                                }
+                                                for(int z = range[0]; z <= range[1]; z++) {
+                                                    String zI = (z + "");
+                                                    int j = 0;
+                                                    String lc = payloadContains.substring(payloadContains.length() - zI.length());
+                                                    try {
+                                                        j = Utils.GetIntFromString(lc);
+                                                        if(j >= range[0] && j <= range[1]) {
+                                                            withContains = (j + "");
+                                                            withContainsLen = withContains.length();
+                                                            llfound = true;
+                                                            break;
+                                                        }
+                                                    } catch (ExceptionMalformedRange e) {
+                                                        //do nothing
+                                                    }
+                                                }                                                
 
                                             } else if(withContains.equals(JsonObjTxtMatch.special_lowercase_range)) {
                                                 //Found lower case character range
@@ -329,23 +320,50 @@ public class TokenerThumb implements Tokener {
                                                 llfound = true;
                                                 break;
                                             }
-
                                         }
                                     }
-
-                                    if(llfound == false) {
-                                        lfound = false;
-                                        break;
-                                    }                                
                                 }
-                                
+
                                 if(llfound) {
                                     lfound = true;
                                 }
                             }
                         }
-                        //Logger.wrl(current.payload + " Compare: '" + compare + "' Contains result: " + lfound + " CompareType: " + compareType.type_name);                        
-
+                        
+                        if(verbose) {                        
+                            Logger.wrl(current.payload + " Compare: '" + compare + "' Contains result: " + lfound + " CompareType: " + compareType.type_name + " PayloadContains: " + payloadContains);                        
+                        }
+                        
+                        //Check for must contain
+                        if(lfound && !Utils.IsListEmpty(type.txt_match.must_contain)) {           
+                            lfound = true;
+                            for(String s : type.txt_match.must_contain) {
+                                if(!payload.contains(s)) {
+                                    lfound = false;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if(verbose) {                        
+                            Logger.wrl(current.payload + " Compare: '" + compare + "' MustNotContain result: " + lfound + " CompareType: " + compareType.type_name);
+                        }
+                        
+                        //Check for must not contain
+                        if(lfound && !Utils.IsListEmpty(type.txt_match.must_not_contain)) {           
+                            lfound = true;
+                            for(String s : type.txt_match.must_not_contain) {
+                                if(payload.contains(s)) {
+                                    lfound = false;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if(verbose) {                        
+                            Logger.wrl(current.payload + " Compare: '" + compare + "' MustNotContain result: " + lfound + " CompareType: " + compareType.type_name);
+                        }
+                        
                         if(lfound) {
                             found = true;
                             break;

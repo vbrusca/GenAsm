@@ -1,9 +1,0 @@
-
-LSR   R2, R5, #27
-LSR   R2, R5, #27   ; Logical shift right the contents
-
-    LSR   R2, R5, #27
-    LSR   R2, R5, #27   ; Logical shift right the contents
-
- LSR   R2, R5, #27
- LSR   R2, R5, #27   ; Logical shift right the contents

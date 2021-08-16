@@ -11,6 +11,9 @@ public class JsonObjTxtMatch extends JsonObjBase {
     public List<String> starts_with;
     public List<String> contains;
     public List<String> ends_with;
+    public List<String> must_contain;
+    public List<String> must_not_contain;    
+    
     public static String special_wild_card = "*";
     public static String special_end_line = "endl";
     public static String special_range = "~";

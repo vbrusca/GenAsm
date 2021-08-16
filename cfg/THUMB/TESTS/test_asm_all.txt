@@ -1,5 +1,5 @@
 @TTL |AllOpCodeTests|
-        @AREA |Program|
+        @AREA |Program| @CODE, @READONLY
     @ENTRY
 
 LSR   R2, R5, #27
@@ -172,7 +172,7 @@ LSL ra, ra, #2
 
 signed_divide ; Signed divide of R1 by R0: returns quotient in R0, 
 ; remainder in R1 
-; Get abs value of R0 into R3 ASR R2, R0, #31 ; Get 0 or -1 in R2 depending on sign of R0 
+; Get abs value of R0 into R3, ASR R2, R0, #31 ; Get 0 or -1 in R2 depending on sign of R0 
 EOR R0, R2 ; EOR with -1 (0xFFFFFFFF) if negative 
 SUB R3, R0, R2 ; and ADD 1 (SUB -1) to get abs value 
 
@@ -189,7 +189,7 @@ LSR     a3, a1, #8
 ADD     a1, a3
 LSR     a3, a1, #16
 ADD     a1, a3
-LSR     a1, #3
+LSR     a1, a3, #3
 ADD     a3, a1
 SUB     a2, a3
 CMP     a2, #10

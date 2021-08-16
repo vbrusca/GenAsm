@@ -181,7 +181,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["DirectiveString"],
+                    "is_entry_types": ["DirectiveString", "Directive"],
                     "index": 1
                 }
             ]

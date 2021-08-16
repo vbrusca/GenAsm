@@ -11,7 +11,9 @@
             "txt_match": {
                 "starts_with": [";"],
                 "contains": ["*"],
-                "ends_with": ["*", "endl"]
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["*"]
             }
         },
         {
@@ -23,9 +25,123 @@
             "txt_match": {
                 "starts_with": [""],
                 "contains": [""],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": [""]
             }
         },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterRangeHi",
+            "type_category": "RegisterHi",
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["8~15", "-", "R"],
+                "must_contain": ["-"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "8~15"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["8~15"],
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "8~15"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterSp",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["13", "1"],
+                "must_contain": ["13"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "3"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterSp",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["S"],
+                "contains": ["P"],
+                "must_contain": ["SP"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "P"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterPc",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["15", "1"],
+                "must_contain": ["15"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "5"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterPc",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["P"],
+                "contains": ["C"],
+                "must_contain": ["PC"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "C"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterLr",
+            "type_category": "RegisterHi",            
+            "category": "Arg",      
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["L"],
+                "contains": ["R"],
+                "must_contain": ["LR"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "R"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterRangeLow",
+            "type_category": "RegisterLow",            
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["0~7", "-", "R"],
+                "must_contain": ["-"],
+                "must_not_contain": ["R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15"],
+                "ends_with": [",", ";", "0~7"]
+            }
+        },        
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterWb",
@@ -35,6 +151,8 @@
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["0~7"],
+                "must_contain": ["!"],
+                "must_not_contain": ["R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15"],
                 "ends_with": ["!,", "!endl", "!;", "!"]
             }
         },
@@ -47,105 +165,11 @@
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["0~7"],
-                "ends_with": [",", "endl", ";", "0~7"]
+                "must_contain": [],
+                "must_not_contain": ["R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15"],
+                "ends_with": [",", ";", "0~7"]
             }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterRangeLow",
-            "type_category": "RegisterLow",            
-            "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["R"],
-                "contains": ["0~7", "-", "R"],
-                "ends_with": [",", "endl", ";", "0~7"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterRangeHi",
-            "type_category": "RegisterHi",
-            "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["R"],
-                "contains": ["0~15", "-", "R"],
-                "ends_with": [",", "endl", ";", "8~15"]
-            }
-        },        
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterHi",
-            "type_category": "RegisterHi",            
-            "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["R"],
-                "contains": ["8~15"],
-                "ends_with": [",", "endl", ";", "8~15"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterSp",
-            "type_category": "RegisterHi",            
-            "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["R"],
-                "contains": ["13", "1"],
-                "ends_with": [",", "endl", ";", "3"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterSp",
-            "type_category": "RegisterHi",            
-            "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["S"],
-                "contains": ["P"],
-                "ends_with": [",", "endl", ";", "P"]
-            }
-        },        
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterPc",
-            "type_category": "RegisterHi",            
-            "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["R"],
-                "contains": ["15", "1"],
-                "ends_with": [",", "endl", ";", "5"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterPc",
-            "type_category": "RegisterHi",            
-            "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["P"],
-                "contains": ["C"],
-                "ends_with": [",", "endl", ";", "C"]
-            }
-        },
-        {
-            "obj_name": "is_entry_type",            
-            "type_name": "RegisterLr",
-            "type_category": "RegisterHi",            
-            "category": "Arg",      
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
-            "txt_match": {
-                "starts_with": ["L"],
-                "contains": ["R"],
-                "ends_with": [",", "endl", ";", "R"]
-            }
-        },        
+        },   
         {
             "obj_name": "is_entry_type",            
             "type_name": "Number",
@@ -155,7 +179,9 @@
             "txt_match": {
                 "starts_with": ["#0x", "#bx", "#-", "#", "0~9"],
                 "contains": ["0~9"],
-                "ends_with": ["0~9", ",", "endl", ";"]
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["0~9", ",", ";"]
             }
         },
         {
@@ -167,7 +193,9 @@
             "txt_match": {
                 "starts_with": ["_"],
                 "contains": ["0~9"],
-                "ends_with": ["0~9", "endl", ";"]
+                "must_contain": ["_"],
+                "must_not_contain": [],
+                "ends_with": ["0~9", ";"]
             }
         },
         {
@@ -179,7 +207,9 @@
             "txt_match": {
                 "starts_with": ["a~z"],
                 "contains": ["a~z", "a~z0~9", "_"],
-                "ends_with": ["a~z0~9", "a~z", "_", "endl", ";", ","]
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["a~z0~9", "a~z", "_", ";", ","]
             }
         },
         {
@@ -191,7 +221,9 @@
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
                 "contains": ["0~9"],
-                "ends_with": ["0~9", ",", "endl", ";"]
+                "must_contain": ["%"],
+                "must_not_contain": [],
+                "ends_with": ["0~9", ",", ";"]
             }
         },
         {
@@ -203,6 +235,8 @@
             "txt_match": {
                 "starts_with": ["{"],
                 "contains": ["{"],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": ["{"]
             }
         },
@@ -215,6 +249,8 @@
             "txt_match": {
                 "starts_with": ["}"],
                 "contains": ["}"],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": ["}"]
             }
         },
@@ -227,6 +263,8 @@
             "txt_match": {
                 "starts_with": ["["],
                 "contains": ["["],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": ["["]
             }
         },
@@ -239,6 +277,8 @@
             "txt_match": {
                 "starts_with": ["]"],
                 "contains": ["]"],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": ["]"]
             }
         },
@@ -251,6 +291,8 @@
             "txt_match": {
                 "starts_with": ["A~Z"],
                 "contains": ["A~Z"],
+                "must_contain": [],
+                "must_not_contain": [],
                 "ends_with": ["A~Z"]
             }
         },
@@ -263,7 +305,9 @@
             "txt_match": {
                 "starts_with": ["@"],
                 "contains": ["A~Z"],
-                "ends_with": ["A~Z", " ", "endl"]
+                "must_contain": ["@"],
+                "must_not_contain": [],
+                "ends_with": ["A~Z", " "]
             }
         },
         {
@@ -275,7 +319,9 @@
             "txt_match": {
                 "starts_with": ["|"],
                 "contains": ["a~z", "A~Z", "|"],
-                "ends_with": ["|", "endl"]
+                "must_contain": ["|"],
+                "must_not_contain": [],
+                "ends_with": ["|"]
             }
         }
     ]

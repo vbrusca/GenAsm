@@ -1,7 +1,5 @@
 @TTL |AllOpCodeTests|
-@AREA |Program|
+@AREA |Program| @CODE, @READONLY
 @ENTRY
-
-LSR   R2, R5, #27
-
+PUSH {R0-R4,LR}
 @END

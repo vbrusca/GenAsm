@@ -175,7 +175,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             for(Token token : line.payload) {
-                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
+                if(!directiveFound && token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
                     directiveFound = true;
                     directiveName = token.source;
                     directiveIdx = token.index;
@@ -251,7 +251,8 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsDirective directive = null; 
         
         for(TokenLine line : asmTokenedData) {
-            if(line.matchesDirective != null && line.matchesDirective.size() > 1) {
+            //if(line.matchesDirective != null && line.matchesDirective.size() > 1) {
+            if(line.isLineDirective) {
                 directiveFound = false;
                 directiveName = null;
                 directiveToken = null;
@@ -288,13 +289,13 @@ public class AssemblerThumb implements Assembler {
     public JsonObjIsDirective FindDirectiveArgMatches(List<JsonObjIsDirective> directiveMatches, List<Token> args, Token directiveToken) throws ExceptionNoDirectiveFound {
         JsonObjIsDirectiveArg directiveArg = null;
         Token argToken = null;
-        boolean argFound = false;
+        boolean argFound = true;
         int directiveArgIdx = -1;
         
         for(JsonObjIsDirective directive : directiveMatches) {            
             directiveArg = null;
             argToken = null;
-            argFound = false;
+            argFound = true;
             
             for(int i = 0; i < directive.args.size(); i++) {
                 directiveArg = directive.args.get(i);
@@ -303,18 +304,24 @@ public class AssemblerThumb implements Assembler {
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
+                    argFound = false;
                     break;
                 }
                 
                 if(directiveArg != null && argToken != null) {
                     if(directiveArg.is_entry_types.contains(argToken.type_name)) {
-                        argFound = true;
+                        if(!Utils.IsStringEmpty(directiveArg.is_arg_value)) {
+                            if(!directiveArg.is_arg_value.equals(argToken.source)) {
+                                argFound = false;
+                                break;
+                            }
+                        }
                     } else {
+                        argFound = false;
                         break;
                     }
-                }
-                
-                if(argFound) {
+                } else {
+                    argFound = false;
                     break;
                 }
             }
@@ -450,7 +457,8 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsOpCode opCode = null; 
         
         for(TokenLine line : asmTokenedData) {
-            if(line.matchesOpCode != null && line.matchesOpCode.size() > 1) {
+            //if(line.matchesOpCode != null && line.matchesOpCode.size() > 1) {
+            if(line.isLineOpCode) {
                 opCodeFound = false;
                 opCodeName = null;
                 opCodeToken = null;
@@ -513,7 +521,7 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsOpCodeArg opCodeArgSub = null;
         Token argToken = null;
         Token argTokenSub = null;
-        boolean argFound = false;
+        boolean argFound = true;
         boolean argFoundSub = false;
         boolean hasArgsSub = false;
         int opCodeArgIdx = -1;
@@ -522,30 +530,35 @@ public class AssemblerThumb implements Assembler {
         for(JsonObjIsOpCode opCode : opCodeMatches) {            
             opCodeArg = null;
             argToken = null;
-            argFound = false;
+            argFound = true;
             argFoundSub = false;
             hasArgsSub = false;
             
             for(int i = 0; i < opCode.args.size(); i++) {
                 opCodeArg = opCode.args.get(i);
                 opCodeArgIdx = i;
+                                
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
+                    //Logger.wrl("Exit: AAA");
+                    argFound = false;
                     break;
                 }
                 
+                //Logger.wrl(opCode.op_code_name + ", " + opCodeArg.arg_index + ", " + argToken.type_name);                
+                
                 if(opCodeArg != null && argToken != null) {
-                    if(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name)) {
-                        argFound = true;
-                    } else {
+                    if(!(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                        //Logger.wrl("Exit: BBB");
+                        argFound = false;
                         break;
                     }
                                         
                     if(opCodeArg.sub_args != null && opCodeArg.sub_args.size() > 0) {
                         opCodeArgSub = null;
                         argTokenSub = null;
-                        argFoundSub = false;
+                        argFoundSub = true;
                         hasArgsSub = true;
                         
                         for(int j = 0; j < opCodeArg.sub_args.size(); j++) {
@@ -554,24 +567,36 @@ public class AssemblerThumb implements Assembler {
                             if(argToken.payload != null && j < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j);
                             } else {
+                                //Logger.wrl("Exit: CCC");
+                                argFound = false;
+                                argFoundSub = false;
                                 break;
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                if(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name)) {
-                                    argFoundSub = true;
-                                } else {
+                                if(!(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                                    //Logger.wrl("Exit: DDD");
+                                    argFound = false;
+                                    argFoundSub = false;
                                     break;
-                                }                     
+                                }
+                            } else {
+                                //Logger.wrl("Exit: EEE");
+                                argFound = false;
+                                argFoundSub = false;
+                                break;
                             }
                         }
-                    }                    
-                }
-                
-                if(argFound && hasArgsSub && !argFoundSub) {
+                    }
+                } else {
+                    //Logger.wrl("Exit: GGG");
+                    argFound = false;
+                    argFoundSub = false;
                     break;
                 }
             }
+            
+            //Logger.wrl("ArgFound: " + argFound + ", HasArgsSub: " + hasArgsSub + ", ArgFoundSub: " + argFoundSub);
             
             if(argFound && !hasArgsSub && !argFoundSub) {
                 return opCode;                

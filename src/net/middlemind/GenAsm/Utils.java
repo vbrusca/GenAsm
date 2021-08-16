@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+import java.util.List;
 import net.middlemind.GenAsm.Exceptions.ExceptionMalformedRange;
 import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
 
@@ -46,7 +47,17 @@ public class Utils {
             return false;
         }
     }
-        
+    
+    public static boolean IsListEmpty(List l) {
+        if(l == null) {
+            return true;
+        } else if(l != null && l.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public static int[] GetIntsFromRange(String range) throws ExceptionMalformedRange {
         return GetIntsFromRange(range, JsonObjTxtMatch.special_range);
     }
@@ -72,6 +83,16 @@ public class Utils {
     }
     
     public static int GetIntFromChar(char c) throws ExceptionMalformedRange {
+        int ret = 0;
+        try {
+            ret = Integer.parseInt(c + "");
+        } catch(NumberFormatException e) {
+            throw new ExceptionMalformedRange("The character provided could not be converted to a digit, " + c);
+        }
+        return ret;
+    }
+
+    public static int GetIntFromString(String c) throws ExceptionMalformedRange {
         int ret = 0;
         try {
             ret = Integer.parseInt(c + "");
