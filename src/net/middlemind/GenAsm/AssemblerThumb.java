@@ -73,6 +73,9 @@ public class AssemblerThumb implements Assembler {
     public int directiveLineEntry;
     public int directiveLineEnd;
     
+    public AreaThumb areaThumbCode;
+    public AreaThumb areaThumbData;
+    
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) {
         try {
@@ -1003,17 +1006,11 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void LinkJsonObjData() throws Exception {
+    public void LinkJsonObjData() throws ExceptionJsonObjLink {
         Logger.wrl("AssemblerThumb: LinkJsonObjData");
         for(String s : isaData.keySet()) {
-            try {
-                JsonObj jsonObj = isaData.get(s);
-                jsonObj.Link(jsonObjIsEntryTypes);
-            } catch (ExceptionJsonObjLink e) {
-                Logger.wrl("AssemblerThumb: RunAssembler: Error: Could not link json object, '" + s + "'");
-                e.printStackTrace();
-                throw e;
-            }
+            JsonObj jsonObj = isaData.get(s);
+            jsonObj.Link(jsonObjIsEntryTypes);
         }        
     }
     
