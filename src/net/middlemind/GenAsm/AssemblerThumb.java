@@ -1266,21 +1266,29 @@ public class AssemblerThumb implements Assembler {
     }
 
     //BUILD OPCODE
-    private String BuildOpCode(TokenLine line) {
-        if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
-            JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
-            List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
-            List<Token> lineArgs = new ArrayList<>();            
-            Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter());
-            
-            for(Token token : line.payload) {
-                if(token.isArgOpCode) {
-                    lineArgs.add(token);
+    private String BuildOpCode(TokenLine line, AreaThumb area) {
+        if(area.isCode) {
+            if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
+                JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
+                List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
+                List<Token> lineArgs = new ArrayList<>();            
+                Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter());
+
+                for(Token token : line.payload) {
+                    if(token.isArgOpCode) {
+                        lineArgs.add(token);
+                    }
                 }
+
+            } else {
+                //TODO: throw invalid assemblly line exception
             }
-            
-        } else {
-            //TODO: throw invalid opcode exception
+        } else if(area.isData) {
+            if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
+                
+            } else {
+                //TODO: throw invalid assemblly line exception
+            }
         }
         return null;
     }
