@@ -13,8 +13,7 @@ public class JsonObjIsDirective extends JsonObjBase {
     public int arg_len;
     public String description;
     public List<JsonObjIsDirectiveArg> args;
- 
-        
+       
     @Override
     public void Print() {
         Print("");
@@ -27,7 +26,7 @@ public class JsonObjIsDirective extends JsonObjBase {
         Logger.wrl(prefix + "DirectiveName: " + directive_name);
         Logger.wrl(prefix + "ArgLen: " + arg_len);        
         
-        Logger.wrl(prefix + "IsArgs:");        
+        Logger.wrl(prefix + "Args:");        
         for(JsonObjIsDirectiveArg entry : args) {
             Logger.wrl("");
             entry.Print(prefix + "\t");

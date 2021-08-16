@@ -13,7 +13,7 @@ public class JsonObjIsDirectiveArg extends JsonObjBase {
     public List<String> is_entry_types;
     public List<JsonObjIsEntryType> linked_is_entry_types;
     public String is_arg_type;
-    public String is_arg_value;
+    public List<String> is_arg_value;
         
     @Override
     public void Print() {
@@ -26,7 +26,11 @@ public class JsonObjIsDirectiveArg extends JsonObjBase {
         Logger.wrl(prefix + "ObjectName: " + obj_name);
         Logger.wrl(prefix + "ArgIndex: " + arg_index);
         Logger.wrl(prefix + "ArgType: " + is_arg_type);
-        Logger.wrl(prefix + "ArgValue: " + is_arg_value);                
+        
+        Logger.wrl(prefix + "ArgValue:");        
+        for(String s : is_arg_value) {
+            Logger.wrl(prefix + "\t" + s);
+        }        
         
         Logger.wrl(prefix + "IsEntryTypes:");        
         for(String s : is_entry_types) {

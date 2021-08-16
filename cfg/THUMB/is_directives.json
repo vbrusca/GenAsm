@@ -70,14 +70,14 @@
                     "arg_index": 1,
                     "is_entry_types": ["Directive"],                    
                     "is_arg_type": "Directive",
-                    "is_arg_value": "@CODE"
+                    "is_arg_value": ["@CODE", "@DATA"]
                 },
                 {
                     "obj_name": "is_directive_arg",  
                     "arg_index": 2,
                     "is_entry_types": ["Directive"],                    
                     "is_arg_type": "Directive",
-                    "is_arg_value": "@READONLY"
+                    "is_arg_value": ["@READONLY", "@READWRITE"]
                 }                
             ],
             "description": "The AREA directive instructs the assembler to assemble a new code or data section."

@@ -2,8 +2,9 @@
         @AREA |Program| @CODE, @READONLY
     @ENTRY
 
+LSR   R2 R5 #27
 LSR   R2, R5, #27
-LSR   R2, R5, #27   ; Logical shift right the contents
+LSR   R2, R5, #27; Logical shift right the contents
     LSR   R2, R5, #27
     LSR   R2, R5, #27   ; Logical shift right the contents
  LSR   R2, R5, #27
@@ -12,7 +13,7 @@ LSR   R2, R5, #27   ; Logical shift right the contents
 ADD R0, R3, R4
 ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
     ADD R0, R3, R4
-    ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
+    ADD R0, R3, R4; R0 := R3 + R4 and set condition codes on ; the result.
 
   ADD R0, R3, R4
   ADD R0, R3, R4 ; R0 := R3 + R4 and set condition codes on ; the result.
@@ -68,7 +69,7 @@ MOV R15, R14
 
 ADD PC, R5 ; PC := PC + R5 but don't set the ; condition codes.
 CMP R4, R12 ; Set the condition codes on the ; result of R4 - R12.
-MOV R15, R14 ; Move R14 (LR) into R15 (PC)
+MOV R15, R14; Move R14 (LR) into R15 (PC)
 
 ;ADR      R1,outofthumb - pseudo-instruction not currently supported
 MOV R11,R1
@@ -76,7 +77,7 @@ BX  R11 ; Transfer the contents of R11 into
 outofthumb
 
 LDR R3,[PC,#844]
-LDR R3,[PC,#844] ; Load into R3 the word found at the
+LDR R3,[PC,#844]; Load into R3 the word found at the
     LDR R3,[PC,#844]
     LDR R3,[PC,#844] ; Load into R3 the word found at the
 
@@ -203,3 +204,9 @@ label MOV pc, lr
     label1   ADD     a3, a1 ; takes argument in a1 
 
     @END
+
+@TTL |AllDataEntries|
+@AREA |ProgramData| @DATA, @READWRITE
+@ENTRY
+
+@END

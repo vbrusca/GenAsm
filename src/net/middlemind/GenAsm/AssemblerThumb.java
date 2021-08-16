@@ -144,6 +144,8 @@ public class AssemblerThumb implements Assembler {
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
             WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
         
+            Logger.wrl("");
+            Logger.wrl("List Assembly Source Areas:");
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
                 Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
@@ -171,15 +173,23 @@ public class AssemblerThumb implements Assembler {
         int directiveIdx = -1;
         int reqDirectiveCount = requiredDirectives.size() - 1;
         List<String> reqDirectives = new ArrayList<>(requiredDirectives);
+        
         int lastEntry = -1;
         Token lastEntryToken = null;
         TokenLine lastEntryTokenLine = null;
+        
         int lastEnd = -1;
         Token lastEndToken = null;
         TokenLine lastEndTokenLine = null;
+        
         int lastArea = -1;
         Token lastAreaToken = null;
         TokenLine lastAreaTokenLine = null;
+        
+        int lastCode = -1;
+        int lastData = -1;
+        int lastReadOnly = -1;
+        int lastReadWrite = -1;
         int activeLineCount = 0;
         AreaThumb tmpArea = null;
         
@@ -193,6 +203,10 @@ public class AssemblerThumb implements Assembler {
                     line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), jsonObjIsOpCodes.pc_prefetch_words);
                     activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
                 }
+            }
+            
+            if(lastData != -1 && line.isLineOpCode) {
+                throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have OpCode instructions when AREA type is DATA, found on line " + line.lineNum + " with source " + line.source.source);                
             }
             
             directiveFound = false;
@@ -224,26 +238,42 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_CODE)) {
+                        if(lastCode == -1) {
+                            lastCode = line.lineNum;
+                        }
                         tmpArea.isCode = true;
-                        if(tmpArea.isData) {
+                        tmpArea.isReadOnly = true;
+                        if(lastData != -1 && lastData == lastCode) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNum + " with source " + line.source.source);
                         }
                         
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_DATA)) {                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_DATA)) {
+                       if(lastData == -1) {
+                            lastData = line.lineNum;
+                        }                        
                         tmpArea.isData = true;
-                        if(tmpArea.isCode) {
+                        tmpArea.isReadWrite = true;
+                        if(lastCode != -1 && lastCode == lastData) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
                         
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READONLY)) {                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READONLY)) {
+                        if(lastReadOnly == -1) {
+                            lastReadOnly = line.lineNum;
+                        }
                         tmpArea.isReadOnly = true;
-                        if(tmpArea.isReadWrite) {
+                        tmpArea.isReadWrite = false;
+                        if(lastReadOnly != -1 && lastReadOnly == lastReadWrite) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
                         
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READWRITE)) {                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READWRITE)) {
+                        if(lastReadWrite == -1) {
+                            lastReadWrite = line.lineNum;
+                        }                        
                         tmpArea.isReadWrite = true;
-                        if(tmpArea.isReadOnly) {
+                        tmpArea.isReadOnly = false;
+                        if(lastReadWrite != -1 && lastReadWrite == lastReadOnly) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNum + " with source " + line.source.source);
                         }
                         
@@ -276,9 +306,17 @@ public class AssemblerThumb implements Assembler {
                             tmpArea.lineNumEnd = lastEnd;
                             
                             if(tmpArea.isData) {
-                                areaThumbData = tmpArea;
+                                if(areaThumbData == null) {
+                                    areaThumbData = tmpArea;
+                                } else {
+                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one DATA area, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
+                                }
                             } else {
-                                areaThumbCode = tmpArea;                                
+                                if(areaThumbCode == null) {
+                                    areaThumbCode = tmpArea;
+                                } else {
+                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one CODE area, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
+                                }
                             }
                             
                             if(lastEnd <= lastEntry) {
@@ -296,7 +334,12 @@ public class AssemblerThumb implements Assembler {
 
                             lastEnd = -1;
                             lastEndToken = null;
-                            lastEndTokenLine = null;                          
+                            lastEndTokenLine = null;
+                            
+                            lastCode = -1;
+                            lastData = -1;
+                            lastReadOnly = -1;
+                            lastReadWrite = -1;
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         }
@@ -399,8 +442,8 @@ public class AssemblerThumb implements Assembler {
                 
                 if(directiveArg != null && argToken != null) {
                     if(directiveArg.is_entry_types.contains(argToken.type_name)) {
-                        if(!Utils.IsStringEmpty(directiveArg.is_arg_value)) {
-                            if(!directiveArg.is_arg_value.equals(argToken.source)) {
+                        if(!Utils.IsListEmpty(directiveArg.is_arg_value)) {
+                            if(!directiveArg.is_arg_value.contains(argToken.source)) {
                                 argFound = false;
                                 break;
                             }
