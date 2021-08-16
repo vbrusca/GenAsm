@@ -28,6 +28,10 @@ public class LoaderIsOpCodes implements Loader {
             jsonObj.fileName = fileName;
             jsonObj.loader = getClass().getName();
 
+            jsonObj.bit_series.name = jsonObj.bit_series.getClass().getName();
+            jsonObj.bit_series.fileName = fileName;
+            jsonObj.bit_series.loader = getClass().getName();
+            
             for(JsonObjIsOpCode entry : jsonObj.is_op_codes) {
                 entry.name = entry.getClass().getName();
                 entry.fileName = fileName;

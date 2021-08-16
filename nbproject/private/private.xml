@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/TokenLine.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/AreaThumb.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsEntryTypes.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsDirectiveArg.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/AssemblerThumb.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsDirective.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsOpCode.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/GenAsm.java</file>
-            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/Utils.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsDirectives.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_all.txt</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/JsonObjIsOpCodeArg.java</file>
         </group>
     </open-files>
 </project-private>
