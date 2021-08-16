@@ -177,6 +177,8 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("LineLengthWords: " + lineLenWords);
             Logger.wrl("LineBitSeries:");
             lineBitSeries.Print("\t");
+            
+            BuildOpCode(asmTokenedData.get(5), areaThumbCode);
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -1271,7 +1273,7 @@ public class AssemblerThumb implements Assembler {
             if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
                 JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
                 List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
-                List<Token> lineArgs = new ArrayList<>();            
+                List<Token> lineArgs = new ArrayList<>();
                 Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter());
 
                 for(Token token : line.payload) {
@@ -1279,7 +1281,14 @@ public class AssemblerThumb implements Assembler {
                         lineArgs.add(token);
                     }
                 }
-
+                
+                for(JsonObjIsOpCodeArg opCodeArg : opCodeArgs) {
+                    Logger.wrl("");
+                    opCodeArg.bit_series.PrintShort();
+                }
+                
+                Logger.wrl("");
+                opCode.bit_series.PrintShort();
             } else {
                 //TODO: throw invalid assemblly line exception
             }

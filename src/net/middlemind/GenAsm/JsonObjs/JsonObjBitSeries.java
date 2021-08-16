@@ -22,5 +22,15 @@ public class JsonObjBitSeries extends JsonObjBase {
         Logger.wrl(prefix + "BitStart: " + bit_start);
         Logger.wrl(prefix + "BitStop: " + bit_stop);
         Logger.wrl(prefix + "BitLen: " + bit_len);
+    }
+    
+    public void PrintShort() {
+        PrintShort("");
+    }
+    
+    public void PrintShort(String prefix) {
+        Logger.wrl(prefix + "BitStart: " + bit_start);
+        Logger.wrl(prefix + "BitStop: " + bit_stop);
+        Logger.wrl(prefix + "BitLen: " + bit_len);
     }    
 }
