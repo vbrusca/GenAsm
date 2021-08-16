@@ -49,7 +49,7 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
  *
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 12:08 PM EST
  */
-@SuppressWarnings({"null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
+@SuppressWarnings({"UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
 
     public JsonObjIsSet isaDataSet;
@@ -69,10 +69,7 @@ public class AssemblerThumb implements Assembler {
     public List<TokenLine> asmTokenedData;
     public Symbols symbols;
     
-    public List<String> requiredDirectives;
-    public int directiveLineEntry;
-    public int directiveLineEnd;
-    
+    public List<String> requiredDirectives;    
     public AreaThumb areaThumbCode;
     public AreaThumb areaThumbData;
     
@@ -146,6 +143,20 @@ public class AssemblerThumb implements Assembler {
             ValidateDirectiveLines();
             WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
             WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
+        
+            if(areaThumbCode != null) {
+                Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
+                Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
+            } else {
+                Logger.wrl("AreaThumbCode: is null");
+            }
+            
+            if(areaThumbData != null) {
+                Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
+                Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
+            } else {
+                Logger.wrl("AreaThumbData: is null");
+            }            
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -153,7 +164,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //DIRECTIVE METHODS
-    public void PopulateDirectiveAndArgData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
+    public void PopulateDirectiveAndArgData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
         boolean directiveFound = false;
         String directiveName = null;
@@ -161,9 +172,16 @@ public class AssemblerThumb implements Assembler {
         int reqDirectiveCount = requiredDirectives.size() - 1;
         List<String> reqDirectives = new ArrayList<>(requiredDirectives);
         int lastEntry = -1;
+        Token lastEntryToken = null;
+        TokenLine lastEntryTokenLine = null;
         int lastEnd = -1;
+        Token lastEndToken = null;
+        TokenLine lastEndTokenLine = null;
         int lastArea = -1;
+        Token lastAreaToken = null;
+        TokenLine lastAreaTokenLine = null;
         int activeLineCount = 0;
+        AreaThumb tmpArea = null;
         
         for(TokenLine line : asmTokenedData) {            
             directiveFound = false;
@@ -177,11 +195,14 @@ public class AssemblerThumb implements Assembler {
                 }
             }
             
-            for(Token token : line.payload) {
-                if(!directiveFound && token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
-                    directiveFound = true;
-                    directiveName = token.source;
-                    directiveIdx = token.index;
+            directiveFound = false;
+            for(Token token : line.payload) {                
+                if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
+                    if(!directiveFound) {
+                        directiveFound = true;
+                        directiveName = token.source;
+                        directiveIdx = token.index;
+                    }
                  
                     if(reqDirectives.contains(token.source)) {
                         reqDirectives.remove(token.source);
@@ -191,14 +212,52 @@ public class AssemblerThumb implements Assembler {
                     if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_AREA)) {
                         if(lastArea == -1) {
                             lastArea = line.lineNum;
+                            lastAreaToken = token;
+                            lastAreaTokenLine = line;
+
+                            tmpArea = new AreaThumb();
+                            tmpArea.area = lastAreaToken;
+                            tmpArea.areaLine = lastAreaTokenLine;
+                            tmpArea.lineNumArea = lastArea;
                         } else {
                             throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_CODE)) {
+                        tmpArea.isCode = true;
+                        if(tmpArea.isData) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNum + " with source " + line.source.source);
+                        }
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_DATA)) {                        
+                        tmpArea.isData = true;
+                        if(tmpArea.isCode) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNum + " with source " + line.source.source);
+                        }
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READONLY)) {                        
+                        tmpArea.isReadOnly = true;
+                        if(tmpArea.isReadWrite) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNum + " with source " + line.source.source);
+                        }
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READWRITE)) {                        
+                        tmpArea.isReadWrite = true;
+                        if(tmpArea.isReadOnly) {
+                            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNum + " with source " + line.source.source);
+                        }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         } else if(lastEntry == -1) {
                             lastEntry = line.lineNum;
+                            lastEntryToken = token;
+                            lastEntryTokenLine = line;
+                            
+                            tmpArea.entry = lastEntryToken;
+                            tmpArea.entryLine = lastEntryTokenLine;
+                            tmpArea.lineNumEntry = lastEntry;
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Found multiple ENTRY directives with a new entry on line " + line.lineNum + " with source " + line.source.source);
                         }
@@ -209,25 +268,52 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         } else if(lastEnd == -1) {
                             lastEnd = line.lineNum;
+                            lastEndToken = token;
+                            lastEndTokenLine = line;
+
+                            tmpArea.end = lastEndToken;
+                            tmpArea.endLine = lastEndTokenLine;
+                            tmpArea.lineNumEnd = lastEnd;
+                            
+                            if(tmpArea.isData) {
+                                areaThumbData = tmpArea;
+                            } else {
+                                areaThumbCode = tmpArea;                                
+                            }
+                            
+                            if(lastEnd <= lastEntry) {
+                                throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
+                            }
+                            
+                            tmpArea = null;
+                            lastArea = -1;
+                            lastAreaToken = null;
+                            lastAreaTokenLine = null;
+
+                            lastEntry = -1;
+                            lastEntryToken = null;
+                            lastEntryTokenLine = null;                                
+
+                            lastEnd = -1;
+                            lastEndToken = null;
+                            lastEndTokenLine = null;                          
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
-                        if(lastEnd <= lastEntry) {
-                            throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
-                        }                        
                     }
+                }
+                
+                if(directiveFound) {
+                    line.payloadDirective = directiveName;
+                    line.isLineDirective = true;
+                    line.payloadLenArg = CountArgTokens(line.payload, 0, JsonObjIsEntryTypes.ENTRY_TYPE_NAME_CAT_ARG_DIRECTIVE, false);
+                    line.matchesDirective = FindDirectiveMatches(line.payloadDirective, line.payloadLenArg);
                 }
             }
             
-            if(directiveFound) {
-                line.payloadDirective = directiveName;
-                line.isLineDirective = true;
-                line.payloadLenArg = CountArgTokens(line.payload, 0, JsonObjIsEntryTypes.ENTRY_TYPE_NAME_CAT_ARG_DIRECTIVE, false);
-                line.matchesDirective = FindDirectiveMatches(line.payloadDirective, line.payloadLenArg);
-                
+            if(directiveFound) {                
                 if(line.matchesDirective == null || line.matchesDirective.isEmpty()) {
-                    throw new ExceptionNoOpCodeFound("Could not find a matching directive entry for name '" + line.payloadDirective + "' with argument count " + line.payloadLenArg + " at line " + line.lineNum + " with source text '" + line.source.source + "'");
+                    throw new ExceptionNoDirectiveFound("Could not find a matching directive entry for name '" + line.payloadDirective + "' with argument count " + line.payloadLenArg + " at line " + line.lineNum + " with source text '" + line.source.source + "'");
                 }
             }
         }

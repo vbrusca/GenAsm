@@ -16,8 +16,12 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public List<JsonObjIsDirective> is_directives;
     public static String DIRECTIVE_NAME_ENTRY = "@ENTRY";
     public static String DIRECTIVE_NAME_AREA = "@AREA";    
-    public static String DIRECTIVE_NAME_END = "@END";    
- 
+    public static String DIRECTIVE_NAME_END = "@END";
+    public static String DIRECTIVE_NAME_CODE = "@CODE";    
+    public static String DIRECTIVE_NAME_DATA = "@DATA";
+    public static String DIRECTIVE_NAME_READONLY = "@READONLY";
+    public static String DIRECTIVE_NAME_READWRITE = "@READWRITE";
+    
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsDirective entry : is_directives) {
