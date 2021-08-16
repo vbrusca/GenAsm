@@ -23,6 +23,9 @@ public class Token {
     public boolean isOpCode;
     public boolean isDirective;
     public boolean isComment;
+    public boolean isLabel;
+    public boolean isLabelLocal;
+    public boolean isLabelLocalRef;    
     public Artifact artifact;
     public JsonObjIsEntryType type;    
     public TokenLine parentLine;

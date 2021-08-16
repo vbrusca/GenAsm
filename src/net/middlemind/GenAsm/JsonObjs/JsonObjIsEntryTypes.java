@@ -11,13 +11,15 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public String obj_name;
     public String set_name;
     public List<JsonObjIsEntryType> is_entry_types;
+    
     public static String ENTRY_TYPE_NAME_REGISTERWB = "RegisterWb";
     public static String[] ENTRY_TYPE_NAME_REGISTERS = {"RegisterWb", "RegisterLow", "RegisterHi", "RegisterSp", "RegisterPc", "RegisterLr"};
     public static String ENTRY_TYPE_NAME_OPCODE = "OpCode";
     public static String ENTRY_TYPE_NAME_DIRECTIVE = "Directive";    
     public static String ENTRY_TYPE_NAME_NULL = "None";
     public static String ENTRY_TYPE_NAME_LABEL = "Label";
-    public static String ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL = "LabelNumericLocal";    
+    public static String ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL = "LabelNumericLocal";
+    public static String ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF = "LabelNumericLocalRef";    
     public static String ENTRY_TYPE_NAME_COMMENT = "Comment";
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_HI = "RegisterRangeHi";

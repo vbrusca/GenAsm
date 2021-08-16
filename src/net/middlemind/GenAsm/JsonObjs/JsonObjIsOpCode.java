@@ -11,10 +11,12 @@ public class JsonObjIsOpCode extends JsonObjBase {
     public static String DEFAULT_ARG_SEPARATOR = ",";
     public String obj_name;
     public String op_code_name;
-    public JsonObjBitRep bit_rep;
-    public JsonObjBitSeries bit_series;
     public String arg_separator;
     public int arg_len;
+    public boolean isWriteOpCode;
+    public JsonObjBitRep bit_rep;
+    public JsonObjBitSeries bit_series;
+
     public List<JsonObjIsOpCodeArg> args;
     
     @Override
@@ -27,6 +29,9 @@ public class JsonObjIsOpCode extends JsonObjBase {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjName: " + obj_name);
         Logger.wrl(prefix + "OpCodeName: " + op_code_name);
+        Logger.wrl(prefix + "ArgSeparator: " + arg_separator);
+        Logger.wrl(prefix + "ArgLen: " + arg_len);
+        Logger.wrl(prefix + "IsWriteOpCode: " + isWriteOpCode);
         
         Logger.wrl(prefix + "BitRep:");
         bit_rep.Print(prefix + "\t");

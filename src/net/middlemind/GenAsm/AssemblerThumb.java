@@ -549,7 +549,8 @@ public class AssemblerThumb implements Assembler {
                 //Logger.wrl(opCode.op_code_name + ", " + opCodeArg.arg_index + ", " + argToken.type_name);                
                 
                 if(opCodeArg != null && argToken != null) {
-                    if(!(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                    //if(!(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                    if(!(argToken.isLabel || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                         //Logger.wrl("Exit: BBB");
                         argFound = false;
                         break;
@@ -574,7 +575,8 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                if(!(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                                //if(!(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                                if(!(argTokenSub.isLabel || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                                     //Logger.wrl("Exit: DDD");
                                     argFound = false;
                                     argFoundSub = false;
@@ -594,8 +596,7 @@ public class AssemblerThumb implements Assembler {
                     argFoundSub = false;
                     break;
                 }
-            }
-            
+            }            
             //Logger.wrl("ArgFound: " + argFound + ", HasArgsSub: " + hasArgsSub + ", ArgFoundSub: " + argFoundSub);
             
             if(argFound && !hasArgsSub && !argFoundSub) {
@@ -922,28 +923,19 @@ public class AssemblerThumb implements Assembler {
     }
     
     //OUTPUT OBJECT DATA METHODS
-    public void WriteObject(Object obj, String name, String fileName) throws Exception {
+    public void WriteObject(Object obj, String name, String fileName) throws IOException {
         Logger.wrl("AssemblerThumb: WriteObject: Name: " + name);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-            
         Gson gson = builder.create();            
         String jsonString = gson.toJson(obj);
-
-        try {
-            FileUnloader.WriteStr(fileName, jsonString);
-        } catch(IOException e) {
-            Logger.wrl("AssemblerThumb: WriteObject: Could not write the target output file, '" + fileName + "'");
-            e.printStackTrace();
-            throw e;
-        }
+        FileUnloader.WriteStr(fileName, jsonString);
     }
     
     public void PrintObject(Object obj, String name) {
         Logger.wrl("AssemblerThumb: PrintObject: Name: '" + name + "'");
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-            
         Gson gson = builder.create();            
         String jsonString = gson.toJson(obj);
         Logger.wr(jsonString);        

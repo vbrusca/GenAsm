@@ -41,6 +41,16 @@ public class JsonObjTxtMatch extends JsonObjBase {
             Logger.wrl(prefix + "\t" + s);
         }
         
+        Logger.wrl(prefix + "MustContain:");
+        for(String s : must_contain) {
+            Logger.wrl(prefix + "\t" + s);
+        }
+        
+        Logger.wrl(prefix + "MustNotContain:");
+        for(String s : must_not_contain) {
+            Logger.wrl(prefix + "\t" + s);
+        }
+        
         Logger.wrl(prefix + "EndsWith:");        
         for(String s : ends_with) {
             Logger.wrl(prefix + "\t" + s);
