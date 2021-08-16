@@ -13,7 +13,7 @@ public class JsonObjIsOpCode extends JsonObjBase {
     public String op_code_name;
     public String arg_separator;
     public int arg_len;
-    public boolean isWriteOpCode;
+    public boolean is_write_op_code;
     public JsonObjBitRep bit_rep;
     public JsonObjBitSeries bit_series;
 
@@ -31,7 +31,7 @@ public class JsonObjIsOpCode extends JsonObjBase {
         Logger.wrl(prefix + "OpCodeName: " + op_code_name);
         Logger.wrl(prefix + "ArgSeparator: " + arg_separator);
         Logger.wrl(prefix + "ArgLen: " + arg_len);
-        Logger.wrl(prefix + "IsWriteOpCode: " + isWriteOpCode);
+        Logger.wrl(prefix + "IsWriteOpCode: " + is_write_op_code);
         
         Logger.wrl(prefix + "BitRep:");
         bit_rep.Print(prefix + "\t");

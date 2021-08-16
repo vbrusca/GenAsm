@@ -1851,6 +1851,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "is_write_op_code": true,
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
@@ -2403,6 +2404,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "is_write_op_code": true,            
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
@@ -2883,6 +2885,7 @@
         {
             "obj_name": "is_op_code",  
             "op_code_name": "STR",
+            "is_write_op_code": true,            
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {

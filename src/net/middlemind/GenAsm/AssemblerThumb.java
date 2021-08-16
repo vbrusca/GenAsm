@@ -550,7 +550,7 @@ public class AssemblerThumb implements Assembler {
                 
                 if(opCodeArg != null && argToken != null) {
                     //if(!(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                    if(!(argToken.isLabel || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                    if(!(argToken.isLabel || argToken.isLabelLocal || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                         //Logger.wrl("Exit: BBB");
                         argFound = false;
                         break;
@@ -575,8 +575,7 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                //if(!(argTokenSub.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                                if(!(argTokenSub.isLabel || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                                if(!(argTokenSub.isLabel || argTokenSub.isLabelLocal || argTokenSub.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                                     //Logger.wrl("Exit: DDD");
                                     argFound = false;
                                     argFoundSub = false;
