@@ -324,13 +324,13 @@ public class AssemblerThumb implements Assembler {
                                 if(areaThumbData == null) {
                                     areaThumbData = tmpArea;
                                 } else {
-                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one DATA area, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
+                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one DATA AREA, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
                                 }
                             } else {
                                 if(areaThumbCode == null) {
                                     areaThumbCode = tmpArea;
                                 } else {
-                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one CODE area, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
+                                    throw new ExceptionMalformedEntryEndDirectiveSet("Can only define one CODE AREA, second definition on line " + tmpArea.lineNumArea + " with source " + tmpArea.areaLine.source.source);
                                 }
                             }
                             
@@ -384,7 +384,22 @@ public class AssemblerThumb implements Assembler {
                 activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
             }
         }
-        */        
+        */
+        
+        if(areaThumbCode != null && areaThumbData != null) {
+            if(areaThumbCode.lineNumEntry < areaThumbData.lineNumEntry) {
+                //process code area first
+                
+            } else {
+                //process data area first
+                
+            }
+        } else if(areaThumbCode != null) {
+            //process code area first
+            
+        } else {
+            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
+        }
         
         if(reqDirectiveCount > 0) {
             String lmissing = "";
