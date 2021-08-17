@@ -143,8 +143,8 @@ public class AssemblerThumb implements Assembler {
             PopulateOpCodeAndArgData();
             
             Logger.wrl("");
-            Logger.wrl("STEP10: Mark directive and directive argument tokens");
-            PopulateDirectiveAndArgData();
+            Logger.wrl("STEP10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
+            PopulateDirectiveArgAndAreaData();
             WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
 
             Logger.wrl("");
@@ -188,7 +188,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //DIRECTIVE METHODS
-    private void PopulateDirectiveAndArgData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
+    private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
         boolean directiveFound = false;
         String directiveName = null;
@@ -386,21 +386,6 @@ public class AssemblerThumb implements Assembler {
         }
         */
         
-        if(areaThumbCode != null && areaThumbData != null) {
-            if(areaThumbCode.lineNumEntry < areaThumbData.lineNumEntry) {
-                //process code area first
-                
-            } else {
-                //process data area first
-                
-            }
-        } else if(areaThumbCode != null) {
-            //process code area first
-            
-        } else {
-            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
-        }
-        
         if(reqDirectiveCount > 0) {
             String lmissing = "";
             for(int i = 0; i < reqDirectives.size(); i++) {
@@ -410,6 +395,70 @@ public class AssemblerThumb implements Assembler {
                 }
             }
             throw new ExceptionMissingRequiredDirective("Could not find required directive in the source file, '" + lmissing + "'");
+        }        
+        
+        if(areaThumbCode != null && areaThumbData != null) {
+            if(areaThumbCode.lineNumEntry < areaThumbData.lineNumEntry) {
+                //process code area first
+                asmAreaLinesCode = new ArrayList<TokenLine>();
+                activeLineCount = 0;
+                for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
+                    TokenLine line = asmDataTokened.get(z);
+                    if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        asmAreaLinesCode.add(line);
+                        activeLineCount += lineBitSeries.bit_len;
+                    }
+                }
+                
+                asmAreaLinesData = new ArrayList<TokenLine>();
+                for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
+                    TokenLine line = asmDataTokened.get(z);
+                    if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
+                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        asmAreaLinesData.add(line);
+                        activeLineCount += lineBitSeries.bit_len;
+                    }
+                }
+                
+            } else {
+                //process data area first
+                asmAreaLinesData = new ArrayList<TokenLine>();
+                activeLineCount = 0;
+                for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
+                    TokenLine line = asmDataTokened.get(z);
+                    if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
+                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        asmAreaLinesData.add(line);
+                        activeLineCount += lineBitSeries.bit_len;
+                    }
+                }
+                
+                asmAreaLinesCode = new ArrayList<TokenLine>();
+                for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
+                    TokenLine line = asmDataTokened.get(z);
+                    if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        asmAreaLinesCode.add(line);
+                        activeLineCount += lineBitSeries.bit_len;
+                    }
+                }                
+            }
+        } else if(areaThumbCode != null) {
+            //process code area first
+            asmAreaLinesCode = new ArrayList<TokenLine>();
+            activeLineCount = 0;
+            for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
+                TokenLine line = asmDataTokened.get(z);
+                if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                    asmAreaLinesCode.add(line);
+                    activeLineCount += lineBitSeries.bit_len;
+                }
+            }
+                
+        } else {
+            throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
         }
     }    
     

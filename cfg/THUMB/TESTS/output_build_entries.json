@@ -222,7 +222,7 @@
       "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
       "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
     },
-    "opCodeToken": {
+    "tokenOpCode": {
       "obj_name": "Token",
       "type_name": "OpCode",
       "source": "LSR",
@@ -345,7 +345,7 @@
       "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
       "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
     },
-    "opCodeArgToken": {
+    "tokenOpCodeArg": {
       "obj_name": "Token",
       "type_name": "RegisterLow",
       "source": "R2",
@@ -533,7 +533,7 @@
       "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
       "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
     },
-    "opCodeArgToken": {
+    "tokenOpCodeArg": {
       "obj_name": "Token",
       "type_name": "RegisterLow",
       "source": "R5",
@@ -733,7 +733,7 @@
       "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
       "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
     },
-    "opCodeArgToken": {
+    "tokenOpCodeArg": {
       "obj_name": "Token",
       "type_name": "Number",
       "source": "#27",
