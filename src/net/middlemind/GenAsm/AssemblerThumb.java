@@ -162,6 +162,8 @@ public class AssemblerThumb implements Assembler {
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
                 Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
+                WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
+                WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -169,6 +171,8 @@ public class AssemblerThumb implements Assembler {
             if(areaThumbData != null) {
                 Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
                 Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
+                WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
+                WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }
@@ -375,16 +379,6 @@ public class AssemblerThumb implements Assembler {
                 }
             }
         }
-        
-        /*
-        //re-apply after areas are defined
-        if(lastArea != -1 && lastEntry != -1 && lastEnd == -1) {
-            if(line.payloadLen != 0 && !line.validLineEntry.empty_line) {
-                line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), jsonObjIsOpCodes.pc_prefetch_words);
-                activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
-            }
-        }
-        */
         
         if(reqDirectiveCount > 0) {
             String lmissing = "";
