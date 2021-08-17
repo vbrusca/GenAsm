@@ -686,6 +686,9 @@ public class AssemblerThumb implements Assembler {
             argFoundSub = false;
             hasArgsSub = false;
             
+            //Sort Json OpCode arguments so that they are arg_index ascending
+            Collections.sort(opCode.args, new JsonObjIsOpCodeArgSorter());
+            
             for(int i = 0; i < opCode.args.size(); i++) {
                 opCodeArg = opCode.args.get(i);
                 opCodeArgIdx = i;
@@ -1267,37 +1270,54 @@ public class AssemblerThumb implements Assembler {
         return true;
     }
 
+    //TODO: Create AREA specific line listings and output them to json files
+    //TODO: Create AREA specific build entries and output them to json files
+    //TODO: Build OpCode instructions and output them to a linked listing file 
+    
     //BUILD OPCODE
-    private String BuildOpCode(TokenLine line, AreaThumb area) {
+    private String BuildOpCode(TokenLine line, AreaThumb area) throws IOException {
         if(area.isCode) {
             if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
-                JsonObjIsOpCode opCode = line.matchesOpCode.get(0);
+                JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
                 List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
-                List<Token> lineArgs = new ArrayList<>();
-                Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter());
-
+                List<BuildOpCodeEntry> buildEntries = new ArrayList<>();
+                
+                BuildOpCodeEntry tmpB = null;
+                int opCodeArgIdx = 0;
                 for(Token token : line.payload) {
                     if(token.isArgOpCode) {
-                        lineArgs.add(token);
+                        tmpB = new BuildOpCodeEntry();
+                        tmpB.isOpCodeArg = true;
+                        tmpB.opCodeArg = opCodeArgs.get(opCodeArgIdx);
+                        tmpB.opCodeArg.arg_index++;
+                        tmpB.bitSeries = tmpB.opCodeArg.bit_series;
+                        tmpB.opCodeArgToken = token;
+                        buildEntries.add(tmpB);
+                        opCodeArgIdx++;
+                        
+                    } else if(token.isOpCode) {
+                        tmpB = new BuildOpCodeEntry();
+                        tmpB.isOpCode = true;
+                        tmpB.bitSeries = opCode.bit_series;
+                        tmpB.opCode = opCode;
+                        tmpB.opCodeToken = token;
+                        buildEntries.add(tmpB);
                     }
                 }
                 
-                for(JsonObjIsOpCodeArg opCodeArg : opCodeArgs) {
-                    Logger.wrl("");
-                    opCodeArg.bit_series.PrintShort();
-                }
-                
-                Logger.wrl("");
-                opCode.bit_series.PrintShort();
+                WriteObject(buildEntries, "BuildOpCode: Build Entries", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_build_entries.json");
+
             } else {
                 //TODO: throw invalid assemblly line exception
             }
+            
         } else if(area.isData) {
             if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
                 
             } else {
                 //TODO: throw invalid assemblly line exception
             }
+            
         }
         return null;
     }

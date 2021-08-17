@@ -1,0 +1,798 @@
+[
+  {
+    "bitSeries": {
+      "bit_start": 11,
+      "bit_stop": 15,
+      "bit_len": 5,
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCode": {
+      "obj_name": "is_op_code",
+      "op_code_name": "LSR",
+      "arg_separator": ",",
+      "arg_len": 3,
+      "is_write_op_code": false,
+      "bit_rep": {
+        "bit_string": "00001",
+        "bit_int": 1,
+        "bit_len": 5,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "bit_series": {
+        "bit_start": 11,
+        "bit_stop": 15,
+        "bit_len": 5,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "args": [
+        {
+          "obj_name": "is_op_code_arg",
+          "arg_index": 1,
+          "bit_index": 0,
+          "is_entry_types": [
+            "RegisterLow"
+          ],
+          "linked_is_entry_types": [
+            {
+              "obj_name": "is_entry_type",
+              "type_name": "RegisterLow",
+              "type_category": "RegisterLow",
+              "category": "Arg",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+              "txt_match": {
+                "starts_with": [
+                  "R"
+                ],
+                "contains": [
+                  "0~7"
+                ],
+                "ends_with": [
+                  ",",
+                  ";",
+                  "0~7"
+                ],
+                "must_contain": [],
+                "must_not_contain": [
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11",
+                  "R12",
+                  "R13",
+                  "R14",
+                  "R15"
+                ],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+            }
+          ],
+          "bit_series": {
+            "bit_start": 0,
+            "bit_stop": 2,
+            "bit_len": 3,
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+        },
+        {
+          "obj_name": "is_op_code_arg",
+          "arg_index": 2,
+          "bit_index": 1,
+          "is_entry_types": [
+            "RegisterLow"
+          ],
+          "linked_is_entry_types": [
+            {
+              "obj_name": "is_entry_type",
+              "type_name": "RegisterLow",
+              "type_category": "RegisterLow",
+              "category": "Arg",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+              "txt_match": {
+                "starts_with": [
+                  "R"
+                ],
+                "contains": [
+                  "0~7"
+                ],
+                "ends_with": [
+                  ",",
+                  ";",
+                  "0~7"
+                ],
+                "must_contain": [],
+                "must_not_contain": [
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11",
+                  "R12",
+                  "R13",
+                  "R14",
+                  "R15"
+                ],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+            }
+          ],
+          "bit_series": {
+            "bit_start": 3,
+            "bit_stop": 5,
+            "bit_len": 3,
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+        },
+        {
+          "obj_name": "is_op_code_arg",
+          "arg_index": 3,
+          "bit_index": 2,
+          "is_entry_types": [
+            "Number"
+          ],
+          "linked_is_entry_types": [
+            {
+              "obj_name": "is_entry_type",
+              "type_name": "Number",
+              "type_category": "Number",
+              "category": "Arg",
+              "category_class": "java.lang.Double",
+              "txt_match": {
+                "starts_with": [
+                  "#0x",
+                  "#bx",
+                  "#-",
+                  "#",
+                  "0~9"
+                ],
+                "contains": [
+                  "0~9"
+                ],
+                "ends_with": [
+                  "0~9",
+                  ",",
+                  ";"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+            }
+          ],
+          "bit_series": {
+            "bit_start": 6,
+            "bit_stop": 10,
+            "bit_len": 5,
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+          },
+          "num_range": {
+            "min_value": 0,
+            "max_value": 31,
+            "bit_len": 5,
+            "twos_compliment": false,
+            "alignment": "NATURAL",
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjNumRange",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+          },
+          "bit_shift": {
+            "shift_dir": "NONE",
+            "shift_amount": 0,
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitShift",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+        }
+      ],
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCode",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeToken": {
+      "obj_name": "Token",
+      "type_name": "OpCode",
+      "source": "LSR",
+      "lineNum": 5,
+      "index": 0,
+      "payloadLen": 0,
+      "payloadArgLen": 0,
+      "isArgOpCode": false,
+      "isArgDirective": false,
+      "isOpCode": true,
+      "isDirective": false,
+      "isComment": false,
+      "isLabel": false,
+      "isLabelLocal": false,
+      "isLabelLocalRef": false,
+      "artifact": {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 2,
+        "len": 3,
+        "lineNum": 5,
+        "index": 0,
+        "payload": "LSR"
+      },
+      "type": {
+        "obj_name": "is_entry_type",
+        "type_name": "OpCode",
+        "type_category": "OpCode",
+        "category": "OpCode",
+        "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCode",
+        "txt_match": {
+          "starts_with": [
+            "A~Z"
+          ],
+          "contains": [
+            "A~Z"
+          ],
+          "ends_with": [
+            "A~Z"
+          ],
+          "must_contain": [],
+          "must_not_contain": [],
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+      },
+      "payload": []
+    },
+    "isOpCode": true,
+    "isOpCodeArg": false
+  },
+  {
+    "bitSeries": {
+      "bit_start": 0,
+      "bit_stop": 2,
+      "bit_len": 3,
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArg": {
+      "obj_name": "is_op_code_arg",
+      "arg_index": 1,
+      "bit_index": 0,
+      "is_entry_types": [
+        "RegisterLow"
+      ],
+      "linked_is_entry_types": [
+        {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterLow",
+          "type_category": "RegisterLow",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "txt_match": {
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "0~7"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "0~7"
+            ],
+            "must_contain": [],
+            "must_not_contain": [
+              "R8",
+              "R9",
+              "R10",
+              "R11",
+              "R12",
+              "R13",
+              "R14",
+              "R15"
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        }
+      ],
+      "bit_series": {
+        "bit_start": 0,
+        "bit_stop": 2,
+        "bit_len": 3,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArgToken": {
+      "obj_name": "Token",
+      "type_name": "RegisterLow",
+      "source": "R2",
+      "lineNum": 5,
+      "index": 1,
+      "payloadLen": 0,
+      "payloadArgLen": 0,
+      "isArgOpCode": true,
+      "isArgDirective": false,
+      "isOpCode": false,
+      "isDirective": false,
+      "isComment": false,
+      "isLabel": false,
+      "isLabelLocal": false,
+      "isLabelLocalRef": false,
+      "artifact": {
+        "obj_name": "Artifact",
+        "posStart": 6,
+        "posStop": 7,
+        "len": 2,
+        "lineNum": 5,
+        "index": 1,
+        "payload": "R2"
+      },
+      "type": {
+        "obj_name": "is_entry_type",
+        "type_name": "RegisterLow",
+        "type_category": "RegisterLow",
+        "category": "Arg",
+        "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+        "txt_match": {
+          "starts_with": [
+            "R"
+          ],
+          "contains": [
+            "0~7"
+          ],
+          "ends_with": [
+            ",",
+            ";",
+            "0~7"
+          ],
+          "must_contain": [],
+          "must_not_contain": [
+            "R8",
+            "R9",
+            "R10",
+            "R11",
+            "R12",
+            "R13",
+            "R14",
+            "R15"
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+      },
+      "register": {
+        "register_name": "R2",
+        "obj_name": "is_register",
+        "is_entry_type": "RegisterLow",
+        "linked_is_entry_type": {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterLow",
+          "type_category": "RegisterLow",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "txt_match": {
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "0~7"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "0~7"
+            ],
+            "must_contain": [],
+            "must_not_contain": [
+              "R8",
+              "R9",
+              "R10",
+              "R11",
+              "R12",
+              "R13",
+              "R14",
+              "R15"
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "bit_rep": {
+          "bit_string": "010",
+          "bit_int": 2,
+          "bit_len": 3,
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsRegisters"
+        },
+        "desc": "general purpose",
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsRegisters"
+      },
+      "payload": []
+    },
+    "isOpCode": false,
+    "isOpCodeArg": true
+  },
+  {
+    "bitSeries": {
+      "bit_start": 3,
+      "bit_stop": 5,
+      "bit_len": 3,
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArg": {
+      "obj_name": "is_op_code_arg",
+      "arg_index": 2,
+      "bit_index": 1,
+      "is_entry_types": [
+        "RegisterLow"
+      ],
+      "linked_is_entry_types": [
+        {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterLow",
+          "type_category": "RegisterLow",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "txt_match": {
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "0~7"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "0~7"
+            ],
+            "must_contain": [],
+            "must_not_contain": [
+              "R8",
+              "R9",
+              "R10",
+              "R11",
+              "R12",
+              "R13",
+              "R14",
+              "R15"
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        }
+      ],
+      "bit_series": {
+        "bit_start": 3,
+        "bit_stop": 5,
+        "bit_len": 3,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArgToken": {
+      "obj_name": "Token",
+      "type_name": "RegisterLow",
+      "source": "R5",
+      "lineNum": 5,
+      "index": 2,
+      "payloadLen": 0,
+      "payloadArgLen": 0,
+      "isArgOpCode": true,
+      "isArgDirective": false,
+      "isOpCode": false,
+      "isDirective": false,
+      "isComment": false,
+      "isLabel": false,
+      "isLabelLocal": false,
+      "isLabelLocalRef": false,
+      "artifact": {
+        "obj_name": "Artifact",
+        "posStart": 10,
+        "posStop": 11,
+        "len": 2,
+        "lineNum": 5,
+        "index": 2,
+        "payload": "R5"
+      },
+      "type": {
+        "obj_name": "is_entry_type",
+        "type_name": "RegisterLow",
+        "type_category": "RegisterLow",
+        "category": "Arg",
+        "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+        "txt_match": {
+          "starts_with": [
+            "R"
+          ],
+          "contains": [
+            "0~7"
+          ],
+          "ends_with": [
+            ",",
+            ";",
+            "0~7"
+          ],
+          "must_contain": [],
+          "must_not_contain": [
+            "R8",
+            "R9",
+            "R10",
+            "R11",
+            "R12",
+            "R13",
+            "R14",
+            "R15"
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+      },
+      "register": {
+        "register_name": "R5",
+        "obj_name": "is_register",
+        "is_entry_type": "RegisterLow",
+        "linked_is_entry_type": {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterLow",
+          "type_category": "RegisterLow",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "txt_match": {
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "0~7"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "0~7"
+            ],
+            "must_contain": [],
+            "must_not_contain": [
+              "R8",
+              "R9",
+              "R10",
+              "R11",
+              "R12",
+              "R13",
+              "R14",
+              "R15"
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "bit_rep": {
+          "bit_string": "101",
+          "bit_int": 5,
+          "bit_len": 3,
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsRegisters"
+        },
+        "desc": "general purpose",
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_registers.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsRegisters"
+      },
+      "payload": []
+    },
+    "isOpCode": false,
+    "isOpCodeArg": true
+  },
+  {
+    "bitSeries": {
+      "bit_start": 6,
+      "bit_stop": 10,
+      "bit_len": 5,
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArg": {
+      "obj_name": "is_op_code_arg",
+      "arg_index": 3,
+      "bit_index": 2,
+      "is_entry_types": [
+        "Number"
+      ],
+      "linked_is_entry_types": [
+        {
+          "obj_name": "is_entry_type",
+          "type_name": "Number",
+          "type_category": "Number",
+          "category": "Arg",
+          "category_class": "java.lang.Double",
+          "txt_match": {
+            "starts_with": [
+              "#0x",
+              "#bx",
+              "#-",
+              "#",
+              "0~9"
+            ],
+            "contains": [
+              "0~9"
+            ],
+            "ends_with": [
+              "0~9",
+              ",",
+              ";"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        }
+      ],
+      "bit_series": {
+        "bit_start": 6,
+        "bit_stop": 10,
+        "bit_len": 5,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "num_range": {
+        "min_value": 0,
+        "max_value": 31,
+        "bit_len": 5,
+        "twos_compliment": false,
+        "alignment": "NATURAL",
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjNumRange",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "bit_shift": {
+        "shift_dir": "NONE",
+        "shift_amount": 0,
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitShift",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+      },
+      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArg",
+      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
+      "loader": "net.middlemind.GenAsm.Loaders.LoaderIsOpCodes"
+    },
+    "opCodeArgToken": {
+      "obj_name": "Token",
+      "type_name": "Number",
+      "source": "#27",
+      "lineNum": 5,
+      "index": 3,
+      "payloadLen": 0,
+      "payloadArgLen": 0,
+      "isArgOpCode": true,
+      "isArgDirective": false,
+      "isOpCode": false,
+      "isDirective": false,
+      "isComment": false,
+      "isLabel": false,
+      "isLabelLocal": false,
+      "isLabelLocalRef": false,
+      "artifact": {
+        "obj_name": "Artifact",
+        "posStart": 14,
+        "posStop": 16,
+        "len": 3,
+        "lineNum": 5,
+        "index": 3,
+        "payload": "#27"
+      },
+      "type": {
+        "obj_name": "is_entry_type",
+        "type_name": "Number",
+        "type_category": "Number",
+        "category": "Arg",
+        "category_class": "java.lang.Double",
+        "txt_match": {
+          "starts_with": [
+            "#0x",
+            "#bx",
+            "#-",
+            "#",
+            "0~9"
+          ],
+          "contains": [
+            "0~9"
+          ],
+          "ends_with": [
+            "0~9",
+            ",",
+            ";"
+          ],
+          "must_contain": [],
+          "must_not_contain": [],
+          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+        },
+        "name": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "loader": "net.middlemind.GenAsm.Loaders.LoaderIsEntryTypes"
+      },
+      "payload": []
+    },
+    "isOpCode": false,
+    "isOpCodeArg": true
+  }
+]
