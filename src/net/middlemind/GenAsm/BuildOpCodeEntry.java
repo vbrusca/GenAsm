@@ -12,8 +12,8 @@ public class BuildOpCodeEntry {
     public JsonObjBitSeries bitSeries;
     public JsonObjIsOpCode opCode;
     public JsonObjIsOpCodeArg opCodeArg;
-    public Token opCodeToken;
-    public Token opCodeArgToken;
+    public Token tokenOpCode;
+    public Token tokenOpCodeArg;
     public boolean isOpCode;
     public boolean isOpCodeArg;
 }

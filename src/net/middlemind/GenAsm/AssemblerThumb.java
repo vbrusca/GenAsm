@@ -67,14 +67,16 @@ public class AssemblerThumb implements Assembler {
     public JsonObjIsRegisters jsonObjIsRegisters;    
     
     public String asmSourceFile;
-    public List<String> asmSourceData;
-    public List<ArtifactLine> asmLexedData;
-    public List<TokenLine> asmTokenedData;
+    public List<String> asmDataSource;
+    public List<ArtifactLine> asmDataLexed;
+    public List<TokenLine> asmDataTokened;
     public Symbols symbols;
     
     public List<String> requiredDirectives;    
     public AreaThumb areaThumbCode;
     public AreaThumb areaThumbData;
+    public List<TokenLine> asmAreaLinesCode;
+    public List<TokenLine> asmAreaLinesData;    
     
     public int lineLenBytes = 2;
     public int lineLenWords = 1;
@@ -112,17 +114,17 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             Logger.wrl("STEP3: Load and lexerize the assembly source file");           
             LoadAndLexerizeAssemblySource();
-            WriteObject(asmLexedData, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
+            WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
 
             Logger.wrl("");
             Logger.wrl("STEP4: Tokenize the lexerized artifacts");
             TokenizeLexerArtifacts();
-            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
             
             Logger.wrl("");
             Logger.wrl("STEP5: Validate token lines");
             ValidateTokenizedLines();
-            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
 
             Logger.wrl("");
             Logger.wrl("STEP6: Combine comment tokens as children of the initial comment token");
@@ -143,7 +145,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             Logger.wrl("STEP10: Mark directive and directive argument tokens");
             PopulateDirectiveAndArgData();
-            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
 
             Logger.wrl("");
             Logger.wrl("STEP11: Validate OpCode lines against known OpCodes by comparing arguments");
@@ -152,7 +154,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             Logger.wrl("STEP12: Validate directive lines against known directives by comparing arguments");
             ValidateDirectiveLines();
-            WriteObject(asmTokenedData, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
             WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
         
             Logger.wrl("");
@@ -178,7 +180,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("LineBitSeries:");
             lineBitSeries.Print("\t");
             
-            BuildOpCode(asmTokenedData.get(5), areaThumbCode);
+            BuildOpCode(asmDataTokened.get(5), areaThumbCode);
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -213,18 +215,11 @@ public class AssemblerThumb implements Assembler {
         int activeLineCount = 0;
         AreaThumb tmpArea = null;
         
-        for(TokenLine line : asmTokenedData) {            
+        for(TokenLine line : asmDataTokened) {            
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;
-            
-            if(lastArea != -1 && lastEntry != -1 && lastEnd == -1) {
-                if(line.payloadLen != 0 && !line.validLineEntry.empty_line) {
-                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), jsonObjIsOpCodes.pc_prefetch_words);
-                    activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
-                }
-            }
-            
+
             if(lastData != -1 && line.isLineOpCode) {
                 throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have OpCode instructions when AREA type is DATA, found on line " + line.lineNum + " with source " + line.source.source);                
             }
@@ -381,6 +376,16 @@ public class AssemblerThumb implements Assembler {
             }
         }
         
+        /*
+        //re-apply after areas are defined
+        if(lastArea != -1 && lastEntry != -1 && lastEnd == -1) {
+            if(line.payloadLen != 0 && !line.validLineEntry.empty_line) {
+                line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), jsonObjIsOpCodes.pc_prefetch_words);
+                activeLineCount += this.jsonObjIsOpCodes.bit_series.bit_len;
+            }
+        }
+        */        
+        
         if(reqDirectiveCount > 0) {
             String lmissing = "";
             for(int i = 0; i < reqDirectives.size(); i++) {
@@ -402,7 +407,7 @@ public class AssemblerThumb implements Assembler {
         List<Token> args = null;
         JsonObjIsDirective directive = null; 
         
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             //if(line.matchesDirective != null && line.matchesDirective.size() > 1) {
             if(line.isLineDirective) {
                 directiveFound = false;
@@ -507,7 +512,7 @@ public class AssemblerThumb implements Assembler {
         TokenLine lastLabelLine = null;
         Symbol symbol = null;
         
-        for(TokenLine line : asmTokenedData) {            
+        for(TokenLine line : asmDataTokened) {            
             opCodeFound = false;
             opCodeName = null;
             opCodeIdx = -1;
@@ -608,7 +613,7 @@ public class AssemblerThumb implements Assembler {
         List<Token> args = null;
         JsonObjIsOpCode opCode = null; 
         
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             //if(line.matchesOpCode != null && line.matchesOpCode.size() > 1) {
             if(line.isLineOpCode) {
                 opCodeFound = false;
@@ -645,7 +650,7 @@ public class AssemblerThumb implements Assembler {
         
         for(String key : symbols.symbols.keySet()) {
             Symbol symbol = symbols.symbols.get(key);
-            TokenLine line = asmTokenedData.get(symbol.lineNum);
+            TokenLine line = asmDataTokened.get(symbol.lineNum);
             if(Utils.ContainsInt(JsonObjIsValidLines.ENTRY_LINES_LABEL_EMPTY, line.validLineEntry.index)) {    
                 symbol.lineNumActive = FindNextOpCodeLine(symbol.lineNum, key);
                 symbol.isEmptyLineLabel = true;
@@ -657,9 +662,9 @@ public class AssemblerThumb implements Assembler {
     }
     
     private int FindNextOpCodeLine(int lineNum, String label) throws ExceptionNoOpCodeLineFound {
-        if(lineNum + 1 < asmTokenedData.size()) {
-            for(int i = lineNum + 1; i < asmTokenedData.size(); i++) {
-                TokenLine line = asmTokenedData.get(i);
+        if(lineNum + 1 < asmDataTokened.size()) {
+            for(int i = lineNum + 1; i < asmDataTokened.size(); i++) {
+                TokenLine line = asmDataTokened.get(i);
                 if(line.isLineOpCode) {
                     return i;
                 }
@@ -824,7 +829,7 @@ public class AssemblerThumb implements Assembler {
         int copyEnd = -1;
         int copyLen = -1;        
         
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             rootStartList = null;
             rootStartIdxList = -1;
             rootStartGroup = null;
@@ -954,7 +959,7 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsEntryType entryTypeRegLow = null;
         JsonObjIsEntryType entryTypeRegHi = null;
         
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             rangeRootIdxLow = 0;
             rangeRootIdxHi = 0;
             rangeRootLow = null;                
@@ -1049,7 +1054,7 @@ public class AssemblerThumb implements Assembler {
         Token commentRoot = null;
         List<Token> clearTokens = null;  
             
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             inComment = false;
             commentRoot = null;
             clearTokens = new ArrayList<>();  
@@ -1179,18 +1184,18 @@ public class AssemblerThumb implements Assembler {
     //LEX SOURCE CODE
     private void LoadAndLexerizeAssemblySource() throws IOException {
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
-        asmSourceData = FileLoader.Load(asmSourceFile);
+        asmDataSource = FileLoader.Load(asmSourceFile);
 
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
         LexerSimple lex = new LexerSimple();
-        asmLexedData = lex.FileLexerize(asmSourceData);
+        asmDataLexed = lex.FileLexerize(asmDataSource);
     }
     
     //TOKENIZE AND VALIDATE LEXERIZED LINES
     private void TokenizeLexerArtifacts() throws ExceptionNoTokenerFound {
         Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts");
         TokenerThumb tok = new TokenerThumb();
-        asmTokenedData = tok.FileTokenize(asmLexedData, jsonObjIsEntryTypes);
+        asmDataTokened = tok.FileTokenize(asmDataLexed, jsonObjIsEntryTypes);
     }
     
     private int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {
@@ -1262,7 +1267,7 @@ public class AssemblerThumb implements Assembler {
     
     private boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
-        for(TokenLine line : asmTokenedData) {
+        for(TokenLine line : asmDataTokened) {
             if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + line.lineNum + " with source text, '" + line.source.source + "'");
             }
@@ -1291,7 +1296,7 @@ public class AssemblerThumb implements Assembler {
                         tmpB.opCodeArg = opCodeArgs.get(opCodeArgIdx);
                         tmpB.opCodeArg.arg_index++;
                         tmpB.bitSeries = tmpB.opCodeArg.bit_series;
-                        tmpB.opCodeArgToken = token;
+                        tmpB.tokenOpCodeArg = token;
                         buildEntries.add(tmpB);
                         opCodeArgIdx++;
                         
@@ -1300,7 +1305,7 @@ public class AssemblerThumb implements Assembler {
                         tmpB.isOpCode = true;
                         tmpB.bitSeries = opCode.bit_series;
                         tmpB.opCode = opCode;
-                        tmpB.opCodeToken = token;
+                        tmpB.tokenOpCode = token;
                         buildEntries.add(tmpB);
                     }
                 }
