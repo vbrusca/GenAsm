@@ -262,7 +262,6 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_CODE)) {
                         if(lastCode == -1) {
                             lastCode = line.lineNum;
@@ -272,7 +271,6 @@ public class AssemblerThumb implements Assembler {
                         if(lastData != -1 && lastData == lastCode) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_DATA)) {
                        if(lastData == -1) {
                             lastData = line.lineNum;
@@ -282,7 +280,6 @@ public class AssemblerThumb implements Assembler {
                         if(lastCode != -1 && lastCode == lastData) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READONLY)) {
                         if(lastReadOnly == -1) {
                             lastReadOnly = line.lineNum;
@@ -292,7 +289,6 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadOnly != -1 && lastReadOnly == lastReadWrite) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READWRITE)) {
                         if(lastReadWrite == -1) {
                             lastReadWrite = line.lineNum;
@@ -302,7 +298,6 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadWrite != -1 && lastReadWrite == lastReadOnly) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                        
                     } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
@@ -421,7 +416,6 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineBitSeries.bit_len;
                     }
                 }
-                
             } else {
                 //process data area first
                 asmAreaLinesData = new ArrayList<TokenLine>();
@@ -456,8 +450,7 @@ public class AssemblerThumb implements Assembler {
                     asmAreaLinesCode.add(line);
                     activeLineCount += lineBitSeries.bit_len;
                 }
-            }
-                
+            }                
         } else {
             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
         }
@@ -994,19 +987,15 @@ public class AssemblerThumb implements Assembler {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                     rootStartList = token;
                     rootStartIdxList = rootStartList.index;
-                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {                    
                     rootStartGroup = token;
                     rootStartIdxGroup = rootStartGroup.index;
-                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                     rootStopList = token;
                     rootStopIdxList = rootStopList.index;
-                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {                    
                     rootStopGroup = token;
                     rootStopIdxGroup = rootStopGroup.index;                    
-                    
                 }
             }
             
@@ -1064,7 +1053,6 @@ public class AssemblerThumb implements Assembler {
                 return entry;
             }
         }
-        
         throw new ExceptionNoEntryFound("Could not find entry by name, '" + entryName + "', in loaded entry types.");
     }
     
@@ -1141,7 +1129,6 @@ public class AssemblerThumb implements Assembler {
                         rangeAddTokensLow.add(newToken);
                         count++;
                     }
-
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_RANGE_HI)) {
                     rangeRootHi = token;
                     rangeRootIdxHi = rangeRootHi.index;
@@ -1163,7 +1150,6 @@ public class AssemblerThumb implements Assembler {
                         rangeAddTokensHi.add(newToken);
                         count++;
                     }
-
                 }
             }
 
@@ -1313,8 +1299,7 @@ public class AssemblerThumb implements Assembler {
             throw new ExceptionNoEntryFound("Could not find required JsonObjIsValidLines instance.");
 
         } else if(jsonObjIsOpCodes == null) {
-            throw new ExceptionNoEntryFound("Could not find required JsonObjIsOpCodes instance.");                
-
+            throw new ExceptionNoEntryFound("Could not find required JsonObjIsOpCodes instance.");
         }
     }
     
@@ -1330,7 +1315,6 @@ public class AssemblerThumb implements Assembler {
     private void LoadAndLexerizeAssemblySource() throws IOException {
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
         asmDataSource = FileLoader.Load(asmSourceFile);
-
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
         LexerSimple lex = new LexerSimple();
         asmDataLexed = lex.FileLexerize(asmDataSource);
@@ -1431,13 +1415,11 @@ public class AssemblerThumb implements Assembler {
             for(TokenLine line : areaLines) {
                 BuildBinOpCode(line);
             }
-            
         } else if(area.isData) {
             //build directive
             //for(TokenLine line : areaLines) {
             //    BuildBinDirective(line);
             //}
-            
         } else {
             //TODO: throw exception invalid area
         }

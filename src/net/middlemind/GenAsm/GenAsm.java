@@ -36,7 +36,7 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_super_short.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_all.txt";
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
@@ -50,11 +50,14 @@ public class GenAsm {
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
-            Logger.wrlErr("GenAsm: Main: Error: No assembly source file provided.");            
+            Logger.wrlErr("GenAsm: Main: Error: No assembly source file provided.");
+            
         } else if(Utils.IsStringEmpty(ASM_TARGET_SET)) {
-            Logger.wrlErr("GenAsm: Main: Error: No assembly target set provided.");            
+            Logger.wrlErr("GenAsm: Main: Error: No assembly target set provided.");
+            
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
-            Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
+            Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");
+            
         } else {
             /*
             //JSON LOADING TEST IS OP CODES
@@ -308,7 +311,6 @@ public class GenAsm {
                 } catch (ExceptionLoader | ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     Logger.wrl("GenAsm: Main: Error: could not instantiate loader class " + ASM_SETS_LOADER_CLASS);
                     e.printStackTrace();
-                    return;
                 }
             }
         }
