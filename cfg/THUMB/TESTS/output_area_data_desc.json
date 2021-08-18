@@ -2,7 +2,6 @@
   "areaLine": {
     "obj_name": "TokenLine",
     "payloadDirective": "@AREA",
-    "lineNumMemCode": "-1",
     "lineNum": 208,
     "payloadLen": 4,
     "payloadLenArg": 1,
@@ -652,7 +651,6 @@
   "entryLine": {
     "obj_name": "TokenLine",
     "payloadDirective": "@ENTRY",
-    "lineNumMemCode": "-1",
     "lineNum": 209,
     "payloadLen": 1,
     "payloadLenArg": 0,
@@ -854,7 +852,6 @@
   "endLine": {
     "obj_name": "TokenLine",
     "payloadDirective": "@END",
-    "lineNumMemCode": "-1",
     "lineNum": 211,
     "payloadLen": 1,
     "payloadLenArg": 0,

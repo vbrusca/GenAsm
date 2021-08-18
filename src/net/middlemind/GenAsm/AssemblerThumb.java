@@ -164,6 +164,8 @@ public class AssemblerThumb implements Assembler {
                 Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
                 WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
                 WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
+                BuildBinLines(asmAreaLinesCode, areaThumbCode);
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -173,6 +175,8 @@ public class AssemblerThumb implements Assembler {
                 Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
                 WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
                 WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
+                BuildBinLines(asmAreaLinesData, areaThumbData);
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }
@@ -184,7 +188,6 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("LineBitSeries:");
             lineBitSeries.Print("\t");
             
-            BuildOpCode(asmDataTokened.get(5), areaThumbCode);
         } catch(Exception e) {
             Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
             e.printStackTrace();
@@ -1338,50 +1341,176 @@ public class AssemblerThumb implements Assembler {
     //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
-    private String BuildOpCode(TokenLine line, AreaThumb area) throws IOException {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) {
         if(area.isCode) {
-            if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
-                JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
-                List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
-                List<BuildOpCodeEntry> buildEntries = new ArrayList<>();
-                
-                BuildOpCodeEntry tmpB = null;
-                int opCodeArgIdx = 0;
-                for(Token token : line.payload) {
-                    if(token.isArgOpCode) {
-                        tmpB = new BuildOpCodeEntry();
-                        tmpB.isOpCodeArg = true;
-                        tmpB.opCodeArg = opCodeArgs.get(opCodeArgIdx);
-                        tmpB.opCodeArg.arg_index++;
-                        tmpB.bitSeries = tmpB.opCodeArg.bit_series;
-                        tmpB.tokenOpCodeArg = token;
-                        buildEntries.add(tmpB);
-                        opCodeArgIdx++;
-                        
-                    } else if(token.isOpCode) {
-                        tmpB = new BuildOpCodeEntry();
-                        tmpB.isOpCode = true;
-                        tmpB.bitSeries = opCode.bit_series;
-                        tmpB.opCode = opCode;
-                        tmpB.tokenOpCode = token;
-                        buildEntries.add(tmpB);
-                    }
-                }
-                
-                WriteObject(buildEntries, "BuildOpCode: Build Entries", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_build_entries.json");
-
-            } else {
-                //TODO: throw invalid assemblly line exception
+            //build opcode
+            for(TokenLine line : areaLines) {
+                BuildBinOpCode(line);
             }
             
         } else if(area.isData) {
-            if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
-                
-            } else {
-                //TODO: throw invalid assemblly line exception
+            //build directive
+            //for(TokenLine line : areaLines) {
+            //    BuildBinDirective(line);
+            //}
+            
+        } else {
+            //TODO: throw exception invalid area
+        }
+    }
+    
+    private void BuildBinOpCode(TokenLine line) {
+        if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
+            JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
+            List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
+            List<BuildOpCodeEntry> buildEntries = new ArrayList<>();
+            List<JsonObjIsOpCodeArg> opCodeArgsSub = null;
+            Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.SortType.BIT_SERIES_DSC));
+            
+            BuildOpCodeEntry tmpB = null;
+            int opCodeArgIdx = 0;
+            for(Token token : line.payload) {
+                if(token.isArgOpCode) {
+                    tmpB = new BuildOpCodeEntry();
+                    tmpB.isOpCodeArg = true;
+                    tmpB.opCodeArg = (JsonObjIsOpCodeArg)opCodeArgs.get(opCodeArgIdx);
+                    tmpB.opCodeArg.arg_index++;
+                    tmpB.bitSeries = tmpB.opCodeArg.bit_series;
+                    tmpB.tokenOpCodeArg = token;
+                    buildEntries.add(tmpB);
+                    opCodeArgIdx++;
+
+                    if(!Utils.IsListEmpty(token.payload) && !Utils.IsListEmpty(tmpB.opCodeArg.sub_args)) {
+                        Logger.wrl("TokenLineNum: " + token.lineNum);
+                        int lOpCodeArgIdx = 0;
+                        opCodeArgsSub = tmpB.opCodeArg.sub_args;
+                        Collections.sort(opCodeArgsSub, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.SortType.BIT_SERIES_DSC));                        
+                        
+                        for(Token ltoken : token.payload) {
+                            if(ltoken.isArgOpCode) {
+                                tmpB = new BuildOpCodeEntry();
+                                tmpB.isOpCodeArg = false;
+                                tmpB.isOpCodeArgSub = true;
+                                tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
+                                tmpB.opCodeArgSub.arg_index = (opCodeArgIdx = lOpCodeArgIdx);
+                                tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
+                                tmpB.tokenOpCodeArgSub = ltoken;
+                                buildEntries.add(tmpB);
+                                lOpCodeArgIdx++;
+                            } else {
+                                //TODO: throw expected OpCode exception
+                            }
+                        }                        
+                    }
+                    
+                } else if(token.isOpCode) {
+                    tmpB = new BuildOpCodeEntry();
+                    tmpB.isOpCode = true;
+                    tmpB.bitSeries = opCode.bit_series;
+                    tmpB.opCode = opCode;
+                    tmpB.tokenOpCode = token;
+                    buildEntries.add(tmpB);
+                }
             }
             
+            line.buildEntries = buildEntries;
+            String res = "";
+            String resTmp = "";
+            boolean inList = false;
+            //int inListIdx = 0;
+            boolean inGroup = false;
+            int[] inListRegisters = null;
+            for(BuildOpCodeEntry entry : buildEntries) {
+                resTmp = "";
+                
+                if(entry.isOpCode) {
+                    resTmp += entry.opCode.bit_rep.bit_string;
+                }else if(entry.isOpCodeArgSub) {
+                    if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
+                        if(entry.tokenOpCodeArgSub.source.equals("R0")) {
+                            inListRegisters[0] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R1")) {
+                            inListRegisters[1] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R2")) {
+                            inListRegisters[2] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R3")) {
+                            inListRegisters[3] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R4")) {
+                            inListRegisters[4] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R5")) {
+                            inListRegisters[5] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R6")) {
+                            inListRegisters[6] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R7")) {
+                            inListRegisters[7] = 1;
+                        }
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        if(entry.tokenOpCodeArgSub.source.equals("R8")) {
+                            inListRegisters[0] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R9")) {
+                            inListRegisters[1] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R10")) {
+                            inListRegisters[2] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R11")) {
+                            inListRegisters[3] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R12")) {
+                            inListRegisters[4] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R13")) {
+                            inListRegisters[5] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R14")) {
+                            inListRegisters[6] = 1;
+                        } else if(entry.tokenOpCodeArgSub.source.equals("R15")) {
+                            inListRegisters[7] = 1;
+                        }
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
+                        //TODO: throw invalid entry exception
+                    }
+                    
+                }else if(entry.isOpCodeArg) {
+                    if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
+                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source);
+                        if(sym != null) {
+                            resTmp += Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
+                        } else {
+                            //TODO: Throw new symbol undefined exception
+                        }
+                        
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
+                        //TODO: Process numeric local reference
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                        //TODO: Process numeric local reference
+                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
+                        //TODO: Process number entry
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
+                        inList = true;
+                        //inListIdx = 0;
+                        inListRegisters = new int[8];
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
+                        inList = false;
+                        //inListIdx = 0;
+                        inListRegisters = new int[8];
+                        //for(int j = 0; j < )
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {
+                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);
+                    }
+                }
+                entry.binRepStr = resTmp;
+                res += resTmp;
+            }
+            line.payloadBinRepStr = res;
+        } else {
+            //TODO: throw invalid assemblly line exception at line number, with source
         }
-        return null;
     }
 }

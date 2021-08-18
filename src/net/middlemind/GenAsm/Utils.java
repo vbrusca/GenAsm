@@ -40,6 +40,26 @@ public class Utils {
         return ret = "0x" + ret;
     }
     
+    public static String FormatBinString(String s, int len) {    
+        return FormatBinString(s, len, true);
+    }
+        
+    public static String FormatBinString(String s, int len, boolean padLeft) {
+        String ret = s;
+        if(!IsStringEmpty(s)) {
+            if(s.length() < len) {
+                for(int i = s.length(); i < len; i++) {
+                    if(padLeft) {
+                        ret = "0" + ret;
+                    } else {
+                        ret+= "0";
+                    }
+                }
+            }
+        }
+        return ret;
+    }    
+    
     public static boolean IsStringEmpty(String s) {
         if(s == null || s.equals("")) {
             return true;

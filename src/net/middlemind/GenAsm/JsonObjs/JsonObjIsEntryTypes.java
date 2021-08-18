@@ -27,7 +27,8 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String ENTRY_TYPE_NAME_STOP_GROUP = "GroupStop";
     public static String ENTRY_TYPE_NAME_CAT_ARG_OPCODE = "Arg";
     public static String ENTRY_TYPE_NAME_CAT_ARG_DIRECTIVE = "DirectiveArg";
-    public static String ENTRY_TYPE_NAME_DIRECTIVE_STRING = "DirectiveString";    
+    public static String ENTRY_TYPE_NAME_DIRECTIVE_STRING = "DirectiveString";
+    public static String ENTRY_TYPE_NAME_NUMBER = "Number";
     
     public String obj_name;
     public String set_name;

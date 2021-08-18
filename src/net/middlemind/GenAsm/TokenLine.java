@@ -13,7 +13,8 @@ public class TokenLine {
     public String obj_name = "TokenLine";
     public String payloadOpCode;
     public String payloadDirective;
-    public String lineNumMemCode = "-1";
+    public String payloadBinRepStr;    
+    public String lineNumMemCode;
     public int lineNum;
     public int payloadLen;
     public int payloadLenArg;
@@ -24,5 +25,6 @@ public class TokenLine {
     public JsonObjIsValidLine validLineEntry;
     public List<JsonObjIsOpCode> matchesOpCode;
     public List<JsonObjIsDirective> matchesDirective;
-    public List<Token> payload;    
+    public List<BuildOpCodeEntry> buildEntries;
+    public List<Token> payload;
 }
