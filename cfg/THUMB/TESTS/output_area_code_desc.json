@@ -323,6 +323,7 @@
         "isDirective": true,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {
@@ -379,6 +380,7 @@
         "isDirective": false,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {
@@ -436,6 +438,7 @@
         "isDirective": true,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {
@@ -492,6 +495,7 @@
         "isDirective": true,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {
@@ -550,6 +554,7 @@
     "isDirective": true,
     "isComment": false,
     "isLabel": false,
+    "isLabelRef": false,
     "isLabelLocal": false,
     "isLabelLocalRef": false,
     "artifact": {
@@ -606,6 +611,7 @@
     "isDirective": true,
     "isComment": false,
     "isLabel": false,
+    "isLabelRef": false,
     "isLabelLocal": false,
     "isLabelLocalRef": false,
     "artifact": {
@@ -749,6 +755,7 @@
         "isDirective": true,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {
@@ -807,6 +814,7 @@
     "isDirective": true,
     "isComment": false,
     "isLabel": false,
+    "isLabelRef": false,
     "isLabelLocal": false,
     "isLabelLocalRef": false,
     "artifact": {
@@ -950,6 +958,7 @@
         "isDirective": true,
         "isComment": false,
         "isLabel": false,
+        "isLabelRef": false,
         "isLabelLocal": false,
         "isLabelLocalRef": false,
         "artifact": {

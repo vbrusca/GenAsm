@@ -159,7 +159,9 @@ faraway
         BL faraway ; Unconditionally Branch to 'faraway'
     next1; and place following instruction
     faraway1; Must be Half-word aligned.
-
+ra
+rb
+rt
 LSL ra, rb, #6
 LSL rt, rb, #8
 ADD ra, rt, rb
@@ -180,6 +182,11 @@ SUB R3, R0, R2 ; and ADD 1 (SUB -1) to get abs value
 udiv10
 ; takes argument in a1
 ; returns quotient in a1, remainder in a2
+a2
+a1
+a3
+pc
+lr
 _0 
 MOV     a2, a1
 LSR     a3, a1, #2

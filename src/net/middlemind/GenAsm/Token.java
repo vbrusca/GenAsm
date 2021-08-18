@@ -24,6 +24,7 @@ public class Token {
     public boolean isDirective;
     public boolean isComment;
     public boolean isLabel;
+    public boolean isLabelRef;
     public boolean isLabelLocal;
     public boolean isLabelLocalRef;    
     public Artifact artifact;

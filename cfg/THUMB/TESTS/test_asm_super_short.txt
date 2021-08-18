@@ -1,5 +1,5 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
-    PUSH {R0-R4,LR}
+    STR R4, [SP,#492] ; Store the contents of R4 at the address
 @END

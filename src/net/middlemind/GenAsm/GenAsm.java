@@ -57,7 +57,7 @@ public class GenAsm {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");            
         } else {
             /*
-            //TODO: JSON LOADING TEST IS OP CODES
+            //JSON LOADING TEST IS OP CODES
             String jsonTestFile = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json";
             String json = "";
             try {

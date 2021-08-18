@@ -44,6 +44,7 @@ import java.util.Map;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoSymbolFound;
 import net.middlemind.GenAsm.Exceptions.ExceptionOpCodeAsArgument;
+import net.middlemind.GenAsm.Exceptions.ExceptionUnexpectedTokenWithSubArguments;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArgSorter;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
@@ -472,7 +473,6 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsDirective directive = null; 
         
         for(TokenLine line : asmDataTokened) {
-            //if(line.matchesDirective != null && line.matchesDirective.size() > 1) {
             if(line.isLineDirective) {
                 directiveFound = false;
                 directiveName = null;
@@ -499,10 +499,10 @@ public class AssemblerThumb implements Assembler {
                     line.matchesDirective.clear();
                     line.matchesDirective.add(directive);
                 }
-            }
-            
-            if(line.matchesDirective != null && line.matchesDirective.size() > 1) {
-                throw new ExceptionNoDirectiveFound("Could not find unique matching directive entry for directive '" + directiveName + "' and line number " + line.lineNum + " with source '" + line.source.source + "'");
+                
+                if((line.matchesDirective != null && line.matchesDirective.size() > 1) || Utils.IsListEmpty(line.matchesDirective)) {
+                    throw new ExceptionNoDirectiveFound("Could not find unique matching directive entry for directive '" + directiveName + "' and line number " + line.lineNum + " with source '" + line.source.source + "'");
+                }
             }
         }        
     }
@@ -761,7 +761,6 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsOpCode opCode = null; 
         
         for(TokenLine line : asmDataTokened) {
-            //if(line.matchesOpCode != null && line.matchesOpCode.size() > 1) {
             if(line.isLineOpCode) {
                 opCodeFound = false;
                 opCodeName = null;
@@ -781,6 +780,12 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         args.add(token);
                     }
+                    
+                    //Adjust if label is defined or referenced
+                    if(opCodeFound && (token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL))) {
+                        token.isLabelRef = true;
+                        token.isLabel = false;
+                    }
                 }
                 
                 if(opCodeFound && args != null && args.size() > 0) {
@@ -788,10 +793,10 @@ public class AssemblerThumb implements Assembler {
                     line.matchesOpCode.clear();
                     line.matchesOpCode.add(opCode);
                 }
-            }
-            
-            if(line.matchesOpCode != null && line.matchesOpCode.size() > 1) {
-                throw new ExceptionNoOpCodeFound("Could not find unique matching opCode entry for opCode '" + opCodeName + "' and line number " + line.lineNum + " with source '" + line.source.source + "'");
+                
+                if((line.matchesOpCode != null && line.matchesOpCode.size() > 1) || Utils.IsListEmpty(line.matchesOpCode)) {
+                    throw new ExceptionNoOpCodeFound("Could not find unique matching opCode entry for opCode '" + opCodeName + "' and line number " + line.lineNum + " with source '" + line.source.source + "'");
+                }
             }
         }
         
@@ -848,17 +853,12 @@ public class AssemblerThumb implements Assembler {
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
-                    //Logger.wrl("Exit: AAA");
                     argFound = false;
                     break;
                 }
-                
-                //Logger.wrl(opCode.op_code_name + ", " + opCodeArg.arg_index + ", " + argToken.type_name);                
-                
+                                
                 if(opCodeArg != null && argToken != null) {
-                    //if(!(argToken.type_name.contains("Label") || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                    if(!(argToken.isLabel || argToken.isLabelLocal || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                        //Logger.wrl("Exit: BBB");
+                    if(!(argToken.isLabelRef || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                         argFound = false;
                         break;
                     }
@@ -872,24 +872,22 @@ public class AssemblerThumb implements Assembler {
                         for(int j = 0; j < opCodeArg.sub_args.size(); j++) {
                             opCodeArgSub = opCodeArg.sub_args.get(j);
                             opCodeArgIdxSub = j;
+                            
                             if(argToken.payload != null && j < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j);
                             } else {
-                                //Logger.wrl("Exit: CCC");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                if(!(argTokenSub.isLabel || argTokenSub.isLabelLocal || argTokenSub.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                                    //Logger.wrl("Exit: DDD");
+                                if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
                                     argFound = false;
                                     argFoundSub = false;
                                     break;
                                 }
                             } else {
-                                //Logger.wrl("Exit: EEE");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -897,13 +895,11 @@ public class AssemblerThumb implements Assembler {
                         }
                     }
                 } else {
-                    //Logger.wrl("Exit: GGG");
                     argFound = false;
                     argFoundSub = false;
                     break;
                 }
-            }            
-            //Logger.wrl("ArgFound: " + argFound + ", HasArgsSub: " + hasArgsSub + ", ArgFoundSub: " + argFoundSub);
+            }
             
             if(argFound && !hasArgsSub && !argFoundSub) {
                 return opCode;                
@@ -942,6 +938,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(token.payload != null && token.payload.size() > 0) {
+                //List needs to be counted as an OpCode argument but Group does not
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                     argCount++;
                     if(isOpCodeArg) {
@@ -1057,7 +1054,6 @@ public class AssemblerThumb implements Assembler {
                     token.index = count;
                     count++;
                 }                
-                
             }
         }
     }    
@@ -1429,7 +1425,7 @@ public class AssemblerThumb implements Assembler {
     //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
-    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments {
         if(area.isCode) {
             //build opcode
             for(TokenLine line : areaLines) {
@@ -1447,7 +1443,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound {
+    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments {
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
@@ -1458,6 +1454,7 @@ public class AssemblerThumb implements Assembler {
             BuildOpCodeEntry tmpB = null;
             int opCodeArgIdx = 0;
             
+            //Prepare BuilOpCodeEntry list based on tokens and json arguments
             for(Token token : line.payload) {
                 if(token.isOpCodeArg) {
                     tmpB = new BuildOpCodeEntry();
@@ -1483,11 +1480,11 @@ public class AssemblerThumb implements Assembler {
                                     tmpB.tokenOpCodeArgSubList = ltoken;
                                     buildEntries.add(tmpB);
                                     lOpCodeArgIdx++;
-                                } else {
+                                } else if(ltoken.isOpCode) {
                                     throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
                                 }
                             }
-                        } else {
+                        } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {
                             int lOpCodeArgIdx = 0;
                             opCodeArgsSub = tmpB.opCodeArg.sub_args;
                             Collections.sort(opCodeArgsSub, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.JsonObjIsOpCodeArgSorterType.ARG_INDEX_ASC));                            
@@ -1497,16 +1494,20 @@ public class AssemblerThumb implements Assembler {
                                 if(ltoken.isOpCodeArg) {
                                     tmpB = new BuildOpCodeEntry();
                                     tmpB.isOpCodeArgSub = true;
-                                    tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
-                                    tmpB.opCodeArg.arg_index = (opCodeArgIdx + lOpCodeArgIdx);
-                                    tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
+                                    if(!ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
+                                        tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
+                                        tmpB.opCodeArgSub.arg_index = lOpCodeArgIdx; //(opCodeArgIdx + lOpCodeArgIdx);
+                                        tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
+                                    }
                                     tmpB.tokenOpCodeArgSub = ltoken;
                                     buildEntries.add(tmpB);
                                     lOpCodeArgIdx++;
-                                } else {
+                                } else if(ltoken.isOpCode) {
                                     throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
                                 }
                             }
+                        } else {
+                            throw new ExceptionUnexpectedTokenWithSubArguments("Found unexpected token with sub-arguments on line " + line.lineNum + " with argument index " + token.index);
                         }
                     }
                     
@@ -1520,6 +1521,7 @@ public class AssemblerThumb implements Assembler {
                 }
             }
             
+            //Process BuildOpCodeEntry list creating a binary string representation for each entry
             line.buildEntries = buildEntries;
             String res = "";
             String resTmp = "";
@@ -1527,12 +1529,13 @@ public class AssemblerThumb implements Assembler {
             boolean inGroup = false;
             int[] inListRegisters = null;
             BuildOpCodeEntry inListEntry = null;
+            BuildOpCodeEntry inGroupEntry = null;            
             
             for(BuildOpCodeEntry entry : buildEntries) {
                 resTmp = "";
                 
                 if(entry.isOpCode) {
-                    resTmp += entry.opCode.bit_rep.bit_string;
+                    resTmp = entry.opCode.bit_rep.bit_string;
                 }else if(entry.isOpCodeArgSubList) {
                     if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         if(entry.tokenOpCodeArgSubList.source.equals("R0")) {
@@ -1596,7 +1599,10 @@ public class AssemblerThumb implements Assembler {
                         inListRegisters = null;
                         
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
-                        //TODO: Process group stop
+                        inGroup = false;
+                        inGroupEntry = null;
+                    } else {
+                        //TODO: Throw unexpected sub-token type exception
                     }
                     
                 }else if(entry.isOpCodeArgSub) {
@@ -1624,20 +1630,24 @@ public class AssemblerThumb implements Assembler {
                         }
                         inListEntry.binRepStr = ts;
                         inListRegisters = null;
+                        inListEntry = null;
                         
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
-                        //TODO: Process group stop
-                    }                    
+                        inGroup = false;
+                        inGroupEntry = null;
+                    } else {
+                        //TODO: Throw unexpected sub-token type exception
+                    }
                     
                 }else if(entry.isOpCodeArg) {
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
-                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
-                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source);
                         if(sym != null) {
-                            resTmp += Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
@@ -1645,24 +1655,28 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         //TODO: Process numeric local reference
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
-                        //TODO: Process write back register
-                        resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
-                        //TODO: Process number entry
+                        //TODO: Process number entry                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                         inList = true;
                         inListRegisters = new int[8];
                         inListEntry = entry;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {
-                        //TODO: Process group start
+                        inGroup = true;
+                        inGroupEntry = entry;
+                    } else {
+                        //TODO: Throw unexpected token type exception
                     }
                     
                 }
                 entry.binRepStr = resTmp;
-                //res += resTmp;
             }
-            //line.payloadBinRepStr = res;
         
+            //Clear out non bit_series BuilOpCodeEntry instances and order by bit_series start
+            //Append binary string representations to create binary representation for the line
+            //Reverse bytes if endian is NOT little, i.e. IS big
+            
         } else {
             //TODO: throw invalid assemblly line exception at line number, with source
         }
