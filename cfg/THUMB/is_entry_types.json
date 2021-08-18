@@ -118,6 +118,20 @@
             "obj_name": "is_entry_type",            
             "type_name": "RegisterLr",
             "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["14", "1"],
+                "must_contain": ["14"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "4"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterLr",
+            "type_category": "RegisterHi",            
             "category": "Arg",      
             "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
             "txt_match": {

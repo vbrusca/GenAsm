@@ -13,6 +13,7 @@ public class BuildOpCodeEntry {
     public JsonObjIsOpCode opCode;
     public JsonObjIsOpCodeArg opCodeArg;
     public JsonObjIsOpCodeArg opCodeArgSub;
+    public JsonObjIsOpCodeArg opCodeArgSubList;    
     public Token tokenOpCode;
     public Token tokenOpCodeArg;
     public Token tokenOpCodeArgSub;

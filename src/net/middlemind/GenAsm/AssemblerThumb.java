@@ -1472,11 +1472,13 @@ public class AssemblerThumb implements Assembler {
                     if(!Utils.IsListEmpty(token.payload)) {
                         if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                             int lOpCodeArgIdx = 0;
+                            JsonObjIsOpCodeArg opCodeArgList = tmpB.opCodeArg;
                             Collections.sort(token.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
 
                             for(Token ltoken : token.payload) {
                                 if(ltoken.isOpCodeArg) {
                                     tmpB = new BuildOpCodeEntry();
+                                    tmpB.opCodeArgSubList = opCodeArgList;
                                     tmpB.isOpCodeArgSubList = true;
                                     tmpB.tokenOpCodeArgSubList = ltoken;
                                     buildEntries.add(tmpB);
@@ -1524,6 +1526,8 @@ public class AssemblerThumb implements Assembler {
             boolean inList = false;
             boolean inGroup = false;
             int[] inListRegisters = null;
+            BuildOpCodeEntry inListEntry = null;
+            
             for(BuildOpCodeEntry entry : buildEntries) {
                 resTmp = "";
                 
@@ -1547,6 +1551,8 @@ public class AssemblerThumb implements Assembler {
                             inListRegisters[6] = 1;
                         } else if(entry.tokenOpCodeArgSubList.source.equals("R7")) {
                             inListRegisters[7] = 1;
+                        } else {
+                            //TODO: Throw invalid entry exception
                         }
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
                         if(entry.tokenOpCodeArgSubList.source.equals("R8")) {
@@ -1559,12 +1565,14 @@ public class AssemblerThumb implements Assembler {
                             inListRegisters[3] = 1;
                         } else if(entry.tokenOpCodeArgSubList.source.equals("R12")) {
                             inListRegisters[4] = 1;
-                        } else if(entry.tokenOpCodeArgSubList.source.equals("R13")) {
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R13") || entry.tokenOpCodeArgSubList.source.equals("SP")) {
                             inListRegisters[5] = 1;
-                        } else if(entry.tokenOpCodeArgSubList.source.equals("R14")) {
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R14") || entry.tokenOpCodeArgSubList.source.equals("LR")) {
                             inListRegisters[6] = 1;
-                        } else if(entry.tokenOpCodeArgSubList.source.equals("R15")) {
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R15") || entry.tokenOpCodeArgSubList.source.equals("PC")) {
                             inListRegisters[7] = 1;
+                        } else {
+                            //TODO: Throw invalid entry exception
                         }
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         //TODO: throw invalid entry exception
@@ -1576,10 +1584,19 @@ public class AssemblerThumb implements Assembler {
                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                         inList = false;
-                        //write register list
+                        String ts = "";
+                        for(int z = 0; z < inListRegisters.length; z++) {
+                            if(inListRegisters[z] == 1) {
+                                ts = ("1" + ts);
+                            } else {
+                                ts = ("0" + ts);                                
+                            }
+                        }
+                        inListEntry.binRepStr = ts;
                         inListRegisters = null;
+                        
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
-                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);                        
+                        //TODO: Process group stop
                     }
                     
                 }else if(entry.isOpCodeArgSub) {
@@ -1597,10 +1614,19 @@ public class AssemblerThumb implements Assembler {
                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                         inList = false;
-                        //write register list
+                        String ts = "";
+                        for(int z = 0; z < inListRegisters.length; z++) {
+                            if(inListRegisters[z] == 1) {
+                                ts = ("1" + ts);
+                            } else {
+                                ts = ("0" + ts);                                
+                            }
+                        }
+                        inListEntry.binRepStr = ts;
                         inListRegisters = null;
+                        
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
-                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);                        
+                        //TODO: Process group stop
                     }                    
                     
                 }else if(entry.isOpCodeArg) {
@@ -1619,22 +1645,24 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         //TODO: Process numeric local reference
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
-                        //TODO: Process numeric local reference
+                        //TODO: Process write back register
                         resTmp += entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
                         //TODO: Process number entry
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                         inList = true;
                         inListRegisters = new int[8];
+                        inListEntry = entry;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {
                         //TODO: Process group start
                     }
                     
                 }
                 entry.binRepStr = resTmp;
-                res += resTmp;
+                //res += resTmp;
             }
-            line.payloadBinRepStr = res;
+            //line.payloadBinRepStr = res;
+        
         } else {
             //TODO: throw invalid assemblly line exception at line number, with source
         }
