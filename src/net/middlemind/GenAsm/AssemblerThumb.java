@@ -42,9 +42,12 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoSymbolFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionOpCodeAsArgument;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArgSorter;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister;
+import net.middlemind.GenAsm.TokenSorter.TokenSorterType;
 
 /**
  *
@@ -563,7 +566,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //OPCODE METHODS
-    private void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound {
+    private void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument {
         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
         boolean opCodeFound = false;
         String opCodeName = null;
@@ -592,20 +595,28 @@ public class AssemblerThumb implements Assembler {
                     for(JsonObjIsRegister register : jsonObjIsRegisters.is_registers) {
                         if(register.register_name.equals(regCode)) {
                             token.register = register;
+                            token.isOpCodeArg = true;
                             break;
                         }
                     }
                 }
                 
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
-                    opCodeFound = true;
-                    opCodeName = token.source;
-                    opCodeIdx = token.index;
+                    if(!opCodeFound) {
+                        opCodeFound = true;
+                        opCodeName = token.source;
+                        opCodeIdx = token.index;
+                    } else {
+                        throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + token.index);
+                    }
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF) || token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {                    
+                    token.isOpCodeArg = true;
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                     if(opCodeIdx != -1 && token.index > opCodeIdx) {
                         labelArgs++;
-                        token.isArgOpCode = true;
+                        token.isOpCodeArg = true;
                     }
                     
                     if(token.index == 0) {
@@ -647,6 +658,81 @@ public class AssemblerThumb implements Assembler {
                             
                         } else {
                             throw new ExceptionNoParentSymbolFound("Could not find a parent symbol for label '" + token.source + "' at line " + line.lineNum + " with source text '" + line.source.source + "'");
+                        }
+                    }
+                }
+
+                //Process sub args
+                for(Token ltoken : token.payload) {
+                    if(Utils.ContainsStr(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERS, ltoken.type_name)) {
+                        String regCode = ltoken.source;
+                        if(ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                            regCode = regCode.replace("!", "");
+                        }
+                        regCode = regCode.replace(" ", "");
+                        regCode = regCode.replace(",", "");
+
+                        for(JsonObjIsRegister register : jsonObjIsRegisters.is_registers) {
+                            if(register.register_name.equals(regCode)) {
+                                ltoken.register = register;
+                                ltoken.isOpCodeArg = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
+                        throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
+
+                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {                    
+                        ltoken.isOpCodeArg = true;
+
+                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                        if(opCodeIdx != -1 && token.index > opCodeIdx) {
+                            labelArgs++;
+                            ltoken.isOpCodeArg = true;
+                        }
+
+                        if(ltoken.index == 0) {
+                            lastLabel = ltoken.source;
+                            lastLabelLine = line;
+                            if(symbols.symbols.containsKey(ltoken.source)) {
+                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + ltoken.source + "' redefined on line " + ltoken.lineNum + " originally defned on line " + symbol.lineNum);
+                            } else {
+                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + ltoken.source + "' for line number " + line.lineNum);
+                            }
+                            symbol = new Symbol();
+                            symbol.line = line;
+                            symbol.lineNum = line.lineNum;
+                            symbol.name = ltoken.source;
+                            symbol.token = ltoken;
+                            symbols.symbols.put(ltoken.source, symbol);
+                        }
+
+                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL)) {                    
+                        if(Utils.IsStringEmpty(lastLabel)) {
+                            throw new ExceptionNoParentSymbolFound("No parent label found for local symbol '" + ltoken.source + "' on line " + ltoken.lineNum + ", could not find parent label to associate with local label.");
+                        } else {
+                            if(symbols.symbols.containsKey(lastLabel)) {
+                                symbol = symbols.symbols.get(lastLabel);
+                                if(symbol.symbols.containsKey(ltoken.source)) {
+                                    throw new ExceptionRedefinitionOfLabel("Found symbol '" + ltoken.source + "' redefined on line " + ltoken.lineNum + " originally defned on line " + symbol.lineNum);
+                                } else {
+                                    Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + ltoken.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
+                                }
+                                ltoken.parentLabel = lastLabel;
+                                ltoken.parentLine = lastLabelLine;
+
+                                Symbol lsymbol = new Symbol();
+                                lsymbol.line = line;
+                                lsymbol.lineNum = line.lineNum;
+                                lsymbol.name = ltoken.source;
+                                lsymbol.token = ltoken;                            
+                                symbol.symbols.put(ltoken.source, lsymbol);
+
+                            } else {
+                                throw new ExceptionNoParentSymbolFound("Could not find a parent symbol for label '" + ltoken.source + "' at line " + line.lineNum + " with source text '" + line.source.source + "'");
+                            }
                         }
                     }
                 }
@@ -849,9 +935,9 @@ public class AssemblerThumb implements Assembler {
             if(token.type != null && ((JsonObjIsEntryType)token.type).category.equals(argCategory)) {
                 argCount++;
                 if(isOpCodeArg) {
-                    token.isArgOpCode = true;
+                    token.isOpCodeArg = true;
                 } else {
-                    token.isArgDirective = true;
+                    token.isDirectiveArg = true;
                 }
             }
             
@@ -859,9 +945,9 @@ public class AssemblerThumb implements Assembler {
                 if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                     argCount++;
                     if(isOpCodeArg) {
-                        token.isArgOpCode = true;
+                        token.isOpCodeArg = true;
                     } else {
-                        token.isArgDirective = true;
+                        token.isDirectiveArg = true;
                     }
                 } else {
                     argCount = CountArgTokens(token.payload, argCount, argCategory, isOpCodeArg);
@@ -1054,7 +1140,8 @@ public class AssemblerThumb implements Assembler {
                         newToken.payloadLen = 0;
                         newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
                         newToken.type = entryTypeRegLow;
-                        newToken.type_name = entryTypeRegLow.type_name;                            
+                        newToken.type_name = entryTypeRegLow.type_name;  
+                        newToken.isOpCodeArg = true;
                         rangeAddTokensLow.add(newToken);
                         count++;
                     }
@@ -1076,6 +1163,7 @@ public class AssemblerThumb implements Assembler {
                         newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
                         newToken.type = entryTypeRegHi;
                         newToken.type_name = entryTypeRegHi.type_name;
+                        newToken.isOpCodeArg = true;
                         rangeAddTokensHi.add(newToken);
                         count++;
                     }
@@ -1341,7 +1429,7 @@ public class AssemblerThumb implements Assembler {
     //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
-    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound {
         if(area.isCode) {
             //build opcode
             for(TokenLine line : areaLines) {
@@ -1359,18 +1447,19 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    private void BuildBinOpCode(TokenLine line) {
+    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound {
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
             List<BuildOpCodeEntry> buildEntries = new ArrayList<>();
             List<JsonObjIsOpCodeArg> opCodeArgsSub = null;
-            Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.SortType.BIT_SERIES_DSC));
-            
+            Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.JsonObjIsOpCodeArgSorterType.ARG_INDEX_ASC));
+            Collections.sort(line.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
             BuildOpCodeEntry tmpB = null;
             int opCodeArgIdx = 0;
+            
             for(Token token : line.payload) {
-                if(token.isArgOpCode) {
+                if(token.isOpCodeArg) {
                     tmpB = new BuildOpCodeEntry();
                     tmpB.isOpCodeArg = true;
                     tmpB.opCodeArg = (JsonObjIsOpCodeArg)opCodeArgs.get(opCodeArgIdx);
@@ -1380,27 +1469,43 @@ public class AssemblerThumb implements Assembler {
                     buildEntries.add(tmpB);
                     opCodeArgIdx++;
 
-                    if(!Utils.IsListEmpty(token.payload) && !Utils.IsListEmpty(tmpB.opCodeArg.sub_args)) {
-                        Logger.wrl("TokenLineNum: " + token.lineNum);
-                        int lOpCodeArgIdx = 0;
-                        opCodeArgsSub = tmpB.opCodeArg.sub_args;
-                        Collections.sort(opCodeArgsSub, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.SortType.BIT_SERIES_DSC));                        
-                        
-                        for(Token ltoken : token.payload) {
-                            if(ltoken.isArgOpCode) {
-                                tmpB = new BuildOpCodeEntry();
-                                tmpB.isOpCodeArg = false;
-                                tmpB.isOpCodeArgSub = true;
-                                tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
-                                tmpB.opCodeArgSub.arg_index = (opCodeArgIdx = lOpCodeArgIdx);
-                                tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
-                                tmpB.tokenOpCodeArgSub = ltoken;
-                                buildEntries.add(tmpB);
-                                lOpCodeArgIdx++;
-                            } else {
-                                //TODO: throw expected OpCode exception
+                    if(!Utils.IsListEmpty(token.payload)) {
+                        if(token.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
+                            int lOpCodeArgIdx = 0;
+                            Collections.sort(token.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
+
+                            for(Token ltoken : token.payload) {
+                                if(ltoken.isOpCodeArg) {
+                                    tmpB = new BuildOpCodeEntry();
+                                    tmpB.isOpCodeArgSubList = true;
+                                    tmpB.tokenOpCodeArgSubList = ltoken;
+                                    buildEntries.add(tmpB);
+                                    lOpCodeArgIdx++;
+                                } else {
+                                    throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
+                                }
                             }
-                        }                        
+                        } else {
+                            int lOpCodeArgIdx = 0;
+                            opCodeArgsSub = tmpB.opCodeArg.sub_args;
+                            Collections.sort(opCodeArgsSub, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.JsonObjIsOpCodeArgSorterType.ARG_INDEX_ASC));                            
+                            Collections.sort(token.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
+
+                            for(Token ltoken : token.payload) {
+                                if(ltoken.isOpCodeArg) {
+                                    tmpB = new BuildOpCodeEntry();
+                                    tmpB.isOpCodeArgSub = true;
+                                    tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
+                                    tmpB.opCodeArg.arg_index = (opCodeArgIdx + lOpCodeArgIdx);
+                                    tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
+                                    tmpB.tokenOpCodeArgSub = ltoken;
+                                    buildEntries.add(tmpB);
+                                    lOpCodeArgIdx++;
+                                } else {
+                                    throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
+                                }
+                            }
+                        }
                     }
                     
                 } else if(token.isOpCode) {
@@ -1417,7 +1522,6 @@ public class AssemblerThumb implements Assembler {
             String res = "";
             String resTmp = "";
             boolean inList = false;
-            //int inListIdx = 0;
             boolean inGroup = false;
             int[] inListRegisters = null;
             for(BuildOpCodeEntry entry : buildEntries) {
@@ -1425,52 +1529,79 @@ public class AssemblerThumb implements Assembler {
                 
                 if(entry.isOpCode) {
                     resTmp += entry.opCode.bit_rep.bit_string;
+                }else if(entry.isOpCodeArgSubList) {
+                    if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
+                        if(entry.tokenOpCodeArgSubList.source.equals("R0")) {
+                            inListRegisters[0] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R1")) {
+                            inListRegisters[1] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R2")) {
+                            inListRegisters[2] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R3")) {
+                            inListRegisters[3] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R4")) {
+                            inListRegisters[4] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R5")) {
+                            inListRegisters[5] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R6")) {
+                            inListRegisters[6] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R7")) {
+                            inListRegisters[7] = 1;
+                        }
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        if(entry.tokenOpCodeArgSubList.source.equals("R8")) {
+                            inListRegisters[0] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R9")) {
+                            inListRegisters[1] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R10")) {
+                            inListRegisters[2] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R11")) {
+                            inListRegisters[3] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R12")) {
+                            inListRegisters[4] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R13")) {
+                            inListRegisters[5] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R14")) {
+                            inListRegisters[6] = 1;
+                        } else if(entry.tokenOpCodeArgSubList.source.equals("R15")) {
+                            inListRegisters[7] = 1;
+                        }
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
+                        //TODO: throw invalid entry exception
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
+                        inList = false;
+                        //write register list
+                        inListRegisters = null;
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
+                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);                        
+                    }
+                    
                 }else if(entry.isOpCodeArgSub) {
                     if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
-                        if(entry.tokenOpCodeArgSub.source.equals("R0")) {
-                            inListRegisters[0] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R1")) {
-                            inListRegisters[1] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R2")) {
-                            inListRegisters[2] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R3")) {
-                            inListRegisters[3] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R4")) {
-                            inListRegisters[4] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R5")) {
-                            inListRegisters[5] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R6")) {
-                            inListRegisters[6] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R7")) {
-                            inListRegisters[7] = 1;
-                        }
+
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
-                        if(entry.tokenOpCodeArgSub.source.equals("R8")) {
-                            inListRegisters[0] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R9")) {
-                            inListRegisters[1] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R10")) {
-                            inListRegisters[2] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R11")) {
-                            inListRegisters[3] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R12")) {
-                            inListRegisters[4] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R13")) {
-                            inListRegisters[5] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R14")) {
-                            inListRegisters[6] = 1;
-                        } else if(entry.tokenOpCodeArgSub.source.equals("R15")) {
-                            inListRegisters[7] = 1;
-                        }
+
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
                         //TODO: throw invalid entry exception
-                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
                         //TODO: throw invalid entry exception
-                    }
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
+                        inList = false;
+                        //write register list
+                        inListRegisters = null;
+                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
+                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);                        
+                    }                    
                     
                 }else if(entry.isOpCodeArg) {
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
@@ -1482,7 +1613,7 @@ public class AssemblerThumb implements Assembler {
                         if(sym != null) {
                             resTmp += Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
                         } else {
-                            //TODO: Throw new symbol undefined exception
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
@@ -1494,16 +1625,11 @@ public class AssemblerThumb implements Assembler {
                         //TODO: Process number entry
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                         inList = true;
-                        //inListIdx = 0;
                         inListRegisters = new int[8];
-                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
-                        inList = false;
-                        //inListIdx = 0;
-                        inListRegisters = new int[8];
-                        //for(int j = 0; j < )
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_GROUP)) {
-                        //BuildBinOpCodeSubArgs(entry.tokenOpCodeArg.payload);
+                        //TODO: Process group start
                     }
+                    
                 }
                 entry.binRepStr = resTmp;
                 res += resTmp;

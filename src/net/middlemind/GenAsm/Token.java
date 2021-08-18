@@ -18,8 +18,8 @@ public class Token {
     public int index;
     public int payloadLen;
     public int payloadArgLen;
-    public boolean isArgOpCode;
-    public boolean isArgDirective;
+    public boolean isOpCodeArg;
+    public boolean isDirectiveArg;
     public boolean isOpCode;
     public boolean isDirective;
     public boolean isComment;

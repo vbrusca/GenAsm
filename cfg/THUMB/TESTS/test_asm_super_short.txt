@@ -1,5 +1,5 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
-PUSH {R0-R4,LR}
+    PUSH {R0-R4,LR}
 @END
