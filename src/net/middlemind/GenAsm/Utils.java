@@ -1,7 +1,7 @@
 package net.middlemind.GenAsm;
 
 import java.util.List;
-import net.middlemind.GenAsm.Exceptions.ExceptionMalformedRange;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionMalformedRange;
 import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
 
 /**

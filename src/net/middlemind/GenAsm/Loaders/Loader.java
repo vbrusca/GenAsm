@@ -1,6 +1,6 @@
 package net.middlemind.GenAsm.Loaders;
 
-import net.middlemind.GenAsm.Exceptions.ExceptionLoader;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
 import net.middlemind.GenAsm.JsonObjs.JsonObj;
 
 /**

@@ -16,6 +16,7 @@ public class JsonObjTxtMatch extends JsonObjBase {
     public static String special_lowercase_num_range = "a~z0~9";
     public static String special_uppercase_num_range = "A~Z0~9";
     
+    public String obj_name = "JsonObjTxtMatch";
     public List<String> starts_with;
     public List<String> contains;
     public List<String> ends_with;
@@ -30,6 +31,7 @@ public class JsonObjTxtMatch extends JsonObjBase {
     @Override
     public void Print(String prefix) {
         super.Print(prefix);
+        Logger.wrl(prefix + "ObjName: " + obj_name);
         
         Logger.wrl(prefix + "StartsWith:");
         for(String s : starts_with) {

@@ -1,6 +1,7 @@
 package net.middlemind.GenAsm.JsonObjs;
 
 import java.util.List;
+import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
 import net.middlemind.GenAsm.Logger;
 
 /**
@@ -8,7 +9,7 @@ import net.middlemind.GenAsm.Logger;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 9:50 AM EST
  */
 public class JsonObjIsSet extends JsonObjBase {
-    public String obj_name;
+    public String obj_name = "JsonObjIsSet";
     public String set_name;
     public List<JsonObjIsFile> is_files;
     

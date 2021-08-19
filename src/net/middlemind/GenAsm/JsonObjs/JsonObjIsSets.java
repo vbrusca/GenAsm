@@ -8,7 +8,7 @@ import net.middlemind.GenAsm.Logger;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 9:28 AM EST
  */
 public class JsonObjIsSets extends JsonObjBase {
-    public String obj_name;
+    public String obj_name = "JsonObjIsSets";
     public List<JsonObjIsSet> is_sets;
     
     @Override

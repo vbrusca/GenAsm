@@ -35,7 +35,7 @@
             "type_name": "RegisterRangeHi",
             "type_category": "RegisterHi",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["8~15", "-", "R"],
@@ -49,7 +49,7 @@
             "type_name": "RegisterHi",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["8~15"],
@@ -63,7 +63,7 @@
             "type_name": "RegisterSp",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["13", "1"],
@@ -77,7 +77,7 @@
             "type_name": "RegisterSp",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["S"],
                 "contains": ["P"],
@@ -91,7 +91,7 @@
             "type_name": "RegisterPc",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["15", "1"],
@@ -105,7 +105,7 @@
             "type_name": "RegisterPc",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["P"],
                 "contains": ["C"],
@@ -119,7 +119,7 @@
             "type_name": "RegisterLr",
             "type_category": "RegisterHi",            
             "category": "Arg",            
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["14", "1"],
@@ -133,7 +133,7 @@
             "type_name": "RegisterLr",
             "type_category": "RegisterHi",            
             "category": "Arg",      
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["L"],
                 "contains": ["R"],
@@ -147,7 +147,7 @@
             "type_name": "RegisterRangeLow",
             "type_category": "RegisterLow",            
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["0~7", "-", "R"],
@@ -161,7 +161,7 @@
             "type_name": "RegisterWb",
             "type_category": "RegisterLow",            
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["0~7"],
@@ -175,7 +175,7 @@
             "type_name": "RegisterLow",
             "type_category": "RegisterLow",            
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsRegister",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
                 "contains": ["0~7"],
@@ -231,7 +231,7 @@
             "type_name": "LabelNumericLocalRef",
             "type_category": "LabelReference",
             "category": "Arg",
-            "category_class": "net.middlemind.GenAsm.LabelNumLocalRefThumb",            
+            "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",            
             "txt_match": {
                 "starts_with": ["%FA", "%FT", "%BA", "%BT"],
                 "contains": ["0~9"],
@@ -245,7 +245,7 @@
             "type_name": "ListStart",
             "type_category": "Start",
             "category": "List",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["{"],
                 "contains": ["{"],
@@ -259,7 +259,7 @@
             "type_name": "ListStop",
             "type_category": "Stop",            
             "category": "List",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["}"],
                 "contains": ["}"],
@@ -273,7 +273,7 @@
             "type_name": "GroupStart",
             "type_category": "Start",            
             "category": "Group",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",            
             "txt_match": {
                 "starts_with": ["["],
                 "contains": ["["],
@@ -287,7 +287,7 @@
             "type_name": "GroupStop",
             "type_category": "Stop",            
             "category": "Group",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsEntryType",
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
             "txt_match": {
                 "starts_with": ["]"],
                 "contains": ["]"],
@@ -301,7 +301,7 @@
             "type_name": "OpCode",
             "type_category": "OpCode",            
             "category": "OpCode",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCode",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",            
             "txt_match": {
                 "starts_with": ["A~Z"],
                 "contains": ["A~Z"],
@@ -315,7 +315,7 @@
             "type_name": "Directive",
             "type_category": "Directive",            
             "category": "Directive",
-            "category_class": "net.middlemind.GenAsm.JsonObjs.JsonObjIsDirective",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",            
             "txt_match": {
                 "starts_with": ["@"],
                 "contains": ["A~Z"],

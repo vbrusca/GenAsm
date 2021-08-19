@@ -7,6 +7,7 @@ import net.middlemind.GenAsm.Logger;
  * @author Victor G. Brusca, Middlemind Games 08/03/2021 5:13 AM EST
  */
 public class JsonObjNumRange extends JsonObjBase {
+    public String obj_name = "JsonObjNumRange";
     public int min_value;
     public int max_value;
     public int bit_len;
@@ -23,6 +24,7 @@ public class JsonObjNumRange extends JsonObjBase {
     @Override
     public void Print(String prefix) {
         super.Print(prefix);
+        Logger.wrl(prefix + "ObjName: " + obj_name);
         Logger.wrl(prefix + "MinValue: " + min_value);
         Logger.wrl(prefix + "MaxValue: " + max_value);
         Logger.wrl(prefix + "BitLen: " + bit_len);

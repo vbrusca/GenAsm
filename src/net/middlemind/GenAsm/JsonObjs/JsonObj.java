@@ -1,6 +1,6 @@
 package net.middlemind.GenAsm.JsonObjs;
 
-import net.middlemind.GenAsm.Exceptions.ExceptionJsonObjLink;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionJsonObjLink;
 
 /**
  *

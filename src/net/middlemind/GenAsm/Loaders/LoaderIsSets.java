@@ -3,8 +3,8 @@ package net.middlemind.GenAsm.Loaders;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.lang.reflect.InvocationTargetException;
-import net.middlemind.GenAsm.Exceptions.ExceptionLoader;
-import net.middlemind.GenAsm.JsonObjs.JsonObjIsFile;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
+import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSets;
 import net.middlemind.GenAsm.Logger;
@@ -14,7 +14,8 @@ import net.middlemind.GenAsm.Logger;
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 6:59 AM EST
  */
 public class LoaderIsSets implements Loader {
-
+    public String obj_name = "LoaderIsSets";
+    
     @Override
     public JsonObjIsSets ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         Logger.wrl("LoaderIsSets: ParseJson");

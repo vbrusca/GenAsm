@@ -1,6 +1,7 @@
 package net.middlemind.GenAsm;
 
-import net.middlemind.GenAsm.Exceptions.ExceptionLoader;
+import net.middlemind.GenAsm.Assemblers.Assembler;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSets;
 import net.middlemind.GenAsm.Loaders.LoaderIsSets;
@@ -34,7 +35,7 @@ public class GenAsm {
             ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
             ASM_SETS = null;
             ASM_SET = null;
-            ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.AssemblerThumb";
+            ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
             ASM_ASSEMBLY_SOURCE_FILE = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_all.txt";
         } else {
