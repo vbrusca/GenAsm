@@ -41,9 +41,14 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import net.middlemind.GenAsm.Exceptions.ExceptionInvalidEntry;
+import net.middlemind.GenAsm.Exceptions.ExceptionNoNumberRangeFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNumberInvalidShift;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoOpCodeLineFound;
 import net.middlemind.GenAsm.Exceptions.ExceptionNoSymbolFound;
+import net.middlemind.GenAsm.Exceptions.ExceptionNumberOutOfRange;
 import net.middlemind.GenAsm.Exceptions.ExceptionOpCodeAsArgument;
+import net.middlemind.GenAsm.Exceptions.ExceptionUnexpectedTokenType;
 import net.middlemind.GenAsm.Exceptions.ExceptionUnexpectedTokenWithSubArguments;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsOpCodeArgSorter;
@@ -58,9 +63,12 @@ import net.middlemind.GenAsm.TokenSorter.TokenSorterType;
 public class AssemblerThumb implements Assembler {
     public static String ENDIAN_NAME_BIG = "BIG";
     public static String ENDIAN_NAME_LITTLE = "LITTLE";
+    public static String ENDIAN_NAME_JAVA_DEFAULT = "BIG";    
     public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "WORD";
     public static int INSTRUCTION_ALIGNMENT_BYTES = 2;
     public static int INSTRUCTION_ALIGNMENT_BITS = 16;
+    public static String NUMBER_SHIFT_NAME_LEFT = "LEFT";
+    public static String NUMBER_SHIFT_NAME_RIGHT = "RIGHT";    
     
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
@@ -1417,7 +1425,7 @@ public class AssemblerThumb implements Assembler {
     //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
-    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry {
         if(area.isCode) {
             //build opcode
             for(TokenLine line : areaLines) {
@@ -1433,7 +1441,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments {
+    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry {
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
@@ -1545,7 +1553,7 @@ public class AssemblerThumb implements Assembler {
                         } else if(entry.tokenOpCodeArgSubList.source.equals("R7")) {
                             inListRegisters[7] = 1;
                         } else {
-                            //TODO: Throw invalid entry exception
+                            throw new ExceptionInvalidEntry("Found invalid LOW register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                         }
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
                         if(entry.tokenOpCodeArgSubList.source.equals("R8")) {
@@ -1565,16 +1573,35 @@ public class AssemblerThumb implements Assembler {
                         } else if(entry.tokenOpCodeArgSubList.source.equals("R15") || entry.tokenOpCodeArgSubList.source.equals("PC")) {
                             inListRegisters[7] = 1;
                         } else {
-                            //TODO: Throw invalid entry exception
+                            throw new ExceptionInvalidEntry("Found invalid HI register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                         }
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_PC)) {
+                        if(entry.tokenOpCodeArgSubList.source.equals("R15") || entry.tokenOpCodeArgSubList.source.equals("PC")) {
+                            inListRegisters[7] = 1;
+                        } else {
+                            throw new ExceptionInvalidEntry("Found invalid PC register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
+                        }
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_SP)) {
+                        if(entry.tokenOpCodeArgSubList.source.equals("R13") || entry.tokenOpCodeArgSubList.source.equals("SP")) {
+                            inListRegisters[5] = 1;
+                        } else {
+                            throw new ExceptionInvalidEntry("Found invalid SP register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
+                        }
+                    } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LR)) {
+                        if(entry.tokenOpCodeArgSubList.source.equals("R14") || entry.tokenOpCodeArgSubList.source.equals("LR")) {
+                            inListRegisters[6] = 1;
+                        } else {
+                            throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
+                        }
+                        
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
-                        //TODO: throw invalid entry exception
+                        throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                        //TODO: throw invalid entry exception
+                        throw new ExceptionInvalidEntry("Found invalid LABEL_NUMERIC_LOCAL_REF entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
-                        //TODO: throw invalid entry exception
+                        throw new ExceptionInvalidEntry("Found invalid REGISTERWB entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
-                        //TODO: throw invalid entry exception
+                        throw new ExceptionInvalidEntry("Found invalid NUMBER entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                         inList = false;
                         String ts = "";
@@ -1592,13 +1619,19 @@ public class AssemblerThumb implements Assembler {
                         inGroup = false;
                         inGroupEntry = null;
                     } else {
-                        //TODO: Throw unexpected sub-token type exception
+                        throw new ExceptionUnexpectedTokenType("Found unexpected LIST sub-token type '" + entry.tokenOpCodeArgSubList.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                     
                 }else if(entry.isOpCodeArgSubGroup) {
                     if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_PC)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_SP)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LR)) {
                         resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         Symbol sym = symbols.symbols.get(entry.tokenOpCodeArgSubGroup.source);
@@ -1623,10 +1656,32 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source, 10);
                         }
                         
-                        if(tInt < entry.opCodeArgSubGroup.num_range.min_value || tInt >  entry.opCodeArgSubGroup.num_range.max_value) {
-                            //TODO: throw exception numeric value at of range
+                        if(entry.opCodeArgSubGroup.num_range != null) {
+                            if(tInt < entry.opCodeArgSubGroup.num_range.min_value || tInt >  entry.opCodeArgSubGroup.num_range.max_value) {
+                                throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgSubGroup.num_range.min_value + " to " + entry.opCodeArgSubGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
+                            } else {
+                                resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArgSubGroup.bit_series.bit_len);
+                                if(entry.opCodeArgSubGroup.bit_shift != null) {
+                                    if(entry.opCodeArgSubGroup.bit_shift.shift_amount > 0) {
+                                        if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, false, true);
+                                        } else if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, true, true);
+                                        } else {
+                                            throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
+                                        }
+                                    }
+                                }
+
+                                if(entry.opCodeArgSubGroup.num_range.twos_compliment) {
+                                    //TODO: Takes two's compliment
+                                }
+
+                                //TODO: Check alignment
+                                //entry.opCodeArgSubGroup.num_range.alignment                        
+                            }
                         } else {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArgSubGroup.bit_series.bit_len);
+                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
                         }
                     } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                         inList = false;
@@ -1646,13 +1701,19 @@ public class AssemblerThumb implements Assembler {
                         inGroup = false;
                         inGroupEntry = null;
                     } else {
-                        //TODO: Throw unexpected sub-token type exception
+                        throw new ExceptionUnexpectedTokenType("Found unexpected GROUP sub-token type '" + entry.tokenOpCodeArgSubGroup.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                     
                 }else if(entry.isOpCodeArg) {
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_PC)) {
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_SP)) {
+                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LR)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source);
@@ -1678,13 +1739,32 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
                         }
                         
-                        if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
-                            //TODO: throw exception numeric value at of range
+                        if(entry.opCodeArg.num_range != null) {
+                            if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
+                                throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                            } else {
+                                resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArg.bit_series.bit_len);
+                                if(entry.opCodeArg.bit_shift != null) {
+                                    if(entry.opCodeArg.bit_shift.shift_amount > 0) {
+                                        if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
+                                        } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
+                                        } else {
+                                            throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                                        }
+                                    }
+                                }
+
+                                if(entry.opCodeArg.num_range.twos_compliment) {
+                                    //TODO: Takes two's compliment
+                                }
+
+                                //TODO: Check alignment
+                                //entry.opCodeArg.num_range.alignment
+                            }
                         } else {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArg.bit_series.bit_len);
-                            //entry.opCodeArg.bit_shift
-                            //entry.opCodeArg.num_range.twos_compliment
-                            //entry.opCodeArg.num_range.alignment
+                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                         inList = true;
@@ -1694,7 +1774,7 @@ public class AssemblerThumb implements Assembler {
                         inGroup = true;
                         inGroupEntry = entry;
                     } else {
-                        //TODO: Throw unexpected token type exception
+                        throw new ExceptionUnexpectedTokenType("Found unexpected token type '" + entry.tokenOpCodeArg.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                     
                 }
@@ -1703,7 +1783,7 @@ public class AssemblerThumb implements Assembler {
         
             //Clear out non bit_series BuilOpCodeEntry instances and order by bit_series start
             //Append binary string representations to create binary representation for the line
-            //Reverse bytes if endian is NOT little, i.e. IS big
+            //Reverse bytes if endian is NOT BIG, i.e. IS big
             
         } else {
             //TODO: throw invalid assemblly line exception at line number, with source

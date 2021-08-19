@@ -21,6 +21,9 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String ENTRY_TYPE_NAME_REGISTER_RANGE_HI = "RegisterRangeHi";
     public static String ENTRY_TYPE_NAME_REGISTER_LOW = "RegisterLow";
     public static String ENTRY_TYPE_NAME_REGISTER_HI = "RegisterHi";
+    public static String ENTRY_TYPE_NAME_REGISTER_PC = "RegisterPc";
+    public static String ENTRY_TYPE_NAME_REGISTER_LR = "RegisterLr";
+    public static String ENTRY_TYPE_NAME_REGISTER_SP = "RegisterSp";        
     public static String ENTRY_TYPE_NAME_START_LIST = "ListStart";
     public static String ENTRY_TYPE_NAME_START_GROUP = "GroupStart";
     public static String ENTRY_TYPE_NAME_STOP_LIST = "ListStop";

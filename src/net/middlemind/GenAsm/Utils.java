@@ -8,7 +8,33 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  *
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 7:04 AM EST
  */
+@SuppressWarnings({"null", "UnusedAssignment"})
 public class Utils {
+    public static String ShiftBinStr(String binStr, int shiftCount, boolean shiftRight, boolean padZeros) {
+        String binStr2 = binStr;
+        for(int i = 0; i < shiftCount; i++) {
+            String p1 = "";
+            if(shiftRight) {
+                p1 = binStr2.substring(0, binStr2.length() - 1);
+                if(padZeros) {
+                    p1 = "0" + p1;
+                } else {
+                    p1 = "1" + p1;
+                }
+                binStr2 = p1;
+            } else {
+                p1 = binStr2.substring(1);
+                if(padZeros) {
+                    p1 += "0";
+                } else {
+                    p1 += "1";
+                }
+                binStr2 = p1;                
+            }
+        }
+        return binStr2;
+    }
+    
     public static boolean ContainsStr(String[] array, String target) {
         for(int i = 0; i < array.length; i++) {
             if(array[i].equals(target)) {
@@ -27,7 +53,6 @@ public class Utils {
         return false;
     }
     
-    @SuppressWarnings("UnusedAssignment")
     public static String FormatHexString(String s, int len) {
         String ret = s;
         if(!IsStringEmpty(s)) {
@@ -71,7 +96,7 @@ public class Utils {
     public static boolean IsListEmpty(List l) {
         if(l == null) {
             return true;
-        } else if(l != null && l.size() == 0) {
+        } else if(l != null && l.isEmpty()) {
             return true;
         } else {
             return false;

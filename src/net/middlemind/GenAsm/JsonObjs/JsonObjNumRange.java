@@ -11,6 +11,8 @@ public class JsonObjNumRange extends JsonObjBase {
     public int max_value;
     public int bit_len;
     public boolean twos_compliment;
+    public boolean ones_compliment;
+    public boolean bcd_encoding;
     public String alignment;
     
     @Override
@@ -25,6 +27,8 @@ public class JsonObjNumRange extends JsonObjBase {
         Logger.wrl(prefix + "MaxValue: " + max_value);
         Logger.wrl(prefix + "BitLen: " + bit_len);
         Logger.wrl(prefix + "TwosCompliment: " + twos_compliment);
+        Logger.wrl(prefix + "OnesCompliment: " + ones_compliment);
+        Logger.wrl(prefix + "BcdEncoding: " + bcd_encoding);        
         Logger.wrl(prefix + "Alignment: " + alignment);        
     }    
 }
