@@ -50,7 +50,9 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidArea;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidAssemblyLine;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidEntry;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoNumberRangeFound;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNumberInvalidShift;
@@ -1440,7 +1442,7 @@ public class AssemblerThumb implements Assembler {
     //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
-    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine {
         if(area.isCode) {
             //build opcode
             for(TokenLine line : areaLines) {
@@ -1456,7 +1458,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry {
+    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
@@ -1688,6 +1690,10 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 }
 
+                                if(entry.opCodeArgSubGroup.num_range.ones_compliment) {
+                                    //TODO: Take one's compliment                                
+                                }
+                                
                                 if(entry.opCodeArgSubGroup.num_range.twos_compliment) {
                                     //TODO: Takes two's compliment
                                 }
@@ -1771,12 +1777,22 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 }
 
+                                if(entry.opCodeArg.num_range.ones_compliment) {
+                                    //TODO: Take one's compliment                                
+                                }
+                                
                                 if(entry.opCodeArg.num_range.twos_compliment) {
-                                    //TODO: Takes two's compliment
+                                    //TODO: Take two's compliment
                                 }
 
                                 //TODO: Check alignment
                                 //entry.opCodeArg.num_range.alignment
+                                
+                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                                    //Flip Java number bytes to little endian
+                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
+                                    //Flip Java number bytes to big endian
+                                }
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
@@ -1796,12 +1812,13 @@ public class AssemblerThumb implements Assembler {
                 entry.binRepStr = resTmp;
             }
         
-            //Clear out non bit_series BuilOpCodeEntry instances and order by bit_series start
-            //Append binary string representations to create binary representation for the line
-            //Reverse bytes if endian is NOT BIG, i.e. IS big
-            
+            //Clean out non-bit series entries from the build entries list and sort by bit series desc
+            BuildOpCodeEntryThumbSorter buildEntriesSorter = new BuildOpCodeEntryThumbSorter(BuildOpCodeEntryThumbSorterType.BIT_SERIES_DSC);
+            buildEntriesSorter.Clean(buildEntries);
+            Collections.sort(buildEntries, buildEntriesSorter);
+
         } else {
-            //TODO: throw invalid assemblly line exception at line number, with source
+            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with line source '" + line.source.source + "' and line number " + line.lineNum);
         }
     }
 }
