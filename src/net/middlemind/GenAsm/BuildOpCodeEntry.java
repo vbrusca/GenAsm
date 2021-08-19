@@ -12,15 +12,15 @@ public class BuildOpCodeEntry {
     public JsonObjBitSeries bitSeries;
     public JsonObjIsOpCode opCode;
     public JsonObjIsOpCodeArg opCodeArg;
-    public JsonObjIsOpCodeArg opCodeArgSub;
+    public JsonObjIsOpCodeArg opCodeArgSubGroup;
     public JsonObjIsOpCodeArg opCodeArgSubList;    
     public Token tokenOpCode;
     public Token tokenOpCodeArg;
-    public Token tokenOpCodeArgSub;
+    public Token tokenOpCodeArgSubGroup;
     public Token tokenOpCodeArgSubList;
     public boolean isOpCode;
     public boolean isOpCodeArg;
-    public boolean isOpCodeArgSub;
+    public boolean isOpCodeArgSubGroup;
     public boolean isOpCodeArgSubList;    
     public String binRepStr;
 }

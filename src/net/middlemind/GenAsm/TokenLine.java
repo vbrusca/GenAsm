@@ -14,7 +14,8 @@ public class TokenLine {
     public String payloadOpCode;
     public String payloadDirective;
     public String payloadBinRepStr;    
-    public String lineNumMemCode;
+    public String lineNumHex;
+    public String lineNumBin;
     public int lineNum;
     public int payloadLen;
     public int payloadLenArg;

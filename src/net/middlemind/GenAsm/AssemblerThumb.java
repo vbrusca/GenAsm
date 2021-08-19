@@ -57,7 +57,10 @@ import net.middlemind.GenAsm.TokenSorter.TokenSorterType;
 @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
     public static String ENDIAN_NAME_BIG = "BIG";
-    public static String ENDIAN_NAME_LITTLE = "LITTLE";    
+    public static String ENDIAN_NAME_LITTLE = "LITTLE";
+    public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "WORD";
+    public static int INSTRUCTION_ALIGNMENT_BYTES = 2;
+    public static int INSTRUCTION_ALIGNMENT_BITS = 16;
     
     public JsonObjIsSet isaDataSet;
     public Map<String, JsonObj> isaData;
@@ -401,7 +404,8 @@ public class AssemblerThumb implements Assembler {
                 for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
                     if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
-                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineBitSeries.bit_len;
                     }
@@ -411,7 +415,8 @@ public class AssemblerThumb implements Assembler {
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
                     if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
-                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesData.add(line);
                         activeLineCount += lineBitSeries.bit_len;
                     }
@@ -423,7 +428,8 @@ public class AssemblerThumb implements Assembler {
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
                     if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
-                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesData.add(line);
                         activeLineCount += lineBitSeries.bit_len;
                     }
@@ -433,7 +439,8 @@ public class AssemblerThumb implements Assembler {
                 for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
                     if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
-                        line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                        line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineBitSeries.bit_len;
                     }
@@ -446,7 +453,8 @@ public class AssemblerThumb implements Assembler {
             for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
                 TokenLine line = asmDataTokened.get(z);
                 if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
-                    line.lineNumMemCode = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                    line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
+                    line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len);
                     asmAreaLinesCode.add(line);
                     activeLineCount += lineBitSeries.bit_len;
                 }
@@ -1475,13 +1483,13 @@ public class AssemblerThumb implements Assembler {
                             for(Token ltoken : token.payload) {
                                 if(ltoken.isOpCodeArg) {
                                     tmpB = new BuildOpCodeEntry();
-                                    tmpB.isOpCodeArgSub = true;
+                                    tmpB.isOpCodeArgSubGroup = true;
                                     if(!ltoken.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
-                                        tmpB.opCodeArgSub = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
-                                        tmpB.opCodeArgSub.arg_index = lOpCodeArgIdx; //(opCodeArgIdx + lOpCodeArgIdx);
-                                        tmpB.bitSeries = tmpB.opCodeArgSub.bit_series;
+                                        tmpB.opCodeArgSubGroup = (JsonObjIsOpCodeArg)opCodeArgsSub.get(lOpCodeArgIdx);
+                                        tmpB.opCodeArgSubGroup.arg_index = lOpCodeArgIdx; //(opCodeArgIdx + lOpCodeArgIdx);
+                                        tmpB.bitSeries = tmpB.opCodeArgSubGroup.bit_series;
                                     }
-                                    tmpB.tokenOpCodeArgSub = ltoken;
+                                    tmpB.tokenOpCodeArgSubGroup = ltoken;
                                     buildEntries.add(tmpB);
                                     lOpCodeArgIdx++;
                                 } else if(ltoken.isOpCode) {
@@ -1587,20 +1595,40 @@ public class AssemblerThumb implements Assembler {
                         //TODO: Throw unexpected sub-token type exception
                     }
                     
-                }else if(entry.isOpCodeArgSub) {
-                    if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
-
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
-
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                }else if(entry.isOpCodeArgSubGroup) {
+                    if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_HI)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArgSubGroup.source);
+                        if(sym != null) {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArgSubGroup.bit_series.bit_len);
+                        } else {
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
+                        }
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         //TODO: throw invalid entry exception
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                        //TODO: throw invalid entry exception
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
-                        //TODO: throw invalid entry exception
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
-                        //TODO: throw invalid entry exception
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
+                        resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
+                        Integer tInt = null;
+                        if(entry.tokenOpCodeArgSubGroup.source.contains("#0x")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source.replace("#0x", ""), 16);                            
+                        } else if(entry.tokenOpCodeArgSubGroup.source.contains("#0b")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source.replace("#0b", ""), 2);                            
+                        } else if(entry.tokenOpCodeArgSubGroup.source.contains("#")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source.replace("#", ""), 10);
+                        } else {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source, 10);
+                        }
+                        
+                        if(tInt < entry.opCodeArgSubGroup.num_range.min_value || tInt >  entry.opCodeArgSubGroup.num_range.max_value) {
+                            //TODO: throw exception numeric value at of range
+                        } else {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArgSubGroup.bit_series.bit_len);
+                        }
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_LIST)) {
                         inList = false;
                         String ts = "";
                         for(int z = 0; z < inListRegisters.length; z++) {
@@ -1614,7 +1642,7 @@ public class AssemblerThumb implements Assembler {
                         inListRegisters = null;
                         inListEntry = null;
                         
-                    } else if(entry.tokenOpCodeArgSub.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
+                    } else if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_STOP_GROUP)) {
                         inGroup = false;
                         inGroupEntry = null;
                     } else {
@@ -1639,7 +1667,25 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTERWB)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_NUMBER)) {
-                        //TODO: Process number entry                        
+                        Integer tInt = null;
+                        if(entry.tokenOpCodeArg.source.contains("#0x")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0x", ""), 16);                            
+                        } else if(entry.tokenOpCodeArg.source.contains("#0b")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0b", ""), 2);                            
+                        } else if(entry.tokenOpCodeArg.source.contains("#")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#", ""), 10);
+                        } else {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
+                        }
+                        
+                        if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
+                            //TODO: throw exception numeric value at of range
+                        } else {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArg.bit_series.bit_len);
+                            //entry.opCodeArg.bit_shift
+                            //entry.opCodeArg.num_range.twos_compliment
+                            //entry.opCodeArg.num_range.alignment
+                        }
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_START_LIST)) {
                         inList = true;
                         inListRegisters = new int[8];
