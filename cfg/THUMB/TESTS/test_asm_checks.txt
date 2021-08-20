@@ -1,163 +1,45 @@
-{
-    "obj_name": "is_op_code_examples",
-    "is_op_code_examples": [
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LSR     R2, R5, #27",
-            "big_endian_binary": "0000111011101010",
-            "big_endian_decimal": 3818,
-            "big_endian_hex": "0EEA",
-            "little_endian_binary": "1110101000001110",
-            "little_endian_decimal": 59918,
-            "little_endian_hex": "EA0E"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R0, R3, R4",
-            "big_endian_binary": "0001100100011000",
-            "big_endian_decimal": 6424,
-            "big_endian_hex": "1918",
-            "little_endian_binary": "0001100000011001",
-            "little_endian_decimal": 6169,
-            "little_endian_hex": "1819"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "SUB     R6, R2, #6",
-            "big_endian_binary": "0001101110010110",
-            "big_endian_decimal": 7062,
-            "big_endian_hex": "1B96",
-            "little_endian_binary": "1001011000011011",
-            "little_endian_decimal": 38427,
-            "little_endian_hex": "961B"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "MOV     R0, #127",
-            "big_endian_binary": "0100100111111000",
-            "big_endian_decimal": 18936,
-            "big_endian_hex": "49F8",
-            "little_endian_binary": "1111100001001001",
-            "little_endian_decimal": 63561,
-            "little_endian_hex": "F849"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R2, 62",
-            "big_endian_binary": "0100011011110010",
-            "big_endian_decimal": 18162,
-            "big_endian_hex": "46F2",
-            "little_endian_binary": "1111001001000110",
-            "little_endian_decimal": 62022,
-            "little_endian_hex": "F246"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R1, 127",
-            "big_endian_binary": "0100011111111001",
-            "big_endian_decimal": 18425,
-            "big_endian_hex": "47F9",
-            "little_endian_binary": "1111100101000111",
-            "little_endian_decimal": 63815,
-            "little_endian_hex": "F947"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "SUB     R6, 1",
-            "big_endian_binary": "0011111000000001",
-            "big_endian_decimal": 15873,
-            "big_endian_hex": "3E01",
-            "little_endian_binary": "0000000100111110",
-            "little_endian_decimal": 318,
-            "little_endian_hex": "013E"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "EOR     R3, R4",
-            "big_endian_binary": "0100000001100011",
-            "big_endian_decimal": 16483,
-            "big_endian_hex": "4063",
-            "little_endian_binary": "0110001101000000",
-            "little_endian_decimal": 25408,
-            "little_endian_hex": "6340"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ROR     R1, R0",
-            "big_endian_binary": "0100000111000001",
-            "big_endian_decimal": 16833,
-            "big_endian_hex": "41C1",
-            "little_endian_binary": "1100000101000001",
-            "little_endian_decimal": 49473,
-            "little_endian_hex": "C141"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "NEG     R5, R3",
-            "big_endian_binary": "0100001001011101",
-            "big_endian_decimal": 16989,
-            "big_endian_hex": "425D",
-            "little_endian_binary": "0101110101000010",
-            "little_endian_decimal": 23874,
-            "little_endian_hex": "5D42"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R2, R6",
-            "big_endian_binary": "",
-            "big_endian_decimal": ,
-            "big_endian_hex": "",
-            "little_endian_binary": "",
-            "little_endian_decimal": ,
-            "little_endian_hex": ""
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "",
-            "big_endian_binary": "",
-            "big_endian_decimal": ,
-            "big_endian_hex": "",
-            "little_endian_binary": "",
-            "little_endian_decimal": ,
-            "little_endian_hex": ""
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "",
-            "big_endian_binary": "",
-            "big_endian_decimal": ,
-            "big_endian_hex": "",
-            "little_endian_binary": "",
-            "little_endian_decimal": ,
-            "little_endian_hex": ""
-        }
-    ]
-}
+@TTL |AllOpCodeTests|
+@AREA |Program| @CODE, @READONLY
+@ENTRY
 
-MUL     R0, R7
-EOR     R3, R4
-ROR     R1, R0
-NEG     R5, R3
-CMP     R2, R6
-MUL     R0, R7
-ADD     PC, R5
-CMP     R4, R12
-MOV     R15, R14
-LDR     R3, [PC, 844]
-STR     R3, [R2, R6]
-LDRB    R2, [R0, R7]
-STRH    R4, [R3, R0]
-LDSB    R2, [R7, R1]
-LDSH    R3, [R4, R2]
-LDR     R2, [R5, 116]
-STRB    R1, [R0, 13]
-STRH    R6, [R1, 56]
-LDRH    R4, [R7, 4]
-ADD     R2, PC, 572
-ADD     R6, SP, 212
-ADD     SP, 68
-ADD     SP, 104
-PUSH    {R0-R4, LR}
-POP     {R2, R6, PC}
-STMIA   R0!, {R3, R4, R5, R6, R7}
-CMP     R0, 45
+    LSR     R2, R5, #27
+    ADD     R0, R3, R4
+    SUB     R6, R2, #6
+    MOV     R0, #127
+    CMP     R2, #62
+    ADD     R1, #127
+    SUB     R6, #1
+    EOR     R3, R4
+    ROR     R1, R0
+    NEG     R5, R3
+    CMP     R2, R6
+    MUL     R0, R7
+    EOR     R3, R4
+    EOR     R3, R4
+    ROR     R1, R0
+    NEG     R5, R3
+    CMP     R2, R6
+    MUL     R0, R7
+    ADD     PC, R5
+    CMP     R4, R12
+    MOV     R15, R14
+    LDR     R3, [PC, #844]
+    STR     R3, [R2, R6]
+    LDRB    R2, [R0, R7]
+    STRH    R4, [R3, R0]
+    LDSB    R2, [R7, R1]
+    LDSH    R3, [R4, R2]
+    LDR     R2, [R5, #116]
+    STRB    R1, [R0, #13]
+    STRH    R6, [R1, #56]
+    LDRH    R4, [R7, #4]
+    ADD     R2, PC, #572
+    ADD     R6, SP, #212
+    ADD     SP, #68
+    ADD     SP, #104
+    PUSH    {R0-R4, LR}
+    POP     {R2, R6, PC}
+    STMIA   R0!, {R3, R4, R5, R6, R7}
+    CMP     R0, #45
+
+@END

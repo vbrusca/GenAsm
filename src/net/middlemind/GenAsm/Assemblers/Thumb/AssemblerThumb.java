@@ -432,7 +432,7 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len);
                         asmAreaLinesCode.add(line);
-                        activeLineCount += lineBitSeries.bit_len;
+                        activeLineCount += lineLenBytes;
                     }
                 }
                 
@@ -443,7 +443,7 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesData.add(line);
-                        activeLineCount += lineBitSeries.bit_len;
+                        activeLineCount += lineLenBytes;
                     }
                 }
             } else {
@@ -456,7 +456,7 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesData.add(line);
-                        activeLineCount += lineBitSeries.bit_len;
+                        activeLineCount += lineLenBytes;
                     }
                 }
                 
@@ -467,7 +467,7 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len); 
                         asmAreaLinesCode.add(line);
-                        activeLineCount += lineBitSeries.bit_len;
+                        activeLineCount += lineLenBytes;
                     }
                 }                
             }
@@ -481,7 +481,7 @@ public class AssemblerThumb implements Assembler {
                     line.lineNumHex = Utils.FormatHexString(Integer.toHexString(activeLineCount), lineLenBytes);
                     line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(activeLineCount), lineBitSeries.bit_len);
                     asmAreaLinesCode.add(line);
-                    activeLineCount += lineBitSeries.bit_len;
+                    activeLineCount += lineLenBytes;
                 }
             }                
         } else {
