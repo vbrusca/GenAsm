@@ -1814,7 +1814,7 @@
                             "arg_index": 0,
                             "bit_index": -1,
                             "is_entry_types": ["RegisterPc"],
-                            "is_arg_type": "Rpc",
+                            "is_arg_type": "PC",
                             "bit_series": {
                                 "bit_start": -1,
                                 "bit_stop": -1,
@@ -1855,14 +1855,14 @@
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
-                "bit_string": "0101000",
-                "bit_int": 40,
-                "bit_len": 7
+                "bit_string": "01100",
+                "bit_int": 12,
+                "bit_len": 5
             },
             "bit_series": {
-                "bit_start": 9,
+                "bit_start": 11,
                 "bit_stop": 15,
-                "bit_len": 7
+                "bit_len": 5
             },
             "args": [
                 {
@@ -1910,8 +1910,8 @@
                             "is_arg_type": "Ro",
                             "bit_series": {
                                 "bit_start": 6,
-                                "bit_stop": 8,
-                                "bit_len": 3
+                                "bit_stop": 10,
+                                "bit_len": 5
                             }
                         }
                     ]
@@ -1993,14 +1993,14 @@
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
-                "bit_string": "0101100",
-                "bit_int": 44,
-                "bit_len": 7
+                "bit_string": "01101",
+                "bit_int": 13,
+                "bit_len": 5
             },
             "bit_series": {
-                "bit_start": 9,
+                "bit_start": 11,
                 "bit_stop": 15,
-                "bit_len": 7
+                "bit_len": 5
             },
             "args": [
                 {
@@ -2048,8 +2048,8 @@
                             "is_arg_type": "Ro",
                             "bit_series": {
                                 "bit_start": 6,
-                                "bit_stop": 8,
-                                "bit_len": 3
+                                "bit_stop": 10,
+                                "bit_len": 5
                             }
                         }
                     ]
@@ -2549,7 +2549,7 @@
                             "num_range": {
                                 "min_value": 0,
                                 "max_value": 124,
-                                "bit_len": 7,
+                                "bit_len": 5,
                                 "twos_compliment": false,
                                 "alignment": "WORD"
                             },
@@ -3030,7 +3030,7 @@
                             "num_range": {
                                 "min_value": 0,
                                 "max_value": 1020,
-                                "bit_len": 10,
+                                "bit_len": 8,
                                 "twos_compliment": false,
                                 "alignment": "WORD"
                             },
@@ -3247,7 +3247,7 @@
                     "arg_index": 0,
                     "bit_index": -1,
                     "is_entry_types": ["RegisterSp"],
-                    "is_arg_type": "Rsp",
+                    "is_arg_type": "SP",
                     "bit_series": {
                         "bit_start": -1,
                         "bit_stop": -1,

@@ -22,7 +22,7 @@
     MUL     R0, R7
     ADD     PC, R5
     CMP     R4, R12
-    MOV     R15, R14
+    MOV     PC, R14
     LDR     R3, [PC, #844]
     STR     R3, [R2, R6]
     LDRB    R2, [R0, R7]

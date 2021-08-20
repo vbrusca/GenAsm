@@ -1818,6 +1818,7 @@ public class AssemblerThumb implements Assembler {
                     
                 }
                 entry.binRepStr = resTmp;
+                res += resTmp;
             }
         
             //Clean out non-bit series entries from the build entries list and sort by bit series desc
@@ -1825,6 +1826,12 @@ public class AssemblerThumb implements Assembler {
             buildEntriesSorter.Clean(buildEntries);
             Collections.sort(buildEntries, buildEntriesSorter);
 
+            res = "";
+            for(BuildOpCodeEntryThumb entry : buildEntries) {
+                res += entry.binRepStr;
+            }
+            line.payloadBinRepStr = res;
+            
             //Build final string representation for this assembly line
         } else {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with line source '" + line.source.source + "' and line number " + line.lineNum);

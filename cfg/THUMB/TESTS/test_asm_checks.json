@@ -24,46 +24,46 @@
         {
             "obj_name": "is_op_code_example",
             "source": "SUB     R6, R2, #6",
-            "big_endian_binary": "0001101110010110",
-            "big_endian_decimal": 7062,
-            "big_endian_hex": "1B96",
-            "little_endian_binary": "1001011000011011",
-            "little_endian_decimal": 38427,
-            "little_endian_hex": "961B"
+            "big_endian_binary": "0001111110010110",
+            "big_endian_decimal": 8086,
+            "big_endian_hex": "1F96",
+            "little_endian_binary": "1001011000011111",
+            "little_endian_decimal": 38431,
+            "little_endian_hex": "961F"
         },
         {
             "obj_name": "is_op_code_example",
             "source": "MOV     R0, #127",
-            "big_endian_binary": "0100100111111000",
-            "big_endian_decimal": 18936,
-            "big_endian_hex": "49F8",
-            "little_endian_binary": "1111100001001001",
-            "little_endian_decimal": 63561,
-            "little_endian_hex": "F849"
+            "big_endian_binary": "0010000001111111",
+            "big_endian_decimal": 8319,
+            "big_endian_hex": "207F",
+            "little_endian_binary": "0111111100100000",
+            "little_endian_decimal": 32544,
+            "little_endian_hex": "7F20"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "CMP     R2, 62",
-            "big_endian_binary": "0100011011110010",
-            "big_endian_decimal": 18162,
-            "big_endian_hex": "46F2",
-            "little_endian_binary": "1111001001000110",
-            "little_endian_decimal": 62022,
-            "little_endian_hex": "F246"
+            "source": "CMP     R2, #62",
+            "big_endian_binary": "0010101000111110",            
+            "big_endian_decimal": 10814,
+            "big_endian_hex": "2A3E",
+            "little_endian_binary": "0011111000101010",
+            "little_endian_decimal": 15914,
+            "little_endian_hex": "3E2A"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "ADD     R1, 127",
-            "big_endian_binary": "0100011111111001",
-            "big_endian_decimal": 18425,
-            "big_endian_hex": "47F9",
-            "little_endian_binary": "1111100101000111",
+            "source": "ADD     R1, #127",
+            "big_endian_binary": "0011000101111111",
+            "big_endian_decimal": 12671,
+            "big_endian_hex": "317F",
+            "little_endian_binary": "0111111100110001",
             "little_endian_decimal": 63815,
-            "little_endian_hex": "F947"
+            "little_endian_hex": "7F31"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "SUB     R6, 1",
+            "source": "SUB     R6, #1",
             "big_endian_binary": "0011111000000001",
             "big_endian_decimal": 15873,
             "big_endian_hex": "3E01",
@@ -203,7 +203,7 @@
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "LDR     R3, [R15, 844]",
+            "source": "LDR     R3, [PC, #844]",
             "big_endian_binary": "0100111001001100",
             "big_endian_decimal": 20044,
             "big_endian_hex": "4E4C",
@@ -262,48 +262,49 @@
             "little_endian_hex": "A35E"
         },
         {
+            /* ERROR */
             "obj_name": "is_op_code_example",
-            "source": "LDR     R2, [R5, 116]",
-            "big_endian_binary": "0111010100101010",
-            "big_endian_decimal": 29994,
-            "big_endian_hex": "752A",
-            "little_endian_binary": "0010101001110101",
-            "little_endian_decimal": 10869,
-            "little_endian_hex": "2A75"
+            "source": "LDR     R2, [R5, #116]",
+            "big_endian_binary": "0110110100101010",
+            "big_endian_decimal": 27946,
+            "big_endian_hex": "6D2A",
+            "little_endian_binary": "0010101001101101",
+            "little_endian_decimal": 10861,
+            "little_endian_hex": "2A6D"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "STRB    R1, [R0, 13]",
-            "big_endian_binary": "0111010100101010",
-            "big_endian_decimal": 29994,
-            "big_endian_hex": "752A",
-            "little_endian_binary": "0010101001110101",
-            "little_endian_decimal": 10869,
-            "little_endian_hex": "2A75"
+            "source": "STRB    R1, [R0, #13]",
+            "big_endian_binary": "0111001101000001",
+            "big_endian_decimal": 29505,
+            "big_endian_hex": "7341",
+            "little_endian_binary": "0100000101110011",
+            "little_endian_decimal": 16755,
+            "little_endian_hex": "4173"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "STRH    R6, [R1, 56]",
-            "big_endian_binary": "0110000000001110",
-            "big_endian_decimal": 24590,
-            "big_endian_hex": "600E",
-            "little_endian_binary": "0000111001100000",
-            "little_endian_decimal": 3680,
-            "little_endian_hex": "0E60"
+            "source": "STRH    R6, [R1, #56]",
+            "big_endian_binary": "1000011000001110",
+            "big_endian_decimal": 34318,
+            "big_endian_hex": "860E",
+            "little_endian_binary": "0000111010000110",
+            "little_endian_decimal": 3718,
+            "little_endian_hex": "0E86"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "LDRH    R4, [R7, 4]",
-            "big_endian_binary": "0101101100111100",
-            "big_endian_decimal": 23356,
-            "big_endian_hex": "5B3C",
-            "little_endian_binary": "0011110001011011",
-            "little_endian_decimal": 15451,
-            "little_endian_hex": "3C5B"
+            "source": "LDRH    R4, [R7, #4]",
+            "big_endian_binary": "1000100100111100",
+            "big_endian_decimal": 35312,
+            "big_endian_hex": "893C",
+            "little_endian_binary": "0011110010001001",
+            "little_endian_decimal": 15497,
+            "little_endian_hex": "3C89"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "ADD     R2, R15, 572",
+            "source": "ADD     R2, PC, #572",
             "big_endian_binary": "1010001000111100",
             "big_endian_decimal": 41532,
             "big_endian_hex": "A23C",
@@ -312,54 +313,58 @@
             "little_endian_hex": "3CA2"
         },
         {
+            /* ERROR */
             "obj_name": "is_op_code_example",
-            "source": "ADD     R6, R13, 212",
+            "source": "ADD     R6, SP, #212",
             "big_endian_binary": "1010111011010100",
-            "big_endian_decimal": 44756,
-            "big_endian_hex": "AED4",
-            "little_endian_binary": "1101010010101110",
-            "little_endian_decimal": 54446,
-            "little_endian_hex": "D4AE"
+            "big_endian_decimal": 0,
+            "big_endian_hex": "",
+            "little_endian_binary": "",
+            "little_endian_decimal": 0,
+            "little_endian_hex": ""
+        },
+        {
+            /* ERROR */
+            "obj_name": "is_op_code_example",
+            "source": "ADD     SP, #68",
+            "big_endian_binary": "",
+            "big_endian_decimal": 0,
+            "big_endian_hex": "",
+            "little_endian_binary": "",
+            "little_endian_decimal": 0,
+            "little_endian_hex": ""
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "ADD     R13, 68",
-            "big_endian_binary": "1011000000000110",
-            "big_endian_decimal": 45062,
-            "big_endian_hex": "B006",
-            "little_endian_binary": "0000011010110000",
-            "little_endian_decimal": 1712,
-            "little_endian_hex": "06B0"
+            "source": "ADD     R1, #104",
+            "big_endian_binary": "0011000101101000",
+            "big_endian_decimal": 12648,
+            "big_endian_hex": "3168",
+            "little_endian_binary": "0110100000110001",
+            "little_endian_decimal": 26673,
+            "little_endian_hex": "6831"
         },
         {
+            /* ERROR */
             "obj_name": "is_op_code_example",
-            "source": "ADD     R1, 104",
-            "big_endian_binary": "0100011101000001",
-            "big_endian_decimal": 18241,
-            "big_endian_hex": "4741",
-            "little_endian_binary": "0100000101000111",
-            "little_endian_decimal": 16711,
-            "little_endian_hex": "4147"
+            "source": "PUSH    {R0-R4, LR}",
+            "big_endian_binary": "",
+            "big_endian_decimal": 0,
+            "big_endian_hex": "",
+            "little_endian_binary": "",
+            "little_endian_decimal": 0,
+            "little_endian_hex": ""
         },
         {
+            /* ERROR */
             "obj_name": "is_op_code_example",
-            "source": "PUSH    {R0-R4, R14}",
-            "big_endian_binary": "1011010100011111",
-            "big_endian_decimal": 46367,
-            "big_endian_hex": "B51F",
-            "little_endian_binary": "0001111110110101",
-            "little_endian_decimal": 8117,
-            "little_endian_hex": "1FB5"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "POP     {R2, R6, R15}",
-            "big_endian_binary": "1011110101000100",
-            "big_endian_decimal": 48452,
-            "big_endian_hex": "BD44",
-            "little_endian_binary": "0100010010111101",
-            "little_endian_decimal": 17597,
-            "little_endian_hex": "44BD"
+            "source": "POP     {R2, R6, PC}",
+            "big_endian_binary": "",
+            "big_endian_decimal": 0,
+            "big_endian_hex": "",
+            "little_endian_binary": "",
+            "little_endian_decimal": 0,
+            "little_endian_hex": ""
         },
         {
             "obj_name": "is_op_code_example",
@@ -373,13 +378,13 @@
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "CMP     R0, 45",
-            "big_endian_binary": "0100011001101000",
-            "big_endian_decimal": 18024,
-            "big_endian_hex": "4668",
-            "little_endian_binary": "0110100001000110",
-            "little_endian_decimal": 26694,
-            "little_endian_hex": "6846"
+            "source": "CMP     R0, #45",
+            "big_endian_binary": "0010100000101101",
+            "big_endian_decimal": 10285,
+            "big_endian_hex": "282D",
+            "little_endian_binary": "0010110100101000",
+            "little_endian_decimal": 11560,
+            "little_endian_hex": "2D28"
         }
     ]
 }

@@ -24920,18 +24920,18 @@
         "is_write_op_code": true,
         "bit_rep": {
           "obj_name": "JsonObjBitRep",
-          "bit_string": "0101000",
-          "bit_int": 40,
-          "bit_len": 7,
+          "bit_string": "01100",
+          "bit_int": 12,
+          "bit_len": 5,
           "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
           "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
         },
         "bit_series": {
           "obj_name": "JsonObjBitSeries",
-          "bit_start": 9,
+          "bit_start": 11,
           "bit_stop": 15,
-          "bit_len": 7,
+          "bit_len": 5,
           "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
           "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
@@ -25154,8 +25154,8 @@
                 "bit_series": {
                   "obj_name": "JsonObjBitSeries",
                   "bit_start": 6,
-                  "bit_stop": 8,
-                  "bit_len": 3,
+                  "bit_stop": 10,
+                  "bit_len": 5,
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
                   "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_op_codes.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
@@ -32299,7 +32299,7 @@
                   "obj_name": "JsonObjNumRange",
                   "min_value": 0,
                   "max_value": 124,
-                  "bit_len": 7,
+                  "bit_len": 5,
                   "twos_compliment": false,
                   "ones_compliment": false,
                   "bcd_encoding": false,
