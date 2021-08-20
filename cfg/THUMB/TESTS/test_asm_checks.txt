@@ -103,7 +103,7 @@
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "",
+            "source": "CMP     R2, R6",
             "big_endian_binary": "",
             "big_endian_decimal": ,
             "big_endian_hex": "",
@@ -134,7 +134,6 @@
     ]
 }
 
-CMP     R2, R6
 MUL     R0, R7
 EOR     R3, R4
 ROR     R1, R0
