@@ -1547,10 +1547,11 @@ public class AssemblerThumb implements Assembler {
             BuildOpCodeEntryThumb inGroupEntry = null;            
             
             for(BuildOpCodeEntryThumb entry : buildEntries) {
-                resTmp = "";
-                
+                resTmp = "";                
                 if(entry.isOpCode) {
                     resTmp = entry.opCode.bit_rep.bit_string;
+                    
+                //Process OpCode argument tokens for list
                 }else if(entry.isOpCodeArgSubList) {
                     if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         if(entry.tokenOpCodeArgSubList.source.equals("R0")) {
@@ -1610,7 +1611,6 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
-                        
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
                         throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgSubList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         //TODO: throw invalid entry exception
                     } else if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
@@ -1638,7 +1638,8 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         throw new ExceptionUnexpectedTokenType("Found unexpected LIST sub-token type '" + entry.tokenOpCodeArgSubList.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
-                    
+                   
+                ////Process OpCode argument tokens for group
                 }else if(entry.isOpCodeArgSubGroup) {
                     if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
@@ -1690,6 +1691,12 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 }
 
+                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                                    //Flip Java number bytes to little endian
+                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
+                                    //Flip Java number bytes to big endian
+                                }                                
+                                                                
                                 if(entry.opCodeArgSubGroup.num_range.ones_compliment) {
                                     //TODO: Take one's compliment                                
                                 }
@@ -1725,6 +1732,7 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionUnexpectedTokenType("Found unexpected GROUP sub-token type '" + entry.tokenOpCodeArgSubGroup.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                     
+                //Process OpCode argument tokens
                 }else if(entry.isOpCodeArg) {
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
@@ -1777,6 +1785,12 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 }
 
+                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                                    //Flip Java number bytes to little endian
+                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
+                                    //Flip Java number bytes to big endian
+                                }                                
+                                
                                 if(entry.opCodeArg.num_range.ones_compliment) {
                                     //TODO: Take one's compliment                                
                                 }
@@ -1787,12 +1801,6 @@ public class AssemblerThumb implements Assembler {
 
                                 //TODO: Check alignment
                                 //entry.opCodeArg.num_range.alignment
-                                
-                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                    //Flip Java number bytes to little endian
-                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                    //Flip Java number bytes to big endian
-                                }
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
@@ -1817,6 +1825,7 @@ public class AssemblerThumb implements Assembler {
             buildEntriesSorter.Clean(buildEntries);
             Collections.sort(buildEntries, buildEntriesSorter);
 
+            //Build final string representation for this assembly line
         } else {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with line source '" + line.source.source + "' and line number " + line.lineNum);
         }
