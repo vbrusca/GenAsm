@@ -51,6 +51,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
+import net.middlemind.GenAsm.Exceptions.ExceptionBase;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidArea;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidAssemblyLine;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidEntry;
@@ -119,111 +120,105 @@ public class AssemblerThumb implements Assembler {
     public boolean isEndianLittle = true;    
     
     @Override
-    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) {
-        try {
-            Logger.wrl("AssemblerThumb: RunAssembler: Start");
-            jsonSource = new Hashtable<String, String>();
-            isaLoader = new Hashtable<String, Loader>();        
-            isaData = new Hashtable<String, JsonObj>();
-            isaDataSet = jsonIsSet;
-            asmSourceFile = assemblySourceFile;
-            symbols = new Symbols();
-            
-            requiredDirectives = new ArrayList<String>();
-            requiredDirectives.add("@AREA");
-            requiredDirectives.add("@TTL");            
-            requiredDirectives.add("@ENTRY");
-            requiredDirectives.add("@END");            
-            
-            Logger.wrl("");
-            Logger.wrl("STEP1: Process JsonObjIsSet's file entries and load then parse the json object data");
-            LoadAndParseJsonObjData();
+    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) throws Exception {
+        Logger.wrl("AssemblerThumb: RunAssembler: Start");
+        jsonSource = new Hashtable<String, String>();
+        isaLoader = new Hashtable<String, Loader>();        
+        isaData = new Hashtable<String, JsonObj>();
+        isaDataSet = jsonIsSet;
+        asmSourceFile = assemblySourceFile;
+        symbols = new Symbols();
 
-            Logger.wrl("");
-            Logger.wrl("STEP2: Link loaded json object data");
-            LinkJsonObjData();
+        requiredDirectives = new ArrayList<String>();
+        requiredDirectives.add("@AREA");
+        requiredDirectives.add("@TTL");            
+        requiredDirectives.add("@ENTRY");
+        requiredDirectives.add("@END");            
 
-            Logger.wrl("");
-            Logger.wrl("STEP3: Load and lexerize the assembly source file");           
-            LoadAndLexerizeAssemblySource();
-            WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
+        Logger.wrl("");
+        Logger.wrl("STEP1: Process JsonObjIsSet's file entries and load then parse the json object data");
+        LoadAndParseJsonObjData();
 
-            Logger.wrl("");
-            Logger.wrl("STEP4: Tokenize the lexerized artifacts");
-            TokenizeLexerArtifacts();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
-            
-            Logger.wrl("");
-            Logger.wrl("STEP5: Validate token lines");
-            ValidateTokenizedLines();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+        Logger.wrl("");
+        Logger.wrl("STEP2: Link loaded json object data");
+        LinkJsonObjData();
 
-            Logger.wrl("");
-            Logger.wrl("STEP6: Combine comment tokens as children of the initial comment token");
-            CollapseCommentTokens();
-            
-            Logger.wrl("");
-            Logger.wrl("STEP7: Expand register ranges into individual register entries");
-            ExpandRegisterRangeTokens();
-            
-            Logger.wrl("");
-            Logger.wrl("STEP8: Combine list and group tokens as children of the initial list or group token");
-            CollapseListAndGroupTokens();
-            
-            Logger.wrl("");
-            Logger.wrl("STEP9: Mark OpCode, OpCode argument, and register tokens");
-            PopulateOpCodeAndArgData();
-            
-            Logger.wrl("");
-            Logger.wrl("STEP10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
-            PopulateDirectiveArgAndAreaData();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
+        Logger.wrl("");
+        Logger.wrl("STEP3: Load and lexerize the assembly source file");           
+        LoadAndLexerizeAssemblySource();
+        WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
 
-            Logger.wrl("");
-            Logger.wrl("STEP11: Validate OpCode lines against known OpCodes by comparing arguments");
-            ValidateOpCodeLines();
-            
-            Logger.wrl("");
-            Logger.wrl("STEP12: Validate directive lines against known directives by comparing arguments");
-            ValidateDirectiveLines();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
-            WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
-        
-            Logger.wrl("");
-            Logger.wrl("List Assembly Source Areas:");
-            if(areaThumbCode != null) {
-                Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
-                Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
-                WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
-                WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
-                BuildBinLines(asmAreaLinesCode, areaThumbCode);
-                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
-            } else {
-                Logger.wrl("AreaThumbCode: is null");
-            }
-            
-            if(areaThumbData != null) {
-                Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
-                Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
-                WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
-                WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
-                BuildBinLines(asmAreaLinesData, areaThumbData);
-                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
-            } else {
-                Logger.wrl("AreaThumbData: is null");
-            }
-            
-            Logger.wrl("");
-            Logger.wrl("Assembler Line Data:");
-            Logger.wrl("LineLengthBytes: " + lineLenBytes);
-            Logger.wrl("LineLengthWords: " + lineLenWords);
-            Logger.wrl("LineBitSeries:");
-            lineBitSeries.Print("\t");
-            
-        } catch(Exception e) {
-            Logger.wrl("AssemblerThumb: RunAssembler: Assembler encountered an exception, exiting...");
-            e.printStackTrace();
+        Logger.wrl("");
+        Logger.wrl("STEP4: Tokenize the lexerized artifacts");
+        TokenizeLexerArtifacts();
+        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
+
+        Logger.wrl("");
+        Logger.wrl("STEP5: Validate token lines");
+        ValidateTokenizedLines();
+        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+
+        Logger.wrl("");
+        Logger.wrl("STEP6: Combine comment tokens as children of the initial comment token");
+        CollapseCommentTokens();
+
+        Logger.wrl("");
+        Logger.wrl("STEP7: Expand register ranges into individual register entries");
+        ExpandRegisterRangeTokens();
+
+        Logger.wrl("");
+        Logger.wrl("STEP8: Combine list and group tokens as children of the initial list or group token");
+        CollapseListAndGroupTokens();
+
+        Logger.wrl("");
+        Logger.wrl("STEP9: Mark OpCode, OpCode argument, and register tokens");
+        PopulateOpCodeAndArgData();
+
+        Logger.wrl("");
+        Logger.wrl("STEP10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
+        PopulateDirectiveArgAndAreaData();
+        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
+
+        Logger.wrl("");
+        Logger.wrl("STEP11: Validate OpCode lines against known OpCodes by comparing arguments");
+        ValidateOpCodeLines();
+
+        Logger.wrl("");
+        Logger.wrl("STEP12: Validate directive lines against known directives by comparing arguments");
+        ValidateDirectiveLines();
+        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
+        WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
+
+        Logger.wrl("");
+        Logger.wrl("List Assembly Source Areas:");
+        if(areaThumbCode != null) {
+            Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
+            Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
+            WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
+            WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
+            BuildBinLines(asmAreaLinesCode, areaThumbCode);
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
+        } else {
+            Logger.wrl("AreaThumbCode: is null");
         }
+
+        if(areaThumbData != null) {
+            Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
+            Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
+            WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
+            WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
+            BuildBinLines(asmAreaLinesData, areaThumbData);
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
+        } else {
+            Logger.wrl("AreaThumbData: is null");
+        }
+
+        Logger.wrl("");
+        Logger.wrl("Assembler Line Data:");
+        Logger.wrl("LineLengthBytes: " + lineLenBytes);
+        Logger.wrl("LineLengthWords: " + lineLenWords);
+        Logger.wrl("LineBitSeries:");
+        lineBitSeries.Print("\t");
     }
     
     //DIRECTIVE METHODS
