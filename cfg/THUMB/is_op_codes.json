@@ -2549,7 +2549,7 @@
                             "num_range": {
                                 "min_value": 0,
                                 "max_value": 124,
-                                "bit_len": 5,
+                                "bit_len": 7,
                                 "twos_compliment": false,
                                 "alignment": "WORD"
                             },
@@ -2869,7 +2869,7 @@
                             "num_range": {
                                 "min_value": 0,
                                 "max_value": 62,
-                                "bit_len": 5,
+                                "bit_len": 6,
                                 "twos_compliment": false,
                                 "alignment": "HALFWORD"
                             },
@@ -3030,7 +3030,7 @@
                             "num_range": {
                                 "min_value": 0,
                                 "max_value": 1020,
-                                "bit_len": 8,
+                                "bit_len": 10,
                                 "twos_compliment": false,
                                 "alignment": "WORD"
                             },
@@ -3097,7 +3097,7 @@
                     "num_range": {
                         "min_value": 0,
                         "max_value": 1020,
-                        "bit_len": 8,
+                        "bit_len": 10,
                         "twos_compliment": false,
                         "alignment": "WORD"
                     },

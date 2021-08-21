@@ -27,7 +27,7 @@ public class GenAsm {
     public static Assembler ASM_ASSEMBLER = null;
     public static String ASM_ASSEMBLY_SOURCE_FILE = "";
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         if(args == null || args.length < 5) {
             ASM_SETS_FILE_NAME = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
