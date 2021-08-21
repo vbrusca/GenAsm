@@ -888,19 +888,20 @@ public class AssemblerThumb implements Assembler {
                         argFound = false;
                         break;
                     }
-                                        
+                                                            
                     if(opCodeArg.sub_args != null && opCodeArg.sub_args.size() > 0) {
                         opCodeArgSub = null;
                         argTokenSub = null;
                         argFoundSub = true;
                         hasArgsSub = true;
+                        int regRangeOffset = 0;
                         
                         for(int j = 0; j < opCodeArg.sub_args.size(); j++) {
                             opCodeArgSub = opCodeArg.sub_args.get(j);
                             opCodeArgIdxSub = j;
                             
                             if(argToken.payload != null && j < argToken.payload.size()) {
-                                argTokenSub = argToken.payload.get(j);
+                                argTokenSub = argToken.payload.get(j + regRangeOffset);
                             } else {
                                 argFound = false;
                                 argFoundSub = false;
@@ -908,10 +909,24 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
-                                if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
-                                    argFound = false;
-                                    argFoundSub = false;
-                                    break;
+                                if(opCodeArgSub.is_entry_types.contains("RegisterRangeLow") && argTokenSub.type_name.equals("RegisterLow")) {
+                                    for(int k = j + 1; k < argToken.payload.size(); k++) {
+                                        if(argTokenSub.type_name.equals("RegisterLow")) {
+                                            regRangeOffset++;
+                                        }
+                                    }
+                                } else if(opCodeArgSub.is_entry_types.contains("RegisterRangeHi") && argTokenSub.type.type_category.equals("RegisterHi")) {
+                                    for(int k = j + 1; k < argToken.payload.size(); k++) {
+                                        if(argTokenSub.type.type_category.equals("RegisterHi")) {
+                                            regRangeOffset++;
+                                        }
+                                    }
+                                } else {
+                                    if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
+                                        argFound = false;
+                                        argFoundSub = false;
+                                        break;
+                                    }
                                 }
                             } else {
                                 argFound = false;

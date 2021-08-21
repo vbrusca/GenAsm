@@ -348,7 +348,7 @@
             /* ERROR */
             "obj_name": "is_op_code_example",
             "source": "PUSH    {R0-R4, LR}",
-            "big_endian_binary": "",
+            "big_endian_binary": "1011010100011111",
             "big_endian_decimal": 0,
             "big_endian_hex": "",
             "little_endian_binary": "",

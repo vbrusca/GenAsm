@@ -3097,7 +3097,7 @@
                     "num_range": {
                         "min_value": 0,
                         "max_value": 1020,
-                        "bit_len": 10,
+                        "bit_len": 8,
                         "twos_compliment": false,
                         "alignment": "WORD"
                     },
@@ -3306,7 +3306,21 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 7,
+                                "bit_len": 8
+                            }                            
+                        }
+                    ]
                 }
             ]
         },
@@ -3337,7 +3351,33 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 7,
+                                "bit_len": 8
+                            }
+                        },                        
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 1,
+                            "bit_index": -1,
+                            "is_entry_types": ["RegisterPc"],
+                            "is_arg_type": "PC",
+                            "bit_series": {
+                                "bit_start": -1,
+                                "bit_stop": -1,
+                                "bit_len": -1
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -3368,7 +3408,21 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 8,
+                                "bit_len": 7
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -3399,7 +3453,33 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 8,
+                                "bit_len": 7
+                            }
+                        },                        
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 1,
+                            "bit_index": -1,
+                            "is_entry_types": ["RegisterPc"],
+                            "is_arg_type": "PC",
+                            "bit_series": {
+                                "bit_start": -1,
+                                "bit_stop": -1,
+                                "bit_len": -1
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -3442,7 +3522,21 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 7,
+                                "bit_len": 8
+                            }                            
+                        }
+                    ]
                 }
             ]
         },
@@ -3485,7 +3579,21 @@
                         "bit_stop": 7,
                         "bit_len": 8
                     },
-                    "list_separator": ","
+                    "list_separator": ",",
+                    "sub_args": [
+                        {
+                            "obj_name": "is_op_code_arg",
+                            "arg_index": 0,
+                            "bit_index": 0,
+                            "is_entry_types": ["RegisterRangeLow"],
+                            "is_arg_type": "Rx",
+                            "bit_series": {
+                                "bit_start": 0,
+                                "bit_stop": 7,
+                                "bit_len": 8
+                            }                            
+                        }
+                    ]
                 }
             ]
         },
