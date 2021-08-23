@@ -262,7 +262,6 @@
             "little_endian_hex": "A35E"
         },
         {
-            /* ERROR */
             "obj_name": "is_op_code_example",
             "source": "LDR     R2, [R5, #116]",
             "big_endian_binary": "0110110100101010",
@@ -313,7 +312,6 @@
             "little_endian_hex": "3CA2"
         },
         {
-            /* ERROR */
             "obj_name": "is_op_code_example",
             "source": "ADD     R6, SP, #212",
             "big_endian_binary": "1010111011010100",
@@ -324,16 +322,25 @@
             "little_endian_hex": ""
         },
         {
-            /* ERROR */
             "obj_name": "is_op_code_example",
-            "source": "ADD     SP, #68",
-            "big_endian_binary": "",
+            "source": "ADD     SP, #268",
+            "big_endian_binary": "1011000000001100",
             "big_endian_decimal": 0,
             "big_endian_hex": "",
             "little_endian_binary": "",
             "little_endian_decimal": 0,
             "little_endian_hex": ""
         },
+        {
+            "obj_name": "is_op_code_example",
+            "source": "ADD     SP, #-268",
+            "big_endian_binary": "1011000010001100",
+            "big_endian_decimal": 0,
+            "big_endian_hex": "",
+            "little_endian_binary": "",
+            "little_endian_decimal": 0,
+            "little_endian_hex": ""
+        },        
         {
             "obj_name": "is_op_code_example",
             "source": "ADD     R1, #104",
@@ -345,7 +352,6 @@
             "little_endian_hex": "6831"
         },
         {
-            /* ERROR */
             "obj_name": "is_op_code_example",
             "source": "PUSH    {R0-R4, LR}",
             "big_endian_binary": "1011010100011111",
@@ -356,10 +362,9 @@
             "little_endian_hex": ""
         },
         {
-            /* ERROR */
             "obj_name": "is_op_code_example",
             "source": "POP     {R2, R6, PC}",
-            "big_endian_binary": "",
+            "big_endian_binary": "1011110101000100",
             "big_endian_decimal": 0,
             "big_endian_hex": "",
             "little_endian_binary": "",

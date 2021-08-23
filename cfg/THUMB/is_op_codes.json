@@ -1855,14 +1855,14 @@
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
-                "bit_string": "01100",
-                "bit_int": 12,
-                "bit_len": 5
+                "bit_string": "0101000",
+                "bit_int": 40,
+                "bit_len": 7
             },
             "bit_series": {
-                "bit_start": 11,
+                "bit_start": 9,
                 "bit_stop": 15,
-                "bit_len": 5
+                "bit_len": 7
             },
             "args": [
                 {
@@ -1910,8 +1910,8 @@
                             "is_arg_type": "Ro",
                             "bit_series": {
                                 "bit_start": 6,
-                                "bit_stop": 10,
-                                "bit_len": 5
+                                "bit_stop": 8,
+                                "bit_len": 3
                             }
                         }
                     ]
@@ -1993,14 +1993,14 @@
             "arg_len": 3,
             "arg_separator": ",",
             "bit_rep": {
-                "bit_string": "01101",
-                "bit_int": 13,
-                "bit_len": 5
+                "bit_string": "0101100",
+                "bit_int": 44,
+                "bit_len": 7
             },
             "bit_series": {
-                "bit_start": 11,
+                "bit_start": 9,
                 "bit_stop": 15,
-                "bit_len": 5
+                "bit_len": 7
             },
             "args": [
                 {
@@ -2048,8 +2048,8 @@
                             "is_arg_type": "Ro",
                             "bit_series": {
                                 "bit_start": 6,
-                                "bit_stop": 10,
-                                "bit_len": 5
+                                "bit_stop": 8,
+                                "bit_len": 3
                             }
                         }
                     ]
@@ -3213,7 +3213,7 @@
                         "bit_len": 7
                     },
                     "num_range": {
-                        "min_value": 0,
+                        "min_value": -508,
                         "max_value": 508,
                         "bit_len": 9,
                         "twos_compliment": false,

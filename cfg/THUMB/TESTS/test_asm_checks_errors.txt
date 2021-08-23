@@ -1,0 +1,13 @@
+@TTL |AllOpCodeTests|
+@AREA |Program| @CODE, @READONLY
+@ENTRY
+    LDR     R3, [PC, #844]              ; 0100111001001100 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, R3 register code and Word8 value
+    LDR     R2, [R5, #116]              ; 0110110100101010 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, wrong Offset5 value
+    ADD     R2, PC, #572                ; 1010001000111100 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, wrong Word8 value
+    ADD     R6, SP, #212                ; 1010111011010100 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, wrong Word8 value
+    ADD     SP, #268                    ; 1011000000001100 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, wrong SWord7 value
+    ADD     SP, #-268                   ; 1011000010001100
+    PUSH    {R0-R4, LR}                 ; 1011010100011111
+    POP     {R2, R6, PC}                ; 1011110101000100
+    STMIA   R0!, {R3, R4, R5, R6, R7}   ; 1100000011111001 WEB ASSEMBLER GENERATES ERRONEOUS BIN-CODE, includes R0 in range
+@END

@@ -77,8 +77,14 @@ public class Utils {
                     if(padLeft) {
                         ret = "0" + ret;
                     } else {
-                        ret+= "0";
+                        ret += "0";
                     }
+                }
+            } else if(s.length() > len) {
+                if(padLeft) {
+                    ret = ret.substring(s.length() - len);
+                } else {
+                    ret = ret.substring(0, (s.length() - len));
                 }
             }
         }

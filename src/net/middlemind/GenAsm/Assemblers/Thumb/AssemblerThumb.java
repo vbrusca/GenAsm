@@ -1494,7 +1494,9 @@ public class AssemblerThumb implements Assembler {
                     tmpB.opCodeArg.arg_index++;
                     tmpB.bitSeries = tmpB.opCodeArg.bit_series;
                     tmpB.tokenOpCodeArg = token;
-                    buildEntries.add(tmpB);
+                    if(tmpB.opCodeArg != null && tmpB.opCodeArg.bit_series.bit_len != -1) {
+                        buildEntries.add(tmpB);
+                    }
                     opCodeArgIdx++;
 
                     if(!Utils.IsListEmpty(token.payload)) {
@@ -1509,7 +1511,9 @@ public class AssemblerThumb implements Assembler {
                                     tmpB.opCodeArgSubList = opCodeArgList;
                                     tmpB.isOpCodeArgSubList = true;
                                     tmpB.tokenOpCodeArgSubList = ltoken;
-                                    buildEntries.add(tmpB);
+                                    if(tmpB.opCodeArgSubList != null && tmpB.opCodeArgSubList.bit_series.bit_len != -1) {
+                                        buildEntries.add(tmpB);
+                                    }
                                     lOpCodeArgIdx++;
                                 } else if(ltoken.isOpCode) {
                                     throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
@@ -1531,7 +1535,9 @@ public class AssemblerThumb implements Assembler {
                                         tmpB.bitSeries = tmpB.opCodeArgSubGroup.bit_series;
                                     }
                                     tmpB.tokenOpCodeArgSubGroup = ltoken;
-                                    buildEntries.add(tmpB);
+                                    if(tmpB.opCodeArgSubGroup != null && tmpB.opCodeArgSubGroup.bit_series.bit_len != -1) {
+                                        buildEntries.add(tmpB);
+                                    }
                                     lOpCodeArgIdx++;
                                 } else if(ltoken.isOpCode) {
                                     throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
@@ -1561,13 +1567,14 @@ public class AssemblerThumb implements Assembler {
             int[] inListRegisters = null;
             BuildOpCodeEntryThumb inListEntry = null;
             BuildOpCodeEntryThumb inGroupEntry = null;            
+            BuildOpCodeEntryThumb opCodeEntry = null;
             
             for(BuildOpCodeEntryThumb entry : buildEntries) {
                 resTmp = "";                
                 if(entry.isOpCode) {
+                    opCodeEntry = entry;
                     resTmp = entry.opCode.bit_rep.bit_string;
                     
-                //Process OpCode argument tokens for list
                 }else if(entry.isOpCodeArgSubList) {
                     if(entry.tokenOpCodeArgSubList.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         if(entry.tokenOpCodeArgSubList.source.equals("R0")) {
@@ -1655,7 +1662,6 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionUnexpectedTokenType("Found unexpected LIST sub-token type '" + entry.tokenOpCodeArgSubList.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                    
-                ////Process OpCode argument tokens for group
                 }else if(entry.isOpCodeArgSubGroup) {
                     if(entry.tokenOpCodeArgSubGroup.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArgSubGroup.register.bit_rep.bit_string;
@@ -1690,23 +1696,32 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArgSubGroup.source, 10);
                         }
                         
+                        //special rule for ADD OpCode
+                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                            opCodeEntry.binRepStr = "101100001";
+                            tInt *= -1;
+                        }
+                        
+                        resTmp = Integer.toBinaryString(tInt);
+                        if(entry.opCodeArgSubGroup.bit_shift != null) {
+                            if(entry.opCodeArgSubGroup.bit_shift.shift_amount > 0) {
+                                if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, false, true);
+                                } else if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, true, true);
+                                } else {
+                                    throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
+                                }
+                            }
+                        }
+                        
+                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArgSubGroup.bit_series.bit_len);
+                        tInt = Integer.parseInt(resTmp, 2);
+                                                
                         if(entry.opCodeArgSubGroup.num_range != null) {
                             if(tInt < entry.opCodeArgSubGroup.num_range.min_value || tInt >  entry.opCodeArgSubGroup.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgSubGroup.num_range.min_value + " to " + entry.opCodeArgSubGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
                             } else {
-                                resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArgSubGroup.bit_series.bit_len);
-                                if(entry.opCodeArgSubGroup.bit_shift != null) {
-                                    if(entry.opCodeArgSubGroup.bit_shift.shift_amount > 0) {
-                                        if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, false, true);
-                                        } else if(!Utils.IsStringEmpty(entry.opCodeArgSubGroup.bit_shift.shift_dir) && entry.opCodeArgSubGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgSubGroup.bit_shift.shift_amount, true, true);
-                                        } else {
-                                            throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgSubGroup.source + "' with line number " + entry.tokenOpCodeArgSubGroup.lineNum);
-                                        }
-                                    }
-                                }
-
                                 if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                                     //Flip Java number bytes to little endian
                                 } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
@@ -1784,23 +1799,32 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
                         }
                         
+                        //special rule for ADD OpCode
+                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                            opCodeEntry.binRepStr = "101100001";
+                            tInt *= -1;
+                        }                        
+                        
+                        resTmp = Integer.toBinaryString(tInt);
+                        if(entry.opCodeArg.bit_shift != null) {
+                            if(entry.opCodeArg.bit_shift.shift_amount > 0) {
+                                if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
+                                } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
+                                } else {
+                                    throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                                }
+                            }
+                        }
+                        
+                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);                        
+                        tInt = Integer.parseInt(resTmp, 2);
+                        
                         if(entry.opCodeArg.num_range != null) {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                             } else {
-                                resTmp = Utils.FormatBinString(Integer.toBinaryString(tInt), entry.opCodeArg.bit_series.bit_len);
-                                if(entry.opCodeArg.bit_shift != null) {
-                                    if(entry.opCodeArg.bit_shift.shift_amount > 0) {
-                                        if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
-                                        } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                            resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
-                                        } else {
-                                            throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
-                                        }
-                                    }
-                                }
-
                                 if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                                     //Flip Java number bytes to little endian
                                 } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
