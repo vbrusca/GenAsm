@@ -397,21 +397,21 @@ public class TokenerThumb implements Tokener {
                 ret.payload.add(tmb);                
                 count++;
                 
-                if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_OPCODE)) {
+                if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                     tmb.isOpCode = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                     tmb.isDirective = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                     tmb.isLabel = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {
                     tmb.isLabelLocal = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_LABEL_NUMERIC_LOCAL_REF)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
                     tmb.isLabelLocalRef = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_COMMENT)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_COMMENT)) {
                     tmb.isComment = true;
                     commentType = compareType;
                     inComment = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.ENTRY_TYPE_NAME_DIRECTIVE_STRING)) {
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE_STRING)) {
                     tmb.source = tmb.source.replace("|", "");
                 }
             }

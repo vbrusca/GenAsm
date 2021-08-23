@@ -14,15 +14,15 @@ public class BuildOpCodeEntryThumb {
     public JsonObjBitSeries bitSeries;
     public JsonObjIsOpCode opCode;
     public JsonObjIsOpCodeArg opCodeArg;
-    public JsonObjIsOpCodeArg opCodeArgSubGroup;
-    public JsonObjIsOpCodeArg opCodeArgSubList;    
+    public JsonObjIsOpCodeArg opCodeArgGroup;
+    public JsonObjIsOpCodeArg opCodeArgList;    
     public Token tokenOpCode;
     public Token tokenOpCodeArg;
-    public Token tokenOpCodeArgSubGroup;
-    public Token tokenOpCodeArgSubList;
+    public Token tokenOpCodeArgGroup;
+    public Token tokenOpCodeArgList;
     public boolean isOpCode;
     public boolean isOpCodeArg;
-    public boolean isOpCodeArgSubGroup;
-    public boolean isOpCodeArgSubList;    
+    public boolean isOpCodeArgGroup;
+    public boolean isOpCodeArgList;    
     public String binRepStr;
 }

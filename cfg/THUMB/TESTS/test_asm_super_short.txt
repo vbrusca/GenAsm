@@ -1,5 +1,5 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
-    STR R4, [SP,#492] ; Store the contents of R4 at the address
+    LDR R3,[PC,#844] ; Load into R3 the word found at the
 @END
