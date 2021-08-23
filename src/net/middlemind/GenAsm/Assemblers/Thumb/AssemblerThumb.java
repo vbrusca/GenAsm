@@ -271,7 +271,7 @@ public class AssemblerThumb implements Assembler {
                         reqDirectiveCount--;
                     }
                     
-                    if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_AREA)) {
+                    if(token.source.equals(JsonObjIsDirectives.NAME_AREA)) {
                         if(lastArea == -1) {
                             lastArea = line.lineNum;
                             lastAreaToken = token;
@@ -284,7 +284,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_CODE)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_CODE)) {
                         if(lastCode == -1) {
                             lastCode = line.lineNum;
                         }
@@ -293,7 +293,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastData != -1 && lastData == lastCode) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_DATA)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DATA)) {
                        if(lastData == -1) {
                             lastData = line.lineNum;
                         }                        
@@ -302,7 +302,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastCode != -1 && lastCode == lastData) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READONLY)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_READONLY)) {
                         if(lastReadOnly == -1) {
                             lastReadOnly = line.lineNum;
                         }
@@ -311,7 +311,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadOnly != -1 && lastReadOnly == lastReadWrite) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_READWRITE)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_READWRITE)) {
                         if(lastReadWrite == -1) {
                             lastReadWrite = line.lineNum;
                         }                        
@@ -320,7 +320,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadWrite != -1 && lastReadWrite == lastReadOnly) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_ENTRY)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_ENTRY)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         } else if(lastEntry == -1) {
@@ -334,7 +334,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Found multiple ENTRY directives with a new entry on line " + line.lineNum + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.DIRECTIVE_NAME_END)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_END)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         } else if(lastEntry == -1) {
@@ -823,7 +823,7 @@ public class AssemblerThumb implements Assembler {
         for(String key : symbols.symbols.keySet()) {
             Symbol symbol = symbols.symbols.get(key);
             TokenLine line = asmDataTokened.get(symbol.lineNum);
-            if(Utils.ContainsInt(JsonObjIsValidLines.ENTRY_LINES_LABEL_EMPTY, line.validLineEntry.index)) {    
+            if(Utils.ContainsInt(JsonObjIsValidLines.LINES_LABEL_EMPTY, line.validLineEntry.index)) {    
                 symbol.lineNumActive = FindNextOpCodeLine(symbol.lineNum, key);
                 symbol.isEmptyLineLabel = true;
                 Logger.wrl("Adjusting symbol line number from " + symbol.lineNum + " to " + symbol.lineNumActive + " due to symbol marking an empty line");
@@ -1182,8 +1182,8 @@ public class AssemblerThumb implements Assembler {
                     rangeRootLow = token;
                     rangeRootIdxLow = rangeRootLow.index;
                     rangeStr = rangeRootLow.source;
-                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
+                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     count = 0;
                     for(i = range[0]; i <= range[1]; i++) {
                         newToken = new Token();
@@ -1192,7 +1192,7 @@ public class AssemblerThumb implements Assembler {
                         newToken.lineNum = rangeRootLow.lineNum;
                         newToken.payload = new ArrayList<>();
                         newToken.payloadLen = 0;
-                        newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                        newToken.source = JsonObjIsRegisters.CHAR_START + i;
                         newToken.type = entryTypeRegLow;
                         newToken.type_name = entryTypeRegLow.type_name;  
                         newToken.isOpCodeArg = true;
@@ -1203,8 +1203,8 @@ public class AssemblerThumb implements Assembler {
                     rangeRootHi = token;
                     rangeRootIdxHi = rangeRootHi.index;
                     rangeStr = rangeRootHi.source;
-                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
-                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.REGISTER_CHAR_RANGE);
+                    rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
+                    range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     count = 0;
                     for(i = range[0]; i <= range[1]; i++) {
                         newToken = new Token();
@@ -1213,7 +1213,7 @@ public class AssemblerThumb implements Assembler {
                         newToken.lineNum = rangeRootHi.lineNum;
                         newToken.payload = new ArrayList<>();
                         newToken.payloadLen = 0;
-                        newToken.source = JsonObjIsRegisters.REGISTER_CHAR_START + i;
+                        newToken.source = JsonObjIsRegisters.CHAR_START + i;
                         newToken.type = entryTypeRegHi;
                         newToken.type_name = entryTypeRegHi.type_name;
                         newToken.isOpCodeArg = true;
@@ -1467,7 +1467,7 @@ public class AssemblerThumb implements Assembler {
     private boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
         for(TokenLine line : asmDataTokened) {
-            if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.ENTRY_LINE_EMPTY))) {
+            if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + line.lineNum + " with source text, '" + line.source.source + "'");
             }
         }
@@ -1657,6 +1657,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid LOW register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                         }
+                        
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
                         if(entry.tokenOpCodeArgList.source.equals("R8")) {
                             inListRegisters[0] = 1;
@@ -1684,24 +1685,28 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid HI register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                         }
+                        
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
                         if(entry.tokenOpCodeArgList.source.equals("R15") || entry.tokenOpCodeArgList.source.equals("PC")) {
                             inListRegisters[7] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid PC register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
+                        
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
                         if(entry.tokenOpCodeArgList.source.equals("R13") || entry.tokenOpCodeArgList.source.equals("SP")) {
                             inListRegisters[5] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid SP register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
+                        
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
                         if(entry.tokenOpCodeArgList.source.equals("R14") || entry.tokenOpCodeArgList.source.equals("LR")) {
                             inListRegisters[6] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
+                        
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                         throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         //TODO: throw invalid entry exception
                     
@@ -1823,6 +1828,8 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
                         }
                         
+                        entry.tokenOpCodeArgGroup.value = tInt;
+                        
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST)) {
                         throw new ExceptionInvalidEntry("Found invalid STOP LIST entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         
                     
@@ -1877,7 +1884,7 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
                         }
                         
-                        //special rule for ADD OpCode
+                        //special rule for ADD OpCode '101100000'
                         if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
@@ -1923,6 +1930,9 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
+                        
+                        entry.tokenOpCodeArg.value = tInt;
+                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST)) {
                         inList = true;
                         inListRegisters = new int[8];

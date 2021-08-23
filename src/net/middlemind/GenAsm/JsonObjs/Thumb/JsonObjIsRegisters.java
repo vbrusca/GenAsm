@@ -12,9 +12,9 @@ import net.middlemind.GenAsm.Utils;
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 12:58 PM EST
  */
 public class JsonObjIsRegisters extends JsonObjBase {
-    public static String REGISTER_CHAR_START = "R";
-    public static String REGISTER_CHAR_RANGE = "-";
-    public static String REGISTER_CHAR_SEPARATOR = ",";
+    public static String CHAR_START = "R";
+    public static String CHAR_RANGE = "-";
+    public static String CHAR_SEPARATOR = ",";
     
     public String obj_name;
     public String set_name;

@@ -15,6 +15,7 @@ public class JsonObjIsOpCode extends JsonObjBase {
     
     public String obj_name;
     public String op_code_name;
+    public int index;
     public String arg_separator;
     public int arg_len;
     public boolean is_write_op_code;
@@ -33,6 +34,7 @@ public class JsonObjIsOpCode extends JsonObjBase {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjName: " + obj_name);
         Logger.wrl(prefix + "OpCodeName: " + op_code_name);
+        Logger.wrl(prefix + "Index: " + index);
         Logger.wrl(prefix + "ArgSeparator: " + arg_separator);
         Logger.wrl(prefix + "ArgLen: " + arg_len);
         Logger.wrl(prefix + "IsWriteOpCode: " + is_write_op_code);
