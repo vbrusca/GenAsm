@@ -1559,24 +1559,25 @@ public class AssemblerThumb implements Assembler {
             
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
-            List<BuildOpCodeEntryThumb> buildEntries = new ArrayList<>();
+            List<BuildOpCodeThumb> buildEntries = new ArrayList<>();
             List<JsonObjIsOpCodeArg> opCodeArgsSub = null;
             Collections.sort(opCodeArgs, new JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorter.JsonObjIsOpCodeArgSorterType.ARG_INDEX_ASC));
             Collections.sort(line.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
-            BuildOpCodeEntryThumb tmpB = null;
+            BuildOpCodeThumb tmpB = null;
             int opCodeArgIdx = 0;
             
             //Prepare BuilOpCodeEntry list based on tokens and json arguments
             for(Token token : line.payload) {
                 lastToken = token;
                 if(token.isOpCodeArg) {
-                    tmpB = new BuildOpCodeEntryThumb();
+                    tmpB = new BuildOpCodeThumb();
                     tmpB.isOpCodeArg = true;
                     tmpB.opCodeArg = (JsonObjIsOpCodeArg)opCodeArgs.get(opCodeArgIdx);
-                    tmpB.opCodeArg.arg_index++;
                     tmpB.bitSeries = tmpB.opCodeArg.bit_series;
                     tmpB.tokenOpCodeArg = token;
-                    buildEntries.add(tmpB);
+                    if(tmpB.opCodeArg.bit_index != -1) {
+                        buildEntries.add(tmpB);
+                    }
                     opCodeArgIdx++;
                     
                     if(!Utils.IsListEmpty(token.payload) && !Utils.IsListEmpty(tmpB.opCodeArg.sub_args)) {
@@ -1589,6 +1590,7 @@ public class AssemblerThumb implements Assembler {
                             Collections.sort(token.payload, new TokenSorter(TokenSorterType.INDEX_ASC));
                             boolean regRangeLow = false;
                             boolean regRangeHi = false;
+                            
                             if(opCodeArgsSub.get(0).is_entry_types.contains(JsonObjIsEntryTypes.NAME_REGISTER_RANGE_LOW)) {
                                 regRangeLow = true;
                             } else if(opCodeArgsSub.get(0).is_entry_types.contains(JsonObjIsEntryTypes.NAME_REGISTER_RANGE_HI)) {
@@ -1603,7 +1605,7 @@ public class AssemblerThumb implements Assembler {
                                         llOpCodeArgIdx++;
                                     }
                                     
-                                    tmpB = new BuildOpCodeEntryThumb();
+                                    tmpB = new BuildOpCodeThumb();
                                     tmpB.isOpCodeArgList = true;
                                     
                                     if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST)) {
@@ -1634,7 +1636,7 @@ public class AssemblerThumb implements Assembler {
 
                             for(Token ltoken : token.payload) {
                                 if(ltoken.isOpCodeArg) {
-                                    tmpB = new BuildOpCodeEntryThumb();
+                                    tmpB = new BuildOpCodeThumb();
                                     tmpB.isOpCodeArgGroup = true;
                                     
                                     if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                                    
@@ -1661,7 +1663,7 @@ public class AssemblerThumb implements Assembler {
                     }
                     
                 } else if(token.isOpCode) {
-                    tmpB = new BuildOpCodeEntryThumb();
+                    tmpB = new BuildOpCodeThumb();
                     tmpB.isOpCode = true;
                     tmpB.bitSeries = opCode.bit_series;
                     tmpB.opCode = opCode;
@@ -1677,11 +1679,11 @@ public class AssemblerThumb implements Assembler {
             boolean inList = false;
             boolean inGroup = false;
             int[] inListRegisters = null;
-            BuildOpCodeEntryThumb inListEntry = null;
-            BuildOpCodeEntryThumb inGroupEntry = null;            
-            BuildOpCodeEntryThumb opCodeEntry = null;
+            BuildOpCodeThumb inListEntry = null;
+            BuildOpCodeThumb inGroupEntry = null;            
+            BuildOpCodeThumb opCodeEntry = null;
             
-            for(BuildOpCodeEntryThumb entry : buildEntries) {
+            for(BuildOpCodeThumb entry : buildEntries) {
                 resTmp = "";                
                 if(entry.isOpCode) {
                     opCodeEntry = entry;
@@ -2015,10 +2017,11 @@ public class AssemblerThumb implements Assembler {
             Collections.sort(buildEntries, buildEntriesSorter);
 
             res = "";
-            for(BuildOpCodeEntryThumb entry : buildEntries) {
+            for(BuildOpCodeThumb entry : buildEntries) {
                 res += entry.binRepStr;
             }
-            line.payloadBinRepStr = res;
+            line.payloadBinRepStrEndianBig = res;
+            line.payloadBinRepStrEndianLil = Utils.EndianFlip(res);
             
             //Build final string representation for this assembly line
         } else {

@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Victor G. Brusca, Middlemind Games 08/15/2021 1:42 PM EST
  */
-public class BuildOpCodeEntryThumbSorter implements Comparator<BuildOpCodeEntryThumb> {
+public class BuildOpCodeEntryThumbSorter implements Comparator<BuildOpCodeThumb> {
     public enum BuildOpCodeEntryThumbSorterType {
         BIT_SERIES_ASC,
         BIT_SERIES_DSC
@@ -23,9 +23,9 @@ public class BuildOpCodeEntryThumbSorter implements Comparator<BuildOpCodeEntryT
         sortType = sType;
     }
     
-    public boolean Clean(List<BuildOpCodeEntryThumb> buildEntries) {
-        List<BuildOpCodeEntryThumb> clearEntries = new ArrayList<>();
-        for(BuildOpCodeEntryThumb entry : buildEntries) {
+    public boolean Clean(List<BuildOpCodeThumb> buildEntries) {
+        List<BuildOpCodeThumb> clearEntries = new ArrayList<>();
+        for(BuildOpCodeThumb entry : buildEntries) {
             if(entry.bitSeries == null) {
                 clearEntries.add(entry);
             }
@@ -34,7 +34,7 @@ public class BuildOpCodeEntryThumbSorter implements Comparator<BuildOpCodeEntryT
     }
     
     @Override
-    public int compare(BuildOpCodeEntryThumb a, BuildOpCodeEntryThumb b) {
+    public int compare(BuildOpCodeThumb a, BuildOpCodeThumb b) {
         if(sortType == BuildOpCodeEntryThumbSorterType.BIT_SERIES_DSC) {
             return (b.bitSeries.bit_start - a.bitSeries.bit_start);
         } else {

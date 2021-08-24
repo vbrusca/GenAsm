@@ -10,6 +10,29 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  */
 @SuppressWarnings({"null", "UnusedAssignment"})
 public class Utils {
+    
+    public static String EndianFlip(String binStr) {
+        int len = binStr.length();
+        String[] bytes = new String[len / 8];
+        int currentByteIdx = 0;
+        String currentByte = "";
+        
+        for(int i = 0; i < len; i++) {
+            currentByte += binStr.charAt(i);
+            if(currentByte.length() == 8) {
+                bytes[currentByteIdx] = currentByte;
+                currentByteIdx++;
+                currentByte = "";
+            }
+        }
+        
+        String res = "";
+        for(int j = bytes.length - 1; j >= 0; j--) {
+            res += bytes[j];
+        }
+        return res;
+    }
+    
     public static String ShiftBinStr(String binStr, int shiftCount, boolean shiftRight, boolean padZeros) {
         String binStr2 = binStr;
         for(int i = 0; i < shiftCount; i++) {

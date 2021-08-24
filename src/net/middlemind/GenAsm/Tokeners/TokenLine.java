@@ -4,7 +4,7 @@ import net.middlemind.GenAsm.Lexers.ArtifactLine;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective;
 import java.util.List;
-import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumb;
+import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeThumb;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine;
 
 /**
@@ -15,7 +15,8 @@ public class TokenLine {
     public String obj_name = "TokenLine";
     public String payloadOpCode;
     public String payloadDirective;
-    public String payloadBinRepStr;    
+    public String payloadBinRepStrEndianBig;
+    public String payloadBinRepStrEndianLil;    
     public String lineNumHex;
     public String lineNumBin;
     public int lineNum;
@@ -28,6 +29,6 @@ public class TokenLine {
     public JsonObjIsValidLine validLineEntry;
     public List<JsonObjIsOpCode> matchesOpCode;
     public List<JsonObjIsDirective> matchesDirective;
-    public List<BuildOpCodeEntryThumb> buildEntries;
+    public List<BuildOpCodeThumb> buildEntries;
     public List<Token> payload;
 }

@@ -9,8 +9,8 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg;
  *
  * @author Victor G. Brusca, Middlemind Games 08/17/2021 6:59 PM EST
  */
-public class BuildOpCodeEntryThumb {
-    public String obj_name = "BuildOpCodeEntryThumb";
+public class BuildOpCodeThumb {
+    public String obj_name = "BuildOpCodeThumb";
     public JsonObjBitSeries bitSeries;
     public JsonObjIsOpCode opCode;
     public JsonObjIsOpCodeArg opCodeArg;
@@ -23,6 +23,6 @@ public class BuildOpCodeEntryThumb {
     public boolean isOpCode;
     public boolean isOpCodeArg;
     public boolean isOpCodeArgGroup;
-    public boolean isOpCodeArgList;    
+    public boolean isOpCodeArgList;
     public String binRepStr;
 }
