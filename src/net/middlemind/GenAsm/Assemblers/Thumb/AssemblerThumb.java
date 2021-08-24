@@ -116,108 +116,144 @@ public class AssemblerThumb implements Assembler {
     public int pcPreFetchBytes;
     public int pcPreFetchWords;
     public boolean isEndianBig = false;
-    public boolean isEndianLittle = true;    
+    public boolean isEndianLittle = true; 
+    
+    public TokenLine lastLine;
+    public Token lastToken;
+    public int lastStep;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) throws Exception {
-        Logger.wrl("AssemblerThumb: RunAssembler: Start");
-        jsonSource = new Hashtable<String, String>();
-        isaLoader = new Hashtable<String, Loader>();        
-        isaData = new Hashtable<String, JsonObj>();
-        isaDataSet = jsonIsSet;
-        asmSourceFile = assemblySourceFile;
-        symbols = new Symbols();
+        try {
+            Logger.wrl("AssemblerThumb: RunAssembler: Start");
+            jsonSource = new Hashtable<String, String>();
+            isaLoader = new Hashtable<String, Loader>();        
+            isaData = new Hashtable<String, JsonObj>();
+            isaDataSet = jsonIsSet;
+            asmSourceFile = assemblySourceFile;
+            symbols = new Symbols();
 
-        requiredDirectives = new ArrayList<String>();
-        requiredDirectives.add("@AREA");
-        requiredDirectives.add("@TTL");            
-        requiredDirectives.add("@ENTRY");
-        requiredDirectives.add("@END");            
+            requiredDirectives = new ArrayList<String>();
+            requiredDirectives.add("@AREA");
+            requiredDirectives.add("@TTL");            
+            requiredDirectives.add("@ENTRY");
+            requiredDirectives.add("@END");            
 
-        Logger.wrl("");
-        Logger.wrl("STEP1: Process JsonObjIsSet's file entries and load then parse the json object data");
-        LoadAndParseJsonObjData();
+            Logger.wrl("");
+            lastStep = 1;
+            Logger.wrl("STEP 1: Process JsonObjIsSet's file entries and load then parse the json object data");
+            LoadAndParseJsonObjData();
 
-        Logger.wrl("");
-        Logger.wrl("STEP2: Link loaded json object data");
-        LinkJsonObjData();
+            Logger.wrl("");
+            lastStep = 2;
+            Logger.wrl("STEP 2: Link loaded json object data");
+            LinkJsonObjData();
 
-        Logger.wrl("");
-        Logger.wrl("STEP3: Load and lexerize the assembly source file");           
-        LoadAndLexerizeAssemblySource();
-        WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
+            Logger.wrl("");
+            lastStep = 3;
+            Logger.wrl("STEP 3: Load and lexerize the assembly source file");           
+            LoadAndLexerizeAssemblySource();
+            WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
 
-        Logger.wrl("");
-        Logger.wrl("STEP4: Tokenize the lexerized artifacts");
-        TokenizeLexerArtifacts();
-        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
+            Logger.wrl("");
+            lastStep = 4;
+            Logger.wrl("STEP 4: Tokenize the lexerized artifacts");
+            TokenizeLexerArtifacts();
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
 
-        Logger.wrl("");
-        Logger.wrl("STEP5: Validate token lines");
-        ValidateTokenizedLines();
-        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+            Logger.wrl("");
+            lastStep = 5;
+            Logger.wrl("STEP 5: Validate token lines");
+            ValidateTokenizedLines();
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
 
-        Logger.wrl("");
-        Logger.wrl("STEP6: Combine comment tokens as children of the initial comment token");
-        CollapseCommentTokens();
+            Logger.wrl("");
+            lastStep = 6;
+            Logger.wrl("STEP 6: Combine comment tokens as children of the initial comment token");
+            CollapseCommentTokens();
 
-        Logger.wrl("");
-        Logger.wrl("STEP7: Expand register ranges into individual register entries");
-        ExpandRegisterRangeTokens();
+            Logger.wrl("");
+            lastStep = 7;
+            Logger.wrl("STEP 7: Expand register ranges into individual register entries");
+            ExpandRegisterRangeTokens();
 
-        Logger.wrl("");
-        Logger.wrl("STEP8: Combine list and group tokens as children of the initial list or group token");
-        CollapseListAndGroupTokens();
+            Logger.wrl("");
+            lastStep = 8;
+            Logger.wrl("STEP 8: Combine list and group tokens as children of the initial list or group token");
+            CollapseListAndGroupTokens();
 
-        Logger.wrl("");
-        Logger.wrl("STEP9: Mark OpCode, OpCode argument, and register tokens");
-        PopulateOpCodeAndArgData();
+            Logger.wrl("");
+            lastStep = 9;
+            Logger.wrl("STEP 9: Mark OpCode, OpCode argument, and register tokens");
+            PopulateOpCodeAndArgData();
 
-        Logger.wrl("");
-        Logger.wrl("STEP10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
-        PopulateDirectiveArgAndAreaData();
-        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
+            Logger.wrl("");
+            lastStep = 10;
+            Logger.wrl("STEP 10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
+            PopulateDirectiveArgAndAreaData();
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
 
-        Logger.wrl("");
-        Logger.wrl("STEP11: Validate OpCode lines against known OpCodes by comparing arguments");
-        ValidateOpCodeLines();
+            Logger.wrl("");
+            lastStep = 11;
+            Logger.wrl("STEP 11: Validate OpCode lines against known OpCodes by comparing arguments");
+            ValidateOpCodeLines();
 
-        Logger.wrl("");
-        Logger.wrl("STEP12: Validate directive lines against known directives by comparing arguments");
-        ValidateDirectiveLines();
-        WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
-        WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
+            Logger.wrl("");
+            lastStep = 12;
+            Logger.wrl("STEP 12: Validate directive lines against known directives by comparing arguments");
+            ValidateDirectiveLines();
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
+            WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
 
-        Logger.wrl("");
-        Logger.wrl("List Assembly Source Areas:");
-        if(areaThumbCode != null) {
-            Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
-            Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
-            WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
-            WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
-            BuildBinLines(asmAreaLinesCode, areaThumbCode);
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
-        } else {
-            Logger.wrl("AreaThumbCode: is null");
+            Logger.wrl("");
+            Logger.wrl("List Assembly Source Areas:");
+            if(areaThumbCode != null) {
+                Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
+                Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
+                WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
+                WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
+                BuildBinLines(asmAreaLinesCode, areaThumbCode);
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
+            } else {
+                Logger.wrl("AreaThumbCode: is null");
+            }
+
+            if(areaThumbData != null) {
+                Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
+                Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
+                WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
+                WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
+                BuildBinLines(asmAreaLinesData, areaThumbData);
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
+            } else {
+                Logger.wrl("AreaThumbData: is null");
+            }
+
+            Logger.wrl("");
+            Logger.wrl("Assembler Line Data:");
+            Logger.wrl("LineLengthBytes: " + lineLenBytes);
+            Logger.wrl("LineLengthWords: " + lineLenWords);
+            Logger.wrl("LineBitSeries:");
+            lineBitSeries.Print("\t");
+        } catch(Exception e) {
+            Logger.wrlErr("Error in RunAssembler method on step: " + lastStep);
+            if(lastLine != null) {
+                Logger.wrlErr("Last line processed: " + lastLine.lineNum);
+                if(lastLine.source != null) {
+                    Logger.wrlErr("Last line source: " + lastLine.source.source);
+                }
+            } else {
+                Logger.wrlErr("Last line processed: unknown");
+                Logger.wrlErr("Last line source: unknown");                
+            }
+            
+            if(lastToken != null) {
+                Logger.wrlErr("Last token processed: " + lastToken.source + " with index " + lastToken.index + ", type name '" + lastToken.type_name + "', and line number " + lastToken.lineNum);
+            } else {
+                Logger.wrlErr("Last token processed: unknown");
+            }
+            throw e;
         }
-
-        if(areaThumbData != null) {
-            Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
-            Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
-            WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
-            WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
-            BuildBinLines(asmAreaLinesData, areaThumbData);
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
-        } else {
-            Logger.wrl("AreaThumbData: is null");
-        }
-
-        Logger.wrl("");
-        Logger.wrl("Assembler Line Data:");
-        Logger.wrl("LineLengthBytes: " + lineLenBytes);
-        Logger.wrl("LineLengthWords: " + lineLenWords);
-        Logger.wrl("LineBitSeries:");
-        lineBitSeries.Print("\t");
     }
     
     //DIRECTIVE METHODS
@@ -248,7 +284,8 @@ public class AssemblerThumb implements Assembler {
         int activeLineCount = 0;
         AreaThumb tmpArea = null;
         
-        for(TokenLine line : asmDataTokened) {            
+        for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;
@@ -258,7 +295,8 @@ public class AssemblerThumb implements Assembler {
             }
             
             directiveFound = false;
-            for(Token token : line.payload) {                
+            for(Token token : line.payload) {
+                lastToken = token;
                 if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                     if(!directiveFound) {
                         directiveFound = true;
@@ -284,6 +322,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_CODE)) {
                         if(lastCode == -1) {
                             lastCode = line.lineNum;
@@ -293,6 +332,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastData != -1 && lastData == lastCode) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_DATA)) {
                        if(lastData == -1) {
                             lastData = line.lineNum;
@@ -302,6 +342,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastCode != -1 && lastCode == lastData) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_READONLY)) {
                         if(lastReadOnly == -1) {
                             lastReadOnly = line.lineNum;
@@ -311,6 +352,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadOnly != -1 && lastReadOnly == lastReadWrite) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_READWRITE)) {
                         if(lastReadWrite == -1) {
                             lastReadWrite = line.lineNum;
@@ -320,6 +362,7 @@ public class AssemblerThumb implements Assembler {
                         if(lastReadWrite != -1 && lastReadWrite == lastReadOnly) {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_ENTRY)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
@@ -334,6 +377,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Found multiple ENTRY directives with a new entry on line " + line.lineNum + " with source " + line.source.source);
                         }
+                        
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_END)) {
                         if(lastArea == -1) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
@@ -465,6 +509,7 @@ public class AssemblerThumb implements Assembler {
                     }
                 }                
             }
+            
         } else if(areaThumbCode != null) {
             //process code area first
             asmAreaLinesCode = new ArrayList<TokenLine>();
@@ -477,7 +522,8 @@ public class AssemblerThumb implements Assembler {
                     asmAreaLinesCode.add(line);
                     activeLineCount += lineLenBytes;
                 }
-            }                
+            }
+            
         } else {
             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
         }
@@ -493,6 +539,7 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsDirective directive = null; 
         
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             if(line.isLineDirective) {
                 directiveFound = false;
                 directiveName = null;
@@ -501,6 +548,7 @@ public class AssemblerThumb implements Assembler {
                 args = null;
                 
                 for(Token token : line.payload) {
+                    lastToken = token;
                     if(!directiveFound) {
                         if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                             directiveFound = true;
@@ -596,13 +644,15 @@ public class AssemblerThumb implements Assembler {
         TokenLine lastLabelLine = null;
         Symbol symbol = null;
         
-        for(TokenLine line : asmDataTokened) {            
+        for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             opCodeFound = false;
             opCodeName = null;
             opCodeIdx = -1;
             labelArgs = 0;
             
             for(Token token : line.payload) {
+                lastToken = token;
                 //MATCH REGISTERS
                 if(Utils.ContainsStr(JsonObjIsEntryTypes.NAME_REGISTERS, token.type_name)) {
                     String regCode = token.source;
@@ -781,6 +831,7 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsOpCode opCode = null; 
         
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             if(line.isLineOpCode) {
                 opCodeFound = false;
                 opCodeName = null;
@@ -789,6 +840,7 @@ public class AssemblerThumb implements Assembler {
                 args = null;
                 
                 for(Token token : line.payload) {
+                    lastToken = token;
                     if(!opCodeFound) {
                         if(token.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                             opCodeFound = true;
@@ -857,7 +909,6 @@ public class AssemblerThumb implements Assembler {
         int opCodeArgIdxSub = -1;
         
         for(JsonObjIsOpCode opCode : opCodeMatches) {
-            //Logger.wrl("Looking at OpCode: " + opCode.op_code_name);
             opCodeArg = null;
             argToken = null;
             argFound = true;
@@ -874,14 +925,12 @@ public class AssemblerThumb implements Assembler {
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
-                    //Logger.wrl("AAA"); 
                     argFound = false;
                     break;
                 }
                                 
                 if(opCodeArg != null && argToken != null) {
                     if(!(argToken.isLabelRef || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                        //Logger.wrl("BBB");
                         argFound = false;
                         break;
                     }
@@ -900,7 +949,6 @@ public class AssemblerThumb implements Assembler {
                             if(argToken.payload != null && (j + regRangeOffset) < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j + regRangeOffset);
                             } else {
-                                //Logger.wrl("CCC");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -923,25 +971,21 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 } else {
                                     if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
-                                        //Logger.wrl("DDD: " + argTokenSub.type_name + ", " + opCodeArgSub.is_entry_types.toString());
                                         argFound = false;
                                         argFoundSub = false;
                                         break;
                                     }
                                 }
                             } else {
-                                //Logger.wrl("EEE");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
                             }
                         }
                         
-                        //Logger.wrl("TokenPayloadSize: " + argToken.payload.size() + ", RegRangeOffset: " + regRangeOffset + ", OpCodeSubArgSize: " + opCodeArg.sub_args.size());
                         if(regRangeOffset > 0) {
                             //Register range offset is lower by 1 to allow for RegisterRange type, -1 for list close
                             if((argToken.payload.size() - regRangeOffset - 1) != opCodeArg.sub_args.size()) {
-                                //Logger.wrl("FFF-0");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -949,7 +993,6 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             //-1 for group close
                             if((argToken.payload.size() - 1) != opCodeArg.sub_args.size()) {
-                                //Logger.wrl("FFF-1");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -957,7 +1000,6 @@ public class AssemblerThumb implements Assembler {
                         }
                     }
                 } else {
-                    Logger.wrl("GGG");
                     argFound = false;
                     argFoundSub = false;
                     break;
@@ -991,6 +1033,7 @@ public class AssemblerThumb implements Assembler {
     
     private int CountArgTokens(List<Token> payload, int argCount, String argCategory, boolean isOpCodeArg) {
         for(Token token : payload) {
+            lastToken = token;
             if(token.type != null && ((JsonObjIsEntryType)token.type).category.equals(argCategory)) {
                 argCount++;
                 if(isOpCodeArg) {
@@ -1037,6 +1080,7 @@ public class AssemblerThumb implements Assembler {
         int copyLen = -1;        
         
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             rootStartList = null;
             rootStartIdxList = -1;
             rootStartGroup = null;
@@ -1054,18 +1098,23 @@ public class AssemblerThumb implements Assembler {
             copyLen = -1;
             
             for(Token token : line.payload) {
+                lastToken = token;
                 if(token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST)) {
                     rootStartList = token;
                     rootStartIdxList = rootStartList.index;
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP)) {                    
                     rootStartGroup = token;
                     rootStartIdxGroup = rootStartGroup.index;
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST)) {
                     rootStopList = token;
                     rootStopIdxList = rootStopList.index;
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                     rootStopGroup = token;
-                    rootStopIdxGroup = rootStopGroup.index;                    
+                    rootStopIdxGroup = rootStopGroup.index;
+                    
                 }
             }
             
@@ -1092,6 +1141,7 @@ public class AssemblerThumb implements Assembler {
                 
                 int count = 0;
                 for(Token token : rootStartList.payload) {
+                    lastToken = token;
                     token.index = count;
                     count++;
                 }
@@ -1110,6 +1160,7 @@ public class AssemblerThumb implements Assembler {
                 
                 int count = 0;
                 for(Token token : rootStartGroup.payload) {
+                    lastToken = token;
                     token.index = count;
                     count++;
                 }                
@@ -1161,6 +1212,7 @@ public class AssemblerThumb implements Assembler {
         JsonObjIsEntryType entryTypeRegHi = null;
         
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             rangeRootIdxLow = 0;
             rangeRootIdxHi = 0;
             rangeRootLow = null;                
@@ -1177,7 +1229,9 @@ public class AssemblerThumb implements Assembler {
             entryTypeRegHi = FindEntryType(JsonObjIsEntryTypes.NAME_REGISTER_HI);                
 
             for(Token token : line.payload) {
+                lastToken = token;
                 CleanTokenSource(token);
+                
                 if(token.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_RANGE_LOW)) {
                     rangeRootLow = token;
                     rangeRootIdxLow = rangeRootLow.index;
@@ -1185,6 +1239,7 @@ public class AssemblerThumb implements Assembler {
                     rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     count = 0;
+                    
                     for(i = range[0]; i <= range[1]; i++) {
                         newToken = new Token();
                         newToken.artifact = rangeRootLow.artifact;
@@ -1199,6 +1254,7 @@ public class AssemblerThumb implements Assembler {
                         rangeAddTokensLow.add(newToken);
                         count++;
                     }
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_RANGE_HI)) {
                     rangeRootHi = token;
                     rangeRootIdxHi = rangeRootHi.index;
@@ -1206,6 +1262,7 @@ public class AssemblerThumb implements Assembler {
                     rangeStr = CleanRegisterRangeString(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     range = Utils.GetIntsFromRange(rangeStr, JsonObjIsRegisters.CHAR_RANGE);
                     count = 0;
+                    
                     for(i = range[0]; i <= range[1]; i++) {
                         newToken = new Token();
                         newToken.artifact = rangeRootHi.artifact;
@@ -1230,6 +1287,7 @@ public class AssemblerThumb implements Assembler {
 
                 count = 0;
                 for(Token token : line.payload) {
+                    lastToken = token;
                     token.index = count;
                     count++;
                 }
@@ -1242,6 +1300,7 @@ public class AssemblerThumb implements Assembler {
 
                 count = 0;
                 for(Token token : line.payload) {
+                    lastToken = token;
                     token.index = count;
                     count++;
                 }                    
@@ -1256,11 +1315,13 @@ public class AssemblerThumb implements Assembler {
         List<Token> clearTokens = null;  
             
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             inComment = false;
             commentRoot = null;
             clearTokens = new ArrayList<>();  
             
             for(Token token : line.payload) {
+                lastToken = token;
                 if(token.type_name.equals(JsonObjIsEntryTypes.NAME_COMMENT)) {
                     if(!inComment) {
                         commentRoot = token;
@@ -1433,6 +1494,7 @@ public class AssemblerThumb implements Assembler {
             entries = -1;
             
             for(Token token : line.payload) {
+                lastToken = token;
                 res = FindValidLineEntry(validLine, token, currentEntry, 0);
                 if(res == null) {
                     break;
@@ -1467,27 +1529,24 @@ public class AssemblerThumb implements Assembler {
     private boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
         for(TokenLine line : asmDataTokened) {
+            lastLine = line;
             if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + line.lineNum + " with source text, '" + line.source.source + "'");
             }
         }
         return true;
     }
-
-    //TODO: Create AREA specific line listings and output them to json files
-    //TODO: Create AREA specific build entries and output them to json files
-    //TODO: Build OpCode instructions and output them to a linked listing file 
     
     //BUILD OPCODE
     private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine {
         if(area.isCode) {
-            //build opcode
             for(TokenLine line : areaLines) {
+                lastLine = line;
                 BuildBinOpCode(line);
             }
         } else if(area.isData) {
-            //build directive
             for(TokenLine line : areaLines) {
+                lastLine = line;
                 //BuildBinDirective(line);
             }
         } else {
@@ -1509,6 +1568,7 @@ public class AssemblerThumb implements Assembler {
             
             //Prepare BuilOpCodeEntry list based on tokens and json arguments
             for(Token token : line.payload) {
+                lastToken = token;
                 if(token.isOpCodeArg) {
                     tmpB = new BuildOpCodeEntryThumb();
                     tmpB.isOpCodeArg = true;
@@ -1537,7 +1597,6 @@ public class AssemblerThumb implements Assembler {
                             
                             for(Token ltoken : token.payload) {
                                 if(ltoken.isOpCodeArg) {
-                                    //Logger.wrl("inRangeLow: " + regRangeLow + "LTokenTypeName: " + ltoken.type_name + " Idx: " + llOpCodeArgIdx);
                                     if(regRangeLow && !ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
                                         llOpCodeArgIdx++;
                                     } else if(regRangeHi && !ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
