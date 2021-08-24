@@ -153,19 +153,19 @@ public class AssemblerThumb implements Assembler {
             lastStep = 3;
             Logger.wrl("STEP 3: Load and lexerize the assembly source file");           
             LoadAndLexerizeAssemblySource();
-            WriteObject(asmDataLexed, "Assembly Lexerized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_lexed.json");        
+            WriteObject(asmDataLexed, "Assembly Lexerized Data", "./cfg/THUMB/TESTS/output_lexed.json");        
 
             Logger.wrl("");
             lastStep = 4;
             Logger.wrl("STEP 4: Tokenize the lexerized artifacts");
             TokenizeLexerArtifacts();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase0.json");            
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase0.json");            
 
             Logger.wrl("");
             lastStep = 5;
             Logger.wrl("STEP 5: Validate token lines");
             ValidateTokenizedLines();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase1.json");            
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase1.json");            
 
             Logger.wrl("");
             lastStep = 6;
@@ -191,7 +191,7 @@ public class AssemblerThumb implements Assembler {
             lastStep = 10;
             Logger.wrl("STEP 10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
             PopulateDirectiveArgAndAreaData();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase2.json");
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase2.json");
 
             Logger.wrl("");
             lastStep = 11;
@@ -202,18 +202,18 @@ public class AssemblerThumb implements Assembler {
             lastStep = 12;
             Logger.wrl("STEP 12: Validate directive lines against known directives by comparing arguments");
             ValidateDirectiveLines();
-            WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase3.json");            
-            WriteObject(symbols, "Symbol Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_symbols.json");
+            WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase3.json");            
+            WriteObject(symbols, "Symbol Data", "./cfg/THUMB/TESTS/output_symbols.json");
 
             Logger.wrl("");
             Logger.wrl("List Assembly Source Areas:");
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
                 Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
-                WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_lines.json");
-                WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_code_desc.json");
+                WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "./cfg/THUMB/TESTS/output_area_code_lines.json");
+                WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "./cfg/THUMB/TESTS/output_area_code_desc.json");
                 BuildBinLines(asmAreaLinesCode, areaThumbCode);
-                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase4.json");
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -221,10 +221,10 @@ public class AssemblerThumb implements Assembler {
             if(areaThumbData != null) {
                 Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
                 Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
-                WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_lines.json");
-                WriteObject(areaThumbData, "Assembly Source Area Data Desc", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_area_data_desc.json");                
+                WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "./cfg/THUMB/TESTS/output_area_data_lines.json");
+                WriteObject(areaThumbData, "Assembly Source Area Data Desc", "./cfg/THUMB/TESTS/output_area_data_desc.json");                
                 BuildBinLines(asmAreaLinesData, areaThumbData);
-                WriteObject(asmDataTokened, "Assembly Tokenized Data", "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/output_tokened_phase4.json");                
+                WriteObject(asmDataTokened, "Assembly Tokenized Data", "./cfg/THUMB/TESTS/output_tokened_phase4.json");                
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }

@@ -26,3 +26,5 @@ cfg/THUMB/TESTS/output_*
 .DS_Store
 /nbproject/*.properties
 /nbproject/*.xml
+*.properties
+*.xml

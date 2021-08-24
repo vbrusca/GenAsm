@@ -87,11 +87,11 @@
                 ],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               },
               "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
               "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
             }
           ],
@@ -128,11 +128,11 @@
                 ],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               },
               "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
               "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
             },
             {
@@ -158,11 +158,11 @@
                 ],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               },
               "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
               "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
             }
           ],
@@ -170,7 +170,7 @@
         }
       ],
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "fileName": "./cfg/THUMB/is_valid_lines.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
     },
     "matchesDirective": [
@@ -211,11 +211,11 @@
                   ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                  "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                 },
                 "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               }
             ],
@@ -251,11 +251,11 @@
                   ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                  "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                 },
                 "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               }
             ],
@@ -295,11 +295,11 @@
                   ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                  "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                 },
                 "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               }
             ],
@@ -311,7 +311,7 @@
           }
         ],
         "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json",
+        "fileName": "./cfg/THUMB/is_directives.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives"
       }
     ],
@@ -365,11 +365,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
@@ -424,11 +424,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
@@ -482,11 +482,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
@@ -540,11 +540,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
@@ -600,11 +600,11 @@
         ],
         "must_not_contain": [],
         "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "fileName": "./cfg/THUMB/is_entry_types.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
       },
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+      "fileName": "./cfg/THUMB/is_entry_types.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
     },
     "payload": []
@@ -658,11 +658,11 @@
         ],
         "must_not_contain": [],
         "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "fileName": "./cfg/THUMB/is_entry_types.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
       },
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+      "fileName": "./cfg/THUMB/is_entry_types.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
     },
     "payload": []
@@ -727,11 +727,11 @@
                 ],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               },
               "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
               "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
             }
           ],
@@ -739,7 +739,7 @@
         }
       ],
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "fileName": "./cfg/THUMB/is_valid_lines.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
     },
     "matchesDirective": [
@@ -750,7 +750,7 @@
         "description": "The ENTRY directive declares an entry point to a program.",
         "args": [],
         "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json",
+        "fileName": "./cfg/THUMB/is_directives.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives"
       }
     ],
@@ -804,11 +804,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
@@ -864,11 +864,11 @@
         ],
         "must_not_contain": [],
         "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+        "fileName": "./cfg/THUMB/is_entry_types.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
       },
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+      "fileName": "./cfg/THUMB/is_entry_types.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
     },
     "payload": []
@@ -933,11 +933,11 @@
                 ],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-                "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
                 "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
               },
               "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-              "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
               "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
             }
           ],
@@ -945,7 +945,7 @@
         }
       ],
       "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
-      "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_valid_lines.json",
+      "fileName": "./cfg/THUMB/is_valid_lines.json",
       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
     },
     "matchesDirective": [
@@ -956,7 +956,7 @@
         "description": "The END directive informs the assembler that it has reached the end of a source file.",
         "args": [],
         "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
-        "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json",
+        "fileName": "./cfg/THUMB/is_directives.json",
         "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives"
       }
     ],
@@ -1010,11 +1010,11 @@
             ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
-            "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
             "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
           },
           "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
-          "fileName": "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
           "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
         },
         "payload": []
