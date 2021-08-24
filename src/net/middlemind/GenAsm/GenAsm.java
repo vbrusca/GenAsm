@@ -29,7 +29,7 @@ public class GenAsm {
     
     public static void main(String[] args) throws Exception {
         if(args == null || args.length < 5) {
-            ASM_SETS_FILE_NAME = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/is_sets.json";
+            ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
             ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
@@ -37,7 +37,7 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = "/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_checks_errors.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_checks_errors.txt";
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
