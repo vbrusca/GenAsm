@@ -24,4 +24,5 @@ hs_err_pid*
 /dist/
 cfg/THUMB/TESTS/output_*
 .DS_Store
-/nbproject/
+/nbproject/*.properties
+/nbproject/*.xml
