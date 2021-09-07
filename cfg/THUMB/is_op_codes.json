@@ -58,7 +58,7 @@
                     "obj_name": "is_op_code_arg",  
                     "arg_index": 2,
                     "bit_index": 2,
-                    "is_entry_types": ["Number"],                    
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],                    
                     "is_arg_type": "Offset5",
                     "bit_series": {
                         "bit_start": 6,
@@ -124,7 +124,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 2,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset5",
                     "bit_series": {
                         "bit_start": 6,
@@ -190,7 +190,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 2,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset5",
                     "bit_series": {
                         "bit_start": 6,
@@ -311,7 +311,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 2,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset3",
                     "bit_series": {
                         "bit_start": 6,
@@ -432,7 +432,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 2,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset3",
                     "bit_series": {
                         "bit_start": 6,
@@ -486,7 +486,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset8",
                     "bit_series": {
                         "bit_start": 0,
@@ -540,7 +540,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset8",
                     "bit_series": {
                         "bit_start": 0,
@@ -594,7 +594,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset8",
                     "bit_series": {
                         "bit_start": 0,
@@ -648,7 +648,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset8",
                     "bit_series": {
                         "bit_start": 0,
@@ -1864,7 +1864,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 0,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Word8",
                             "bit_series": {
                                 "bit_start": 0,
@@ -2507,7 +2507,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2588,7 +2588,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2669,7 +2669,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2750,7 +2750,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2831,7 +2831,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2912,7 +2912,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 1,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Offset5",
                             "bit_series": {
                                 "bit_start": 6,
@@ -2994,7 +2994,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 0,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Word8",
                             "bit_series": {
                                 "bit_start": 0,
@@ -3075,7 +3075,7 @@
                             "obj_name": "is_op_code_arg",
                             "arg_index": 1,
                             "bit_index": 0,
-                            "is_entry_types": ["Number"],
+                            "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                             "is_arg_type": "Word8",
                             "bit_series": {
                                 "bit_start": 0,
@@ -3143,7 +3143,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Word8",
                     "bit_series": {
                         "bit_start": 0,
@@ -3209,7 +3209,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 2,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Word8",
                     "bit_series": {
                         "bit_start": 0,
@@ -3263,7 +3263,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "SWord7",
                     "bit_series": {
                         "bit_start": 0,
@@ -3317,7 +3317,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 1,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "SWord7",
                     "bit_series": {
                         "bit_start": 0,
@@ -3683,7 +3683,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3725,7 +3725,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3767,7 +3767,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3809,7 +3809,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3851,7 +3851,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3893,7 +3893,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3935,7 +3935,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -3977,7 +3977,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4019,7 +4019,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4061,7 +4061,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4103,7 +4103,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4145,7 +4145,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4187,7 +4187,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4229,7 +4229,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Label",
                     "bit_series": {
                         "bit_start": 0,
@@ -4271,7 +4271,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Value8",
                     "bit_series": {
                         "bit_start": 0,
@@ -4313,7 +4313,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset11",
                     "bit_series": {
                         "bit_start": 0,
@@ -4355,7 +4355,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset11",
                     "bit_series": {
                         "bit_start": 0,
@@ -4397,7 +4397,7 @@
                     "obj_name": "is_op_code_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef", "LabelNumericLocalRef"],
                     "is_arg_type": "Offset11",
                     "bit_series": {
                         "bit_start": 0,

@@ -142,36 +142,34 @@ STMIA R0!, {R3-R7} ; Store the contents of registers R3-R7
 STMIA R0!, {R3,R4,R5,R6,R7}; Store the contents of registers R3-R7
 
     CMP R0, #45
-    BGT over
+    BGT =over
 over
 
   SWI 18 ; Take the software interrupt exception.
 SWI 18; Take the software interrupt exception.
 
   ;here B here
-  B jimmy
+  B =jimmy
 jimmy
 
-        BL faraway
+        BL =faraway
 next
 faraway
 
-        BL faraway ; Unconditionally Branch to 'faraway'
+        BL =faraway ; Unconditionally Branch to 'faraway'
     next1; and place following instruction
     faraway1; Must be Half-word aligned.
-ra
-rb
-rt
-LSL ra, rb, #6
-LSL rt, rb, #8
-ADD ra, rt, rb
-LSL rt, rb, #8
-SUB ra, rt, rb
-LSL ra, rb, #4
-MVN ra, ra
-LSL rt, rb, #4
-SUB ra, rb, rt
-LSL ra, ra, #2
+
+LSL R1, R2, #6
+LSL R3, R2, #8
+ADD R1, R3, R3
+LSL R3, R2, #8
+SUB R1, R3, R2
+LSL R1, R2, #4
+MVN R1, R1
+LSL R3, R2, #4
+SUB R1, R2, R3
+LSL R1, R1, #2
 
 signed_divide ; Signed divide of R1 by R0: returns quotient in R0, 
 ; remainder in R1 
@@ -182,33 +180,28 @@ SUB R3, R0, R2 ; and ADD 1 (SUB -1) to get abs value
 udiv10
 ; takes argument in a1
 ; returns quotient in a1, remainder in a2
-a2
-a1
-a3
-pc
-lr
 _0 
-MOV     a2, a1
-LSR     a3, a1, #2
-SUB     a1, a3
-LSR     a3, a1, #4
-ADD     a1, a3
-LSR     a3, a1, #8
-ADD     a1, a3
-LSR     a3, a1, #16
-ADD     a1, a3
-LSR     a1, a3, #3
-ADD     a3, a1
-SUB     a2, a3
-CMP     a2, #10
+MOV     R2, R1
+LSR     R3, R1, #2
+SUB     R1, R3
+LSR     R3, R1, #4
+ADD     R1, R3
+LSR     R3, R1, #8
+ADD     R1, R3
+LSR     R3, R1, #16
+ADD     R1, R3
+LSR     R1, R3, #3
+ADD     R3, R1
+SUB     R2, R3
+CMP     R2, #10
 BLT     %FT0
-ADD     a1, #1
-SUB     a2, #10
-MOV pc, lr 
+ADD     R1, #1
+SUB     R2, #10
+MOV PC, LR 
 
 
-label MOV pc, lr   
-    label1   ADD     a3, a1 ; takes argument in a1 
+label MOV PC, LR   
+    label1   ADD     R3, R1 ; takes argument in a1 
 
     @END
 

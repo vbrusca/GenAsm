@@ -191,7 +191,7 @@
             "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
-                "starts_with": ["#0x", "#bx", "#-", "#", "0~9"],
+                "starts_with": ["#0x", "#bx", "#-", "#", "0~9", "&", "0x"],
                 "contains": ["0~9"],
                 "must_contain": [],
                 "must_not_contain": [],
@@ -220,6 +220,20 @@
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["a~z"],
+                "contains": ["a~z", "a~z0~9", "_"],
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["a~z0~9", "a~z", "_", ";", ","]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "LabelRef",
+            "type_category": "Label",
+            "category": "Label",
+            "category_class": "java.lang.String",            
+            "txt_match": {
+                "starts_with": ["="],
                 "contains": ["a~z", "a~z0~9", "_"],
                 "must_contain": [],
                 "must_not_contain": [],

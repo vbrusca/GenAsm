@@ -680,8 +680,12 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + token.index);
                     }
                     
-                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                     token.isOpCodeArg = true;
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
+                    labelArgs++;
+                    token.isOpCodeArg = true;                    
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                     if(opCodeIdx != -1 && token.index > opCodeIdx) {
@@ -754,9 +758,9 @@ public class AssemblerThumb implements Assembler {
                     if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                         throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
 
-                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
+                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                         ltoken.isOpCodeArg = true;
-
+         
                     } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                         if(opCodeIdx != -1 && token.index > opCodeIdx) {
                             labelArgs++;
@@ -854,7 +858,7 @@ public class AssemblerThumb implements Assembler {
                     }
                     
                     //Adjust if label is defined or referenced
-                    if(opCodeFound && (token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL))) {
+                    if(opCodeFound && (token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF))) {
                         token.isLabelRef = true;
                         token.isLabel = false;
                     }
@@ -1832,8 +1836,8 @@ public class AssemblerThumb implements Assembler {
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                         Integer tInt = null;
-                        if(entry.tokenOpCodeArgGroup.source.contains("#0x")) {
-                            tInt = Integer.parseInt(entry.tokenOpCodeArgGroup.source.replace("#0x", ""), 16);                            
+                        if(entry.tokenOpCodeArgGroup.source.contains("#0x") || entry.tokenOpCodeArgGroup.source.contains("0x") || entry.tokenOpCodeArgGroup.source.contains("&")) {
+                            tInt = Integer.parseInt(entry.tokenOpCodeArgGroup.source.replace("#0x", ""), 16);
                         } else if(entry.tokenOpCodeArgGroup.source.contains("#0b")) {
                             tInt = Integer.parseInt(entry.tokenOpCodeArgGroup.source.replace("#0b", ""), 2);                            
                         } else if(entry.tokenOpCodeArgGroup.source.contains("#")) {

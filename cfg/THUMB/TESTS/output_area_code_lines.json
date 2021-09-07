@@ -542,7 +542,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -1005,7 +1007,9 @@
                 "arg_index": 1,
                 "bit_index": 0,
                 "is_entry_types": [
-                  "Number"
+                  "Number",
+                  "LabelRef",
+                  "LabelNumericLocalRef"
                 ],
                 "linked_is_entry_types": [
                   {
@@ -1021,7 +1025,9 @@
                         "#bx",
                         "#-",
                         "#",
-                        "0~9"
+                        "0~9",
+                        "\u0026",
+                        "0x"
                       ],
                       "contains": [
                         "0~9"
@@ -1032,6 +1038,73 @@
                         ";"
                       ],
                       "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "Label",
+                    "category": "Label",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelNumericLocalRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "%FA",
+                        "%FT",
+                        "%BA",
+                        "%BT"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [
+                        "%"
+                      ],
                       "must_not_contain": [],
                       "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                       "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -1467,7 +1540,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -2780,7 +2855,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -3218,7 +3295,9 @@
                 "arg_index": 1,
                 "bit_index": 1,
                 "is_entry_types": [
-                  "Number"
+                  "Number",
+                  "LabelRef",
+                  "LabelNumericLocalRef"
                 ],
                 "linked_is_entry_types": [
                   {
@@ -3234,7 +3313,9 @@
                         "#bx",
                         "#-",
                         "#",
-                        "0~9"
+                        "0~9",
+                        "\u0026",
+                        "0x"
                       ],
                       "contains": [
                         "0~9"
@@ -3245,6 +3326,73 @@
                         ";"
                       ],
                       "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "Label",
+                    "category": "Label",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelNumericLocalRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "%FA",
+                        "%FT",
+                        "%BA",
+                        "%BT"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [
+                        "%"
+                      ],
                       "must_not_contain": [],
                       "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                       "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -3693,7 +3841,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -4823,7 +4973,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -5239,7 +5391,9 @@
             "arg_index": 2,
             "bit_index": 0,
             "is_entry_types": [
-              "Number"
+              "Number",
+              "LabelRef",
+              "LabelNumericLocalRef"
             ],
             "linked_is_entry_types": [
               {
@@ -5255,7 +5409,9 @@
                     "#bx",
                     "#-",
                     "#",
-                    "0~9"
+                    "0~9",
+                    "\u0026",
+                    "0x"
                   ],
                   "contains": [
                     "0~9"
@@ -5266,6 +5422,73 @@
                     ";"
                   ],
                   "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelRef",
+                "type_category": "Label",
+                "category": "Label",
+                "category_class": "java.lang.String",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "\u003d"
+                  ],
+                  "contains": [
+                    "a~z",
+                    "a~z0~9",
+                    "_"
+                  ],
+                  "ends_with": [
+                    "a~z0~9",
+                    "a~z",
+                    "_",
+                    ";",
+                    ","
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelNumericLocalRef",
+                "type_category": "LabelReference",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "%FA",
+                    "%FT",
+                    "%BA",
+                    "%BT"
+                  ],
+                  "contains": [
+                    "0~9"
+                  ],
+                  "ends_with": [
+                    "0~9",
+                    ",",
+                    ";"
+                  ],
+                  "must_contain": [
+                    "%"
+                  ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -5642,7 +5865,9 @@
               "#bx",
               "#-",
               "#",
-              "0~9"
+              "0~9",
+              "\u0026",
+              "0x"
             ],
             "contains": [
               "0~9"
@@ -6715,7 +6940,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -7131,7 +7358,9 @@
             "arg_index": 2,
             "bit_index": 0,
             "is_entry_types": [
-              "Number"
+              "Number",
+              "LabelRef",
+              "LabelNumericLocalRef"
             ],
             "linked_is_entry_types": [
               {
@@ -7147,7 +7376,9 @@
                     "#bx",
                     "#-",
                     "#",
-                    "0~9"
+                    "0~9",
+                    "\u0026",
+                    "0x"
                   ],
                   "contains": [
                     "0~9"
@@ -7158,6 +7389,73 @@
                     ";"
                   ],
                   "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelRef",
+                "type_category": "Label",
+                "category": "Label",
+                "category_class": "java.lang.String",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "\u003d"
+                  ],
+                  "contains": [
+                    "a~z",
+                    "a~z0~9",
+                    "_"
+                  ],
+                  "ends_with": [
+                    "a~z0~9",
+                    "a~z",
+                    "_",
+                    ";",
+                    ","
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelNumericLocalRef",
+                "type_category": "LabelReference",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "%FA",
+                    "%FT",
+                    "%BA",
+                    "%BT"
+                  ],
+                  "contains": [
+                    "0~9"
+                  ],
+                  "ends_with": [
+                    "0~9",
+                    ",",
+                    ";"
+                  ],
+                  "must_contain": [
+                    "%"
+                  ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -7534,7 +7832,9 @@
               "#bx",
               "#-",
               "#",
-              "0~9"
+              "0~9",
+              "\u0026",
+              "0x"
             ],
             "contains": [
               "0~9"
@@ -8598,7 +8898,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -8954,7 +9256,9 @@
             "arg_index": 1,
             "bit_index": 0,
             "is_entry_types": [
-              "Number"
+              "Number",
+              "LabelRef",
+              "LabelNumericLocalRef"
             ],
             "linked_is_entry_types": [
               {
@@ -8970,7 +9274,9 @@
                     "#bx",
                     "#-",
                     "#",
-                    "0~9"
+                    "0~9",
+                    "\u0026",
+                    "0x"
                   ],
                   "contains": [
                     "0~9"
@@ -8981,6 +9287,73 @@
                     ";"
                   ],
                   "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelRef",
+                "type_category": "Label",
+                "category": "Label",
+                "category_class": "java.lang.String",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "\u003d"
+                  ],
+                  "contains": [
+                    "a~z",
+                    "a~z0~9",
+                    "_"
+                  ],
+                  "ends_with": [
+                    "a~z0~9",
+                    "a~z",
+                    "_",
+                    ";",
+                    ","
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelNumericLocalRef",
+                "type_category": "LabelReference",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "%FA",
+                    "%FT",
+                    "%BA",
+                    "%BT"
+                  ],
+                  "contains": [
+                    "0~9"
+                  ],
+                  "ends_with": [
+                    "0~9",
+                    ",",
+                    ";"
+                  ],
+                  "must_contain": [
+                    "%"
+                  ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -9235,7 +9608,9 @@
               "#bx",
               "#-",
               "#",
-              "0~9"
+              "0~9",
+              "\u0026",
+              "0x"
             ],
             "contains": [
               "0~9"
@@ -10227,7 +10602,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -10583,7 +10960,9 @@
             "arg_index": 1,
             "bit_index": 0,
             "is_entry_types": [
-              "Number"
+              "Number",
+              "LabelRef",
+              "LabelNumericLocalRef"
             ],
             "linked_is_entry_types": [
               {
@@ -10599,7 +10978,9 @@
                     "#bx",
                     "#-",
                     "#",
-                    "0~9"
+                    "0~9",
+                    "\u0026",
+                    "0x"
                   ],
                   "contains": [
                     "0~9"
@@ -10610,6 +10991,73 @@
                     ";"
                   ],
                   "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelRef",
+                "type_category": "Label",
+                "category": "Label",
+                "category_class": "java.lang.String",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "\u003d"
+                  ],
+                  "contains": [
+                    "a~z",
+                    "a~z0~9",
+                    "_"
+                  ],
+                  "ends_with": [
+                    "a~z0~9",
+                    "a~z",
+                    "_",
+                    ";",
+                    ","
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              {
+                "obj_name": "is_entry_type",
+                "type_name": "LabelNumericLocalRef",
+                "type_category": "LabelReference",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "%FA",
+                    "%FT",
+                    "%BA",
+                    "%BT"
+                  ],
+                  "contains": [
+                    "0~9"
+                  ],
+                  "ends_with": [
+                    "0~9",
+                    ",",
+                    ";"
+                  ],
+                  "must_contain": [
+                    "%"
+                  ],
                   "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -10864,7 +11312,9 @@
               "#bx",
               "#-",
               "#",
-              "0~9"
+              "0~9",
+              "\u0026",
+              "0x"
             ],
             "contains": [
               "0~9"
@@ -11434,7 +11884,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -13349,7 +13801,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"
@@ -15006,7 +15460,9 @@
                   "#bx",
                   "#-",
                   "#",
-                  "0~9"
+                  "0~9",
+                  "\u0026",
+                  "0x"
                 ],
                 "contains": [
                   "0~9"

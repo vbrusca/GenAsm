@@ -403,6 +403,8 @@ public class TokenerThumb implements Tokener {
                     tmb.isDirective = true;
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                     tmb.isLabel = true;
+                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
+                    tmb.isLabelRef = true;
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {
                     tmb.isLabelLocal = true;
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
