@@ -28,3 +28,4 @@ cfg/THUMB/TESTS/output_*
 /nbproject/*.xml
 *.properties
 *.xml
+nbproject/private/private.properties

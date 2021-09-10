@@ -229,8 +229,8 @@
         {
             "obj_name": "is_entry_type",            
             "type_name": "LabelRef",
-            "type_category": "Label",
-            "category": "Label",
+            "type_category": "LabelReference",
+            "category": "Arg",
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["="],

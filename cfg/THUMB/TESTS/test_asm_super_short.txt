@@ -1,5 +1,5 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
-    LDR R3,[PC,#844] ; Load into R3 the word found at the
+    BGT =over
 @END

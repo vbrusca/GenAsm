@@ -684,15 +684,9 @@ public class AssemblerThumb implements Assembler {
                     token.isOpCodeArg = true;
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
-                    labelArgs++;
                     token.isOpCodeArg = true;                    
                     
-                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                    if(opCodeIdx != -1 && token.index > opCodeIdx) {
-                        labelArgs++;
-                        token.isOpCodeArg = true;
-                    }
-                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {                    
                     if(token.index == 0) {
                         lastLabel = token.source;
                         lastLabelLine = line;
@@ -760,13 +754,8 @@ public class AssemblerThumb implements Assembler {
 
                     } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                         ltoken.isOpCodeArg = true;
-         
-                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                        if(opCodeIdx != -1 && token.index > opCodeIdx) {
-                            labelArgs++;
-                            ltoken.isOpCodeArg = true;
-                        }
 
+                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                         if(ltoken.index == 0) {
                             lastLabel = ltoken.source;
                             lastLabelLine = line;
@@ -815,7 +804,7 @@ public class AssemblerThumb implements Assembler {
             if(opCodeFound) {
                 line.payloadOpCode = opCodeName;
                 line.isLineOpCode = true;
-                line.payloadLenArg = CountArgTokens(line.payload, 0) + labelArgs;
+                line.payloadLenArg = CountArgTokens(line.payload, 0); // + labelArgs;  /* No longer needed */
                 line.matchesOpCode = FindOpCodeMatches(line.payloadOpCode, line.payloadLenArg);
                 
                 if(line.matchesOpCode == null || line.matchesOpCode.isEmpty()) {
