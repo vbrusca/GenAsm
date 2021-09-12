@@ -260,6 +260,8 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
+    //TODO: Detect DirectiveArg entries and toggle the isDirectiveArg boolean on the Token entry
+    
     //DIRECTIVE METHODS
     private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
