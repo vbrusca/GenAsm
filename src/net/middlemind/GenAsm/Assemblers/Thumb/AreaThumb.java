@@ -22,4 +22,5 @@ public class AreaThumb {
     public boolean isReadOnly;
     public boolean isData;
     public boolean isReadWrite;
+    public String title;
 }

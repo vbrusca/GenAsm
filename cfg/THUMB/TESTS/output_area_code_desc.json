@@ -101,7 +101,8 @@
           "obj_name": "is_valid_line_entry",
           "is_entry_types": [
             "DirectiveString",
-            "Directive"
+            "Directive",
+            "Number"
           ],
           "linked_is_entry_types": [
             {
@@ -156,6 +157,41 @@
                 "must_contain": [
                   "@"
                 ],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name": "is_entry_type",
+              "type_name": "Number",
+              "type_category": "Number",
+              "category": "Arg",
+              "category_class": "java.lang.Double",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "#0x",
+                  "#bx",
+                  "#-",
+                  "#",
+                  "0~9",
+                  "\u0026",
+                  "0x"
+                ],
+                "contains": [
+                  "0~9"
+                ],
+                "ends_with": [
+                  "0~9",
+                  ",",
+                  ";"
+                ],
+                "must_contain": [],
                 "must_not_contain": [],
                 "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                 "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -695,7 +731,7 @@
     },
     "validLineEntry": {
       "obj_name": "is_valid_line",
-      "index": 11,
+      "index": 12,
       "empty_line": true,
       "is_valid_line": [
         {
@@ -901,7 +937,7 @@
     },
     "validLineEntry": {
       "obj_name": "is_valid_line",
-      "index": 11,
+      "index": 12,
       "empty_line": true,
       "is_valid_line": [
         {
@@ -1027,5 +1063,6 @@
   "isCode": true,
   "isReadOnly": true,
   "isData": false,
-  "isReadWrite": false
+  "isReadWrite": false,
+  "title": "Program"
 }

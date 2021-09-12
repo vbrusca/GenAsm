@@ -4,6 +4,68 @@
     "is_directives": [
         {
             "obj_name": "is_directive",
+            "directive_name": "@DCB",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 7,
+                        "bit_len": 8
+                    },
+                    "num_range": {
+                        "min_value": -128,
+                        "max_value": 128,
+                        "bit_len": 8,
+                        "twos_compliment": false,
+                        "alignment": "WORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The DCB directive is used to write data, one byte, directly into the data AREA of an assembly file."
+        },        
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@DCW",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 15,
+                        "bit_len": 16
+                    },
+                    "num_range": {
+                        "min_value": -32768,
+                        "max_value": 32768,
+                        "bit_len": 16,
+                        "twos_compliment": false,
+                        "alignment": "WORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The DCW directive is used to write data, one word, directly into the data AREA of an assembly file."
+        },
+        {
+            "obj_name": "is_directive",
             "directive_name": "@TTL",
             "arg_len": 1,
             "args": [

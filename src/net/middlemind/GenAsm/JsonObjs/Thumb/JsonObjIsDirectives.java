@@ -16,10 +16,14 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String NAME_ENTRY = "@ENTRY";
     public static String NAME_AREA = "@AREA";    
     public static String NAME_END = "@END";
-    public static String NAME_CODE = "@CODE";    
+    public static String NAME_TITLE = "@TTL";    
+    public static String NAME_CODE = "@CODE";
     public static String NAME_DATA = "@DATA";
+    public static String NAME_DCW = "@DCW";
+    public static String NAME_DCB = "@DCB";    
     public static String NAME_READONLY = "@READONLY";
     public static String NAME_READWRITE = "@READWRITE";
+    public static String NAME_DIRECTIVE_TYPE_STRING = "DirectiveString";
     
     public String obj_name;
     public String set_name;

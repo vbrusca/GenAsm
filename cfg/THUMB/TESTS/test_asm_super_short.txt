@@ -3,3 +3,7 @@
 @ENTRY
     BGT =over
 @END
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+    var1 @DCW 256
+@END

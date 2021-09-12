@@ -121,6 +121,7 @@ public class AssemblerThumb implements Assembler {
     public TokenLine lastLine;
     public Token lastToken;
     public int lastStep;
+    public String assemblyTitle;
     
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) throws Exception {
@@ -208,6 +209,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             Logger.wrl("List Assembly Source Areas:");
             if(areaThumbCode != null) {
+                Logger.wrl("AreaThumbCode: Title: " + areaThumbCode.title);                
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
                 Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
                 WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "./cfg/THUMB/TESTS/output_area_code_lines.json");
@@ -219,6 +221,7 @@ public class AssemblerThumb implements Assembler {
             }
 
             if(areaThumbData != null) {
+                Logger.wrl("AreaThumbData: Title: " + areaThumbData.title);
                 Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
                 Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
                 WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "./cfg/THUMB/TESTS/output_area_data_lines.json");
@@ -230,7 +233,8 @@ public class AssemblerThumb implements Assembler {
             }
 
             Logger.wrl("");
-            Logger.wrl("Assembler Line Data:");
+            Logger.wrl("Assembler Meta Data:");
+            Logger.wrl("Title: " + assemblyTitle);
             Logger.wrl("LineLengthBytes: " + lineLenBytes);
             Logger.wrl("LineLengthWords: " + lineLenWords);
             Logger.wrl("LineBitSeries:");
@@ -284,11 +288,14 @@ public class AssemblerThumb implements Assembler {
         int activeLineCount = 0;
         AreaThumb tmpArea = null;
         
+        boolean foundTtl = false;
+        boolean foundArea = false;
+        
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             directiveFound = false;
             directiveName = null;
-            directiveIdx = -1;
+            directiveIdx = -1;            
 
             if(lastData != -1 && line.isLineOpCode) {
                 throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have OpCode instructions when AREA type is DATA, found on line " + line.lineNum + " with source " + line.source.source);                
@@ -297,7 +304,16 @@ public class AssemblerThumb implements Assembler {
             directiveFound = false;
             for(Token token : line.payload) {
                 lastToken = token;
-                if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
+
+                if(foundTtl && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
+                    foundTtl = false;
+                    assemblyTitle = token.source;
+                
+                } else if(foundArea && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
+                    foundArea = false;
+                    tmpArea.title = token.source;                    
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                     if(!directiveFound) {
                         directiveFound = true;
                         directiveName = token.source;
@@ -308,9 +324,13 @@ public class AssemblerThumb implements Assembler {
                         reqDirectives.remove(token.source);
                         reqDirectiveCount--;
                     }
-                    
-                    if(token.source.equals(JsonObjIsDirectives.NAME_AREA)) {
+                                                                    
+                    if(token.source.equals(JsonObjIsDirectives.NAME_TITLE)) {
+                        foundTtl = true;
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_AREA)) {
                         if(lastArea == -1) {
+                            foundArea = true;
                             lastArea = line.lineNum;
                             lastAreaToken = token;
                             lastAreaTokenLine = line;
@@ -430,13 +450,19 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         }
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCW) || token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
+                        if(lastArea == -1 || tmpArea == null || (tmpArea != null && (tmpArea.isCode == true || tmpArea.isData == false))) {
+                            throw new ExceptionNoAreaDirectiveFound("Could not find DATA AREA directive before directive '" + token.source + "' on line " + line.lineNum + " with source " + line.source.source);
+                        }                        
                     }
                 }
                 
                 if(directiveFound) {
                     line.payloadDirective = directiveName;
                     line.isLineDirective = true;
-                    line.payloadLenArg = CountArgTokens(line.payload, 0, JsonObjIsEntryTypes.NAME_CAT_ARG_DIRECTIVE, false);
+
+                    //Allow for Directive args and OpCode args since we can't define two Entry Types that are identical but have different categories
+                    line.payloadLenArg = CountArgTokens(line.payload, 0, JsonObjIsEntryTypes.NAME_CAT_ARG_DIRECTIVE, false) + CountArgTokens(line.payload, 0, JsonObjIsEntryTypes.NAME_CAT_ARG_OPCODE, false);
                     line.matchesDirective = FindDirectiveMatches(line.payloadDirective, line.payloadLenArg);
                 }
             }
