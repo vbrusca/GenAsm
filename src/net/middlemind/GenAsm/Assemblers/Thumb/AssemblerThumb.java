@@ -261,6 +261,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //TODO: Detect DirectiveArg entries and toggle the isDirectiveArg boolean on the Token entry
+    //TODO: Handle line number accuracy with regard to directives, blank lines etc
     
     //DIRECTIVE METHODS
     private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
@@ -1568,16 +1569,25 @@ public class AssemblerThumb implements Assembler {
         } else if(area.isData) {
             for(TokenLine line : areaLines) {
                 lastLine = line;
-                //BuildBinDirective(line);
+                BuildBinDirective(line);
             }
         } else {
             throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
         }
     }
     
-    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
-        if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
+    private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {   
+        //TODO: Fill in BuildBinDirective
+        if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
             
+            //Build final string representation for this assembly line
+        } else {
+            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNum);
+        }
+    }
+    
+    private void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
+        if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {            
             JsonObjIsOpCode opCode = line.matchesOpCode.get(0);                
             List<JsonObjIsOpCodeArg> opCodeArgs = opCode.args;
             List<BuildOpCodeThumb> buildEntries = new ArrayList<>();
@@ -1789,7 +1799,7 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
                         
-                    } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
+                    } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                         throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         //TODO: throw invalid entry exception
                     
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
@@ -1837,12 +1847,12 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
                         resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
-                    } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArgGroup.source);
+                    } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArgGroup.source.replace("=", ""));
                         if(sym != null) {
                             resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArgGroup.bit_series.bit_len);
                         } else {
-                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArgGroup.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
                         }
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
@@ -1940,12 +1950,12 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     
-                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source);
+                    } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source.replace("=", ""));
                         if(sym != null) {
                             resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
                         } else {
-                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArg.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
@@ -2046,7 +2056,7 @@ public class AssemblerThumb implements Assembler {
             
             //Build final string representation for this assembly line
         } else {
-            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with line source '" + line.source.source + "' and line number " + line.lineNum);
+            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNum);
         }
     }
 }

@@ -4,7 +4,7 @@
     "payloadOpCode": "BGT",
     "lineNumHex": "0x00",
     "lineNumBin": "0000000000000000",
-    "lineNum": 3,
+    "lineNum": 4,
     "payloadLen": 2,
     "payloadLenArg": 1,
     "isLineEmpty": false,
@@ -12,7 +12,7 @@
     "isLineDirective": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 3,
+      "lineNum": 4,
       "sourceLen": 13,
       "source": "    BGT \u003dover",
       "payload": [
@@ -21,7 +21,7 @@
           "posStart": 4,
           "posStop": 6,
           "len": 3,
-          "lineNum": 3,
+          "lineNum": 4,
           "index": 0,
           "payload": "BGT"
         },
@@ -30,7 +30,7 @@
           "posStart": 8,
           "posStop": 12,
           "len": 5,
-          "lineNum": 3,
+          "lineNum": 4,
           "index": 1,
           "payload": "\u003dover"
         }
@@ -779,7 +779,7 @@
         "obj_name": "Token",
         "type_name": "OpCode",
         "source": "BGT",
-        "lineNum": 3,
+        "lineNum": 4,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -797,7 +797,7 @@
           "posStart": 4,
           "posStop": 6,
           "len": 3,
-          "lineNum": 3,
+          "lineNum": 4,
           "index": 0,
           "payload": "BGT"
         },
@@ -834,7 +834,7 @@
         "obj_name": "Token",
         "type_name": "LabelRef",
         "source": "\u003dover",
-        "lineNum": 3,
+        "lineNum": 4,
         "index": 1,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -852,7 +852,7 @@
           "posStart": 8,
           "posStop": 12,
           "len": 5,
-          "lineNum": 3,
+          "lineNum": 4,
           "index": 1,
           "payload": "\u003dover"
         },

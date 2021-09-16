@@ -1,6 +1,7 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
+    over
     BGT =over
 @END
 @AREA |Data| @DATA, @READWRITE
