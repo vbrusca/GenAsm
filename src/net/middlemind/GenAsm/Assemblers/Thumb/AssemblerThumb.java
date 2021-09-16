@@ -261,7 +261,6 @@ public class AssemblerThumb implements Assembler {
     }
     
     //TODO: Detect DirectiveArg entries and toggle the isDirectiveArg boolean on the Token entry
-    //TODO: Handle line number accuracy with regard to directives, blank lines etc
     
     //DIRECTIVE METHODS
     private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
@@ -313,8 +312,14 @@ public class AssemblerThumb implements Assembler {
                     assemblyTitle = token.source;
                 
                 } else if(foundArea && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
-                    foundArea = false;
-                    tmpArea.title = token.source;                    
+                    tmpArea.title = token.source;
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
+                    if(directiveFound == true && foundArea == true) {
+                        token.isDirectiveArg = true;
+                    } else {
+                        throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive or line directive before NUMBER on line " + line.lineNum + " with source " + line.source.source + ", directive found: " + directiveFound + ", found area: " + foundArea + ", last area: " + lastArea);
+                    }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                     if(!directiveFound) {
@@ -450,13 +455,22 @@ public class AssemblerThumb implements Assembler {
                             lastData = -1;
                             lastReadOnly = -1;
                             lastReadWrite = -1;
+                            
+                            foundArea = false;
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNum + " with source " + line.source.source);
                         }
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_DCW) || token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
                         if(lastArea == -1 || tmpArea == null || (tmpArea != null && (tmpArea.isCode == true || tmpArea.isData == false))) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find DATA AREA directive before directive '" + token.source + "' on line " + line.lineNum + " with source " + line.source.source);
-                        }                        
+                        } else {
+                            token.isDirective = true;
+                            if(!directiveFound) {
+                                directiveFound = true;
+                                directiveName = token.source;
+                                directiveIdx = token.index;
+                            }                            
+                        }                       
                     }
                 }
                 
@@ -1579,7 +1593,37 @@ public class AssemblerThumb implements Assembler {
     private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {   
         //TODO: Fill in BuildBinDirective
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
+            boolean isDirDcw = false;
+            boolean isDirDcb = false;
             
+            for(Token token : line.payload) {
+                if(token.isDirective) {
+                    if(token.source.equals(JsonObjIsDirectives.NAME_DCW)) {
+                        isDirDcw = true;
+                        isDirDcb = false;
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
+                        isDirDcw = false;
+                        isDirDcb = true;                        
+                    }
+                } else if(token.isDirectiveArg) {
+                    if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
+                        //TODO: throw exception directive are only supports numbers
+                    } else {
+                        //numeric limit is line size
+                        if(isDirDcw == true) {
+                            //set token binary string value
+                            //payloadBinRepStrEndianBig
+                            //payloadBinRepStrEndianLil
+                        } else if(isDirDcb == true) {
+                            //set token binary string value
+                            //payloadBinRepStrEndianBig
+                            //payloadBinRepStrEndianLil                            
+                        } else {
+                            //TODO: throw exception in could not find data directive
+                        }
+                    }
+                }
+            }
             //Build final string representation for this assembly line
         } else {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNum);

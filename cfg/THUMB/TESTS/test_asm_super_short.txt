@@ -7,4 +7,6 @@
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
     var1 @DCW 256
+    var2 @DCW 255
+    var3 @DCW 254
 @END
