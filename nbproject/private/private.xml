@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_directives.json</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/JsonObjs/Thumb/JsonObjIsEntryTypes.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/Assemblers/Thumb/AreaThumb.java</file>
+            <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/is_entry_types.json</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/Assemblers/Thumb/AssemblerThumb.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/src/net/middlemind/GenAsm/GenAsm.java</file>
             <file>file:/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_all.txt</file>

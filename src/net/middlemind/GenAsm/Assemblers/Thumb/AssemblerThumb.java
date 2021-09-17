@@ -1591,7 +1591,6 @@ public class AssemblerThumb implements Assembler {
     }
     
     private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {   
-        //TODO: Fill in BuildBinDirective
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
             boolean isDirDcw = false;
             boolean isDirDcb = false;
@@ -1605,16 +1604,22 @@ public class AssemblerThumb implements Assembler {
                         isDirDcw = false;
                         isDirDcb = true;                        
                     }
-                } else if(token.isDirectiveArg) {
+                } else if(token.isLabel) {
+                    //TODO: Move label processing to match that of the OpCode labels
+                    
+                } else if(token.isDirectiveArg && (isDirDcw || isDirDcb)) {
                     if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
-                        //TODO: throw exception directive are only supports numbers
+                        //TODO: throw exception directive args only support numbers
+                        
                     } else {
                         //numeric limit is line size
                         if(isDirDcw == true) {
+                            //TODO: Set DCW binary string representation
                             //set token binary string value
                             //payloadBinRepStrEndianBig
                             //payloadBinRepStrEndianLil
                         } else if(isDirDcb == true) {
+                            //TODO: Set DCB binary string representation
                             //set token binary string value
                             //payloadBinRepStrEndianBig
                             //payloadBinRepStrEndianLil                            
@@ -1624,7 +1629,6 @@ public class AssemblerThumb implements Assembler {
                     }
                 }
             }
-            //Build final string representation for this assembly line
         } else {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNum);
         }
