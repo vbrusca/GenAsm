@@ -1603,15 +1603,74 @@ public class AssemblerThumb implements Assembler {
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
                         isDirDcw = false;
                         isDirDcb = true;                        
-                    }
-                } else if(token.isLabel) {
-                    //TODO: Move label processing to match that of the OpCode labels
-                    
+                    }                    
                 } else if(token.isDirectiveArg && (isDirDcw || isDirDcb)) {
                     if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
                         //TODO: throw exception directive args only support numbers
                         
                     } else {
+                        /*
+                            Integer tInt = null;
+                            if(entry.tokenOpCodeArg.source.contains("#0x")) {
+                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0x", ""), 16);                            
+                            } else if(entry.tokenOpCodeArg.source.contains("#0b")) {
+                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0b", ""), 2);                            
+                            } else if(entry.tokenOpCodeArg.source.contains("#")) {
+                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#", ""), 10);
+                            } else {
+                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
+                            }
+
+                            //special rule for ADD OpCode '101100000'
+                            if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                                opCodeEntry.binRepStr = "101100001";
+                                tInt *= -1;
+                            }                        
+
+                            resTmp = Integer.toBinaryString(tInt);
+                            if(entry.opCodeArg.bit_shift != null) {
+                                if(entry.opCodeArg.bit_shift.shift_amount > 0) {
+                                    if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                        resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
+                                    } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                        resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
+                                    } else {
+                                        throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                                    }
+                                }
+                            }
+
+                            resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);                        
+                            tInt = Integer.parseInt(resTmp, 2);
+
+                            if(entry.opCodeArg.num_range != null) {
+                                if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
+                                    throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                                } else {
+                                    if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                                        //Flip Java number bytes to little endian
+                                    } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
+                                        //Flip Java number bytes to big endian
+                                    }                                
+
+                                    if(entry.opCodeArg.num_range.ones_compliment) {
+                                        //TODO: Take one's compliment                                
+                                    }
+
+                                    if(entry.opCodeArg.num_range.twos_compliment) {
+                                        //TODO: Take two's compliment
+                                    }
+
+                                    //TODO: Check alignment
+                                    //entry.opCodeArg.num_range.alignment
+                                }
+                            } else {
+                                throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                            }
+
+                            entry.tokenOpCodeArg.value = tInt;                        
+                        */
+                        
                         //numeric limit is line size
                         if(isDirDcw == true) {
                             //TODO: Set DCW binary string representation
@@ -1624,7 +1683,7 @@ public class AssemblerThumb implements Assembler {
                             //payloadBinRepStrEndianBig
                             //payloadBinRepStrEndianLil                            
                         } else {
-                            //TODO: throw exception in could not find data directive
+                            //TODO: throw exception could not find data directive
                         }
                     }
                 }
@@ -1904,7 +1963,12 @@ public class AssemblerThumb implements Assembler {
                         }
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                        //TODO: throw invalid entry exception
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArgGroup.source.replace("=", ""));
+                        if(sym != null) {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArgGroup.bit_series.bit_len);
+                        } else {
+                            throw new ExceptionNoSymbolFound("Could not find symbol for local label '" + entry.tokenOpCodeArgGroup.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
+                        }
                                                 
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
                         resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
@@ -2007,7 +2071,12 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                        //TODO: Process numeric local reference
+                        Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source.replace("=", ""));
+                        if(sym != null) {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumActive), entry.opCodeArg.bit_series.bit_len);
+                        } else {
+                            throw new ExceptionNoSymbolFound("Could not find symbol for local label '" + entry.tokenOpCodeArg.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArg.lineNum);
+                        }
                                                 
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
