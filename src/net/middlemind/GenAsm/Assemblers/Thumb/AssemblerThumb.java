@@ -65,6 +65,7 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArg
 import net.middlemind.GenAsm.FileLoader;
 import net.middlemind.GenAsm.FileUnloader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
+import net.middlemind.GenAsm.JsonObjs.JsonObjNumRange;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArgSorter;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister;
 import net.middlemind.GenAsm.Logger;
@@ -113,6 +114,8 @@ public class AssemblerThumb implements Assembler {
     public int lineLenBytes = 2;
     public int lineLenWords = 1;
     public JsonObjBitSeries lineBitSeries;
+    public JsonObjNumRange lineNumRange;
+    
     public int pcPreFetchBytes;
     public int pcPreFetchWords;
     public boolean isEndianBig = false;
@@ -1438,6 +1441,17 @@ public class AssemblerThumb implements Assembler {
             } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes")) {
                 jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
                 lineBitSeries = jsonObjIsOpCodes.bit_series;
+                
+                lineNumRange = new JsonObjNumRange();
+                lineNumRange.alignment = "WORD";
+                lineNumRange.bcd_encoding = false;
+                lineNumRange.bit_len = lineBitSeries.bit_len;
+                lineNumRange.obj_name = "JsonObjNumRange";
+                lineNumRange.min_value = Short.MIN_VALUE;
+                lineNumRange.max_value = Short.MAX_VALUE;                
+                lineNumRange.ones_compliment = false;
+                lineNumRange.twos_compliment = false;
+                
                 pcPreFetchBytes = jsonObjIsOpCodes.pc_prefetch_bytes;
                 pcPreFetchWords = jsonObjIsOpCodes.pc_prefetch_words;
                 if(jsonObjIsOpCodes.endian.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
@@ -1611,58 +1625,32 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         /*
                             Integer tInt = null;
-                            if(entry.tokenOpCodeArg.source.contains("#0x")) {
-                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0x", ""), 16);                            
+                            if(token.source.contains("#0x")) {
+                                tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
                             } else if(entry.tokenOpCodeArg.source.contains("#0b")) {
-                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0b", ""), 2);                            
+                                tInt = Integer.parseInt(token.source.replace("#0b", ""), 2);                            
                             } else if(entry.tokenOpCodeArg.source.contains("#")) {
-                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#", ""), 10);
+                                tInt = Integer.parseInt(token.source.replace("#", ""), 10);
                             } else {
-                                tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
+                                tInt = Integer.parseInt(token.source, 10);
                             }
-
-                            //special rule for ADD OpCode '101100000'
-                            if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
-                                opCodeEntry.binRepStr = "101100001";
-                                tInt *= -1;
-                            }                        
 
                             resTmp = Integer.toBinaryString(tInt);
-                            if(entry.opCodeArg.bit_shift != null) {
-                                if(entry.opCodeArg.bit_shift.shift_amount > 0) {
-                                    if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                        resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
-                                    } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                        resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
-                                    } else {
-                                        throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
-                                    }
-                                }
-                            }
-
-                            resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);                        
+                            resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                        
                             tInt = Integer.parseInt(resTmp, 2);
 
-                            if(entry.opCodeArg.num_range != null) {
-                                if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
+                            if(lineNumRange != null) {
+                                if(tInt < lineNumRange.min_value || tInt >  lineNumRange.max_value) {
                                     throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                                 } else {
                                     if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                                         //Flip Java number bytes to little endian
                                     } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
                                         //Flip Java number bytes to big endian
-                                    }                                
-
-                                    if(entry.opCodeArg.num_range.ones_compliment) {
-                                        //TODO: Take one's compliment                                
-                                    }
-
-                                    if(entry.opCodeArg.num_range.twos_compliment) {
-                                        //TODO: Take two's compliment
                                     }
 
                                     //TODO: Check alignment
-                                    //entry.opCodeArg.num_range.alignment
+                                    lineNumRange.alignment
                                 }
                             } else {
                                 throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
