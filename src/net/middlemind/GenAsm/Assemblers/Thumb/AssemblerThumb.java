@@ -1623,41 +1623,43 @@ public class AssemblerThumb implements Assembler {
                         //TODO: throw exception directive args only support numbers
                         
                     } else {
-                        /*
-                            Integer tInt = null;
-                            if(token.source.contains("#0x")) {
-                                tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
-                            } else if(entry.tokenOpCodeArg.source.contains("#0b")) {
-                                tInt = Integer.parseInt(token.source.replace("#0b", ""), 2);                            
-                            } else if(entry.tokenOpCodeArg.source.contains("#")) {
-                                tInt = Integer.parseInt(token.source.replace("#", ""), 10);
+                        String resTmp;
+                        Integer tInt = null;
+                        if(token.source.contains("#0x")) {
+                            tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
+                        } else if(token.source.contains("#0b")) {
+                            tInt = Integer.parseInt(token.source.replace("#0b", ""), 2);                            
+                        } else if(token.source.contains("#")) {
+                            tInt = Integer.parseInt(token.source.replace("#", ""), 10);
+                        } else {
+                            tInt = Integer.parseInt(token.source, 10);
+                        }
+
+                        resTmp = Integer.toBinaryString(tInt);
+                        resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                        
+                        tInt = Integer.parseInt(resTmp, 2);
+
+                        if(lineNumRange != null) {
+                            if(tInt < lineNumRange.min_value || tInt >  lineNumRange.max_value) {
+                                throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + lineNumRange.min_value + " to " + lineNumRange.max_value + " for source '" + token.source + "' with line number " + token.lineNum);
                             } else {
-                                tInt = Integer.parseInt(token.source, 10);
-                            }
-
-                            resTmp = Integer.toBinaryString(tInt);
-                            resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                        
-                            tInt = Integer.parseInt(resTmp, 2);
-
-                            if(lineNumRange != null) {
-                                if(tInt < lineNumRange.min_value || tInt >  lineNumRange.max_value) {
-                                    throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
-                                } else {
-                                    if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                        //Flip Java number bytes to little endian
-                                    } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                        //Flip Java number bytes to big endian
-                                    }
-
-                                    //TODO: Check alignment
-                                    lineNumRange.alignment
+                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
+                                    //Flip Java number bytes to little endian
+                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
+                                    //Flip Java number bytes to big endian
                                 }
-                            } else {
-                                throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
-                            }
 
-                            entry.tokenOpCodeArg.value = tInt;                        
-                        */
+                                //TODO: Check alignment
+                                //lineNumRange.alignment
+                            }
+                        } else {
+                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + token.source + "' with line number " + token.lineNum);
+                        }
+
+                        token.value = tInt;                        
+
+                        line.payloadBinRepStrEndianBig = resTmp;
+                        line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);                            
                         
                         //numeric limit is line size
                         if(isDirDcw == true) {
@@ -1665,13 +1667,16 @@ public class AssemblerThumb implements Assembler {
                             //set token binary string value
                             //payloadBinRepStrEndianBig
                             //payloadBinRepStrEndianLil
+                            
                         } else if(isDirDcb == true) {
                             //TODO: Set DCB binary string representation
                             //set token binary string value
                             //payloadBinRepStrEndianBig
-                            //payloadBinRepStrEndianLil                            
+                            //payloadBinRepStrEndianLil
+                            
                         } else {
                             //TODO: throw exception could not find data directive
+                            
                         }
                     }
                 }
