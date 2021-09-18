@@ -1656,8 +1656,7 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + token.source + "' with line number " + token.lineNum);
                         }
 
-                        token.value = tInt;                        
-
+                        token.value = tInt;
                         line.payloadBinRepStrEndianBig = resTmp;
                         line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);                            
                         
