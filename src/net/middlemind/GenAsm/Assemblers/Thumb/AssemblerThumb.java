@@ -1642,18 +1642,6 @@ public class AssemblerThumb implements Assembler {
                         if(lineNumRange != null) {
                             if(tInt < lineNumRange.min_value || tInt >  lineNumRange.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + lineNumRange.min_value + " to " + lineNumRange.max_value + " for source '" + token.source + "' with line number " + token.lineNum);
-                            } else {
-                                /*
-                                //Shouldn't need to do any of this
-                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                    //TODO: Flip Java number bytes to little endian
-                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                    //TODO: Flip Java number bytes to big endian
-                                }
-
-                                //TODO: Check alignment
-                                //lineNumRange.alignment
-                                */
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + token.source + "' with line number " + token.lineNum);
@@ -1661,12 +1649,10 @@ public class AssemblerThumb implements Assembler {
 
                         token.value = tInt;
                         if(isDirDcw == true) {
-                            //TODO: Set DCW binary string representation
                             line.payloadBinRepStrEndianBig = resTmp;
                             line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
                             
                         } else if(isDirDcb == true) {
-                            //TODO: Set DCB binary string representation
                             line.payloadBinRepStrEndianBig = resTmp;
                             line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
                             
@@ -2000,6 +1986,7 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
                             } else {
+                                //TODO: Check endianess
                                 if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                                     //Flip Java number bytes to little endian
                                 } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
@@ -2108,6 +2095,7 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
                             } else {
+                                //TODO: Check endianess
                                 if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                                     //Flip Java number bytes to little endian
                                 } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
