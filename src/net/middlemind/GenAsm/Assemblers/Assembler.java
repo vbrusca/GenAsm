@@ -1,6 +1,5 @@
 package net.middlemind.GenAsm.Assemblers;
 
-import net.middlemind.GenAsm.Exceptions.ExceptionBase;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 
 /**

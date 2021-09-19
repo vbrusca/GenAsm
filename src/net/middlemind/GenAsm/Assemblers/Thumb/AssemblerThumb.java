@@ -8,7 +8,7 @@ import net.middlemind.GenAsm.Tokeners.TokenLine;
 import net.middlemind.GenAsm.Tokeners.Token;
 import net.middlemind.GenAsm.Tokeners.TokenSorter;
 import net.middlemind.GenAsm.Lexers.ArtifactLine;
-import net.middlemind.GenAsm.Lexers.LexerSimple;
+import net.middlemind.GenAsm.Lexers.Thumb.LexerThumb;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionRedefinitionOfAreaDirective;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionMissingRequiredDirective;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoEntryFound;
@@ -51,9 +51,11 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionDirectiveArgNotSupported;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidArea;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidAssemblyLine;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidEntry;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionMissingDataDirective;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoNumberRangeFound;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNumberInvalidShift;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoOpCodeLineFound;
@@ -262,9 +264,7 @@ public class AssemblerThumb implements Assembler {
             throw e;
         }
     }
-    
-    //TODO: Detect DirectiveArg entries and toggle the isDirectiveArg boolean on the Token entry
-    
+        
     //DIRECTIVE METHODS
     private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
@@ -1497,7 +1497,7 @@ public class AssemblerThumb implements Assembler {
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
         asmDataSource = FileLoader.Load(asmSourceFile);
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
-        LexerSimple lex = new LexerSimple();
+        LexerThumb lex = new LexerThumb();
         asmDataLexed = lex.FileLexerize(asmDataSource);
     }
     
@@ -1588,7 +1588,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //BUILD OPCODE
-    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine {
+    private void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {
         if(area.isCode) {
             for(TokenLine line : areaLines) {
                 lastLine = line;
@@ -1604,7 +1604,7 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {   
+    private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
             boolean isDirDcw = false;
             boolean isDirDcb = false;
@@ -1617,11 +1617,11 @@ public class AssemblerThumb implements Assembler {
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
                         isDirDcw = false;
                         isDirDcb = true;                        
-                    }                    
+                    }
+                    
                 } else if(token.isDirectiveArg && (isDirDcw || isDirDcb)) {
                     if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
-                        //TODO: throw exception directive args only support numbers
-                        
+                        throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNum);
                     } else {
                         String resTmp;
                         Integer tInt = null;
@@ -1643,39 +1643,36 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < lineNumRange.min_value || tInt >  lineNumRange.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + lineNumRange.min_value + " to " + lineNumRange.max_value + " for source '" + token.source + "' with line number " + token.lineNum);
                             } else {
+                                /*
+                                //Shouldn't need to do any of this
                                 if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                    //Flip Java number bytes to little endian
+                                    //TODO: Flip Java number bytes to little endian
                                 } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                    //Flip Java number bytes to big endian
+                                    //TODO: Flip Java number bytes to big endian
                                 }
 
                                 //TODO: Check alignment
                                 //lineNumRange.alignment
+                                */
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + token.source + "' with line number " + token.lineNum);
                         }
 
                         token.value = tInt;
-                        line.payloadBinRepStrEndianBig = resTmp;
-                        line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);                            
-                        
-                        //numeric limit is line size
                         if(isDirDcw == true) {
                             //TODO: Set DCW binary string representation
-                            //set token binary string value
-                            //payloadBinRepStrEndianBig
-                            //payloadBinRepStrEndianLil
+                            line.payloadBinRepStrEndianBig = resTmp;
+                            line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
                             
                         } else if(isDirDcb == true) {
                             //TODO: Set DCB binary string representation
-                            //set token binary string value
-                            //payloadBinRepStrEndianBig
-                            //payloadBinRepStrEndianLil
+                            line.payloadBinRepStrEndianBig = resTmp;
+                            line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
                             
                         } else {
-                            //TODO: throw exception could not find data directive
-                            
+                            throw new ExceptionMissingDataDirective("Could not find supported data directive '" + token.source + "' with line number " + token.lineNum);
+                        
                         }
                     }
                 }
@@ -1899,7 +1896,7 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
-                        throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);                         //TODO: throw invalid entry exception
+                        throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         throw new ExceptionInvalidEntry("Found invalid LABEL_NUMERIC_LOCAL_REF entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 

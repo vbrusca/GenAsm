@@ -1,14 +1,17 @@
-package net.middlemind.GenAsm.Lexers;
+package net.middlemind.GenAsm.Lexers.Thumb;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.middlemind.GenAsm.Lexers.Artifact;
+import net.middlemind.GenAsm.Lexers.ArtifactLine;
+import net.middlemind.GenAsm.Lexers.Lexer;
 import net.middlemind.GenAsm.Utils;
 
 /**
  *
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 3:17 PM EST
  */
-public class LexerSimple implements Lexer {
+public class LexerThumb implements Lexer {
     public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
     public static char[] CHAR_STICKY_SEPARATORS = { };
     public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
