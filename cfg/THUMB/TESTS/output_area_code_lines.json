@@ -751,6 +751,8 @@
               "twos_compliment": true,
               "ones_compliment": false,
               "bcd_encoding": false,
+              "handle_prefetch": true,
+              "use_halfword_offset": true,
               "alignment": "HALFWORD",
               "name": "net.middlemind.GenAsm.JsonObjs.JsonObjNumRange",
               "fileName": "./cfg/THUMB/is_op_codes.json",

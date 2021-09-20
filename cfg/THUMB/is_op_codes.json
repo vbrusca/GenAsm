@@ -4,7 +4,8 @@
     "endian": "BIG",
     "pc_prefecth_bits": 32,
     "pc_prefecth_bytes": 4,
-    "pc_prefecth_words": 2,
+    "pc_prefecth_halfwords": 2,    
+    "pc_prefecth_words": 1,
     "pc_alignment": "WORD",
     "pc_lsb_zeroed": true,
     "bit_series": {
@@ -3695,6 +3696,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3737,6 +3740,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3779,6 +3784,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3821,6 +3828,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3863,6 +3872,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3905,6 +3916,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3947,6 +3960,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -3989,6 +4004,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4031,6 +4048,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4073,6 +4092,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4115,6 +4136,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4157,6 +4180,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4199,6 +4224,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4241,6 +4268,8 @@
                         "max_value": 255,
                         "bit_len": 9,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4325,6 +4354,8 @@
                         "max_value": 2048,
                         "bit_len": 12,
                         "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -4366,7 +4397,9 @@
                         "min_value": 0,
                         "max_value": 2047,
                         "bit_len": 11,
-                        "twos_compliment": false,
+                        "twos_compliment": true,
+                        "handle_prefetch": true,
+                        "use_halfword_offset": true,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {

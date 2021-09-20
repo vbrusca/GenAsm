@@ -51,6 +51,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
+import net.middlemind.GenAsm.Assemblers.TwosCompliment;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionDirectiveArgNotSupported;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidArea;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidAssemblyLine;
@@ -120,6 +121,7 @@ public class AssemblerThumb implements Assembler {
     
     public int pcPreFetchBytes;
     public int pcPreFetchWords;
+    public int pcPreFetchHalfwords;    
     public boolean isEndianBig = false;
     public boolean isEndianLittle = true; 
     
@@ -1453,7 +1455,9 @@ public class AssemblerThumb implements Assembler {
                 lineNumRange.twos_compliment = false;
                 
                 pcPreFetchBytes = jsonObjIsOpCodes.pc_prefetch_bytes;
+                pcPreFetchHalfwords = jsonObjIsOpCodes.pc_prefetch_halfwords;                
                 pcPreFetchWords = jsonObjIsOpCodes.pc_prefetch_words;
+                
                 if(jsonObjIsOpCodes.endian.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
                     isEndianBig = true;
                     isEndianLittle = false;
@@ -1603,6 +1607,8 @@ public class AssemblerThumb implements Assembler {
             throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
         }
     }
+    
+    //TODO: output_area_code_desc.json, output_area_code_lines.json, output_area_data_desc.json, output_area_data_lines.json, output_build_entries.json, output_symbols.json
     
     private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
@@ -1803,6 +1809,7 @@ public class AssemblerThumb implements Assembler {
                     resTmp = entry.opCode.bit_rep.bit_string;
                     
                 }else if(entry.isOpCodeArgList) {
+                    // <editor-fold defaultstate="collapsed" desc="OpCode Arg List">
                     if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
                         if(entry.tokenOpCodeArgList.source.equals("R0")) {
                             inListRegisters[0] = 1;
@@ -1912,8 +1919,10 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         throw new ExceptionUnexpectedTokenType("Found unexpected LIST sub-token type '" + entry.tokenOpCodeArgList.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
-                   
+                    //</editor-fold>
+                    
                 }else if(entry.isOpCodeArgGroup) {
+                    // <editor-fold defaultstate="collapsed" desc="OpCode Arg Group">
                     if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
@@ -1966,6 +1975,19 @@ public class AssemblerThumb implements Assembler {
                             tInt *= -1;
                         }
                         
+                        if(entry.opCodeArgGroup.num_range.ones_compliment) {
+                            tInt = ~tInt;
+                        }                        
+                        
+                        resTmp = Integer.toBinaryString(tInt);
+                        
+                        if(entry.opCodeArgGroup.num_range.twos_compliment) {
+                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                        }
+                        
+                        //TODO: Check alignment
+                        //entry.opCodeArg.num_range.alignment                        
+                        
                         resTmp = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
@@ -1985,24 +2007,6 @@ public class AssemblerThumb implements Assembler {
                         if(entry.opCodeArgGroup.num_range != null) {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
-                            } else {
-                                //TODO: Check endianess
-                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                    //Flip Java number bytes to little endian
-                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                    //Flip Java number bytes to big endian
-                                }                                
-                                                                
-                                if(entry.opCodeArgGroup.num_range.ones_compliment) {
-                                    //TODO: Take one's compliment                                
-                                }
-                                
-                                if(entry.opCodeArgGroup.num_range.twos_compliment) {
-                                    //TODO: Takes two's compliment
-                                }
-
-                                //TODO: Check alignment
-                                //entry.opCodeArgSubGroup.num_range.alignment                        
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
@@ -2020,9 +2024,11 @@ public class AssemblerThumb implements Assembler {
                     } else {
                         throw new ExceptionUnexpectedTokenType("Found unexpected GROUP sub-token type '" + entry.tokenOpCodeArgGroup.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
+                    //</editor-fold>
                     
                 //Process OpCode argument tokens
                 }else if(entry.isOpCodeArg) {
+                    // <editor-fold defaultstate="collapsed" desc="OpCode Arg">
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                     
@@ -2045,6 +2051,8 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + entry.tokenOpCodeArg.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
+                        //TODO: Process numeric label ref
+                        //TODO: Handle if OpCode/OpCode Arg uses a halword offset                        
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
                         Symbol sym = symbols.symbols.get(entry.tokenOpCodeArg.source.replace("=", ""));
@@ -2053,10 +2061,12 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for local label '" + entry.tokenOpCodeArg.source.replace("=", "") + "' with line number " + entry.tokenOpCodeArg.lineNum);
                         }
+                        //TODO: Process numeric label local ref
+                        //TODO: Handle if OpCode/OpCode Arg uses a halword offset
                                                 
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
-                    
+                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                         Integer tInt = null;
                         if(entry.tokenOpCodeArg.source.contains("#0x")) {
@@ -2069,13 +2079,29 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
                         }
                         
+                        if(entry.opCodeArg.num_range.handle_prefetch) {
+                            tInt -= pcPreFetchHalfwords;
+                        }
+                        
                         //special rule for ADD OpCode '101100000'
                         if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
+                        }
+                        
+                        if(entry.opCodeArg.num_range.ones_compliment) {
+                            tInt = ~tInt;
                         }                        
                         
                         resTmp = Integer.toBinaryString(tInt);
+                        
+                        if(entry.opCodeArg.num_range.twos_compliment) {
+                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                        }
+                        
+                        //TODO: Check alignment
+                        //entry.opCodeArg.num_range.alignment                        
+
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2087,31 +2113,13 @@ public class AssemblerThumb implements Assembler {
                                 }
                             }
                         }
-                        
+                                                
                         resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);                        
                         tInt = Integer.parseInt(resTmp, 2);
                         
                         if(entry.opCodeArg.num_range != null) {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
-                            } else {
-                                //TODO: Check endianess
-                                if(isEndianLittle && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_BIG)) {
-                                    //Flip Java number bytes to little endian
-                                } else if(isEndianBig && AssemblerThumb.ENDIAN_NAME_JAVA_DEFAULT.equals(AssemblerThumb.ENDIAN_NAME_LITTLE)) {
-                                    //Flip Java number bytes to big endian
-                                }                                
-                                
-                                if(entry.opCodeArg.num_range.ones_compliment) {
-                                    //TODO: Take one's compliment                                
-                                }
-                                
-                                if(entry.opCodeArg.num_range.twos_compliment) {
-                                    //TODO: Take two's compliment
-                                }
-
-                                //TODO: Check alignment
-                                //entry.opCodeArg.num_range.alignment
                             }
                         } else {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNum);
@@ -2130,7 +2138,9 @@ public class AssemblerThumb implements Assembler {
                     
                     } else {
                         throw new ExceptionUnexpectedTokenType("Found unexpected token type '" + entry.tokenOpCodeArg.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
-                    }                    
+                    }
+                    
+                    // </editor-fold>
                 }
                 entry.binRepStr = resTmp;
                 res += resTmp;

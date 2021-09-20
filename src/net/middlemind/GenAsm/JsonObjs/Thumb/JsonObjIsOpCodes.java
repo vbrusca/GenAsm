@@ -19,6 +19,7 @@ public class JsonObjIsOpCodes extends JsonObjBase {
     public String endian;
     public int pc_prefetch_bits;
     public int pc_prefetch_bytes;
+    public int pc_prefetch_halfwords;
     public int pc_prefetch_words;
     public String pc_alignment;
     public boolean pc_lsb_zeroed;

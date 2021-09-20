@@ -14,6 +14,8 @@ public class JsonObjNumRange extends JsonObjBase {
     public boolean twos_compliment;
     public boolean ones_compliment;
     public boolean bcd_encoding;
+    public boolean handle_prefetch;
+    public boolean use_halfword_offset;
     public String alignment;
     
     @Override
@@ -30,7 +32,9 @@ public class JsonObjNumRange extends JsonObjBase {
         Logger.wrl(prefix + "BitLen: " + bit_len);
         Logger.wrl(prefix + "TwosCompliment: " + twos_compliment);
         Logger.wrl(prefix + "OnesCompliment: " + ones_compliment);
-        Logger.wrl(prefix + "BcdEncoding: " + bcd_encoding);        
+        Logger.wrl(prefix + "BcdEncoding: " + bcd_encoding);
+        Logger.wrl(prefix + "HandlePrefetch: " + handle_prefetch);
+        Logger.wrl(prefix + "UseHalfWordOffset: " + use_halfword_offset);        
         Logger.wrl(prefix + "Alignment: " + alignment);        
     }    
 }

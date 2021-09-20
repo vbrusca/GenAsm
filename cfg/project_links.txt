@@ -1,0 +1,14 @@
+//Helper Sites
+https://bkhmsi.github.io/ARMThumb_Sim/#/
+https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html
+https://www.rapidtables.com/convert/number/decimal-to-hex.html?x=120
+http://shell-storm.org/online/Online-Assembler-and-Disassembler/?inst=LSR+++++R2%2C+R5%2C+27&arch=arm-t&as_format=inline#assembly
+https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#fromtwo
+https://www.scadacore.com/tools/programming-calculators/online-hex-converter/
+https://en.wikipedia.org/wiki/Endianness#Example
+https://www.cs.princeton.edu/courses/archive/fall12/cos375/ThumbRefCard.pdf
+
+
+//Twos Compliment Class
+https://stackoverflow.com/questions/42595963/how-to-get-2s-complement-of-a-binary-number-in-java-programmatically
+
