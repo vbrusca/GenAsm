@@ -1,6 +1,9 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
+    CMP     R0, #45 
+    BGT     =over
+    B       =jimmy
     LSR     R2, R5, #27
     ADD     R0, R3, R4
     SUB     R6, R2, #6
@@ -38,5 +41,7 @@
     PUSH    {R0-R4, LR}
     POP     {R2, R6, PC}
     STMIA   R0!, {R3, R4, R5, R6, R7}
-    CMP     R0, #45
+    over    CMP     R0, #45
+    here    B       =here
+    jimmy   LDR R2, [R2]
 @END
