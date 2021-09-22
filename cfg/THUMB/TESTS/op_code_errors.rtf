@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red247\green247\blue247;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c97647\c97647\c97647;}
+\margl1440\margr1440\vieww18440\viewh11140\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+    LDR     R3, [PC, #844]              ; 01001  110  01001100 (ERROR)\
+					  01001  011  11010011\
+					            #211  11010011\
+\
+    LDR     R2, [R5, #116]              ; 01101  10100  101010 (ERROR)\
+				            01101  11101  101010\
+					   #116  1110100\
+\
+    ADD     R2, PC, #572                ; 10100  010  00111100 (ERROR)\
+					  10100  010  10001111\
+						 #143  10001111\
+\
+    ADD     R6, SP, #212               ; 10101  110  11010100 (ERROR)\
+					 10101  110  00110101\
+					  	  #53  00110101\
+\
+    ADD     SP, #268                      ; 101100000  0001100 (ERROR)\
+					 101100000  1000011\
+						  #67   1000011\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3     ADD     SP, #-268                      ; 101100001  0001100 (ERROR)\
+					   101100001  1000011\
+						   #67   1000011\cb3 \
+\
+\
+   PUSH    \{R0-R4, LR\}                 ; 10110101  00011111\
+\
+\
+   POP     \{R2, R6, PC\}                 ; 10111101  01000100\
+}

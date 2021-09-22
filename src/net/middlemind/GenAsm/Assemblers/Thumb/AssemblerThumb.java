@@ -1607,9 +1607,7 @@ public class AssemblerThumb implements Assembler {
             throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
         }
     }
-    
-    //TODO: output_area_code_desc.json, output_area_code_lines.json, output_area_data_desc.json, output_area_data_lines.json, output_build_entries.json, output_symbols.json
-    
+        
     private void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
             boolean isDirDcw = false;
