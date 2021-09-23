@@ -8,7 +8,6 @@ https://www.scadacore.com/tools/programming-calculators/online-hex-converter/
 https://en.wikipedia.org/wiki/Endianness#Example
 https://www.cs.princeton.edu/courses/archive/fall12/cos375/ThumbRefCard.pdf
 
-
 //Twos Compliment Class
 https://stackoverflow.com/questions/42595963/how-to-get-2s-complement-of-a-binary-number-in-java-programmatically
 
