@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import net.middlemind.GenAsm.Linkers.Linker;
 
 /**
  *
@@ -26,9 +27,11 @@ public class GenAsm {
     public static String ASM_ASSEMBLER_CLASS = "";
     public static Assembler ASM_ASSEMBLER = null;
     public static String ASM_ASSEMBLY_SOURCE_FILE = "";
+    public static String ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
+    public static Linker ASM_LINKER = null;
     
     public static void main(String[] args) throws Exception {
-        if(args == null || args.length < 5) {
+        if(args == null || args.length < 6) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
@@ -38,6 +41,9 @@ public class GenAsm {
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
             ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_super_short.txt";
+            ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
+            ASM_LINKER = null;
+            
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
@@ -48,6 +54,9 @@ public class GenAsm {
             ASM_ASSEMBLER_CLASS = args[4];
             ASM_ASSEMBLER = null;
             ASM_ASSEMBLY_SOURCE_FILE = args[5];
+            ASM_LINKER_CLASS = args[6];
+            ASM_LINKER = null;
+            
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
@@ -277,7 +286,6 @@ public class GenAsm {
             String json;
             Class cTmp;
             LoaderIsSets ldrIsSets;
-            Assembler assm;
             
             try {
                 json = FileLoader.LoadStr(ASM_SETS_FILE_NAME);
@@ -294,7 +302,10 @@ public class GenAsm {
                     ASM_SETS = ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
                             
                     cTmp = Class.forName(ASM_ASSEMBLER_CLASS);
-                    assm = (Assembler)cTmp.getDeclaredConstructor().newInstance();
+                    ASM_ASSEMBLER = (Assembler)cTmp.getDeclaredConstructor().newInstance();
+                    
+                    cTmp = Class.forName(ASM_LINKER_CLASS);
+                    ASM_LINKER = (Linker)cTmp.getDeclaredConstructor().newInstance();                    
                     
                     for(JsonObjIsSet entry : ASM_SETS.is_sets) {
                         if(entry.set_name.equals(ASM_TARGET_SET)) {
@@ -305,7 +316,13 @@ public class GenAsm {
                     }
                     
                     if(ASM_SET != null) {
-                        assm.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, null);
+                        if(ASM_ASSEMBLER != null) {
+                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, null);
+                            
+                            if(ASM_LINKER != null) {
+                                ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, null);                                
+                            }
+                        }
                     } else {
                         Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
                     }
