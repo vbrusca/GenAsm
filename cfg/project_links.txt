@@ -19,3 +19,6 @@ https://problemkaputt.de/gbatek.htm#gbakeypadinput
 
 //GBA Assembly
 https://www.chibialiens.com/arm/helloworld.php#LessonH2
+
+//TI-99
+http://www.emucamp.com/ti-99.html

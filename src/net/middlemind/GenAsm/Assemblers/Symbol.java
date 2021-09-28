@@ -19,4 +19,6 @@ public class Symbol {
     public int lineNumActive;
     public boolean isEmptyLineLabel;
     public boolean isLocalLabel;
+    public boolean isStaticValue;
+    public Integer value;
 }

@@ -3,237 +3,1219 @@
     "is_op_code_examples": [
         {
             "obj_name": "is_op_code_example",
-            "source": "LSR     R2, R5, #27",
-            "endian_binary_big": "0000111011101010",
-            "endian_binary_lil": "1110101000001110"
+            "index": 0,
+            "op_code": "LSL",
+            "source": "LSL     R0, R1, #0",
+            "endian_binary_big": "0000000000001000",
+            "endian_binary_little": "0000100000000000"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "ADD     R0, R3, R4",
-            "big_endian_binary": "0001100100011000",
-            "little_endian_binary": "0001100000011001"
+            "index": 1,
+            "op_code": "LSL",
+            "source": "LSL     R0, R1, #31",
+            "endian_binary_big": "0000011111001000",
+            "endian_binary_little": "1100100000000111"
         },
         {
             "obj_name": "is_op_code_example",
-            "source": "SUB     R6, R2, #6",
-            "big_endian_binary": "0001111110010110",
-            "little_endian_binary": "1001011000011111"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "MOV     R0, #127",
-            "big_endian_binary": "0010000001111111",
-            "little_endian_binary": "0111111100100000"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R2, #62",
-            "big_endian_binary": "0010101000111110",            
-            "little_endian_binary": "0011111000101010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R1, #127",
-            "big_endian_binary": "0011000101111111",
-            "little_endian_binary": "0111111100110001"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "SUB     R6, #1",
-            "big_endian_binary": "0011111000000001",
-            "little_endian_binary": "0000000100111110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "EOR     R3, R4",
-            "big_endian_binary": "0100000001100011",
-            "little_endian_binary": "0110001101000000"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ROR     R1, R0",
-            "big_endian_binary": "0100000111000001",
-            "little_endian_binary": "1100000101000001"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "NEG     R5, R3",
-            "big_endian_binary": "0100001001011101",
-            "little_endian_binary": "0101110101000010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R2, R6",
-            "big_endian_binary": "0100001010110010",
-            "little_endian_binary": "1011001001000010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "MUL     R0, R7",
-            "big_endian_binary": "0100001101111000",
-            "little_endian_binary": "0111100001000011"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "EOR     R3, R4",
-            "big_endian_binary": "0100000001100011",
-            "little_endian_binary": "0110001101000000"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ROR     R1, R0",
-            "big_endian_binary": "0100000111000001",
-            "little_endian_binary": "1100000101000001"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "NEG     R5, R3",
-            "big_endian_binary": "0100001001011101",
-            "little_endian_binary": "0101110101000010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R2, R6",
-            "big_endian_binary": "0100001010110010",
-            "little_endian_binary": "1011001001000010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "MUL     R0, R7",
-            "big_endian_binary": "0100001101111000",
-            "little_endian_binary": "0111100001000011"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R15, R5",
-            "big_endian_binary": "0100010010101111",
-            "little_endian_binary": "1010111101000100"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "CMP     R4, R12",
-            "big_endian_binary": "0100010101100100",
-            "little_endian_binary": "0110010001010100"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "MOV     R15, R14",
-            "big_endian_binary": "0100011011110111",
-            "little_endian_binary": "1111011101000110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDR     R3, [PC, #844]",
-            "big_endian_binary": "0100111001001100",
-            "little_endian_binary": "0100110001001110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "STR     R3, [R2, R6]",
-            "big_endian_binary": "0101000110010011",
-            "little_endian_binary": "1001001101010001"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDRB    R2, [R0, R7]",
-            "big_endian_binary": "0101110111000010",
-            "little_endian_binary": "1100001001011101"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "STRH    R4, [R3, R0]",
-            "big_endian_binary": "0101001000011100",
-            "little_endian_binary": "0001110001010010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDSB    R2, [R7, R1]",
-            "big_endian_binary": "0101011001111010",
-            "little_endian_binary": "0111101001010110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDSH    R3, [R4, R2]",
-            "big_endian_binary": "0101111010100011",
-            "little_endian_binary": "1010001101011110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDR     R2, [R5, #116]",
-            "big_endian_binary": "0110110100101010",
-            "little_endian_binary": "0010101001101101"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "STRB    R1, [R0, #13]",
-            "big_endian_binary": "0111001101000001",
-            "little_endian_binary": "0100000101110011"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "STRH    R6, [R1, #56]",
-            "big_endian_binary": "1000011000001110",
-            "little_endian_binary": "0000111010000110"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "LDRH    R4, [R7, #4]",
-            "big_endian_binary": "1000100100111100",
-            "little_endian_binary": "0011110010001001"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R2, PC, #572",
-            "big_endian_binary": "1010001000111100",
-            "little_endian_binary": "0011110010100010"
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     R6, SP, #212",
-            "big_endian_binary": "1010111011010100",
-            "little_endian_binary": ""
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     SP, #268",
-            "big_endian_binary": "1011000000001100",
-            "little_endian_binary": ""
-        },
-        {
-            "obj_name": "is_op_code_example",
-            "source": "ADD     SP, #-268",
-            "big_endian_binary": "1011000010001100",
-            "little_endian_binary": ""
+            "index": 2,
+            "op_code": "LSR",
+            "source": "LSR     R0, R1, #0",
+            "endian_binary_big": "0000100000001000",
+            "endian_binary_little": "0000100000001000"
         },        
         {
             "obj_name": "is_op_code_example",
+            "index": 3,
+            "op_code": "LSR",
+            "source": "LSR     R2, R5, #27",
+            "endian_binary_big": "0000111011101010",
+            "endian_binary_little": "1110101000001110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 4,
+            "op_code": "ADD",
+            "source": "ADD     R0, R3, R4",
+            "endian_binary_big": "0001100100011000",
+            "endian_binary_little": "0001100000011001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 5,
+            "op_code": "SUB",
+            "source": "SUB     R6, R2, #6",
+            "endian_binary_big": "0001111110010110",
+            "endian_binary_little": "1001011000011111"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 6,
+            "op_code": "MOV",
+            "source": "MOV     R0, #127",
+            "endian_binary_big": "0010000001111111",
+            "endian_binary_little": "0111111100100000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 7,
+            "op_code": "CMP",
+            "source": "CMP     R2, #62",
+            "endian_binary_big": "0010101000111110",
+            "endian_binary_little": "0011111000101010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 8,
+            "op_code": "ADD",
+            "source": "ADD     R1, #127",
+            "endian_binary_big": "0011000101111111",
+            "endian_binary_little": "0111111100110001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 9,
+            "op_code": "SUB",
+            "source": "SUB     R6, #1",
+            "endian_binary_big": "0011111000000001",
+            "endian_binary_little": "0000000100111110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 10,
+            "op_code": "EOR",
+            "source": "EOR     R3, R4",
+            "endian_binary_big": "0100000001100011",
+            "endian_binary_little": "0110001101000000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 11,
+            "op_code": "ROR",
+            "source": "ROR     R1, R0",
+            "endian_binary_big": "0100000111000001",
+            "endian_binary_little": "1100000101000001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 12,
+            "op_code": "NEG",
+            "source": "NEG     R5, R3",
+            "endian_binary_big": "0100001001011101",
+            "endian_binary_little": "0101110101000010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 13,
+            "op_code": "CMP",
+            "source": "CMP     R2, R6",
+            "endian_binary_big": "0100001010110010",
+            "endian_binary_little": "1011001001000010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 14,
+            "op_code": "MUL",
+            "source": "MUL     R0, R7",
+            "endian_binary_big": "0100001101111000",
+            "endian_binary_little": "0111100001000011"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 15,
+            "op_code": "EOR",
+            "source": "EOR     R3, R4",
+            "endian_binary_big": "0100000001100011",
+            "endian_binary_little": "0110001101000000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 16,
+            "op_code": "ROR",
+            "source": "ROR     R1, R0",
+            "endian_binary_big": "0100000111000001",
+            "endian_binary_little": "1100000101000001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 17,
+            "op_code": "NEG",
+            "source": "NEG     R5, R3",
+            "endian_binary_big": "0100001001011101",
+            "endian_binary_little": "0101110101000010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 18,
+            "op_code": "CMP",
+            "source": "CMP     R2, R6",
+            "endian_binary_big": "0100001010110010",
+            "endian_binary_little": "1011001001000010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 19,
+            "op_code": "MUL",
+            "source": "MUL     R0, R7",
+            "endian_binary_big": "0100001101111000",
+            "endian_binary_little": "0111100001000011"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 20,
+            "op_code": "ADD",
+            "source": "ADD     R15, R5",
+            "endian_binary_big": "0100010010101111",
+            "endian_binary_little": "1010111101000100"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 21,
+            "op_code": "CMP",
+            "source": "CMP     R4, R12",
+            "endian_binary_big": "0100010101100100",
+            "endian_binary_little": "0110010001010100"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 22,
+            "op_code": "MOV",
+            "source": "MOV     R15, R14",
+            "endian_binary_big": "0100011011110111",
+            "endian_binary_little": "1111011101000110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 23,
+            "op_code": "LDR",
+            "source": "LDR     R3, [PC, #844]",
+            "endian_binary_big": "0100111001001100",
+            "endian_binary_little": "0100110001001110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 24,
+            "op_code": "STR",
+            "source": "STR     R3, [R2, R6]",
+            "endian_binary_big": "0101000110010011",
+            "endian_binary_little": "1001001101010001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 25,
+            "op_code": "LDRB",
+            "source": "LDRB    R2, [R0, R7]",
+            "endian_binary_big": "0101110111000010",
+            "endian_binary_little": "1100001001011101"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 26,
+            "op_code": "STRH",
+            "source": "STRH    R4, [R3, R0]",
+            "endian_binary_big": "0101001000011100",
+            "endian_binary_little": "0001110001010010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 27,
+            "op_code": "LDSB",
+            "source": "LDSB    R2, [R7, R1]",
+            "endian_binary_big": "0101011001111010",
+            "endian_binary_little": "0111101001010110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 28,
+            "op_code": "LDSH",
+            "source": "LDSH    R3, [R4, R2]",
+            "endian_binary_big": "0101111010100011",
+            "endian_binary_little": "1010001101011110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 29,
+            "op_code": "LDR",
+            "source": "LDR     R2, [R5, #116]",
+            "endian_binary_big": "0110110100101010",
+            "endian_binary_little": "0010101001101101"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 30,
+            "op_code": "STRB",
+            "source": "STRB    R1, [R0, #13]",
+            "endian_binary_big": "0111001101000001",
+            "endian_binary_little": "0100000101110011"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 31,
+            "op_code": "STRH",
+            "source": "STRH    R6, [R1, #56]",
+            "endian_binary_big": "1000011000001110",
+            "endian_binary_little": "0000111010000110"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 32,
+            "op_code": "LDRH",
+            "source": "LDRH    R4, [R7, #4]",
+            "endian_binary_big": "1000100100111100",
+            "endian_binary_little": "0011110010001001"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 33,
+            "op_code": "ADD",
+            "source": "ADD     R2, PC, #572",
+            "endian_binary_big": "1010001000111100",
+            "endian_binary_little": "0011110010100010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 34,
+            "op_code": "ADD",
+            "source": "ADD     R6, SP, #212",
+            "endian_binary_big": "1010111011010100",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 35,
+            "op_code": "ADD",
+            "source": "ADD     SP, #268",
+            "endian_binary_big": "1011000000001100",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 36,
+            "op_code": "ADD",
+            "source": "ADD     SP, #-268",
+            "endian_binary_big": "1011000010001100",
+            "endian_binary_little": ""
+        },        
+        {
+            "obj_name": "is_op_code_example",
+            "index": 37,
+            "op_code": "ADD",
             "source": "ADD     R1, #104",
-            "big_endian_binary": "0011000101101000",
-            "little_endian_binary": "0110100000110001"
+            "endian_binary_big": "0011000101101000",
+            "endian_binary_little": "0110100000110001"
         },
         {
             "obj_name": "is_op_code_example",
+            "index": 38,
+            "op_code": "PUSH",
             "source": "PUSH    {R0-R4, LR}",
-            "big_endian_binary": "1011010100011111",
-            "little_endian_binary": ""
+            "endian_binary_big": "1011010100011111",
+            "endian_binary_little": ""
         },
         {
             "obj_name": "is_op_code_example",
+            "index": 39,
+            "op_code": "POP",
             "source": "POP     {R2, R6, PC}",
-            "big_endian_binary": "1011110101000100",
-            "little_endian_binary": ""
+            "endian_binary_big": "1011110101000100",
+            "endian_binary_little": ""
         },
         {
             "obj_name": "is_op_code_example",
+            "index": 40,
+            "op_code": "STMIA",
             "source": "STMIA   R0!, {R3, R4, R5, R6, R7}",
-            "big_endian_binary": "1100000011111001",
-            "little_endian_binary": "1111100111000000"
+            "endian_binary_big": "1100000011111001",
+            "endian_binary_little": "1111100111000000"
         },
         {
             "obj_name": "is_op_code_example",
+            "index": 41,
+            "op_code": "CMP",
             "source": "CMP     R0, #45",
-            "big_endian_binary": "0010100000101101",
-            "little_endian_binary": "0010110100101000"
+            "endian_binary_big": "0010100000101101",
+            "endian_binary_little": "0010110100101000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 42,
+            "op_code": "LSR",
+            "source": "LSR     R0, R1, #31",
+            "endian_binary_big": "0000111111001000",
+            "endian_binary_little": "1100100000001111"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 43,
+            "op_code": "ASR",
+            "source": "ASR     R0, R1, #0",
+            "endian_binary_big": "0001000000001000",
+            "endian_binary_little": "0000100000010000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 44,
+            "op_code": "ASR",
+            "source": "ASR     R0, R1, #31",
+            "endian_binary_big": "0001011111001000",
+            "endian_binary_little": "1100100000010111"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 45,
+            "op_code": "ADD",
+            "source": "ADD     R0, R1, R2",
+            "endian_binary_big": "0001100010001000",
+            "endian_binary_little": "1000100000011000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 46,
+            "op_code": "ADD",
+            "source": "ADD     R0, R1, #7",
+            "endian_binary_big": "0001110111001000",
+            "endian_binary_little": "1100100000011101"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 47,
+            "op_code": "SUB",
+            "source": "SUB     R0, R1, R2",
+            "endian_binary_big": "0001101010001000",
+            "endian_binary_little": "1000100000011010"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 48,
+            "op_code": "SUB",
+            "source": "SUB     R0, R1, #7",
+            "endian_binary_big": "0001111111001000",
+            "endian_binary_little": "1100100000011111"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 49,
+            "op_code": "MOV",
+            "source": "MOV     R0, #0",
+            "endian_binary_big": "0010000000000000",
+            "endian_binary_little": "0000000000100000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 50,
+            "op_code": "MOV",
+            "source": "MOV     R0, #255",
+            "endian_binary_big": "0010000011111111",
+            "endian_binary_little": "1111111100100000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 51,
+            "op_code": "CMP",
+            "source": "CMP     R0, #0",
+            "endian_binary_big": "0010100000000000",
+            "endian_binary_little": "0000000000101000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 52,
+            "op_code": "CMP",
+            "source": "CMP     R0, #255",
+            "endian_binary_big": "0010100011111111",
+            "endian_binary_little": "1111111100101000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 53,
+            "op_code": "ADD",
+            "source": "ADD     R0, #0",
+            "endian_binary_big": "0011000000000000",
+            "endian_binary_little": "0000000000110000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 54,
+            "op_code": "ADD",
+            "source": "ADD     R0, #255",
+            "endian_binary_big": "0011000011111111",
+            "endian_binary_little": "1111111100110000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 55,
+            "op_code": "SUB",
+            "source": "SUB     R0, #0",
+            "endian_binary_big": "0011100000000000",
+            "endian_binary_little": "0000000000111000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 56,
+            "op_code": "SUB",
+            "source": "SUB     R0, #255",
+            "endian_binary_big": "0011100011111111",
+            "endian_binary_little": "1111111100111000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 57,
+            "op_code": "AND",
+            "source": "AND     R0, R1",
+            "endian_binary_big": "0100000000001000",
+            "endian_binary_little": "0000100001000000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 58,
+            "op_code": "EOR",
+            "source": "EOR     R0, R1",
+            "endian_binary_big": "0100000001001000",
+            "endian_binary_little": "0100100001000000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 59,
+            "op_code": "LSL",
+            "source": "LSL     R0, R1",
+            "endian_binary_big": "0100000010001000",
+            "endian_binary_little": "1000100001000000"
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 60,
+            "op_code": "LSR",
+            "source": "LSR     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 61,
+            "op_code": "ASR",
+            "source": "ASR     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 62,
+            "op_code": "ADC",
+            "source": "ADC     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 63,
+            "op_code": "SBC",
+            "source": "SBC     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 64,
+            "op_code": "ROR",
+            "source": "ROR     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 65,
+            "op_code": "TST",
+            "source": "TST     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 66,
+            "op_code": "NEG",
+            "source": "NEG     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 67,
+            "op_code": "CMP",
+            "source": "CMP     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 68,
+            "op_code": "CMN",
+            "source": "CMN     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 69,
+            "op_code": "ORR",
+            "source": "ORR     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 70,
+            "op_code": "MUL",
+            "source": "MUL     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 71,
+            "op_code": "BIC",
+            "source": "BIC     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 72,
+            "op_code": "MVN",
+            "source": "MVN     R0, R1",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 73,
+            "op_code": "ADD",
+            "source": "ADD     R0, R8",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 74,
+            "op_code": "ADD",
+            "source": "ADD     R8, R0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 75,
+            "op_code": "ADD",
+            "source": "ADD     R8, R9",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 76,
+            "op_code": "CMP",
+            "source": "CMP     R0, R8",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 77,
+            "op_code": "CMP",
+            "source": "CMP     R8, R0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 78,
+            "op_code": "CMP",
+            "source": "CMP     R8, R9",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 79,
+            "op_code": "MOV",
+            "source": "MOV     R0, R8",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 80,
+            "op_code": "MOV",
+            "source": "MOV     R8, R0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 81,
+            "op_code": "MOV",
+            "source": "MOV     R8, R9",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 82,
+            "op_code": "BX",
+            "source": "BX      R0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 83,
+            "op_code": "BX",
+            "source": "BX      R8",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 84,
+            "op_code": "LDR",
+            "source": "LDR     R0, [PC, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 85,
+            "op_code": "LDR",
+            "source": "LDR     R0, [PC, #1020]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 86,
+            "op_code": "STR",
+            "source": "STR     R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 87,
+            "op_code": "STRB",
+            "source": "STRB    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 88,
+            "op_code": "LDR",
+            "source": "LDR     R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 89,
+            "op_code": "LDRB",
+            "source": "LDRB    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 90,
+            "op_code": "STRH",
+            "source": "STRH    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 91,
+            "op_code": "LDRH",
+            "source": "LDRH    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 92,
+            "op_code": "LDSB",
+            "source": "LDSB    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 93,
+            "op_code": "LDSH",
+            "source": "LDSH    R0, [R1, R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 94,
+            "op_code": "STR",
+            "source": "STR     R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 95,
+            "op_code": "STR",
+            "source": "STR     R0, [R1, #124]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 96,
+            "op_code": "LDR",
+            "source": "LDR     R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 97,
+            "op_code": "LDR",
+            "source": "LDR     R0, [R1, #124]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 98,
+            "op_code": "STRB",
+            "source": "STRB    R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 99,
+            "op_code": "STRB",
+            "source": "STRB    R0, [R1, #31]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 100,
+            "op_code": "LDRB",
+            "source": "LDRB    R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 101,
+            "op_code": "LDRB",
+            "source": "LDRB    R0, [R1, #31]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 102,
+            "op_code": "STRH",
+            "source": "STRH    R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 103,
+            "op_code": "STRH",
+            "source": "STRH    R0, [R1, #62]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 104,
+            "op_code": "LDRH",
+            "source": "LDRH    R0, [R1, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 105,
+            "op_code": "LDRH",
+            "source": "LDRH    R0, [R1, #62]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 106,
+            "op_code": "STR",
+            "source": "STR     R0, [SP, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 107,
+            "op_code": "STR",
+            "source": "STR     R0, [SP, #1020]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 108,
+            "op_code": "LDR",
+            "source": "LDR     R0, [SP, #0]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 109,
+            "op_code": "LDR",
+            "source": "LDR     R0, [SP, #1020]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 110,
+            "op_code": "ADD",
+            "source": "ADD     R0, PC, #0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 111,
+            "op_code": "ADD",
+            "source": "ADD     R0, PC, #1020",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 112,
+            "op_code": "ADD",
+            "source": "ADD     R0, SP, #0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 113,
+            "op_code": "ADD",
+            "source": "ADD     R0, SP, #1020",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 114,
+            "op_code": "ADD",
+            "source": "ADD     SP, #0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 115,
+            "op_code": "ADD",
+            "source": "ADD     SP, #508",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 116,
+            "op_code": "ADD",
+            "source": "ADD     SP, #-508",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 117,
+            "op_code": "PUSH",
+            "source": "PUSH    {R0, R1}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 118,
+            "op_code": "PUSH",
+            "source": "PUSH    {R0, R1, LR}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 119,
+            "op_code": "POP",
+            "source": "POP     {R0, R1}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 120,
+            "op_code": "POP",
+            "source": "POP     {R0, R1, PC}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 121,
+            "op_code": "STMIA",
+            "source": "STMIA   R0!, {R1, R2}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 122,
+            "op_code": "LDMIA",
+            "source": "LDMIA   R0!, {R1, R2}",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 123,
+            "op_code": "BEQ",
+            "source": "BEQ     =label_",
+            "endian_binary_big": "1101000000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 124,
+            "op_code": "BNE",
+            "source": "BNE     =label_",
+            "endian_binary_big": "1101000100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 125,
+            "op_code": "BCS",
+            "source": "BCS     =label_",
+            "endian_binary_big": "1101001000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 126,
+            "op_code": "BCC",
+            "source": "BCC     =label_",
+            "endian_binary_big": "1101001100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 127,
+            "op_code": "BMI",
+            "source": "BMI     =label_",
+            "endian_binary_big": "1101010000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 128,
+            "op_code": "BPL",
+            "source": "BPL     =label_",
+            "endian_binary_big": "1101010100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 129,
+            "op_code": "BVS",
+            "source": "BVS     =label_",
+            "endian_binary_big": "1101011000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 130,
+            "op_code": "BVC",
+            "source": "BVC     =label_",
+            "endian_binary_big": "1101011100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 131,
+            "op_code": "BHI",
+            "source": "BHI     =label_",
+            "endian_binary_big": "1101100000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 132,
+            "op_code": "BLS",
+            "source": "BLS     =label_",
+            "endian_binary_big": "1101100100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 133,
+            "op_code": "BGE",
+            "source": "BGE     =label_",
+            "endian_binary_big": "1101101000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 134,
+            "op_code": "BLT",
+            "source": "BLT     =label_",
+            "endian_binary_big": "1101101100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 135,
+            "op_code": "BGT",
+            "source": "BGT     =label_",
+            "endian_binary_big": "1101110000000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 136,
+            "op_code": "BLE",
+            "source": "BLE     =label_",
+            "endian_binary_big": "1101110100000000",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 137,
+            "op_code": "SWI",
+            "source": "SWI     #0",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 138,
+            "op_code": "SWI",
+            "source": "SWI     #255",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 139,
+            "op_code": "B",
+            "source": "B       =label_",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 140,
+            "op_code": "B",
+            "source": "B       =over",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 141,
+            "op_code": "BL",
+            "source": "BL      =label_",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 142,
+            "op_code": "BL",
+            "source": "BL      =over",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 143,
+            "op_code": "BGT",
+            "source": "BGT     =over",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 144,
+            "op_code": "B",
+            "source": "B       =locate",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 144,
+            "op_code": "B",
+            "source": "B       =locate",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 145,
+            "op_code": "ADD",
+            "source": "ADD     PC, R5",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 146,
+            "op_code": "MOV",
+            "source": "MOV     PC, R14",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 147,
+            "op_code": "ADD",
+            "source": "ADD     SP, #68",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 148,
+            "op_code": "ADD",
+            "source": "ADD     SP, #104",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 149,
+            "op_code": "B",
+            "source": "B       =here",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
+        },
+        {
+            "obj_name": "is_op_code_example",
+            "index": 150,
+            "op_code": "LDR",
+            "source": "LDR     R2, [R2]",
+            "endian_binary_big": "",
+            "endian_binary_little": ""
         }
     ]
 }
