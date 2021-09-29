@@ -130,6 +130,7 @@ public class AssemblerThumb implements Assembler {
     public int lastStep;
     public String assemblyTitle;
     
+    //MAIN METHOD
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, Object other) throws Exception {
         try {
@@ -267,6 +268,25 @@ public class AssemblerThumb implements Assembler {
         }
     }
         
+    //HELPER METHODS
+    private Integer ParseNumberString(String s) {
+        Integer tInt = null;
+        if(s.contains("#0x")) {            
+            tInt = Integer.parseInt(s.replace("#", ""), 16);                            
+        } else if(s.contains("0x")) {
+            tInt = Integer.parseInt(s, 16);
+        } else if(s.contains("&")) {
+            tInt = Integer.parseInt(s.replace("&", ""), 16);
+        } else if(s.contains("#0b")) {
+            tInt = Integer.parseInt(s.replace("#0b", ""), 2);                            
+        } else if(s.contains("#")) {
+            tInt = Integer.parseInt(s.replace("#", ""), 10);
+        } else {
+            tInt = Integer.parseInt(s, 10);
+        }
+        return tInt;
+    }
+    
     //DIRECTIVE METHODS
     private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
@@ -344,6 +364,7 @@ public class AssemblerThumb implements Assembler {
                     }
                     
                     if(lastLabelToken != null && symbol != null) {
+                        /*
                         Integer tInt = null;
                         if(token.source.contains("#0x")) {
                             tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
@@ -355,6 +376,8 @@ public class AssemblerThumb implements Assembler {
                             tInt = Integer.parseInt(token.source, 10);
                         }
                         symbol.value = tInt;
+                        */
+                        symbol.value = ParseNumberString(token.source);
                         symbols.symbols.put(lastLabel, symbol);
                         Logger.wrl("AssemblerThumb: PopulateDirectiveArgAndAreaData: Storing symbol with label '" + lastLabel + "' for line number " + lastLabelLine.lineNum);
                         
@@ -1699,6 +1722,7 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNum);
                     } else {
                         String resTmp;
+                        /*
                         Integer tInt = null;
                         if(token.source.contains("#0x")) {
                             tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
@@ -1709,7 +1733,9 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             tInt = Integer.parseInt(token.source, 10);
                         }
-
+                        */
+                                
+                        Integer tInt = ParseNumberString(token.source);
                         resTmp = Integer.toBinaryString(tInt);
                         resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                        
                         tInt = Integer.parseInt(resTmp, 2);
@@ -2027,6 +2053,7 @@ public class AssemblerThumb implements Assembler {
                         resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
+                        /*
                         Integer tInt = null;
                         if(entry.tokenOpCodeArgGroup.source.contains("#0x") || entry.tokenOpCodeArgGroup.source.contains("0x") || entry.tokenOpCodeArgGroup.source.contains("&")) {
                             tInt = Integer.parseInt(entry.tokenOpCodeArgGroup.source.replace("#0x", ""), 16);
@@ -2037,6 +2064,9 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             tInt = Integer.parseInt(entry.tokenOpCodeArgGroup.source, 10);
                         }
+                        */
+                        
+                        Integer tInt = ParseNumberString(entry.tokenOpCodeArgGroup.source);
                         
                         //special rule for ADD OpCode
                         if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
@@ -2137,6 +2167,7 @@ public class AssemblerThumb implements Assembler {
                         resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
+                        /*
                         Integer tInt = null;
                         if(entry.tokenOpCodeArg.source.contains("#0x")) {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source.replace("#0x", ""), 16);                            
@@ -2147,6 +2178,9 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             tInt = Integer.parseInt(entry.tokenOpCodeArg.source, 10);
                         }
+                        */
+                                
+                        Integer tInt = ParseNumberString(entry.tokenOpCodeArg.source);
                         
                         if(entry.opCodeArg.num_range.handle_prefetch) {
                             tInt -= pcPreFetchHalfwords;
