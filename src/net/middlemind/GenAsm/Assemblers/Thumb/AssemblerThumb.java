@@ -268,7 +268,7 @@ public class AssemblerThumb implements Assembler {
     }
         
     //DIRECTIVE METHODS
-    private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound {
+    private void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel {
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
         boolean directiveFound = false;
         String directiveName = null;
@@ -298,12 +298,22 @@ public class AssemblerThumb implements Assembler {
         boolean foundTtl = false;
         boolean foundArea = false;
         
+        String lastLabel = null;
+        TokenLine lastLabelLine = null;
+        Token lastLabelToken = null;
+        Symbol symbol = null;
+        
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;            
 
+            lastLabel = null;
+            lastLabelLine = null;
+            lastLabelToken = null;
+            symbol = null;            
+            
             if(lastData != -1 && line.isLineOpCode) {
                 throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have OpCode instructions when AREA type is DATA, found on line " + line.lineNum + " with source " + line.source.source);                
             }
@@ -319,11 +329,39 @@ public class AssemblerThumb implements Assembler {
                 } else if(foundArea && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
                     tmpArea.title = token.source;
                     
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
+                    if(token.index == 0) {
+                        lastLabel = token.source;
+                        lastLabelLine = line;
+                        lastLabelToken = token;
+                    }                    
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                     if(directiveFound == true && foundArea == true) {
                         token.isDirectiveArg = true;
                     } else {
                         throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive or line directive before NUMBER on line " + line.lineNum + " with source " + line.source.source + ", directive found: " + directiveFound + ", found area: " + foundArea + ", last area: " + lastArea);
+                    }
+                    
+                    if(lastLabelToken != null && symbol != null) {
+                        Integer tInt = null;
+                        if(token.source.contains("#0x")) {
+                            tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
+                        } else if(token.source.contains("#0b")) {
+                            tInt = Integer.parseInt(token.source.replace("#0b", ""), 2);                            
+                        } else if(token.source.contains("#")) {
+                            tInt = Integer.parseInt(token.source.replace("#", ""), 10);
+                        } else {
+                            tInt = Integer.parseInt(token.source, 10);
+                        }
+                        symbol.value = tInt;
+                        symbols.symbols.put(lastLabel, symbol);
+                        Logger.wrl("AssemblerThumb: PopulateDirectiveArgAndAreaData: Storing symbol with label '" + lastLabel + "' for line number " + lastLabelLine.lineNum);
+                        
+                        lastLabel = null;
+                        lastLabelToken = null;
+                        lastLabelLine = null;
+                        symbol = null;
                     }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
@@ -340,6 +378,17 @@ public class AssemblerThumb implements Assembler {
                                                                     
                     if(token.source.equals(JsonObjIsDirectives.NAME_TITLE)) {
                         foundTtl = true;
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_EQU)) {
+                        if(symbols.symbols.containsKey(lastLabel)) {
+                            throw new ExceptionRedefinitionOfLabel("Found symbol '" + lastLabel + "' redefined on line " + lastLabelLine.lineNum + " originally defned on line " + (symbols.symbols.get(lastLabel)).lineNum);
+                        }
+                        symbol = new Symbol();
+                        symbol.line = line;
+                        symbol.lineNum = line.lineNum;
+                        symbol.name = lastLabel;
+                        symbol.token = lastLabelToken;
+                        symbol.isStaticValue = true;
                         
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_AREA)) {
                         if(lastArea == -1) {
@@ -681,8 +730,17 @@ public class AssemblerThumb implements Assembler {
         return ret;
     }
     
+    private Token FindDirectives(TokenLine line) {
+        for(Token token : line.payload) {
+            if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
+                return token;
+            }
+        }
+        return null;
+    }
+    
     //OPCODE METHODS
-    private void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument {
+    private void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument, ExceptionMissingRequiredDirective {
         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
         boolean opCodeFound = false;
         String opCodeName = null;
@@ -736,19 +794,29 @@ public class AssemblerThumb implements Assembler {
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {                    
                     if(token.index == 0) {
-                        lastLabel = token.source;
-                        lastLabelLine = line;
-                        if(symbols.symbols.containsKey(token.source)) {
-                            throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
+                        Token ltTmp = FindDirectives(line);
+                        if(ltTmp == null || (ltTmp != null && Utils.ContainsStr(JsonObjIsDirectives.LABEL_DIRECTIVES, ltTmp.source) == true)) {
+                            if(ltTmp == null || (ltTmp != null && ltTmp.source.equals(JsonObjIsDirectives.NAME_EQU) == false)) {
+                                lastLabel = token.source;
+                                lastLabelLine = line;
+                                if(symbols.symbols.containsKey(lastLabel)) {
+                                    throw new ExceptionRedefinitionOfLabel("Found symbol '" + lastLabel + "' redefined on line " + lastLabelLine.lineNum + " originally defned on line " + (symbols.symbols.get(lastLabel)).lineNum);
+                                } else {
+                                    Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
+                                }
+                                symbol = new Symbol();
+                                symbol.line = line;
+                                symbol.lineNum = line.lineNum;
+                                symbol.name = token.source;
+                                symbol.token = token;
+                                symbol.isLabel = true;
+                                symbols.symbols.put(token.source, symbol);
+                            }
+                            
                         } else {
-                            Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + token.source + "' for line number " + line.lineNum);
+                            throw new ExceptionMissingRequiredDirective("Found symbol '" + lastLabel + "' found on line " + lastLabelLine.lineNum + " is missing required directive EQU that is expected when no OpCode is used.");
+                            
                         }
-                        symbol = new Symbol();
-                        symbol.line = line;
-                        symbol.lineNum = line.lineNum;
-                        symbol.name = token.source;
-                        symbol.token = token;
-                        symbols.symbols.put(token.source, symbol);
                     }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {                    
@@ -758,7 +826,7 @@ public class AssemblerThumb implements Assembler {
                         if(symbols.symbols.containsKey(lastLabel)) {
                             symbol = symbols.symbols.get(lastLabel);
                             if(symbol.symbols.containsKey(token.source)) {
-                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + symbol.lineNum);
+                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + (symbol.symbols.get(token.source)).lineNum);
                             } else {
                                 Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
                             }
@@ -769,7 +837,10 @@ public class AssemblerThumb implements Assembler {
                             lsymbol.line = line;
                             lsymbol.lineNum = line.lineNum;
                             lsymbol.name = token.source;
-                            lsymbol.token = token;                            
+                            lsymbol.token = token;
+                            lsymbol.isLocalLabel = true;
+                            
+                            symbol.isParentLabel = true;
                             symbol.symbols.put(token.source, lsymbol);
                             
                         } else {

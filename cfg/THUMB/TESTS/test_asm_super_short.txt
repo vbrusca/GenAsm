@@ -1,6 +1,7 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
+    test @EQU 2
     over
     BGT =over
 @END

@@ -10,6 +10,6 @@ import net.middlemind.GenAsm.Linkers.Linker;
 public class LinkerThumb implements Linker {
     @Override
     public void RunLinker(Assembler assembledFiles, String assemblySourceFile, Object other) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
