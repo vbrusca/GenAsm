@@ -26,6 +26,7 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String NAME_READWRITE = "@READWRITE";
     public static String NAME_DIRECTIVE_TYPE_STRING = "DirectiveString";
     public static String NAME_EQU = "@EQU";
+    public static String NAME_ORG = "@ORG";    
     
     public String obj_name;
     public String set_name;

@@ -121,7 +121,8 @@ public class AssemblerThumb implements Assembler {
     
     public int pcPreFetchBytes;
     public int pcPreFetchWords;
-    public int pcPreFetchHalfwords;    
+    public int pcPreFetchHalfwords;
+    public Integer asmStartLineNumber; 
     public boolean isEndianBig = false;
     public boolean isEndianLittle = true; 
     
@@ -317,6 +318,7 @@ public class AssemblerThumb implements Assembler {
         
         boolean foundTtl = false;
         boolean foundArea = false;
+        boolean foundOrg = false;
         
         String lastLabel = null;
         TokenLine lastLabelLine = null;
@@ -325,6 +327,7 @@ public class AssemblerThumb implements Assembler {
         
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            foundOrg = false;
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;            
@@ -338,7 +341,6 @@ public class AssemblerThumb implements Assembler {
                 throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have OpCode instructions when AREA type is DATA, found on line " + line.lineNum + " with source " + line.source.source);                
             }
             
-            directiveFound = false;
             for(Token token : line.payload) {
                 lastToken = token;
 
@@ -364,19 +366,6 @@ public class AssemblerThumb implements Assembler {
                     }
                     
                     if(lastLabelToken != null && symbol != null) {
-                        /*
-                        Integer tInt = null;
-                        if(token.source.contains("#0x")) {
-                            tInt = Integer.parseInt(token.source.replace("#0x", ""), 16);                            
-                        } else if(token.source.contains("#0b")) {
-                            tInt = Integer.parseInt(token.source.replace("#0b", ""), 2);                            
-                        } else if(token.source.contains("#")) {
-                            tInt = Integer.parseInt(token.source.replace("#", ""), 10);
-                        } else {
-                            tInt = Integer.parseInt(token.source, 10);
-                        }
-                        symbol.value = tInt;
-                        */
                         symbol.value = ParseNumberString(token.source);
                         symbols.symbols.put(lastLabel, symbol);
                         Logger.wrl("AssemblerThumb: PopulateDirectiveArgAndAreaData: Storing symbol with label '" + lastLabel + "' for line number " + lastLabelLine.lineNum);
@@ -385,6 +374,10 @@ public class AssemblerThumb implements Assembler {
                         lastLabelToken = null;
                         lastLabelLine = null;
                         symbol = null;
+                    
+                    } else if(foundOrg == true) {
+                        asmStartLineNumber = ParseNumberString(token.source);
+                        foundOrg = false;
                     }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
@@ -401,6 +394,9 @@ public class AssemblerThumb implements Assembler {
                                                                     
                     if(token.source.equals(JsonObjIsDirectives.NAME_TITLE)) {
                         foundTtl = true;
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_ORG)) {                        
+                        foundOrg = true;
                         
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_EQU)) {
                         if(symbols.symbols.containsKey(lastLabel)) {

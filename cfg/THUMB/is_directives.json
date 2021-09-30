@@ -94,6 +94,37 @@
                 }                
             ],
             "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup."
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@ORG",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 31,
+                        "bit_len": 32
+                    },
+                    "num_range": {
+                        "min_value": 0,
+                        "max_value": 4294967295,
+                        "bit_len": 32,
+                        "twos_compliment": false,
+                        "alignment": "WORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup."
         },        
         {
             "obj_name": "is_directive",

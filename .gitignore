@@ -30,5 +30,6 @@ cfg/THUMB/OUTPUT/*
 *.properties
 *.xml
 nbproject/private/private.properties
+nbproject/private/private.xml
 private.properties
 */.DS_Store
