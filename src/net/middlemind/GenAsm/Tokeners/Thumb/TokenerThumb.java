@@ -226,9 +226,16 @@ public class TokenerThumb implements Tokener {
                                         compStart = 1;
                                     }
                                     
+                                    if(verbose) {
+                                        Logger.wrl("IndexOf withEnds: " + withEnds + " in string payload: " + payload + " with compStart: " + compStart + " is " + (payload.indexOf(withEnds, compStart)) + " - or - " + (payload.lastIndexOf(withEnds)) + ", " + withStartsLen + ", compared to " + (payload.length() - withEndsLen) + " withStartsLen: " + withStartsLen);
+                                    }
+                                    
                                     if(payload.indexOf(withEnds, compStart) == (payload.length() - withEndsLen)) {
                                         lfound = true;
                                         break;
+                                    } else if(payload.lastIndexOf(withEnds) == (payload.length() - withEndsLen)) {
+                                        lfound = true;
+                                        break;                                        
                                     }
                                 }
                             }

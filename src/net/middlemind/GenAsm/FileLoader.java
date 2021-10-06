@@ -17,4 +17,8 @@ public class FileLoader {
     public static String LoadStr(String file) throws IOException {
         return Files.readString(Paths.get(file));
     }
+    
+    public static byte[] LoadBin(String file) throws IOException {
+        return Files.readAllBytes(Paths.get(file));
+    }
 }

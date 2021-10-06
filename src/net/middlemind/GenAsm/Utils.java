@@ -58,18 +58,29 @@ public class Utils {
         return binStr2;
     }
     
-    public static boolean ContainsStr(String[] array, String target) {
-        for(int i = 0; i < array.length; i++) {
-            if(array[i].equals(target)) {
+    public static boolean ArrayContainsString(String[] source, String target) {
+        for(int i = 0; i < source.length; i++) {
+            if(source[i].equals(target)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static int[] StringContainsArrayEntry(String[] target, String source) {
+        int idx = -1;
+        for(int i = 0; i < target.length; i++) {
+            idx = source.indexOf(target[i]);
+            if(idx != -1) {
+                return new int[] { i, idx };
+            }
+        }
+        return null;
     }    
     
-    public static boolean ContainsInt(int[] array, int target) {
-        for(int i = 0; i < array.length; i++) {
-            if(array[i] == target) {
+    public static boolean ArrayContainsInt(int[] source, int target) {
+        for(int i = 0; i < source.length; i++) {
+            if(source[i] == target) {
                 return true;
             }
         }

@@ -1,13 +1,1 @@
-@TTL |AllOpCodeTests|
-@AREA |Program| @CODE, @READONLY
-@ENTRY
-    test @EQU 2
-    over
-    BGT =over
-@END
-@AREA |Data| @DATA, @READWRITE
-@ENTRY
-    var1 @DCW 256
-    var2 @DCW 255
-    var3 @DCW 254
-@END
+@DCHW #0x1A0A		;index: 3

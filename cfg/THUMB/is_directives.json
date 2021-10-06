@@ -15,15 +15,15 @@
                     "is_arg_type": "Number",
                     "bit_series": {
                         "bit_start": 0,
-                        "bit_stop": 7,
-                        "bit_len": 8
+                        "bit_stop": 15,
+                        "bit_len": 16
                     },
                     "num_range": {
-                        "min_value": -128,
-                        "max_value": 128,
+                        "min_value": 0,
+                        "max_value": 255,
                         "bit_len": 8,
                         "twos_compliment": false,
-                        "alignment": "WORD"
+                        "alignment": "HALFWORD"
                     },
                     "bit_shift": {
                         "shift_dir": "NONE",
@@ -31,11 +31,11 @@
                     }
                 }                
             ],
-            "description": "The DCB directive is used to write data, one byte, directly into the data AREA of an assembly file."
+            "description": "The DCB directive is used to write data, one byte written as a halfword, directly into the data AREA of an assembly file."
         },        
         {
             "obj_name": "is_directive",
-            "directive_name": "@DCW",
+            "directive_name": "@DCHW",
             "arg_len": 1,
             "args": [
                 {
@@ -50,11 +50,11 @@
                         "bit_len": 16
                     },
                     "num_range": {
-                        "min_value": -32768,
-                        "max_value": 32768,
+                        "min_value": 0,
+                        "max_value": 65536,
                         "bit_len": 16,
                         "twos_compliment": false,
-                        "alignment": "WORD"
+                        "alignment": "HALFWORD"
                     },
                     "bit_shift": {
                         "shift_dir": "NONE",
@@ -62,7 +62,7 @@
                     }
                 }                
             ],
-            "description": "The DCW directive is used to write data, one word, directly into the data AREA of an assembly file."
+            "description": "The DCHW directive is used to write data, one halfword, directly into the data AREA of an assembly file."
         },
         {
             "obj_name": "is_directive",
@@ -81,8 +81,8 @@
                         "bit_len": 16
                     },
                     "num_range": {
-                        "min_value": -32768,
-                        "max_value": 32768,
+                        "min_value": 0,
+                        "max_value": 65536,
                         "bit_len": 16,
                         "twos_compliment": false,
                         "alignment": "WORD"

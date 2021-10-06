@@ -496,7 +496,7 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 127,
+                        "max_value": 255,
                         "bit_len": 8,
                         "twos_compliment": false,
                         "alignment": "NATURAL"
@@ -550,7 +550,7 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 127,
+                        "max_value": 255,
                         "bit_len": 8,
                         "twos_compliment": false,
                         "alignment": "NATURAL"
@@ -604,7 +604,7 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 127,
+                        "max_value": 255,
                         "bit_len": 8,
                         "twos_compliment": false,
                         "alignment": "NATURAL"
@@ -658,7 +658,7 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 127,
+                        "max_value": 255,
                         "bit_len": 8,
                         "twos_compliment": false,
                         "alignment": "NATURAL"

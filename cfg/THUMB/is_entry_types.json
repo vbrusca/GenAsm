@@ -191,11 +191,25 @@
             "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
-                "starts_with": ["#0x", "#bx", "#-", "#", "0~9", "&", "0x"],
+                "starts_with": ["#bx", "#-", "#", "0~9"],
                 "contains": ["0~9"],
                 "must_contain": [],
                 "must_not_contain": [],
                 "ends_with": ["0~9", ",", ";"]
+            }
+        },   
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "Number",
+            "type_category": "Number",            
+            "category": "Arg",            
+            "category_class": "java.lang.Double",
+            "txt_match": {
+                "starts_with": ["&", "0x", "#0x"],
+                "contains": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"],
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", ",", ";"]
             }
         },
         {
@@ -233,7 +247,7 @@
             "category": "Arg",
             "category_class": "java.lang.String",            
             "txt_match": {
-                "starts_with": ["="],
+                "starts_with": ["=", "~", "-"],
                 "contains": ["a~z", "a~z0~9", "_"],
                 "must_contain": [],
                 "must_not_contain": [],

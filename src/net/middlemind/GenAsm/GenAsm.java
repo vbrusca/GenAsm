@@ -10,7 +10,9 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 import net.middlemind.GenAsm.Linkers.Linker;
+import net.middlemind.GenAsm.PreProcessors.PreProcessor;
 
 /**
  *
@@ -27,11 +29,15 @@ public class GenAsm {
     public static String ASM_ASSEMBLER_CLASS = "";
     public static Assembler ASM_ASSEMBLER = null;
     public static String ASM_ASSEMBLY_SOURCE_FILE = "";
-    public static String ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
+    public static String ASM_LINKER_CLASS = "";
     public static Linker ASM_LINKER = null;
+    public static String ASM_PREPROCESSOR_CLASS = null;
+    public static PreProcessor ASM_PREPROCESSOR = null;
+    public static String ASM_ROOT_OUTPUT_DIR = "";
+    public static int ARG_LEN_TARGET = 9;
     
     public static void main(String[] args) throws Exception {
-        if(args == null || args.length < 6) {
+        if(args == null || args.length < 8) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
@@ -40,9 +46,12 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_super_short.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_short.txt";
             ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
             ASM_LINKER = null;
+            ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
+            ASM_PREPROCESSOR = null;  
+            ASM_ROOT_OUTPUT_DIR = "./cfg/THUMB/OUTPUT/";
             
         } else {
             ASM_SETS_FILE_NAME = args[0];
@@ -56,6 +65,9 @@ public class GenAsm {
             ASM_ASSEMBLY_SOURCE_FILE = args[5];
             ASM_LINKER_CLASS = args[6];
             ASM_LINKER = null;
+            ASM_PREPROCESSOR_CLASS = args[7];
+            ASM_PREPROCESSOR = null;
+            ASM_ROOT_OUTPUT_DIR = args[8];
             
         }
         
@@ -300,7 +312,10 @@ public class GenAsm {
                     cTmp = Class.forName(ASM_SETS_LOADER_CLASS);
                     ldrIsSets = (LoaderIsSets)cTmp.getDeclaredConstructor().newInstance();
                     ASM_SETS = ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
-                            
+
+                    cTmp = Class.forName(ASM_PREPROCESSOR_CLASS);
+                    ASM_PREPROCESSOR = (PreProcessor)cTmp.getDeclaredConstructor().newInstance();                    
+                    
                     cTmp = Class.forName(ASM_ASSEMBLER_CLASS);
                     ASM_ASSEMBLER = (Assembler)cTmp.getDeclaredConstructor().newInstance();
                     
@@ -314,14 +329,14 @@ public class GenAsm {
                             break;
                         }
                     }
-                    
+                                        
                     if(ASM_SET != null) {
-                        if(ASM_ASSEMBLER != null) {
-                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, null);
-                            
-                            if(ASM_LINKER != null) {
-                                ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, null);                                
-                            }
+                        if(ASM_ASSEMBLER != null && ASM_PREPROCESSOR != null && ASM_LINKER != null) {
+                            List<String> fileData = ASM_PREPROCESSOR.RunPreProcessor(ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
+                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, fileData, ASM_ROOT_OUTPUT_DIR, null);
+                            ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
+                        } else {
+                            Logger.wrl("GenAsm: Main: Error: could not find properly loaded pre-processor, assembler, or linked");                            
                         }
                     } else {
                         Logger.wrl("GenAsm: Main: Error: could not find assembler set named " + ASM_TARGET_SET);
