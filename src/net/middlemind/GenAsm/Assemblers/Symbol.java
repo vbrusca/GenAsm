@@ -2,8 +2,6 @@ package net.middlemind.GenAsm.Assemblers;
 
 import net.middlemind.GenAsm.Tokeners.TokenLine;
 import net.middlemind.GenAsm.Tokeners.Token;
-import java.util.Hashtable;
-import java.util.Map;
 
 /**
  *
@@ -15,12 +13,11 @@ public class Symbol {
     public TokenLine line;
     public Token token;
     public int lineNum;
-    public Map<String, Symbol> symbols = new Hashtable<>();
     public int lineNumActive;
     public boolean isEmptyLineLabel;
     public boolean isLocalLabel;
     public boolean isParentLabel;
     public boolean isLabel;
     public boolean isStaticValue;
-    public Integer value;
+    public Integer value;    
 }

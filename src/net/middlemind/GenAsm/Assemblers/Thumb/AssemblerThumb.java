@@ -117,7 +117,8 @@ public class AssemblerThumb implements Assembler {
     public List<TokenLine> asmAreaLinesData;    
     
     public int lineLenBytes = 2;
-    public int lineLenWords = 1;
+    public int lineLenHalfWords = 1;
+    public int lineLenWords = 0;
     public JsonObjBitSeries lineBitSeries;
     public JsonObjNumRange lineNumRange;
     
@@ -299,6 +300,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("Title: " + assemblyTitle);
             Logger.wrl("LineLengthBytes: " + lineLenBytes);
             Logger.wrl("LineLengthWords: " + lineLenWords);
+            Logger.wrl("LineLengthHalfWords: " + lineLenHalfWords);
             Logger.wrl("LineBitSeries:");
             lineBitSeries.Print("\t");
             
