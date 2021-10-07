@@ -167,66 +167,102 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             lastStep = 1;
             Logger.wrl("STEP 1: Process JsonObjIsSet's file entries and load then parse the json object data");
-            LoadAndParseJsonObjData();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }
+            LoadAndParseJsonObjData(lastStep);
 
             Logger.wrl("");
             lastStep = 2;
             Logger.wrl("STEP 2: Link loaded json object data");
-            LinkJsonObjData();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }
+            LinkJsonObjData(lastStep);
 
             Logger.wrl("");
             lastStep = 3;
-            Logger.wrl("STEP 3: Load and lexerize the assembly source file");           
-            LexerizeAssemblySource();
+            Logger.wrl("STEP 3: Load and lexerize the assembly source file");
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            LexerizeAssemblySource(lastStep);
             Utils.WriteObject(asmDataLexed, "Assembly Lexerized Data", "output_lexed.json", rootOutputDir);        
 
             Logger.wrl("");
             lastStep = 4;
             Logger.wrl("STEP 4: Tokenize the lexerized artifacts");
-            TokenizeLexerArtifacts();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            TokenizeLexerArtifacts(lastStep);
             Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase0_tokenized.json", rootOutputDir);            
 
             Logger.wrl("");
             lastStep = 5;
             Logger.wrl("STEP 5: Validate token lines");
-            ValidateTokenizedLines();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            ValidateTokenizedLines(lastStep);
             Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase1_valid_lines.json", rootOutputDir);            
 
             Logger.wrl("");
             lastStep = 6;
             Logger.wrl("STEP 6: Combine comment tokens as children of the initial comment token");
-            CollapseCommentTokens();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            CollapseCommentTokens(lastStep);
 
             Logger.wrl("");
             lastStep = 7;
             Logger.wrl("STEP 7: Expand register ranges into individual register entries");
-            ExpandRegisterRangeTokens();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            ExpandRegisterRangeTokens(lastStep);
 
             Logger.wrl("");
             lastStep = 8;
             Logger.wrl("STEP 8: Combine list and group tokens as children of the initial list or group token");
-            CollapseListAndGroupTokens();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            CollapseListAndGroupTokens(lastStep);
 
             Logger.wrl("");
             lastStep = 9;
             Logger.wrl("STEP 9: Mark OpCode, OpCode argument, and register tokens");
-            PopulateOpCodeAndArgData();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            PopulateOpCodeAndArgData(lastStep);
 
             Logger.wrl("");
             lastStep = 10;
             Logger.wrl("STEP 10: Mark directive and directive argument tokens, create area based line lists with hex numbering");
-            PopulateDirectiveArgAndAreaData();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            PopulateDirectiveArgAndAreaData(lastStep);
             Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase2_refactored.json", rootOutputDir);
 
             Logger.wrl("");
             lastStep = 11;
             Logger.wrl("STEP 11: Validate OpCode lines against known OpCodes by comparing arguments");
-            ValidateOpCodeLines();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            ValidateOpCodeLines(lastStep);
 
             Logger.wrl("");
             lastStep = 12;
             Logger.wrl("STEP 12: Validate directive lines against known directives by comparing arguments");
-            ValidateDirectiveLines();
+            if(eventHandler != null) {
+                eventHandler.RunAssemblerPreStep(lastStep, this);
+            }            
+            ValidateDirectiveLines(lastStep);
             Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase3_valid_lines.json", rootOutputDir);            
             Utils.WriteObject(symbols, "Symbol Data", "output_symbols.json", rootOutputDir);
 
@@ -239,7 +275,7 @@ public class AssemblerThumb implements Assembler {
                 
                 Utils.WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "output_area_lines_code.json", rootOutputDir);
                 Utils.WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "output_area_desc_code.json", rootOutputDir);
-                BuildBinLines(asmAreaLinesCode, areaThumbCode);
+                BuildBinLines(lastStep, asmAreaLinesCode, areaThumbCode);
                 Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
             } else {
                 Logger.wrl("AreaThumbCode: is null");
@@ -252,7 +288,7 @@ public class AssemblerThumb implements Assembler {
                 
                 Utils.WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "output_area_lines_data.json", rootOutputDir);
                 Utils.WriteObject(areaThumbData, "Assembly Source Area Data Desc", "output_area_desc_data.json", rootOutputDir);                
-                BuildBinLines(asmAreaLinesData, areaThumbData);
+                BuildBinLines(lastStep, asmAreaLinesData, areaThumbData);
                 Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);                
             } else {
                 Logger.wrl("AreaThumbData: is null");
@@ -292,9 +328,9 @@ public class AssemblerThumb implements Assembler {
     }
             
     //DIRECTIVE METHODS
-    public void PopulateDirectiveArgAndAreaData() throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel {
+    public void PopulateDirectiveArgAndAreaData(int step) throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel {
         if(eventHandler != null) {
-            eventHandler.PopulateDirectiveArgAndAreaDataPre(this);
+            eventHandler.PopulateDirectiveArgAndAreaDataPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
@@ -335,7 +371,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.PopulateDirectiveArgAndAreaDataLoopPre(this, line);
+                eventHandler.PopulateDirectiveArgAndAreaDataLoopPre(step, this, line);
             }
             
             foundOrg = false;
@@ -576,7 +612,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.PopulateDirectiveArgAndAreaDataLoopPost(this, line);
+                eventHandler.PopulateDirectiveArgAndAreaDataLoopPost(step, this, line);
             }            
         }
         
@@ -661,13 +697,13 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.PopulateDirectiveArgAndAreaDataPost(this);
+            eventHandler.PopulateDirectiveArgAndAreaDataPost(step, this);
         }        
     }    
     
-    public void ValidateDirectiveLines() throws ExceptionNoDirectiveFound {
+    public void ValidateDirectiveLines(int step) throws ExceptionNoDirectiveFound {
         if(eventHandler != null) {
-            eventHandler.ValidateDirectiveLinesPre(this);
+            eventHandler.ValidateDirectiveLinesPre(step, this);
         }        
         
         Logger.wrl("AssemblerThumb: ValidateDirectiveLines"); 
@@ -681,7 +717,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.ValidateDirectiveLinesLoopPre(this, line);
+                eventHandler.ValidateDirectiveLinesLoopPre(step, this, line);
             }            
             
             if(line.isLineDirective) {
@@ -718,12 +754,12 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.ValidateDirectiveLinesLoopPost(this, line);
+                eventHandler.ValidateDirectiveLinesLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.ValidateDirectiveLinesPost(this);
+            eventHandler.ValidateDirectiveLinesPost(step, this);
         }
     }
     
@@ -795,9 +831,9 @@ public class AssemblerThumb implements Assembler {
     }
     
     //OPCODE METHODS
-    public void PopulateOpCodeAndArgData() throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument, ExceptionMissingRequiredDirective {
+    public void PopulateOpCodeAndArgData(int step) throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument, ExceptionMissingRequiredDirective {
         if(eventHandler != null) {
-            eventHandler.PopulateOpCodeAndArgDataPre(this);
+            eventHandler.PopulateOpCodeAndArgDataPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData");        
@@ -812,7 +848,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.PopulateOpCodeAndArgDataLoopPre(this, line);
+                eventHandler.PopulateOpCodeAndArgDataLoopPre(step, this, line);
             }             
             
             opCodeFound = false;
@@ -851,10 +887,7 @@ public class AssemblerThumb implements Assembler {
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                     token.isOpCodeArg = true;
-                    
-                //} else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
-                //    token.isOpCodeArg = true;                    
-                    
+                                        
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {                    
                     if(token.index == 0) {
                         Token ltTmp = FindDirectives(line);
@@ -881,36 +914,6 @@ public class AssemblerThumb implements Assembler {
                             
                         }
                     }
-                /*    
-                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {                    
-                    if(Utils.IsStringEmpty(lastLabel)) {
-                        throw new ExceptionNoParentSymbolFound("No parent label found for local symbol '" + token.source + "' on line " + token.lineNum + ", could not find parent label to associate with local label.");
-                    } else {
-                        if(symbols.symbols.containsKey(lastLabel)) {
-                            symbol = symbols.symbols.get(lastLabel);
-                            if(symbol.symbols.containsKey(token.source)) {
-                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + token.source + "' redefined on line " + token.lineNum + " originally defned on line " + (symbol.symbols.get(token.source)).lineNum);
-                            } else {
-                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + token.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
-                            }
-                            token.parentLabel = lastLabel;
-                            token.parentLine = lastLabelLine;
-                            
-                            Symbol lsymbol = new Symbol();
-                            lsymbol.line = line;
-                            lsymbol.lineNum = line.lineNum;
-                            lsymbol.name = token.source;
-                            lsymbol.token = token;
-                            lsymbol.isLocalLabel = true;
-                            
-                            symbol.isParentLabel = true;
-                            symbol.symbols.put(token.source, lsymbol);
-                            
-                        } else {
-                            throw new ExceptionNoParentSymbolFound("Could not find a parent symbol for label '" + token.source + "' at line " + line.lineNum + " with source text '" + line.source.source + "'");
-                        }
-                    }
-                */
                 }
 
                 //Process sub args
@@ -935,7 +938,6 @@ public class AssemblerThumb implements Assembler {
                     if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                         throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNum + " with argument index " + ltoken.index + " and parent argument index " + token.index);
 
-                    //} else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {
                     } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                         ltoken.isOpCodeArg = true;
 
@@ -955,34 +957,6 @@ public class AssemblerThumb implements Assembler {
                             symbol.token = ltoken;
                             symbols.symbols.put(ltoken.source, symbol);
                         }
-
-                    /*
-                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {                    
-                        if(Utils.IsStringEmpty(lastLabel)) {
-                            throw new ExceptionNoParentSymbolFound("No parent label found for local symbol '" + ltoken.source + "' on line " + ltoken.lineNum + ", could not find parent label to associate with local label.");
-                        } else {
-                            if(symbols.symbols.containsKey(lastLabel)) {
-                                symbol = symbols.symbols.get(lastLabel);
-                                if(symbol.symbols.containsKey(ltoken.source)) {
-                                    throw new ExceptionRedefinitionOfLabel("Found symbol '" + ltoken.source + "' redefined on line " + ltoken.lineNum + " originally defned on line " + symbol.lineNum);
-                                } else {
-                                    Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing local symbol with label '" + ltoken.source + "' for line number " + line.lineNum + " and parent label '" + lastLabel + "'");
-                                }
-                                ltoken.parentLabel = lastLabel;
-                                ltoken.parentLine = lastLabelLine;
-
-                                Symbol lsymbol = new Symbol();
-                                lsymbol.line = line;
-                                lsymbol.lineNum = line.lineNum;
-                                lsymbol.name = ltoken.source;
-                                lsymbol.token = ltoken;                            
-                                symbol.symbols.put(ltoken.source, lsymbol);
-
-                            } else {
-                                throw new ExceptionNoParentSymbolFound("Could not find a parent symbol for label '" + ltoken.source + "' at line " + line.lineNum + " with source text '" + line.source.source + "'");
-                            }
-                        }
-                    */
                     }
                 }
             }
@@ -999,18 +973,18 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.PopulateOpCodeAndArgDataLoopPost(this, line);
+                eventHandler.PopulateOpCodeAndArgDataLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.PopulateOpCodeAndArgDataPost(this);
+            eventHandler.PopulateOpCodeAndArgDataPost(step, this);
         }        
     }    
     
-    public void ValidateOpCodeLines() throws ExceptionNoOpCodeFound, ExceptionNoOpCodeLineFound {
+    public void ValidateOpCodeLines(int step) throws ExceptionNoOpCodeFound, ExceptionNoOpCodeLineFound {
         if(eventHandler != null) {
-            eventHandler.ValidateOpCodeLinesPre(this);
+            eventHandler.ValidateOpCodeLinesPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: ValidateOpCodeLines"); 
@@ -1024,7 +998,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.ValidateOpCodeLinesLoopPre(this, line);
+                eventHandler.ValidateOpCodeLinesLoopPre(step, this, line);
             }
             
             if(line.isLineOpCode) {
@@ -1067,7 +1041,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.ValidateOpCodeLinesLoopPost(this, line);
+                eventHandler.ValidateOpCodeLinesLoopPost(step, this, line);
             }            
         }
         
@@ -1084,7 +1058,7 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.ValidateOpCodeLinesPost(this);
+            eventHandler.ValidateOpCodeLinesPost(step, this);
         }        
     }
     
@@ -1266,9 +1240,9 @@ public class AssemblerThumb implements Assembler {
     }
        
     //CLEAN TOKEN STRUCTURE
-    public void CollapseListAndGroupTokens() throws ExceptionNoClosingBracketFound, ExceptionListAndGroup {
+    public void CollapseListAndGroupTokens(int step) throws ExceptionNoClosingBracketFound, ExceptionListAndGroup {
         if(eventHandler != null) {
-            eventHandler.CollapseListAndGroupTokensPre(this);
+            eventHandler.CollapseListAndGroupTokensPre(step, this);
         }        
         
         Logger.wrl("AssemblerThumb: CollapseListAndGroupTokens");
@@ -1291,7 +1265,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.CollapseListAndGroupTokensLoopPre(this, line);
+                eventHandler.CollapseListAndGroupTokensLoopPre(step, this, line);
             }            
             
             rootStartList = null;
@@ -1380,12 +1354,12 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.CollapseListAndGroupTokensLoopPost(this, line);
+                eventHandler.CollapseListAndGroupTokensLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.CollapseListAndGroupTokensPost(this);
+            eventHandler.CollapseListAndGroupTokensPost(step, this);
         }
     }    
     
@@ -1415,9 +1389,9 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
-    public void ExpandRegisterRangeTokens() throws ExceptionNoEntryFound, ExceptionMalformedRange {
+    public void ExpandRegisterRangeTokens(int step) throws ExceptionNoEntryFound, ExceptionMalformedRange {
         if(eventHandler != null) {
-            eventHandler.ExpandRegisterRangeTokensPre(this);
+            eventHandler.ExpandRegisterRangeTokensPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: ExpandRegisterRangeToken");
@@ -1439,7 +1413,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.ExpandRegisterRangeTokensLoopPre(this, line);
+                eventHandler.ExpandRegisterRangeTokensLoopPre(step, this, line);
             }            
             
             rangeRootIdxLow = 0;
@@ -1536,18 +1510,18 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.ExpandRegisterRangeTokensLoopPost(this, line);
+                eventHandler.ExpandRegisterRangeTokensLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.ExpandRegisterRangeTokensPost(this);
+            eventHandler.ExpandRegisterRangeTokensPost(step, this);
         }        
     }
     
-    public void CollapseCommentTokens() {
+    public void CollapseCommentTokens(int step) {
         if(eventHandler != null) {
-            eventHandler.CollapseCommentTokensPre(this);
+            eventHandler.CollapseCommentTokensPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: CollapseCommentTokens");
@@ -1558,7 +1532,7 @@ public class AssemblerThumb implements Assembler {
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.CollapseCommentTokensLoopPre(this, line);
+                eventHandler.CollapseCommentTokensLoopPre(step, this, line);
             }            
             
             inComment = false;
@@ -1587,19 +1561,19 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.CollapseCommentTokensLoopPost(this, line);
+                eventHandler.CollapseCommentTokensLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.CollapseCommentTokensPost(this);
+            eventHandler.CollapseCommentTokensPost(step, this);
         }        
     }
     
     //LOAD, PARSE, LINK JSONOBJ DATA METHODS
-    public void LoadAndParseJsonObjData() throws ExceptionNoEntryFound, ExceptionLoader, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public void LoadAndParseJsonObjData(int step) throws ExceptionNoEntryFound, ExceptionLoader, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         if(eventHandler != null) {
-            eventHandler.LoadAndParseJsonObjDataPre(this);
+            eventHandler.LoadAndParseJsonObjDataPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: LoadAndParseJsonObjData");
@@ -1611,7 +1585,7 @@ public class AssemblerThumb implements Assembler {
         
         for(JsonObjIsFile entry : isaDataSet.is_files) {
             if(eventHandler != null) {
-                eventHandler.LoadAndParseJsonObjDataLoopPre(this, entry);
+                eventHandler.LoadAndParseJsonObjDataLoopPre(step, this, entry);
             }            
             
             cTmp = Class.forName(entry.loader_class);
@@ -1678,7 +1652,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             if(eventHandler != null) {
-                eventHandler.LoadAndParseJsonObjDataLoopPost(this, entry);
+                eventHandler.LoadAndParseJsonObjDataLoopPost(step, this, entry);
             }            
         }
 
@@ -1693,38 +1667,38 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.LoadAndParseJsonObjDataPost(this);
+            eventHandler.LoadAndParseJsonObjDataPost(step, this);
         }        
     }
     
-    public void LinkJsonObjData() throws ExceptionJsonObjLink {
+    public void LinkJsonObjData(int step) throws ExceptionJsonObjLink {
         if(eventHandler != null) {
-            eventHandler.LinkJsonObjDataPre(this);
+            eventHandler.LinkJsonObjDataPre(step, this);
         }
         
         Logger.wrl("AssemblerThumb: LinkJsonObjData");
         for(String s : isaData.keySet()) {
             if(eventHandler != null) {
-                eventHandler.LinkJsonObjDataLoopPre(this, s);
+                eventHandler.LinkJsonObjDataLoopPre(step, this, s);
             }            
             
             JsonObj jsonObj = isaData.get(s);
             jsonObj.Link(jsonObjIsEntryTypes);
             
             if(eventHandler != null) {
-                eventHandler.LinkJsonObjDataLoopPost(this, s);
+                eventHandler.LinkJsonObjDataLoopPost(step, this, s);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.LinkJsonObjDataPost(this);
+            eventHandler.LinkJsonObjDataPost(step, this);
         }        
     }
     
     //LEX SOURCE CODE
-    public void LexerizeAssemblySource() throws IOException {
+    public void LexerizeAssemblySource(int step) throws IOException {
         if(eventHandler != null) {
-            eventHandler.LexerizeAssemblySourcePre(this);
+            eventHandler.LexerizeAssemblySourcePre(step, this);
         }        
         
         //Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
@@ -1734,14 +1708,14 @@ public class AssemblerThumb implements Assembler {
         asmDataLexed = lex.FileLexerize(asmDataSource);
         
         if(eventHandler != null) {
-            eventHandler.LexerizeAssemblySourcePost(this);
+            eventHandler.LexerizeAssemblySourcePost(step, this);
         }        
     }
     
     //TOKENIZE AND VALIDATE LEXERIZED LINES
-    public void TokenizeLexerArtifacts() throws ExceptionNoTokenerFound {
+    public void TokenizeLexerArtifacts(int step) throws ExceptionNoTokenerFound {
         if(eventHandler != null) {
-            eventHandler.TokenizeLexerArtifactsPre(this);
+            eventHandler.TokenizeLexerArtifactsPre(step, this);
         }         
         
         Logger.wrl("AssemblerThumb: TokenizeLexerArtifacts");
@@ -1749,7 +1723,7 @@ public class AssemblerThumb implements Assembler {
         asmDataTokened = tok.FileTokenize(asmDataLexed, jsonObjIsEntryTypes);
         
         if(eventHandler != null) {
-            eventHandler.TokenizeLexerArtifactsPost(this);
+            eventHandler.TokenizeLexerArtifactsPost(step, this);
         }         
     }
     
@@ -1770,9 +1744,9 @@ public class AssemblerThumb implements Assembler {
         return null;
     }
     
-    public boolean ValidateTokenizedLine(TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
+    public boolean ValidateTokenizedLine(int step, TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinePre(this, line, validLines, validLineEmpty);
+            eventHandler.ValidateTokenizedLinePre(step, this, line, validLines, validLineEmpty);
         }
         
         int tokenCount = line.payload.size();
@@ -1824,68 +1798,68 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinePost(this);
+            eventHandler.ValidateTokenizedLinePost(step, this);
         }        
         
         return false;
     }
     
-    public boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
+    public boolean ValidateTokenizedLines(int step) throws ExceptionNoValidLineFound {
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinesPre(this);
+            eventHandler.ValidateTokenizedLinesPre(step, this);
         }
 
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
             if(eventHandler != null) {
-                eventHandler.ValidateTokenizedLinesLoopPre(this, line);
+                eventHandler.ValidateTokenizedLinesLoopPre(step, this, line);
             }
             
-            if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.LINE_EMPTY))) {
+            if(!ValidateTokenizedLine(step, line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + line.lineNum + " with source text, '" + line.source.source + "'");
             }
             
             if(eventHandler != null) {
-                eventHandler.ValidateTokenizedLinesLoopPost(this, line);
+                eventHandler.ValidateTokenizedLinesLoopPost(step, this, line);
             }            
         }
         
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinesPost(this);
+            eventHandler.ValidateTokenizedLinesPost(step, this);
         }        
         
         return true;
     }
     
     //BUILD OPCODE
-    public void BuildBinLines(List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {
+    public void BuildBinLines(int step, List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {
         if(eventHandler != null) {
-            eventHandler.BuildBinLinesPre(this, areaLines, area);
+            eventHandler.BuildBinLinesPre(step, this, areaLines, area);
         }
 
         if(area.isCode) {
             for(TokenLine line : areaLines) {
                 lastLine = line;
-                BuildBinOpCode(line);
+                BuildBinOpCode(step, line);
             }
         } else if(area.isData) {
             for(TokenLine line : areaLines) {
                 lastLine = line;
-                BuildBinDirective(line);
+                BuildBinDirective(step, line);
             }
         } else {
             throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
         }
         
         if(eventHandler != null) {
-            eventHandler.BuildBinLinesPost(this);
+            eventHandler.BuildBinLinesPost(step, this);
         }        
     }
         
-    public void BuildBinDirective(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
+    public void BuildBinDirective(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
         if(eventHandler != null) {
-            eventHandler.BuildBinDirectivePre(this, line);
+            eventHandler.BuildBinDirectivePre(step, this, line);
         }
         
         if(!line.isLineEmpty && line.isLineDirective && !line.isLineOpCode) {
@@ -1942,13 +1916,13 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.BuildBinDirectivePost(this);
+            eventHandler.BuildBinDirectivePost(step, this);
         }        
     }
     
-    public void BuildBinOpCode(TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
+    public void BuildBinOpCode(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
         if(eventHandler != null) {
-            eventHandler.BuildBinOpCodePre(this, line);
+            eventHandler.BuildBinOpCodePre(step, this, line);
         }        
         
         if(!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {            
@@ -2426,7 +2400,7 @@ public class AssemblerThumb implements Assembler {
         }
         
         if(eventHandler != null) {
-            eventHandler.BuildBinOpCodePost(this);
+            eventHandler.BuildBinOpCodePost(step, this);
         }        
     }
 }

@@ -13,71 +13,73 @@ import net.middlemind.GenAsm.Tokeners.TokenLine;
  * @author Victor G. Brusca, Middlemind Games 10-07-2021 9:58 AM EST
  */
 public interface AssemblerEventHandlerThumb extends AssemblerEventHandler {
-    public void PopulateDirectiveArgAndAreaDataPre(Assembler assembler);
-    public void PopulateDirectiveArgAndAreaDataPost(Assembler assembler);
-    public void PopulateDirectiveArgAndAreaDataLoopPre(Assembler assembler, TokenLine line);
-    public void PopulateDirectiveArgAndAreaDataLoopPost(Assembler assembler, TokenLine line);    
+    public void PopulateDirectiveArgAndAreaDataPre(int step, Assembler assembler);
+    public void PopulateDirectiveArgAndAreaDataPost(int step, Assembler assembler);
+    public void PopulateDirectiveArgAndAreaDataLoopPre(int step, Assembler assembler, TokenLine line);
+    public void PopulateDirectiveArgAndAreaDataLoopPost(int step, Assembler assembler, TokenLine line);    
     
-    public void ValidateDirectiveLinesPre(Assembler assembler);
-    public void ValidateDirectiveLinesPost(Assembler assembler);
-    public void ValidateDirectiveLinesLoopPre(Assembler assembler, TokenLine line);
-    public void ValidateDirectiveLinesLoopPost(Assembler assembler, TokenLine line);    
+    public void ValidateDirectiveLinesPre(int step, Assembler assembler);
+    public void ValidateDirectiveLinesPost(int step, Assembler assembler);
+    public void ValidateDirectiveLinesLoopPre(int step, Assembler assembler, TokenLine line);
+    public void ValidateDirectiveLinesLoopPost(int step, Assembler assembler, TokenLine line);    
     
-    public void PopulateOpCodeAndArgDataPre(Assembler assembler);
-    public void PopulateOpCodeAndArgDataPost(Assembler assembler);
-    public void PopulateOpCodeAndArgDataLoopPre(Assembler assembler, TokenLine line);
-    public void PopulateOpCodeAndArgDataLoopPost(Assembler assembler, TokenLine line);
+    public void PopulateOpCodeAndArgDataPre(int step, Assembler assembler);
+    public void PopulateOpCodeAndArgDataPost(int step, Assembler assembler);
+    public void PopulateOpCodeAndArgDataLoopPre(int step, Assembler assembler, TokenLine line);
+    public void PopulateOpCodeAndArgDataLoopPost(int step, Assembler assembler, TokenLine line);
     
-    public void ValidateOpCodeLinesPre(Assembler assembler);
-    public void ValidateOpCodeLinesPost(Assembler assembler);
-    public void ValidateOpCodeLinesLoopPre(Assembler assembler, TokenLine line);
-    public void ValidateOpCodeLinesLoopPost(Assembler assembler, TokenLine line);
+    public void ValidateOpCodeLinesPre(int step, Assembler assembler);
+    public void ValidateOpCodeLinesPost(int step, Assembler assembler);
+    public void ValidateOpCodeLinesLoopPre(int step, Assembler assembler, TokenLine line);
+    public void ValidateOpCodeLinesLoopPost(int step, Assembler assembler, TokenLine line);
     
-    public void CollapseListAndGroupTokensPre(Assembler assembler);
-    public void CollapseListAndGroupTokensPost(Assembler assembler);
-    public void CollapseListAndGroupTokensLoopPre(Assembler assembler, TokenLine line);
-    public void CollapseListAndGroupTokensLoopPost(Assembler assembler, TokenLine line);    
+    public void CollapseListAndGroupTokensPre(int step, Assembler assembler);
+    public void CollapseListAndGroupTokensPost(int step, Assembler assembler);
+    public void CollapseListAndGroupTokensLoopPre(int step, Assembler assembler, TokenLine line);
+    public void CollapseListAndGroupTokensLoopPost(int step, Assembler assembler, TokenLine line);    
     
-    public void ExpandRegisterRangeTokensPre(Assembler assembler);
-    public void ExpandRegisterRangeTokensPost(Assembler assembler);
-    public void ExpandRegisterRangeTokensLoopPre(Assembler assembler, TokenLine line);
-    public void ExpandRegisterRangeTokensLoopPost(Assembler assembler, TokenLine line);    
+    public void ExpandRegisterRangeTokensPre(int step, Assembler assembler);
+    public void ExpandRegisterRangeTokensPost(int step, Assembler assembler);
+    public void ExpandRegisterRangeTokensLoopPre(int step, Assembler assembler, TokenLine line);
+    public void ExpandRegisterRangeTokensLoopPost(int step, Assembler assembler, TokenLine line);    
     
-    public void CollapseCommentTokensPre(Assembler assembler);
-    public void CollapseCommentTokensPost(Assembler assembler);
-    public void CollapseCommentTokensLoopPre(Assembler assembler, TokenLine line);
-    public void CollapseCommentTokensLoopPost(Assembler assembler, TokenLine line);    
+    public void CollapseCommentTokensPre(int step, Assembler assembler);
+    public void CollapseCommentTokensPost(int step, Assembler assembler);
+    public void CollapseCommentTokensLoopPre(int step, Assembler assembler, TokenLine line);
+    public void CollapseCommentTokensLoopPost(int step, Assembler assembler, TokenLine line);    
     
-    public void LoadAndParseJsonObjDataPre(Assembler assembler);
-    public void LoadAndParseJsonObjDataPost(Assembler assembler);
-    public void LoadAndParseJsonObjDataLoopPre(Assembler assembler, JsonObjIsFile entry);
-    public void LoadAndParseJsonObjDataLoopPost(Assembler assembler, JsonObjIsFile entry);        
+    public void LoadAndParseJsonObjDataPre(int step, Assembler assembler);
+    public void LoadAndParseJsonObjDataPost(int step, Assembler assembler);
+    public void LoadAndParseJsonObjDataLoopPre(int step, Assembler assembler, JsonObjIsFile entry);
+    public void LoadAndParseJsonObjDataLoopPost(int step, Assembler assembler, JsonObjIsFile entry);        
     
-    public void LinkJsonObjDataPre(Assembler assembler);
-    public void LinkJsonObjDataPost(Assembler assembler);
-    public void LinkJsonObjDataLoopPre(Assembler assembler, String s);
-    public void LinkJsonObjDataLoopPost(Assembler assembler, String s);            
+    public void LinkJsonObjDataPre(int step, Assembler assembler);
+    public void LinkJsonObjDataPost(int step, Assembler assembler);
+    public void LinkJsonObjDataLoopPre(int step, Assembler assembler, String s);
+    public void LinkJsonObjDataLoopPost(int step, Assembler assembler, String s);            
     
-    public void LexerizeAssemblySourcePre(Assembler assembler);
-    public void LexerizeAssemblySourcePost(Assembler assembler);
+    public void LexerizeAssemblySourcePre(int step, Assembler assembler);
+    public void LexerizeAssemblySourcePost(int step, Assembler assembler);
     
-    public void ValidateTokenizedLinePre(Assembler assembler, TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty);
-    public void ValidateTokenizedLinePost(Assembler assembler);
+    public void ValidateTokenizedLinePre(int step, Assembler assembler, TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty);
+    public void ValidateTokenizedLinePost(int step, Assembler assembler);
     
-    public void ValidateTokenizedLinesPre(Assembler assembler);
-    public void ValidateTokenizedLinesPost(Assembler assembler);
-    public void ValidateTokenizedLinesLoopPre(Assembler assembler, TokenLine line);
-    public void ValidateTokenizedLinesLoopPost(Assembler assembler, TokenLine line);        
+    public void ValidateTokenizedLinesPre(int step, Assembler assembler);
+    public void ValidateTokenizedLinesPost(int step, Assembler assembler);
+    public void ValidateTokenizedLinesLoopPre(int step, Assembler assembler, TokenLine line);
+    public void ValidateTokenizedLinesLoopPost(int step, Assembler assembler, TokenLine line);        
     
-    public void BuildBinLinesPre(Assembler assembler, List<TokenLine> areaLines, AreaThumb area);
-    public void BuildBinLinesPost(Assembler assembler);
+    public void BuildBinLinesPre(int step, Assembler assembler, List<TokenLine> areaLines, AreaThumb area);
+    public void BuildBinLinesPost(int step, Assembler assembler);
     
-    public void BuildBinDirectivePre(Assembler assembler, TokenLine line);
-    public void BuildBinDirectivePost(Assembler assembler);
+    public void BuildBinDirectivePre(int step, Assembler assembler, TokenLine line);
+    public void BuildBinDirectivePost(int step, Assembler assembler);
     
-    public void BuildBinOpCodePre(Assembler assembler, TokenLine line);
-    public void BuildBinOpCodePost(Assembler assembler);
+    public void BuildBinOpCodePre(int step, Assembler assembler, TokenLine line);
+    public void BuildBinOpCodePost(int step, Assembler assembler);
     
-    public void TokenizeLexerArtifactsPre(Assembler assembler);
-    public void TokenizeLexerArtifactsPost(Assembler assembler);    
+    public void TokenizeLexerArtifactsPre(int step, Assembler assembler);
+    public void TokenizeLexerArtifactsPost(int step, Assembler assembler);
+    
+    public void RunAssemblerPreStep(int step, Assembler assembler);
 }
