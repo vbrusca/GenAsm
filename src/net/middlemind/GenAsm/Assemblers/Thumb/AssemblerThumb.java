@@ -51,6 +51,7 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import net.middlemind.GenAsm.Assemblers.AssemblerEventHandler;
 import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
 import net.middlemind.GenAsm.Assemblers.TwosCompliment;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionDirectiveArgNotSupported;
@@ -134,12 +135,13 @@ public class AssemblerThumb implements Assembler {
     public Object other;
     public String rootOutputDir;
     
-    public AssemblerThumbEventHandler eventHandler;
+    public AssemblerEventHandlerThumb eventHandler;
     
     //MAIN METHOD
     @Override
-    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, List<String> assemblySource, String outputDir, Object otherObj) throws Exception {
+    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, List<String> assemblySource, String outputDir, Object otherObj, AssemblerEventHandler asmEventHandler) throws Exception {
         try {
+            eventHandler = (AssemblerEventHandlerThumb)asmEventHandler;
             if(eventHandler != null) {
                 eventHandler.RunAssemblerPre(this, jsonIsSet, assemblySourceFile, assemblySource, outputDir, otherObj);
             }
@@ -1021,6 +1023,10 @@ public class AssemblerThumb implements Assembler {
         
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            if(eventHandler != null) {
+                eventHandler.ValidateOpCodeLinesLoopPre(this, line);
+            }
+            
             if(line.isLineOpCode) {
                 opCodeFound = false;
                 opCodeName = null;
@@ -1059,6 +1065,10 @@ public class AssemblerThumb implements Assembler {
                     throw new ExceptionNoOpCodeFound("Could not find unique matching opCode entry for opCode '" + opCodeName + "' and line number " + line.lineNum + " with source '" + line.source.source + "'");
                 }
             }
+            
+            if(eventHandler != null) {
+                eventHandler.ValidateOpCodeLinesLoopPost(this, line);
+            }            
         }
         
         for(String key : symbols.symbols.keySet()) {
@@ -1280,6 +1290,10 @@ public class AssemblerThumb implements Assembler {
         
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            if(eventHandler != null) {
+                eventHandler.CollapseListAndGroupTokensLoopPre(this, line);
+            }            
+            
             rootStartList = null;
             rootStartIdxList = -1;
             rootStartGroup = null;
@@ -1364,6 +1378,10 @@ public class AssemblerThumb implements Assembler {
                     count++;
                 }                
             }
+            
+            if(eventHandler != null) {
+                eventHandler.CollapseListAndGroupTokensLoopPost(this, line);
+            }            
         }
         
         if(eventHandler != null) {
@@ -1420,6 +1438,10 @@ public class AssemblerThumb implements Assembler {
         
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            if(eventHandler != null) {
+                eventHandler.ExpandRegisterRangeTokensLoopPre(this, line);
+            }            
+            
             rangeRootIdxLow = 0;
             rangeRootIdxHi = 0;
             rangeRootLow = null;                
@@ -1512,6 +1534,10 @@ public class AssemblerThumb implements Assembler {
                     count++;
                 }                    
             }
+            
+            if(eventHandler != null) {
+                eventHandler.ExpandRegisterRangeTokensLoopPost(this, line);
+            }            
         }
         
         if(eventHandler != null) {
@@ -1531,6 +1557,10 @@ public class AssemblerThumb implements Assembler {
             
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            if(eventHandler != null) {
+                eventHandler.CollapseCommentTokensLoopPre(this, line);
+            }            
+            
             inComment = false;
             commentRoot = null;
             clearTokens = new ArrayList<>();  
@@ -1555,6 +1585,10 @@ public class AssemblerThumb implements Assembler {
                 line.payload.removeAll(clearTokens);
                 line.payloadLen = line.payload.size();
             }
+            
+            if(eventHandler != null) {
+                eventHandler.CollapseCommentTokensLoopPost(this, line);
+            }            
         }
         
         if(eventHandler != null) {
@@ -1576,6 +1610,10 @@ public class AssemblerThumb implements Assembler {
         JsonObj jsonObj = null;
         
         for(JsonObjIsFile entry : isaDataSet.is_files) {
+            if(eventHandler != null) {
+                eventHandler.LoadAndParseJsonObjDataLoopPre(this, entry);
+            }            
+            
             cTmp = Class.forName(entry.loader_class);
             ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
             json = null;
@@ -1638,6 +1676,10 @@ public class AssemblerThumb implements Assembler {
                 jsonObjIsRegisters = (JsonObjIsRegisters)jsonObj;
                 Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsRegisters object, storing it...");                     
             }
+            
+            if(eventHandler != null) {
+                eventHandler.LoadAndParseJsonObjDataLoopPost(this, entry);
+            }            
         }
 
         if(jsonObjIsEntryTypes == null) {
@@ -1662,8 +1704,16 @@ public class AssemblerThumb implements Assembler {
         
         Logger.wrl("AssemblerThumb: LinkJsonObjData");
         for(String s : isaData.keySet()) {
+            if(eventHandler != null) {
+                eventHandler.LinkJsonObjDataLoopPre(this, s);
+            }            
+            
             JsonObj jsonObj = isaData.get(s);
             jsonObj.Link(jsonObjIsEntryTypes);
+            
+            if(eventHandler != null) {
+                eventHandler.LinkJsonObjDataLoopPost(this, s);
+            }            
         }
         
         if(eventHandler != null) {
@@ -1722,7 +1772,7 @@ public class AssemblerThumb implements Assembler {
     
     public boolean ValidateTokenizedLine(TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinePre(this);
+            eventHandler.ValidateTokenizedLinePre(this, line, validLines, validLineEmpty);
         }
         
         int tokenCount = line.payload.size();
@@ -1782,15 +1832,23 @@ public class AssemblerThumb implements Assembler {
     
     public boolean ValidateTokenizedLines() throws ExceptionNoValidLineFound {
         if(eventHandler != null) {
-            eventHandler.ValidateTokenizedLinePre(this);
+            eventHandler.ValidateTokenizedLinesPre(this);
         }
 
         Logger.wrl("AssemblerThumb: ValidateTokenizedLines");
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
+            if(eventHandler != null) {
+                eventHandler.ValidateTokenizedLinesLoopPre(this, line);
+            }
+            
             if(!ValidateTokenizedLine(line, jsonObjIsValidLines, jsonObjIsValidLines.is_valid_lines.get(JsonObjIsValidLines.LINE_EMPTY))) {
                 throw new ExceptionNoValidLineFound("Could not find a matching valid line for line number, " + line.lineNum + " with source text, '" + line.source.source + "'");
             }
+            
+            if(eventHandler != null) {
+                eventHandler.ValidateTokenizedLinesLoopPost(this, line);
+            }            
         }
         
         if(eventHandler != null) {

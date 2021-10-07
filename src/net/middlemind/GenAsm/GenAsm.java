@@ -120,7 +120,7 @@ public class GenAsm {
                     if(ASM_SET != null) {
                         if(ASM_ASSEMBLER != null && ASM_PREPROCESSOR != null && ASM_LINKER != null) {
                             List<String> fileData = ASM_PREPROCESSOR.RunPreProcessor(ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
-                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, fileData, ASM_ROOT_OUTPUT_DIR, null);
+                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, fileData, ASM_ROOT_OUTPUT_DIR, null, null);
                             ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
                         } else {
                             Logger.wrl("GenAsm: Main: Error: could not find properly loaded pre-processor, assembler, or linked");                            
