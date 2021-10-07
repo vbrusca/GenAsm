@@ -109,8 +109,6 @@ public class PreProcessorThumb implements PreProcessor {
                             if(numBytes % 2 == 1) {
                                 paddingOn = true;
                             }
-
-                            //Logger.wrl("Found " + numBytes + " bytes and " + numHalfWords + " shorts to process with paddingOn set to " + paddingOn);
                             
                             short[] shorts = new short[numHalfWords];
                             ByteBuffer.wrap(incBin).asShortBuffer().get(shorts);

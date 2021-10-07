@@ -411,9 +411,6 @@ public class AssemblerThumb implements Assembler {
                     if(directiveFound == true && foundArea == true) {
                         token.isDirectiveArg = true;
                     }
-                    //else {
-                    //    throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive or line directive before NUMBER on line " + line.lineNum + " with source " + line.source.source + ", directive found: " + directiveFound + ", found area: " + foundArea + ", last area: " + lastArea);
-                    //}
                     
                     if(lastLabelToken != null && symbol != null) {
                         symbol.value = Utils.ParseNumberString(token.source);
@@ -1703,8 +1700,6 @@ public class AssemblerThumb implements Assembler {
             eventHandler.LexerizeAssemblySourcePre(step, this);
         }        
         
-        //Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Load assembly source file");
-        //asmDataSource = FileLoader.Load(asmSourceFile);
         Logger.wrl("AssemblerThumb: LoadAndLexAssemblySource: Lexerize assembly source file");
         LexerThumb lex = new LexerThumb();
         asmDataLexed = lex.FileLexerize(asmDataSource);

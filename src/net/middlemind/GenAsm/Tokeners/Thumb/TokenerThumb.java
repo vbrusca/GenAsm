@@ -406,22 +406,24 @@ public class TokenerThumb implements Tokener {
                 
                 if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                     tmb.isOpCode = true;
+                    
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                     tmb.isDirective = true;
+                
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                     tmb.isLabel = true;
+                
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                     tmb.isLabelRef = true;
-                //} else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {
-                //    tmb.isLabelLocal = true;
-                //} else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                //    tmb.isLabelLocalRef = true;
+                
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_COMMENT)) {
                     tmb.isComment = true;
                     commentType = compareType;
                     inComment = true;
+                
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE_STRING)) {
                     tmb.source = tmb.source.replace("|", "");
+                
                 }
             }
 
