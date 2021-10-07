@@ -16,8 +16,8 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String NAME_NULL = "None";
     public static String NAME_LABEL = "Label";
     public static String NAME_LABEL_REF = "LabelRef";    
-    public static String NAME_LABEL_NUMERIC_LOCAL = "LabelNumericLocal";
-    public static String NAME_LABEL_NUMERIC_LOCAL_REF = "LabelNumericLocalRef";    
+    //public static String NAME_LABEL_NUMERIC_LOCAL = "LabelNumericLocal";
+    //public static String NAME_LABEL_NUMERIC_LOCAL_REF = "LabelNumericLocalRef";    
     public static String NAME_COMMENT = "Comment";
     public static String NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
     public static String NAME_REGISTER_RANGE_HI = "RegisterRangeHi";

@@ -1,4 +1,4 @@
-package net.middlemind.GenAsm;
+package net.middlemind.GenAsm.FileIO;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

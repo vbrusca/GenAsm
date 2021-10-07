@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+import net.middlemind.GenAsm.FileIO.FileLoader;
 import net.middlemind.GenAsm.Assemblers.Assembler;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;

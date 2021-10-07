@@ -1,7 +1,12 @@
 package net.middlemind.GenAsm;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionMalformedRange;
+import net.middlemind.GenAsm.FileIO.FileUnloader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
 
 /**
@@ -10,6 +15,41 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  */
 @SuppressWarnings({"null", "UnusedAssignment"})
 public class Utils {
+    public static void WriteObject(Object obj, String name, String fileName, String rootOutputDir) throws IOException {
+        Logger.wrl("AssemblerThumb: WriteObject: Name: " + name);
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();            
+        String jsonString = gson.toJson(obj);
+        FileUnloader.WriteStr(Paths.get(rootOutputDir, fileName).toString(), jsonString);
+    }
+    
+    public static void PrintObject(Object obj, String name) {
+        Logger.wrl("AssemblerThumb: PrintObject: Name: '" + name + "'");
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();            
+        String jsonString = gson.toJson(obj);
+        Logger.wr(jsonString);        
+    }    
+    
+    public static Integer ParseNumberString(String s) {
+        Integer tInt = null;
+        if(s.contains("#0x")) {            
+            tInt = Integer.parseInt(s.replace("#0x", ""), 16);                            
+        } else if(s.contains("0x")) {
+            tInt = Integer.parseInt(s.replace("0x", ""), 16);
+        } else if(s.contains("&")) {
+            tInt = Integer.parseInt(s.replace("&", ""), 16);
+        } else if(s.contains("#0b")) {
+            tInt = Integer.parseInt(s.replace("#0b", ""), 2);                            
+        } else if(s.contains("#")) {
+            tInt = Integer.parseInt(s.replace("#", ""), 10);
+        } else {
+            tInt = Integer.parseInt(s, 10);
+        }
+        return tInt;
+    }    
     
     public static String EndianFlip(String binStr) {
         int len = binStr.length();

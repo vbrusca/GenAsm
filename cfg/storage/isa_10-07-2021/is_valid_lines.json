@@ -47,6 +47,35 @@
         },
         {
             "obj_name": "is_valid_line",
+            "index": 3,
+            "empty_line": true,            
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["LabelNumericLocal"],
+                    "index": 0
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
+            "index": 4,
+            "empty_line": true,            
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["LabelNumericLocal"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["Comment"],
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "obj_name": "is_valid_line",
             "index": 5,
             "empty_line": false,
             "is_valid_line": [
@@ -57,7 +86,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "LabelRef"],
                     "index": 1
                 }
             ]
@@ -79,7 +108,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "LabelRef"],
                     "index": 2
                 }
             ]
@@ -96,7 +125,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "LabelRef"],
                     "index": 1
                 },
                 {
@@ -123,7 +152,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",
-                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelNumericLocalRef", "LabelRef"],
                     "index": 2
                 },
                 {

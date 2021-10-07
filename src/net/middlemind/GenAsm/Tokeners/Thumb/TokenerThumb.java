@@ -412,10 +412,10 @@ public class TokenerThumb implements Tokener {
                     tmb.isLabel = true;
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                     tmb.isLabelRef = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {
-                    tmb.isLabelLocal = true;
-                } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
-                    tmb.isLabelLocalRef = true;
+                //} else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL)) {
+                //    tmb.isLabelLocal = true;
+                //} else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_NUMERIC_LOCAL_REF)) {
+                //    tmb.isLabelLocalRef = true;
                 } else if(tmb.type_name.equals(JsonObjIsEntryTypes.NAME_COMMENT)) {
                     tmb.isComment = true;
                     commentType = compareType;

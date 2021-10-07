@@ -19,7 +19,7 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String NAME_TITLE = "@TTL";    
     public static String NAME_CODE = "@CODE";
     public static String NAME_DATA = "@DATA";
-    public static String NAME_DCW = "@DCHW";
+    public static String NAME_DCHW = "@DCHW";
     public static String NAME_DCB = "@DCB";
     public static String[] LABEL_DIRECTIVES = new String[] { "@DCHW", "@DCB", "@EQU" };
     public static String NAME_READONLY = "@READONLY";

@@ -214,6 +214,20 @@
         },
         {
             "obj_name": "is_entry_type",            
+            "type_name": "LabelNumericLocal",
+            "type_category": "Label",            
+            "category": "Label",
+            "category_class": "java.lang.String",
+            "txt_match": {
+                "starts_with": ["_"],
+                "contains": ["0~9"],
+                "must_contain": ["_"],
+                "must_not_contain": [],
+                "ends_with": ["0~9", ";"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
             "type_name": "Label",
             "type_category": "Label",
             "category": "Label",
@@ -238,6 +252,20 @@
                 "must_contain": [],
                 "must_not_contain": [],
                 "ends_with": ["a~z0~9", "a~z", "_", ";", ","]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "LabelNumericLocalRef",
+            "type_category": "LabelReference",
+            "category": "Arg",
+            "category_class": "net.middlemind.GenAsm.Assemblers.Thumb.LabelNumLocalRefThumb",            
+            "txt_match": {
+                "starts_with": ["%FA", "%FT", "%BA", "%BT"],
+                "contains": ["0~9"],
+                "must_contain": ["%"],
+                "must_not_contain": [],
+                "ends_with": ["0~9", ",", ";"]
             }
         },
         {

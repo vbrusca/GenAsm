@@ -1,0 +1,53 @@
+{
+    "obj_name": "is_sets",
+    "is_sets": [
+        {
+            "obj_name": "is_set",
+            "set_name": "THUMB_ARM7TDMI",
+            "is_files": [
+                {
+                    "obj_name": "is_arg_types",
+                    "path": "./cfg/THUMB/is_arg_types.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsArgTypes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsArgTypes",
+                    "category": "args"
+                },
+                {
+                    "obj_name": "is_entry_types",
+                    "path": "./cfg/THUMB/is_entry_types.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryTypes",
+                    "category": "entries"
+                },
+                {
+                    "obj_name": "is_op_codes",
+                    "path": "./cfg/THUMB/is_op_codes.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodes",
+                    "category": "opcodes"
+                },
+                {
+                    "obj_name": "is_registers",
+                    "path": "./cfg/THUMB/is_registers.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegisters",
+                    "category": "registers"
+                },
+                {
+                    "obj_name": "is_valid_lines",
+                    "path": "./cfg/THUMB/is_valid_lines.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLines",
+                    "category": "lines"
+                },
+                {
+                    "obj_name": "is_directives",
+                    "path": "./cfg/THUMB/is_directives.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirectives",
+                    "category": "directives"
+                }
+            ]
+        }
+    ]
+}
