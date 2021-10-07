@@ -2,7 +2,6 @@ package net.middlemind.GenAsm.PreProcessors.Thumb;
 
 import java.io.File;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -82,9 +81,10 @@ public class PreProcessorThumb implements PreProcessor {
                     }
                         
                     if(idxs[0] == PPD_INCASM_IDX) {
-                        if(Utils.StringContainsArrayEntry(EXT_ASM_FILES, lcFileName) != null) {
+                        if(Utils.StringContainsArrayEntry(EXT_ASM_FILES, lcFileName) != null) {                            
                             incAsm = FileLoader.Load(fileName);
-                            incAsm.add(0, "");
+                            incAsm.add(0, ";Found file with line count: " + incAsm.size() + ", byte count: " + f.length());
+                            incAsm.add(1, "");
                             incAsm.add(incAsm.size(), "");
                             
                             asmFileAdj.put(s, incAsm);
@@ -121,6 +121,7 @@ public class PreProcessorThumb implements PreProcessor {
                             String binLine = null;
                             int i = 0;
                             String idxStr = null;
+                            nret.add(";Found file with byte count: " + numBytes + ", word count: " + numHalfWords + ", and padding on: " + paddingOn);
                             nret.add("");
                             
                             for(i = 0; i < shorts.length; i++) {

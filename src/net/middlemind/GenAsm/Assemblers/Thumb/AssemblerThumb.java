@@ -86,7 +86,7 @@ public class AssemblerThumb implements Assembler {
     public static String ENDIAN_NAME_BIG = "BIG";
     public static String ENDIAN_NAME_LITTLE = "LITTLE";
     public static String ENDIAN_NAME_JAVA_DEFAULT = "BIG";    
-    public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "WORD";
+    public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "HALFWORD";
     public static int INSTRUCTION_ALIGNMENT_BYTES = 2;
     public static int INSTRUCTION_ALIGNMENT_BITS = 16;
     public static String NUMBER_SHIFT_NAME_LEFT = "LEFT";
@@ -1832,7 +1832,7 @@ public class AssemblerThumb implements Assembler {
         return true;
     }
     
-    //BUILD OPCODE
+    //BUILD OPCODES AND DIRECTIVES
     public void BuildBinLines(int step, List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {
         if(eventHandler != null) {
             eventHandler.BuildBinLinesPre(step, this, areaLines, area);
