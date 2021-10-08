@@ -63,6 +63,7 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoNumberRangeFound;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNumberInvalidShift;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoOpCodeLineFound;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoSymbolFound;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoSymbolValueFound;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNumberOutOfRange;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionOpCodeAsArgument;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenType;
@@ -1831,7 +1832,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     //BUILD OPCODES AND DIRECTIVES
-    public void BuildBinLines(int step, List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {
+    public void BuildBinLines(int step, List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective, ExceptionNoSymbolValueFound {
         if(eventHandler != null) {
             eventHandler.BuildBinLinesPre(step, this, areaLines, area);
         }
@@ -1918,7 +1919,7 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
-    public void BuildBinOpCode(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine {
+    public void BuildBinOpCode(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionNoSymbolValueFound {
         if(eventHandler != null) {
             eventHandler.BuildBinOpCodePre(step, this, line);
         }        
@@ -2204,7 +2205,7 @@ public class AssemblerThumb implements Assembler {
                             if(sym.value != null) {
                                 tInt = sym.value;
                             } else {
-                                //TODO: Throw new symbol has no value error
+                                throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNum);
                             }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
@@ -2324,8 +2325,7 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionUnexpectedTokenType("Found unexpected GROUP sub-token type '" + entry.tokenOpCodeArgGroup.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                     }
                     //</editor-fold>
-                    
-                //Process OpCode argument tokens
+                                    
                 }else if(entry.isOpCodeArg) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg">
                     if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
@@ -2364,7 +2364,7 @@ public class AssemblerThumb implements Assembler {
                             if(sym.value != null) {
                                 tInt = sym.value;
                             } else {
-                                //TODO: Throw new symbol has no value error
+                                throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNum);
                             }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
