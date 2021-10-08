@@ -2507,7 +2507,6 @@ public class AssemblerThumb implements Assembler {
             line.payloadBinRepStrEndianBig = res;
             line.payloadBinRepStrEndianLil = Utils.EndianFlip(res);
             
-            //Build final string representation for this assembly line
         } else {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNum);
         }
