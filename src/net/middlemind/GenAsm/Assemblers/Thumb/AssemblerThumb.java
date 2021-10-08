@@ -92,6 +92,7 @@ public class AssemblerThumb implements Assembler {
     public static int INSTRUCTION_ALIGNMENT_BITS = 16;
     public static String NUMBER_SHIFT_NAME_LEFT = "LEFT";
     public static String NUMBER_SHIFT_NAME_RIGHT = "RIGHT";    
+    public static String SPECIAL_ADD_OP_CODE_CHECK = "101100000";
     
     public String obj_name = "AssemblerThumb";
     public JsonObjIsSet isaDataSet;
@@ -2060,28 +2061,28 @@ public class AssemblerThumb implements Assembler {
                 }else if(entry.isOpCodeArgList) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg List">
                     if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
-                        if(entry.tokenOpCodeArgList.source.equals("R0")) {
+                        if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_0)) {
                             inListRegisters[0] = 1;
                             
-                        } else if(entry.tokenOpCodeArgList.source.equals("R1")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_1)) {
                             inListRegisters[1] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R2")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_2)) {
                             inListRegisters[2] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R3")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_3)) {
                             inListRegisters[3] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R4")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_4)) {
                             inListRegisters[4] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R5")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_5)) {
                             inListRegisters[5] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R6")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_6)) {
                             inListRegisters[6] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R7")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_7)) {
                             inListRegisters[7] = 1;
                         
                         } else {
@@ -2089,49 +2090,49 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
-                        if(entry.tokenOpCodeArgList.source.equals("R8")) {
+                        if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_8)) {
                             inListRegisters[0] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R9")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_9)) {
                             inListRegisters[1] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R10")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_10)) {
                             inListRegisters[2] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R11")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_11)) {
                             inListRegisters[3] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R12")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_12)) {
                             inListRegisters[4] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R13") || entry.tokenOpCodeArgList.source.equals("SP")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_13) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_SP)) {
                             inListRegisters[5] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R14") || entry.tokenOpCodeArgList.source.equals("LR")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_14) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_LR)) {
                             inListRegisters[6] = 1;
                         
-                        } else if(entry.tokenOpCodeArgList.source.equals("R15") || entry.tokenOpCodeArgList.source.equals("PC")) {
+                        } else if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_15) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_PC)) {
                             inListRegisters[7] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid HI register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum);
                         }
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
-                        if(entry.tokenOpCodeArgList.source.equals("R15") || entry.tokenOpCodeArgList.source.equals("PC")) {
+                        if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_15) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_LR)) {
                             inListRegisters[7] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid PC register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
-                        if(entry.tokenOpCodeArgList.source.equals("R13") || entry.tokenOpCodeArgList.source.equals("SP")) {
+                        if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_13) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_SP)) {
                             inListRegisters[5] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid SP register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
                         }
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
-                        if(entry.tokenOpCodeArgList.source.equals("R14") || entry.tokenOpCodeArgList.source.equals("LR")) {
+                        if(entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_14) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_LR)) {
                             inListRegisters[6] = 1;
                         } else {
                             throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNum); 
@@ -2217,7 +2218,7 @@ public class AssemblerThumb implements Assembler {
                         }                       
                         
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
                         }
@@ -2269,7 +2270,7 @@ public class AssemblerThumb implements Assembler {
                         Integer tInt = Utils.ParseNumberString(entry.tokenOpCodeArgGroup.source);
                         
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
                         }
@@ -2376,7 +2377,7 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
                         }
@@ -2432,7 +2433,7 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                         //special rule for ADD OpCode '101100000'
-                        if(opCodeEntry.binRepStr.equals("101100000") && tInt < 0) {
+                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
                             opCodeEntry.binRepStr = "101100001";
                             tInt *= -1;
                         }

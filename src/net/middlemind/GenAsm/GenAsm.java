@@ -47,7 +47,7 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_short.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = "./cfg/THUMB/TESTS/test_asm_checks.txt";
             ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
             ASM_LINKER = null;
             ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
