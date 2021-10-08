@@ -4,6 +4,7 @@
     test @EQU 2
     over
         BGT =over
+    ;$NOP
 
     ;++++++++++++++++++++++++++++++++
     ;$INCASM |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_incasm.txt|

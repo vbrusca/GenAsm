@@ -21,9 +21,10 @@ import net.middlemind.GenAsm.Utils;
  */
 @SuppressWarnings("UnusedAssignment")
 public class PreProcessorThumb implements PreProcessor {
-    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM" };
+    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP" };
     public static int PPD_INCBIN_IDX = 0;
     public static int PPD_INCASM_IDX = 1;
+    public static int PPD_NOP_IDX = 2;
     public static String OUTPUT_FILE_NAME = "output_pre_processed_assembly.txt";
     public static String[] EXT_ASM_FILES = { ".asm", ".txt" };
     public static String[] EXT_BIN_FILES = { ".bin", ".raw", ".dat" };  
@@ -64,22 +65,29 @@ public class PreProcessorThumb implements PreProcessor {
         int numHalfWords = -1;
         boolean paddingOn = false;
         String whiteSpace = "";
+        Map<Integer, String> asmFileReplace = new Hashtable<>();
         
         for(String s : ret) {
             if(s != null && s.equals("") == false) {
                 idxs = Utils.StringContainsArrayEntry(PP_DIRECTIVES, s);
                 if(idxs != null) {
                     directive = PP_DIRECTIVES[idxs[0]];
+                    
+                    if(s.indexOf(";") != -1) {
+                        whiteSpace = s.substring(0, s.indexOf(";"));
+                    }
+                    
+                    if(idxs[0] == PPD_NOP_IDX) {
+                        asmFileReplace.put(count, whiteSpace + "MOV R8, R8\t\t;NOP preprocessor directive");
+                        continue;
+                    }
+                    
                     sIdx = idxs[1];
                     tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
                     fileName = tmp;
                     f = new File(fileName);
                     lcFileName = f.getName().toLowerCase();
-                    
-                    if(s.indexOf(";") != -1) {
-                        whiteSpace = s.substring(0, s.indexOf(";"));
-                    }
-                        
+                                            
                     if(idxs[0] == PPD_INCASM_IDX) {
                         if(Utils.StringContainsArrayEntry(EXT_ASM_FILES, lcFileName) != null) {                            
                             incAsm = FileLoader.Load(fileName);
@@ -164,6 +172,13 @@ public class PreProcessorThumb implements PreProcessor {
             count++;
         }
 
+        String tmpLine = null;
+        for(Integer key : asmFileReplace.keySet()) {
+            tmpLine = asmFileReplace.get(key);
+            ret.remove(key.intValue());
+            ret.add(key, tmpLine);
+        }        
+        
         int idxTmp = -1;
         int rowCountOrig = -1;
         int rowCountNew = -1;
