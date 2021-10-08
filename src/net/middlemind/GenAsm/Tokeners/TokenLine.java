@@ -26,6 +26,7 @@ public class TokenLine {
     public boolean isLineEmpty;
     public boolean isLineOpCode;
     public boolean isLineDirective;
+    public boolean isLineLabelDef;
     public ArtifactLine source;
     public JsonObjIsValidLine validLineEntry;
     public List<JsonObjIsOpCode> matchesOpCode;

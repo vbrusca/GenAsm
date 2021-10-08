@@ -17,39 +17,58 @@ public class LinkerThumb implements Linker {
     public void RunLinker(Assembler assembledFiles, String assemblySourceFile, String outputDir, Object otherObj) throws Exception {
         AssemblerThumb asm = (AssemblerThumb)assembledFiles;
         List<TokenLine> fin = new ArrayList<>();
+        TokenLine line = null;
         if(asm.areaThumbCode != null && asm.areaThumbData != null) {
             if(asm.areaThumbCode.lineNumEntry < asm.areaThumbData.lineNumEntry) {
                 //code first
                 for(int i = asm.areaThumbCode.lineNumEntry + 1; i < asm.areaThumbCode.lineNumEnd; i++) {
-                    fin.add(asm.asmDataTokened.get(i));
+                    line = asm.asmDataTokened.get(i);
+                    if(!line.isLineEmpty && !line.isLineLabelDef) {
+                        fin.add(line);
+                    }
                 }
                 
                 for(int i = asm.areaThumbData.lineNumEntry + 1; i < asm.areaThumbData.lineNumEnd; i++) {
-                    fin.add(asm.asmDataTokened.get(i));
+                    line = asm.asmDataTokened.get(i);
+                    if(!line.isLineEmpty && line.isLineDirective && !line.isLineLabelDef) {
+                        fin.add(line);
+                    }
                 }                
             } else {
                 //data first
                 for(int i = asm.areaThumbData.lineNumEntry + 1; i < asm.areaThumbData.lineNumEnd; i++) {
-                    fin.add(asm.asmDataTokened.get(i));
+                    line = asm.asmDataTokened.get(i);
+                    if(!line.isLineEmpty && line.isLineDirective && !line.isLineLabelDef) {
+                        fin.add(line);
+                    }
                 }
                 
                 for(int i = asm.areaThumbCode.lineNumEntry + 1; i < asm.areaThumbCode.lineNumEnd; i++) {
-                    fin.add(asm.asmDataTokened.get(i));
+                    line = asm.asmDataTokened.get(i);
+                    if(!line.isLineEmpty && !line.isLineLabelDef) {
+                        fin.add(line);
+                    }
                 }                
             }
             
         } else if(asm.areaThumbCode != null) {
             for(int i = asm.areaThumbCode.lineNumEntry + 1; i < asm.areaThumbCode.lineNumEnd; i++) {
-                 fin.add(asm.asmDataTokened.get(i));
+                line = asm.asmDataTokened.get(i);
+                if(!line.isLineEmpty && !line.isLineLabelDef) {
+                    fin.add(line);
+                }
             }
             
         } else if(asm.areaThumbData != null) {
             for(int i = asm.areaThumbData.lineNumEntry + 1; i < asm.areaThumbData.lineNumEnd; i++) {
-                fin.add(asm.asmDataTokened.get(i));
+                line = asm.asmDataTokened.get(i);
+                if(!line.isLineEmpty && line.isLineDirective && !line.isLineLabelDef) {
+                    fin.add(line);
+                }
             }
                 
         }
         
-        Logger.wrl("Found " + fin.size() + " lines of linked assembly");
+        Logger.wrl("Found " + fin.size() + " lines of linked assembly json objects");
     }
 }

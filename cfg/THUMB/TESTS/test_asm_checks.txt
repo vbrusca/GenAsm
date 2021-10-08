@@ -149,4 +149,15 @@
     over        CMP     R0, #45
     here        B       =here
     locate      LDR     R2, [R2, R6]
+
+    var1 @DCHW 256
+    var2 @DCHW 255
+    var3 @DCHW 254
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+    var4 @DCHW 256
+    var5 @DCHW 255
+    var6 @DCHW 254
 @END

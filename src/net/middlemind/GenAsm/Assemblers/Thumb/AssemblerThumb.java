@@ -645,8 +645,8 @@ public class AssemblerThumb implements Assembler {
                 asmAreaLinesCode = new ArrayList<TokenLine>();
                 activeLineCount = 0;
                 for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
-                    TokenLine line = asmDataTokened.get(z);
-                    if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                    TokenLine line = asmDataTokened.get(z);                    
+                    if(!line.isLineEmpty && !line.isLineLabelDef) {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len);
                         line.lineNumInt = (asmStartLineNumber + activeLineCount);
@@ -654,11 +654,11 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineLenBytes;
                     }
                 }
-                
+                                
                 asmAreaLinesData = new ArrayList<TokenLine>();
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
-                    if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
+                    if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective ) {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
                         line.lineNumInt = (asmStartLineNumber + activeLineCount);
@@ -666,13 +666,14 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineLenBytes;
                     }
                 }
+                
             } else {
                 //process data area first
                 asmAreaLinesData = new ArrayList<TokenLine>();
                 activeLineCount = 0;
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
-                    if(line.isLineDirective && !line.isLineOpCode && !line.isLineEmpty) {
+                    if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective ) {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
                         line.lineNumInt = (asmStartLineNumber + activeLineCount);
@@ -680,18 +681,18 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineLenBytes;
                     }
                 }
-                
+                                
                 asmAreaLinesCode = new ArrayList<TokenLine>();
                 for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
-                    if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                    if(!line.isLineEmpty && !line.isLineLabelDef) {
                         line.lineNumHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
                         line.lineNumInt = (asmStartLineNumber + activeLineCount);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineLenBytes;
                     }
-                }                
+                }
             }
             
         } else if(areaThumbCode != null) {
@@ -700,7 +701,7 @@ public class AssemblerThumb implements Assembler {
             activeLineCount = 0;
             for(int z = areaThumbCode.lineNumEntry + 1; z < areaThumbCode.lineNumEnd; z++) {
                 TokenLine line = asmDataTokened.get(z);
-                if(line.isLineOpCode && !line.isLineEmpty && !line.isLineDirective) {
+                if(!line.isLineEmpty && !line.isLineLabelDef) {
                     line.lineNumHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                     line.lineNumBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len);
                     line.lineNumInt = (asmStartLineNumber + activeLineCount);
@@ -861,6 +862,8 @@ public class AssemblerThumb implements Assembler {
         String lastLabel = null;
         TokenLine lastLabelLine = null;
         Symbol symbol = null;
+        boolean directiveFound = false;
+        boolean labelFound = false;
         
         for(TokenLine line : asmDataTokened) {
             lastLine = line;
@@ -872,6 +875,8 @@ public class AssemblerThumb implements Assembler {
             opCodeName = null;
             opCodeIdx = -1;
             labelArgs = 0;
+            directiveFound = false;
+            labelFound = false;
             
             for(Token token : line.payload) {
                 lastToken = token;
@@ -902,11 +907,17 @@ public class AssemblerThumb implements Assembler {
                         throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNumAbs + " with argument index " + token.index);
                     }
                     
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {    
+                    if(!directiveFound) {
+                        directiveFound = true;
+                    }
+                    
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                     token.isOpCodeArg = true;
                                         
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {                    
                     if(token.index == 0) {
+                        labelFound = true;
                         Token ltTmp = FindDirectives(line);
                         if(ltTmp == null || (ltTmp != null && Utils.ArrayContainsString(JsonObjIsDirectives.LABEL_DIRECTIVES, ltTmp.source) == true)) {
                             if(ltTmp == null || (ltTmp != null && ltTmp.source.equals(JsonObjIsDirectives.NAME_EQU) == false)) {
@@ -919,7 +930,8 @@ public class AssemblerThumb implements Assembler {
                                 }
                                 symbol = new Symbol();
                                 symbol.line = line;
-                                symbol.lineNumAbs = line.lineNumInt;
+                                symbol.lineNumAbs = line.lineNumAbs;
+                                symbol.lineNumInt = line.lineNumInt;
                                 symbol.name = token.source;
                                 symbol.token = token;
                                 symbol.isLabel = true;
@@ -959,6 +971,7 @@ public class AssemblerThumb implements Assembler {
                         ltoken.isOpCodeArg = true;
 
                     } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
+                        //TODO: REMOVE THIS BECAUSE IT SHOULDN'T HAPPEN
                         if(ltoken.index == 0) {
                             lastLabel = ltoken.source;
                             lastLabelLine = line;
@@ -969,7 +982,8 @@ public class AssemblerThumb implements Assembler {
                             }
                             symbol = new Symbol();
                             symbol.line = line;
-                            symbol.lineNumAbs = line.lineNumInt;
+                            symbol.lineNumAbs = line.lineNumAbs;
+                            symbol.lineNumInt = line.lineNumInt;
                             symbol.name = ltoken.source;
                             symbol.token = ltoken;
                             symbols.symbols.put(ltoken.source, symbol);
@@ -988,6 +1002,11 @@ public class AssemblerThumb implements Assembler {
                     throw new ExceptionNoOpCodeFound("Could not find a matching opCode entry for name '" + line.payloadOpCode + "' with argument count " + line.payloadLenArg + " at line " + line.lineNumAbs + " with source text '" + line.source.source + "'");
                 }
             }
+
+            //Logger.wrl(line.source.source + ", " + opCodeFound + ", " + directiveFound + ", " + labelFound);
+            if(!opCodeFound && !directiveFound && labelFound) {
+                line.isLineLabelDef = true;
+            }            
             
             if(eventHandler != null) {
                 eventHandler.PopulateOpCodeAndArgDataLoopPost(step, this, line);
@@ -2525,8 +2544,8 @@ public class AssemblerThumb implements Assembler {
             line.payloadBinRepStrEndianBig = res;
             line.payloadBinRepStrEndianLil = Utils.EndianFlip(res);
             
-        } else {
-            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNumAbs);
+        } else if(line.isLineLabelDef || line.isLineDirective && line.isLineOpCode) {
+            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNumAbs + ", " + line.isLineEmpty + ", " + line.isLineDirective + ", " + line.isLineOpCode);
         }
         
         if(eventHandler != null) {
