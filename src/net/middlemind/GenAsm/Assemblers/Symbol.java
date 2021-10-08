@@ -16,6 +16,7 @@ public class Symbol {
     public String lineNumHex;
     public String lineNumBin;
     public int lineNumInt;
+    public int lineNumActive;
     public boolean isEmptyLineLabel;
     public boolean isLocalLabel;
     public boolean isParentLabel;

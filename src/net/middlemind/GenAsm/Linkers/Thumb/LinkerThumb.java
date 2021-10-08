@@ -7,6 +7,7 @@ import net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb;
 import net.middlemind.GenAsm.Linkers.Linker;
 import net.middlemind.GenAsm.Logger;
 import net.middlemind.GenAsm.Tokeners.TokenLine;
+import net.middlemind.GenAsm.Utils;
 
 /**
  *
@@ -15,9 +16,11 @@ import net.middlemind.GenAsm.Tokeners.TokenLine;
 public class LinkerThumb implements Linker {
     @Override
     public void RunLinker(Assembler assembledFiles, String assemblySourceFile, String outputDir, Object otherObj) throws Exception {
+        Logger.wrl("LinkerThumb: RunLinker");
         AssemblerThumb asm = (AssemblerThumb)assembledFiles;
         List<TokenLine> fin = new ArrayList<>();
         TokenLine line = null;
+        
         if(asm.areaThumbCode != null && asm.areaThumbData != null) {
             if(asm.areaThumbCode.lineNumEntry < asm.areaThumbData.lineNumEntry) {
                 //code first
@@ -69,6 +72,7 @@ public class LinkerThumb implements Linker {
                 
         }
         
-        Logger.wrl("Found " + fin.size() + " lines of linked assembly json objects");
+        Logger.wrl("LinkerThumb: RunLinker: Found " + fin.size() + " lines of linked assembly json objects");
+        Utils.WriteObject(fin, "Linked Assembly Source Code Lines", "output_linked_area_lines_code.json", outputDir);        
     }
 }

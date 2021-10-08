@@ -17,9 +17,10 @@ public class TokenLine {
     public String payloadDirective;
     public String payloadBinRepStrEndianBig;
     public String payloadBinRepStrEndianLil;    
-    public String lineNumHex;
-    public String lineNumBin;
-    public int lineNumInt;
+    public String addressHex;
+    public String addressBin;
+    public int addressInt;
+    public int lineNumActive;
     public int lineNumAbs;
     public int payloadLen;
     public int payloadLenArg;
