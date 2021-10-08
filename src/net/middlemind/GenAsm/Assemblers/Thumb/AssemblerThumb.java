@@ -458,9 +458,9 @@ public class AssemblerThumb implements Assembler {
                         symbol = new Symbol();
                         symbol.line = line;
                         symbol.lineNumAbs = line.lineNumAbs;
-                        symbol.lineNumBin = line.addressBin;
-                        symbol.lineNumHex = line.addressHex;
-                        symbol.lineNumInt = line.addressInt;                       
+                        symbol.addressBin = line.addressBin;
+                        symbol.addressHex = line.addressHex;
+                        symbol.addressInt = line.addressInt;                       
                         symbol.name = lastLabel;
                         symbol.token = lastLabelToken;
                         symbol.isStaticValue = true;
@@ -939,9 +939,9 @@ public class AssemblerThumb implements Assembler {
                                 symbol = new Symbol();
                                 symbol.line = line;
                                 symbol.lineNumAbs = line.lineNumAbs;
-                                symbol.lineNumBin = line.addressBin;
-                                symbol.lineNumHex = line.addressHex;
-                                symbol.lineNumInt = line.addressInt;
+                                symbol.addressBin = line.addressBin;
+                                symbol.addressHex = line.addressHex;
+                                symbol.addressInt = line.addressInt;
                                 symbol.name = token.source;
                                 symbol.token = token;
                                 symbol.isLabel = true;
@@ -993,9 +993,9 @@ public class AssemblerThumb implements Assembler {
                             symbol = new Symbol();
                             symbol.line = line;
                             symbol.lineNumAbs = line.lineNumAbs;
-                            symbol.lineNumBin = line.addressBin;
-                            symbol.lineNumHex = line.addressHex;
-                            symbol.lineNumInt = line.addressInt;
+                            symbol.addressBin = line.addressBin;
+                            symbol.addressHex = line.addressHex;
+                            symbol.addressInt = line.addressInt;
                             symbol.name = ltoken.source;
                             symbol.token = ltoken;
                             symbols.symbols.put(ltoken.source, symbol);
@@ -1099,16 +1099,16 @@ public class AssemblerThumb implements Assembler {
             TokenLine tmpLine = null;
             if(Utils.ArrayContainsInt(JsonObjIsValidLines.LINES_LABEL_EMPTY, line.validLineEntry.index)) {
                 tmpLine = FindNextOpCodeLine(symbol.lineNumAbs, key);
-                symbol.lineNumInt = tmpLine.addressInt;
-                symbol.lineNumBin = tmpLine.addressBin;
-                symbol.lineNumHex = tmpLine.addressHex;
+                symbol.addressInt = tmpLine.addressInt;
+                symbol.addressBin = tmpLine.addressBin;
+                symbol.addressHex = tmpLine.addressHex;
                 symbol.lineNumActive = tmpLine.lineNumActive;
                 symbol.isEmptyLineLabel = true;
-                Logger.wrl("Adjusting symbol line number from " + symbol.lineNumAbs + " to " + symbol.lineNumInt + " due to symbol marking an empty line");
+                Logger.wrl("Adjusting symbol line number from " + symbol.lineNumAbs + " to " + symbol.addressInt + " due to symbol marking an empty line");
             } else {
-                symbol.lineNumInt = line.addressInt;
-                symbol.lineNumBin = line.addressBin;
-                symbol.lineNumHex = line.addressHex;
+                symbol.addressInt = line.addressInt;
+                symbol.addressBin = line.addressBin;
+                symbol.addressHex = line.addressHex;
                 symbol.lineNumActive = line.lineNumActive;                
             }
         }
@@ -2245,7 +2245,7 @@ public class AssemblerThumb implements Assembler {
                         Symbol sym = symbols.symbols.get(label);
                         
                         if(sym != null) {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumInt), entry.opCodeArgGroup.bit_series.bit_len);
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArgGroup.bit_series.bit_len);
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                         }
@@ -2253,7 +2253,7 @@ public class AssemblerThumb implements Assembler {
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
-                            tInt = asmStartLineNumber + sym.lineNumInt;
+                            tInt = asmStartLineNumber + sym.addressInt;
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
@@ -2265,7 +2265,7 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = asmStartLineNumber + (sym.lineNumInt - line.addressInt);
+                            tInt = asmStartLineNumber + (sym.addressInt - line.addressInt);
                             
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
@@ -2404,7 +2404,7 @@ public class AssemblerThumb implements Assembler {
                         Symbol sym = symbols.symbols.get(label);
                         
                         if(sym != null) {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.lineNumInt), entry.opCodeArg.bit_series.bit_len);
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArg.bit_series.bit_len);
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         }
@@ -2412,7 +2412,7 @@ public class AssemblerThumb implements Assembler {
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
-                            tInt = asmStartLineNumber + sym.lineNumInt;
+                            tInt = asmStartLineNumber + sym.addressInt;
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
@@ -2424,7 +2424,7 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = asmStartLineNumber + (sym.lineNumInt - line.addressInt);
+                            tInt = asmStartLineNumber + (sym.addressInt - line.addressInt);
                             
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);

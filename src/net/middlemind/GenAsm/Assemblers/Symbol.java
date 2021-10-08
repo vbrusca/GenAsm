@@ -12,11 +12,11 @@ public class Symbol {
     public String name;
     public TokenLine line;
     public Token token;
-    public int lineNumAbs;
-    public String lineNumHex;
-    public String lineNumBin;
-    public int lineNumInt;
+    public String addressHex;
+    public String addressBin;
+    public int addressInt;
     public int lineNumActive;
+    public int lineNumAbs;    
     public boolean isEmptyLineLabel;
     public boolean isLocalLabel;
     public boolean isParentLabel;
