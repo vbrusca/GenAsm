@@ -19,12 +19,13 @@ public class TokenLine {
     public String payloadBinRepStrEndianLil;    
     public String lineNumHex;
     public String lineNumBin;
-    public int lineNum;
+    public int lineNumInt;
+    public int lineNumAbs;
     public int payloadLen;
     public int payloadLenArg;
     public boolean isLineEmpty;
     public boolean isLineOpCode;
-    public boolean isLineDirective;    
+    public boolean isLineDirective;
     public ArtifactLine source;
     public JsonObjIsValidLine validLineEntry;
     public List<JsonObjIsOpCode> matchesOpCode;

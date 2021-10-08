@@ -42,7 +42,7 @@ public class TokenerThumb implements Tokener {
         boolean verbose = false;
         
         TokenLine ret = new TokenLine();
-        ret.lineNum = lineNum;
+        ret.lineNumAbs = lineNum;
         ret.source = line;
         ret.payloadLen = line.payload.size();
         ret.payload = new ArrayList<>();
@@ -390,7 +390,7 @@ public class TokenerThumb implements Tokener {
                 Token tmb = new Token();                
                 tmb.artifact = art;
                 tmb.index = count;
-                tmb.lineNum = lineNum;
+                tmb.lineNumAbs = lineNum;
                 tmb.source = payload;
                 if(!found || compareType == null) {
                     tmb.type_name = "Unknown";

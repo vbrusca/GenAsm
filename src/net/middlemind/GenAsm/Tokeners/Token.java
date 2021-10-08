@@ -15,7 +15,7 @@ public class Token {
     public String source;
     public String parentLabel;
     public Object value;
-    public int lineNum;
+    public int lineNumAbs;
     public int index;
     public int payloadLen;
     public int payloadArgLen;

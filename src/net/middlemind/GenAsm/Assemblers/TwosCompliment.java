@@ -1,38 +1,39 @@
 package net.middlemind.GenAsm.Assemblers;
 
+import net.middlemind.GenAsm.Logger;
+
 /**
  *
  * @author Victor G. Brusca, Middlemind Games 09/20/2021 11:50AM EST
  */
 public class TwosCompliment {
-    //Solution by Sarbjit Singh on forum, https://stackoverflow.com/questions/42595963/how-to-get-2s-complement-of-a-binary-number-in-java-programmatically
-    public static String GetTwosCompliment(String bin) {
-        String twos = "", ones = "";
-
-        for (int i = 0; i < bin.length(); i++) {
-            ones += flip(bin.charAt(i));
-        }
-        
-        int number0 = Integer.parseInt(ones, 2);
-        StringBuilder builder = new StringBuilder(ones);
-        boolean b = false;
-        
-        for (int i = ones.length() - 1; i > 0; i--) {
-            if (ones.charAt(i) == '1') {
-                builder.setCharAt(i, '0');
-            } else {
-                builder.setCharAt(i, '1');
-                b = true;
+    public static String GetTwosCompliment(String str) {
+        int n = str.length();
+      
+        // Traverse the string to get first '1' from
+        // the last of string
+        int i;
+        for (i = n - 1; i >= 0; i--) {
+            if (str.charAt(i) == '1') {
                 break;
             }
         }
-        
-        if (!b) {
-            builder.append("1", 0, 7);
+      
+        // If there exists no '1' concat 1 at the
+        // starting of string
+        if (i == -1) {
+            return "1" + str;
+        }
+      
+        // Continue traversal after the position of
+        // first '1'
+        char[] cr = str.toCharArray();
+        for (int k = i - 1; k >= 0; k--)
+        {
+            cr[k] = flip(cr[k]);
         }
         
-        twos = builder.toString();
-        return twos;
+        return String.valueOf(cr);
     }
 
     private static char flip(char c) {
