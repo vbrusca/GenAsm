@@ -1,7 +1,5 @@
 package net.middlemind.GenAsm.Assemblers;
 
-import net.middlemind.GenAsm.Logger;
-
 /**
  *
  * @author Victor G. Brusca, Middlemind Games 09/20/2021 11:50AM EST
