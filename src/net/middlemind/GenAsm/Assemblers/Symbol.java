@@ -18,8 +18,6 @@ public class Symbol {
     public int lineNumActive;
     public int lineNumAbs;    
     public boolean isEmptyLineLabel;
-    //public boolean isLocalLabel;
-    //public boolean isParentLabel;
     public boolean isLabel;
     public boolean isStaticValue;
     public Integer value;    
