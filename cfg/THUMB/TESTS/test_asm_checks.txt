@@ -1,6 +1,16 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
+
+    test        @EQU    2
+    overOne
+                BGT     =overOne
+                ;$NOP
+
+    ;++++++++++++++++++++++++++++++++
+    ;$INCASM |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_incasm.txt|
+    ;++++++++++++++++++++++++++++++++
+
     label_                              ;branch label
                 LSL     R0, R1, #0      ;5.1
                 LSL     R0, R1, #31
@@ -150,14 +160,21 @@
     here        B       =here
     locate      LDR     R2, [R2, R6]
 
-    var1 @DCHW 256
-    var2 @DCHW 255
-    var3 @DCHW 254
+    var1        @DCHW   256
+    var2        @DCHW   255
+    var3        @DCHW   254
+
 @END
 
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
-    var4 @DCHW 256
-    var5 @DCHW 255
-    var6 @DCHW 254
+
+    var4        @DCHW   256
+    var5        @DCHW   255
+    var6        @DCHW   254
+
+    ;++++++++++++++++++++++++++++++++
+    ;$INCBIN |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/ninlogo.dat|
+    ;++++++++++++++++++++++++++++++++
+
 @END

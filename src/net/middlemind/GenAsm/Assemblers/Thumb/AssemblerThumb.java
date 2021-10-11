@@ -333,7 +333,7 @@ public class AssemblerThumb implements Assembler {
     }
             
     //DIRECTIVE METHODS
-    public void PopulateDirectiveArgAndAreaData(int step) throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel {
+    public void PopulateDirectiveArgAndAreaData(int step) throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel, ExceptionNoSymbolFound {
         if(eventHandler != null) {
             eventHandler.PopulateDirectiveArgAndAreaDataPre(step, this);
         }
@@ -418,7 +418,7 @@ public class AssemblerThumb implements Assembler {
                     if(lastLabelToken != null && symbol != null) {
                         symbol.value = Utils.ParseNumberString(token.source);
                         symbols.symbols.put(lastLabel, symbol);
-                        Logger.wrl("AssemblerThumb: PopulateDirectiveArgAndAreaData: Storing symbol with label '" + lastLabel + "' for line number " + lastLabelLine.lineNumAbs);
+                        Logger.wrl("AssemblerThumb: PopulateDirectiveArgAndAreaData: Storing symbol with label '" + lastLabel + "' for line number " + lastLabelLine.lineNumAbs + " with value " + symbol.value);
                         
                         lastLabel = null;
                         lastLabelToken = null;
@@ -605,7 +605,14 @@ public class AssemblerThumb implements Assembler {
                                 directiveFound = true;
                                 directiveName = token.source;
                                 directiveIdx = token.index;
-                            }                            
+                            }
+                            
+                            if(lastLabel != null) {
+                                symbol = symbols.symbols.get(lastLabel);
+                                if(symbol == null) {
+                                    throw new ExceptionNoSymbolFound("Could not find a symbol with name " + lastLabel + " at line number " + line.lineNumAbs + " with source " + line.source.source);                                    
+                                }
+                            }
                         }                       
                     }
                 }
@@ -878,6 +885,10 @@ public class AssemblerThumb implements Assembler {
             if(eventHandler != null) {
                 eventHandler.PopulateOpCodeAndArgDataLoopPre(step, this, line);
             }             
+            
+            if(line.validLineEntry.index == 0 || line.validLineEntry.index == 9) {
+                line.isLineEmpty = true;
+            }
             
             opCodeFound = false;
             opCodeName = null;

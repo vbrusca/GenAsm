@@ -35,6 +35,7 @@ public class Utils {
     
     public static Integer ParseNumberString(String s) {
         Integer tInt = null;
+        s = s.trim();
         if(s.contains("#0x")) {            
             tInt = Integer.parseInt(s.replace("#0x", ""), 16);                            
         } else if(s.contains("0x")) {
@@ -152,6 +153,28 @@ public class Utils {
                         ret = "0" + ret;
                     } else {
                         ret += "0";
+                    }
+                }
+            } else if(s.length() > len) {
+                if(padLeft) {
+                    ret = ret.substring(s.length() - len);
+                } else {
+                    ret = ret.substring(0, (s.length() - len));
+                }
+            }
+        }
+        return ret;
+    }
+
+    public static String SpaceString(String s, int len, boolean padLeft) {
+        String ret = s;
+        if(!IsStringEmpty(s)) {
+            if(s.length() < len) {
+                for(int i = s.length(); i < len; i++) {
+                    if(padLeft) {
+                        ret = " " + ret;
+                    } else {
+                        ret += " ";
                     }
                 }
             } else if(s.length() > len) {
