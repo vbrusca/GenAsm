@@ -91,12 +91,12 @@ public class LinkerThumb implements Linker {
             tmp += "\t";
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianBig != null) {
-                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + Utils.SpaceString(tmpLine.payloadBinRepStrEndianBig, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t\t" + tmpLine.source.source;
+                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + Utils.SpaceString(tmpLine.payloadBinRepStrEndianBig, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + tmpLine.source.source;
                 } else {
-                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + "                " + "\t\t" + tmpLine.source.source;
+                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + "                " + "\t" + tmpLine.source.source;
                 }
             } else {
-                tmp += "   \t        \t                \t\t" + tmpLine.source.source;
+                tmp += "   \t    \t                \t" + tmpLine.source.source;
             }
             
             if(prevLineNumAbs != -1 && tmpLine.lineNumAbs != (prevLineNumAbs + 1)) {
