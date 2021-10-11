@@ -233,7 +233,7 @@
             "category": "Arg",
             "category_class": "java.lang.String",            
             "txt_match": {
-                "starts_with": ["=", "~", "-"],
+                "starts_with": ["=", "~", "-", "`"],
                 "contains": ["a~z", "a~z0~9", "_"],
                 "must_contain": [],
                 "must_not_contain": [],

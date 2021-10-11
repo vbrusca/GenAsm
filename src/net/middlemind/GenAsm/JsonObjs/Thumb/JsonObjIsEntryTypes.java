@@ -19,6 +19,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static char NAME_LABEL_REF_START_ADDRESS = '=';
     public static char NAME_LABEL_REF_START_VALUE = '~';
     public static char NAME_LABEL_REF_START_OFFSET = '-';
+    public static char NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH = '`';    
     public static String NAME_COMMENT = "Comment";
     public static String NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
     public static String NAME_REGISTER_RANGE_HI = "RegisterRangeHi";

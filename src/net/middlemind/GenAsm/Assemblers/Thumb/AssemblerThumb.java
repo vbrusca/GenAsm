@@ -2253,7 +2253,7 @@ public class AssemblerThumb implements Assembler {
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
-                            tInt = asmStartLineNumber + sym.addressInt;
+                            tInt = sym.addressInt;
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
@@ -2265,7 +2265,11 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = asmStartLineNumber + (sym.addressInt - line.addressInt);
+                            tInt = (sym.addressInt - line.addressInt);
+                            
+                        } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
+                            //label address offset minus prefetch
+                            tInt = (sym.addressInt - line.addressInt - jsonObjIsOpCodes.pc_prefetch_bytes);
                             
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
@@ -2412,7 +2416,7 @@ public class AssemblerThumb implements Assembler {
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
-                            tInt = asmStartLineNumber + sym.addressInt;
+                            tInt = sym.addressInt;
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
@@ -2424,8 +2428,12 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = asmStartLineNumber + (sym.addressInt - line.addressInt);
-                            
+                            tInt = (sym.addressInt - line.addressInt);
+
+                        } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
+                            //label address offset minus prefetch
+                            tInt = (sym.addressInt - line.addressInt - jsonObjIsOpCodes.pc_prefetch_bytes);
+                                                   
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
                         }
