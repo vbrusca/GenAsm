@@ -29,3 +29,10 @@ http://forum.6502.org/viewtopic.php?t=1708
 
 //HEX to Binary File
 https://tomeko.net/online_tools/hex_to_file.php?lang=en
+
+//Check if we need an arm assembly header to start the program in thumb mode
+https://www.keil.com/support/man/docs/armasm/armasm_dom1396000243686.htm
+
+//Converting a raw binary to an ELF file
+https://dzone.com/articles/converting-a-raw-binary-file-into-an-elfdwarf-file
+https://mcuoneclipse.com/2018/01/27/converting-a-raw-binary-file-into-an-elf-dwarf-file-for-loading-and-debugging/
