@@ -36,3 +36,12 @@ https://www.keil.com/support/man/docs/armasm/armasm_dom1396000243686.htm
 //Converting a raw binary to an ELF file
 https://dzone.com/articles/converting-a-raw-binary-file-into-an-elfdwarf-file
 https://mcuoneclipse.com/2018/01/27/converting-a-raw-binary-file-into-an-elf-dwarf-file-for-loading-and-debugging/
+
+//GameBoy Advance Emulator Builds
+https://mgba.io/builds/1/
+
+//Notepad++ - ALSO install HEX-Editor plugin for NPP
+https://notepad-plus-plus.org/downloads/
+
+//Online HEX Viewer
+https://hexed.it/
