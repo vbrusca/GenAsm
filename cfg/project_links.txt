@@ -45,3 +45,6 @@ https://notepad-plus-plus.org/downloads/
 
 //Online HEX Viewer
 https://hexed.it/
+
+//Binary file editor, allows to pull out hex values
+https://www.dcode.fr/file-data
