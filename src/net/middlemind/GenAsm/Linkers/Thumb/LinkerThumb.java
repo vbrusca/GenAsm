@@ -87,13 +87,17 @@ public class LinkerThumb implements Linker {
         for(int i = 0; i < asm.asmDataTokened.size(); i++) {
             tmpLine = asm.asmDataTokened.get(i);
             tmp = tmpLine.lineNumAbs + "";
-            tmp = Utils.FormatBinString(tmp, 3, true);
+            tmp = Utils.FormatBinString(tmp, 10, true);
             tmp += "\t";
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianBig != null) {
-                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + Utils.PrettyBin(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig), asm.lineLenBytes, true) + "\t" + Utils.PrettyHex(tmpLine.payloadBinRepStrEndianBig, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + tmpLine.source.source;
+                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
-                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 3, true) + "\t" + tmpLine.addressHex + "\t" + "                " + "\t\t\t" + tmpLine.source.source;
+                    if(!Utils.IsStringEmpty(tmpLine.addressHex)) {
+                        tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + "                " + "\t\t\t" + tmpLine.source.source;
+                    } else {
+                        tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t              \t" + "                " + "\t\t\t" + tmpLine.source.source;                        
+                    }
                 }
             } else {
                 tmp += "   \t    \t                \t" + tmpLine.source.source;
@@ -122,6 +126,56 @@ public class LinkerThumb implements Linker {
             lstFile.add(tmp);
         }
         
-        FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing.list").toString(), lstFile);
+        FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_big.list").toString(), lstFile);
+        
+        //LITTLE ENDIAN
+        lstFile.clear();
+        tmp = null;
+        tmpLine = null;
+        count = 0;
+        prevLineNumAbs = -1;
+        for(int i = 0; i < asm.asmDataTokened.size(); i++) {
+            tmpLine = asm.asmDataTokened.get(i);
+            tmp = tmpLine.lineNumAbs + "";
+            tmp = Utils.FormatBinString(tmp, 10, true);
+            tmp += "\t";
+            if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
+                if(tmpLine.payloadBinRepStrEndianLil != null) {
+                    tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil, asm.jsonObjIsOpCodes.bit_series.bit_len, false) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
+                } else {
+                    if(!Utils.IsStringEmpty(tmpLine.addressHex)) {
+                        tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + "                " + "\t\t\t" + tmpLine.source.source;    
+                    } else {
+                        tmp += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t              \t" + "                " + "\t\t\t" + tmpLine.source.source;                            
+                    }
+                }
+            } else {
+                tmp += "   \t    \t                \t" + tmpLine.source.source;
+            }
+            
+            if(prevLineNumAbs != -1 && tmpLine.lineNumAbs != (prevLineNumAbs + 1)) {
+                tmp += " ######ERROR";
+            }
+            
+            prevLineNumAbs = tmpLine.lineNumAbs;            
+            lstFile.add(tmp);
+            count++;            
+        }
+        
+        lstFile.add("");
+        lstFile.add(";===== SYMBOL TABLE =====");        
+        sym = null;
+        tmp = null;
+        for(String key : asm.symbols.symbols.keySet()) {
+            sym = asm.symbols.symbols.get(key);
+            if(sym.value != null) {
+                tmp = ";Name: " + sym.name + "\tLineNumAbs: " + sym.lineNumAbs + "\tLineNumActive: " + sym.lineNumActive + "\tAddressHex: " + sym.addressHex + "\tValue: " + sym.value.toString() + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+            } else {
+                tmp = ";Name: " + sym.name + "\tLineNumAbs: " + sym.lineNumAbs + "\tLineNumActive: " + sym.lineNumActive + "\tAddressHex: " + sym.addressHex + "\tValue: " + "n/a" + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+            }
+            lstFile.add(tmp);
+        }
+        
+        FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_lil.list").toString(), lstFile);        
     }
 }

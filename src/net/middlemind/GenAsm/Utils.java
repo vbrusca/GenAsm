@@ -52,7 +52,8 @@ public class Utils {
         return tInt;
     }    
     
-    public static String EndianFlip(String binStr) {
+    public static String EndianFlipBin(String binStr) {
+        binStr = CleanBinPrefix(binStr);
         int len = binStr.length();
         String[] bytes = new String[len / 8];
         int currentByteIdx = 0;
@@ -73,6 +74,29 @@ public class Utils {
         }
         return res;
     }
+    
+    public static String EndianFlipHex(String hexStr) {
+        hexStr = CleanHexPrefix(hexStr);
+        int len = hexStr.length();
+        String[] bytes = new String[len / 2];
+        int currentByteIdx = 0;
+        String currentByte = "";
+        
+        for(int i = 0; i < len; i++) {
+            currentByte += hexStr.charAt(i);
+            if(currentByte.length() == 2) {
+                bytes[currentByteIdx] = currentByte;
+                currentByteIdx++;
+                currentByte = "";
+            }
+        }
+        
+        String res = "";
+        for(int j = bytes.length - 1; j >= 0; j--) {
+            res += bytes[j];
+        }
+        return "0x" + res;
+    }    
     
     public static String ShiftBinStr(String binStr, int shiftCount, boolean shiftRight, boolean padZeros) {
         String binStr2 = binStr;
@@ -132,9 +156,19 @@ public class Utils {
         return FormatHexString(s, len, true);
     }
     
+    public static String CleanHexPrefix(String hexStr) {
+        return hexStr.replace("#0x", "").replace("0x", "").replace("#0X", "").replace("0X", "").replace("&", "");
+    }
+    
+    public static String CleanBinPrefix(String binStr) {
+        return binStr.replace("#0b", "").replace("0b", "").replace("#0B", "").replace("0B", "");
+    }    
+    
     public static String FormatHexString(String s, int len, boolean padLeft) {
-        String ret = s;
+        String ret = "";
         if(!IsStringEmpty(s)) {
+            s = CleanHexPrefix(s);
+            ret = s;
             if(s.length() < len) {
                 for(int i = s.length(); i < len; i++) {
                     if(padLeft == true) {
@@ -144,8 +178,10 @@ public class Utils {
                     }
                 }
             }
+            ret = ret.toUpperCase();
+            ret = "0x" + ret;            
         }
-        return ret = "0x" + ret;
+        return ret;
     }
     
     public static String FormatBinString(String s, int len) {    
@@ -153,8 +189,10 @@ public class Utils {
     }
         
     public static String FormatBinString(String s, int len, boolean padLeft) {
-        String ret = s;
+        String ret = null;
         if(!IsStringEmpty(s)) {
+            s = CleanBinPrefix(s);
+            ret = s;
             if(s.length() < len) {
                 for(int i = s.length(); i < len; i++) {
                     if(padLeft) {
@@ -175,13 +213,14 @@ public class Utils {
     }
 
     public static String PrettyBin(String binStr, int len, boolean padLeft) {
-        String s = Utils.SpaceString(binStr, len, true);
+        binStr = CleanBinPrefix(binStr);
+        String s = Utils.FormatBinString(binStr, len, true);
         String ret = "";
         int l = s.length();
         String tmp = "";
         for(int i = 0; i < l; i++) {
             tmp += s.charAt(i);
-            if(i > 0 && i % 8 == 0) {
+            if(i > 0 && (i + 1) % 8 == 0) {
                 ret += tmp;                
                 tmp = "";
                 if(i < l - 1) {
@@ -194,21 +233,30 @@ public class Utils {
     
     public static String Bin2Hex(String binStr) {
         String s = binStr;
-        if(!s.contains("0b")) {
-            s = "#0b" + s;
-        }
+        s = CleanBinPrefix(s);
+        s = "#0b" + s;
         Integer v = Utils.ParseNumberString(s);
         return Integer.toHexString(v);
     }
     
+    public static String Hex2Bin(String hexStr) {
+        String s = hexStr;
+        s = CleanHexPrefix(s);
+        s = "#0x" + s;
+        Integer v = Utils.ParseNumberString(s);
+        return Integer.toBinaryString(v);
+    }    
+    
     public static String PrettyHex(String hexStr, int len, boolean padLeft) {
+        hexStr = CleanHexPrefix(hexStr);
         String s = FormatHexString(hexStr, len, padLeft);
+        s = CleanHexPrefix(s);
         String ret = "";
         int l = s.length();
         String tmp = "";
         for(int i = 0; i < l; i++) {
             tmp += s.charAt(i);
-            if(i > 0 && i % 2 == 0) {
+            if(i > 0 && i % 2 == 1) {
                 ret += tmp;
                 tmp = "";
                 if(i < l - 1) {
@@ -216,7 +264,7 @@ public class Utils {
                 }                
             }
         }
-        return ret;
+        return "0x" + ret;
     }
     
     public static String SpaceString(String s, int len, boolean padLeft) {

@@ -1959,11 +1959,11 @@ public class AssemblerThumb implements Assembler {
                         token.value = tInt;
                         if(isDirDcw == true) {
                             line.payloadBinRepStrEndianBig = resTmp;
-                            line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
+                            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(resTmp);
                             
                         } else if(isDirDcb == true) {
                             line.payloadBinRepStrEndianBig = resTmp;
-                            line.payloadBinRepStrEndianLil = Utils.EndianFlip(resTmp);
+                            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(resTmp);
                             
                         } else {
                             throw new ExceptionMissingDataDirective("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
@@ -2575,7 +2575,7 @@ public class AssemblerThumb implements Assembler {
                 res += entry.binRepStr;
             }
             line.payloadBinRepStrEndianBig = res;
-            line.payloadBinRepStrEndianLil = Utils.EndianFlip(res);
+            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(res);
             
         } else if(line.isLineLabelDef || line.isLineDirective && line.isLineOpCode) {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNumAbs + ", " + line.isLineEmpty + ", " + line.isLineDirective + ", " + line.isLineOpCode);
