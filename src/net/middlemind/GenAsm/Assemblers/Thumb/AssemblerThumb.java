@@ -41,11 +41,8 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLines;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegisters;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirectives;
 import net.middlemind.GenAsm.Loaders.Loader;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
@@ -69,7 +66,6 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionOpCodeAsArgument;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenType;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArguments;
 import net.middlemind.GenAsm.FileIO.FileLoader;
-import net.middlemind.GenAsm.FileIO.FileUnloader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
 import net.middlemind.GenAsm.JsonObjs.JsonObjNumRange;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArgSorter;
@@ -82,7 +78,7 @@ import net.middlemind.GenAsm.Utils;
  *
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 12:08 PM EST
  */
-@SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
+@SuppressWarnings({"UseOfObsoleteCollectionType", "MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
     public static String ENDIAN_NAME_BIG = "BIG";
     public static String ENDIAN_NAME_LITTLE = "LITTLE";

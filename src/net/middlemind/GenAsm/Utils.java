@@ -129,11 +129,19 @@ public class Utils {
     }
     
     public static String FormatHexString(String s, int len) {
+        return FormatHexString(s, len, true);
+    }
+    
+    public static String FormatHexString(String s, int len, boolean padLeft) {
         String ret = s;
         if(!IsStringEmpty(s)) {
             if(s.length() < len) {
                 for(int i = s.length(); i < len; i++) {
-                    ret = "0" + ret;
+                    if(padLeft == true) {
+                        ret = "0" + ret;
+                    } else {
+                        ret += "0";
+                    }
                 }
             }
         }
@@ -166,6 +174,51 @@ public class Utils {
         return ret;
     }
 
+    public static String PrettyBin(String binStr, int len, boolean padLeft) {
+        String s = Utils.SpaceString(binStr, len, true);
+        String ret = "";
+        int l = s.length();
+        String tmp = "";
+        for(int i = 0; i < l; i++) {
+            tmp += s.charAt(i);
+            if(i > 0 && i % 8 == 0) {
+                ret += tmp;                
+                tmp = "";
+                if(i < l - 1) {
+                    ret += " ";
+                }
+            }
+        }
+        return ret;        
+    }
+    
+    public static String Bin2Hex(String binStr) {
+        String s = binStr;
+        if(!s.contains("0b")) {
+            s = "#0b" + s;
+        }
+        Integer v = Utils.ParseNumberString(s);
+        return Integer.toHexString(v);
+    }
+    
+    public static String PrettyHex(String hexStr, int len, boolean padLeft) {
+        String s = FormatHexString(hexStr, len, padLeft);
+        String ret = "";
+        int l = s.length();
+        String tmp = "";
+        for(int i = 0; i < l; i++) {
+            tmp += s.charAt(i);
+            if(i > 0 && i % 2 == 0) {
+                ret += tmp;
+                tmp = "";
+                if(i < l - 1) {
+                    ret += " ";
+                }                
+            }
+        }
+        return ret;
+    }
+    
     public static String SpaceString(String s, int len, boolean padLeft) {
         String ret = s;
         if(!IsStringEmpty(s)) {

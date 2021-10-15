@@ -19,7 +19,7 @@ import net.middlemind.GenAsm.Utils;
  *
  * @author Victor G. Brusca, Middlemind Games 10-06-2021 10:04 AM EST
  */
-@SuppressWarnings("UnusedAssignment")
+@SuppressWarnings({"UnusedAssignment", "UseOfObsoleteCollectionType"})
 public class PreProcessorThumb implements PreProcessor {
     public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP" };
     public static int PPD_INCBIN_IDX = 0;
@@ -78,7 +78,7 @@ public class PreProcessorThumb implements PreProcessor {
                     }
                     
                     if(idxs[0] == PPD_NOP_IDX) {
-                        asmFileReplace.put(count, whiteSpace + "MOV R8, R8\t\t;NOP preprocessor directive");
+                        asmFileReplace.put(count, whiteSpace + "MOV\tR8, R8\t\t;NOP preprocessor directive");
                         continue;
                     }
                     

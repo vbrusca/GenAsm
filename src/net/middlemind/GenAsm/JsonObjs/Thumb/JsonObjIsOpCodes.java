@@ -21,6 +21,9 @@ public class JsonObjIsOpCodes extends JsonObjBase {
     public int pc_prefetch_bytes;
     public int pc_prefetch_halfwords;
     public int pc_prefetch_words;
+    public String nop_assembly;
+    public String nop_binary;
+    public String nop_hex;
     public String pc_alignment;
     public boolean pc_lsb_zeroed;
     public JsonObjBitSeries bit_series;

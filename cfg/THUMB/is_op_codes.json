@@ -8,6 +8,9 @@
     "pc_prefecth_words": 1,
     "pc_alignment": "WORD",
     "pc_lsb_zeroed": true,
+    "nop_assembly": "MOV R8, R8 ;nop instruction",
+    "nop_binary": "0100011011000000",
+    "nop_hex": "46C0",
     "bit_series": {
         "bit_start": 0,
         "bit_stop": 15,
