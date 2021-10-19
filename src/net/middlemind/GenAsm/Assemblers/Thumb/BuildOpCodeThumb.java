@@ -24,5 +24,6 @@ public class BuildOpCodeThumb {
     public boolean isOpCodeArg;
     public boolean isOpCodeArgGroup;
     public boolean isOpCodeArgList;
-    public String binRepStr;
+    public String binRepStr1;
+    public String binRepStr2;
 }

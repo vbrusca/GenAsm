@@ -15,8 +15,11 @@ public class TokenLine {
     public String obj_name = "TokenLine";
     public String payloadOpCode;
     public String payloadDirective;
-    public String payloadBinRepStrEndianBig;
-    public String payloadBinRepStrEndianLil;    
+    public String payloadBinRepStrEndianBig1;
+    public String payloadBinRepStrEndianLil1;
+    public String payloadBinRepStrEndianBig2;
+    public String payloadBinRepStrEndianLil2;
+    public int bitLength = 2;
     public String addressHex;
     public String addressBin;
     public int addressInt;

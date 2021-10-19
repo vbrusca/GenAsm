@@ -14,6 +14,14 @@ import net.middlemind.GenAsm.Utils;
  * @author Victor G. Brusca, Middlemind Games 08/03/2021 5:01 AM EST
  */
 public class JsonObjIsOpCodes extends JsonObjBase {
+    public static int BX_HI_INDEX = 37;
+    public static int BX_LO_INDEX = 36;
+    public static int BL_INDEX = 81;
+    public static String BL_OP_CODE_BIN_ENTRY_1 = "11110";
+    public static String BL_OP_CODE_BIN_ENTRY_2 = "11111";
+    public static String NAME_BL = "BL";
+    public static String ADD_OP_CODE_SPECIAL = "101100001";
+    
     public String obj_name;
     public String set_name;
     public String endian;

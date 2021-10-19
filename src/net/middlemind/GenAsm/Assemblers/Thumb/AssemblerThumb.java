@@ -659,13 +659,17 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumActive = (line.addressInt/lineLenBytes);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineLenBytes;
+                        Logger.wrl("=====: " + line.payloadOpCode);
+                        if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
+                            activeLineCount += lineLenBytes;
+                        }
                     }
                 }
                                 
                 asmAreaLinesData = new ArrayList<TokenLine>();
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
-                    if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective ) {
+                    if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective) {
                         line.addressHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.addressBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
                         line.addressInt = (asmStartLineNumber + activeLineCount);
@@ -701,6 +705,10 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumActive = (line.addressInt/lineLenBytes);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineLenBytes;
+                        Logger.wrl("=====: " + line.payloadOpCode);
+                        if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
+                            activeLineCount += lineLenBytes;
+                        }                        
                     }
                 }
             }
@@ -718,6 +726,10 @@ public class AssemblerThumb implements Assembler {
                     line.lineNumActive = (line.addressInt/lineLenBytes);
                     asmAreaLinesCode.add(line);
                     activeLineCount += lineLenBytes;
+                        Logger.wrl("=====: " + line.payloadOpCode);
+                        if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
+                            activeLineCount += lineLenBytes;
+                        }                    
                 }
             }
             
@@ -1958,12 +1970,12 @@ public class AssemblerThumb implements Assembler {
 
                         token.value = tInt;
                         if(isDirDcw == true) {
-                            line.payloadBinRepStrEndianBig = resTmp;
-                            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(resTmp);
+                            line.payloadBinRepStrEndianBig1 = resTmp;
+                            line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
                             
                         } else if(isDirDcb == true) {
-                            line.payloadBinRepStrEndianBig = resTmp;
-                            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(resTmp);
+                            line.payloadBinRepStrEndianBig1 = resTmp;
+                            line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
                             
                         } else {
                             throw new ExceptionMissingDataDirective("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
@@ -2104,20 +2116,34 @@ public class AssemblerThumb implements Assembler {
             
             //Process BuildOpCodeEntry list creating a binary string representation for each entry
             line.buildEntries = buildEntries;
-            String res = "";
-            String resTmp = "";
+            String res1 = "";
+            String resTmp1 = "";
+            String res2 = "";
+            String resTmp2 = "";            
             boolean inList = false;
             boolean inGroup = false;
+            boolean inBxHi = false;
+            boolean inBxLo = false;
+            boolean inBl = false;
             int[] inListRegisters = null;
             BuildOpCodeThumb inListEntry = null;
             BuildOpCodeThumb inGroupEntry = null;            
             BuildOpCodeThumb opCodeEntry = null;
             
             for(BuildOpCodeThumb entry : buildEntries) {
-                resTmp = "";                
+                resTmp1 = "";
+                resTmp2 = null;
                 if(entry.isOpCode) {
                     opCodeEntry = entry;
-                    resTmp = entry.opCode.bit_rep.bit_string;
+                    resTmp1 = entry.opCode.bit_rep.bit_string;
+                    
+                    if(entry.opCode.index == JsonObjIsOpCodes.BX_HI_INDEX) {
+                        inBxHi = true;
+                    } else if(entry.opCode.index == JsonObjIsOpCodes.BX_LO_INDEX) {
+                        inBxLo = true;
+                    } else if(entry.opCode.index == JsonObjIsOpCodes.BL_INDEX) {
+                        inBl = true;
+                    }
                     
                 }else if(entry.isOpCodeArgList) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg List">
@@ -2218,7 +2244,7 @@ public class AssemblerThumb implements Assembler {
                                 ts = ("0" + ts);                                
                             }
                         }
-                        inListEntry.binRepStr = ts;
+                        inListEntry.binRepStr1 = ts;
                         inListRegisters = null;
                         
                     } else if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {
@@ -2232,19 +2258,19 @@ public class AssemblerThumb implements Assembler {
                 }else if(entry.isOpCodeArgGroup) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg Group">
                     if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                         char c = entry.tokenOpCodeArgGroup.source.charAt(0);
@@ -2252,7 +2278,7 @@ public class AssemblerThumb implements Assembler {
                         Symbol sym = symbols.symbols.get(label);
                         
                         if(sym != null) {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArgGroup.bit_series.bit_len);
+                            resTmp1 = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArgGroup.bit_series.bit_len);
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                         }
@@ -2272,19 +2298,26 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = (sym.addressInt - line.addressInt);
+                            if(line.addressInt < sym.addressInt) {
+                                tInt = (sym.addressInt - line.addressInt);
+                            } else {
+                                tInt = (line.addressInt - sym.addressInt);
+                            }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
                             //label address offset minus prefetch
-                            tInt = (sym.addressInt - line.addressInt - jsonObjIsOpCodes.pc_prefetch_bytes);
-                            
+                            if(line.addressInt < sym.addressInt) {
+                                tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
+                            } else {
+                                tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
+                            }                            
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
                         }                       
                         
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
-                            opCodeEntry.binRepStr = "101100001";
+                        if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
+                            opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
                             tInt *= -1;
                         }
                         
@@ -2292,31 +2325,33 @@ public class AssemblerThumb implements Assembler {
                             tInt = ~tInt;
                         }                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArgGroup.bit_series.bit_len, true);
+                        resTmp1 = Integer.toBinaryString(tInt);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
                         
                         if(entry.opCodeArgGroup.num_range.twos_compliment) {
-                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                            //TODO: Do we need this if Java prints to two's compliment bin strings?
+                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
+                            //tInt = Integer.parseInt(resTmp1, 2);                                
                         }
                         
-                        //TODO: Check alignment
+                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
+                        resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
                                 } else if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
                                 } else {
                                     throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                                 }
                             }
                         }
                         
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArgGroup.bit_series.bit_len);
-                        tInt = Integer.parseInt(resTmp, 2);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len);
+                        tInt = Integer.parseInt(resTmp1, 2);
                                                 
                         if(entry.opCodeArgGroup.num_range != null) {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
@@ -2329,14 +2364,14 @@ public class AssemblerThumb implements Assembler {
                         entry.tokenOpCodeArgGroup.value = tInt;
                         
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
-                        resTmp = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArgGroup.register.bit_rep.bit_string;
                     
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                         Integer tInt = Utils.ParseNumberString(entry.tokenOpCodeArgGroup.source);
                         
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
-                            opCodeEntry.binRepStr = "101100001";
+                        if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
+                            opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
                             tInt *= -1;
                         }
                         
@@ -2344,31 +2379,33 @@ public class AssemblerThumb implements Assembler {
                             tInt = ~tInt;
                         }                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArgGroup.bit_series.bit_len, true);
+                        resTmp1 = Integer.toBinaryString(tInt);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
                         
                         if(entry.opCodeArgGroup.num_range.twos_compliment) {
-                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                            //TODO: Do we need this if Java prints to two's compliment bin strings?
+                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
+                            //tInt = Integer.parseInt(resTmp1, 2);
                         }
                         
-                        //TODO: Check alignment
+                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
+                        resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
                                 } else if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
                                 } else {
                                     throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                                 }
                             }
                         }
                         
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArgGroup.bit_series.bit_len);
-                        tInt = Integer.parseInt(resTmp, 2);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len);
+                        tInt = Integer.parseInt(resTmp1, 2);
                                                 
                         if(entry.opCodeArgGroup.num_range != null) {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
@@ -2394,28 +2431,48 @@ public class AssemblerThumb implements Assembler {
                                     
                 }else if(entry.isOpCodeArg) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg">
-                    if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                    if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {                        
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        if(inBxLo) {
+                            resTmp1 += "000"; //empty register
+                            inBxLo = false;
+                        }
                     
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        if(inBxHi) {
+                            resTmp1 += "000"; //empty register
+                            inBxHi = false;
+                        }                        
                     
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
-                    
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        if(inBxHi) {
+                            resTmp1 += "000"; //empty register
+                            inBxHi = false;
+                        }                    
+                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
-                    
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        if(inBxHi) {
+                            resTmp1 += "000"; //empty register
+                            inBxHi = false;
+                        }                    
+                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
-                    
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        if(inBxHi) {
+                            resTmp1 += "000"; //empty register
+                            inBxHi = false;
+                        }                    
+                        
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                         char c = entry.tokenOpCodeArg.source.charAt(0);
                         String label = entry.tokenOpCodeArg.source.substring(1);                        
                         Symbol sym = symbols.symbols.get(label);
                         
                         if(sym != null) {
-                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArg.bit_series.bit_len);
+                            resTmp1 = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArg.bit_series.bit_len);
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         }
@@ -2435,19 +2492,32 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
                             //label address offset
-                            tInt = (sym.addressInt - line.addressInt);
-
+                            if(line.addressInt < sym.addressInt) {
+                                tInt = (sym.addressInt - line.addressInt);
+                            } else {
+                                tInt = (line.addressInt - sym.addressInt);
+                            }
+                            
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
                             //label address offset minus prefetch
-                            tInt = (sym.addressInt - line.addressInt - jsonObjIsOpCodes.pc_prefetch_bytes);
+                            //Logger.wrl("AAA:" + opCodeEntry.opCode.op_code_name + ", " + line.source.source);
+                            //Logger.wrl("label address offset minus prefetch AAA: " + line.addressInt + ", " + sym.addressInt + ", " + jsonObjIsOpCodes.pc_prefetch_halfwords);
+                            if(line.addressInt < sym.addressInt) {
+                                //Logger.wrl("label address offset minus prefetch AAA 1");
+                                tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
+                            } else {
+                                //Logger.wrl("label address offset minus prefetch AAA 2");
+                                tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
+                            }
+                            //Logger.wrl("label address offset minus prefetch AAA 3: " + tInt);
                                                    
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
                         }
-                        
+                       
                         //special rule for ADD OpCode
-                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
-                            opCodeEntry.binRepStr = "101100001";
+                        if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
+                            opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
                             tInt *= -1;
                         }
                         
@@ -2455,31 +2525,37 @@ public class AssemblerThumb implements Assembler {
                             tInt = ~tInt;
                         }                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len, true);
+                        resTmp1 = Integer.toBinaryString(tInt);
+                        
+                        //Specific for the OpCode BL and its 2 line, 4 byte encoding
+                        Integer bltInt = tInt;
+                        String blResTmp1 = resTmp1;                        
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
                         
                         if(entry.opCodeArg.num_range.twos_compliment) {
-                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                            //TODO: Do we need this if Java prints to two's compliment bin strings?
+                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
+                            //tInt = Integer.parseInt(resTmp1, 2);                            
                         }
                         
-                        //TODO: Check alignment
+                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
+                        resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, false, true);
                                 } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, true, true);
                                 } else {
                                     throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                                 }
                             }
                         }
                         
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);
-                        tInt = Integer.parseInt(resTmp, 2);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len);
+                        tInt = Integer.parseInt(resTmp1, 2);
                                                 
                         if(entry.opCodeArg.num_range != null) {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
@@ -2489,10 +2565,31 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         }
                         
+                        if(inBl == true) {
+                            //Logger.wrl("BL line 0: " + Integer.toBinaryString(bltInt));
+                            
+                            //in BL OpCode which generates 4 bytes of instructions instead of two
+                            if(bltInt < 0) {
+                                resTmp1 = Utils.FormatBinString(blResTmp1, 23, true, "1");
+                            } else {
+                                resTmp1 = Utils.FormatBinString(blResTmp1, 23, true, "0");                                
+                            }
+                            String nResTmp = resTmp1.substring(0, resTmp1.length() - 1);
+                            String halfHi = nResTmp.substring(0, 11);
+                            String halfLo = nResTmp.substring(11);
+                            resTmp1 = halfHi;
+                            resTmp2 = JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_2 + halfLo;
+                            tInt = Integer.parseInt(resTmp1, 2);
+                            inBl = false;
+                            //Logger.wrl("BL line 1: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_1 + halfHi + ", " + tInt);
+                            //Logger.wrl("BL line 2: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_2 + halfLo);
+                            line.bitLength = 4;
+                        }
+                        
                         entry.tokenOpCodeArg.value = tInt;
                     
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
-                        resTmp = entry.tokenOpCodeArg.register.bit_rep.bit_string;
+                        resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                         
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                         Integer tInt = Utils.ParseNumberString(entry.tokenOpCodeArg.source);
@@ -2502,8 +2599,8 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                         //special rule for ADD OpCode '101100000'
-                        if(opCodeEntry.binRepStr.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
-                            opCodeEntry.binRepStr = "101100001";
+                        if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
+                            opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
                             tInt *= -1;
                         }
                         
@@ -2511,30 +2608,33 @@ public class AssemblerThumb implements Assembler {
                             tInt = ~tInt;
                         }                        
                         
-                        resTmp = Integer.toBinaryString(tInt);
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len, true);
+                        resTmp1 = Integer.toBinaryString(tInt);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
                         
                         if(entry.opCodeArg.num_range.twos_compliment) {
-                            resTmp = TwosCompliment.GetTwosCompliment(resTmp);
+                            //TODO: Do we need this if Java prints to two's compliment bin strings?
+                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
+                            //tInt = Integer.parseInt(resTmp1, 2);
                         }
                         
-                        //TODO: Check alignment
+                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
 
+                        resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, false, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, false, true);
                                 } else if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                                    resTmp = Utils.ShiftBinStr(resTmp, entry.opCodeArg.bit_shift.shift_amount, true, true);
+                                    resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, true, true);
                                 } else {
                                     throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                                 }
                             }
                         }
                                                 
-                        resTmp = Utils.FormatBinString(resTmp, entry.opCodeArg.bit_series.bit_len);                        
-                        tInt = Integer.parseInt(resTmp, 2);
+                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len);                        
+                        tInt = Integer.parseInt(resTmp1, 2);
                         
                         if(entry.opCodeArg.num_range != null) {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
@@ -2561,8 +2661,15 @@ public class AssemblerThumb implements Assembler {
                     
                     // </editor-fold>
                 }
-                entry.binRepStr = resTmp;
-                res += resTmp;
+                entry.binRepStr1 = resTmp1;
+                res1 += resTmp1;
+
+                if(Utils.IsStringEmpty(resTmp2) == false) {
+                    entry.binRepStr2 = resTmp2;
+                    res2 += resTmp2;
+                } else {
+                    entry.binRepStr2 = null;
+                }
             }
         
             //Clean out non-bit series entries from the build entries list and sort by bit series desc
@@ -2570,12 +2677,22 @@ public class AssemblerThumb implements Assembler {
             buildEntriesSorter.Clean(buildEntries);
             Collections.sort(buildEntries, buildEntriesSorter);
 
-            res = "";
+            res1 = "";
+            res2 = "";
             for(BuildOpCodeThumb entry : buildEntries) {
-                res += entry.binRepStr;
+                res1 += entry.binRepStr1;
+                if(Utils.IsStringEmpty(entry.binRepStr2) == false) {
+                    res2 += entry.binRepStr2;
+                }
             }
-            line.payloadBinRepStrEndianBig = res;
-            line.payloadBinRepStrEndianLil = Utils.EndianFlipBin(res);
+
+            line.payloadBinRepStrEndianBig1 = res1;
+            line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(res1);
+            
+            if(Utils.IsStringEmpty(res2) == false) {
+                line.payloadBinRepStrEndianBig2 = res2;
+                line.payloadBinRepStrEndianLil2 = Utils.EndianFlipBin(res2);
+            }            
             
         } else if(line.isLineLabelDef || line.isLineDirective && line.isLineOpCode) {
             throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNumAbs + ", " + line.isLineEmpty + ", " + line.isLineDirective + ", " + line.isLineOpCode);

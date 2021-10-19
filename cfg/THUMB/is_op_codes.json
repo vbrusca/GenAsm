@@ -2,10 +2,10 @@
     "obj_name": "is_op_codes",
     "set_name": "THUMB_ARM7TDMI",
     "endian": "BIG",
-    "pc_prefecth_bits": 32,
-    "pc_prefecth_bytes": 4,
-    "pc_prefecth_halfwords": 2,    
-    "pc_prefecth_words": 1,
+    "pc_prefetch_bits": 32,
+    "pc_prefetch_bytes": 4,
+    "pc_prefetch_halfwords": 2,    
+    "pc_prefetch_words": 1,
     "pc_alignment": "WORD",
     "pc_lsb_zeroed": true,
     "nop_assembly": "MOV R8, R8 ;nop instruction",
@@ -4362,7 +4362,7 @@
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
-                        "shift_dir": "LEFT",
+                        "shift_dir": "RIGHT",
                         "shift_amount": 1
                     }
                 }
@@ -4398,58 +4398,16 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 2047,
-                        "bit_len": 11,
+                        "max_value": 8388606,
+                        "bit_len": 23,
                         "twos_compliment": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
-                        "alignment": "NATURAL"
+                        "alignment": "HALFWORD"
                     },
                     "bit_shift": {
-                        "shift_dir": "LEFT",
-                        "shift_amount": 12
-                    }
-                }
-            ]
-        },
-        {
-            "obj_name": "is_op_code",  
-            "op_code_name": "BL",
-            "index": 82,
-            "arg_len": 1,
-            "arg_separator": ",",
-            "bit_rep": {
-                "bit_string": "11111",
-                "bit_int": 31,
-                "bit_len": 5
-            },
-            "bit_series": {
-                "bit_start": 11,
-                "bit_stop": 15,
-                "bit_len": 5
-            },
-            "args": [
-                {
-                    "obj_name": "is_op_code_arg",
-                    "arg_index": 0,
-                    "bit_index": 0,
-                    "is_entry_types": ["Number", "LabelRef"],
-                    "is_arg_type": "Offset11",
-                    "bit_series": {
-                        "bit_start": 0,
-                        "bit_stop": 10,
-                        "bit_len": 11
-                    },
-                    "num_range": {
-                        "min_value": 0,
-                        "max_value": 4094,
-                        "bit_len": 12,
-                        "twos_compliment": false,
-                        "alignment": "NATURAL"
-                    },
-                    "bit_shift": {
-                        "shift_dir": "LEFT",
-                        "shift_amount": 1
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
                     }
                 }
             ]

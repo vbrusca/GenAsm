@@ -189,6 +189,10 @@ public class Utils {
     }
         
     public static String FormatBinString(String s, int len, boolean padLeft) {
+        return FormatBinString(s, len, true, "0");
+    }
+    
+    public static String FormatBinString(String s, int len, boolean padLeft, String padWith) {
         String ret = null;
         if(!IsStringEmpty(s)) {
             s = CleanBinPrefix(s);
