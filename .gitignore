@@ -23,10 +23,10 @@ hs_err_pid*
 /build/
 /dist/
 
-*/cfg/THUMB/OUTPUT
-*/cfg/THUMB/OUTPUT/
-/cfg/THUMB/OUTPUT
-/cfg/THUMB/OUTPUT/
+#*/cfg/THUMB/OUTPUT
+#*/cfg/THUMB/OUTPUT/
+#/cfg/THUMB/OUTPUT
+#/cfg/THUMB/OUTPUT/
 
 *.DS_Store
 /nbproject/*.properties

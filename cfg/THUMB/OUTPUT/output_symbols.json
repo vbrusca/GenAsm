@@ -1,0 +1,4300 @@
+{
+  "obj_name": "Symbols",
+  "symbols": {
+    "here": {
+      "obj_name": "Symbol",
+      "name": "here",
+      "line": {
+        "obj_name": "TokenLine",
+        "payloadOpCode": "B",
+        "bitLength": 2,
+        "addressHex": "0x218",
+        "addressBin": "0000001000011000",
+        "addressInt": 536,
+        "lineNumActive": 268,
+        "lineNumAbs": 275,
+        "payloadLen": 3,
+        "payloadLenArg": 1,
+        "isLineEmpty": false,
+        "isLineOpCode": true,
+        "isLineDirective": false,
+        "isLineLabelDef": false,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 275,
+          "sourceLen": 29,
+          "source": "    here        B       `here",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 7,
+              "len": 4,
+              "lineNum": 275,
+              "index": 0,
+              "payload": "here"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 16,
+              "len": 1,
+              "lineNum": 275,
+              "index": 1,
+              "payload": "B"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 28,
+              "len": 5,
+              "lineNum": 275,
+              "index": 2,
+              "payload": "`here"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 6,
+          "empty_line": false,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "OpCode"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "OpCode",
+                  "type_category": "OpCode",
+                  "category": "OpCode",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "A~Z"
+                    ],
+                    "contains": [
+                      "A~Z"
+                    ],
+                    "ends_with": [
+                      "A~Z"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "RegisterRangeHi",
+                "RegisterRangeLow",
+                "RegisterLr",
+                "RegisterPc",
+                "RegisterSp",
+                "RegisterHi",
+                "RegisterLow",
+                "RegisterWb",
+                "Number",
+                "ListStart",
+                "ListStop",
+                "GroupStart",
+                "GroupStop",
+                "LabelRef"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLr",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "14",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "4"
+                    ],
+                    "must_contain": [
+                      "14"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterPc",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "15",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "5"
+                    ],
+                    "must_contain": [
+                      "15"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterSp",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "13",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "3"
+                    ],
+                    "must_contain": [
+                      "13"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterWb",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      "!,",
+                      "!endl",
+                      "!;",
+                      "!"
+                    ],
+                    "must_contain": [
+                      "!"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Number",
+                  "type_category": "Number",
+                  "category": "Arg",
+                  "category_class": "java.lang.Double",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "#bx",
+                      "#-",
+                      "#",
+                      "0~9"
+                    ],
+                    "contains": [
+                      "0~9"
+                    ],
+                    "ends_with": [
+                      "0~9",
+                      ",",
+                      ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStart",
+                  "type_category": "Start",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "{"
+                    ],
+                    "contains": [
+                      "{"
+                    ],
+                    "ends_with": [
+                      "{"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStop",
+                  "type_category": "Stop",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "}"
+                    ],
+                    "contains": [
+                      "}"
+                    ],
+                    "ends_with": [
+                      "}"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStart",
+                  "type_category": "Start",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "["
+                    ],
+                    "contains": [
+                      "["
+                    ],
+                    "ends_with": [
+                      "["
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStop",
+                  "type_category": "Stop",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "]"
+                    ],
+                    "contains": [
+                      "]"
+                    ],
+                    "ends_with": [
+                      "]"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 2
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "matchesOpCode": [
+          {
+            "obj_name": "is_op_code",
+            "op_code_name": "B",
+            "index": 80,
+            "arg_separator": ",",
+            "arg_len": 1,
+            "is_write_op_code": false,
+            "bit_rep": {
+              "obj_name": "JsonObjBitRep",
+              "bit_string": "11100",
+              "bit_int": 28,
+              "bit_len": 5,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "bit_series": {
+              "obj_name": "JsonObjBitSeries",
+              "bit_start": 11,
+              "bit_stop": 15,
+              "bit_len": 5,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "args": [
+              {
+                "obj_name": "is_op_code_arg",
+                "arg_index": 0,
+                "bit_index": 0,
+                "is_entry_types": [
+                  "Number",
+                  "LabelRef"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "#bx",
+                        "#-",
+                        "#",
+                        "0~9"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u0026",
+                        "0x",
+                        "#0x"
+                      ],
+                      "contains": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 10,
+                  "bit_len": 11,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": -2048,
+                  "max_value": 2048,
+                  "bit_len": 12,
+                  "twos_compliment": true,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": true,
+                  "use_halfword_offset": true,
+                  "alignment": "HALFWORD",
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjNumRange",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "RIGHT",
+                  "shift_amount": 1,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitShift",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                "fileName": "./cfg/THUMB/is_op_codes.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+              }
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+            "fileName": "./cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+          }
+        ],
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "here",
+            "lineNumAbs": 275,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 7,
+              "len": 4,
+              "lineNum": 275,
+              "index": 0,
+              "payload": "here"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "OpCode",
+            "source": "B",
+            "lineNumAbs": 275,
+            "index": 1,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": true,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 16,
+              "len": 1,
+              "lineNum": 275,
+              "index": 1,
+              "payload": "B"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "OpCode",
+              "type_category": "OpCode",
+              "category": "OpCode",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "A~Z"
+                ],
+                "contains": [
+                  "A~Z"
+                ],
+                "ends_with": [
+                  "A~Z"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "LabelRef",
+            "source": "`here",
+            "lineNumAbs": 275,
+            "index": 2,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": true,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": true,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 28,
+              "len": 5,
+              "lineNum": 275,
+              "index": 2,
+              "payload": "`here"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "LabelRef",
+              "type_category": "LabelReference",
+              "category": "Arg",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "\u003d",
+                  "~",
+                  "-",
+                  "`"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "here",
+        "lineNumAbs": 275,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 7,
+          "len": 4,
+          "lineNum": 275,
+          "index": 0,
+          "payload": "here"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x218",
+      "addressBin": "0000001000011000",
+      "addressInt": 536,
+      "lineNumActive": 268,
+      "lineNumAbs": 275,
+      "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "locate": {
+      "obj_name": "Symbol",
+      "name": "locate",
+      "line": {
+        "obj_name": "TokenLine",
+        "payloadOpCode": "LDR",
+        "bitLength": 2,
+        "addressHex": "0x21A",
+        "addressBin": "0000001000011010",
+        "addressInt": 538,
+        "lineNumActive": 269,
+        "lineNumAbs": 276,
+        "payloadLen": 4,
+        "payloadLenArg": 3,
+        "isLineEmpty": false,
+        "isLineOpCode": true,
+        "isLineDirective": false,
+        "isLineLabelDef": false,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 276,
+          "sourceLen": 36,
+          "source": "    locate      LDR     R2, [R2, R6]",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 9,
+              "len": 6,
+              "lineNum": 276,
+              "index": 0,
+              "payload": "locate"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 18,
+              "len": 3,
+              "lineNum": 276,
+              "index": 1,
+              "payload": "LDR"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 25,
+              "len": 2,
+              "lineNum": 276,
+              "index": 2,
+              "payload": "R2"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 28,
+              "posStop": 28,
+              "len": 1,
+              "lineNum": 276,
+              "index": 3,
+              "payload": "["
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 29,
+              "posStop": 30,
+              "len": 2,
+              "lineNum": 276,
+              "index": 4,
+              "payload": "R2"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 33,
+              "posStop": 34,
+              "len": 2,
+              "lineNum": 276,
+              "index": 5,
+              "payload": "R6"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 35,
+              "posStop": 35,
+              "len": 1,
+              "lineNum": 276,
+              "index": 6,
+              "payload": "]"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 6,
+          "empty_line": false,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "OpCode"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "OpCode",
+                  "type_category": "OpCode",
+                  "category": "OpCode",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "A~Z"
+                    ],
+                    "contains": [
+                      "A~Z"
+                    ],
+                    "ends_with": [
+                      "A~Z"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "RegisterRangeHi",
+                "RegisterRangeLow",
+                "RegisterLr",
+                "RegisterPc",
+                "RegisterSp",
+                "RegisterHi",
+                "RegisterLow",
+                "RegisterWb",
+                "Number",
+                "ListStart",
+                "ListStop",
+                "GroupStart",
+                "GroupStop",
+                "LabelRef"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLr",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "14",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "4"
+                    ],
+                    "must_contain": [
+                      "14"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterPc",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "15",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "5"
+                    ],
+                    "must_contain": [
+                      "15"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterSp",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "13",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "3"
+                    ],
+                    "must_contain": [
+                      "13"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterWb",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      "!,",
+                      "!endl",
+                      "!;",
+                      "!"
+                    ],
+                    "must_contain": [
+                      "!"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Number",
+                  "type_category": "Number",
+                  "category": "Arg",
+                  "category_class": "java.lang.Double",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "#bx",
+                      "#-",
+                      "#",
+                      "0~9"
+                    ],
+                    "contains": [
+                      "0~9"
+                    ],
+                    "ends_with": [
+                      "0~9",
+                      ",",
+                      ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStart",
+                  "type_category": "Start",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "{"
+                    ],
+                    "contains": [
+                      "{"
+                    ],
+                    "ends_with": [
+                      "{"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStop",
+                  "type_category": "Stop",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "}"
+                    ],
+                    "contains": [
+                      "}"
+                    ],
+                    "ends_with": [
+                      "}"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStart",
+                  "type_category": "Start",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "["
+                    ],
+                    "contains": [
+                      "["
+                    ],
+                    "ends_with": [
+                      "["
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStop",
+                  "type_category": "Stop",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "]"
+                    ],
+                    "contains": [
+                      "]"
+                    ],
+                    "ends_with": [
+                      "]"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 2
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "matchesOpCode": [
+          {
+            "obj_name": "is_op_code",
+            "op_code_name": "LDR",
+            "index": 41,
+            "arg_separator": ",",
+            "arg_len": 3,
+            "is_write_op_code": false,
+            "bit_rep": {
+              "obj_name": "JsonObjBitRep",
+              "bit_string": "0101100",
+              "bit_int": 44,
+              "bit_len": 7,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "bit_series": {
+              "obj_name": "JsonObjBitSeries",
+              "bit_start": 9,
+              "bit_stop": 15,
+              "bit_len": 7,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "args": [
+              {
+                "obj_name": "is_op_code_arg",
+                "arg_index": 0,
+                "bit_index": 0,
+                "is_entry_types": [
+                  "RegisterLow"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
+                        "0~7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "0~7"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [
+                        "R8",
+                        "R9",
+                        "R10",
+                        "R11",
+                        "R12",
+                        "R13",
+                        "R14",
+                        "R15"
+                      ],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 2,
+                  "bit_len": 3,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                "fileName": "./cfg/THUMB/is_op_codes.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+              },
+              {
+                "obj_name": "is_op_code_arg",
+                "arg_index": 1,
+                "bit_index": 1,
+                "is_entry_types": [
+                  "GroupStart"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_group_type",
+                    "type_name": "GroupStart",
+                    "type_category": "Start",
+                    "category": "Group",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "["
+                      ],
+                      "contains": [
+                        "["
+                      ],
+                      "ends_with": [
+                        "["
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 3,
+                  "bit_stop": 8,
+                  "bit_len": 6,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "sub_arg_separator": ",",
+                "sub_args": [
+                  {
+                    "obj_name": "is_op_code_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": [
+                      "RegisterLow"
+                    ],
+                    "linked_is_entry_types": [
+                      {
+                        "obj_name": "is_entry_type",
+                        "type_name": "RegisterLow",
+                        "type_category": "RegisterLow",
+                        "category": "Arg",
+                        "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                        "txt_match": {
+                          "obj_name": "JsonObjTxtMatch",
+                          "starts_with": [
+                            "R"
+                          ],
+                          "contains": [
+                            "0~7"
+                          ],
+                          "ends_with": [
+                            ",",
+                            ";",
+                            "0~7"
+                          ],
+                          "must_contain": [],
+                          "must_not_contain": [
+                            "R8",
+                            "R9",
+                            "R10",
+                            "R11",
+                            "R12",
+                            "R13",
+                            "R14",
+                            "R15"
+                          ],
+                          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                          "fileName": "./cfg/THUMB/is_entry_types.json",
+                          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                        },
+                        "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                        "fileName": "./cfg/THUMB/is_entry_types.json",
+                        "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                      }
+                    ],
+                    "bit_series": {
+                      "obj_name": "JsonObjBitSeries",
+                      "bit_start": 3,
+                      "bit_stop": 5,
+                      "bit_len": 3,
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                      "fileName": "./cfg/THUMB/is_op_codes.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                    "fileName": "./cfg/THUMB/is_op_codes.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                  },
+                  {
+                    "obj_name": "is_op_code_arg",
+                    "arg_index": 1,
+                    "bit_index": 1,
+                    "is_entry_types": [
+                      "RegisterLow"
+                    ],
+                    "linked_is_entry_types": [
+                      {
+                        "obj_name": "is_entry_type",
+                        "type_name": "RegisterLow",
+                        "type_category": "RegisterLow",
+                        "category": "Arg",
+                        "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                        "txt_match": {
+                          "obj_name": "JsonObjTxtMatch",
+                          "starts_with": [
+                            "R"
+                          ],
+                          "contains": [
+                            "0~7"
+                          ],
+                          "ends_with": [
+                            ",",
+                            ";",
+                            "0~7"
+                          ],
+                          "must_contain": [],
+                          "must_not_contain": [
+                            "R8",
+                            "R9",
+                            "R10",
+                            "R11",
+                            "R12",
+                            "R13",
+                            "R14",
+                            "R15"
+                          ],
+                          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                          "fileName": "./cfg/THUMB/is_entry_types.json",
+                          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                        },
+                        "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                        "fileName": "./cfg/THUMB/is_entry_types.json",
+                        "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                      }
+                    ],
+                    "bit_series": {
+                      "obj_name": "JsonObjBitSeries",
+                      "bit_start": 6,
+                      "bit_stop": 8,
+                      "bit_len": 3,
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                      "fileName": "./cfg/THUMB/is_op_codes.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                    "fileName": "./cfg/THUMB/is_op_codes.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                  }
+                ],
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                "fileName": "./cfg/THUMB/is_op_codes.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+              }
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+            "fileName": "./cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+          }
+        ],
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "locate",
+            "lineNumAbs": 276,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 9,
+              "len": 6,
+              "lineNum": 276,
+              "index": 0,
+              "payload": "locate"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "OpCode",
+            "source": "LDR",
+            "lineNumAbs": 276,
+            "index": 1,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": true,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 18,
+              "len": 3,
+              "lineNum": 276,
+              "index": 1,
+              "payload": "LDR"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "OpCode",
+              "type_category": "OpCode",
+              "category": "OpCode",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "A~Z"
+                ],
+                "contains": [
+                  "A~Z"
+                ],
+                "ends_with": [
+                  "A~Z"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "RegisterLow",
+            "source": "R2",
+            "lineNumAbs": 276,
+            "index": 2,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": true,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 25,
+              "len": 2,
+              "lineNum": 276,
+              "index": 2,
+              "payload": "R2"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "RegisterLow",
+              "type_category": "RegisterLow",
+              "category": "Arg",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "R"
+                ],
+                "contains": [
+                  "0~7"
+                ],
+                "ends_with": [
+                  ",",
+                  ";",
+                  "0~7"
+                ],
+                "must_contain": [],
+                "must_not_contain": [
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11",
+                  "R12",
+                  "R13",
+                  "R14",
+                  "R15"
+                ],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "register": {
+              "obj_name": "is_register",
+              "register_name": "R2",
+              "is_entry_type": "RegisterLow",
+              "linked_is_entry_type": {
+                "obj_name": "is_entry_type",
+                "type_name": "RegisterLow",
+                "type_category": "RegisterLow",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "R"
+                  ],
+                  "contains": [
+                    "0~7"
+                  ],
+                  "ends_with": [
+                    ",",
+                    ";",
+                    "0~7"
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [
+                    "R8",
+                    "R9",
+                    "R10",
+                    "R11",
+                    "R12",
+                    "R13",
+                    "R14",
+                    "R15"
+                  ],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "bit_rep": {
+                "obj_name": "JsonObjBitRep",
+                "bit_string": "010",
+                "bit_int": 2,
+                "bit_len": 3,
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                "fileName": "./cfg/THUMB/is_registers.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+              },
+              "desc": "general purpose",
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+              "fileName": "./cfg/THUMB/is_registers.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "GroupStart",
+            "source": "[",
+            "lineNumAbs": 276,
+            "index": 3,
+            "payloadLen": 3,
+            "payloadArgLen": 0,
+            "isOpCodeArg": true,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 28,
+              "posStop": 28,
+              "len": 1,
+              "lineNum": 276,
+              "index": 3,
+              "payload": "["
+            },
+            "type": {
+              "obj_name": "is_entry_group_type",
+              "type_name": "GroupStart",
+              "type_category": "Start",
+              "category": "Group",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "["
+                ],
+                "contains": [
+                  "["
+                ],
+                "ends_with": [
+                  "["
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": [
+              {
+                "obj_name": "Token",
+                "type_name": "RegisterLow",
+                "source": "R2",
+                "lineNumAbs": 276,
+                "index": 0,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": true,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": false,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 29,
+                  "posStop": 30,
+                  "len": 2,
+                  "lineNum": 276,
+                  "index": 4,
+                  "payload": "R2"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "register": {
+                  "obj_name": "is_register",
+                  "register_name": "R2",
+                  "is_entry_type": "RegisterLow",
+                  "linked_is_entry_type": {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
+                        "0~7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "0~7"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [
+                        "R8",
+                        "R9",
+                        "R10",
+                        "R11",
+                        "R12",
+                        "R13",
+                        "R14",
+                        "R15"
+                      ],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "bit_rep": {
+                    "obj_name": "JsonObjBitRep",
+                    "bit_string": "010",
+                    "bit_int": 2,
+                    "bit_len": 3,
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "fileName": "./cfg/THUMB/is_registers.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+                  },
+                  "desc": "general purpose",
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "fileName": "./cfg/THUMB/is_registers.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "RegisterLow",
+                "source": "R6",
+                "lineNumAbs": 276,
+                "index": 1,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": true,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": false,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 33,
+                  "posStop": 34,
+                  "len": 2,
+                  "lineNum": 276,
+                  "index": 5,
+                  "payload": "R6"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "register": {
+                  "obj_name": "is_register",
+                  "register_name": "R6",
+                  "is_entry_type": "RegisterLow",
+                  "linked_is_entry_type": {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
+                        "0~7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "0~7"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [
+                        "R8",
+                        "R9",
+                        "R10",
+                        "R11",
+                        "R12",
+                        "R13",
+                        "R14",
+                        "R15"
+                      ],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "bit_rep": {
+                    "obj_name": "JsonObjBitRep",
+                    "bit_string": "110",
+                    "bit_int": 6,
+                    "bit_len": 3,
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "fileName": "./cfg/THUMB/is_registers.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+                  },
+                  "desc": "general purpose",
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "fileName": "./cfg/THUMB/is_registers.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "GroupStop",
+                "source": "]",
+                "lineNumAbs": 276,
+                "index": 2,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": true,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": false,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 35,
+                  "posStop": 35,
+                  "len": 1,
+                  "lineNum": 276,
+                  "index": 6,
+                  "payload": "]"
+                },
+                "type": {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStop",
+                  "type_category": "Stop",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "]"
+                    ],
+                    "contains": [
+                      "]"
+                    ],
+                    "ends_with": [
+                      "]"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              }
+            ]
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "locate",
+        "lineNumAbs": 276,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 9,
+          "len": 6,
+          "lineNum": 276,
+          "index": 0,
+          "payload": "locate"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x21A",
+      "addressBin": "0000001000011010",
+      "addressInt": 538,
+      "lineNumActive": 269,
+      "lineNumAbs": 276,
+      "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "over": {
+      "obj_name": "Symbol",
+      "name": "over",
+      "line": {
+        "obj_name": "TokenLine",
+        "payloadOpCode": "CMP",
+        "bitLength": 2,
+        "addressHex": "0x216",
+        "addressBin": "0000001000010110",
+        "addressInt": 534,
+        "lineNumActive": 267,
+        "lineNumAbs": 274,
+        "payloadLen": 4,
+        "payloadLenArg": 2,
+        "isLineEmpty": false,
+        "isLineOpCode": true,
+        "isLineDirective": false,
+        "isLineLabelDef": false,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 274,
+          "sourceLen": 31,
+          "source": "    over        CMP     R0, #45",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 7,
+              "len": 4,
+              "lineNum": 274,
+              "index": 0,
+              "payload": "over"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 18,
+              "len": 3,
+              "lineNum": 274,
+              "index": 1,
+              "payload": "CMP"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 25,
+              "len": 2,
+              "lineNum": 274,
+              "index": 2,
+              "payload": "R0"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 28,
+              "posStop": 30,
+              "len": 3,
+              "lineNum": 274,
+              "index": 3,
+              "payload": "#45"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 6,
+          "empty_line": false,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "OpCode"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "OpCode",
+                  "type_category": "OpCode",
+                  "category": "OpCode",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "A~Z"
+                    ],
+                    "contains": [
+                      "A~Z"
+                    ],
+                    "ends_with": [
+                      "A~Z"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "RegisterRangeHi",
+                "RegisterRangeLow",
+                "RegisterLr",
+                "RegisterPc",
+                "RegisterSp",
+                "RegisterHi",
+                "RegisterLow",
+                "RegisterWb",
+                "Number",
+                "ListStart",
+                "ListStop",
+                "GroupStart",
+                "GroupStop",
+                "LabelRef"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterRangeLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7",
+                      "-",
+                      "R"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [
+                      "-"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLr",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "14",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "4"
+                    ],
+                    "must_contain": [
+                      "14"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterPc",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "15",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "5"
+                    ],
+                    "must_contain": [
+                      "15"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterSp",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "13",
+                      "1"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "3"
+                    ],
+                    "must_contain": [
+                      "13"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterHi",
+                  "type_category": "RegisterHi",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "8~15"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "8~15"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterLow",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      ",",
+                      ";",
+                      "0~7"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "RegisterWb",
+                  "type_category": "RegisterLow",
+                  "category": "Arg",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "R"
+                    ],
+                    "contains": [
+                      "0~7"
+                    ],
+                    "ends_with": [
+                      "!,",
+                      "!endl",
+                      "!;",
+                      "!"
+                    ],
+                    "must_contain": [
+                      "!"
+                    ],
+                    "must_not_contain": [
+                      "R8",
+                      "R9",
+                      "R10",
+                      "R11",
+                      "R12",
+                      "R13",
+                      "R14",
+                      "R15"
+                    ],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Number",
+                  "type_category": "Number",
+                  "category": "Arg",
+                  "category_class": "java.lang.Double",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "#bx",
+                      "#-",
+                      "#",
+                      "0~9"
+                    ],
+                    "contains": [
+                      "0~9"
+                    ],
+                    "ends_with": [
+                      "0~9",
+                      ",",
+                      ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStart",
+                  "type_category": "Start",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "{"
+                    ],
+                    "contains": [
+                      "{"
+                    ],
+                    "ends_with": [
+                      "{"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "ListStop",
+                  "type_category": "Stop",
+                  "category": "List",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "}"
+                    ],
+                    "contains": [
+                      "}"
+                    ],
+                    "ends_with": [
+                      "}"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStart",
+                  "type_category": "Start",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "["
+                    ],
+                    "contains": [
+                      "["
+                    ],
+                    "ends_with": [
+                      "["
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_group_type",
+                  "type_name": "GroupStop",
+                  "type_category": "Stop",
+                  "category": "Group",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "]"
+                    ],
+                    "contains": [
+                      "]"
+                    ],
+                    "ends_with": [
+                      "]"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 2
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "matchesOpCode": [
+          {
+            "obj_name": "is_op_code",
+            "op_code_name": "CMP",
+            "index": 8,
+            "arg_separator": ",",
+            "arg_len": 2,
+            "is_write_op_code": false,
+            "bit_rep": {
+              "obj_name": "JsonObjBitRep",
+              "bit_string": "00101",
+              "bit_int": 5,
+              "bit_len": 5,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "bit_series": {
+              "obj_name": "JsonObjBitSeries",
+              "bit_start": 11,
+              "bit_stop": 15,
+              "bit_len": 5,
+              "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitRep",
+              "fileName": "./cfg/THUMB/is_op_codes.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+            },
+            "args": [
+              {
+                "obj_name": "is_op_code_arg",
+                "arg_index": 0,
+                "bit_index": 1,
+                "is_entry_types": [
+                  "RegisterLow"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
+                        "0~7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "0~7"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [
+                        "R8",
+                        "R9",
+                        "R10",
+                        "R11",
+                        "R12",
+                        "R13",
+                        "R14",
+                        "R15"
+                      ],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 8,
+                  "bit_stop": 10,
+                  "bit_len": 3,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                "fileName": "./cfg/THUMB/is_op_codes.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+              },
+              {
+                "obj_name": "is_op_code_arg",
+                "arg_index": 1,
+                "bit_index": 0,
+                "is_entry_types": [
+                  "Number",
+                  "LabelRef"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "#bx",
+                        "#-",
+                        "#",
+                        "0~9"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u0026",
+                        "0x",
+                        "#0x"
+                      ],
+                      "contains": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 7,
+                  "bit_len": 8,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 255,
+                  "bit_len": 8,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "NATURAL",
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjNumRange",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": 0,
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjBitShift",
+                  "fileName": "./cfg/THUMB/is_op_codes.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg",
+                "fileName": "./cfg/THUMB/is_op_codes.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+              }
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+            "fileName": "./cfg/THUMB/is_op_codes.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes"
+          }
+        ],
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "over",
+            "lineNumAbs": 274,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 7,
+              "len": 4,
+              "lineNum": 274,
+              "index": 0,
+              "payload": "over"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "OpCode",
+            "source": "CMP",
+            "lineNumAbs": 274,
+            "index": 1,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": true,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 16,
+              "posStop": 18,
+              "len": 3,
+              "lineNum": 274,
+              "index": 1,
+              "payload": "CMP"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "OpCode",
+              "type_category": "OpCode",
+              "category": "OpCode",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "A~Z"
+                ],
+                "contains": [
+                  "A~Z"
+                ],
+                "ends_with": [
+                  "A~Z"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "RegisterLow",
+            "source": "R0",
+            "lineNumAbs": 274,
+            "index": 2,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": true,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 24,
+              "posStop": 25,
+              "len": 2,
+              "lineNum": 274,
+              "index": 2,
+              "payload": "R0"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "RegisterLow",
+              "type_category": "RegisterLow",
+              "category": "Arg",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "R"
+                ],
+                "contains": [
+                  "0~7"
+                ],
+                "ends_with": [
+                  ",",
+                  ";",
+                  "0~7"
+                ],
+                "must_contain": [],
+                "must_not_contain": [
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11",
+                  "R12",
+                  "R13",
+                  "R14",
+                  "R15"
+                ],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "register": {
+              "obj_name": "is_register",
+              "register_name": "R0",
+              "is_entry_type": "RegisterLow",
+              "linked_is_entry_type": {
+                "obj_name": "is_entry_type",
+                "type_name": "RegisterLow",
+                "type_category": "RegisterLow",
+                "category": "Arg",
+                "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                "txt_match": {
+                  "obj_name": "JsonObjTxtMatch",
+                  "starts_with": [
+                    "R"
+                  ],
+                  "contains": [
+                    "0~7"
+                  ],
+                  "ends_with": [
+                    ",",
+                    ";",
+                    "0~7"
+                  ],
+                  "must_contain": [],
+                  "must_not_contain": [
+                    "R8",
+                    "R9",
+                    "R10",
+                    "R11",
+                    "R12",
+                    "R13",
+                    "R14",
+                    "R15"
+                  ],
+                  "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "bit_rep": {
+                "obj_name": "JsonObjBitRep",
+                "bit_string": "000",
+                "bit_int": 0,
+                "bit_len": 3,
+                "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                "fileName": "./cfg/THUMB/is_registers.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+              },
+              "desc": "general purpose",
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+              "fileName": "./cfg/THUMB/is_registers.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsRegisters"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Number",
+            "source": "#45",
+            "lineNumAbs": 274,
+            "index": 3,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": true,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 28,
+              "posStop": 30,
+              "len": 3,
+              "lineNum": 274,
+              "index": 3,
+              "payload": "#45"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Number",
+              "type_category": "Number",
+              "category": "Arg",
+              "category_class": "java.lang.Double",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "#bx",
+                  "#-",
+                  "#",
+                  "0~9"
+                ],
+                "contains": [
+                  "0~9"
+                ],
+                "ends_with": [
+                  "0~9",
+                  ",",
+                  ";"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "over",
+        "lineNumAbs": 274,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 7,
+          "len": 4,
+          "lineNum": 274,
+          "index": 0,
+          "payload": "over"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x216",
+      "addressBin": "0000001000010110",
+      "addressInt": 534,
+      "lineNumActive": 267,
+      "lineNumAbs": 274,
+      "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "label_": {
+      "obj_name": "Symbol",
+      "name": "label_",
+      "line": {
+        "obj_name": "TokenLine",
+        "bitLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 129,
+        "payloadLen": 2,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 129,
+          "sourceLen": 53,
+          "source": "    label_                              ;branch label",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 9,
+              "len": 6,
+              "lineNum": 129,
+              "index": 0,
+              "payload": "label_"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 46,
+              "len": 7,
+              "lineNum": 129,
+              "index": 1,
+              "payload": ";branch"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 48,
+              "posStop": 52,
+              "len": 5,
+              "lineNum": 129,
+              "index": 2,
+              "payload": "label"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 2,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Comment"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "label_",
+            "lineNumAbs": 129,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 9,
+              "len": 6,
+              "lineNum": 129,
+              "index": 0,
+              "payload": "label_"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Comment",
+            "source": ";branch",
+            "lineNumAbs": 129,
+            "index": 1,
+            "payloadLen": 1,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": true,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 46,
+              "len": 7,
+              "lineNum": 129,
+              "index": 1,
+              "payload": ";branch"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Comment",
+              "type_category": "Comment",
+              "category": "Comment",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  ";"
+                ],
+                "contains": [
+                  "*"
+                ],
+                "ends_with": [
+                  "*"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": [
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "label",
+                "lineNumAbs": 129,
+                "index": 0,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 48,
+                  "posStop": 52,
+                  "len": 5,
+                  "lineNum": 129,
+                  "index": 2,
+                  "payload": "label"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              }
+            ]
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "label_",
+        "lineNumAbs": 129,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 9,
+          "len": 6,
+          "lineNum": 129,
+          "index": 0,
+          "payload": "label_"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0xF4",
+      "addressBin": "0000000011110100",
+      "addressInt": 244,
+      "lineNumActive": 122,
+      "lineNumAbs": 129,
+      "isEmptyLineLabel": true,
+      "isLabel": true,
+      "isStaticValue": false
+    }
+  }
+}
