@@ -105,8 +105,10 @@ public class LinkerThumb implements Linker {
                 if(Utils.IsStringEmpty(tmpLine.payloadBinRepStrEndianBig2) == false) {
                     tmp2 = tmpLine.lineNumAbs + "";
                     tmp2 = Utils.FormatBinString(tmp2, 10, true);
-                    tmp2 += "\t";            
-                    tmp2 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
+                    tmp2 += "\t";
+                    Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
+                    tt += asm.lineLenBytes;
+                    tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {
                 tmp1 += "   \t    \t                \t" + tmpLine.source.source;
@@ -168,8 +170,10 @@ public class LinkerThumb implements Linker {
                 if(Utils.IsStringEmpty(tmpLine.payloadBinRepStrEndianLil2) == false) {
                     tmp2 = tmpLine.lineNumAbs + "";
                     tmp2 = Utils.FormatBinString(tmp2, 10, true);
-                    tmp2 += "\t";                     
-                    tmp2 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil2, asm.jsonObjIsOpCodes.bit_series.bit_len, false) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
+                    tmp2 += "\t";
+                    Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
+                    tt += asm.lineLenBytes;
+                    tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {
                 tmp1 += "   \t    \t                \t" + tmpLine.source.source;
