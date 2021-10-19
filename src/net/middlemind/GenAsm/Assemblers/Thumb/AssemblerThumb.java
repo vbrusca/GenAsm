@@ -659,9 +659,9 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumActive = (line.addressInt/lineLenBytes);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineLenBytes;
-                        Logger.wrl("=====: " + line.payloadOpCode);
                         if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
                             activeLineCount += lineLenBytes;
+                            line.bitLength = lineLenBytes * 2;
                         }
                     }
                 }
@@ -705,9 +705,9 @@ public class AssemblerThumb implements Assembler {
                         line.lineNumActive = (line.addressInt/lineLenBytes);
                         asmAreaLinesCode.add(line);
                         activeLineCount += lineLenBytes;
-                        Logger.wrl("=====: " + line.payloadOpCode);
                         if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
                             activeLineCount += lineLenBytes;
+                            line.bitLength = lineLenBytes * 2;
                         }                        
                     }
                 }
@@ -726,10 +726,10 @@ public class AssemblerThumb implements Assembler {
                     line.lineNumActive = (line.addressInt/lineLenBytes);
                     asmAreaLinesCode.add(line);
                     activeLineCount += lineLenBytes;
-                        Logger.wrl("=====: " + line.payloadOpCode);
-                        if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
-                            activeLineCount += lineLenBytes;
-                        }                    
+                    if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
+                        activeLineCount += lineLenBytes;
+                        line.bitLength = lineLenBytes * 2;
+                    }                    
                 }
             }
             
@@ -999,8 +999,9 @@ public class AssemblerThumb implements Assembler {
                     } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {                    
                         ltoken.isOpCodeArg = true;
 
-                    } else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                        //TODO: REMOVE THIS BECAUSE IT SHOULDN'T HAPPEN
+                    }
+                    /*
+                    else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
                         if(ltoken.index == 0) {
                             lastLabel = ltoken.source;
                             lastLabelLine = line;
@@ -1020,6 +1021,7 @@ public class AssemblerThumb implements Assembler {
                             symbols.symbols.put(ltoken.source, symbol);
                         }
                     }
+                    */
                 }
             }
             
@@ -2326,18 +2328,18 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
+                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
                         
-                        if(entry.opCodeArgGroup.num_range.twos_compliment) {
+                        //if(entry.opCodeArgGroup.num_range.twos_compliment) {
                             //TODO: Do we need this if Java prints to two's compliment bin strings?
                             //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
                             //tInt = Integer.parseInt(resTmp1, 2);                                
-                        }
+                        //}
                         
                         //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp1 = Integer.toBinaryString(tInt);
+                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2380,18 +2382,18 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
+                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
                         
-                        if(entry.opCodeArgGroup.num_range.twos_compliment) {
+                        //if(entry.opCodeArgGroup.num_range.twos_compliment) {
                             //TODO: Do we need this if Java prints to two's compliment bin strings?
                             //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
                             //tInt = Integer.parseInt(resTmp1, 2);
-                        }
+                        //}
                         
                         //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp1 = Integer.toBinaryString(tInt);
+                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2525,23 +2527,22 @@ public class AssemblerThumb implements Assembler {
                             tInt = ~tInt;
                         }                        
                         
-                        resTmp1 = Integer.toBinaryString(tInt);
-                        
+                        resTmp1 = Integer.toBinaryString(tInt);                        
                         //Specific for the OpCode BL and its 2 line, 4 byte encoding
                         Integer bltInt = tInt;
                         String blResTmp1 = resTmp1;                        
-                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
+                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
                         
-                        if(entry.opCodeArg.num_range.twos_compliment) {
+                        //if(entry.opCodeArg.num_range.twos_compliment) {
                             //TODO: Do we need this if Java prints to two's compliment bin strings?
                             //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
                             //tInt = Integer.parseInt(resTmp1, 2);                            
-                        }
+                        //}
                         
                         //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
                         
-                        resTmp1 = Integer.toBinaryString(tInt);
+                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2609,18 +2610,18 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
+                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
                         
-                        if(entry.opCodeArg.num_range.twos_compliment) {
+                        //if(entry.opCodeArg.num_range.twos_compliment) {
                             //TODO: Do we need this if Java prints to two's compliment bin strings?
                             //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
                             //tInt = Integer.parseInt(resTmp1, 2);
-                        }
+                        //}
                         
                         //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
                         //entry.opCodeArg.num_range.alignment                        
 
-                        resTmp1 = Integer.toBinaryString(tInt);
+                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
