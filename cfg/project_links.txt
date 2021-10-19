@@ -14,6 +14,7 @@ https://github.com/microsoft/uf2
 //Twos Compliment Class
 https://stackoverflow.com/questions/42595963/how-to-get-2s-complement-of-a-binary-number-in-java-programmatically
 https://www.geeksforgeeks.org/efficient-method-2s-complement-binary-string/
+https://www.exploringbinary.com/twos-complement-converter/
 
 //GBA Tech Info
 https://problemkaputt.de/gbatek.htm#gbakeypadinput
