@@ -1,0 +1,30 @@
+@TTL |CompareNum|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+
+    Start
+            MOV     R1, PC
+            LDR     R1, [R1, `Value1]
+            MOV     R2, PC
+            LDR     R2, [R2, `Value2]
+            CMP     R1, R2
+            BHI     `Done
+            MOV     R1, R2
+    Done
+            MOV     R3, PC
+            STR     R1, [R3, `Result]
+            SWI     &11
+
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    Value1  @DCHW   &FEDC
+            @DCHW   &A987
+    Value2  @DCHW   &1234
+            @DCHW   &5678
+    Result  @DCHW   #0
+            @DCHW   #0
+
+@END

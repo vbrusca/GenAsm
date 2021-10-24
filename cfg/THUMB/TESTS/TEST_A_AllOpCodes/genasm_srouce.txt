@@ -2,14 +2,130 @@
 @AREA |Program| @CODE, @READONLY
 @ENTRY
 
-    test        @EQU    2
-    overOne
-                BGT     =overOne
-                ;$NOP
+    ;need 122 16bit entries to match GBA header
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
+                @DCHW  #0
 
-    ;++++++++++++++++++++++++++++++++
-    ;$INCASM |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_incasm.txt|
-    ;++++++++++++++++++++++++++++++++
 
     label_                              ;branch label
                 LSL     R0, R1, #0      ;5.1
@@ -89,36 +205,36 @@
                 ADD     R0, SP, #1020
                 ADD     SP, #0          ;5.13
                 ADD     SP, #508
-                ADD     SP, #-508
+                ;ADD     SP, #-508
                 PUSH    {R0, R1}        ;5.14
                 PUSH    {R0, R1, LR}
                 POP     {R0, R1}
                 POP     {R0, R1, PC}
                 STMIA   R0!, {R1, R2}   ;5.15
                 LDMIA   R0!, {R1, R2}
-                BEQ     =label_         ;5.16
-                BNE     =label_
-                BCS     =label_
-                BCC     =label_
-                BMI     =label_
-                BPL     =label_
-                BVS     =label_
-                BVC     =label_
-                BHI     =label_
-                BLS     =label_
-                BGE     =label_
-                BLT     =label_
-                BGT     =label_
-                BLE     =label_
+                BEQ     `label_         ;5.16
+                BNE     `label_
+                BCS     `label_
+                BCC     `label_
+                BMI     `label_
+                BPL     `label_
+                BVS     `label_
+                BVC     `label_
+                BHI     `label_
+                BLS     `label_
+                BGE     `label_
+                BLT     `label_
+                BGT     `label_
+                BLE     `label_
                 SWI     #0              ;5.17
                 SWI     #255
-                B       =label_         ;5.18
-                B       =over
-                BL      =label_         ;5.19
-                BL      =over
+                B       `label_         ;5.18
+                B       `over
+                BL      `label_         ;5.19
+                BL      `over
                 CMP     R0, #45         ;Other 
-                BGT     =over
-                B       =locate
+                BGT     `over
+                B       `locate
                 LSR     R2, R5, #27
                 ADD     R0, R3, R4
                 SUB     R6, R2, #6
@@ -157,24 +273,7 @@
                 POP     {R2, R6, PC}
                 STMIA   R0!, {R3, R4, R5, R6, R7}
     over        CMP     R0, #45
-    here        B       =here
+    here        B       `here
     locate      LDR     R2, [R2, R6]
-
-    var1        @DCHW   256
-    var2        @DCHW   255
-    var3        @DCHW   254
-
-@END
-
-@AREA |Data| @DATA, @READWRITE
-@ENTRY
-
-    var4        @DCHW   256
-    var5        @DCHW   255
-    var6        @DCHW   254
-
-    ;++++++++++++++++++++++++++++++++
-    ;$INCBIN |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/INCBIN/ninlogo.dat|
-    ;++++++++++++++++++++++++++++++++
 
 @END

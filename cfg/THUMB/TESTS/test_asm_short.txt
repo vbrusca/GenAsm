@@ -19,7 +19,7 @@
     var3 @DCHW 254
 
     ;++++++++++++++++++++++++++++++++
-    ;$INCBIN |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/ninlogo.dat|
+    ;$INCBIN |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/INCBIN/ninlogo.dat|
     ;++++++++++++++++++++++++++++++++
 
 @END

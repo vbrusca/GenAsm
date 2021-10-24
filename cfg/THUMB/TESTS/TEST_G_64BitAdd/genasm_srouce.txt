@@ -1,0 +1,39 @@
+@TTL |16BitXfer|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+
+    Start
+            MOV     R0, PC
+            LDRH    R0, [R0, `Value1]
+            LDMIA   R0!, {R1, R2}
+            MOV     R0, PC
+            LDRH    R0, [R0, `Value2]
+            LDMIA   R0!, {R3, R4}
+            ADD     R6, R2, R4
+            ADC     R1, R3
+            MOV     R5, R1
+            MOV     R0, PC
+            LDRH    R0, [R0, `Result]
+            STMIA   R0, {R5, R6}
+            SWI     &5
+            SWI     &11
+
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    Value1  @DCHW   &12A2
+            @DCHW   &E640
+            @DCHW   &F210
+            @DCHW   &0123
+    Value2  @DCHW   &0010
+            @DCHW   &19BF
+            @DCHW   &4002
+            @DCHW   &3F51
+    Result  @DCHW   #0
+            @DCHW   #0
+            @DCHW   #0
+            @DCHW   #0
+
+@END
