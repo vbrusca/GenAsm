@@ -29,7 +29,7 @@
             @DCHW   &1C22
             @DCHW   &0242
     TblEnd  @DCHW   #0
-    Length  @EQU   #4
+    Length  @EQU    #4
     Result  @DCHW   #0
             @DCHW   #0
 
