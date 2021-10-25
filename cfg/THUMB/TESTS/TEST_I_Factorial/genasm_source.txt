@@ -127,16 +127,16 @@
             @DCHW  #0
             @DCHW  #0
 
-    Start
+    start
             MOV     R0, PC
-            LDRH    R0, [R0, `Tbl]
+            LDRH    R0, [R0, `tbl]
             EOR     R1, R1
-            LDRH    R1, [R1, `Value]
+            LDRH    R1, [R1, `value]
             LSL     R1, R1, #0x1
             ADD     R0, R0, R1
             MOV     R2, R0
             MOV     R3, PC
-            STR     R1, [R3, `Result]
+            STR     R1, [R3, `result]
             SWI     &11
 
 @END
@@ -144,7 +144,7 @@
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
 
-    Tbl
+    tbl
             @DCHW   #1
             @DCHW   #1
             @DCHW   #2
@@ -153,7 +153,7 @@
             @DCHW   #120
             @DCHW   #720
             @DCHW   #5040
-    Value   @DCHW   #5
-    Result  @DCHW   #0
+    value   @DCHW   #5
+    result  @DCHW   #0
 
 @END

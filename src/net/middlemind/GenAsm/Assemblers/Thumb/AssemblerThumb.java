@@ -1947,7 +1947,7 @@ public class AssemblerThumb implements Assembler {
             for(Token token : line.payload) {
                 lastToken = token;
                 if(token.isDirective) {
-                    Logger.wrl("Found directive...");
+                    //Logger.wrl("Found directive...");
                     if(token.source.equals(JsonObjIsDirectives.NAME_DCHW)) {
                         isDirDcw = true;
                         isDirDcb = false;
@@ -1960,7 +1960,7 @@ public class AssemblerThumb implements Assembler {
                     if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
                         throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
                     } else {
-                        Logger.wrl("Found directive arg...");
+                        //Logger.wrl("Found directive arg...");
                         String resTmp;
                         Integer tInt = Utils.ParseNumberString(token.source);
                         resTmp = Integer.toBinaryString(tInt);
@@ -2328,7 +2328,7 @@ public class AssemblerThumb implements Assembler {
                             tInt *= -1;
                         }
                         
-                        if(entry.opCodeArgGroup.num_range.ones_compliment) {
+                        if(entry.opCodeArgGroup.num_range != null && entry.opCodeArgGroup.num_range.ones_compliment == true) {
                             tInt = ~tInt;
                         }                        
                         
@@ -2352,9 +2352,10 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                             }
-                        } else {
-                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                         }
+                        //else {
+                            //throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
+                        //}
                         
                         entry.tokenOpCodeArgGroup.value = tInt;
                         
@@ -2370,7 +2371,7 @@ public class AssemblerThumb implements Assembler {
                             tInt *= -1;
                         }
                         
-                        if(entry.opCodeArgGroup.num_range.ones_compliment) {
+                        if(entry.opCodeArgGroup.num_range != null && entry.opCodeArgGroup.num_range.ones_compliment == true) {
                             tInt = ~tInt;
                         }                        
                         
@@ -2394,9 +2395,10 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArgGroup.num_range.min_value || tInt >  entry.opCodeArgGroup.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                             }
-                        } else {
-                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                         }
+                        //else {
+                        //    throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
+                        //}
                         
                         entry.tokenOpCodeArgGroup.value = tInt;
                         
@@ -2504,7 +2506,7 @@ public class AssemblerThumb implements Assembler {
                             tInt *= -1;
                         }
                         
-                        if(entry.opCodeArg.num_range.ones_compliment) {
+                        if(entry.opCodeArg.num_range != null && entry.opCodeArg.num_range.ones_compliment == true) {
                             tInt = ~tInt;
                         }                        
                         
@@ -2531,9 +2533,10 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                             }
-                        } else {
-                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         }
+                        //else {
+                        //    throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
+                        //}
                         
                         if(inBl == true) {
                             //Logger.wrl("BL line 0: " + Integer.toBinaryString(bltInt));
@@ -2574,7 +2577,7 @@ public class AssemblerThumb implements Assembler {
                             tInt *= -1;
                         }
                         
-                        if(entry.opCodeArg.num_range.ones_compliment) {
+                        if(entry.opCodeArg.num_range != null && entry.opCodeArg.num_range.ones_compliment == true) {
                             tInt = ~tInt;
                         }                        
                         
@@ -2598,9 +2601,10 @@ public class AssemblerThumb implements Assembler {
                             if(tInt < entry.opCodeArg.num_range.min_value || tInt >  entry.opCodeArg.num_range.max_value) {
                                 throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                             }
-                        } else {
-                            throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         }
+                        //else {
+                        //    throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
+                        //}
                         
                         entry.tokenOpCodeArg.value = tInt;
                         

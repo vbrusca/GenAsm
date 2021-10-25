@@ -1,4 +1,4 @@
-@TTL |16BitXfer|
+@TTL |64BitAdd|
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
@@ -127,18 +127,18 @@
             @DCHW  #0
             @DCHW  #0
 
-    Start
+    start
             MOV     R0, PC
-            LDRH    R0, [R0, `Value1]
+            LDRH    R0, [R0, `value1]
             LDMIA   R0!, {R1, R2}
             MOV     R0, PC
-            LDRH    R0, [R0, `Value2]
+            LDRH    R0, [R0, `value2]
             LDMIA   R0!, {R3, R4}
             ADD     R6, R2, R4
             ADC     R1, R3
             MOV     R5, R1
             MOV     R0, PC
-            LDRH    R0, [R0, `Result]
+            LDRH    R0, [R0, `result]
             STMIA   R0, {R5, R6}
             SWI     &5
             SWI     &11
@@ -148,15 +148,15 @@
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
 
-    Value1  @DCHW   &12A2
+    value1  @DCHW   &12A2
             @DCHW   &E640
             @DCHW   &F210
             @DCHW   &0123
-    Value2  @DCHW   &0010
+    value2  @DCHW   &0010
             @DCHW   &19BF
             @DCHW   &4002
             @DCHW   &3F51
-    Result  @DCHW   #0
+    result  @DCHW   #0
             @DCHW   #0
             @DCHW   #0
             @DCHW   #0

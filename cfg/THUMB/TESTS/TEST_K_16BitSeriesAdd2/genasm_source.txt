@@ -1,4 +1,4 @@
-@TTL |16BitSeriesAdd2|
+@TTL |16BitSeriesAddTwo|
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
@@ -127,23 +127,23 @@
             @DCHW  #0
             @DCHW  #0
 
-    Start
+    start
             MOV     R0, PC
-            LDR     R0, [R0, `Tbl]
+            LDR     R0, [R0, `tbl]
             EOR     R1, R1
             EOR     R2, R2
-            LDRH    R2, [R2, ~Length]
+            LDRH    R2, [R2, ~length]
             CMP     R2, #0
-            BEQ     `Done
-    Loop
+            BEQ     `done
+    loop
             MOV     R3, R0
             ADD     R1, R3
             ADD     R0, R0, #4
             SUB     R2, R2, #0x1
-            BNE     `Loop
-    Done
+            BNE     `loop
+    done
             MOV     R4, PC
-            LDRH    R1, [R4, `Result]
+            LDRH    R1, [R4, `result]
             SWI     &11
 
 @END
@@ -151,9 +151,9 @@
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
 
-    Tbl     ;Table is empty
-    TblEnd  @DCHW   #0
-    Length  @EQU    #4
-    Result  @DCHW   #0
+    tbl     ;Table is empty
+    tblEnd  @DCHW   #0
+    length  @EQU    #4
+    result  @DCHW   #0
 
 @END
