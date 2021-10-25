@@ -27,5 +27,9 @@ public class FileUnloader {
         }
         bf.flush();
         bf.close();
-    }    
+    }
+    
+    public static void WriteBuffer(String file, byte[] buff) throws IOException {
+        Files.write(Paths.get(file), buff);
+    }
 }

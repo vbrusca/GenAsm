@@ -85,6 +85,9 @@ public class LinkerThumb implements Linker {
         TokenLine tmpLine = null;
         int count = 0;
         int prevLineNumAbs = -1;
+        ArrayList<Byte> binBe = new ArrayList<>();
+        ArrayList<Byte> binLe = new ArrayList<>();
+        
         for(int i = 0; i < asm.asmDataTokened.size(); i++) {
             tmpLine = asm.asmDataTokened.get(i);
             tmp1 = tmpLine.lineNumAbs + "";
@@ -93,6 +96,7 @@ public class LinkerThumb implements Linker {
             tmp2 = "";
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianBig1 != null) {
+                    AddBytes(tmpLine.payloadBinRepStrEndianBig1, binBe);
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig1, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
                     if(!Utils.IsStringEmpty(tmpLine.addressHex)) {
@@ -108,6 +112,7 @@ public class LinkerThumb implements Linker {
                     tmp2 += "\t";
                     Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
                     tt += asm.lineLenBytes;
+                    AddBytes(tmpLine.payloadBinRepStrEndianBig2, binBe);
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {
@@ -141,7 +146,13 @@ public class LinkerThumb implements Linker {
             lstFile.add(tmp1);
         }
         
+        int len = binBe.size();
+        byte[] data = new byte[len];
+        for(int i = 0; i < len; i++) {
+            data[i] = binBe.get(i);
+        }
         FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_big.list").toString(), lstFile);
+        FileUnloader.WriteBuffer(Paths.get(outputDir, "output_assembly_listing_endian_big.bin").toString(), data);
         
         //LITTLE ENDIAN
         lstFile.clear();
@@ -156,6 +167,7 @@ public class LinkerThumb implements Linker {
             tmp1 = Utils.FormatBinString(tmp1, 10, true);
             tmp1 += "\t";
             tmp2 = "";
+            AddBytes(tmpLine.payloadBinRepStrEndianLil1, binLe);
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianLil1 != null) {
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil1, asm.jsonObjIsOpCodes.bit_series.bit_len, false) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
@@ -173,6 +185,7 @@ public class LinkerThumb implements Linker {
                     tmp2 += "\t";
                     Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
                     tt += asm.lineLenBytes;
+                    AddBytes(tmpLine.payloadBinRepStrEndianLil2, binLe);
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {
@@ -206,6 +219,23 @@ public class LinkerThumb implements Linker {
             lstFile.add(tmp1);
         }
         
+        len = binLe.size();
+        data = new byte[len];
+        for(int i = 0; i < len; i++) {
+            data[i] = binLe.get(i);
+        }
         FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_lil.list").toString(), lstFile);        
+        FileUnloader.WriteBuffer(Paths.get(outputDir, "output_assembly_listing_endian_lil.bin").toString(), data);
+    }
+    
+    public void AddBytes(String binStr, ArrayList<Byte> data) {
+        int len = binStr.length()/8;
+        String s = null;
+        Byte b = null;
+        for(int i = 0; i < len; i++) {
+            s = binStr.substring((i * 8), (i * 8) + 8);
+            b = Byte.parseByte(s, 2);
+            data.add(b);
+        }
     }
 }
