@@ -2328,18 +2328,6 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
-                        
-                        //if(entry.opCodeArgGroup.num_range.twos_compliment) {
-                            //TODO: Do we need this if Java prints to two's compliment bin strings?
-                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
-                            //tInt = Integer.parseInt(resTmp1, 2);                                
-                        //}
-                        
-                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
-                        //entry.opCodeArg.num_range.alignment                        
-                        
-                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2382,18 +2370,6 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len, true);
-                        
-                        //if(entry.opCodeArgGroup.num_range.twos_compliment) {
-                            //TODO: Do we need this if Java prints to two's compliment bin strings?
-                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
-                            //tInt = Integer.parseInt(resTmp1, 2);
-                        //}
-                        
-                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
-                        //entry.opCodeArg.num_range.alignment                        
-                        
-                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArgGroup.bit_shift != null) {
                             if(entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2530,19 +2506,7 @@ public class AssemblerThumb implements Assembler {
                         resTmp1 = Integer.toBinaryString(tInt);                        
                         //Specific for the OpCode BL and its 2 line, 4 byte encoding
                         Integer bltInt = tInt;
-                        String blResTmp1 = resTmp1;                        
-                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
-                        
-                        //if(entry.opCodeArg.num_range.twos_compliment) {
-                            //TODO: Do we need this if Java prints to two's compliment bin strings?
-                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
-                            //tInt = Integer.parseInt(resTmp1, 2);                            
-                        //}
-                        
-                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
-                        //entry.opCodeArg.num_range.alignment                        
-                        
-                        //resTmp1 = Integer.toBinaryString(tInt);
+                        String blResTmp1 = resTmp1;
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
@@ -2610,18 +2574,6 @@ public class AssemblerThumb implements Assembler {
                         }                        
                         
                         resTmp1 = Integer.toBinaryString(tInt);
-                        //resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len, true);
-                        
-                        //if(entry.opCodeArg.num_range.twos_compliment) {
-                            //TODO: Do we need this if Java prints to two's compliment bin strings?
-                            //resTmp1 = TwosCompliment.GetTwosCompliment(resTmp1);
-                            //tInt = Integer.parseInt(resTmp1, 2);
-                        //}
-                        
-                        //TODO: Check alignment, do we need this if everything we use is 2 or 4 bytes?
-                        //entry.opCodeArg.num_range.alignment                        
-
-                        //resTmp1 = Integer.toBinaryString(tInt);
                         if(entry.opCodeArg.bit_shift != null) {
                             if(entry.opCodeArg.bit_shift.shift_amount > 0) {
                                 if(!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {

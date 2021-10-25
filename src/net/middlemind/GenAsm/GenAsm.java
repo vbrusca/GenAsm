@@ -37,6 +37,9 @@ public class GenAsm {
     public static String ASM_ROOT_OUTPUT_DIR = "";
     public static int ARG_LEN_TARGET = 9;
     
+    //TODO: Test ORG directive on test A, Compare GenAsm to vasm listing results for test programs A.
+    //TODO: Compile test B-K in both GenAsm and vasm and store the listings in the proper cfg directory. Compare GenAsm to vasm listing results for test programs B-K.
+    
     public static void main(String[] args) throws Exception {
         if(args == null || args.length < 8) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
