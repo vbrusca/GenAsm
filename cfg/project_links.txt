@@ -50,4 +50,7 @@ https://hexed.it/
 //Binary file editor, allows to pull out hex values
 https://www.dcode.fr/file-data
 
+//Online Java compiler for testing some code
+https://www.tutorialspoint.com/compile_java_online.php
+
 
