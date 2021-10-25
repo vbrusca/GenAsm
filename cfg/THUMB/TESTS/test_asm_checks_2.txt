@@ -1,7 +1,8 @@
 @TTL |AllOpCodeTests|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
-
+    
+    @ORG 0x08000000
     ;need 122 16bit entries to match GBA header
                 @DCHW  #0
                 @DCHW  #0

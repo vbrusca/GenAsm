@@ -1917,12 +1917,15 @@ public class AssemblerThumb implements Assembler {
             for(TokenLine line : areaLines) {
                 lastLine = line;
                 BuildBinOpCode(step, line);
+                BuildBinDirective(step, line);
             }
+            
         } else if(area.isData) {
             for(TokenLine line : areaLines) {
                 lastLine = line;
                 BuildBinDirective(step, line);
             }
+            
         } else {
             throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
         }
@@ -1944,6 +1947,7 @@ public class AssemblerThumb implements Assembler {
             for(Token token : line.payload) {
                 lastToken = token;
                 if(token.isDirective) {
+                    Logger.wrl("Found directive...");
                     if(token.source.equals(JsonObjIsDirectives.NAME_DCHW)) {
                         isDirDcw = true;
                         isDirDcb = false;
@@ -1956,6 +1960,7 @@ public class AssemblerThumb implements Assembler {
                     if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
                         throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
                     } else {
+                        Logger.wrl("Found directive arg...");
                         String resTmp;
                         Integer tInt = Utils.ParseNumberString(token.source);
                         resTmp = Integer.toBinaryString(tInt);
@@ -1987,7 +1992,7 @@ public class AssemblerThumb implements Assembler {
                 }
             }
         } else {
-            throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNumAbs);
+            //throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNumAbs);
         }
         
         if(eventHandler != null) {
