@@ -140,7 +140,7 @@
             MOV     R5, R8
             MOV     R0, PC
             LDRH    R0, [R0, `result]
-            STMIA   R0, {R5, R6}
+            STMIA   R0!, {R5, R6}
             SWI     &5
             SWI     &11
 

@@ -146,13 +146,17 @@ public class LinkerThumb implements Linker {
             }
             lstFile.add(tmp1);
         }
-        
+                
         Logger.wrl("Found total bytes Big Endian: " + totalBytes);        
         int len = binBe.size();
         byte[] data = new byte[len];
         for(int i = 0; i < len; i++) {
             data[i] = (byte)binBe.get(i);
         }
+        lstFile.add("");
+        lstFile.add(";===== BINARY OUTPUT =====");         
+        lstFile.add(";Expected file output size: " + data.length);        
+        
         FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_big.list").toString(), lstFile);
         FileUnloader.WriteBuffer(Paths.get(outputDir, "output_assembly_listing_endian_big.bin").toString(), data);
         
@@ -228,6 +232,10 @@ public class LinkerThumb implements Linker {
         for(int i = 0; i < len; i++) {
             data[i] = (byte)binLe.get(i);
         }
+        lstFile.add("");
+        lstFile.add(";===== BINARY OUTPUT =====");         
+        lstFile.add(";Expected file output size: " + data.length);
+        
         FileUnloader.WriteList(Paths.get(outputDir, "output_assembly_listing_endian_lil.list").toString(), lstFile);        
         FileUnloader.WriteBuffer(Paths.get(outputDir, "output_assembly_listing_endian_lil.bin").toString(), data);
     }
