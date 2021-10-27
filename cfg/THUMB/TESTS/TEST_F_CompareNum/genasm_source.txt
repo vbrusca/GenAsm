@@ -134,7 +134,8 @@
             LDR     R2, [R2, `value2]
             CMP     R1, R2
             BHI     `done
-            MOV     R1, R2
+            MOV     R8, R2
+            MOV     R1, R8
     done
             MOV     R3, PC
             STR     R1, [R3, `result]
