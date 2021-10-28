@@ -139,7 +139,6 @@
             ADD     R0, #2
             SUB     R2, #0x1
             BNE     `loop
-
             MOV     R4, PC
             STR     R1, [R4, `result]
             SWI     &11
