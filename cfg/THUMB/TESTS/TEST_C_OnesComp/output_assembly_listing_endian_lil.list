@@ -129,10 +129,10 @@
 0000000128	   	    	                	
 0000000129	   	    	                	    start
 0000000130	0067108986	0x080000F4	01111001 01000110	0x79 46	            MOV     R1, PC
-0000000131	0067108987	0x080000F6	10001001 01011011	0x89 5B	            LDRH    R1, [R1, `value]
+0000000131	0067108987	0x080000F6	11001001 10001000	0xC9 88	            LDRH    R1, [R1, `value]
 0000000132	0067108988	0x080000F8	11001001 01000011	0xC9 43	            MVN     R1, R1
 0000000133	0067108989	0x080000FA	01111010 01000110	0x7A 46	            MOV     R2, PC
-0000000134	0067108990	0x080000FC	10010001 01010010	0x91 52	            STRH    R1, [R2, `result]
+0000000134	0067108990	0x080000FC	01010001 10000000	0x51 80	            STRH    R1, [R2, `result]
 0000000135	0067108991	0x080000FE	00010001 11011111	0x11 DF	            SWI     &11
 0000000136	   	    	                	
 0000000137	   	    	                	@END
@@ -149,3 +149,6 @@
 ;Name: result	LineNumAbs: 0000000143	LineNumActive: 0067108993	AddressInt: 134217986	AddressHex: 0x08000102	Value: 0	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
 ;Name: value	LineNumAbs: 0000000142	LineNumActive: 0067108992	AddressInt: 134217984	AddressHex: 0x08000100	Value: 49443	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
 ;Name: start	LineNumAbs: 0000000129	LineNumActive: 0067108986	AddressInt: 134217972	AddressHex: 0x080000F4	Value: n/a	EmptyLineLabel: true	IsLabel: true	IsStaticValue: false
+
+;===== BINARY OUTPUT =====
+;Expected file output size: 260
