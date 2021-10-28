@@ -149,7 +149,7 @@
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
 
-   tbl
+    tbl
             @DCHW   &2040
             @DCHW   &1C22
             @DCHW   &0242
