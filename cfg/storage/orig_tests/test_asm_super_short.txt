@@ -1,1 +1,6 @@
-@DCHW #0x1A0A		;index: 3
+@TTL |AllOpCodeTests|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+        LDRH    R1, [R1, `value]
+value  @DCHW  49443
+@END

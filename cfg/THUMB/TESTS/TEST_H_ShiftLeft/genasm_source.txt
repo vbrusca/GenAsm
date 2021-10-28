@@ -130,7 +130,7 @@
     start
             MOV     R0, PC
             LDRH    R0, [R0, `value]
-            LSL     R1, R1,#0x1
+            LSL     R1, R1, #0x1
             MOV     R2, PC
             STRH    R1, [R0, `result]
             SWI     &11

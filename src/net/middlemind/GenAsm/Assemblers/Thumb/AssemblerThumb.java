@@ -1169,6 +1169,8 @@ public class AssemblerThumb implements Assembler {
             argFoundSub = false;
             hasArgsSub = false;
             
+            //Logger.wrl("========================= Searching for opCode match: " + opCode.index);
+            
             //Sort Json OpCode arguments so that they are arg_index ascending
             Collections.sort(opCode.args, new JsonObjIsOpCodeArgSorter());
             
@@ -1179,13 +1181,16 @@ public class AssemblerThumb implements Assembler {
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
+                    //Logger.wrl("Exit AAA");
                     argFound = false;
                     break;
                 }
                                 
                 if(opCodeArg != null && argToken != null) {
                     //if(!(argToken.isLabelRef || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                    if(!(argToken.isLabelRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {                    
+                    //if(!(argToken.isLabelRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                    if(!(opCodeArg.is_entry_types.contains(argToken.type_name))) {
+                        //Logger.wrl("Exit BBB: " + argToken.type_name);
                         argFound = false;
                         break;
                     }
@@ -1204,6 +1209,7 @@ public class AssemblerThumb implements Assembler {
                             if(argToken.payload != null && (j + regRangeOffset) < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j + regRangeOffset);
                             } else {
+                                //Logger.wrl("Exit CCC");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1226,13 +1232,16 @@ public class AssemblerThumb implements Assembler {
                                     }
                                 } else {
                                     //if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
-                                    if(!(argTokenSub.isLabelRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
+                                    //if(!(argTokenSub.isLabelRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
+                                    if(!(opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
+                                        //Logger.wrl("Exit DDD: " + argTokenSub.type_name);
                                         argFound = false;
                                         argFoundSub = false;
                                         break;
                                     }
                                 }
                             } else {
+                                //Logger.wrl("Exit EEE");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1242,6 +1251,7 @@ public class AssemblerThumb implements Assembler {
                         if(regRangeOffset > 0) {
                             //Register range offset is lower by 1 to allow for RegisterRange type, -1 for list close
                             if((argToken.payload.size() - regRangeOffset - 1) != opCodeArg.sub_args.size()) {
+                                //Logger.wrl("Exit FFF");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1249,6 +1259,7 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             //-1 for group close
                             if((argToken.payload.size() - 1) != opCodeArg.sub_args.size()) {
+                                //Logger.wrl("Exit GGG");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1256,12 +1267,14 @@ public class AssemblerThumb implements Assembler {
                         }
                     }
                 } else {
+                    //Logger.wrl("Exit HHH");
                     argFound = false;
                     argFoundSub = false;
                     break;
                 }
             }
             
+            //Logger.wrl("========================= FindOpCodeArgMatches: " + argFound + ", " + hasArgsSub + ", " + argFoundSub);
             if(argFound && !hasArgsSub && !argFoundSub) {
                 return opCode;                
             } else if(argFound && hasArgsSub && argFoundSub) {
