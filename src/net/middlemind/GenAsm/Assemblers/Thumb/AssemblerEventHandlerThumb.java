@@ -9,7 +9,7 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLines;
 import net.middlemind.GenAsm.Tokeners.TokenLine;
 
 /**
- *
+ * An interface used to describe the event callback methods that the Thumb assembler uses.
  * @author Victor G. Brusca, Middlemind Games 10-07-2021 9:58 AM EST
  */
 public interface AssemblerEventHandlerThumb extends AssemblerEventHandler {

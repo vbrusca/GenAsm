@@ -3,20 +3,42 @@ package net.middlemind.GenAsm.JsonObjs;
 import net.middlemind.GenAsm.Logger;
 
 /**
- *
+ * A class used to represent a JSON bit rep object.
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 2:32 PM EST
  */
 public class JsonObjBitRep extends JsonObjBase {
+    /**
+     * 
+     */
     public String obj_name = "JsonObjBitRep";
+    
+    /**
+     * 
+     */
     public String bit_string;
+    
+    /**
+     * 
+     */
     public int bit_int;
+    
+    /**
+     * 
+     */
     public int bit_len;
     
+    /**
+     * 
+     */
     @Override
     public void Print() {
         Print("");
     }    
     
+    /**
+     * 
+     * @param prefix 
+     */
     @Override
     public void Print(String prefix) {
         super.Print(prefix);

@@ -6,39 +6,98 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSets;
 import net.middlemind.GenAsm.Loaders.LoaderIsSets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import net.middlemind.GenAsm.Linkers.Linker;
 import net.middlemind.GenAsm.PreProcessors.PreProcessor;
 
 /**
- *
+ * A static entry point for the Carlo Bruscani General Assembler.
  * @author Victor G. Brusca, Middlemind Games 07-19-2021 8:51 AM EST
  */
 @SuppressWarnings({"null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class GenAsm {
+    /**
+     * A static string representing the JSON object sets file name. This file contains all the JSON object data to load for this assembler run.
+     */
     public static String ASM_SETS_FILE_NAME = "";
+    
+    /**
+     * A static string representing the target instruction set to use for this assembler run.
+     */    
     public static String ASM_TARGET_SET = "";
+    
+    /**
+     * A static string representing the full class name of the Java class used to load the JSON sets file name.
+     */    
     public static String ASM_SETS_LOADER_CLASS = "";
+    
+    /**
+     * A static string representing the full class name of the Java class used to hold the loaded sets JSON object.
+     */    
     public static String ASM_SETS_TARGET_CLASS = "";
+
+    /**
+     * A static instance of the JSON object that holds all the instruction sets loaded for this assembler run. 
+     */
     public static JsonObjIsSets ASM_SETS = null;
+
+    /**
+     * A static instance of the JSON object that holds the instruction set JSON data files for this assembler run. 
+     */
     public static JsonObjIsSet ASM_SET = null;    
+
+    /**
+     * A static string representing the full class name of the assembler to use for this run.
+     */
     public static String ASM_ASSEMBLER_CLASS = "";
+    
+    /**
+     * A static instance of the assembler loaded for this run.
+     */    
     public static Assembler ASM_ASSEMBLER = null;
+
+    /**
+     * A static string representation of the full file name of the assembly source file.
+     */    
     public static String ASM_ASSEMBLY_SOURCE_FILE = "";
+
+    /**
+     * A static string representation of the full class name of the linker to use for this run.
+     */
     public static String ASM_LINKER_CLASS = "";
+
+    /**
+     * A static instance of the linker to use for this run.
+     */    
     public static Linker ASM_LINKER = null;
+    
+    /**
+     * 
+     */    
     public static String ASM_PREPROCESSOR_CLASS = null;
+    
+    /**
+     * 
+     */    
     public static PreProcessor ASM_PREPROCESSOR = null;
+    
+    /**
+     * 
+     */    
     public static String ASM_ROOT_OUTPUT_DIR = "";
+    
+    /**
+     * 
+     */    
     public static int ARG_LEN_TARGET = 9;
     
-    //TODO: Compile test I-K in both GenAsm and vasm and store the listings in the proper cfg directory. Compare GenAsm to vasm listing results for test programs I-K.
-    
+    /**
+     * 
+     * @param args
+     * @throws Exception 
+     */
     public static void main(String[] args) throws Exception {
         if(args == null || args.length < 8) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
