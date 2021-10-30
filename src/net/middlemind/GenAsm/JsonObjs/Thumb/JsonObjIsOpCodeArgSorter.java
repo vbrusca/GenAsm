@@ -7,6 +7,9 @@ import java.util.Comparator;
  * @author Victor G. Brusca, Middlemind Games 08/15/2021 1:42 PM EST
  */
 public class JsonObjIsOpCodeArgSorter implements Comparator<JsonObjIsOpCodeArg> {
+    /**
+     * 
+     */
     public enum JsonObjIsOpCodeArgSorterType {
         BIT_SERIES_ASC,
         BIT_SERIES_DSC,
@@ -16,15 +19,27 @@ public class JsonObjIsOpCodeArgSorter implements Comparator<JsonObjIsOpCodeArg> 
         ARG_INDEX_DSC,
     }
     
+    /**
+     * 
+     */    
     public JsonObjIsOpCodeArgSorterType sortType = JsonObjIsOpCodeArgSorterType.ARG_INDEX_ASC;
-    
+
+    /**
+     * 
+     */    
     public JsonObjIsOpCodeArgSorter() {
     }
     
+    /**
+     * 
+     */    
     public JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorterType sType) {
         sortType = sType;
     }
     
+    /**
+     * 
+     */    
     @Override
     public int compare(JsonObjIsOpCodeArg a, JsonObjIsOpCodeArg b) {
         if(sortType == JsonObjIsOpCodeArgSorterType.BIT_SERIES_ASC) {
