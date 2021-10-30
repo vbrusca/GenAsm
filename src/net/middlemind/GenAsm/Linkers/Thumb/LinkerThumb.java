@@ -15,10 +15,18 @@ import net.middlemind.GenAsm.Tokeners.TokenLine;
 import net.middlemind.GenAsm.Utils;
 
 /**
- *
+ * An implementation of the linker interface used to link areas of a source assembly file for the ARM Thumb instruction set.
  * @author Victor G. Brusca, Middlemind Games 09/24/2021 10:31 AM EST
  */
 public class LinkerThumb implements Linker {
+    /**
+     * 
+     * @param assembler
+     * @param assemblySourceFile
+     * @param outputDir
+     * @param otherObj
+     * @throws Exception 
+     */
     @Override
     public void RunLinker(Assembler assembler, String assemblySourceFile, String outputDir, Object otherObj) throws Exception {
         Logger.wrl("LinkerThumb: RunLinker");
@@ -240,6 +248,12 @@ public class LinkerThumb implements Linker {
         FileUnloader.WriteBuffer(Paths.get(outputDir, "output_assembly_listing_endian_lil.bin").toString(), data);
     }
     
+    /**
+     * A method used to split a binary string into bytes and add them to the data argument.
+     * @param binStr    The binary string to split into bytes to add to the data argument.
+     * @param data      A data structure to store the extracted bytes.
+     * @return          An integer representing the number of bytes added to the data argument.
+     */
     public int AddBytes(String binStr, ArrayList<Byte> data) {
         int len = binStr.length()/8;
         String s = null;
@@ -250,8 +264,7 @@ public class LinkerThumb implements Linker {
             b = (byte)Integer.parseInt(s, 2);
             data.add(b);
             ret++;
-        }        
-        //Logger.wrl("DataSize: " + data.size());
+        }
         return ret;
     }
 }

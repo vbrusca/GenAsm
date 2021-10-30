@@ -8,50 +8,53 @@ import net.middlemind.GenAsm.Lexers.Lexer;
 import net.middlemind.GenAsm.Utils;
 
 /**
- * A class used to lexerize a source assembly file for the ARM Thumb instruction set.
+ * An implementation of the lexer interface used to lexerize a source assembly file for the ARM Thumb instruction set.
  * This is a simple lexer implementation that can most likely be used for other instruction sets but is named as such because it belongs
  * to the Thumb implementation.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 3:17 PM EST
  */
 public class LexerThumb implements Lexer {
     /**
-     * 
+     * A static array of characters that are text separators.
      */
     public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
     
     /**
-     * 
+     * A static array of characters that are sticky text separators.
      */    
     public static char[] CHAR_STICKY_SEPARATORS = { };
 
     /**
-     * 
+     * A static array of characters that are new artifact separators
      */
     public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
 
     /**
-     * 
+     * A static array of characters that are group start characters.
      */
     public static char[] CHAR_GROUP_START = { '[', '{' };
 
     /**
-     * 
+     * A static array of characters that are group stop characters.
      */
     public static char[] CHAR_GROUP_STOP = { ']', '}' };
 
     /**
-     * 
+     * A static array of characters that are white space characters.
      */
     public static char[] CHAR_WHITE_SPACE = { ' ', '\t' };
     
     /**
-     * 
-     */    
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */   
     public String obj_name = "LexerSimple";
 
     /**
-     * 
-     */    
+     * A method used to check if the specified subject char is contained by the array argument.
+     * @param array An array of characters to search.
+     * @param subj  A subject character to search for.
+     * @return      A Boolean value indicating if the subj character is found.
+     */
     private boolean Contains(char[] array, char subj) {
         for(char c : array) {
             if(c == subj) {
@@ -62,8 +65,10 @@ public class LexerThumb implements Lexer {
     }
     
     /**
-     * 
-     */    
+     * A method used to lexerize an entire file of assembly source code.
+     * @param file  A list of strings that represent the assembly source code to process.
+     * @return      An array list of artifact lines that are extracted from the assembly source code.
+     */
     @Override
     public ArrayList<ArtifactLine> FileLexerize(List<String> file) {
         ArrayList<ArtifactLine> ret = new ArrayList<>();
@@ -76,8 +81,11 @@ public class LexerThumb implements Lexer {
     }    
     
     /**
-     * 
-     */    
+     * A method that lexerizes a line of assembly source code.
+     * @param line      A string representation of the line to lexerize.
+     * @param lineNum   An integer representation of the line number of the string to lexerize.
+     * @return          An artifact line extracted from the line of assembly source code.
+     */
     @Override
     @SuppressWarnings({"UnnecessaryContinue", "UnusedAssignment", "null"})
     public ArtifactLine LineLexerize(String line, int lineNum) {

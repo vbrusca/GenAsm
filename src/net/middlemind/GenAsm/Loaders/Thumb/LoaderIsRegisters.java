@@ -9,12 +9,23 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegisters;
 import net.middlemind.GenAsm.Loaders.Loader;
 
 /**
- *
+ * A class used to load JSON instruction set registers object data.
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 2:23 PM EST
  */
 public class LoaderIsRegisters implements Loader {
+    /**
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */    
     public String obj_name = "LoaderIsRegisters";
-    
+
+    /**
+     * A method used to parse and load JSON data files.
+     * @param json              The contents of the JSON file to load.
+     * @param targetClass       A full java class representation of the Java class to load the JSON data into.
+     * @param fileName          The full path to the JSON data file to load.
+     * @return                  A JsonObj instance the represents the JSON data loaded.
+     * @throws ExceptionLoader  An exception is thrown if there is an issue during the JSON data load.
+     */          
     @Override
     public JsonObjIsRegisters ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 

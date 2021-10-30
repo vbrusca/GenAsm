@@ -11,12 +11,23 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodes;
 import net.middlemind.GenAsm.Loaders.Loader;
 
 /**
- *
+ * A class used to load JSON instruction set op-code object data.
  * @author Victor G. Brusca, Middlemind Games 08/04/2021 7:33 AM EST
  */
 public class LoaderIsOpCodes implements Loader {
+    /**
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */    
     public String obj_name = "LoaderIsOpCodes";
-    
+
+    /**
+     * A method used to parse and load JSON data files.
+     * @param json              The contents of the JSON file to load.
+     * @param targetClass       A full java class representation of the Java class to load the JSON data into.
+     * @param fileName          The full path to the JSON data file to load.
+     * @return                  A JsonObj instance the represents the JSON data loaded.
+     * @throws ExceptionLoader  An exception is thrown if there is an issue during the JSON data load.
+     */       
     @Override
     public JsonObjIsOpCodes ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 
@@ -79,6 +90,11 @@ public class LoaderIsOpCodes implements Loader {
         }
     }
     
+    /**
+     * A method used to recursively process op-code sub-arguments.
+     * @param sub_args  A list of op-code sub-arguments to process.
+     * @param fileName  A string representing the file name of the JSON data file.
+     */
     private void RecursiveSubArgProcessing(List<JsonObjIsOpCodeArg> sub_args, String fileName) {
         if(sub_args != null) {
             for(JsonObjIsOpCodeArg llentry : sub_args) {
