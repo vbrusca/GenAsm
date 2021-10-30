@@ -80,97 +80,251 @@ import net.middlemind.GenAsm.Utils;
 @SuppressWarnings({"UseOfObsoleteCollectionType", "MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
     /**
-     * 
+     * A static string representing the big indian binary encoding.
      */
     public static String ENDIAN_NAME_BIG = "BIG";
     
     /**
-     * 
+     * A static string representing the little indian binary encoding.
      */
     public static String ENDIAN_NAME_LITTLE = "LITTLE";
     
     /**
-     * 
+     * A static string representing the Java default endianess.
      */
     public static String ENDIAN_NAME_JAVA_DEFAULT = "BIG";
     
     /**
-     * 
+     * A static string representing the default instruction alignment, WORD or HALFWORD>
      */
     public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "HALFWORD";
     
     /**
-     * 
+     * A static integer representing the number of bytes used to align the source code.
      */
     public static int INSTRUCTION_ALIGNMENT_BYTES = 2;
     
     /**
-     * 
+     * A static integer representing the number of bits used to describe one op-code instruction.
      */    
     public static int INSTRUCTION_ALIGNMENT_BITS = 16;
     
     /**
-     * 
+     * A static string representing the name of the left shift type, LEFT.
      */    
     public static String NUMBER_SHIFT_NAME_LEFT = "LEFT";
     
     /**
-     * 
+     * A static string representing the name of the right shift type, RIGHT.
      */    
     public static String NUMBER_SHIFT_NAME_RIGHT = "RIGHT";
     
     /**
-     * 
+     * A static string representing the special ADD op-code check.
      */    
     public static String SPECIAL_ADD_OP_CODE_CHECK = "101100000";
     
+    /**
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */
     public String obj_name = "AssemblerThumb";
+
+    /**
+     * 
+     */    
     public JsonObjIsSet isaDataSet;
+
+    /**
+     * 
+     */    
     public Map<String, JsonObj> isaData;
+
+    /**
+     * 
+     */    
     public Map<String, Loader> isaLoader;
+
+    /**
+     * 
+     */    
     public Map<String, String> jsonSource;
-    
+
+    /**
+     * 
+     */        
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
+
+    /**
+     * 
+     */        
     public JsonObjIsValidLines jsonObjIsValidLines;
+
+    /**
+     * 
+     */    
     public JsonObjIsOpCodes jsonObjIsOpCodes;
+
+    /**
+     * 
+     */    
     public JsonObjIsDirectives jsonObjIsDirectives;
+
+    /**
+     * 
+     */    
     public JsonObjIsRegisters jsonObjIsRegisters;    
-    
+
+    /**
+     * 
+     */        
     public String asmSourceFile;
+
+    /**
+     * 
+     */    
     public List<String> asmDataSource;
+    
+    /**
+     * 
+     */        
     public List<ArtifactLine> asmDataLexed;
+
+    /**
+     * 
+     */    
     public List<TokenLine> asmDataTokened;
+
+    /**
+     * 
+     */    
     public Symbols symbols;
-    
+
+    /**
+     * 
+     */        
     public List<String> requiredDirectives;    
+
+    /**
+     * 
+     */    
     public AreaThumb areaThumbCode;
+
+    /**
+     * 
+     */    
     public AreaThumb areaThumbData;
+
+    /**
+     * 
+     */    
     public List<TokenLine> asmAreaLinesCode;
+
+    /**
+     * 
+     */    
     public List<TokenLine> asmAreaLinesData;    
-    
+
+    /**
+     * 
+     */        
     public int lineLenBytes = 2;
+
+    /**
+     * 
+     */    
     public int lineLenHalfWords = 1;
+    
+    /**
+     * 
+     */        
     public int lineLenWords = 0;
+
+    /**
+     * 
+     */    
     public JsonObjBitSeries lineBitSeries;
+
+    /**
+     * 
+     */    
     public JsonObjNumRange lineNumRange;
     
+    /**
+     * 
+     */    
     public int pcPreFetchBytes;
+    
+    /**
+     * 
+     */        
     public int pcPreFetchWords;
+
+    /**
+     * 
+     */    
     public int pcPreFetchHalfwords;
+
+    /**
+     * 
+     */    
     public Integer asmStartLineNumber; 
+
+    /**
+     * 
+     */    
     public boolean isEndianBig = false;
+
+    /**
+     * 
+     */    
     public boolean isEndianLittle = true; 
-    
+
+    /**
+     * 
+     */        
     public TokenLine lastLine;
+
+    /**
+     * 
+     */    
     public Token lastToken;
+
+    /**
+     * 
+     */    
     public int lastStep;
+
+    /**
+     * 
+     */    
     public String assemblyTitle;
+
+    /**
+     * 
+     */    
     public Object other;
+
+    /**
+     * 
+     */    
     public String rootOutputDir;
-    
+
+    /**
+     * 
+     */        
     public AssemblerEventHandlerThumb eventHandler;
     
     //MAIN METHOD
+    /**
+     * 
+     * @param jsonIsSet
+     * @param assemblySourceFile
+     * @param assemblySource
+     * @param outputDir
+     * @param otherObj
+     * @param asmEventHandler
+     * @throws Exception 
+     */
     @Override
     public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, List<String> assemblySource, String outputDir, Object otherObj, AssemblerEventHandler asmEventHandler) throws Exception {
         try {
@@ -182,7 +336,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("AssemblerThumb: RunAssembler");
             other = otherObj;
             rootOutputDir = outputDir;
-            asmStartLineNumber = new Integer(0);
+            asmStartLineNumber = 0;
             
             jsonSource = new Hashtable<String, String>();
             isaLoader = new Hashtable<String, Loader>();        
@@ -363,6 +517,18 @@ public class AssemblerThumb implements Assembler {
     }
             
     //DIRECTIVE METHODS
+    /**
+     * 
+     * @param step
+     * @throws ExceptionMissingRequiredDirective
+     * @throws ExceptionRedefinitionOfAreaDirective
+     * @throws ExceptionNoDirectiveFound
+     * @throws ExceptionNoParentSymbolFound
+     * @throws ExceptionMalformedEntryEndDirectiveSet
+     * @throws ExceptionNoAreaDirectiveFound
+     * @throws ExceptionRedefinitionOfLabel
+     * @throws ExceptionNoSymbolFound 
+     */
     public void PopulateDirectiveArgAndAreaData(int step) throws ExceptionMissingRequiredDirective, ExceptionRedefinitionOfAreaDirective, ExceptionNoDirectiveFound, ExceptionNoParentSymbolFound, ExceptionMalformedEntryEndDirectiveSet, ExceptionNoAreaDirectiveFound, ExceptionRedefinitionOfLabel, ExceptionNoSymbolFound {
         if(eventHandler != null) {
             eventHandler.PopulateDirectiveArgAndAreaDataPre(step, this);
@@ -695,7 +861,7 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineLenBytes;
                         if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
                             activeLineCount += lineLenBytes;
-                            line.bitLength = lineLenBytes * 2;
+                            line.byteLength = lineLenBytes * 2;
                         }
                     }
                 }
@@ -741,7 +907,7 @@ public class AssemblerThumb implements Assembler {
                         activeLineCount += lineLenBytes;
                         if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
                             activeLineCount += lineLenBytes;
-                            line.bitLength = lineLenBytes * 2;
+                            line.byteLength = lineLenBytes * 2;
                         }                        
                     }
                 }
@@ -762,7 +928,7 @@ public class AssemblerThumb implements Assembler {
                     activeLineCount += lineLenBytes;
                     if(line.isLineOpCode && line.payloadOpCode.equals(JsonObjIsOpCodes.NAME_BL)) {
                         activeLineCount += lineLenBytes;
-                        line.bitLength = lineLenBytes * 2;
+                        line.byteLength = lineLenBytes * 2;
                     }                    
                 }
             }
@@ -776,6 +942,11 @@ public class AssemblerThumb implements Assembler {
         }        
     }    
     
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoDirectiveFound 
+     */
     public void ValidateDirectiveLines(int step) throws ExceptionNoDirectiveFound {
         if(eventHandler != null) {
             eventHandler.ValidateDirectiveLinesPre(step, this);
@@ -838,6 +1009,14 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
+    /**
+     * 
+     * @param directiveMatches
+     * @param args
+     * @param directiveToken
+     * @return
+     * @throws ExceptionNoDirectiveFound 
+     */
     public JsonObjIsDirective FindDirectiveArgMatches(List<JsonObjIsDirective> directiveMatches, List<Token> args, Token directiveToken) throws ExceptionNoDirectiveFound {
         JsonObjIsDirectiveArg directiveArg = null;
         Token argToken = null;
@@ -886,6 +1065,12 @@ public class AssemblerThumb implements Assembler {
         throw new ExceptionNoDirectiveFound("Could not find a directive that has matching arguments for line number " + directiveToken.lineNumAbs + " with directive '" + directiveToken.source + "' at directive argument index " + directiveArgIdx);
     }    
     
+    /**
+     * 
+     * @param directiveName
+     * @param argLen
+     * @return 
+     */
     public List<JsonObjIsDirective> FindDirectiveMatches(String directiveName, int argLen) {
         List<JsonObjIsDirective> ret = new ArrayList<>();
         for(JsonObjIsDirective directive : jsonObjIsDirectives.is_directives) {
@@ -896,6 +1081,11 @@ public class AssemblerThumb implements Assembler {
         return ret;
     }
     
+    /**
+     * 
+     * @param line
+     * @return 
+     */
     public Token FindDirectives(TokenLine line) {
         for(Token token : line.payload) {
             if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
@@ -906,6 +1096,15 @@ public class AssemblerThumb implements Assembler {
     }
     
     //OPCODE METHODS
+    /**
+     * 
+     * @param step
+     * @throws ExceptionRedefinitionOfLabel
+     * @throws ExceptionNoOpCodeFound
+     * @throws ExceptionNoParentSymbolFound
+     * @throws ExceptionOpCodeAsArgument
+     * @throws ExceptionMissingRequiredDirective 
+     */
     public void PopulateOpCodeAndArgData(int step) throws ExceptionRedefinitionOfLabel, ExceptionNoOpCodeFound, ExceptionNoParentSymbolFound, ExceptionOpCodeAsArgument, ExceptionMissingRequiredDirective {
         if(eventHandler != null) {
             eventHandler.PopulateOpCodeAndArgDataPre(step, this);
@@ -1085,6 +1284,12 @@ public class AssemblerThumb implements Assembler {
         }        
     }    
     
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoOpCodeFound
+     * @throws ExceptionNoOpCodeLineFound 
+     */
     public void ValidateOpCodeLines(int step) throws ExceptionNoOpCodeFound, ExceptionNoOpCodeLineFound {
         if(eventHandler != null) {
             eventHandler.ValidateOpCodeLinesPre(step, this);
@@ -1173,6 +1378,13 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
+    /**
+     * 
+     * @param lineNum
+     * @param label
+     * @return
+     * @throws ExceptionNoOpCodeLineFound 
+     */
     public TokenLine FindNextOpCodeLine(int lineNum, String label) throws ExceptionNoOpCodeLineFound {
         if(lineNum + 1 < asmDataTokened.size()) {
             for(int i = lineNum + 1; i < asmDataTokened.size(); i++) {
@@ -1185,6 +1397,14 @@ public class AssemblerThumb implements Assembler {
         throw new ExceptionNoOpCodeLineFound("Could not find an OpCode line for label '" + label + "' on empty line " + lineNum);
     }
     
+    /**
+     * 
+     * @param opCodeMatches
+     * @param args
+     * @param opCodeToken
+     * @return
+     * @throws ExceptionNoOpCodeFound 
+     */
     public JsonObjIsOpCode FindOpCodeArgMatches(List<JsonObjIsOpCode> opCodeMatches, List<Token> args, Token opCodeToken) throws ExceptionNoOpCodeFound {
         JsonObjIsOpCodeArg opCodeArg = null;
         JsonObjIsOpCodeArg opCodeArgSub = null;
@@ -1319,6 +1539,12 @@ public class AssemblerThumb implements Assembler {
         throw new ExceptionNoOpCodeFound("Could not find an opCode that has matching arguments for line number " + opCodeToken.lineNumAbs + " with opCode '" + opCodeToken.source + "' at opCode argument index " + opCodeArgIdx + " with sub argument index " + opCodeArgIdxSub);
     }    
     
+    /**
+     * 
+     * @param opCodeName
+     * @param argLen
+     * @return 
+     */
     public List<JsonObjIsOpCode> FindOpCodeMatches(String opCodeName, int argLen) {
         List<JsonObjIsOpCode> ret = new ArrayList<>();
         for(JsonObjIsOpCode opCode : jsonObjIsOpCodes.is_op_codes) {
@@ -1330,10 +1556,24 @@ public class AssemblerThumb implements Assembler {
     }
     
     //ARG TOKEN COUNTER METHODS
+    /**
+     * 
+     * @param payload
+     * @param argCount
+     * @return 
+     */
     public int CountArgTokens(List<Token> payload, int argCount) {
         return CountArgTokens(payload, argCount, JsonObjIsEntryTypes.NAME_CAT_ARG_OPCODE, true);
     }
     
+    /**
+     * 
+     * @param payload
+     * @param argCount
+     * @param argCategory
+     * @param isOpCodeArg
+     * @return 
+     */
     public int CountArgTokens(List<Token> payload, int argCount, String argCategory, boolean isOpCodeArg) {
         for(Token token : payload) {
             //lastToken = token;
@@ -1364,6 +1604,12 @@ public class AssemblerThumb implements Assembler {
     }
        
     //CLEAN TOKEN STRUCTURE
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoClosingBracketFound
+     * @throws ExceptionListAndGroup 
+     */
     public void CollapseListAndGroupTokens(int step) throws ExceptionNoClosingBracketFound, ExceptionListAndGroup {
         if(eventHandler != null) {
             eventHandler.CollapseListAndGroupTokensPre(step, this);
@@ -1487,6 +1733,12 @@ public class AssemblerThumb implements Assembler {
         }
     }    
     
+    /**
+     * 
+     * @param entryName
+     * @return
+     * @throws ExceptionNoEntryFound 
+     */
     public JsonObjIsEntryType FindEntryType(String entryName) throws ExceptionNoEntryFound {        
         for(JsonObjIsEntryType entry : jsonObjIsEntryTypes.is_entry_types) {
             if(entry.type_name.equals(entryName)) {
@@ -1496,6 +1748,12 @@ public class AssemblerThumb implements Assembler {
         throw new ExceptionNoEntryFound("Could not find entry by name, '" + entryName + "', in loaded entry types.");
     }
     
+    /**
+     * 
+     * @param range
+     * @param rangeDelim
+     * @return 
+     */
     public String CleanRegisterRangeString(String range, String rangeDelim) {
         String ret = "";
         for(char c : range.toCharArray()) {
@@ -1506,6 +1764,10 @@ public class AssemblerThumb implements Assembler {
         return ret;
     }
     
+    /**
+     * 
+     * @param token 
+     */
     public void CleanTokenSource(Token token) {
         if(token != null && !Utils.IsStringEmpty(token.source)) {
             token.source = token.source.replace(JsonObjIsOpCode.DEFAULT_ARG_SEPARATOR, "");
@@ -1513,6 +1775,12 @@ public class AssemblerThumb implements Assembler {
         }
     }
     
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoEntryFound
+     * @throws ExceptionMalformedRange 
+     */
     public void ExpandRegisterRangeTokens(int step) throws ExceptionNoEntryFound, ExceptionMalformedRange {
         if(eventHandler != null) {
             eventHandler.ExpandRegisterRangeTokensPre(step, this);
@@ -1643,6 +1911,10 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
+    /**
+     * 
+     * @param step 
+     */
     public void CollapseCommentTokens(int step) {
         if(eventHandler != null) {
             eventHandler.CollapseCommentTokensPre(step, this);
@@ -1695,6 +1967,18 @@ public class AssemblerThumb implements Assembler {
     }
     
     //LOAD, PARSE, LINK JSONOBJ DATA METHODS
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoEntryFound
+     * @throws ExceptionLoader
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException 
+     */
     public void LoadAndParseJsonObjData(int step) throws ExceptionNoEntryFound, ExceptionLoader, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         if(eventHandler != null) {
             eventHandler.LoadAndParseJsonObjDataPre(step, this);
@@ -1795,6 +2079,11 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
+    /**
+     * 
+     * @param step
+     * @throws ExceptionJsonObjLink 
+     */
     public void LinkJsonObjData(int step) throws ExceptionJsonObjLink {
         if(eventHandler != null) {
             eventHandler.LinkJsonObjDataPre(step, this);
@@ -1820,6 +2109,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     //LEX SOURCE CODE
+    /**
+     * 
+     * @param step
+     * @throws IOException 
+     */
     public void LexerizeAssemblySource(int step) throws IOException {
         if(eventHandler != null) {
             eventHandler.LexerizeAssemblySourcePre(step, this);
@@ -1835,6 +2129,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     //TOKENIZE AND VALIDATE LEXERIZED LINES
+    /**
+     * 
+     * @param step
+     * @throws ExceptionNoTokenerFound 
+     */
     public void TokenizeLexerArtifacts(int step) throws ExceptionNoTokenerFound {
         if(eventHandler != null) {
             eventHandler.TokenizeLexerArtifactsPre(step, this);
@@ -1849,6 +2148,14 @@ public class AssemblerThumb implements Assembler {
         }         
     }
     
+    /**
+     * 
+     * @param validLine
+     * @param token
+     * @param entry
+     * @param index
+     * @return 
+     */
     public int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {
         int count = 0;
         for(JsonObjIsValidLineEntry validLineEntry : validLine.is_valid_line) {
@@ -1866,6 +2173,14 @@ public class AssemblerThumb implements Assembler {
         return null;
     }
     
+    /**
+     * 
+     * @param step
+     * @param line
+     * @param validLines
+     * @param validLineEmpty
+     * @return 
+     */
     public boolean ValidateTokenizedLine(int step, TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
         if(eventHandler != null) {
             eventHandler.ValidateTokenizedLinePre(step, this, line, validLines, validLineEmpty);
@@ -1926,6 +2241,12 @@ public class AssemblerThumb implements Assembler {
         return false;
     }
     
+    /**
+     * 
+     * @param step
+     * @return
+     * @throws ExceptionNoValidLineFound 
+     */
     public boolean ValidateTokenizedLines(int step) throws ExceptionNoValidLineFound {
         if(eventHandler != null) {
             eventHandler.ValidateTokenizedLinesPre(step, this);
@@ -1955,6 +2276,25 @@ public class AssemblerThumb implements Assembler {
     }
     
     //BUILD OPCODES AND DIRECTIVES
+    /**
+     * 
+     * @param step
+     * @param areaLines
+     * @param area
+     * @throws ExceptionOpCodeAsArgument
+     * @throws ExceptionNoSymbolFound
+     * @throws ExceptionUnexpectedTokenWithSubArguments
+     * @throws ExceptionNumberInvalidShift
+     * @throws ExceptionNumberOutOfRange
+     * @throws ExceptionNoNumberRangeFound
+     * @throws ExceptionUnexpectedTokenType
+     * @throws ExceptionInvalidEntry
+     * @throws ExceptionInvalidArea
+     * @throws ExceptionInvalidAssemblyLine
+     * @throws ExceptionDirectiveArgNotSupported
+     * @throws ExceptionMissingDataDirective
+     * @throws ExceptionNoSymbolValueFound 
+     */
     public void BuildBinLines(int step, List<TokenLine> areaLines, AreaThumb area) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidArea, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective, ExceptionNoSymbolValueFound {
         if(eventHandler != null) {
             eventHandler.BuildBinLinesPre(step, this, areaLines, area);
@@ -1982,6 +2322,22 @@ public class AssemblerThumb implements Assembler {
         }        
     }
         
+    /**
+     * 
+     * @param step
+     * @param line
+     * @throws ExceptionOpCodeAsArgument
+     * @throws ExceptionNoSymbolFound
+     * @throws ExceptionUnexpectedTokenWithSubArguments
+     * @throws ExceptionNumberInvalidShift
+     * @throws ExceptionNumberOutOfRange
+     * @throws ExceptionNoNumberRangeFound
+     * @throws ExceptionUnexpectedTokenType
+     * @throws ExceptionInvalidEntry
+     * @throws ExceptionInvalidAssemblyLine
+     * @throws ExceptionDirectiveArgNotSupported
+     * @throws ExceptionMissingDataDirective 
+     */
     public void BuildBinDirective(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
         if(eventHandler != null) {
             eventHandler.BuildBinDirectivePre(step, this, line);
@@ -2047,6 +2403,21 @@ public class AssemblerThumb implements Assembler {
         }        
     }
     
+    /**
+     * 
+     * @param step
+     * @param line
+     * @throws ExceptionOpCodeAsArgument
+     * @throws ExceptionNoSymbolFound
+     * @throws ExceptionUnexpectedTokenWithSubArguments
+     * @throws ExceptionNumberInvalidShift
+     * @throws ExceptionNumberOutOfRange
+     * @throws ExceptionNoNumberRangeFound
+     * @throws ExceptionUnexpectedTokenType
+     * @throws ExceptionInvalidEntry
+     * @throws ExceptionInvalidAssemblyLine
+     * @throws ExceptionNoSymbolValueFound 
+     */
     public void BuildBinOpCode(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionNoSymbolValueFound {
         if(eventHandler != null) {
             eventHandler.BuildBinOpCodePre(step, this, line);
@@ -2603,7 +2974,7 @@ public class AssemblerThumb implements Assembler {
                             inBl = false;
                             //Logger.wrl("BL line 1: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_1 + halfHi + ", " + tInt);
                             //Logger.wrl("BL line 2: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_2 + halfLo);
-                            line.bitLength = 4;
+                            line.byteLength = 4;
                         }
                         
                         entry.tokenOpCodeArg.value = tInt;
