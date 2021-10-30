@@ -17,13 +17,23 @@ import net.middlemind.GenAsm.Logger;
 import net.middlemind.GenAsm.Utils;
 
 /**
- *
+ * An implementation of the tokener interface this class is used to tokenize lexerized assembly source code.
  * @author Victor G. Brusca, Middlemind Games 07/31/2021 5:39 PM EST
  */
 public class TokenerThumb implements Tokener {
-
+    /**
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */
     public String obj_name = "TokenerThumb";
     
+    /**
+     * A method used to tokenize an artifact line.
+     * @param line                      The artifact line to tokenize.
+     * @param lineNum                   The line number of the artifact line being tokenized.
+     * @param entryTypes                An object representing the instruction sets entry types.
+     * @return                          A token line derived from the artifact lines.
+     * @throws ExceptionNoTokenerFound  An exception is thrown if there is an error during the tokening process.
+     */
     @Override
     @SuppressWarnings({"CallToPrintStackTrace", "null"})
     public TokenLine LineTokenize(ArtifactLine line, int lineNum, JsonObj entryTypes) throws ExceptionNoTokenerFound {
@@ -437,6 +447,13 @@ public class TokenerThumb implements Tokener {
         }
     }
 
+    /**
+     * A method used to tokenize a lexerized assembly source file.
+     * @param file                      A list of artifact lines that represent the assembly source file to process.
+     * @param entryTypes                An object representing the instruction sets entry types.
+     * @return                          A list of token line instances that represent the processed list of artifact lines.
+     * @throws ExceptionNoTokenerFound  An exception is thrown if there is an error during the file tokening process.
+     */    
     @Override
     public List<TokenLine> FileTokenize(List<ArtifactLine> file, JsonObj entryTypes) throws ExceptionNoTokenerFound {
         int lineNum = 0;
