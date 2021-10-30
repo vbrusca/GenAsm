@@ -8,27 +8,27 @@ import net.middlemind.GenAsm.Logger;
  */
 public class JsonObjBitRep extends JsonObjBase {
     /**
-     * 
+     * A string representing the name of this class. This is used to define the class in JSON output files.
      */
     public String obj_name = "JsonObjBitRep";
     
     /**
-     * 
+     * A string representation of a binary number.
      */
     public String bit_string;
     
     /**
-     * 
+     * An integer representation of a binary number.
      */
     public int bit_int;
     
     /**
-     * 
+     * An integer representing the length of this binary representation.
      */
     public int bit_len;
     
     /**
-     * 
+     * A method that is used to print a string representation of this JSON object to standard output.
      */
     @Override
     public void Print() {
@@ -36,8 +36,8 @@ public class JsonObjBitRep extends JsonObjBase {
     }    
     
     /**
-     * 
-     * @param prefix 
+     * A method that is used to print a string representation of this JSON object to standard output with a string prefix.
+     * @param prefix    A string that is used as a prefix to the string representation of this JSON object.
      */
     @Override
     public void Print(String prefix) {

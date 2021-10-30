@@ -74,32 +74,32 @@ public class GenAsm {
     public static Linker ASM_LINKER = null;
     
     /**
-     * 
+     * A static string representation of the full class name of the pre-processor to use for this run.
      */    
     public static String ASM_PREPROCESSOR_CLASS = null;
     
     /**
-     * 
+     * A static instance of the pre-processor to use for this run.
      */    
     public static PreProcessor ASM_PREPROCESSOR = null;
     
     /**
-     * 
+     * A static string representation of the target output directory for this run.
      */    
     public static String ASM_ROOT_OUTPUT_DIR = "";
     
     /**
-     * 
+     * A static integer representing the target length or arguments needed to perform a customized run.
      */    
     public static int ARG_LEN_TARGET = 9;
     
     /**
-     * 
-     * @param args
-     * @throws Exception 
+     * The static main entry point for this assembler run.
+     * @param args          An array of strings used as arguments for this assembler run.
+     * @throws Exception    An exception is thrown if any are encountered during the assembler run.
      */
     public static void main(String[] args) throws Exception {
-        if(args == null || args.length < 8) {
+        if(args == null || args.length < ARG_LEN_TARGET) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
