@@ -50,7 +50,6 @@ import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Assemblers.AssemblerEventHandler;
 import net.middlemind.GenAsm.Assemblers.Thumb.BuildOpCodeEntryThumbSorter.BuildOpCodeEntryThumbSorterType;
-import net.middlemind.GenAsm.Assemblers.TwosCompliment;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionDirectiveArgNotSupported;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidArea;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionInvalidAssemblyLine;
@@ -75,19 +74,54 @@ import net.middlemind.GenAsm.Tokeners.TokenSorter.TokenSorterType;
 import net.middlemind.GenAsm.Utils;
 
 /**
- *
+ * A class used to assemble ARM Thumb assembly source code.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 12:08 PM EST
  */
 @SuppressWarnings({"UseOfObsoleteCollectionType", "MismatchedQueryAndUpdateOfCollection", "UseSpecificCatch", "null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})
 public class AssemblerThumb implements Assembler {
+    /**
+     * 
+     */
     public static String ENDIAN_NAME_BIG = "BIG";
+    
+    /**
+     * 
+     */
     public static String ENDIAN_NAME_LITTLE = "LITTLE";
-    public static String ENDIAN_NAME_JAVA_DEFAULT = "BIG";    
+    
+    /**
+     * 
+     */
+    public static String ENDIAN_NAME_JAVA_DEFAULT = "BIG";
+    
+    /**
+     * 
+     */
     public static String INSTRUCTION_ALIGNMENT_NAME_WORD = "HALFWORD";
+    
+    /**
+     * 
+     */
     public static int INSTRUCTION_ALIGNMENT_BYTES = 2;
+    
+    /**
+     * 
+     */    
     public static int INSTRUCTION_ALIGNMENT_BITS = 16;
+    
+    /**
+     * 
+     */    
     public static String NUMBER_SHIFT_NAME_LEFT = "LEFT";
-    public static String NUMBER_SHIFT_NAME_RIGHT = "RIGHT";    
+    
+    /**
+     * 
+     */    
+    public static String NUMBER_SHIFT_NAME_RIGHT = "RIGHT";
+    
+    /**
+     * 
+     */    
     public static String SPECIAL_ADD_OP_CODE_CHECK = "101100000";
     
     public String obj_name = "AssemblerThumb";

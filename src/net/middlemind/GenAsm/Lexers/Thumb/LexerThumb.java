@@ -8,19 +8,50 @@ import net.middlemind.GenAsm.Lexers.Lexer;
 import net.middlemind.GenAsm.Utils;
 
 /**
- *
+ * A class used to lexerize a source assembly file for the ARM Thumb instruction set.
+ * This is a simple lexer implementation that can most likely be used for other instruction sets but is named as such because it belongs
+ * to the Thumb implementation.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 3:17 PM EST
  */
 public class LexerThumb implements Lexer {
+    /**
+     * 
+     */
     public static char[] CHAR_SEPARATORS = { ',', ' ', '\t', ';' };
+    
+    /**
+     * 
+     */    
     public static char[] CHAR_STICKY_SEPARATORS = { };
+
+    /**
+     * 
+     */
     public static char[] CHAR_NEW_ARTIFACT_SEPARATORS = { ';' };    
+
+    /**
+     * 
+     */
     public static char[] CHAR_GROUP_START = { '[', '{' };
+
+    /**
+     * 
+     */
     public static char[] CHAR_GROUP_STOP = { ']', '}' };
+
+    /**
+     * 
+     */
     public static char[] CHAR_WHITE_SPACE = { ' ', '\t' };
     
+    /**
+     * 
+     */    
     public String obj_name = "LexerSimple";
-    
+
+    /**
+     * 
+     */    
     private boolean Contains(char[] array, char subj) {
         for(char c : array) {
             if(c == subj) {
@@ -30,6 +61,9 @@ public class LexerThumb implements Lexer {
         return false;
     }
     
+    /**
+     * 
+     */    
     @Override
     public ArrayList<ArtifactLine> FileLexerize(List<String> file) {
         ArrayList<ArtifactLine> ret = new ArrayList<>();
@@ -41,6 +75,9 @@ public class LexerThumb implements Lexer {
         return ret;
     }    
     
+    /**
+     * 
+     */    
     @Override
     @SuppressWarnings({"UnnecessaryContinue", "UnusedAssignment", "null"})
     public ArtifactLine LineLexerize(String line, int lineNum) {
