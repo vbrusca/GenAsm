@@ -94,7 +94,7 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public String set_name;
 
     /**
-     * 
+     * A list of instruction set directives used to link each individual directive to an object instance.
      */
     public List<JsonObjIsDirective> is_directives;
 
@@ -128,7 +128,6 @@ public class JsonObjIsDirectives extends JsonObjBase {
         }
     }    
         
-    
     /**
      * A method that is used to print a string representation of this JSON object to standard output.
      */   
