@@ -3,7 +3,7 @@ package net.middlemind.GenAsm.JsonObjs;
 import net.middlemind.GenAsm.Logger;
 
 /**
- * A class used to represent a JSON bit series object.
+ * A Java class used to represent a JSON bit series object.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 8:16 AM EST
  */
 public class JsonObjBitSeries extends JsonObjBase {

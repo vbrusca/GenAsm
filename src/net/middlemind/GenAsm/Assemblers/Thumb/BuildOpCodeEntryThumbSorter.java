@@ -5,7 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * A class used to sort a list of BuildOpCodeThumb entries. BuildOpCodeThumb entries are used to finalize the binary code of an assembly source line. 
+ * A class used to sort a list of BuildOpCodeThumb entries. 
+ * BuildOpCodeThumb entries are used to finalize the binary code of an assembly source line. 
  * @author Victor G. Brusca, Middlemind Games 08/15/2021 1:42 PM EST
  */
 public class BuildOpCodeEntryThumbSorter implements Comparator<BuildOpCodeThumb> {

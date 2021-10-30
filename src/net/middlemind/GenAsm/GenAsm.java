@@ -13,7 +13,7 @@ import net.middlemind.GenAsm.Linkers.Linker;
 import net.middlemind.GenAsm.PreProcessors.PreProcessor;
 
 /**
- * A static entry point for the Carlo Bruscani General Assembler.
+ * The static entry point class for the Carlo Bruscani General Assembler.
  * @author Victor G. Brusca, Middlemind Games 07-19-2021 8:51 AM EST
  */
 @SuppressWarnings({"null", "CallToPrintStackTrace", "UnusedAssignment", "Convert2Diamond", "ConvertToStringSwitch"})

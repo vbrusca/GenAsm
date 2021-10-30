@@ -4,7 +4,8 @@ import net.middlemind.GenAsm.Tokeners.Token;
 import net.middlemind.GenAsm.Tokeners.TokenLine;
 
 /**
- * A class that tracks the specifics of an assembly source area. An area is a block of assembly source lines.
+ * A class that tracks the specifics of an assembly source area.
+ * An area is a block of assembly source lines.
  * @author Victor G. Brusca, Middlemind Games 08/16/2021 1:29 PM EST
  */
 public class AreaThumb {

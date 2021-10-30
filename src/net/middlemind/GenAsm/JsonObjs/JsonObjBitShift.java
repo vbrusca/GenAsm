@@ -3,7 +3,7 @@ package net.middlemind.GenAsm.JsonObjs;
 import net.middlemind.GenAsm.Logger;
 
 /**
- * A class used to represent a JSON bit shift object.
+ * A Java class used to represent a JSON bit shift object.
  * @author Victor G. Brusca, Middlemind Games  08/03/2021 5:14 AM EST
  */
 public class JsonObjBitShift extends JsonObjBase {

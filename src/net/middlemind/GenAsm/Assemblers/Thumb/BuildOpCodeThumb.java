@@ -6,7 +6,7 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg;
 
 /**
- * A class used to represent a complete binary representation of the assembly line, i.e. OpCode entry.
+ * A class that holds a complete binary representation of a line of assembly code, ie OpCode entry.
  * @author Victor G. Brusca, Middlemind Games 08/17/2021 6:59 PM EST
  */
 public class BuildOpCodeThumb {

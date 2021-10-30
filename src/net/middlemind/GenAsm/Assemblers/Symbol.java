@@ -5,6 +5,7 @@ import net.middlemind.GenAsm.Tokeners.Token;
 
 /**
  * A class used to represent a Symbol which is a value place holder defined in the assembly source.
+ * Symbols are used to track labels used in the assembly source.
  * @author Victor G. Brusca, Middlemind Games 08/11/2021 7:28 AM EST
  */
 public class Symbol {

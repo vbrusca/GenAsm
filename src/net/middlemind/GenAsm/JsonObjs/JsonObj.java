@@ -4,6 +4,7 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionJsonObjLink;
 
 /**
  * An interface that represents a generic JSON object.
+ * This class is used as the base of all Java classes that are used to represent JSON objects.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 6:46 AM EST
  */
 public interface JsonObj {
