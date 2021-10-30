@@ -16,30 +16,85 @@ import net.middlemind.GenAsm.PreProcessors.PreProcessor;
 import net.middlemind.GenAsm.Utils;
 
 /**
- *
+ * An implementation of the pre-processor interface used to process thumb assembly source code.
  * @author Victor G. Brusca, Middlemind Games 10-06-2021 10:04 AM EST
  */
 @SuppressWarnings({"UnusedAssignment", "UseOfObsoleteCollectionType"})
 public class PreProcessorThumb implements PreProcessor {
+    /**
+     * A static array of strings representing the supported pre-processor directives.
+     */
     public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP" };
+
+    /**
+     * A static integer representing the array index of the include bin pre-processor directive.
+     */
     public static int PPD_INCBIN_IDX = 0;
+
+    /**
+     * A static integer representing the array index of the include assembly pre-processor directive.
+     */
     public static int PPD_INCASM_IDX = 1;
-    public static int PPD_NOP_IDX = 2;
-    public static String OUTPUT_FILE_NAME = "output_pre_processed_assembly.txt";
-    public static String[] EXT_ASM_FILES = { ".asm", ".txt" };
-    public static String[] EXT_BIN_FILES = { ".bin", ".raw", ".dat" };  
-    public static int MAX_EXT_BIN_FILE_LEN = 255;
     
+    /**
+     * A static integer representing the array index of the no op-code assembly pre-processor directive.
+     */
+    public static int PPD_NOP_IDX = 2;
+    
+    /**
+     * A static string representing the name of the output file for the pre-processor.
+     */
+    public static String OUTPUT_FILE_NAME = "output_pre_processed_assembly.txt";
+
+    /**
+     * A static string array that represents the supported assembly file extensions.
+     */
+    public static String[] EXT_ASM_FILES = { ".asm", ".txt", ".s" };
+    
+    /**
+     * A static string array that represents the supported binary file extensions.
+     */    
+    public static String[] EXT_BIN_FILES = { ".bin", ".raw", ".dat" };  
+
+    /**
+     * An integer representing the maximum file size supported for external binary files.
+     */
+    public static int MAX_EXT_BIN_FILE_LEN = 255;
+
+    /**
+     * 
+     */
     public String asmSourceFile = "";
+    
+    /**
+     * 
+     */
     public String rootOutputDir = "";
+    
+    /**
+     * 
+     */
     public Object other = null;
     
+    /**
+     * 
+     * @param lines
+     * @param appendix 
+     */
     public void AddAppendix(List<String> lines, String appendix) {
         for(int i = 0; i < lines.size(); i++) {
             lines.set(i, appendix + lines.get(i));
         }
     }
     
+    /**
+     * A method used to run the pre-processor on an assembly source file.
+     * @param assemblySourceFile    The full path to the assembly source file to process.
+     * @param outputDir             The output directory to use to write output files to.
+     * @param otherObj                 A generic Java class used to customize the pre-processor.
+     * @return                      A list of string representing the pre-processed file.
+     * @throws Exception            An exception is thrown if an error is encountered during the pre-processor run.
+     */    
     @Override
     @SuppressWarnings("IndexOfReplaceableByContains")
     public List<String> RunPreProcessor(String assemblySourceFile, String outputDir, Object otherObj) throws Exception {

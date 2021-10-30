@@ -8,7 +8,7 @@ import java.util.Comparator;
  */
 public class TokenSorter  implements Comparator<Token> {
     /**
-     * 
+     * An enumeration that represents the different sort types for this comparator implementation.
      */
     public enum TokenSorterType {
         INDEX_ASC,
@@ -21,7 +21,7 @@ public class TokenSorter  implements Comparator<Token> {
     public TokenSorterType sortType = TokenSorterType.INDEX_ASC;
     
     /**
-     * 
+     * A string representing the name of this class. This is used to define the class in JSON output files.
      */
     public String obj_name = "TokenSorter";
     
