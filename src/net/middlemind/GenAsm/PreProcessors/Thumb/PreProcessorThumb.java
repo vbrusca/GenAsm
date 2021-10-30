@@ -34,7 +34,7 @@ public class PreProcessorThumb implements PreProcessor {
     public String rootOutputDir = "";
     public Object other = null;
     
-    private void AddAppendix(List<String> lines, String appendix) {
+    public void AddAppendix(List<String> lines, String appendix) {
         for(int i = 0; i < lines.size(); i++) {
             lines.set(i, appendix + lines.get(i));
         }

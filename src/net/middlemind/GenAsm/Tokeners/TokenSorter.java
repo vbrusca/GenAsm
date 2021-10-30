@@ -7,21 +7,44 @@ import java.util.Comparator;
  * @author Victor G. Brusca, Middlemind Games 08/18/2021 10:20 AM EST
  */
 public class TokenSorter  implements Comparator<Token> {
+    /**
+     * 
+     */
     public enum TokenSorterType {
         INDEX_ASC,
         INDEX_DSC
     }
     
+    /**
+     * 
+     */
     public TokenSorterType sortType = TokenSorterType.INDEX_ASC;
+    
+    /**
+     * 
+     */
     public String obj_name = "TokenSorter";
     
+    /**
+     * 
+     */
     public TokenSorter() {
     }
     
+    /**
+     * 
+     * @param sType 
+     */
     public TokenSorter(TokenSorterType sType) {
         sortType = sType;
     }
     
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return 
+     */
     @Override
     public int compare(Token a, Token b) {
         if(sortType == TokenSorterType.INDEX_ASC) {
@@ -32,5 +55,4 @@ public class TokenSorter  implements Comparator<Token> {
             return (a.index - b.index);
         }
     }  
-    
 }
