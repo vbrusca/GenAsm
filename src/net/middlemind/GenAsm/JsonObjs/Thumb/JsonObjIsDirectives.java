@@ -14,82 +14,82 @@ import net.middlemind.GenAsm.Utils;
  */
 public class JsonObjIsDirectives extends JsonObjBase {
     /**
-     *
+     * A static string that represents the full name of an ENTRY directive.
      */
     public static String NAME_ENTRY = "@ENTRY";
     
     /**
-     * 
+     * A static string that represents the full name of an AREA directive.
      */    
     public static String NAME_AREA = "@AREA";    
     
     /**
-     * 
+     * A static string that represents the full name of an END directive.
      */    
     public static String NAME_END = "@END";
     
     /**
-     * 
+     * A static string that represents the full name of a TTL directive.
      */    
     public static String NAME_TITLE = "@TTL";    
     
     /**
-     * 
+     * A static string that represents the full name of a CODE directive.
      */    
     public static String NAME_CODE = "@CODE";
     
     /**
-     * 
+     * A static string that represents the full name of a DATA directive.
      */    
     public static String NAME_DATA = "@DATA";
     
     /**
-     * 
+     * A static string that represents the full name of a DHCW directive.
      */    
     public static String NAME_DCHW = "@DCHW";
     
     /**
-     * 
+     * A static string that represents the full name of a DCB directive.
      */    
     public static String NAME_DCB = "@DCB";
     
     /**
-     * 
+     * A static string that represents which directives can be associated with labels.
      */    
     public static String[] LABEL_DIRECTIVES = new String[] { "@DCHW", "@DCB", "@EQU" };
     
     /**
-     * 
+     * A static string that represents the full name of a READONLY directive.
      */    
     public static String NAME_READONLY = "@READONLY";
 
     /**
-     * 
+     * A static string that represents the full name of a READWRITE directive.
      */    
     public static String NAME_READWRITE = "@READWRITE";
 
     /**
-     * 
+     * A static string that represents the name of the directive string type.
      */
     public static String NAME_DIRECTIVE_TYPE_STRING = "DirectiveString";
 
     /**
-     * 
+     * A static string that represents the full name of a EQU directive.
      */
     public static String NAME_EQU = "@EQU";
 
     /**
-     * 
+     * A static string that represents the full name of a ORG directive.
      */
     public static String NAME_ORG = "@ORG";    
 
     /**
-     * 
-     */    
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */  
     public String obj_name;
 
     /**
-     * 
+     * A string representation of the name of the set this JSON data file belongs to.
      */
     public String set_name;
 
@@ -99,8 +99,10 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public List<JsonObjIsDirective> is_directives;
 
     /**
-     * 
-     */    
+     * A method used to link this JSON object with another loaded JSON object.
+     * @param linkData              A JsonObj instance used as the link data to connect two JSON objects.
+     * @throws ExceptionJsonObjLink An exception is thrown if there is an error finding the JSON object link.
+     */  
     @Override
     public void Link(JsonObj linkData) throws ExceptionJsonObjLink {
         for(JsonObjIsDirective entry : is_directives) {
@@ -128,16 +130,17 @@ public class JsonObjIsDirectives extends JsonObjBase {
         
     
     /**
-     * 
-     */    
+     * A method that is used to print a string representation of this JSON object to standard output.
+     */   
     @Override
     public void Print() {
         Print("");
     }    
 
     /**
-     * 
-     */    
+     * A method that is used to print a string representation of this JSON object to standard output with a string prefix.
+     * @param prefix    A string that is used as a prefix to the string representation of this JSON object.
+     */ 
     @Override
     public void Print(String prefix) {
         super.Print(prefix);
