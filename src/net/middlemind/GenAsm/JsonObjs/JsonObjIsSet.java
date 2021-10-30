@@ -11,22 +11,23 @@ import net.middlemind.GenAsm.Logger;
  */
 public class JsonObjIsSet extends JsonObjBase {
     /**
-     * 
+     * A string representing the name of this class. This is used to define the class in JSON output files.
      */
     public String obj_name = "JsonObjIsSet";
     
     /**
-     * 
+     * A string representation of the name of the set.
+     * The GenAsm class looks for a set entry that matches the value of the ASM_TARGET_SET field.
      */    
     public String set_name;
     
     /**
-     * 
+     * A list of instruction set data file entries to load in order to assemble source files of that kind.
      */    
     public List<JsonObjIsFile> is_files;
     
     /**
-     * 
+     * A method that is used to print a string representation of this JSON object to standard output.
      */
     @Override
     public void Print() {
@@ -34,8 +35,9 @@ public class JsonObjIsSet extends JsonObjBase {
     }
 
     /**
-     * 
-     */    
+     * A method that is used to print a string representation of this JSON object to standard output with a string prefix.
+     * @param prefix    A string that is used as a prefix to the string representation of this JSON object.
+     */   
     @Override
     public void Print(String prefix) {
         super.Print(prefix);

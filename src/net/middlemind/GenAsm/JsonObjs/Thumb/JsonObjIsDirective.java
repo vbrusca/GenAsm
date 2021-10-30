@@ -5,21 +5,47 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjBase;
 import net.middlemind.GenAsm.Logger;
 
 /**
- *
+ * A class that represents the JSON directive object.
  * @author Victor G. Brusca, Middlemind Games 08/13/2021 5:16 PM EST
  */
 public class JsonObjIsDirective extends JsonObjBase {
+    /**
+     * 
+     */
     public String obj_name;
+    
+    /**
+     * 
+     */
     public String directive_name;
+    
+    /**
+     * 
+     */
     public int arg_len;
+    
+    /**
+     * 
+     */
     public String description;
+    
+    /**
+     * 
+     */
     public List<JsonObjIsDirectiveArg> args;
        
+    /**
+     * 
+     */
     @Override
     public void Print() {
         Print("");
     }    
     
+    /**
+     * 
+     * @param prefix 
+     */
     @Override
     public void Print(String prefix) {
         super.Print(prefix);

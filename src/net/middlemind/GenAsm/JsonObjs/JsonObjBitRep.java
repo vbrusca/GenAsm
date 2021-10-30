@@ -3,7 +3,7 @@ package net.middlemind.GenAsm.JsonObjs;
 import net.middlemind.GenAsm.Logger;
 
 /**
- * A Java class that represents a JSON bit rep object.
+ * A class that represents a JSON bit rep object.
  * @author Victor G. Brusca, Middlemind Games 08/02/2021 2:32 PM EST
  */
 public class JsonObjBitRep extends JsonObjBase {

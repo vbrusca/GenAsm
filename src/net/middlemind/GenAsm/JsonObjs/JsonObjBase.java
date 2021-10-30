@@ -5,7 +5,7 @@ import net.middlemind.GenAsm.Logger;
 
 /**
  * A simple class that implements the JsonObj interface.
- * A Java class that represents a JSON object.
+ * A class that represents a JSON object.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 8:27 AM EST
  */
 public class JsonObjBase implements JsonObj {
