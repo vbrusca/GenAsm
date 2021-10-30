@@ -10,8 +10,8 @@ import net.middlemind.GenAsm.Logger;
  */
 public class JsonObjIsEntryType extends JsonObjBase {
     /**
-     * 
-     */
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */ 
     public String obj_name;
     
     /**
