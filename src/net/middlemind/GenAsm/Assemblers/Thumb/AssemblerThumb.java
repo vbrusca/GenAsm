@@ -250,67 +250,67 @@ public class AssemblerThumb implements Assembler {
     public JsonObjNumRange lineNumRange;
     
     /**
-     * 
+     * An integer representing the number of pre-fetch bytes ahead of the PC register value.
      */    
     public int pcPreFetchBytes;
     
     /**
-     * 
+     * An integer representing the number of pre-fetch words ahead of the PC register value.
      */        
     public int pcPreFetchWords;
 
     /**
-     * 
+     * An integer representing the number of pre-fetch half words ahead of the PC register value.
      */    
     public int pcPreFetchHalfwords;
 
     /**
-     * 
+     * An integer representing the starting line number of the assembly source, ORG directive will offset this value.
      */    
     public Integer asmStartLineNumber; 
 
     /**
-     * 
+     * A Boolean value indicating if this assembler should be considered little endian.
      */    
     public boolean isEndianBig = false;
 
     /**
-     * 
-     */    
+     * A Boolean value indicating if this assembler should be considered big endian.
+     */        
     public boolean isEndianLittle = true; 
 
     /**
-     * 
+     * An object representing the last line processed by the assembler.
      */        
     public TokenLine lastLine;
 
     /**
-     * 
+     * An object representing the last token processed by the assembler.
      */    
     public Token lastToken;
 
     /**
-     * 
+     * An integer value representing the last step run by the assembler.
      */    
     public int lastStep;
 
     /**
-     * 
+     * A string value representing the title of the assembly source file.
      */    
     public String assemblyTitle;
 
     /**
-     * 
+     * A generic Java object used to customized the assembly process.
      */    
     public Object other;
 
     /**
-     * 
+     * A string representing root output directory used for writing output files.
      */    
     public String rootOutputDir;
 
     /**
-     * 
+     * An object used to respond to assembler events and customize the assembly process.
      */        
     public AssemblerEventHandlerThumb eventHandler;
     
