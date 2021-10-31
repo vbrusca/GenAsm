@@ -62,24 +62,24 @@ public class PreProcessorThumb implements PreProcessor {
     public static int MAX_EXT_BIN_FILE_LEN = 255;
 
     /**
-     * 
+     * The full file name of the assembly source file.
      */
     public String asmSourceFile = "";
     
     /**
-     * 
+     * The full file path to the root of the output directory.
      */
     public String rootOutputDir = "";
     
     /**
-     * 
+     * An optional generic object used to customize the pre-processor.
      */
     public Object other = null;
     
     /**
-     * 
-     * @param lines
-     * @param appendix 
+     * A method used to append a string to each entry in a list of strings.
+     * @param lines     A list of strings representing the lines to alter.
+     * @param appendix  The string value to apply as a prefix to the lines arguments.
      */
     public void AddAppendix(List<String> lines, String appendix) {
         for(int i = 0; i < lines.size(); i++) {
@@ -91,7 +91,7 @@ public class PreProcessorThumb implements PreProcessor {
      * A method used to run the pre-processor on an assembly source file.
      * @param assemblySourceFile    The full path to the assembly source file to process.
      * @param outputDir             The output directory to use to write output files to.
-     * @param otherObj                 A generic Java class used to customize the pre-processor.
+     * @param otherObj              An optional generic Java class used to customize the pre-processor.
      * @return                      A list of string representing the pre-processed file.
      * @throws Exception            An exception is thrown if an error is encountered during the pre-processor run.
      */    
@@ -251,5 +251,4 @@ public class PreProcessorThumb implements PreProcessor {
         FileUnloader.WriteList(Paths.get(rootOutputDir, OUTPUT_FILE_NAME).toString(), ret);        
         return ret;
     }
-    
 }

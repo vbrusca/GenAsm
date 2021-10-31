@@ -33,7 +33,8 @@ public class JsonObjIsOpCodeArgSorter implements Comparator<JsonObjIsOpCodeArg> 
     
     /**
      * A class constructor that takes an op-code argument sorter as an argument.
-     */    
+     * @param sType An arg sorter type arguments that describes how to sort the op-code arguments.
+     */
     public JsonObjIsOpCodeArgSorter(JsonObjIsOpCodeArgSorterType sType) {
         sortType = sType;
     }

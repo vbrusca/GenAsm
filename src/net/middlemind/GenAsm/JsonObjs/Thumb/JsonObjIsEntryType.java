@@ -15,27 +15,27 @@ public class JsonObjIsEntryType extends JsonObjBase {
     public String obj_name;
     
     /**
-     * 
+     * A string representing the name of this entry type.
      */    
     public String type_name;
 
     /**
-     * 
+     * A string representing the category type of this entry type.
      */
     public String type_category;
 
     /**
-     * 
+     * A string representing category of this entry type.
      */    
     public String category;
     
     /**
-     * 
+     * A string representing the Java class of this entry type category.
      */    
     public String category_class;
 
     /**
-     * 
+     * An object the represents how to match text for this entry type.
      */
     public JsonObjTxtMatch txt_match;
     

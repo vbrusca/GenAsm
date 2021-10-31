@@ -12,8 +12,10 @@ public interface Linker {
      * @param assembler             An instance of an assembler that can assemble the target source file.
      * @param assemblySourceFile    The file path of the assembled source.
      * @param outputDir             The target directory for output files.
-     * @param otherObj              A generic object that can be used to customize the linker if applicable.
+     * @param otherObj              An optional generic object that can be used to customize the linker if applicable.
+     * @param verbose               A Boolean value indicating that verbose logging should be used.
+     * @param quellOutput           A Boolean value indicating that file output should be disabled.
      * @throws Exception 
      */
-    public void RunLinker(Assembler assembler, String assemblySourceFile, String outputDir, Object otherObj) throws Exception;    
+    public void RunLinker(Assembler assembler, String assemblySourceFile, String outputDir, Object otherObj, boolean verbose, boolean quellOutput) throws Exception;    
 }

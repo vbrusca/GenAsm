@@ -130,122 +130,122 @@ public class AssemblerThumb implements Assembler {
     public String obj_name = "AssemblerThumb";
 
     /**
-     * 
+     * An object representing the instruction set data set of all loaded JSON data file.
      */    
     public JsonObjIsSet isaDataSet;
 
     /**
-     * 
+     * A data structure holding the loaded JSON data files by name.
      */    
     public Map<String, JsonObj> isaData;
 
     /**
-     * 
+     * A data structure holding the JSON data file loaders by name.
      */    
     public Map<String, Loader> isaLoader;
 
     /**
-     * 
+     * A data structure holding the source JSON data file by name.
      */    
     public Map<String, String> jsonSource;
 
     /**
-     * 
+     * An object representing the instruction set's entry type objects
      */        
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
 
     /**
-     * 
+     * An object representing the instruction set's valid line objects
      */        
     public JsonObjIsValidLines jsonObjIsValidLines;
 
     /**
-     * 
+     * An object representing the instruction set's op-code objects
      */    
     public JsonObjIsOpCodes jsonObjIsOpCodes;
 
     /**
-     * 
+     * An object representing the instruction set's directive objects
      */    
     public JsonObjIsDirectives jsonObjIsDirectives;
 
     /**
-     * 
+     * An object representing the instruction set's register objects
      */    
     public JsonObjIsRegisters jsonObjIsRegisters;    
 
     /**
-     * 
+     * The full path to the assembly source file to process.
      */        
     public String asmSourceFile;
 
     /**
-     * 
+     * A list of strings representing the loaded assembly source lines.
      */    
     public List<String> asmDataSource;
     
     /**
-     * 
+     * A list of artifact lines representing the lexerized source lines.
      */        
     public List<ArtifactLine> asmDataLexed;
 
     /**
-     * 
+     * A list of artifact lines representing the tokenization of the lexerized lines.
      */    
     public List<TokenLine> asmDataTokened;
 
     /**
-     * 
+     * An object used to hold references to the assembly source file's symbols.
      */    
     public Symbols symbols;
 
     /**
-     * 
+     * A list of strings representing required directives.
      */        
     public List<String> requiredDirectives;    
 
     /**
-     * 
+     * An object used to represent the assembly source code from the code area.
      */    
     public AreaThumb areaThumbCode;
 
     /**
-     * 
+     * An object used to represent the assembly source code from the data area.
      */    
     public AreaThumb areaThumbData;
 
     /**
-     * 
+     * A list of token line objects that belong to the code area.
      */    
     public List<TokenLine> asmAreaLinesCode;
 
     /**
-     * 
+     * A list of token line objects that belong to the data area.
      */    
     public List<TokenLine> asmAreaLinesData;    
 
     /**
-     * 
+     * An integer representing the number of bytes in one line of assembly source.
      */        
     public int lineLenBytes = 2;
 
     /**
-     * 
+     * An integer representing the number of halfwords in one line of assembly source,
      */    
     public int lineLenHalfWords = 1;
     
     /**
-     * 
+     * An integer representing the number of words in one line of assembly source.
      */        
     public int lineLenWords = 0;
 
     /**
-     * 
+     * An object representing a bit series that describes a line of assembly code.
      */    
     public JsonObjBitSeries lineBitSeries;
 
     /**
-     * 
+     * An object representing a number range that describes a valid integer value of a line of assembly code.
      */    
     public JsonObjNumRange lineNumRange;
     
@@ -314,20 +314,34 @@ public class AssemblerThumb implements Assembler {
      */        
     public AssemblerEventHandlerThumb eventHandler;
     
+    /**
+     * A Boolean value indicating that verbose logging should be used if available.
+     */
+    public boolean verboseLogs = false;
+
+    /**
+     * A Boolean value indicating file output should be turned off.
+     */
+    public boolean quellFileOutput = false;
+    
     //MAIN METHOD
     /**
-     * 
-     * @param jsonIsSet
-     * @param assemblySourceFile
-     * @param assemblySource
-     * @param outputDir
-     * @param otherObj
-     * @param asmEventHandler
-     * @throws Exception 
+     * The main assembler execution method called by the GenAsm static main entry point.
+     * @param jsonIsSet             The set of JSON data files necessary to assemble the provided source file.
+     * @param assemblySourceFile    The full file name of the assembly source file.
+     * @param assemblySource        A list of strings representing the contents of the assembly source file.
+     * @param outputDir             The full path to an output directory used to write output files to.
+     * @param otherObj              An optional generic Java object used to customize the assembly process.
+     * @param asmEventHandler       An optional event handler used to respond to and customize different steps in the assembly process.
+     * @param verbose               A Boolean value indicating that verbose logging should be used.
+     * @param quellOutput           A Boolean value indicating that file output should be disabled.
+     * @throws Exception            Throws an exception if an error was encountered during the assembly process. 
      */
     @Override
-    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, List<String> assemblySource, String outputDir, Object otherObj, AssemblerEventHandler asmEventHandler) throws Exception {
+    public void RunAssembler(JsonObjIsSet jsonIsSet, String assemblySourceFile, List<String> assemblySource, String outputDir, Object otherObj, AssemblerEventHandler asmEventHandler, boolean verbose, boolean quellOutput) throws Exception {
         try {
+            verboseLogs = verbose;
+            quellFileOutput = quellOutput;
             eventHandler = (AssemblerEventHandlerThumb)asmEventHandler;
             if(eventHandler != null) {
                 eventHandler.RunAssemblerPre(this, jsonIsSet, assemblySourceFile, assemblySource, outputDir, otherObj);
@@ -375,8 +389,10 @@ public class AssemblerThumb implements Assembler {
                 eventHandler.RunAssemblerPreStep(lastStep, this);
             }            
             LexerizeAssemblySource(lastStep);
-            Utils.WriteObject(asmDataLexed, "Assembly Lexerized Data", "output_lexed.json", rootOutputDir);        
-
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataLexed, "Assembly Lexerized Data", "output_lexed.json", rootOutputDir);        
+            }
+            
             Logger.wrl("");
             lastStep = 4;
             Logger.wrl("STEP 4: Tokenize the lexerized artifacts");
@@ -384,8 +400,10 @@ public class AssemblerThumb implements Assembler {
                 eventHandler.RunAssemblerPreStep(lastStep, this);
             }            
             TokenizeLexerArtifacts(lastStep);
-            Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase0_tokenized.json", rootOutputDir);            
-
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase0_tokenized.json", rootOutputDir);            
+            }
+            
             Logger.wrl("");
             lastStep = 5;
             Logger.wrl("STEP 5: Validate token lines");
@@ -393,8 +411,10 @@ public class AssemblerThumb implements Assembler {
                 eventHandler.RunAssemblerPreStep(lastStep, this);
             }            
             ValidateTokenizedLines(lastStep);
-            Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase1_valid_lines.json", rootOutputDir);            
-
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase1_valid_lines.json", rootOutputDir);            
+            }
+            
             Logger.wrl("");
             lastStep = 6;
             Logger.wrl("STEP 6: Combine comment tokens as children of the initial comment token");
@@ -434,8 +454,10 @@ public class AssemblerThumb implements Assembler {
                 eventHandler.RunAssemblerPreStep(lastStep, this);
             }            
             PopulateDirectiveArgAndAreaData(lastStep);
-            Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase2_refactored.json", rootOutputDir);
-
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase2_refactored.json", rootOutputDir);
+            }
+            
             Logger.wrl("");
             lastStep = 11;
             Logger.wrl("STEP 11: Validate OpCode lines against known OpCodes by comparing arguments");
@@ -451,20 +473,25 @@ public class AssemblerThumb implements Assembler {
                 eventHandler.RunAssemblerPreStep(lastStep, this);
             }            
             ValidateDirectiveLines(lastStep);
-            Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase3_valid_lines.json", rootOutputDir);            
-            Utils.WriteObject(symbols, "Symbol Data", "output_symbols.json", rootOutputDir);
-
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase3_valid_lines.json", rootOutputDir);            
+                Utils.WriteObject(symbols, "Symbol Data", "output_symbols.json", rootOutputDir);
+            }
+            
             Logger.wrl("");
             Logger.wrl("List Assembly Source Areas:");
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: Title: " + areaThumbCode.title);                
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
-                Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);
-                
-                Utils.WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "output_area_lines_code.json", rootOutputDir);
-                Utils.WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "output_area_desc_code.json", rootOutputDir);
+                Logger.wrl("AreaThumbCode: Attributes: IsCode: " + areaThumbCode.isCode + " IsData: " + areaThumbCode.isData + " IsReadOnly: " + areaThumbCode.isReadOnly + " IsReadWrite: " + areaThumbCode.isReadWrite);                
+                if(!quellFileOutput) {
+                    Utils.WriteObject(asmAreaLinesCode, "Assembly Source Area Code Lines", "output_area_lines_code.json", rootOutputDir);
+                    Utils.WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "output_area_desc_code.json", rootOutputDir);
+                }
                 BuildBinLines(lastStep, asmAreaLinesCode, areaThumbCode);
-                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+                if(!quellFileOutput) {
+                    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+                }
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -473,11 +500,14 @@ public class AssemblerThumb implements Assembler {
                 Logger.wrl("AreaThumbData: Title: " + areaThumbData.title);
                 Logger.wrl("AreaThumbData: AreaLine: " + areaThumbData.lineNumArea + " EntryLine: " + areaThumbData.lineNumEntry + " EndLine: " + areaThumbData.lineNumEnd);
                 Logger.wrl("AreaThumbData: Attributes: IsCode: " + areaThumbData.isCode + " IsData: " + areaThumbData.isData + " IsReadOnly: " + areaThumbData.isReadOnly + " IsReadWrite: " + areaThumbData.isReadWrite);
-                
-                Utils.WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "output_area_lines_data.json", rootOutputDir);
-                Utils.WriteObject(areaThumbData, "Assembly Source Area Data Desc", "output_area_desc_data.json", rootOutputDir);                
+                if(!quellFileOutput) {
+                    Utils.WriteObject(asmAreaLinesData, "Assembly Source Area Data Lines", "output_area_lines_data.json", rootOutputDir);
+                    Utils.WriteObject(areaThumbData, "Assembly Source Area Data Desc", "output_area_desc_data.json", rootOutputDir);
+                }
                 BuildBinLines(lastStep, asmAreaLinesData, areaThumbData);
-                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);                
+                if(!quellFileOutput) {
+                    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+                }
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }

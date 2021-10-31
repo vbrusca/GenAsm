@@ -77,7 +77,7 @@ public class JsonObjIsEntryTypes extends JsonObjBase {
     public static String NAME_REGISTER_RANGE_LOW = "RegisterRangeLow";
     
     /**
-     * A static string that repreents the register range hi entry type.
+     * A static string that represents the register range hi entry type.
      */
     public static String NAME_REGISTER_RANGE_HI = "RegisterRangeHi";
     

@@ -11,7 +11,7 @@ public interface PreProcessor {
      * A method used to run the pre-processor on an assembly source file.
      * @param assemblySourceFile    The full path to the assembly source file to process.
      * @param outputDir             The output directory to use to write output files to.
-     * @param other                 A generic Java class used to customize the pre-processor.
+     * @param other                 An optional generic Java class used to customize the pre-processor.
      * @return                      A list of string representing the pre-processed file.
      * @throws Exception            An exception is thrown if an error is encountered during the pre-processor run.
      */

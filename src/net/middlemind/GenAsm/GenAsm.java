@@ -91,7 +91,17 @@ public class GenAsm {
     /**
      * A static integer representing the target length or arguments needed to perform a customized run.
      */    
-    public static int ARG_LEN_TARGET = 9;
+    public static int ARG_LEN_TARGET = 11;
+    
+    /**
+     * A Boolean value indicating if verbose logging is on, if available.
+     */
+    public static boolean ASM_VERBOSE = false;
+    
+    /**
+     * A Boolean value indicating if file output should be turned off.
+     */
+    public static boolean ASM_QUELL_FILE_OUTPUT = false;
     
     /**
      * The static main entry point for this assembler run.
@@ -114,6 +124,8 @@ public class GenAsm {
             ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
             ASM_PREPROCESSOR = null;  
             ASM_ROOT_OUTPUT_DIR = "./cfg/THUMB/OUTPUT/";
+            ASM_VERBOSE = false;
+            ASM_QUELL_FILE_OUTPUT = false;
             
         } else {
             ASM_SETS_FILE_NAME = args[0];
@@ -130,6 +142,8 @@ public class GenAsm {
             ASM_PREPROCESSOR_CLASS = args[7];
             ASM_PREPROCESSOR = null;
             ASM_ROOT_OUTPUT_DIR = args[8];
+            ASM_VERBOSE = Boolean.parseBoolean(args[9]);
+            ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);
             
         }
         
@@ -181,8 +195,8 @@ public class GenAsm {
                     if(ASM_SET != null) {
                         if(ASM_ASSEMBLER != null && ASM_PREPROCESSOR != null && ASM_LINKER != null) {
                             List<String> fileData = ASM_PREPROCESSOR.RunPreProcessor(ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
-                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, fileData, ASM_ROOT_OUTPUT_DIR, null, null);
-                            ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null);
+                            ASM_ASSEMBLER.RunAssembler(ASM_SET, ASM_ASSEMBLY_SOURCE_FILE, fileData, ASM_ROOT_OUTPUT_DIR, null, null, ASM_VERBOSE, ASM_QUELL_FILE_OUTPUT);
+                            ASM_LINKER.RunLinker(ASM_ASSEMBLER, ASM_ASSEMBLY_SOURCE_FILE, ASM_ROOT_OUTPUT_DIR, null, ASM_VERBOSE, ASM_QUELL_FILE_OUTPUT);
                         } else {
                             Logger.wrl("GenAsm: Main: Error: could not find properly loaded pre-processor, assembler, or linked");                            
                         }

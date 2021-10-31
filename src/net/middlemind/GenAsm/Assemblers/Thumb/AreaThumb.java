@@ -15,7 +15,7 @@ public class AreaThumb {
     public String obj_name = "AreaThumb";
     
     /**
-     * The TokenLine that the area directive is locatedon.
+     * The TokenLine that the area directive is located on.
      */
     public TokenLine areaLine;
     

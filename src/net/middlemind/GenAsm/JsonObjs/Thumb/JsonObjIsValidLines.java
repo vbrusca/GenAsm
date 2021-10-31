@@ -15,17 +15,17 @@ import net.middlemind.GenAsm.Utils;
 @SuppressWarnings("Convert2Diamond")
 public class JsonObjIsValidLines extends JsonObjBase {
     /***
-     * 
+     * An integer representing the index of the empty line entry.
      */
     public static int LINE_EMPTY = 9;
     
     /**
-     * 
+     * An array of integers representing the indexes of all the label definition empty lines.
      */
     public static int[] LINES_LABEL_EMPTY = {1, 2, 3};
     
     /**
-     * 
+     * An array of integers representing the indexes of all the label definition lines.
      */
     public static int[] LINES_LABEL_DEF = {1, 2, 6, 8};
     
