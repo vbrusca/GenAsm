@@ -548,8 +548,8 @@ public class AssemblerThumb implements Assembler {
             
     //DIRECTIVE METHODS
     /**
-     * 
-     * @param step
+     * A method to mark directive arguments and populate area data.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionMissingRequiredDirective
      * @throws ExceptionRedefinitionOfAreaDirective
      * @throws ExceptionNoDirectiveFound
@@ -973,8 +973,8 @@ public class AssemblerThumb implements Assembler {
     }    
     
     /**
-     * 
-     * @param step
+     * A method to validate the signature of directive lines.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoDirectiveFound 
      */
     public void ValidateDirectiveLines(int step) throws ExceptionNoDirectiveFound {
@@ -1040,11 +1040,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param directiveMatches
-     * @param args
-     * @param directiveToken
-     * @return
+     * A helper method used to find directive argument matches for a list of tokens.
+     * @param directiveMatches              A list of supported instruction sets.
+     * @param args                          A list of tokens that represent the arguments for a directive.
+     * @param directiveToken                A token representing the current directive.
+     * @return                              The matched directive.
      * @throws ExceptionNoDirectiveFound 
      */
     public JsonObjIsDirective FindDirectiveArgMatches(List<JsonObjIsDirective> directiveMatches, List<Token> args, Token directiveToken) throws ExceptionNoDirectiveFound {
@@ -1096,10 +1096,10 @@ public class AssemblerThumb implements Assembler {
     }    
     
     /**
-     * 
-     * @param directiveName
-     * @param argLen
-     * @return 
+     * A helper method used to find directive matches for a directive name.
+     * @param directiveName A string representing the name of the directive.
+     * @param argLen        An integer representing the number of arguments.
+     * @return              A list of matched directives.
      */
     public List<JsonObjIsDirective> FindDirectiveMatches(String directiveName, int argLen) {
         List<JsonObjIsDirective> ret = new ArrayList<>();
@@ -1112,11 +1112,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param line
-     * @return 
+     * A helper method used to determine if the given token line has a directive token.
+     * @param line  The token line to scan for directives.
+     * @return      The directive if found or null if none is found.
      */
-    public Token FindDirectives(TokenLine line) {
+    public Token FindFirstDirective(TokenLine line) {
         for(Token token : line.payload) {
             if(token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                 return token;
@@ -1127,8 +1127,8 @@ public class AssemblerThumb implements Assembler {
     
     //OPCODE METHODS
     /**
-     * 
-     * @param step
+     * A method used to mark op-code and op-code argument tokens.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionRedefinitionOfLabel
      * @throws ExceptionNoOpCodeFound
      * @throws ExceptionNoParentSymbolFound
@@ -1208,7 +1208,7 @@ public class AssemblerThumb implements Assembler {
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {                    
                     if(token.index == 0) {
                         labelFound = true;
-                        Token ltTmp = FindDirectives(line);
+                        Token ltTmp = FindFirstDirective(line);
                         if(ltTmp == null || (ltTmp != null && Utils.ArrayContainsString(JsonObjIsDirectives.LABEL_DIRECTIVES, ltTmp.source) == true)) {
                             if(ltTmp == null || (ltTmp != null && ltTmp.source.equals(JsonObjIsDirectives.NAME_EQU) == false)) {
                                 lastLabel = token.source;
@@ -1315,8 +1315,8 @@ public class AssemblerThumb implements Assembler {
     }    
     
     /**
-     * 
-     * @param step
+     * A method used to validate the signature of the op-code line.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoOpCodeFound
      * @throws ExceptionNoOpCodeLineFound 
      */
@@ -1409,10 +1409,10 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param lineNum
-     * @param label
-     * @return
+     * A helper method that finds he next op-code line.
+     * @param lineNum   An integer representing the line number of the line to start searching on.
+     * @param label     A string representing the label that initiated the op-code line search. 
+     * @return          A token line if a match is found otherwise null.
      * @throws ExceptionNoOpCodeLineFound 
      */
     public TokenLine FindNextOpCodeLine(int lineNum, String label) throws ExceptionNoOpCodeLineFound {
@@ -1428,11 +1428,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param opCodeMatches
-     * @param args
-     * @param opCodeToken
-     * @return
+     * A helper method that finds an op-code argument match.
+     * @param opCodeMatches             A list of op-codes that match the token line op-code.
+     * @param args                      A list of tokens representing the op-code arguments.
+     * @param opCodeToken               A token object representing the op-code.
+     * @return                          A matching op-code entry.
      * @throws ExceptionNoOpCodeFound 
      */
     public JsonObjIsOpCode FindOpCodeArgMatches(List<JsonObjIsOpCode> opCodeMatches, List<Token> args, Token opCodeToken) throws ExceptionNoOpCodeFound {
@@ -1570,10 +1570,10 @@ public class AssemblerThumb implements Assembler {
     }    
     
     /**
-     * 
-     * @param opCodeName
-     * @param argLen
-     * @return 
+     * A helper method that finds an op-code match.
+     * @param opCodeName    A string representation of the op-code.
+     * @param argLen        An integer indicating the number of arguments.
+     * @return              A list of matching op-code entries.
      */
     public List<JsonObjIsOpCode> FindOpCodeMatches(String opCodeName, int argLen) {
         List<JsonObjIsOpCode> ret = new ArrayList<>();
@@ -1587,22 +1587,22 @@ public class AssemblerThumb implements Assembler {
     
     //ARG TOKEN COUNTER METHODS
     /**
-     * 
-     * @param payload
-     * @param argCount
-     * @return 
+     * A helper method used to count the number of matching argument tokens.
+     * @param payload   A list of argument tokens.
+     * @param argCount  An integer representing the number argument tokens.
+     * @return          The number of matching argument tokens found.
      */
     public int CountArgTokens(List<Token> payload, int argCount) {
         return CountArgTokens(payload, argCount, JsonObjIsEntryTypes.NAME_CAT_ARG_OPCODE, true);
     }
     
     /**
-     * 
-     * @param payload
-     * @param argCount
-     * @param argCategory
-     * @param isOpCodeArg
-     * @return 
+     * A helper method used to count the number of matching argument tokens.
+     * @param payload       A list of argument tokens.
+     * @param argCount      An integer representing the number argument tokens.
+     * @param argCategory   A string representing the argument category.
+     * @param isOpCodeArg   A Boolean value indicating if the argument is an op-code argument.
+     * @return              The number of matching argument tokens found.
      */
     public int CountArgTokens(List<Token> payload, int argCount, String argCategory, boolean isOpCodeArg) {
         for(Token token : payload) {
@@ -1635,8 +1635,8 @@ public class AssemblerThumb implements Assembler {
        
     //CLEAN TOKEN STRUCTURE
     /**
-     * 
-     * @param step
+     * A helper method used to collapse group and list tokens into sub-tokens.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoClosingBracketFound
      * @throws ExceptionListAndGroup 
      */
@@ -1764,9 +1764,9 @@ public class AssemblerThumb implements Assembler {
     }    
     
     /**
-     * 
-     * @param entryName
-     * @return
+     * A helper method used to find a matching entry type by name.
+     * @param entryName A string representing the entry to match.
+     * @return          The matching entry type entry.
      * @throws ExceptionNoEntryFound 
      */
     public JsonObjIsEntryType FindEntryType(String entryName) throws ExceptionNoEntryFound {        
@@ -1779,10 +1779,10 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param range
-     * @param rangeDelim
-     * @return 
+     * A helper method used to clean the register range string by parsing it and reassembling it.
+     * @param range         A string representation of the register range.
+     * @param rangeDelim    A string representing the range delimiter.
+     * @return              A string representing the clean register range.
      */
     public String CleanRegisterRangeString(String range, String rangeDelim) {
         String ret = "";
@@ -1795,8 +1795,8 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param token 
+     * A helper method used to clean the token source field of line and argument separators.
+     * @param token An object representing the token to clean the source for.
      */
     public void CleanTokenSource(Token token) {
         if(token != null && !Utils.IsStringEmpty(token.source)) {
@@ -1806,8 +1806,8 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step
+     * A helper method used to expand the register range into individual register token entries.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoEntryFound
      * @throws ExceptionMalformedRange 
      */
@@ -1942,8 +1942,8 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step 
+     * A helper method used to collapse the comment tokens into sub-tokens of the first comment token.
+     * @param step An integer representing the current assembly step.
      */
     public void CollapseCommentTokens(int step) {
         if(eventHandler != null) {
@@ -1998,8 +1998,9 @@ public class AssemblerThumb implements Assembler {
     
     //LOAD, PARSE, LINK JSONOBJ DATA METHODS
     /**
-     * 
-     * @param step
+     * A helper method that is responsible for loading and parsing of the instruction set JSON data file.
+     * These data files define the instruction set.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoEntryFound
      * @throws ExceptionLoader
      * @throws IOException
@@ -2110,8 +2111,8 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step
+     * A helper method that is used to link loaded JSON object data to other loaded JSON object data.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionJsonObjLink 
      */
     public void LinkJsonObjData(int step) throws ExceptionJsonObjLink {
@@ -2140,8 +2141,9 @@ public class AssemblerThumb implements Assembler {
     
     //LEX SOURCE CODE
     /**
-     * 
-     * @param step
+     * A main method used to lexerize the assembly source code. 
+     * Lexerizing, is the process of converting assembly source text to artifacts.
+     * @param step An integer representing the current assembly step.
      * @throws IOException 
      */
     public void LexerizeAssemblySource(int step) throws IOException {
@@ -2160,8 +2162,9 @@ public class AssemblerThumb implements Assembler {
     
     //TOKENIZE AND VALIDATE LEXERIZED LINES
     /**
-     * 
-     * @param step
+     * A main method used to tokenize the lexerized assembly source code.
+     * Tokenizing, is the process of converting the artifacts to tokens.
+     * @param step An integer representing the current assembly step.
      * @throws ExceptionNoTokenerFound 
      */
     public void TokenizeLexerArtifacts(int step) throws ExceptionNoTokenerFound {
@@ -2179,14 +2182,14 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param validLine
-     * @param token
-     * @param entry
-     * @param index
+     * A helper method used to find a valid line entry with matching token entry type.
+     * @param validLine A set of valid line entries to search through for a matching entry type.
+     * @param token     The token instance entry type to search for.
+     * @param entry     An integer representing the minimum index of the match.
+     * @param index     An integer representing the valid line entry index. Currently unused.
      * @return 
      */
-    public int[] FindValidLineEntry(JsonObjIsValidLine validLine, Token token, int entry, int index) {
+    public int[] FindValidLineEntryWithMatchingTokenEntryType(JsonObjIsValidLine validLine, Token token, int entry, int index) {
         int count = 0;
         for(JsonObjIsValidLineEntry validLineEntry : validLine.is_valid_line) {
             for(String validLineEntryType : validLineEntry.is_entry_types) {
@@ -2235,7 +2238,7 @@ public class AssemblerThumb implements Assembler {
             
             for(Token token : line.payload) {
                 lastToken = token;
-                res = FindValidLineEntry(validLine, token, currentEntry, 0);
+                res = FindValidLineEntryWithMatchingTokenEntryType(validLine, token, currentEntry, 0);
                 if(res == null) {
                     break;
                 }
