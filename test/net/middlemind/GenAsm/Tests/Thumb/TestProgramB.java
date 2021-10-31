@@ -18,7 +18,7 @@ import org.junit.runners.Suite;
     }
 )
 
-public class TestSuiteThumb {
+public class TestProgramB {
 
     public static double DELTA_D = 0.00001;
     

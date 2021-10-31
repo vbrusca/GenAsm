@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author Victor G. Brusca, Middlemind Games 10-07-2021 12:25 PM EST
  */
-public class TestThumbPreProcessor {
+public class TestProgramD {
     
-    public TestThumbPreProcessor() {
+    public TestProgramD() {
     }
     
     @BeforeClass
@@ -31,10 +31,4 @@ public class TestThumbPreProcessor {
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

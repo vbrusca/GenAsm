@@ -2207,11 +2207,11 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step
-     * @param line
-     * @param validLines
-     * @param validLineEmpty
+     * A main method that validates a token line.
+     * @param step              An integer representing the current assembly step.
+     * @param line              The token line to validate.
+     * @param validLines        An object the represents all the valid lines for this instruction set.
+     * @param validLineEmpty    An object that represents the empty line.
      * @return 
      */
     public boolean ValidateTokenizedLine(int step, TokenLine line, JsonObjIsValidLines validLines, JsonObjIsValidLine validLineEmpty) {
@@ -2275,9 +2275,9 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step
-     * @return
+     * A main method that validates all token lines
+     * @param step              An integer representing the current assembly step.
+     * @return                  A Boolean value indicating that the tokenized lines are valid.
      * @throws ExceptionNoValidLineFound 
      */
     public boolean ValidateTokenizedLines(int step) throws ExceptionNoValidLineFound {
@@ -2310,10 +2310,10 @@ public class AssemblerThumb implements Assembler {
     
     //BUILD OPCODES AND DIRECTIVES
     /**
-     * 
-     * @param step
-     * @param areaLines
-     * @param area
+     * A main method that builds a binary representation of all tokenized lines.
+     * @param step          An integer representing the current assembly step.
+     * @param areaLines     A list of token lines that belong to the current area.
+     * @param area          The area thumb object that the lines belong to.
      * @throws ExceptionOpCodeAsArgument
      * @throws ExceptionNoSymbolFound
      * @throws ExceptionUnexpectedTokenWithSubArguments
@@ -2356,9 +2356,9 @@ public class AssemblerThumb implements Assembler {
     }
         
     /**
-     * 
-     * @param step
-     * @param line
+     * A main method used to build binary representations of directive assembly source code lines.
+     * @param step  An integer representing the current assembly step.
+     * @param line  The directive token line to build a binary representation for.
      * @throws ExceptionOpCodeAsArgument
      * @throws ExceptionNoSymbolFound
      * @throws ExceptionUnexpectedTokenWithSubArguments
@@ -2437,9 +2437,9 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * 
-     * @param step
-     * @param line
+     * A main method used to build binary representations of op-code assembly source code lines.
+     * @param step  An integer representing the current assembly step.
+     * @param line  The directive token line to build a binary representation for.
      * @throws ExceptionOpCodeAsArgument
      * @throws ExceptionNoSymbolFound
      * @throws ExceptionUnexpectedTokenWithSubArguments

@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author Victor G. Brusca, Middlemind Games 10-07-2021 12:25 PM EST
  */
-public class TestThumbLinker {
+public class TestProgramA {
     
-    public TestThumbLinker() {
+    public TestProgramA() {
     }
     
     @BeforeClass
