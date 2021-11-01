@@ -4,38 +4,31 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
- * @author Victor G. Brusca, Middlemind Games
+ * @author Victor G. Brusca, Middlemind Games 10-07-2021 12:25 PM EST
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses(
-    {
-
-    }
-)
-
 public class TestProgramB {
-
-    public static double DELTA_D = 0.00001;
+    
+    public TestProgramB() {
+    }
     
     @BeforeClass
-    public static void setUpClass() throws Exception {
-        
+    public static void setUpClass() {
     }
-
+    
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() {
     }
-
+    
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
-
+    
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 }
