@@ -1,0 +1,10 @@
+[
+    {"addressHex":"000000F4", "valueHex":"7846"},
+    {"addressHex":"000000F6", "valueHex":"C088"},
+    {"addressHex":"000000F8", "valueHex":"4900"},
+    {"addressHex":"000000FA", "valueHex":"7A46"},
+    {"addressHex":"000000FC", "valueHex":"4180"},
+    {"addressHex":"000000FE", "valueHex":"11DF"},
+    {"addressHex":"00000100", "valueHex":"4242"},
+    {"addressHex":"00000102", "valueHex":"0000"}
+]

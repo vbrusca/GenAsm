@@ -1,0 +1,20 @@
+[
+    {"addressHex":"000000F4", "valueHex":"7846"},
+    {"addressHex":"000000F6", "valueHex":"8069"},
+    {"addressHex":"000000F8", "valueHex":"4940"},
+    {"addressHex":"000000FA", "valueHex":"5240"},
+    {"addressHex":"000000FC", "valueHex":"9288"},
+    {"addressHex":"000000FE", "valueHex":"002A"},
+    {"addressHex":"00000100", "valueHex":"05D0"},
+    {"addressHex":"00000102", "valueHex":"8046"},
+    {"addressHex":"00000104", "valueHex":"4346"},
+    {"addressHex":"00000106", "valueHex":"191C"},
+    {"addressHex":"00000108", "valueHex":"001D"},
+    {"addressHex":"0000010A", "valueHex":"521E"},
+    {"addressHex":"0000010C", "valueHex":"F9D1"},
+    {"addressHex":"0000010E", "valueHex":"7C46"},
+    {"addressHex":"00000110", "valueHex":"6188"},
+    {"addressHex":"00000112", "valueHex":"11DF"},    
+    {"addressHex":"00000114", "valueHex":"0000"},
+    {"addressHex":"00000116", "valueHex":"0000"}
+]

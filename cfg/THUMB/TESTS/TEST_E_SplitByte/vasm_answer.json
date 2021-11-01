@@ -10,8 +10,8 @@
     {"addressHex":"00000104", "valueHex":"4144"},
     {"addressHex":"00000106", "valueHex":"7A46"},
     {"addressHex":"00000108", "valueHex":"9180"},
-    {"addressHex":"00000102", "valueHex":"11DF"},
-    {"addressHex":"00000104", "valueHex":"FB00"},
-    {"addressHex":"00000106", "valueHex":"0F00"},
-    {"addressHex":"00000108", "valueHex":"0000"}      
+    {"addressHex":"0000010A", "valueHex":"11DF"},
+    {"addressHex":"0000010C", "valueHex":"FB00"},
+    {"addressHex":"0000010E", "valueHex":"0F00"},
+    {"addressHex":"00000110", "valueHex":"0000"}      
 ]
