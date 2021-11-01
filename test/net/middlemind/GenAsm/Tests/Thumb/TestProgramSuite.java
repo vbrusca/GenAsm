@@ -15,7 +15,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
     {
         TestProgramA.class,
-        TestProgramB.class        
+        TestProgramB.class,
+        TestProgramC.class
     }
 )
 
