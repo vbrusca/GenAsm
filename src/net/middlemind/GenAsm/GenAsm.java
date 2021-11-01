@@ -104,6 +104,11 @@ public class GenAsm {
     public static boolean ASM_QUELL_FILE_OUTPUT = false;
     
     /**
+     * 
+     */
+    public static String CFG_DIR_PATH = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\";
+    
+    /**
      * The static main entry point for this assembler run.
      * @param args          An array of strings used as arguments for this assembler run.
      * @throws Exception    An exception is thrown if any are encountered during the assembler run.
@@ -118,15 +123,14 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\THUMB\\TESTS\\TEST_K_16BitSeriesAddTwo\\genasm_source.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\TEST_K_16BitSeriesAddTwo\\genasm_source.txt";
             ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
             ASM_LINKER = null;
             ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
             ASM_PREPROCESSOR = null;  
-            ASM_ROOT_OUTPUT_DIR = "./cfg/THUMB/OUTPUT/";
+            ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\";
             ASM_VERBOSE = false;
-            ASM_QUELL_FILE_OUTPUT = false;
-            
+            ASM_QUELL_FILE_OUTPUT = false;            
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
@@ -143,8 +147,7 @@ public class GenAsm {
             ASM_PREPROCESSOR = null;
             ASM_ROOT_OUTPUT_DIR = args[8];
             ASM_VERBOSE = Boolean.parseBoolean(args[9]);
-            ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);
-            
+            ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);            
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
