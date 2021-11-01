@@ -144,8 +144,12 @@
         {"addressHex":"0000020C", "valueHex":"11B0"},
         {"addressHex":"0000020E", "valueHex":"1AB0"},
         {"addressHex":"00000210", "valueHex":"1FB5"},
-        {"addressHex":"00000212", "valueHex":"44BD"}
-    ]
+        {"addressHex":"00000212", "valueHex":"44BD"},
+        {"addressHex":"00000214", "valueHex":"F8C0"},
+        {"addressHex":"00000216", "valueHex":"2D28"},
+        {"addressHex":"00000218", "valueHex":"FEE7"},
+        {"addressHex":"0000021A", "valueHex":"9259"}        
+    ]    
 }
                  
                  

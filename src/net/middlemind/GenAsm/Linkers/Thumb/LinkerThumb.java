@@ -121,6 +121,7 @@ public class LinkerThumb implements Linker {
         Logger.wrl("LinkerThumb: RunLinker: Found " + fin.size() + " lines of linked assembly json objects");
         Utils.WriteObject(fin, "Linked Assembly Source Code Lines", "output_linked_area_lines_code.json", outputDir);
     
+        String cleanHexAddr = null;
         String tmp1 = null;
         String tmp2 = null;        
         TokenLine tmpLine = null;
@@ -131,6 +132,7 @@ public class LinkerThumb implements Linker {
         hexMapBe = new Hashtable<>();
         hexMapLe = new Hashtable<>();
         int totalBytes = 0;
+        boolean addToHexMapOn = false;
         
         for(int i = 0; i < asm.asmDataTokened.size(); i++) {
             tmpLine = asm.asmDataTokened.get(i);
@@ -141,7 +143,14 @@ public class LinkerThumb implements Linker {
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianBig1 != null) {
                     totalBytes += AddBytes(tmpLine.payloadBinRepStrEndianBig1, binBe);
-                    hexMapBe.put(Utils.CleanHexPrefix(Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true)), Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1)));
+                    cleanHexAddr = Utils.CleanHexPrefix(Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true));
+                    if(cleanHexAddr.equals("000000F4") == true || cleanHexAddr.equals("080000F4") == true) {
+                        addToHexMapOn = true;
+                    }
+                    
+                    if(addToHexMapOn == true) {
+                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1)));
+                    }
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig1, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
                     if(!Utils.IsStringEmpty(tmpLine.addressHex)) {
@@ -158,7 +167,14 @@ public class LinkerThumb implements Linker {
                     Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
                     tt += asm.lineLenBytes;
                     totalBytes += AddBytes(tmpLine.payloadBinRepStrEndianBig2, binBe);
-                    hexMapBe.put(Utils.CleanHexPrefix(Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true)), Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2)));                    
+                    cleanHexAddr = Utils.CleanHexPrefix(Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true));
+                    if(cleanHexAddr.equals("000000F4") == true || cleanHexAddr.equals("080000F4") == true) {
+                        addToHexMapOn = true;
+                    }
+                    
+                    if(addToHexMapOn == true) {
+                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2)));                    
+                    }
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {
@@ -208,6 +224,8 @@ public class LinkerThumb implements Linker {
         }
         
         //LITTLE ENDIAN
+        cleanHexAddr = null;
+        addToHexMapOn = false;
         totalBytes = 0;
         lstFile.clear();
         tmp1 = null;
@@ -224,7 +242,14 @@ public class LinkerThumb implements Linker {
             if(fin.containsKey(tmpLine.lineNumAbs) == true && tmpLine.isLineEmpty == false) { 
                 if(tmpLine.payloadBinRepStrEndianLil1 != null) {
                     totalBytes += AddBytes(tmpLine.payloadBinRepStrEndianLil1, binLe);
-                    hexMapLe.put(Utils.CleanHexPrefix(Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true)), Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1)));
+                    cleanHexAddr = Utils.CleanHexPrefix(Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true));
+                    if(cleanHexAddr.equals("000000F4") == true || cleanHexAddr.equals("080000F4") == true) {
+                        addToHexMapOn = true;
+                    }
+                    
+                    if(addToHexMapOn == true) {                    
+                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1)));
+                    }
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil1, asm.jsonObjIsOpCodes.bit_series.bit_len, false) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
                     if(!Utils.IsStringEmpty(tmpLine.addressHex)) {
@@ -241,7 +266,14 @@ public class LinkerThumb implements Linker {
                     Integer tt = Integer.parseInt(Utils.CleanHexPrefix(tmpLine.addressHex), 16);
                     tt += asm.lineLenBytes;
                     totalBytes += AddBytes(tmpLine.payloadBinRepStrEndianLil2, binLe);
-                    hexMapLe.put(Utils.CleanHexPrefix(Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true)), Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2)));  
+                    cleanHexAddr = Utils.CleanHexPrefix(Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true));
+                    if(cleanHexAddr.equals("000000F4") == true || cleanHexAddr.equals("080000F4") == true) {
+                        addToHexMapOn = true;
+                    }
+                    
+                    if(addToHexMapOn == true) {                    
+                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2)));  
+                    }
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
             } else {

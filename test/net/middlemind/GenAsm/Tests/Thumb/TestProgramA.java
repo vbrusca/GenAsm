@@ -3,8 +3,10 @@ package net.middlemind.GenAsm.Tests.Thumb;
 import net.middlemind.GenAsm.FileIO.FileLoader;
 import net.middlemind.GenAsm.GenAsm;
 import net.middlemind.GenAsm.JsonObjs.JsonObj;
+import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexReps;
 import net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb;
 import net.middlemind.GenAsm.Loaders.Loader;
+import net.middlemind.GenAsm.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -88,46 +90,12 @@ public class TestProgramA {
             json = FileLoader.LoadStr(jsonAnswersDataFile);
             jsonObj = ldr.ParseJson(json, answersTargetClass, jsonAnswersDataFile);
             jsonName = jsonObj.GetName();
+            JsonObjLineHexReps hexDataLines = (JsonObjLineHexReps)jsonObj;
+            Logger.wrl("Found " + hexDataLines.line_hex_reps.size() + " test program answers in the loaded JSON data file, '" + jsonName + "'.");
+            Logger.wrl("Found " + linkerThumb.hexMapLe.size() + " test program lines entries in the resulting linked data, '" + assemblySourceFile + "'.");
+            //Assert.assertEquals(n1.GetOffset(), 10);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*
-        MmgBmp b1, b2 = null;
-        Mmg9Slice n1, n2, n3 = null;
-
-        b1 = MmgHelper.GetBasicBmp(MmgUnitTestSettings.RESOURCE_ROOT_DIR + "drawable/auto_load/popup_window_base.png");
-        b2 = MmgHelper.GetBasicBmp(MmgUnitTestSettings.RESOURCE_ROOT_DIR + "drawable/auto_load/game_title.png");
-
-        n1 = new Mmg9Slice(10, b1, 200, 200);
-        n3 = new Mmg9Slice(12, b2, 300, 300);
-
-        Assert.assertEquals(n1.GetOffset(), 10);
-        Assert.assertEquals(true, n1.GetSrc().ApiEquals(b1));
-        Assert.assertEquals(true, n1.GetSrc().equals(b1));
-        Assert.assertEquals(n1.GetWidth(), 200);
-        Assert.assertEquals(n1.GetHeight(), 200);
-        Assert.assertEquals(true, n1.GetIsVisible());
-        Assert.assertEquals(true, n1.GetPosition().ApiEquals(MmgVector2.GetOriginVec()));
-
-        n1.SetDest(b2);
-        n1.SetOffset(12);
-        n1.SetSrc(b2);
-
-        Assert.assertEquals(true, n1.GetDest().ApiEquals(b2));
-        Assert.assertEquals(true, n1.GetDest().equals(b2));
-        Assert.assertEquals(true, n1.GetSrc().ApiEquals(b2));
-        Assert.assertEquals(true, n1.GetSrc().equals(b2));
-        Assert.assertEquals(true, n1.GetDest().ApiEquals(b2));
-        Assert.assertEquals(true, n1.GetOffset() == 12);
-
-        n2 = n1.CloneTyped();
-
-        Assert.assertEquals(true, n1.ApiEquals(n1));
-        Assert.assertEquals(true, n1.ApiEquals(n2));
-        Assert.assertEquals(true, n2.ApiEquals(n1));
-        Assert.assertEquals(true, n2.ApiEquals(n1));
-        Assert.assertEquals(false, n3.ApiEquals(n1));
-        Assert.assertEquals(false, n1.ApiEquals(n3));
-        */
     }    
 }

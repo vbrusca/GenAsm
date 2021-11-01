@@ -1,3 +1,4 @@
+F00:0011       label_:                              ;branch label
 F00:0012       			LSL     R0, R1, #0      ;5.1
                S01:000000F4:  08 00
 F00:0013       			LSL     R0, R1, #31
@@ -205,7 +206,7 @@ F00:0114       			BL      label_         ;5.19
                S01:000001BE:  FF F7 99 FF
 F00:0115       			BL      over
                S01:000001C2:  00 F0 28 F8
-F00:0116       			CMP     R0, #45         ;Other 
+F00:0116       			CMP     R0, #45         ;Other
                S01:000001C6:  2D 28
 F00:0117       			BGT     over
                S01:000001C8:  25 DC
@@ -284,3 +285,10 @@ F00:0153       			PUSH    {R0-R4, LR}
 F00:0154       			POP     {R2, R6, PC}
                S01:00000212:  44 BD
 F00:0155       			STMIA   R0!, {R3, R4, R5, R6, R7}
+               S01:00000214:  F8 C0
+F00:0156       over:       CMP     R0, #45
+               S01:00000216:  2D 28
+F00:0157       here:       B       here
+               S01:00000218:  FE E7
+F00:0158       locate:     LDR     R2, [R2, R6]
+               S01:0000021A:  92 59
