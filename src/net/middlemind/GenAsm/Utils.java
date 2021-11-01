@@ -4,9 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Hashtable;
 import java.util.List;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionMalformedRange;
 import net.middlemind.GenAsm.FileIO.FileUnloader;
+import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexRep;
+import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexReps;
 import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
 
 /**
@@ -15,6 +18,30 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  */
 @SuppressWarnings({"null", "UnusedAssignment"})
 public class Utils {
+    
+    public static boolean CheckAssemblerTestProgramAgainstAnswers(JsonObjLineHexReps hexDataLines, Hashtable<String, String> hashMap) {
+        for(String key : hashMap.keySet()) {
+            String val = hashMap.get(key);
+            key = key.toUpperCase();
+            val = val.toUpperCase();
+            boolean found = false;
+            for(JsonObjLineHexRep hexLine : hexDataLines.line_hex_reps) {
+                String aKey = hexLine.addressHex.toUpperCase();
+                String aVal = hexLine.valueHex.toUpperCase();
+                if(aKey.equals(key) && aVal.equals(val)) {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if(!found) {
+                Logger.wrl("Could not find a match for key: " + key + " with value: " + val);
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * A static method used to write the specified object, in JSON format, to the specified file.
      * @param obj           The object to be converted and written in JSON format.

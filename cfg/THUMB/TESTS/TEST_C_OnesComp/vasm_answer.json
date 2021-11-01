@@ -1,13 +1,13 @@
 {
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
-        {"addressHex":"000000F4", "valueHex":"7946"},
-        {"addressHex":"000000F6", "valueHex":"C988"},
-        {"addressHex":"000000F8", "valueHex":"C943"},
-        {"addressHex":"000000FA", "valueHex":"7A46"},
-        {"addressHex":"000000FC", "valueHex":"5180"},
-        {"addressHex":"000000FE", "valueHex":"11DF"},
-        {"addressHex":"00000100", "valueHex":"23C1"},
-        {"addressHex":"00000102", "valueHex":"0000"}
+        {"addressHex":"080000F4", "valueHex":"7946"},
+        {"addressHex":"080000F6", "valueHex":"C988"},
+        {"addressHex":"080000F8", "valueHex":"C943"},
+        {"addressHex":"080000FA", "valueHex":"7A46"},
+        {"addressHex":"080000FC", "valueHex":"5180"},
+        {"addressHex":"080000FE", "valueHex":"11DF"},
+        {"addressHex":"08000100", "valueHex":"23C1"},
+        {"addressHex":"08000102", "valueHex":"0000"}
     ]
 }

@@ -15,9 +15,12 @@ public class JsonObjLineHexRep extends JsonObjBase {
     /**
      * A string representation of a binary number.
      */
-    public String address_hex;
+    public String addressHex;
     
-    public String value_hex;
+    /**
+     * 
+     */
+    public String valueHex;
         
     /**
      * A method that is used to print a string representation of this JSON object to standard output.
@@ -35,7 +38,7 @@ public class JsonObjLineHexRep extends JsonObjBase {
     public void Print(String prefix) {
         super.Print(prefix);
         Logger.wrl(prefix + "ObjName: " + obj_name);
-        Logger.wrl(prefix + "AddressHex: " + address_hex);
-        Logger.wrl(prefix + "ValueHex: " + value_hex);
+        Logger.wrl(prefix + "AddressHex: " + addressHex);
+        Logger.wrl(prefix + "ValueHex: " + valueHex);
     }    
 }

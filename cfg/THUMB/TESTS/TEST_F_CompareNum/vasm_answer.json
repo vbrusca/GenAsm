@@ -1,21 +1,21 @@
 {
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
-        {"addressHex":"000000F4", "valueHex":"7946"},
-        {"addressHex":"000000F6", "valueHex":"0969"},
-        {"addressHex":"000000F8", "valueHex":"7A46"},
-        {"addressHex":"000000FA", "valueHex":"1269"},
-        {"addressHex":"000000FC", "valueHex":"9142"},
-        {"addressHex":"000000FE", "valueHex":"00D8"},
-        {"addressHex":"00000100", "valueHex":"111C"},
-        {"addressHex":"00000102", "valueHex":"7B46"},
-        {"addressHex":"00000104", "valueHex":"9960"},
-        {"addressHex":"00000106", "valueHex":"11DF"},
-        {"addressHex":"00000108", "valueHex":"DCFE"},
-        {"addressHex":"0000010A", "valueHex":"87A9"},
-        {"addressHex":"0000010C", "valueHex":"3412"},
-        {"addressHex":"0000010E", "valueHex":"7856"},
-        {"addressHex":"00000110", "valueHex":"0000"},
-        {"addressHex":"00000112", "valueHex":"0000"}
+        {"addressHex":"080000F4", "valueHex":"7946"},
+        {"addressHex":"080000F6", "valueHex":"0969"},
+        {"addressHex":"080000F8", "valueHex":"7A46"},
+        {"addressHex":"080000FA", "valueHex":"1269"},
+        {"addressHex":"080000FC", "valueHex":"9142"},
+        {"addressHex":"080000FE", "valueHex":"00D8"},
+        {"addressHex":"08000100", "valueHex":"111C"},
+        {"addressHex":"08000102", "valueHex":"7B46"},
+        {"addressHex":"08000104", "valueHex":"9960"},
+        {"addressHex":"08000106", "valueHex":"11DF"},
+        {"addressHex":"08000108", "valueHex":"DCFE"},
+        {"addressHex":"0800010A", "valueHex":"87A9"},
+        {"addressHex":"0800010C", "valueHex":"3412"},
+        {"addressHex":"0800010E", "valueHex":"7856"},
+        {"addressHex":"08000110", "valueHex":"0000"},
+        {"addressHex":"08000112", "valueHex":"0000"}
     ]
 }

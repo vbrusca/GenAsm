@@ -149,7 +149,7 @@ public class LinkerThumb implements Linker {
                     }
                     
                     if(addToHexMapOn == true) {
-                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1)));
+                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1), asm.lineLenBytes*2, true)));
                     }
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig1, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
@@ -173,7 +173,7 @@ public class LinkerThumb implements Linker {
                     }
                     
                     if(addToHexMapOn == true) {
-                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2)));                    
+                        hexMapBe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true)));                    
                     }
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianBig2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianBig2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                
@@ -248,7 +248,8 @@ public class LinkerThumb implements Linker {
                     }
                     
                     if(addToHexMapOn == true) {                    
-                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1)));
+                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1), asm.lineLenBytes*2, true)));
+                        //Logger.wrl("Putting: " + cleanHexAddr + " Value: " + Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1), asm.lineLenBytes*2, true)));
                     }
                     tmp1 += Utils.FormatBinString(tmpLine.lineNumActive + "", 10, true) + "\t" + Utils.FormatHexString(tmpLine.addressHex, asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil1, asm.jsonObjIsOpCodes.bit_series.bit_len, false) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil1), asm.lineLenBytes*2, true) + "\t" + tmpLine.source.source;
                 } else {
@@ -271,8 +272,9 @@ public class LinkerThumb implements Linker {
                         addToHexMapOn = true;
                     }
                     
-                    if(addToHexMapOn == true) {                    
-                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2)));  
+                    if(addToHexMapOn == true) {
+                        //Logger.wrl("Putting: " + cleanHexAddr + " Value: " + Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true)));
+                        hexMapLe.put(cleanHexAddr, Utils.CleanHexPrefix(Utils.FormatHexString(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true)));  
                     }
                     tmp2 += Utils.FormatBinString((tmpLine.lineNumActive + 1) + "", 10, true) + "\t" + Utils.FormatHexString(Integer.toHexString(tt), asm.lineLenBytes*4, true) + "\t" + Utils.PrettyBin(tmpLine.payloadBinRepStrEndianLil2, asm.jsonObjIsOpCodes.bit_series.bit_len, true) + "\t" + Utils.PrettyHex(Utils.Bin2Hex(tmpLine.payloadBinRepStrEndianLil2), asm.lineLenBytes*2, true) + "\t;LINE 2";
                 }                

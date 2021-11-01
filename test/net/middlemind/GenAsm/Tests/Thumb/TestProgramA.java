@@ -7,6 +7,7 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexReps;
 import net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb;
 import net.middlemind.GenAsm.Loaders.Loader;
 import net.middlemind.GenAsm.Logger;
+import net.middlemind.GenAsm.Utils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -19,6 +20,11 @@ import org.junit.Test;
  * @author Victor G. Brusca, Middlemind Games 10-07-2021 12:25 PM EST
  */
 public class TestProgramA {
+    /**
+     * 
+     */
+    public String testName = "TEST_A_AllOpCodes";
+    
     /**
      * 
      */
@@ -44,6 +50,9 @@ public class TestProgramA {
      */
     public String jsonAnswersDataFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\vasm_answer.json";
     
+    /**
+     * 
+     */
     public TestProgramA() {
     }
     
@@ -57,12 +66,12 @@ public class TestProgramA {
     
     @Before
     public void setUp() {
-        mainExeArgs[0] = "./cfg/is_sets.json";
+        mainExeArgs[0] = GenAsm.CFG_DIR_PATH + "\\is_sets.json";
         mainExeArgs[1] = "THUMB_ARM7TDMI";
         mainExeArgs[2] = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
         mainExeArgs[3] = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
         mainExeArgs[4] = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
-        mainExeArgs[5] = assemblySourceFile; //GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\genasm_source.txt";
+        mainExeArgs[5] = assemblySourceFile;
         mainExeArgs[6] = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
         mainExeArgs[7] = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
         mainExeArgs[8] = GenAsm.CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_A_AllOpCodes\\";
@@ -77,6 +86,7 @@ public class TestProgramA {
     @Test
     @SuppressWarnings({"UnusedAssignment", "CallToPrintStackTrace"})
     public void test1() {
+        boolean res = true;
         try {
             GenAsm.main(mainExeArgs);
             LinkerThumb linkerThumb = (LinkerThumb)GenAsm.ASM_LINKER;
@@ -91,11 +101,14 @@ public class TestProgramA {
             jsonObj = ldr.ParseJson(json, answersTargetClass, jsonAnswersDataFile);
             jsonName = jsonObj.GetName();
             JsonObjLineHexReps hexDataLines = (JsonObjLineHexReps)jsonObj;
-            Logger.wrl("Found " + hexDataLines.line_hex_reps.size() + " test program answers in the loaded JSON data file, '" + jsonName + "'.");
-            Logger.wrl("Found " + linkerThumb.hexMapLe.size() + " test program lines entries in the resulting linked data, '" + assemblySourceFile + "'.");
-            //Assert.assertEquals(n1.GetOffset(), 10);
+            Logger.wrl(testName + ": Found " + hexDataLines.line_hex_reps.size() + " test program answers in the loaded JSON data file, '" + jsonName + "'.");
+            Logger.wrl(testName + ": Found " + linkerThumb.hexMapLe.size() + " test program lines entries in the resulting linked data, '" + assemblySourceFile + "'.");
+            res = Utils.CheckAssemblerTestProgramAgainstAnswers(hexDataLines, linkerThumb.hexMapLe);
+            Logger.wrl("CheckResults: " + res);            
         } catch (Exception e) {
+            res = false;
             e.printStackTrace();
         }
+        Assert.assertTrue(res);
     }    
 }
