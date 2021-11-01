@@ -4,17 +4,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.lang.reflect.InvocationTargetException;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
-import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexRep;
+import net.middlemind.GenAsm.JsonObjs.JsonObjLineHexReps;
 
 /**
  * A class used to load JSON bit series object data.
  * @author Victor G. Brusca, Middlemind Games 11/301/2021 2:21 PM EST
  */
-public class LoaderLineHexRep implements Loader {
+public class LoaderLineHexReps implements Loader {
     /**
      * A string representing the name of this class. This is used to define the class in JSON output files.
      */    
-    public String obj_name = "LoaderLineHexRep";
+    public String obj_name = "LoaderLineHexReps";
     
     /**
      * A method used to parse and load JSON data files.
@@ -25,13 +25,13 @@ public class LoaderLineHexRep implements Loader {
      * @throws ExceptionLoader  An exception is thrown if there is an issue during the JSON data load.
      */    
     @Override
-    public JsonObjLineHexRep ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
+    public JsonObjLineHexReps ParseJson(String json, String targetClass, String fileName) throws ExceptionLoader {
         GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
       
         Gson gson = builder.create();
         try {
-            JsonObjLineHexRep jsonObj = (JsonObjLineHexRep)Class.forName(targetClass).getConstructor().newInstance();
+            JsonObjLineHexReps jsonObj = (JsonObjLineHexReps)Class.forName(targetClass).getConstructor().newInstance();
             jsonObj = gson.fromJson(json, jsonObj.getClass());
             jsonObj.name = targetClass;
             jsonObj.fileName = fileName;

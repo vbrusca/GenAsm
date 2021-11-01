@@ -1,9 +1,10 @@
 package net.middlemind.GenAsm.Tests.Thumb;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import net.middlemind.GenAsm.FileIO.FileLoader;
 import net.middlemind.GenAsm.GenAsm;
+import net.middlemind.GenAsm.JsonObjs.JsonObj;
 import net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb;
+import net.middlemind.GenAsm.Loaders.Loader;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -19,17 +20,27 @@ public class TestProgramA {
     /**
      * 
      */
-    public static String TEST_ASEEMBLY_SOURCE_FILE = GenAsm.CFG_DIR_PATH + "";
+    public String assemblySourceFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\genasm_source.txt";
     
     /**
      * 
      */
-    public static String TEST_OUTPUT_DIR = GenAsm.CFG_DIR_PATH + "";
-
+    public String[] mainExeArgs = new String[GenAsm.ARG_LEN_TARGET];
+    
     /**
      * 
      */
-    public String[] mainExeArgs = new String[GenAsm.ARG_LEN_TARGET];
+    public String answersLoaderClass = "net.middlemind.GenAsm.Loaders.LoaderLineHexReps";
+    
+    /**
+     * 
+     */
+    public String answersTargetClass = "net.middlemind.GenAsm.JsonObjs.JsonObjLineHexReps";    
+    
+    /**
+     * 
+     */
+    public String jsonAnswersDataFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\vasm_answer.json";
     
     public TestProgramA() {
     }
@@ -49,7 +60,7 @@ public class TestProgramA {
         mainExeArgs[2] = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
         mainExeArgs[3] = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
         mainExeArgs[4] = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
-        mainExeArgs[5] = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\genasm_source.txt";
+        mainExeArgs[5] = assemblySourceFile; //GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\genasm_source.txt";
         mainExeArgs[6] = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
         mainExeArgs[7] = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
         mainExeArgs[8] = GenAsm.CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_A_AllOpCodes\\";
@@ -67,10 +78,16 @@ public class TestProgramA {
         try {
             GenAsm.main(mainExeArgs);
             LinkerThumb linkerThumb = (LinkerThumb)GenAsm.ASM_LINKER;
-            //linkerThumb.hexMapLe;
-            //Assert.assertArrayEquals(new int[] {6}, new int[] {6});
-            //load json data file with answers
-                        
+            
+            Class cTmp = Class.forName(answersLoaderClass);
+            Loader ldr = (Loader)cTmp.getDeclaredConstructor().newInstance();
+            String json = null;
+            String jsonName = null;
+            JsonObj jsonObj = null;
+
+            json = FileLoader.LoadStr(jsonAnswersDataFile);
+            jsonObj = ldr.ParseJson(json, answersTargetClass, jsonAnswersDataFile);
+            jsonName = jsonObj.GetName();
         } catch (Exception e) {
             e.printStackTrace();
         }

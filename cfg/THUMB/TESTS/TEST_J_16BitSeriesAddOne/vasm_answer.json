@@ -1,21 +1,24 @@
-[
-    {"addressHex":"000000F4", "valueHex":"7846"},
-    {"addressHex":"000000F6", "valueHex":"808A"},
-    {"addressHex":"000000F8", "valueHex":"4940"},
-    {"addressHex":"000000FA", "valueHex":"5240"},
-    {"addressHex":"000000FC", "valueHex":"9288"},
-    {"addressHex":"000000FE", "valueHex":"0388"},
-    {"addressHex":"00000100", "valueHex":"191C"},
-    {"addressHex":"00000102", "valueHex":"0230"},
-    {"addressHex":"00000104", "valueHex":"013A"},
-    {"addressHex":"00000106", "valueHex":"FAD1"},
-    {"addressHex":"00000108", "valueHex":"7C46"},
-    {"addressHex":"0000010A", "valueHex":"A160"},
-    {"addressHex":"0000010C", "valueHex":"11DF"},
-    {"addressHex":"0000010E", "valueHex":"4020"},
-    {"addressHex":"00000110", "valueHex":"221C"},
-    {"addressHex":"00000112", "valueHex":"4202"},    
-    {"addressHex":"00000114", "valueHex":"0000"},
-    {"addressHex":"00000116", "valueHex":"0000"},
-    {"addressHex":"00000118", "valueHex":"0000"}
-]
+{
+    "obj_name": "line_hex_reps",
+    "line_hex_reps": [
+        {"addressHex":"000000F4", "valueHex":"7846"},
+        {"addressHex":"000000F6", "valueHex":"808A"},
+        {"addressHex":"000000F8", "valueHex":"4940"},
+        {"addressHex":"000000FA", "valueHex":"5240"},
+        {"addressHex":"000000FC", "valueHex":"9288"},
+        {"addressHex":"000000FE", "valueHex":"0388"},
+        {"addressHex":"00000100", "valueHex":"191C"},
+        {"addressHex":"00000102", "valueHex":"0230"},
+        {"addressHex":"00000104", "valueHex":"013A"},
+        {"addressHex":"00000106", "valueHex":"FAD1"},
+        {"addressHex":"00000108", "valueHex":"7C46"},
+        {"addressHex":"0000010A", "valueHex":"A160"},
+        {"addressHex":"0000010C", "valueHex":"11DF"},
+        {"addressHex":"0000010E", "valueHex":"4020"},
+        {"addressHex":"00000110", "valueHex":"221C"},
+        {"addressHex":"00000112", "valueHex":"4202"},    
+        {"addressHex":"00000114", "valueHex":"0000"},
+        {"addressHex":"00000116", "valueHex":"0000"},
+        {"addressHex":"00000118", "valueHex":"0000"}
+    ]
+}
