@@ -1,7 +1,7 @@
 {
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
-        {"addressHex":"080000F4", "valueHex":"7846"},
+        {"addressHex":"080000F4", "valueHex":"7946"},
         {"addressHex":"080000F6", "valueHex":"808A"},
         {"addressHex":"080000F8", "valueHex":"4940"},
         {"addressHex":"080000FA", "valueHex":"5240"},

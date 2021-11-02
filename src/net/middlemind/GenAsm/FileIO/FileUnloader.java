@@ -1,6 +1,7 @@
 package net.middlemind.GenAsm.FileIO;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,6 +21,12 @@ public class FileUnloader {
      * @throws IOException  An IO exception is thrown if there is a file error.
      */
     public static void WriteStr(String file, String str) throws IOException {
+        File directory = new File(file);
+        directory = new File(directory.getParent());
+        if (! directory.exists()){
+            directory.mkdirs();
+        }
+        
         BufferedWriter bf = Files.newBufferedWriter(Paths.get(file), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
         bf.write(str);
         bf.flush();
@@ -33,6 +40,12 @@ public class FileUnloader {
      * @throws IOException  An IO exception is thrown if there is a file error.
      */
     public static void WriteList(String file, List<String> strs) throws IOException {
+        File directory = new File(file);
+        directory = new File(directory.getParent());
+        if (! directory.exists()){
+            directory.mkdirs();
+        }
+        
         BufferedWriter bf = Files.newBufferedWriter(Paths.get(file), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
         for(String s : strs) {
             bf.write(s + System.lineSeparator());
@@ -48,6 +61,12 @@ public class FileUnloader {
      * @throws IOException  An IO exception is thrown if there is a file error.
      */
     public static void WriteBuffer(String file, byte[] buff) throws IOException {
+        File directory = new File(file);
+        directory = new File(directory.getParent());
+        if (! directory.exists()){
+            directory.mkdirs();
+        }
+        
         Files.write(Paths.get(file), buff);
     }
 }

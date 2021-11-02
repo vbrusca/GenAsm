@@ -88,6 +88,7 @@ public class TestProgramC {
     public void test1() {
         boolean res = true;
         try {
+            Logger.LOGGING_ON = false;
             GenAsm.main(mainExeArgs);
             LinkerThumb linkerThumb = (LinkerThumb)GenAsm.ASM_LINKER;
             
@@ -101,6 +102,7 @@ public class TestProgramC {
             jsonObj = ldr.ParseJson(json, answersTargetClass, jsonAnswersDataFile);
             jsonName = jsonObj.GetName();
             JsonObjLineHexReps hexDataLines = (JsonObjLineHexReps)jsonObj;
+            Logger.LOGGING_ON = true;            
             Logger.wrl(testName + ": Found " + hexDataLines.line_hex_reps.size() + " test program answers in the loaded JSON data file, '" + jsonName + "'.");
             Logger.wrl(testName + ": Found " + linkerThumb.hexMapLe.size() + " test program lines entries in the resulting linked data, '" + assemblySourceFile + "'.");
             res = Utils.CheckAssemblerTestProgramAgainstAnswers(hexDataLines, linkerThumb.hexMapLe);
