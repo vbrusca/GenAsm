@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnsupportedAssemblyFileType;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnsupportedBinaryFileLength;
+import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnsupportedStringLength;
 import net.middlemind.GenAsm.FileIO.FileLoader;
 import net.middlemind.GenAsm.FileIO.FileUnloader;
 import net.middlemind.GenAsm.Logger;
@@ -24,7 +25,7 @@ public class PreProcessorThumb implements PreProcessor {
     /**
      * A static array of strings representing the supported pre-processor directives.
      */
-    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP" };
+    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP", "$STRING" };
 
     /**
      * A static integer representing the array index of the include bin pre-processor directive.
@@ -40,6 +41,16 @@ public class PreProcessorThumb implements PreProcessor {
      * A static integer representing the array index of the no op-code assembly pre-processor directive.
      */
     public static int PPD_NOP_IDX = 2;
+    
+    /**
+     * A static integer representing the array index of the string assembly pre-processor directive.
+     */
+    public static int PPD_STRING_IDX = 3;    
+    
+    /**
+     * A static byte representing the padding character used to mark the end of a line of text as well as to align the text to 16bit.
+     */
+    public static byte PPD_EOL_BYTE = (byte)255;
     
     /**
      * A static string representing the name of the output file for the pre-processor.
@@ -61,6 +72,11 @@ public class PreProcessorThumb implements PreProcessor {
      */
     public static int MAX_EXT_BIN_FILE_LEN = 255;
 
+    /**
+     * An integer representing the maximum string length supported for in-line strings..
+     */
+    public static int MAX_STRING_LEN = 32;
+    
     /**
      * The full file name of the assembly source file.
      */
@@ -113,6 +129,7 @@ public class PreProcessorThumb implements PreProcessor {
         List<String> incAsm;
         Map<String, List<String>> asmFileAdj = new Hashtable<>();
         Map<String, String> asmFileAdjNames = new Hashtable<>();
+        Map<String, Integer> asmFileAdjTypes = new Hashtable<>();
         File f = null;
         String lcFileName = null;
         byte[] incBin = null;
@@ -139,17 +156,19 @@ public class PreProcessorThumb implements PreProcessor {
                     
                     sIdx = idxs[1];
                     tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
-                    fileName = tmp;
-                    f = new File(fileName);
-                    lcFileName = f.getName().toLowerCase();
-                                            
+                    Logger.wrl("======================Found: " + idxs[0]);               
                     if(idxs[0] == PPD_INCASM_IDX) {
+                        fileName = tmp;
+                        f = new File(fileName);
+                        lcFileName = f.getName().toLowerCase();
+                    
                         if(Utils.StringContainsArrayEntry(EXT_ASM_FILES, lcFileName) != null) {                            
                             incAsm = FileLoader.Load(fileName);
                             incAsm.add(0, ";Found file with line count: " + incAsm.size() + ", byte count: " + f.length());
                             incAsm.add(1, "");
                             incAsm.add(incAsm.size(), "");
                             
+                            asmFileAdjTypes.put(s, idxs[0]);
                             asmFileAdj.put(s, incAsm);
                             AddAppendix(incAsm, whiteSpace);
                             asmFileAdjNames.put(s, fileName);
@@ -159,6 +178,10 @@ public class PreProcessorThumb implements PreProcessor {
                         }
                         
                     } else if(idxs[0] == PPD_INCBIN_IDX) {
+                        fileName = tmp;
+                        f = new File(fileName);
+                        lcFileName = f.getName().toLowerCase();
+                    
                         if(Utils.StringContainsArrayEntry(EXT_BIN_FILES, lcFileName) != null) {
                             incBin = FileLoader.LoadBin(fileName);                            
                             numBytes = incBin.length;
@@ -214,6 +237,7 @@ public class PreProcessorThumb implements PreProcessor {
                             }
 
                             nret.add("");
+                            asmFileAdjTypes.put(s, idxs[0]);                            
                             asmFileAdj.put(s, nret);
                             AddAppendix(nret, whiteSpace);
                             asmFileAdjNames.put(s, fileName);
@@ -221,6 +245,60 @@ public class PreProcessorThumb implements PreProcessor {
                         } else {
                             throw new ExceptionUnsupportedAssemblyFileType("Cannot load binary files without file extension .bin or .raw for file name, " + fileName);
                         }
+                    } else if(idxs[0] == PPD_STRING_IDX) {
+                        fileName = "String replacement: " + tmp;                        
+                        tmp += ((char)PPD_EOL_BYTE) + "";
+                        char[] crs = tmp.toCharArray();
+                        int len = crs.length;
+                        if(len % 2 != 0) {
+                            paddingOn = true;
+                            len++;
+                        }
+                        byte[] binCrs = new byte[len];
+                        for(int i = 0; i < len; i++) {
+                            if(i <crs.length) {
+                                binCrs[i] = (byte)crs[i];
+                            } else {
+                                binCrs[i] = PPD_EOL_BYTE;
+                            }
+                        }
+                        
+                        numBytes = len;
+                        numHalfWords = numBytes / 2;
+                        if(numBytes > MAX_STRING_LEN) {
+                            throw new ExceptionUnsupportedStringLength("Cannot load an in-line string with length greater than " + MAX_STRING_LEN + " characters");
+                        }
+                                                        
+                        short[] shorts = new short[numHalfWords];
+                        ByteBuffer.wrap(incBin).asShortBuffer().get(shorts);
+                        List<String> nret = new ArrayList<>();
+                        String hex = null;
+                        int tCount = 0;
+                        String binLine = null;
+                        int i = 0;
+                        String idxStr = null;
+                        nret.add(";Found string byte count: " + numBytes + ", word count: " + numHalfWords + ", and padding on: " + paddingOn);
+                        nret.add("");
+                            
+                        for(i = 0; i < shorts.length; i++) {
+                            hex = Integer.toHexString(shorts[i] & 0xffff);
+                            hex = Utils.FormatHexString(hex.toUpperCase(), 4);
+                            binLine = Integer.toHexString((tCount * 2) & 0xffff);
+                            binLine = Utils.FormatHexString(binLine.toUpperCase(), 4);
+                            idxStr = Utils.FormatBinString((i * 2 + ""), 4, true);
+
+                            if((i*2 + 1) < binCrs.length) {
+                                nret.add("@DCHW #" + hex + "\t\t;index: " + idxStr + "\t" + (char)binCrs[i*2] + " " + (char)binCrs[i*2 + 1]);
+                            } else {
+                                nret.add("@DCHW #" + hex + "\t\t;index: " + idxStr + "\t" + (char)binCrs[i*2]);                                
+                            }
+                            tCount++;
+                        }
+                        
+                        nret.add("");
+                        asmFileAdj.put(s, nret);
+                        AddAppendix(nret, whiteSpace);
+                        asmFileAdjNames.put(s, fileName);                        
                     }
                 }
             }
@@ -233,10 +311,11 @@ public class PreProcessorThumb implements PreProcessor {
             ret.remove(key.intValue());
             ret.add(key, tmpLine);
         }        
-        
+                
         int idxTmp = -1;
         int rowCountOrig = -1;
         int rowCountNew = -1;
+        int type = -1;
         fileName = null;
         for(String key : asmFileAdj.keySet()) {
             rowCountOrig = ret.size();
@@ -244,8 +323,20 @@ public class PreProcessorThumb implements PreProcessor {
             idxTmp = ret.indexOf(key);
             ret.addAll(idxTmp + 1, asmFileAdj.get(key));
             rowCountNew = ret.size();
-            Logger.wrl("PreProcessorThumb: Adding inline assembly at line " + (idxTmp + 1) + " from file, " + fileName);
-            Logger.wrl("PreProcessorThumb: Assembly file row count before include, " + rowCountOrig + ", and after include, " + rowCountNew + ".");                    
+            
+            if(asmFileAdjTypes.containsKey(key) == true) {
+                type = asmFileAdjTypes.get(key);
+            } else {
+                type = -1;
+            }
+            
+            if(type == PPD_INCBIN_IDX || type == PPD_INCASM_IDX) {
+                Logger.wrl("PreProcessorThumb: Adding inline assembly at line " + (idxTmp + 1) + " from file, " + fileName);
+                Logger.wrl("PreProcessorThumb: Assembly file row count before include, " + rowCountOrig + ", and after include, " + rowCountNew + ".");
+            } else {
+                Logger.wrl("PreProcessorThumb: Adding inline assembly at line " + (idxTmp + 1) + " from string, " + fileName);
+                Logger.wrl("PreProcessorThumb: Assembly file row count before include, " + rowCountOrig + ", and after include, " + rowCountNew + ".");                                    
+            }
         }
 
         FileUnloader.WriteList(Paths.get(rootOutputDir, OUTPUT_FILE_NAME).toString(), ret);        

@@ -300,11 +300,19 @@ public class LinkerThumb implements Linker {
         sym = null;
         tmp1 = null;
         for(String key : asm.symbols.symbols.keySet()) {
-            sym = asm.symbols.symbols.get(key);
+            sym = asm.symbols.symbols.get(key);            
             if(sym.value != null) {
-                tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + Utils.FormatHexString(sym.addressHex, asm.lineLenBytes*4, true) + "\tValue: " + sym.value.toString() + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+                if(Utils.IsStringEmpty(sym.addressHex) == false) {
+                    tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + Utils.FormatHexString(sym.addressHex, asm.lineLenBytes*4, true) + "\tValue: " + sym.value.toString() + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+                } else {
+                    tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + "          " + "\tValue: " + sym.value.toString() + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;                            
+                }
             } else {
-                tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + Utils.FormatHexString(sym.addressHex, asm.lineLenBytes*4, true) + "\tValue: " + "n/a" + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+                if(Utils.IsStringEmpty(sym.addressHex) == false) {
+                    tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + Utils.FormatHexString(sym.addressHex, asm.lineLenBytes*4, true) + "\tValue: " + "n/a" + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;        
+                } else {
+                    tmp1 = ";Name: " + sym.name + "\tLineNumAbs: " + Utils.FormatBinString(sym.lineNumAbs + "", 10, true) + "\tLineNumActive: " + Utils.FormatBinString(sym.lineNumActive + "", 10, true) + "\tAddressInt: " + sym.addressInt + "\tAddressHex: " + "          " + "\tValue: " + "n/a" + "\tEmptyLineLabel: " + sym.isEmptyLineLabel + "\tIsLabel: " + sym.isLabel + "\tIsStaticValue: " + sym.isStaticValue;                            
+                }
             }
             lstFile.add(tmp1);
         }

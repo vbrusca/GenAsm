@@ -8,7 +8,7 @@
                 ;$NOP
 
     ;++++++++++++++++++++++++++++++++
-    ;$INCASM |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/TESTS/test_asm_incasm.txt|
+    ;$INCASM |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\TESTS\test_asm_incasm.txt|
     ;++++++++++++++++++++++++++++++++
 
     label_                              ;branch label
@@ -174,7 +174,7 @@
     var6        @DCHW   254
 
     ;++++++++++++++++++++++++++++++++
-    ;$INCBIN |/Users/victor/Documents/files/netbeans_workspace/GenAsm/cfg/THUMB/INCBIN/ninlogo.dat|
+    ;$INCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\TESTS\ninlogo.dat|
     ;++++++++++++++++++++++++++++++++
 
     ;++++++++++++++++++++++++++++++++
