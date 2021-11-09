@@ -967,6 +967,27 @@ public class AssemblerThumb implements Assembler {
             throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
         }
         
+        //clean symbol values
+        List<String> del = new ArrayList<>();
+        for(String key : symbols.symbols.keySet()) {
+            Symbol sym = symbols.symbols.get(key);
+            if(sym != null) {
+                if(sym.isStaticValue == false) {
+                    sym.value = null;
+                }
+            } else {
+                del.add(key);
+                Logger.wrl("WARNING: Found NULL symbol entry to remove at key: " + key);
+            }
+        }
+        
+        if(del != null && del.isEmpty() == false) {
+            for(String key : del) {
+                Logger.wrl("Removing NULL symbol from symbols table with key: " + key);
+                symbols.symbols.remove(key);
+            }
+        }
+        
         if(eventHandler != null) {
             eventHandler.PopulateDirectiveArgAndAreaDataPost(step, this);
         }        
@@ -1227,6 +1248,7 @@ public class AssemblerThumb implements Assembler {
                                 symbol.name = token.source;
                                 symbol.token = token;
                                 symbol.isLabel = true;
+                                symbol.value = null;
                                 symbols.symbols.put(token.source, symbol);
                             }
                             
