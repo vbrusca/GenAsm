@@ -140,6 +140,7 @@
 @ENTRY
 
     value   @DCHW   #49443
+            @DCHW   #0
     result  @DCHW   #0
-
+            @DCHW   #0
 @END
