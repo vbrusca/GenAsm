@@ -3434,7 +3434,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 131,
     "sourceLen": 37,
-    "source": "            LDRH    R1, [R1, `value1]",
+    "source": "            LDRH    R1, [R1, -value1]",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -3479,7 +3479,7 @@
         "len": 7,
         "lineNum": 131,
         "index": 4,
-        "payload": "`value1"
+        "payload": "-value1"
       },
       {
         "obj_name": "Artifact",
@@ -3531,7 +3531,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 133,
     "sourceLen": 37,
-    "source": "            LDRH    R2, [R2, `value2]",
+    "source": "            LDRH    R2, [R2, -value2]",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -3576,7 +3576,7 @@
         "len": 7,
         "lineNum": 133,
         "index": 4,
-        "payload": "`value2"
+        "payload": "-value2"
       },
       {
         "obj_name": "Artifact",
@@ -3672,7 +3672,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 136,
     "sourceLen": 37,
-    "source": "            STRH    R1, [R2, `result]",
+    "source": "            STRH    R1, [R2, -result]",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -3717,7 +3717,7 @@
         "len": 7,
         "lineNum": 136,
         "index": 4,
-        "payload": "`result"
+        "payload": "-result"
       },
       {
         "obj_name": "Artifact",
@@ -3759,9 +3759,64 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 138,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
+    "sourceLen": 51,
+    "source": "            MOV\tR8, R8\t\t;NOP preprocessor directive",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 138,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 17,
+        "len": 2,
+        "lineNum": 138,
+        "index": 1,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 138,
+        "index": 2,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 27,
+        "len": 4,
+        "lineNum": 138,
+        "index": 3,
+        "payload": ";NOP"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 40,
+        "len": 12,
+        "lineNum": 138,
+        "index": 4,
+        "payload": "preprocessor"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 42,
+        "posStop": 50,
+        "len": 9,
+        "lineNum": 138,
+        "index": 5,
+        "payload": "directive"
+      }
+    ]
   },
   {
     "obj_name": "ArtifactLine",
@@ -3893,6 +3948,32 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 145,
+    "sourceLen": 22,
+    "source": "            @DCHW   #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 145,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 145,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 146,
     "sourceLen": 25,
     "source": "    value2  @DCHW   \u002602AA",
     "payload": [
@@ -3901,7 +3982,7 @@
         "posStart": 4,
         "posStop": 9,
         "len": 6,
-        "lineNum": 145,
+        "lineNum": 146,
         "index": 0,
         "payload": "value2"
       },
@@ -3910,7 +3991,7 @@
         "posStart": 12,
         "posStop": 16,
         "len": 5,
-        "lineNum": 145,
+        "lineNum": 146,
         "index": 1,
         "payload": "@DCHW"
       },
@@ -3919,7 +4000,7 @@
         "posStart": 20,
         "posStop": 24,
         "len": 5,
-        "lineNum": 145,
+        "lineNum": 146,
         "index": 2,
         "payload": "\u002602AA"
       }
@@ -3927,7 +4008,68 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 146,
+    "lineNum": 147,
+    "sourceLen": 22,
+    "source": "            @DCHW   #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 147,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 147,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 148,
+    "sourceLen": 39,
+    "source": "            @DCHW   #0          ;spacer",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 148,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 148,
+        "index": 1,
+        "payload": "#0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 32,
+        "posStop": 38,
+        "len": 7,
+        "lineNum": 148,
+        "index": 2,
+        "payload": ";spacer"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 149,
     "sourceLen": 22,
     "source": "    result  @DCHW   #0",
     "payload": [
@@ -3936,7 +4078,7 @@
         "posStart": 4,
         "posStop": 9,
         "len": 6,
-        "lineNum": 146,
+        "lineNum": 149,
         "index": 0,
         "payload": "result"
       },
@@ -3945,7 +4087,7 @@
         "posStart": 12,
         "posStop": 16,
         "len": 5,
-        "lineNum": 146,
+        "lineNum": 149,
         "index": 1,
         "payload": "@DCHW"
       },
@@ -3954,7 +4096,7 @@
         "posStart": 20,
         "posStop": 21,
         "len": 2,
-        "lineNum": 146,
+        "lineNum": 149,
         "index": 2,
         "payload": "#0"
       }
@@ -3962,14 +4104,33 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 147,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
+    "lineNum": 150,
+    "sourceLen": 22,
+    "source": "            @DCHW   #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 150,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 150,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 148,
+    "lineNum": 151,
     "sourceLen": 4,
     "source": "@END",
     "payload": [
@@ -3978,7 +4139,7 @@
         "posStart": 0,
         "posStop": 3,
         "len": 4,
-        "lineNum": 148,
+        "lineNum": 151,
         "index": 0,
         "payload": "@END"
       }
