@@ -2,15 +2,20 @@
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
         {"addressHex":"080000F4", "valueHex":"7946"},
-        {"addressHex":"080000F6", "valueHex":"4989"},
+        {"addressHex":"080000F6", "valueHex":"098A"},
         {"addressHex":"080000F8", "valueHex":"7A46"},
-        {"addressHex":"080000FA", "valueHex":"1289"},
+        {"addressHex":"080000FA", "valueHex":"128A"},
         {"addressHex":"080000FC", "valueHex":"8918"},
         {"addressHex":"080000FE", "valueHex":"7A46"},
-        {"addressHex":"08000100", "valueHex":"9180"},
+        {"addressHex":"08000100", "valueHex":"1182"},
         {"addressHex":"08000102", "valueHex":"11DF"},
-        {"addressHex":"08000104", "valueHex":"23C1"},
-        {"addressHex":"08000106", "valueHex":"AA02"},
-        {"addressHex":"08000108", "valueHex":"0000"}    
+        {"addressHex":"08000104", "valueHex":"C046"},        
+        {"addressHex":"08000106", "valueHex":"23C1"},
+        {"addressHex":"08000108", "valueHex":"0000"},            
+        {"addressHex":"0800010A", "valueHex":"AA02"},
+        {"addressHex":"0800010C", "valueHex":"0000"},    
+        {"addressHex":"0800010E", "valueHex":"0000"},    
+        {"addressHex":"08000110", "valueHex":"0000"},    
+        {"addressHex":"08000112", "valueHex":"0000"},            
     ]
 }
