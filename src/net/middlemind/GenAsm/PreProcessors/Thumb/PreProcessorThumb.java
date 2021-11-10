@@ -142,6 +142,7 @@ public class PreProcessorThumb implements PreProcessor {
         for(String s : ret) {
             if(s != null && s.equals("") == false) {
                 idxs = Utils.StringContainsArrayEntry(PP_DIRECTIVES, s);
+                //Logger.wrl(s);
                 if(idxs != null) {
                     directive = PP_DIRECTIVES[idxs[0]];
                     
@@ -149,15 +150,14 @@ public class PreProcessorThumb implements PreProcessor {
                         whiteSpace = s.substring(0, s.indexOf(";"));
                     }
                     
+                    //Logger.wrl("======================Found: " + idxs[0]);
                     if(idxs[0] == PPD_NOP_IDX) {
                         asmFileReplace.put(count, whiteSpace + "MOV\tR8, R8\t\t;NOP preprocessor directive");
-                        continue;
-                    }
-                    
-                    sIdx = idxs[1];
-                    tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
-                    Logger.wrl("======================Found: " + idxs[0]);               
-                    if(idxs[0] == PPD_INCASM_IDX) {
+
+                    } else if(idxs[0] == PPD_INCASM_IDX) {
+                        sIdx = idxs[1];
+                        tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
+                        
                         fileName = tmp;
                         f = new File(fileName);
                         lcFileName = f.getName().toLowerCase();
@@ -178,6 +178,9 @@ public class PreProcessorThumb implements PreProcessor {
                         }
                         
                     } else if(idxs[0] == PPD_INCBIN_IDX) {
+                        sIdx = idxs[1];
+                        tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
+                        
                         fileName = tmp;
                         f = new File(fileName);
                         lcFileName = f.getName().toLowerCase();
@@ -246,6 +249,9 @@ public class PreProcessorThumb implements PreProcessor {
                             throw new ExceptionUnsupportedAssemblyFileType("Cannot load binary files without file extension .bin or .raw for file name, " + fileName);
                         }
                     } else if(idxs[0] == PPD_STRING_IDX) {
+                        sIdx = idxs[1];
+                        tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
+                        
                         fileName = "String replacement: " + tmp;                        
                         tmp += ((char)PPD_EOL_BYTE) + "";
                         char[] crs = tmp.toCharArray();

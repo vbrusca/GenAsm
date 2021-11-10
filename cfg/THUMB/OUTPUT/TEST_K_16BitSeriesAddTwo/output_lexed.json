@@ -1,0 +1,4345 @@
+[
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 0,
+    "sourceLen": 24,
+    "source": "@TTL |16BitSeriesAddTwo|",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 3,
+        "len": 4,
+        "lineNum": 0,
+        "index": 0,
+        "payload": "@TTL"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 5,
+        "posStop": 23,
+        "len": 19,
+        "lineNum": 0,
+        "index": 1,
+        "payload": "|16BitSeriesAddTwo|"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 1,
+    "sourceLen": 33,
+    "source": "@AREA |Program| @CODE, @READWRITE",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 4,
+        "len": 5,
+        "lineNum": 1,
+        "index": 0,
+        "payload": "@AREA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 6,
+        "posStop": 14,
+        "len": 9,
+        "lineNum": 1,
+        "index": 1,
+        "payload": "|Program|"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 20,
+        "len": 5,
+        "lineNum": 1,
+        "index": 2,
+        "payload": "@CODE"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 23,
+        "posStop": 32,
+        "len": 10,
+        "lineNum": 1,
+        "index": 3,
+        "payload": "@READWRITE"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 2,
+    "sourceLen": 6,
+    "source": "@ENTRY",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 5,
+        "len": 6,
+        "lineNum": 2,
+        "index": 0,
+        "payload": "@ENTRY"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 3,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 4,
+    "sourceLen": 19,
+    "source": "    @ORG 0x08000000",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 7,
+        "len": 4,
+        "lineNum": 4,
+        "index": 0,
+        "payload": "@ORG"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 9,
+        "posStop": 18,
+        "len": 10,
+        "lineNum": 4,
+        "index": 1,
+        "payload": "0x08000000"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 5,
+    "sourceLen": 47,
+    "source": "    ;need 122 16bit entries to match GBA header",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 8,
+        "len": 5,
+        "lineNum": 5,
+        "index": 0,
+        "payload": ";need"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 10,
+        "posStop": 12,
+        "len": 3,
+        "lineNum": 5,
+        "index": 1,
+        "payload": "122"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 14,
+        "posStop": 18,
+        "len": 5,
+        "lineNum": 5,
+        "index": 2,
+        "payload": "16bit"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 26,
+        "len": 7,
+        "lineNum": 5,
+        "index": 3,
+        "payload": "entries"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 28,
+        "posStop": 29,
+        "len": 2,
+        "lineNum": 5,
+        "index": 4,
+        "payload": "to"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 31,
+        "posStop": 35,
+        "len": 5,
+        "lineNum": 5,
+        "index": 5,
+        "payload": "match"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 37,
+        "posStop": 39,
+        "len": 3,
+        "lineNum": 5,
+        "index": 6,
+        "payload": "GBA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 41,
+        "posStop": 46,
+        "len": 6,
+        "lineNum": 5,
+        "index": 7,
+        "payload": "header"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 6,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 6,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 6,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 7,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 7,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 7,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 8,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 8,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 8,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 9,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 9,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 9,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 10,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 10,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 10,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 11,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 11,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 11,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 12,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 12,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 12,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 13,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 13,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 13,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 14,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 14,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 14,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 15,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 15,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 15,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 16,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 16,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 16,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 17,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 17,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 17,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 18,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 18,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 18,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 19,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 19,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 19,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 20,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 20,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 20,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 21,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 21,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 21,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 22,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 22,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 22,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 23,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 23,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 23,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 24,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 24,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 24,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 25,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 25,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 25,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 26,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 26,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 26,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 27,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 27,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 27,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 28,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 28,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 28,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 29,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 29,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 29,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 30,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 30,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 30,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 31,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 31,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 31,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 32,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 32,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 32,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 33,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 33,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 33,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 34,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 34,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 34,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 35,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 35,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 35,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 36,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 36,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 36,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 37,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 37,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 37,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 38,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 38,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 38,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 39,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 39,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 39,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 40,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 40,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 40,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 41,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 41,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 41,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 42,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 42,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 42,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 43,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 43,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 43,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 44,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 44,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 44,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 45,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 45,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 45,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 46,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 46,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 46,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 47,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 47,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 47,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 48,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 48,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 48,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 49,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 49,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 49,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 50,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 50,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 50,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 51,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 51,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 51,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 52,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 52,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 52,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 53,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 53,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 53,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 54,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 54,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 54,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 55,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 55,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 55,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 56,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 56,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 56,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 57,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 57,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 57,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 58,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 58,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 58,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 59,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 59,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 59,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 60,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 60,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 60,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 61,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 61,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 61,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 62,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 62,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 62,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 63,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 63,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 63,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 64,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 64,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 64,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 65,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 65,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 65,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 66,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 66,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 66,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 67,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 67,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 67,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 68,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 68,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 68,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 69,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 69,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 69,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 70,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 70,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 70,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 71,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 71,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 71,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 72,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 72,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 72,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 73,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 73,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 73,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 74,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 74,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 74,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 75,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 75,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 75,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 76,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 76,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 76,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 77,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 77,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 77,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 78,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 78,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 78,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 79,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 79,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 79,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 80,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 80,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 80,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 81,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 81,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 81,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 82,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 82,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 82,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 83,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 83,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 83,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 84,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 84,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 84,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 85,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 85,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 85,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 86,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 86,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 86,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 87,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 87,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 87,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 88,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 88,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 88,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 89,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 89,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 89,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 90,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 90,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 90,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 91,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 91,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 91,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 92,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 92,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 92,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 93,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 93,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 93,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 94,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 94,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 94,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 95,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 95,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 95,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 96,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 96,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 96,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 97,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 97,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 97,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 98,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 98,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 98,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 99,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 99,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 99,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 100,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 100,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 100,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 101,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 101,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 101,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 102,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 102,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 102,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 103,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 103,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 103,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 104,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 104,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 104,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 105,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 105,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 105,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 106,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 106,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 106,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 107,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 107,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 107,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 108,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 108,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 108,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 109,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 109,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 109,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 110,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 110,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 110,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 111,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 111,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 111,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 112,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 112,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 112,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 113,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 113,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 113,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 114,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 114,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 114,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 115,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 115,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 115,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 116,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 116,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 116,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 117,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 117,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 117,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 118,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 118,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 118,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 119,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 119,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 119,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 120,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 120,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 120,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 121,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 121,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 121,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 122,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 122,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 122,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 123,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 123,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 123,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 124,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 124,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 124,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 125,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 125,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 125,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 126,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 126,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 126,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 127,
+    "sourceLen": 21,
+    "source": "            @DCHW  #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 127,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 127,
+        "index": 1,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 128,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 129,
+    "sourceLen": 9,
+    "source": "    start",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 8,
+        "len": 5,
+        "lineNum": 129,
+        "index": 0,
+        "payload": "start"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 130,
+    "sourceLen": 26,
+    "source": "            MOV     R0, PC",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 130,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 130,
+        "index": 1,
+        "payload": "R0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 130,
+        "index": 2,
+        "payload": "PC"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 131,
+    "sourceLen": 34,
+    "source": "            LDR     R0, [R0, `tbl]",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 131,
+        "index": 0,
+        "payload": "LDR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 131,
+        "index": 1,
+        "payload": "R0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 24,
+        "len": 1,
+        "lineNum": 131,
+        "index": 2,
+        "payload": "["
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 25,
+        "posStop": 26,
+        "len": 2,
+        "lineNum": 131,
+        "index": 3,
+        "payload": "R0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 32,
+        "len": 4,
+        "lineNum": 131,
+        "index": 4,
+        "payload": "`tbl"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 33,
+        "len": 1,
+        "lineNum": 131,
+        "index": 5,
+        "payload": "]"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 132,
+    "sourceLen": 26,
+    "source": "            EOR     R1, R1",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 132,
+        "index": 0,
+        "payload": "EOR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 132,
+        "index": 1,
+        "payload": "R1"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 132,
+        "index": 2,
+        "payload": "R1"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 133,
+    "sourceLen": 26,
+    "source": "            EOR     R2, R2",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 133,
+        "index": 0,
+        "payload": "EOR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 133,
+        "index": 1,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 133,
+        "index": 2,
+        "payload": "R2"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 134,
+    "sourceLen": 37,
+    "source": "            LDRH    R2, [R2, ~length]",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 15,
+        "len": 4,
+        "lineNum": 134,
+        "index": 0,
+        "payload": "LDRH"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 134,
+        "index": 1,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 24,
+        "len": 1,
+        "lineNum": 134,
+        "index": 2,
+        "payload": "["
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 25,
+        "posStop": 26,
+        "len": 2,
+        "lineNum": 134,
+        "index": 3,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 35,
+        "len": 7,
+        "lineNum": 134,
+        "index": 4,
+        "payload": "~length"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 36,
+        "posStop": 36,
+        "len": 1,
+        "lineNum": 134,
+        "index": 5,
+        "payload": "]"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 135,
+    "sourceLen": 26,
+    "source": "            CMP     R2, #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 135,
+        "index": 0,
+        "payload": "CMP"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 135,
+        "index": 1,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 135,
+        "index": 2,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 136,
+    "sourceLen": 25,
+    "source": "            BEQ     `done",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 136,
+        "index": 0,
+        "payload": "BEQ"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 136,
+        "index": 1,
+        "payload": "`done"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 137,
+    "sourceLen": 8,
+    "source": "    loop",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 7,
+        "len": 4,
+        "lineNum": 137,
+        "index": 0,
+        "payload": "loop"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 138,
+    "sourceLen": 26,
+    "source": "            MOV     R8, R0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 138,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 138,
+        "index": 1,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 138,
+        "index": 2,
+        "payload": "R0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 139,
+    "sourceLen": 26,
+    "source": "            MOV     R3, R8",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 139,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 139,
+        "index": 1,
+        "payload": "R3"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 139,
+        "index": 2,
+        "payload": "R8"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 140,
+    "sourceLen": 30,
+    "source": "            ADD     R1, R3, #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 140,
+        "index": 0,
+        "payload": "ADD"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 140,
+        "index": 1,
+        "payload": "R1"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 140,
+        "index": 2,
+        "payload": "R3"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 28,
+        "posStop": 29,
+        "len": 2,
+        "lineNum": 140,
+        "index": 3,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 141,
+    "sourceLen": 30,
+    "source": "            ADD     R0, R0, #4",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 141,
+        "index": 0,
+        "payload": "ADD"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 141,
+        "index": 1,
+        "payload": "R0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 141,
+        "index": 2,
+        "payload": "R0"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 28,
+        "posStop": 29,
+        "len": 2,
+        "lineNum": 141,
+        "index": 3,
+        "payload": "#4"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 142,
+    "sourceLen": 32,
+    "source": "            SUB     R2, R2, #0x1",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 142,
+        "index": 0,
+        "payload": "SUB"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 142,
+        "index": 1,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 142,
+        "index": 2,
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 28,
+        "posStop": 31,
+        "len": 4,
+        "lineNum": 142,
+        "index": 3,
+        "payload": "#0x1"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 143,
+    "sourceLen": 25,
+    "source": "            BNE     `loop",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 143,
+        "index": 0,
+        "payload": "BNE"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 143,
+        "index": 1,
+        "payload": "`loop"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 144,
+    "sourceLen": 8,
+    "source": "    done",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 7,
+        "len": 4,
+        "lineNum": 144,
+        "index": 0,
+        "payload": "done"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 145,
+    "sourceLen": 26,
+    "source": "            MOV     R4, PC",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 145,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 145,
+        "index": 1,
+        "payload": "R4"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 25,
+        "len": 2,
+        "lineNum": 145,
+        "index": 2,
+        "payload": "PC"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 146,
+    "sourceLen": 37,
+    "source": "            LDRH    R1, [R4, `result]",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 15,
+        "len": 4,
+        "lineNum": 146,
+        "index": 0,
+        "payload": "LDRH"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 146,
+        "index": 1,
+        "payload": "R1"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 24,
+        "posStop": 24,
+        "len": 1,
+        "lineNum": 146,
+        "index": 2,
+        "payload": "["
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 25,
+        "posStop": 26,
+        "len": 2,
+        "lineNum": 146,
+        "index": 3,
+        "payload": "R4"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 29,
+        "posStop": 35,
+        "len": 7,
+        "lineNum": 146,
+        "index": 4,
+        "payload": "`result"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 36,
+        "posStop": 36,
+        "len": 1,
+        "lineNum": 146,
+        "index": 5,
+        "payload": "]"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 147,
+    "sourceLen": 23,
+    "source": "            SWI     \u002611",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 14,
+        "len": 3,
+        "lineNum": 147,
+        "index": 0,
+        "payload": "SWI"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 22,
+        "len": 3,
+        "lineNum": 147,
+        "index": 1,
+        "payload": "\u002611"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 148,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 149,
+    "sourceLen": 4,
+    "source": "@END",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 3,
+        "len": 4,
+        "lineNum": 149,
+        "index": 0,
+        "payload": "@END"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 150,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 151,
+    "sourceLen": 30,
+    "source": "@AREA |Data| @DATA, @READWRITE",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 4,
+        "len": 5,
+        "lineNum": 151,
+        "index": 0,
+        "payload": "@AREA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 6,
+        "posStop": 11,
+        "len": 6,
+        "lineNum": 151,
+        "index": 1,
+        "payload": "|Data|"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 13,
+        "posStop": 17,
+        "len": 5,
+        "lineNum": 151,
+        "index": 2,
+        "payload": "@DATA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 29,
+        "len": 10,
+        "lineNum": 151,
+        "index": 3,
+        "payload": "@READWRITE"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 152,
+    "sourceLen": 6,
+    "source": "@ENTRY",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 5,
+        "len": 6,
+        "lineNum": 152,
+        "index": 0,
+        "payload": "@ENTRY"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 153,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 154,
+    "sourceLen": 27,
+    "source": "    tbl     ;Table is empty",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 6,
+        "len": 3,
+        "lineNum": 154,
+        "index": 0,
+        "payload": "tbl"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 17,
+        "len": 6,
+        "lineNum": 154,
+        "index": 1,
+        "payload": ";Table"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 19,
+        "posStop": 20,
+        "len": 2,
+        "lineNum": 154,
+        "index": 2,
+        "payload": "is"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 22,
+        "posStop": 26,
+        "len": 5,
+        "lineNum": 154,
+        "index": 3,
+        "payload": "empty"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 155,
+    "sourceLen": 22,
+    "source": "    tblEnd  @DCHW   #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 9,
+        "len": 6,
+        "lineNum": 155,
+        "index": 0,
+        "payload": "tblEnd"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 155,
+        "index": 1,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 155,
+        "index": 2,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 156,
+    "sourceLen": 22,
+    "source": "    length  @EQU    #4",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 9,
+        "len": 6,
+        "lineNum": 156,
+        "index": 0,
+        "payload": "length"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 15,
+        "len": 4,
+        "lineNum": 156,
+        "index": 1,
+        "payload": "@EQU"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 156,
+        "index": 2,
+        "payload": "#4"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 157,
+    "sourceLen": 22,
+    "source": "    result  @DCHW   #0",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 9,
+        "len": 6,
+        "lineNum": 157,
+        "index": 0,
+        "payload": "result"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 157,
+        "index": 1,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 21,
+        "len": 2,
+        "lineNum": 157,
+        "index": 2,
+        "payload": "#0"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 158,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 159,
+    "sourceLen": 4,
+    "source": "@END",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 3,
+        "len": 4,
+        "lineNum": 159,
+        "index": 0,
+        "payload": "@END"
+      }
+    ]
+  }
+]

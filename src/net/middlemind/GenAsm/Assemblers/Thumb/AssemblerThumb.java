@@ -1416,7 +1416,7 @@ public class AssemblerThumb implements Assembler {
                 symbol.addressHex = tmpLine.addressHex;
                 symbol.lineNumActive = tmpLine.lineNumActive;
                 symbol.isEmptyLineLabel = true;
-                Logger.wrl("Adjusting symbol line number from " + symbol.lineNumAbs + " to " + symbol.addressInt + " due to symbol marking an empty line");
+                Logger.wrl("Adjusting symbol, '" + symbol.name + "', line number from " + symbol.lineNumAbs + " to " + symbol.addressInt + " due to symbol marking an empty line");
             } else {
                 symbol.addressInt = line.addressInt;
                 symbol.addressBin = line.addressBin;
@@ -2767,11 +2767,13 @@ public class AssemblerThumb implements Assembler {
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
                             tInt = sym.addressInt;
+                            Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
-                            if(sym.value != null) {
+                            if(sym.value != null && sym.isStaticValue) {
                                 tInt = sym.value;
+                                Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");
                             } else {
                                 throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                             }
@@ -2783,6 +2785,7 @@ public class AssemblerThumb implements Assembler {
                             } else {
                                 tInt = (line.addressInt - sym.addressInt);
                             }
+                            Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
                             //label address offset minus prefetch
@@ -2790,7 +2793,9 @@ public class AssemblerThumb implements Assembler {
                                 tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
                             } else {
                                 tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
-                            }                            
+                            }
+                            Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
+                            
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
                         }                       
@@ -2830,6 +2835,7 @@ public class AssemblerThumb implements Assembler {
                             //throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
                         //}
                         
+                        Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
                         entry.tokenOpCodeArgGroup.value = tInt;
                         
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
@@ -2939,11 +2945,13 @@ public class AssemblerThumb implements Assembler {
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
                             //label address
                             tInt = sym.addressInt;
+                            Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
                             //label value
-                            if(sym.value != null) {
+                            if(sym.value != null && sym.isStaticValue) {
                                 tInt = sym.value;
+                                Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");                                
                             } else {
                                 throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                             }
@@ -2955,6 +2963,7 @@ public class AssemblerThumb implements Assembler {
                             } else {
                                 tInt = (line.addressInt - sym.addressInt);
                             }
+                            Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
                             //label address offset minus prefetch
@@ -2968,7 +2977,8 @@ public class AssemblerThumb implements Assembler {
                                 tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
                             }
                             //Logger.wrl("label address offset minus prefetch AAA 3: " + tInt);
-                                                   
+                            Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
+                            
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
                         }
@@ -3032,6 +3042,7 @@ public class AssemblerThumb implements Assembler {
                             line.byteLength = 4;
                         }
                         
+                        Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
                         entry.tokenOpCodeArg.value = tInt;
                     
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {

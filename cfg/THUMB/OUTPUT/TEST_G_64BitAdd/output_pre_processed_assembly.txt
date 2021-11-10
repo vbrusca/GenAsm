@@ -1,0 +1,167 @@
+@TTL |64BitAdd|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+
+    @ORG 0x08000000
+    ;need 122 16bit entries to match GBA header
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+            @DCHW  #0
+
+    start
+            MOV     R0, PC
+            LDRH    R0, [R0, `value1]
+            LDMIA   R0!, {R1, R2}
+            MOV     R0, PC
+            LDRH    R0, [R0, `value2]
+            LDMIA   R0!, {R3, R4}
+            ADD     R6, R2, R4
+            MOV     R8, R6
+            ADC     R1, R3
+            MOV     R9, R1
+            MOV     R5, R8
+            MOV     R6, R9
+            MOV     R0, PC
+            LDRH    R0, [R0, `result]
+            STMIA   R0!, {R5, R6}
+            SWI     &5
+            SWI     &11
+
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    value1  @DCHW   &12A2
+            @DCHW   &E640
+            @DCHW   &F210
+            @DCHW   &0123
+    value2  @DCHW   &0010
+            @DCHW   &19BF
+            @DCHW   &4002
+            @DCHW   &3F51
+    result  @DCHW   #0
+            @DCHW   #0
+            @DCHW   #0
+            @DCHW   #0
+
+@END
