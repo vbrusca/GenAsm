@@ -26,8 +26,6 @@ hs_err_pid*
 */cfg/THUMB/OUTPUT/*
 */cfg/THUMB/OUTPUT/*
 /cfg/THUMB/OUTPUT/*
-/cfg/THUMB/OUTPUT/*
-
 *.DS_Store
 /nbproject/*.properties
 /nbproject/*.xml
