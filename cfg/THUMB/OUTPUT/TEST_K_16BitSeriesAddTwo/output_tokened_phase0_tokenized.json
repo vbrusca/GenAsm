@@ -20482,7 +20482,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 131,
       "sourceLen": 34,
-      "source": "            LDR     R0, [R0, `tbl]",
+      "source": "            LDR     R0, [R0, -tbl]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -20527,7 +20527,7 @@
           "len": 4,
           "lineNum": 131,
           "index": 4,
-          "payload": "`tbl"
+          "payload": "-tbl"
         },
         {
           "obj_name": "Artifact",
@@ -20778,7 +20778,7 @@
       {
         "obj_name": "Token",
         "type_name": "LabelRef",
-        "source": "`tbl",
+        "source": "-tbl",
         "lineNumAbs": 131,
         "index": 4,
         "payloadLen": 0,
@@ -20797,7 +20797,7 @@
           "len": 4,
           "lineNum": 131,
           "index": 4,
-          "payload": "`tbl"
+          "payload": "-tbl"
         },
         "type": {
           "obj_name": "is_entry_type",
@@ -24118,7 +24118,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 146,
       "sourceLen": 37,
-      "source": "            LDRH    R1, [R4, `result]",
+      "source": "            LDRH    R1, [R4, -result]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -24163,7 +24163,7 @@
           "len": 7,
           "lineNum": 146,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         {
           "obj_name": "Artifact",
@@ -24414,7 +24414,7 @@
       {
         "obj_name": "Token",
         "type_name": "LabelRef",
-        "source": "`result",
+        "source": "-result",
         "lineNumAbs": 146,
         "index": 4,
         "payloadLen": 0,
@@ -24433,7 +24433,7 @@
           "len": 7,
           "lineNum": 146,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         "type": {
           "obj_name": "is_entry_type",
@@ -24727,7 +24727,7 @@
     "addressInt": 0,
     "lineNumActive": 0,
     "lineNumAbs": 148,
-    "payloadLen": 0,
+    "payloadLen": 6,
     "payloadLenArg": 0,
     "isLineEmpty": false,
     "isLineOpCode": false,
@@ -24736,11 +24736,389 @@
     "source": {
       "obj_name": "ArtifactLine",
       "lineNum": 148,
-      "sourceLen": 0,
-      "source": "",
-      "payload": []
+      "sourceLen": 51,
+      "source": "            MOV\tR8, R8\t\t;NOP preprocessor directive",
+      "payload": [
+        {
+          "obj_name": "Artifact",
+          "posStart": 12,
+          "posStop": 14,
+          "len": 3,
+          "lineNum": 148,
+          "index": 0,
+          "payload": "MOV"
+        },
+        {
+          "obj_name": "Artifact",
+          "posStart": 16,
+          "posStop": 17,
+          "len": 2,
+          "lineNum": 148,
+          "index": 1,
+          "payload": "R8"
+        },
+        {
+          "obj_name": "Artifact",
+          "posStart": 20,
+          "posStop": 21,
+          "len": 2,
+          "lineNum": 148,
+          "index": 2,
+          "payload": "R8"
+        },
+        {
+          "obj_name": "Artifact",
+          "posStart": 24,
+          "posStop": 27,
+          "len": 4,
+          "lineNum": 148,
+          "index": 3,
+          "payload": ";NOP"
+        },
+        {
+          "obj_name": "Artifact",
+          "posStart": 29,
+          "posStop": 40,
+          "len": 12,
+          "lineNum": 148,
+          "index": 4,
+          "payload": "preprocessor"
+        },
+        {
+          "obj_name": "Artifact",
+          "posStart": 42,
+          "posStop": 50,
+          "len": 9,
+          "lineNum": 148,
+          "index": 5,
+          "payload": "directive"
+        }
+      ]
     },
-    "payload": []
+    "payload": [
+      {
+        "obj_name": "Token",
+        "type_name": "OpCode",
+        "source": "MOV",
+        "lineNumAbs": 148,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": true,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 12,
+          "posStop": 14,
+          "len": 3,
+          "lineNum": 148,
+          "index": 0,
+          "payload": "MOV"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "OpCode",
+          "type_category": "OpCode",
+          "category": "OpCode",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "A~Z"
+            ],
+            "contains": [
+              "A~Z"
+            ],
+            "ends_with": [
+              "A~Z"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      {
+        "obj_name": "Token",
+        "type_name": "RegisterHi",
+        "source": "R8",
+        "lineNumAbs": 148,
+        "index": 1,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 16,
+          "posStop": 17,
+          "len": 2,
+          "lineNum": 148,
+          "index": 1,
+          "payload": "R8"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterHi",
+          "type_category": "RegisterHi",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "8~15"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "8~15"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      {
+        "obj_name": "Token",
+        "type_name": "RegisterHi",
+        "source": "R8",
+        "lineNumAbs": 148,
+        "index": 2,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 20,
+          "posStop": 21,
+          "len": 2,
+          "lineNum": 148,
+          "index": 2,
+          "payload": "R8"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "RegisterHi",
+          "type_category": "RegisterHi",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "R"
+            ],
+            "contains": [
+              "8~15"
+            ],
+            "ends_with": [
+              ",",
+              ";",
+              "8~15"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      {
+        "obj_name": "Token",
+        "type_name": "Comment",
+        "source": ";NOP",
+        "lineNumAbs": 148,
+        "index": 3,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": true,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 24,
+          "posStop": 27,
+          "len": 4,
+          "lineNum": 148,
+          "index": 3,
+          "payload": ";NOP"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Comment",
+          "type_category": "Comment",
+          "category": "Comment",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              ";"
+            ],
+            "contains": [
+              "*"
+            ],
+            "ends_with": [
+              "*"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      {
+        "obj_name": "Token",
+        "type_name": "Comment",
+        "source": "preprocessor",
+        "lineNumAbs": 148,
+        "index": 4,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": true,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 29,
+          "posStop": 40,
+          "len": 12,
+          "lineNum": 148,
+          "index": 4,
+          "payload": "preprocessor"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Comment",
+          "type_category": "Comment",
+          "category": "Comment",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              ";"
+            ],
+            "contains": [
+              "*"
+            ],
+            "ends_with": [
+              "*"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      {
+        "obj_name": "Token",
+        "type_name": "Comment",
+        "source": "directive",
+        "lineNumAbs": 148,
+        "index": 5,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": true,
+        "isLabel": false,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 42,
+          "posStop": 50,
+          "len": 9,
+          "lineNum": 148,
+          "index": 5,
+          "payload": "directive"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Comment",
+          "type_category": "Comment",
+          "category": "Comment",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              ";"
+            ],
+            "contains": [
+              "*"
+            ],
+            "ends_with": [
+              "*"
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      }
+    ]
   },
   {
     "obj_name": "TokenLine",

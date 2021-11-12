@@ -129,7 +129,7 @@
 
     start
             MOV     R0, PC
-            LDR     R0, [R0, `tbl]
+            LDR     R0, [R0, -tbl]
             EOR     R1, R1
             EOR     R2, R2
             LDRH    R2, [R2, ~length]
@@ -144,9 +144,9 @@
             BNE     `loop
     done
             MOV     R4, PC
-            LDRH    R1, [R4, `result]
+            LDRH    R1, [R4, -result]
             SWI     &11
-
+            MOV	R8, R8		;NOP preprocessor directive
 @END
 
 @AREA |Data| @DATA, @READWRITE

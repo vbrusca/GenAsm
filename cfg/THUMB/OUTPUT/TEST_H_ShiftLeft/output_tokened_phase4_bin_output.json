@@ -58556,8 +58556,8 @@
   {
     "obj_name": "TokenLine",
     "payloadOpCode": "LDRH",
-    "payloadBinRepStrEndianBig1": "1000100011000000",
-    "payloadBinRepStrEndianLil1": "1100000010001000",
+    "payloadBinRepStrEndianBig1": "1000100101000000",
+    "payloadBinRepStrEndianLil1": "0100000010001001",
     "byteLength": 2,
     "addressHex": "0x80000F6",
     "addressBin": "0000000011110110",
@@ -58574,7 +58574,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 131,
       "sourceLen": 36,
-      "source": "            LDRH    R0, [R0, `value]",
+      "source": "            LDRH    R0, [R0, -value]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -58619,7 +58619,7 @@
           "len": 6,
           "lineNum": 131,
           "index": 4,
-          "payload": "`value"
+          "payload": "-value"
         },
         {
           "obj_name": "Artifact",
@@ -60209,8 +60209,8 @@
         "tokenOpCodeArgGroup": {
           "obj_name": "Token",
           "type_name": "LabelRef",
-          "source": "`value",
-          "value": 3,
+          "source": "-value",
+          "value": 5,
           "lineNumAbs": 131,
           "index": 1,
           "payloadLen": 0,
@@ -60229,7 +60229,7 @@
             "len": 6,
             "lineNum": 131,
             "index": 4,
-            "payload": "`value"
+            "payload": "-value"
           },
           "type": {
             "obj_name": "is_entry_type",
@@ -60273,7 +60273,7 @@
         "isOpCodeArg": false,
         "isOpCodeArgGroup": true,
         "isOpCodeArgList": false,
-        "binRepStr1": "00011"
+        "binRepStr1": "00101"
       },
       {
         "obj_name": "BuildOpCodeThumb",
@@ -60760,8 +60760,8 @@
             {
               "obj_name": "Token",
               "type_name": "LabelRef",
-              "source": "`value",
-              "value": 3,
+              "source": "-value",
+              "value": 5,
               "lineNumAbs": 131,
               "index": 1,
               "payloadLen": 0,
@@ -60780,7 +60780,7 @@
                 "len": 6,
                 "lineNum": 131,
                 "index": 4,
-                "payload": "`value"
+                "payload": "-value"
               },
               "type": {
                 "obj_name": "is_entry_type",
@@ -61994,8 +61994,8 @@
           {
             "obj_name": "Token",
             "type_name": "LabelRef",
-            "source": "`value",
-            "value": 3,
+            "source": "-value",
+            "value": 5,
             "lineNumAbs": 131,
             "index": 1,
             "payloadLen": 0,
@@ -62014,7 +62014,7 @@
               "len": 6,
               "lineNum": 131,
               "index": 4,
-              "payload": "`value"
+              "payload": "-value"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -66514,8 +66514,8 @@
   {
     "obj_name": "TokenLine",
     "payloadOpCode": "STRH",
-    "payloadBinRepStrEndianBig1": "1000000001000001",
-    "payloadBinRepStrEndianLil1": "0100000110000000",
+    "payloadBinRepStrEndianBig1": "1000000011000001",
+    "payloadBinRepStrEndianLil1": "1100000110000000",
     "byteLength": 2,
     "addressHex": "0x80000FC",
     "addressBin": "0000000011111100",
@@ -66532,7 +66532,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 134,
       "sourceLen": 37,
-      "source": "            STRH    R1, [R0, `result]",
+      "source": "            STRH    R1, [R0, -result]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -66577,7 +66577,7 @@
           "len": 7,
           "lineNum": 134,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         {
           "obj_name": "Artifact",
@@ -68167,8 +68167,8 @@
         "tokenOpCodeArgGroup": {
           "obj_name": "Token",
           "type_name": "LabelRef",
-          "source": "`result",
-          "value": 1,
+          "source": "-result",
+          "value": 3,
           "lineNumAbs": 134,
           "index": 1,
           "payloadLen": 0,
@@ -68187,7 +68187,7 @@
             "len": 7,
             "lineNum": 134,
             "index": 4,
-            "payload": "`result"
+            "payload": "-result"
           },
           "type": {
             "obj_name": "is_entry_type",
@@ -68231,7 +68231,7 @@
         "isOpCodeArg": false,
         "isOpCodeArgGroup": true,
         "isOpCodeArgList": false,
-        "binRepStr1": "00001"
+        "binRepStr1": "00011"
       },
       {
         "obj_name": "BuildOpCodeThumb",
@@ -68718,8 +68718,8 @@
             {
               "obj_name": "Token",
               "type_name": "LabelRef",
-              "source": "`result",
-              "value": 1,
+              "source": "-result",
+              "value": 3,
               "lineNumAbs": 134,
               "index": 1,
               "payloadLen": 0,
@@ -68738,7 +68738,7 @@
                 "len": 7,
                 "lineNum": 134,
                 "index": 4,
-                "payload": "`result"
+                "payload": "-result"
               },
               "type": {
                 "obj_name": "is_entry_type",
@@ -69952,8 +69952,8 @@
           {
             "obj_name": "Token",
             "type_name": "LabelRef",
-            "source": "`result",
-            "value": 1,
+            "source": "-result",
+            "value": 3,
             "lineNumAbs": 134,
             "index": 1,
             "payloadLen": 0,
@@ -69972,7 +69972,7 @@
               "len": 7,
               "lineNum": 134,
               "index": 4,
-              "payload": "`result"
+              "payload": "-result"
             },
             "type": {
               "obj_name": "is_entry_type",

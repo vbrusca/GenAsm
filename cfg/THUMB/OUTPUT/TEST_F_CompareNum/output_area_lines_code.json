@@ -54704,7 +54704,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 131,
       "sourceLen": 37,
-      "source": "            LDR     R1, [R1, `value1]",
+      "source": "            LDR     R1, [R1, -value1]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -54749,7 +54749,7 @@
           "len": 7,
           "lineNum": 131,
           "index": 4,
-          "payload": "`value1"
+          "payload": "-value1"
         },
         {
           "obj_name": "Artifact",
@@ -56026,7 +56026,7 @@
           {
             "obj_name": "Token",
             "type_name": "LabelRef",
-            "source": "`value1",
+            "source": "-value1",
             "lineNumAbs": 131,
             "index": 1,
             "payloadLen": 0,
@@ -56045,7 +56045,7 @@
               "len": 7,
               "lineNum": 131,
               "index": 4,
-              "payload": "`value1"
+              "payload": "-value1"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -57289,7 +57289,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 133,
       "sourceLen": 37,
-      "source": "            LDR     R2, [R2, `value2]",
+      "source": "            LDR     R2, [R2, -value2]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -57334,7 +57334,7 @@
           "len": 7,
           "lineNum": 133,
           "index": 4,
-          "payload": "`value2"
+          "payload": "-value2"
         },
         {
           "obj_name": "Artifact",
@@ -58611,7 +58611,7 @@
           {
             "obj_name": "Token",
             "type_name": "LabelRef",
-            "source": "`value2",
+            "source": "-value2",
             "lineNumAbs": 133,
             "index": 1,
             "payloadLen": 0,
@@ -58630,7 +58630,7 @@
               "len": 7,
               "lineNum": 133,
               "index": 4,
-              "payload": "`value2"
+              "payload": "-value2"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -62905,7 +62905,7 @@
     "addressBin": "0000000100000100",
     "addressInt": 134217988,
     "lineNumActive": 67108994,
-    "lineNumAbs": 139,
+    "lineNumAbs": 140,
     "payloadLen": 3,
     "payloadLenArg": 2,
     "isLineEmpty": false,
@@ -62914,7 +62914,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 139,
+      "lineNum": 140,
       "sourceLen": 26,
       "source": "            MOV     R3, PC",
       "payload": [
@@ -62923,7 +62923,7 @@
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 0,
           "payload": "MOV"
         },
@@ -62932,7 +62932,7 @@
           "posStart": 20,
           "posStop": 21,
           "len": 2,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 1,
           "payload": "R3"
         },
@@ -62941,7 +62941,7 @@
           "posStart": 24,
           "posStop": 25,
           "len": 2,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 2,
           "payload": "PC"
         }
@@ -63747,7 +63747,7 @@
         "obj_name": "Token",
         "type_name": "OpCode",
         "source": "MOV",
-        "lineNumAbs": 139,
+        "lineNumAbs": 140,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -63763,7 +63763,7 @@
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 0,
           "payload": "MOV"
         },
@@ -63800,7 +63800,7 @@
         "obj_name": "Token",
         "type_name": "RegisterLow",
         "source": "R3",
-        "lineNumAbs": 139,
+        "lineNumAbs": 140,
         "index": 1,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -63816,7 +63816,7 @@
           "posStart": 20,
           "posStop": 21,
           "len": 2,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 1,
           "payload": "R3"
         },
@@ -63920,7 +63920,7 @@
         "obj_name": "Token",
         "type_name": "RegisterPc",
         "source": "PC",
-        "lineNumAbs": 139,
+        "lineNumAbs": 140,
         "index": 2,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -63936,7 +63936,7 @@
           "posStart": 24,
           "posStop": 25,
           "len": 2,
-          "lineNum": 139,
+          "lineNum": 140,
           "index": 2,
           "payload": "PC"
         },
@@ -64033,7 +64033,7 @@
     "addressBin": "0000000100000110",
     "addressInt": 134217990,
     "lineNumActive": 67108995,
-    "lineNumAbs": 140,
+    "lineNumAbs": 141,
     "payloadLen": 3,
     "payloadLenArg": 3,
     "isLineEmpty": false,
@@ -64042,16 +64042,16 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 140,
+      "lineNum": 141,
       "sourceLen": 37,
-      "source": "            STR     R1, [R3, `result]",
+      "source": "            STR     R1, [R3, -result]",
       "payload": [
         {
           "obj_name": "Artifact",
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 0,
           "payload": "STR"
         },
@@ -64060,7 +64060,7 @@
           "posStart": 20,
           "posStop": 21,
           "len": 2,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 1,
           "payload": "R1"
         },
@@ -64069,7 +64069,7 @@
           "posStart": 24,
           "posStop": 24,
           "len": 1,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 2,
           "payload": "["
         },
@@ -64078,7 +64078,7 @@
           "posStart": 25,
           "posStop": 26,
           "len": 2,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 3,
           "payload": "R3"
         },
@@ -64087,16 +64087,16 @@
           "posStart": 29,
           "posStop": 35,
           "len": 7,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         {
           "obj_name": "Artifact",
           "posStart": 36,
           "posStop": 36,
           "len": 1,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 5,
           "payload": "]"
         }
@@ -65022,7 +65022,7 @@
         "obj_name": "Token",
         "type_name": "OpCode",
         "source": "STR",
-        "lineNumAbs": 140,
+        "lineNumAbs": 141,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -65038,7 +65038,7 @@
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 0,
           "payload": "STR"
         },
@@ -65075,7 +65075,7 @@
         "obj_name": "Token",
         "type_name": "RegisterLow",
         "source": "R1",
-        "lineNumAbs": 140,
+        "lineNumAbs": 141,
         "index": 1,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -65091,7 +65091,7 @@
           "posStart": 20,
           "posStop": 21,
           "len": 2,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 1,
           "payload": "R1"
         },
@@ -65195,7 +65195,7 @@
         "obj_name": "Token",
         "type_name": "GroupStart",
         "source": "[",
-        "lineNumAbs": 140,
+        "lineNumAbs": 141,
         "index": 2,
         "payloadLen": 3,
         "payloadArgLen": 0,
@@ -65211,7 +65211,7 @@
           "posStart": 24,
           "posStop": 24,
           "len": 1,
-          "lineNum": 140,
+          "lineNum": 141,
           "index": 2,
           "payload": "["
         },
@@ -65247,7 +65247,7 @@
             "obj_name": "Token",
             "type_name": "RegisterLow",
             "source": "R3",
-            "lineNumAbs": 140,
+            "lineNumAbs": 141,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -65263,7 +65263,7 @@
               "posStart": 25,
               "posStop": 26,
               "len": 2,
-              "lineNum": 140,
+              "lineNum": 141,
               "index": 3,
               "payload": "R3"
             },
@@ -65366,8 +65366,8 @@
           {
             "obj_name": "Token",
             "type_name": "LabelRef",
-            "source": "`result",
-            "lineNumAbs": 140,
+            "source": "-result",
+            "lineNumAbs": 141,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -65383,9 +65383,9 @@
               "posStart": 29,
               "posStop": 35,
               "len": 7,
-              "lineNum": 140,
+              "lineNum": 141,
               "index": 4,
-              "payload": "`result"
+              "payload": "-result"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -65429,7 +65429,7 @@
             "obj_name": "Token",
             "type_name": "GroupStop",
             "source": "]",
-            "lineNumAbs": 140,
+            "lineNumAbs": 141,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -65445,7 +65445,7 @@
               "posStart": 36,
               "posStop": 36,
               "len": 1,
-              "lineNum": 140,
+              "lineNum": 141,
               "index": 5,
               "payload": "]"
             },
@@ -65490,7 +65490,7 @@
     "addressBin": "0000000100001000",
     "addressInt": 134217992,
     "lineNumActive": 67108996,
-    "lineNumAbs": 141,
+    "lineNumAbs": 142,
     "payloadLen": 2,
     "payloadLenArg": 1,
     "isLineEmpty": false,
@@ -65499,7 +65499,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 141,
+      "lineNum": 142,
       "sourceLen": 23,
       "source": "            SWI     \u002611",
       "payload": [
@@ -65508,7 +65508,7 @@
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 141,
+          "lineNum": 142,
           "index": 0,
           "payload": "SWI"
         },
@@ -65517,7 +65517,7 @@
           "posStart": 20,
           "posStop": 22,
           "len": 3,
-          "lineNum": 141,
+          "lineNum": 142,
           "index": 1,
           "payload": "\u002611"
         }
@@ -66271,7 +66271,7 @@
         "obj_name": "Token",
         "type_name": "OpCode",
         "source": "SWI",
-        "lineNumAbs": 141,
+        "lineNumAbs": 142,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -66287,7 +66287,7 @@
           "posStart": 12,
           "posStop": 14,
           "len": 3,
-          "lineNum": 141,
+          "lineNum": 142,
           "index": 0,
           "payload": "SWI"
         },
@@ -66324,7 +66324,7 @@
         "obj_name": "Token",
         "type_name": "Number",
         "source": "\u002611",
-        "lineNumAbs": 141,
+        "lineNumAbs": 142,
         "index": 1,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -66340,7 +66340,7 @@
           "posStart": 20,
           "posStop": 22,
           "len": 3,
-          "lineNum": 141,
+          "lineNum": 142,
           "index": 1,
           "payload": "\u002611"
         },

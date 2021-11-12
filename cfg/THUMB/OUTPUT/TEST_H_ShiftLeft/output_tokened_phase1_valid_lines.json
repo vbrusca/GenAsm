@@ -40655,7 +40655,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 131,
       "sourceLen": 36,
-      "source": "            LDRH    R0, [R0, `value]",
+      "source": "            LDRH    R0, [R0, -value]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -40700,7 +40700,7 @@
           "len": 6,
           "lineNum": 131,
           "index": 4,
-          "payload": "`value"
+          "payload": "-value"
         },
         {
           "obj_name": "Artifact",
@@ -41474,7 +41474,7 @@
       {
         "obj_name": "Token",
         "type_name": "LabelRef",
-        "source": "`value",
+        "source": "-value",
         "lineNumAbs": 131,
         "index": 4,
         "payloadLen": 0,
@@ -41493,7 +41493,7 @@
           "len": 6,
           "lineNum": 131,
           "index": 4,
-          "payload": "`value"
+          "payload": "-value"
         },
         "type": {
           "obj_name": "is_entry_type",
@@ -43213,7 +43213,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 134,
       "sourceLen": 37,
-      "source": "            STRH    R1, [R0, `result]",
+      "source": "            STRH    R1, [R0, -result]",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -43258,7 +43258,7 @@
           "len": 7,
           "lineNum": 134,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         {
           "obj_name": "Artifact",
@@ -44032,7 +44032,7 @@
       {
         "obj_name": "Token",
         "type_name": "LabelRef",
-        "source": "`result",
+        "source": "-result",
         "lineNumAbs": 134,
         "index": 4,
         "payloadLen": 0,
@@ -44051,7 +44051,7 @@
           "len": 7,
           "lineNum": 134,
           "index": 4,
-          "payload": "`result"
+          "payload": "-result"
         },
         "type": {
           "obj_name": "is_entry_type",

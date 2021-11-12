@@ -129,7 +129,7 @@
 
     start
             MOV     R1, PC
-            LDRH    R0, [R0, `tbl]
+            LDRH    R0, [R0, -tbl]
             EOR     R1, R1
             EOR     R2, R2
             LDRH    R2, [R2, ~length]
@@ -140,7 +140,7 @@
             SUB     R2, #0x1
             BNE     `loop
             MOV     R4, PC
-            STR     R1, [R4, `result]
+            STR     R1, [R4, -result]
             SWI     &11
 
 @END

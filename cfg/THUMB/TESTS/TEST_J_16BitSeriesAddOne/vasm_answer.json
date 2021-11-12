@@ -2,7 +2,7 @@
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
         {"addressHex":"080000F4", "valueHex":"7946"},
-        {"addressHex":"080000F6", "valueHex":"808A"},
+        {"addressHex":"080000F6", "valueHex":"008B"},
         {"addressHex":"080000F8", "valueHex":"4940"},
         {"addressHex":"080000FA", "valueHex":"5240"},
         {"addressHex":"080000FC", "valueHex":"9288"},
@@ -12,7 +12,7 @@
         {"addressHex":"08000104", "valueHex":"013A"},
         {"addressHex":"08000106", "valueHex":"FAD1"},
         {"addressHex":"08000108", "valueHex":"7C46"},
-        {"addressHex":"0800010A", "valueHex":"A160"},
+        {"addressHex":"0800010A", "valueHex":"E160"},
         {"addressHex":"0800010C", "valueHex":"11DF"},
         {"addressHex":"0800010E", "valueHex":"4020"},
         {"addressHex":"08000110", "valueHex":"221C"},
