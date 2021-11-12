@@ -1,0 +1,39 @@
+@TTL |GbaHelloWorld|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+
+    ramarea     @EQU    0x02000000
+    cursor_x    @EQU    0x02000020
+    cursor_y    @EQU    0x02000021
+    
+    @ORG 0x08000000
+
+    ;need 122 16bit entries to match GBA header
+    ;already little endian, no need to flip
+    ;++++++++++++++++++++++++++++++++
+    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
+    ;++++++++++++++++++++++++++++++++
+
+    ;already little endian, no need to flip
+    ;++++++++++++++++++++++++++++++++
+    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
+    ;++++++++++++++++++++++++++++++++
+    
+    ;.thumb				;Thumb mode
+    program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
+    MOV     R1, PC
+    LDR     R1, [R1, -stack_pointer]
+
+    loop
+    B       `loop
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    stack_pointer   @DCHW        0x0000
+                    @DCHW        0x0300
+    disp_control    @DCHW        0x0000
+                    @DCHW        0x0400
+
+@END

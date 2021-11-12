@@ -1,0 +1,167 @@
+@TTL |GbaHelloWorld|
+@AREA |Program| @CODE, @READWRITE
+@ENTRY
+
+    ramarea     @EQU    0x02000000
+    cursor_x    @EQU    0x02000020
+    cursor_y    @EQU    0x02000021
+    
+    @ORG 0x08000000
+
+    ;need 122 16bit entries to match GBA header
+    ;already little endian, no need to flip
+    ;++++++++++++++++++++++++++++++++
+    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
+    ;Found file with byte count: 232, word count: 116, and padding on: false
+    
+    @DCHW #0x0038		;index: 0000	address: 0x0000
+    @DCHW #0xEA00		;index: 0001	address: 0x0002
+    @DCHW #0x0000		;index: 0002	address: 0x0004
+    @DCHW #0x0000		;index: 0003	address: 0x0006
+    @DCHW #0x0000		;index: 0004	address: 0x0008
+    @DCHW #0x0000		;index: 0005	address: 0x000A
+    @DCHW #0x0000		;index: 0006	address: 0x000C
+    @DCHW #0x0000		;index: 0007	address: 0x000E
+    @DCHW #0x0000		;index: 0008	address: 0x0010
+    @DCHW #0x0000		;index: 0009	address: 0x0012
+    @DCHW #0x0000		;index: 0010	address: 0x0014
+    @DCHW #0x0000		;index: 0011	address: 0x0016
+    @DCHW #0x0000		;index: 0012	address: 0x0018
+    @DCHW #0x0000		;index: 0013	address: 0x001A
+    @DCHW #0x0000		;index: 0014	address: 0x001C
+    @DCHW #0x0000		;index: 0015	address: 0x001E
+    @DCHW #0x0000		;index: 0016	address: 0x0020
+    @DCHW #0x0000		;index: 0017	address: 0x0022
+    @DCHW #0x0000		;index: 0018	address: 0x0024
+    @DCHW #0x0000		;index: 0019	address: 0x0026
+    @DCHW #0x0000		;index: 0020	address: 0x0028
+    @DCHW #0x0000		;index: 0021	address: 0x002A
+    @DCHW #0x0000		;index: 0022	address: 0x002C
+    @DCHW #0x0000		;index: 0023	address: 0x002E
+    @DCHW #0x0000		;index: 0024	address: 0x0030
+    @DCHW #0x0000		;index: 0025	address: 0x0032
+    @DCHW #0x0000		;index: 0026	address: 0x0034
+    @DCHW #0x0000		;index: 0027	address: 0x0036
+    @DCHW #0x0000		;index: 0028	address: 0x0038
+    @DCHW #0x0000		;index: 0029	address: 0x003A
+    @DCHW #0x0000		;index: 0030	address: 0x003C
+    @DCHW #0x0000		;index: 0031	address: 0x003E
+    @DCHW #0x0000		;index: 0032	address: 0x0040
+    @DCHW #0x0000		;index: 0033	address: 0x0042
+    @DCHW #0x0000		;index: 0034	address: 0x0044
+    @DCHW #0x0000		;index: 0035	address: 0x0046
+    @DCHW #0x0000		;index: 0036	address: 0x0048
+    @DCHW #0x0000		;index: 0037	address: 0x004A
+    @DCHW #0x0000		;index: 0038	address: 0x004C
+    @DCHW #0x0000		;index: 0039	address: 0x004E
+    @DCHW #0x0000		;index: 0040	address: 0x0050
+    @DCHW #0x0000		;index: 0041	address: 0x0052
+    @DCHW #0x0000		;index: 0042	address: 0x0054
+    @DCHW #0x0000		;index: 0043	address: 0x0056
+    @DCHW #0x0000		;index: 0044	address: 0x0058
+    @DCHW #0x0000		;index: 0045	address: 0x005A
+    @DCHW #0x0000		;index: 0046	address: 0x005C
+    @DCHW #0x0000		;index: 0047	address: 0x005E
+    @DCHW #0x0000		;index: 0048	address: 0x0060
+    @DCHW #0x0000		;index: 0049	address: 0x0062
+    @DCHW #0x0000		;index: 0050	address: 0x0064
+    @DCHW #0x0000		;index: 0051	address: 0x0066
+    @DCHW #0x0000		;index: 0052	address: 0x0068
+    @DCHW #0x0000		;index: 0053	address: 0x006A
+    @DCHW #0x0000		;index: 0054	address: 0x006C
+    @DCHW #0x0000		;index: 0055	address: 0x006E
+    @DCHW #0x0000		;index: 0056	address: 0x0070
+    @DCHW #0x0000		;index: 0057	address: 0x0072
+    @DCHW #0x0000		;index: 0058	address: 0x0074
+    @DCHW #0x0000		;index: 0059	address: 0x0076
+    @DCHW #0x0000		;index: 0060	address: 0x0078
+    @DCHW #0x0000		;index: 0061	address: 0x007A
+    @DCHW #0x0000		;index: 0062	address: 0x007C
+    @DCHW #0x0000		;index: 0063	address: 0x007E
+    @DCHW #0x0000		;index: 0064	address: 0x0080
+    @DCHW #0x0000		;index: 0065	address: 0x0082
+    @DCHW #0x0000		;index: 0066	address: 0x0084
+    @DCHW #0x0000		;index: 0067	address: 0x0086
+    @DCHW #0x0000		;index: 0068	address: 0x0088
+    @DCHW #0x0000		;index: 0069	address: 0x008A
+    @DCHW #0x0000		;index: 0070	address: 0x008C
+    @DCHW #0x0000		;index: 0071	address: 0x008E
+    @DCHW #0x0000		;index: 0072	address: 0x0090
+    @DCHW #0x0000		;index: 0073	address: 0x0092
+    @DCHW #0x0000		;index: 0074	address: 0x0094
+    @DCHW #0x0000		;index: 0075	address: 0x0096
+    @DCHW #0x0000		;index: 0076	address: 0x0098
+    @DCHW #0x0000		;index: 0077	address: 0x009A
+    @DCHW #0x0000		;index: 0078	address: 0x009C
+    @DCHW #0x0000		;index: 0079	address: 0x009E
+    @DCHW #0x0000		;index: 0080	address: 0x00A0
+    @DCHW #0x0000		;index: 0081	address: 0x00A2
+    @DCHW #0x0000		;index: 0082	address: 0x00A4
+    @DCHW #0x0000		;index: 0083	address: 0x00A6
+    @DCHW #0x0000		;index: 0084	address: 0x00A8
+    @DCHW #0x0000		;index: 0085	address: 0x00AA
+    @DCHW #0x0000		;index: 0086	address: 0x00AC
+    @DCHW #0x0000		;index: 0087	address: 0x00AE
+    @DCHW #0x0000		;index: 0088	address: 0x00B0
+    @DCHW #0x0000		;index: 0089	address: 0x00B2
+    @DCHW #0x0000		;index: 0090	address: 0x00B4
+    @DCHW #0x0096		;index: 0091	address: 0x00B6
+    @DCHW #0x0000		;index: 0092	address: 0x00B8
+    @DCHW #0x0000		;index: 0093	address: 0x00BA
+    @DCHW #0x0000		;index: 0094	address: 0x00BC
+    @DCHW #0x0000		;index: 0095	address: 0x00BE
+    @DCHW #0x0000		;index: 0096	address: 0x00C0
+    @DCHW #0x0000		;index: 0097	address: 0x00C2
+    @DCHW #0x0000		;index: 0098	address: 0x00C4
+    @DCHW #0x0000		;index: 0099	address: 0x00C6
+    @DCHW #0x0000		;index: 0100	address: 0x00C8
+    @DCHW #0x0000		;index: 0101	address: 0x00CA
+    @DCHW #0x0000		;index: 0102	address: 0x00CC
+    @DCHW #0x0000		;index: 0103	address: 0x00CE
+    @DCHW #0x0000		;index: 0104	address: 0x00D0
+    @DCHW #0x0000		;index: 0105	address: 0x00D2
+    @DCHW #0x0000		;index: 0106	address: 0x00D4
+    @DCHW #0x0000		;index: 0107	address: 0x00D6
+    @DCHW #0x0000		;index: 0108	address: 0x00D8
+    @DCHW #0x0000		;index: 0109	address: 0x00DA
+    @DCHW #0x0000		;index: 0110	address: 0x00DC
+    @DCHW #0x0000		;index: 0111	address: 0x00DE
+    @DCHW #0x0000		;index: 0112	address: 0x00E0
+    @DCHW #0x0000		;index: 0113	address: 0x00E2
+    @DCHW #0x0000		;index: 0114	address: 0x00E4
+    @DCHW #0x0000		;index: 0115	address: 0x00E6
+    
+    ;++++++++++++++++++++++++++++++++
+
+    ;already little endian, no need to flip
+    ;++++++++++++++++++++++++++++++++
+    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
+    ;Found file with byte count: 12, word count: 6, and padding on: false
+    
+    @DCHW #0x0004		;index: 0000	address: 0x0000
+    @DCHW #0xE28F		;index: 0001	address: 0x0002
+    @DCHW #0x0001		;index: 0002	address: 0x0004
+    @DCHW #0xE280		;index: 0003	address: 0x0006
+    @DCHW #0xFF10		;index: 0004	address: 0x0008
+    @DCHW #0xE12F		;index: 0005	address: 0x000A
+    
+    ;++++++++++++++++++++++++++++++++
+    
+    ;.thumb				;Thumb mode
+    program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
+    MOV     R1, PC
+    LDR     R1, [R1, `stack_pointer]
+
+    loop
+    B       `loop
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    stack_pointer   @DCHW        0x0000
+                    @DCHW        0x0300
+    disp_control    @DCHW        0x0000
+                    @DCHW        0x0400
+
+@END

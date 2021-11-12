@@ -25,7 +25,7 @@ public class PreProcessorThumb implements PreProcessor {
     /**
      * A static array of strings representing the supported pre-processor directives.
      */
-    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP", "$STRING" };
+    public static String[] PP_DIRECTIVES = { "$INCBIN", "$INCASM", "$NOP", "$STRING", "$FLPINCBIN" };
 
     /**
      * A static integer representing the array index of the include bin pre-processor directive.
@@ -46,6 +46,11 @@ public class PreProcessorThumb implements PreProcessor {
      * A static integer representing the array index of the string assembly pre-processor directive.
      */
     public static int PPD_STRING_IDX = 3;    
+    
+    /**
+     * A static integer representing the array index of the include flip bin pre-processor directive.
+     */
+    public static int PPD_FLPINCBIN_IDX = 4;    
     
     /**
      * A static byte representing the padding character used to mark the end of a line of text as well as to align the text to 16bit.
@@ -177,7 +182,7 @@ public class PreProcessorThumb implements PreProcessor {
                             throw new ExceptionUnsupportedAssemblyFileType("Cannot load assembly files without file extension .asm or .txt for file name, " + fileName);
                         }
                         
-                    } else if(idxs[0] == PPD_INCBIN_IDX) {
+                    } else if(idxs[0] == PPD_INCBIN_IDX || idxs[0] == PPD_FLPINCBIN_IDX) {
                         sIdx = idxs[1];
                         tmp = s.substring(s.indexOf("|") + 1, s.lastIndexOf("|")).trim();
                         
@@ -214,6 +219,12 @@ public class PreProcessorThumb implements PreProcessor {
                             for(i = 0; i < shorts.length; i++) {
                                 hex = Integer.toHexString(shorts[i] & 0xffff);
                                 hex = Utils.FormatHexString(hex.toUpperCase(), 4);
+                                if(idxs[0] == PPD_FLPINCBIN_IDX) {
+                                    Logger.wrl("Flipping bin entry: " + hex);
+                                    hex = Utils.EndianFlipHex(hex);
+                                    Logger.wrl("Flipping bin entry: " + hex);                                    
+                                }
+                                hex = Utils.FormatHexString(hex.toUpperCase(), 4);
                                 binLine = Integer.toHexString((tCount * 2) & 0xffff);
                                 binLine = Utils.FormatHexString(binLine.toUpperCase(), 4);
                                 idxStr = Utils.FormatBinString((i + ""), 4, true);
@@ -230,6 +241,12 @@ public class PreProcessorThumb implements PreProcessor {
                                 ByteBuffer.wrap(tIncBin).asShortBuffer().get(shorts);
                                 
                                 hex = Integer.toHexString(shorts[0] & 0xffff);
+                                hex = Utils.FormatHexString(hex.toUpperCase(), 4);
+                                if(idxs[0] == PPD_FLPINCBIN_IDX) {
+                                    Logger.wrl("Flipping bin entry: " + hex);
+                                    hex = Utils.EndianFlipHex(hex);
+                                    Logger.wrl("Flipping bin entry: " + hex);                                    
+                                }                                
                                 hex = Utils.FormatHexString(hex.toUpperCase(), 4);
                                 binLine = Integer.toHexString((tCount * 2) & 0xffff);
                                 binLine = Utils.FormatHexString(binLine.toUpperCase(), 4);
