@@ -149,36 +149,56 @@
 0000000148	0000000000	   	    	                	    
 0000000149	0000000000	   	    	                	    ;.thumb				;Thumb mode
 0000000150	0000000000	   	    	                	    program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
-0000000151	0134217972	0067108986	0x080000F4	01001001 00000011	0x49 03	    LDR     R1, [PC, `stack_pointer] [12] (3)
+0000000151	0134217972	0067108986	0x080000F4	01001001 00000101	0x49 05	    LDR     R1, [PC, `stack_pointer] [20] (5)
 0000000152	0134217974	0067108987	0x080000F6	01000110 11000000	0x46 C0	    MOV	R8, R8		;NOP preprocessor directive
-0000000153	0134217976	0067108988	0x080000F8	01001011 00000011	0x4B 03	    LDR     R3, [PC, `disp_control] [12] (3)
-0000000154	0134217978	0067108989	0x080000FA	01000110 10001000	0x46 88	    MOV     R8, R1
-0000000155	0134217980	0067108990	0x080000FC	01000110 01000010	0x46 42	    MOV     R2, R8
-0000000156	0134217982	0067108991	0x080000FE	01000110 10010101	0x46 95	    MOV     SP, R2
-0000000157	0000000000	   	    	                	
-0000000158	0000000000	   	    	                	    loop
-0000000159	0134217984	0067108992	0x08000100	11100111 11111110	0xE7 FE	    B       `loop [-4] (7fe)
-0000000160	0000000000	   	    	                	@END
-0000000161	0000000000	   	    	                	
-0000000162	0000000000	   	    	                	@AREA |Data| @DATA, @READWRITE
-0000000163	0000000000	   	    	                	@ENTRY
-0000000164	0134217986	0067108993	0x08000102	00000000 00000000	0x00 00	            @DCHW   #0
-0000000165	0000000000	   	    	                	
-0000000166	0134217988	0067108994	0x08000104	00000000 00000000	0x00 00	    stack_pointer   @DCHW        0x0000
-0000000167	0134217990	0067108995	0x08000106	00000011 00000000	0x03 00	                    @DCHW        0x0300
-0000000168	0134217992	0067108996	0x08000108	00000000 00000000	0x00 00	    disp_control    @DCHW        0x0000
-0000000169	0134217994	0067108997	0x0800010A	00000100 00000000	0x04 00	                    @DCHW        0x0400
-0000000170	0134217996	0067108998	0x0800010C	00000000 00000000	0x00 00	                    @DCHW        0x0000 ;required
-0000000171	0000000000	   	    	                	@END
+0000000153	0134217976	0067108988	0x080000F8	01001010 00000101	0x4A 05	    LDR     R2, [PC, `disp_control] [20] (5)
+0000000154	0134217978	0067108989	0x080000FA	01000110 11000000	0x46 C0	    MOV	R8, R8		;NOP preprocessor directive
+0000000155	0134217980	0067108990	0x080000FC	01001100 00000101	0x4C 05	    LDR     R4, [PC, `screen_mode]      ;4 = Layer 2 on / 3 = ScreenMode 3 [20] (5)
+0000000156	0000000000	   	    	                	
+0000000157	0134217982	0067108991	0x080000FE	01000110 11000000	0x46 C0	    MOV	R8, R8		;NOP preprocessor directive
+0000000158	0134217984	0067108992	0x08000100	01000110 10001000	0x46 88	    MOV     R8, R1
+0000000159	0134217986	0067108993	0x08000102	01000110 01000101	0x46 45	    MOV     R5, R8
+0000000160	0134217988	0067108994	0x08000104	01000110 10101101	0x46 AD	    MOV     SP, R5
+0000000161	0134217990	0067108995	0x08000106	01100000 00100010	0x60 22	    STR     R2, [R4, #0]
+0000000162	0000000000	   	    	                	
+0000000163	0134217992	0067108996	0x08000108	01001001 00000011	0x49 03	    LDR     R1, [PC, `hello_world] [12] (3)
+0000000164	0000000000	   	    	                	
+0000000165	0000000000	   	    	                	    loop
+0000000166	0134217994	0067108997	0x0800010A	11100111 11111110	0xE7 FE	    B       `loop [-4] (7fe)
+0000000167	0000000000	   	    	                	@END
+0000000168	0000000000	   	    	                	
+0000000169	0000000000	   	    	                	@AREA |Data| @DATA, @READWRITE
+0000000170	0000000000	   	    	                	@ENTRY
+0000000171	0000000000	   	    	                	
+0000000172	0134217996	0067108998	0x0800010C	00000000 00000000	0x00 00	    stack_pointer   @DCHW   0x0000
+0000000173	0134217998	0067108999	0x0800010E	00000011 00000000	0x03 00	                    @DCHW   0x0300
+0000000174	0134218000	0067109000	0x08000110	00000000 00000000	0x00 00	    disp_control    @DCHW   0x0000
+0000000175	0134218002	0067109001	0x08000112	00000100 00000000	0x04 00	                    @DCHW   0x0400
+0000000176	0134218004	0067109002	0x08000114	00000100 00000011	0x04 03	    screen_mode     @DCHW   0x0403
+0000000177	0134218006	0067109003	0x08000116	00000000 00000000	0x00 00	                    @DCHW   0x0000
+0000000178	0000000000	   	    	                	    hello_world     
+0000000179	0000000000	   	    	                	                    ;$FLIPSTRING |Hello World|
+0000000180	0000000000	   	    	                	                    ;Found string byte count: 12, word count: 6, and padding on: false
+0000000181	0000000000	   	    	                	                    
+0000000182	0134218008	0067109004	0x08000118	01100101 01001000	0x65 48	                    @DCHW #0x6548		;index: 0000	H e
+0000000183	0134218010	0067109005	0x0800011A	01101100 01101100	0x6C 6C	                    @DCHW #0x6C6C		;index: 0002	l l
+0000000184	0134218012	0067109006	0x0800011C	00100000 01101111	0x20 6F	                    @DCHW #0x206F		;index: 0004	o  
+0000000185	0134218014	0067109007	0x0800011E	01101111 01010111	0x6F 57	                    @DCHW #0x6F57		;index: 0006	W o
+0000000186	0134218016	0067109008	0x08000120	01101100 01110010	0x6C 72	                    @DCHW #0x6C72		;index: 0008	r l
+0000000187	0134218018	0067109009	0x08000122	11111111 01100100	0xFF 64	                    @DCHW #0xFF64		;index: 0010	d ￿
+0000000188	0000000000	   	    	                	                    
+0000000189	0000000000	   	    	                	@END
 
 ;===== SYMBOL TABLE =====
-;Name: loop	LineNumAbs: 0000000158	LineNumActive: 0067108992	AddressHex: 0x08000100	Value: n/a	EmptyLineLabel: true	IsLabel: true	IsStaticValue: false
-;Name: disp_control	LineNumAbs: 0000000168	LineNumActive: 0067108996	AddressHex: 0x08000108	Value: n/a	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
-;Name: stack_pointer	LineNumAbs: 0000000166	LineNumActive: 0067108994	AddressHex: 0x08000104	Value: n/a	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
 ;Name: program_start	LineNumAbs: 0000000150	LineNumActive: 0067108986	AddressHex: 0x080000F4	Value: n/a	EmptyLineLabel: true	IsLabel: true	IsStaticValue: false
-;Name: ramarea	LineNumAbs: 0000000004	LineNumActive: 0000000000	AddressHex: 	Value: 33554432	EmptyLineLabel: false	IsLabel: false	IsStaticValue: true
+;Name: stack_pointer	LineNumAbs: 0000000172	LineNumActive: 0067108998	AddressHex: 0x0800010C	Value: n/a	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
 ;Name: cursor_y	LineNumAbs: 0000000006	LineNumActive: 0000000000	AddressHex: 	Value: 33554465	EmptyLineLabel: false	IsLabel: false	IsStaticValue: true
+;Name: ramarea	LineNumAbs: 0000000004	LineNumActive: 0000000000	AddressHex: 	Value: 33554432	EmptyLineLabel: false	IsLabel: false	IsStaticValue: true
 ;Name: cursor_x	LineNumAbs: 0000000005	LineNumActive: 0000000000	AddressHex: 	Value: 33554464	EmptyLineLabel: false	IsLabel: false	IsStaticValue: true
+;Name: screen_mode	LineNumAbs: 0000000176	LineNumActive: 0067109002	AddressHex: 0x08000114	Value: n/a	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
+;Name: hello_world	LineNumAbs: 0000000178	LineNumActive: 0067109004	AddressHex: 0x08000118	Value: n/a	EmptyLineLabel: true	IsLabel: true	IsStaticValue: false
+;Name: loop	LineNumAbs: 0000000165	LineNumActive: 0067108997	AddressHex: 0x0800010A	Value: n/a	EmptyLineLabel: true	IsLabel: true	IsStaticValue: false
+;Name: disp_control	LineNumAbs: 0000000174	LineNumActive: 0067109000	AddressHex: 0x08000110	Value: n/a	EmptyLineLabel: false	IsLabel: true	IsStaticValue: false
 
 ;===== BINARY OUTPUT =====
-;Expected file output size: 270
+;Expected file output size: 292
