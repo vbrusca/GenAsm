@@ -149,8 +149,12 @@
     
     ;.thumb				;Thumb mode
     program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
-    MOV     R1, PC
-    LDR     R1, [R1, `stack_pointer]
+    LDR     R1, [PC, `stack_pointer]
+    MOV	R8, R8		;NOP preprocessor directive
+    LDR     R3, [PC, `disp_control]
+    MOV     R8, R1
+    MOV     R2, R8
+    MOV     SP, R2
 
     loop
     B       `loop
@@ -163,5 +167,5 @@
                     @DCHW        0x0300
     disp_control    @DCHW        0x0000
                     @DCHW        0x0400
-
+                    @DCHW        0x0000 ;required
 @END

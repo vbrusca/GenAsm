@@ -220,9 +220,9 @@ public class PreProcessorThumb implements PreProcessor {
                                 hex = Integer.toHexString(shorts[i] & 0xffff);
                                 hex = Utils.FormatHexString(hex.toUpperCase(), 4);
                                 if(idxs[0] == PPD_FLPINCBIN_IDX) {
-                                    Logger.wrl("Flipping bin entry: " + hex);
+                                    //Logger.wrl("Flipping bin entry: " + hex);
                                     hex = Utils.EndianFlipHex(hex);
-                                    Logger.wrl("Flipping bin entry: " + hex);                                    
+                                    //Logger.wrl("Flipping bin entry: " + hex);                                    
                                 }
                                 hex = Utils.FormatHexString(hex.toUpperCase(), 4);
                                 binLine = Integer.toHexString((tCount * 2) & 0xffff);

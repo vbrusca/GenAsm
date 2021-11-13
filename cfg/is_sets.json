@@ -46,6 +46,13 @@
                     "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives",
                     "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirectives",
                     "category": "directives"
+                },
+                {
+                    "obj_name": "is_empty_data_lines",
+                    "path": "./cfg/THUMB/is_empty_data_lines.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEmptyDataLines",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEmptyDataLines",
+                    "category": "special"
                 }
             ]
         }

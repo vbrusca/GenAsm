@@ -67,6 +67,7 @@ import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArg
 import net.middlemind.GenAsm.FileIO.FileLoader;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
 import net.middlemind.GenAsm.JsonObjs.JsonObjNumRange;
+import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEmptyDataLines;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArgSorter;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister;
 import net.middlemind.GenAsm.Logger;
@@ -150,7 +151,7 @@ public class AssemblerThumb implements Assembler {
     public Map<String, String> jsonSource;
 
     /**
-     * An object representing the instruction set's entry type objects
+     * An object representing the instruction set's entry type objects.
      */        
     public JsonObjIsEntryTypes jsonObjIsEntryTypes;
 
@@ -159,6 +160,11 @@ public class AssemblerThumb implements Assembler {
      */        
     public JsonObjIsValidLines jsonObjIsValidLines;
 
+    /**
+     * An object representing the instruction set's valid empty data line objects
+     */
+    public JsonObjIsEmptyDataLines jsonObjIsEmptyDataLines;
+    
     /**
      * An object representing the instruction set's op-code objects
      */    
@@ -895,20 +901,88 @@ public class AssemblerThumb implements Assembler {
                         }
                     }
                 }
-                                
+
+                int alcStart = activeLineCount;
+                int firstDataLineActiveInt = -1;
+                int firstDataLineAbsInt = -1;                
+                int firstDataLineInt = -1;
                 asmAreaLinesData = new ArrayList<TokenLine>();
                 for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
                     TokenLine line = asmDataTokened.get(z);
+                    if(firstDataLineInt == -1) {
+                        firstDataLineInt = z;
+                    }
+                    
                     if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective) {
                         line.addressHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
                         line.addressBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
                         line.addressInt = (asmStartLineNumber + activeLineCount);
                         line.lineNumActive = (line.addressInt/lineLenBytes);
+                        
+                        if(firstDataLineActiveInt == -1) {
+                            firstDataLineActiveInt = line.lineNumActive;
+                        }
+                        
+                        if(firstDataLineAbsInt == -1) {
+                            firstDataLineAbsInt = line.lineNumAbs;
+                        }
+                        
                         asmAreaLinesData.add(line);
                         activeLineCount += lineLenBytes;
                     }
                 }
                 
+                int rmn = (firstDataLineActiveInt * 2) % 4;
+                int lineAddedAt = -1;
+                if(rmn == 2) {   
+                    Logger.wrl("WARNING: Offset found to be " + rmn + " adding spacer line to align to 4 byte boundary.");
+                    lineAddedAt = firstDataLineInt;
+                    asmDataTokened.add(firstDataLineInt, jsonObjIsEmptyDataLines.is_empty_data_lines.get(0));
+                    areaThumbData.lineNumEnd += 1;
+                } else {
+                    Logger.wrl("WARNING: Unexpected alignment with offset found to be " + rmn);
+                }
+               
+                if(lineAddedAt != -1) {
+                    TokenLine lastCodeLine = asmDataTokened.get(areaThumbCode.lineNumEnd - 1);
+                    TokenLine firstDataLine = asmDataTokened.get(areaThumbData.lineNumEntry);
+                    int countAbs = 1;
+                    int countActive = 1;
+                    int startLineAbs = firstDataLine.lineNumAbs;
+                    int startLineActive = lastCodeLine.lineNumActive;                
+                    for(int z = areaThumbData.lineNumEntry + 1; z <= areaThumbData.lineNumEnd; z++) {
+                        TokenLine line = asmDataTokened.get(z);
+                        line.lineNumAbs = startLineAbs + countAbs;
+                        if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective) {
+                            line.lineNumActive = startLineActive + countActive;
+                            countActive++;
+                        }
+                        countAbs++;
+                    }                
+
+                    activeLineCount = alcStart;
+                    asmAreaLinesData = new ArrayList<TokenLine>();
+                    for(int z = areaThumbData.lineNumEntry + 1; z < areaThumbData.lineNumEnd; z++) {
+                        TokenLine line = asmDataTokened.get(z);
+                        if(!line.isLineEmpty && !line.isLineLabelDef && line.isLineDirective) {
+                            line.addressHex = Utils.FormatHexString(Integer.toHexString(asmStartLineNumber + activeLineCount), lineLenBytes);
+                            line.addressBin = Utils.FormatBinString(Integer.toBinaryString(asmStartLineNumber + activeLineCount), lineBitSeries.bit_len); 
+                            line.addressInt = (asmStartLineNumber + activeLineCount);
+                            line.lineNumActive = (line.addressInt/lineLenBytes);
+                            asmAreaLinesData.add(line);
+                            activeLineCount += lineLenBytes;
+                        }
+                    }
+
+                    for(String key : symbols.symbols.keySet()) {
+                        Symbol sym = symbols.symbols.get(key);
+                        if(sym.lineNumAbs >= lineAddedAt) {
+                            Logger.wrl("==============Need to adjust symbol: " + sym.name);
+                            sym.lineNumAbs += 1;
+                        }
+                    }
+                }
+
             } else {
                 //process data area first
                 asmAreaLinesData = new ArrayList<TokenLine>();
@@ -2063,6 +2137,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("AssemblerThumb: RunAssembler: Json loaded '" + entry.path + "'");
 
             jsonObj = ldr.ParseJson(json, entry.target_class, entry.path);
+            Logger.wrl("AssemblerThumb: RunAssembler: " + jsonObj.GetName());
             jsonName = jsonObj.GetName();
             isaData.put(jsonName, jsonObj);
             Logger.wrl("AssemblerThumb: RunAssembler: Json parsed as '" + entry.target_class + "'");
@@ -2075,6 +2150,10 @@ public class AssemblerThumb implements Assembler {
             } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines")) {
                 jsonObjIsValidLines = (JsonObjIsValidLines)jsonObj;
                 Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsValidLines object, storing it...");
+                
+            } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEmptyDataLines")) {
+                jsonObjIsEmptyDataLines = (JsonObjIsEmptyDataLines)jsonObj;
+                Logger.wrl("AssemblerThumb: RunAssembler: Found JsonObjIsEmptyDataLines object, storing it...");                
 
             } else if(jsonObj.GetLoader().equals("net.middlemind.GenAsm.Loaders.Thumb.LoaderIsOpCodes")) {
                 jsonObjIsOpCodes = (JsonObjIsOpCodes)jsonObj;
@@ -2765,12 +2844,12 @@ public class AssemblerThumb implements Assembler {
                     
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                            //label address
+                            //label address =
                             tInt = sym.addressInt;
                             Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                            //label value
+                            //label value ~
                             if(sym.value != null && sym.isStaticValue) {
                                 tInt = sym.value;
                                 Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");
@@ -2779,16 +2858,16 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                            //label address offset
+                            //label address offset -
                             if(line.addressInt < sym.addressInt) {
                                 tInt = (sym.addressInt - line.addressInt);
                             } else {
                                 tInt = (line.addressInt - sym.addressInt);
-                            }
+                            }                            
                             Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
-                            //label address offset minus prefetch
+                            //label address offset minus prefetch ~
                             if(line.addressInt < sym.addressInt) {
                                 tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
                             } else {
@@ -2798,7 +2877,9 @@ public class AssemblerThumb implements Assembler {
                             
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
-                        }                       
+                        }
+                        
+                        line.source.source += " [" + tInt + "]";
                         
                         //special rule for ADD OpCode
                         if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
@@ -2836,6 +2917,7 @@ public class AssemblerThumb implements Assembler {
                         //}
                         
                         Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
+                        line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ")";
                         entry.tokenOpCodeArgGroup.value = tInt;
                         
                     } else if(entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {
@@ -2943,12 +3025,12 @@ public class AssemblerThumb implements Assembler {
                     
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                            //label address
+                            //label address =
                             tInt = sym.addressInt;
                             Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                            //label value
+                            //label value ~
                             if(sym.value != null && sym.isStaticValue) {
                                 tInt = sym.value;
                                 Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");                                
@@ -2957,7 +3039,7 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                            //label address offset
+                            //label address offset -
                             if(line.addressInt < sym.addressInt) {
                                 tInt = (sym.addressInt - line.addressInt);
                             } else {
@@ -2966,7 +3048,7 @@ public class AssemblerThumb implements Assembler {
                             Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
-                            //label address offset minus prefetch
+                            //label address offset minus prefetch `
                             //Logger.wrl("AAA:" + opCodeEntry.opCode.op_code_name + ", " + line.source.source);
                             //Logger.wrl("label address offset minus prefetch AAA: " + line.addressInt + ", " + sym.addressInt + ", " + jsonObjIsOpCodes.pc_prefetch_halfwords);
                             if(line.addressInt < sym.addressInt) {
@@ -2983,6 +3065,8 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
                         }
                        
+                        line.source.source += " [" + tInt + "]";           
+                        
                         //special rule for ADD OpCode
                         if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
                             opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
@@ -3043,6 +3127,7 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                         Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
+                        line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ")";
                         entry.tokenOpCodeArg.value = tInt;
                     
                     } else if(entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTERWB)) {

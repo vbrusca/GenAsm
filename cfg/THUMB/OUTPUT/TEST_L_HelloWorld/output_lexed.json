@@ -8572,50 +8572,15 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 151,
-    "sourceLen": 18,
-    "source": "    MOV     R1, PC",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 4,
-        "posStop": 6,
-        "len": 3,
-        "lineNum": 151,
-        "index": 0,
-        "payload": "MOV"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 12,
-        "posStop": 13,
-        "len": 2,
-        "lineNum": 151,
-        "index": 1,
-        "payload": "R1"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 16,
-        "posStop": 17,
-        "len": 2,
-        "lineNum": 151,
-        "index": 2,
-        "payload": "PC"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 152,
     "sourceLen": 36,
-    "source": "    LDR     R1, [R1, `stack_pointer]",
+    "source": "    LDR     R1, [PC, `stack_pointer]",
     "payload": [
       {
         "obj_name": "Artifact",
         "posStart": 4,
         "posStop": 6,
         "len": 3,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 0,
         "payload": "LDR"
       },
@@ -8624,7 +8589,7 @@
         "posStart": 12,
         "posStop": 13,
         "len": 2,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 1,
         "payload": "R1"
       },
@@ -8633,7 +8598,7 @@
         "posStart": 16,
         "posStop": 16,
         "len": 1,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 2,
         "payload": "["
       },
@@ -8642,16 +8607,16 @@
         "posStart": 17,
         "posStop": 18,
         "len": 2,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 3,
-        "payload": "R1"
+        "payload": "PC"
       },
       {
         "obj_name": "Artifact",
         "posStart": 21,
         "posStop": 34,
         "len": 14,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 4,
         "payload": "`stack_pointer"
       },
@@ -8660,7 +8625,7 @@
         "posStart": 35,
         "posStop": 35,
         "len": 1,
-        "lineNum": 152,
+        "lineNum": 151,
         "index": 5,
         "payload": "]"
       }
@@ -8668,68 +8633,230 @@
   },
   {
     "obj_name": "ArtifactLine",
-    "lineNum": 153,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 154,
-    "sourceLen": 8,
-    "source": "    loop",
+    "lineNum": 152,
+    "sourceLen": 43,
+    "source": "    MOV\tR8, R8\t\t;NOP preprocessor directive",
     "payload": [
       {
         "obj_name": "Artifact",
         "posStart": 4,
-        "posStop": 7,
+        "posStop": 6,
+        "len": 3,
+        "lineNum": 152,
+        "index": 0,
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 8,
+        "posStop": 9,
+        "len": 2,
+        "lineNum": 152,
+        "index": 1,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 13,
+        "len": 2,
+        "lineNum": 152,
+        "index": 2,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 19,
         "len": 4,
+        "lineNum": 152,
+        "index": 3,
+        "payload": ";NOP"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 21,
+        "posStop": 32,
+        "len": 12,
+        "lineNum": 152,
+        "index": 4,
+        "payload": "preprocessor"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 34,
+        "posStop": 42,
+        "len": 9,
+        "lineNum": 152,
+        "index": 5,
+        "payload": "directive"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 153,
+    "sourceLen": 35,
+    "source": "    LDR     R3, [PC, `disp_control]",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 6,
+        "len": 3,
+        "lineNum": 153,
+        "index": 0,
+        "payload": "LDR"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 13,
+        "len": 2,
+        "lineNum": 153,
+        "index": 1,
+        "payload": "R3"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 16,
+        "len": 1,
+        "lineNum": 153,
+        "index": 2,
+        "payload": "["
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 17,
+        "posStop": 18,
+        "len": 2,
+        "lineNum": 153,
+        "index": 3,
+        "payload": "PC"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 21,
+        "posStop": 33,
+        "len": 13,
+        "lineNum": 153,
+        "index": 4,
+        "payload": "`disp_control"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 34,
+        "posStop": 34,
+        "len": 1,
+        "lineNum": 153,
+        "index": 5,
+        "payload": "]"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 154,
+    "sourceLen": 18,
+    "source": "    MOV     R8, R1",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 6,
+        "len": 3,
         "lineNum": 154,
         "index": 0,
-        "payload": "loop"
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 13,
+        "len": 2,
+        "lineNum": 154,
+        "index": 1,
+        "payload": "R8"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 17,
+        "len": 2,
+        "lineNum": 154,
+        "index": 2,
+        "payload": "R1"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 155,
-    "sourceLen": 17,
-    "source": "    B       `loop",
+    "sourceLen": 18,
+    "source": "    MOV     R2, R8",
     "payload": [
       {
         "obj_name": "Artifact",
         "posStart": 4,
-        "posStop": 4,
-        "len": 1,
+        "posStop": 6,
+        "len": 3,
         "lineNum": 155,
         "index": 0,
-        "payload": "B"
+        "payload": "MOV"
       },
       {
         "obj_name": "Artifact",
         "posStart": 12,
-        "posStop": 16,
-        "len": 5,
+        "posStop": 13,
+        "len": 2,
         "lineNum": 155,
         "index": 1,
-        "payload": "`loop"
+        "payload": "R2"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 17,
+        "len": 2,
+        "lineNum": 155,
+        "index": 2,
+        "payload": "R8"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 156,
-    "sourceLen": 4,
-    "source": "@END",
+    "sourceLen": 18,
+    "source": "    MOV     SP, R2",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 3,
-        "len": 4,
+        "posStart": 4,
+        "posStop": 6,
+        "len": 3,
         "lineNum": 156,
         "index": 0,
-        "payload": "@END"
+        "payload": "MOV"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 13,
+        "len": 2,
+        "lineNum": 156,
+        "index": 1,
+        "payload": "SP"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 16,
+        "posStop": 17,
+        "len": 2,
+        "lineNum": 156,
+        "index": 2,
+        "payload": "R2"
       }
     ]
   },
@@ -8743,203 +8870,49 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 158,
-    "sourceLen": 30,
-    "source": "@AREA |Data| @DATA, @READWRITE",
+    "sourceLen": 8,
+    "source": "    loop",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 4,
-        "len": 5,
+        "posStart": 4,
+        "posStop": 7,
+        "len": 4,
         "lineNum": 158,
         "index": 0,
-        "payload": "@AREA"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 6,
-        "posStop": 11,
-        "len": 6,
-        "lineNum": 158,
-        "index": 1,
-        "payload": "|Data|"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 13,
-        "posStop": 17,
-        "len": 5,
-        "lineNum": 158,
-        "index": 2,
-        "payload": "@DATA"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 29,
-        "len": 10,
-        "lineNum": 158,
-        "index": 3,
-        "payload": "@READWRITE"
+        "payload": "loop"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 159,
-    "sourceLen": 6,
-    "source": "@ENTRY",
+    "sourceLen": 17,
+    "source": "    B       `loop",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 0,
-        "posStop": 5,
-        "len": 6,
+        "posStart": 4,
+        "posStop": 4,
+        "len": 1,
         "lineNum": 159,
         "index": 0,
-        "payload": "@ENTRY"
+        "payload": "B"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 12,
+        "posStop": 16,
+        "len": 5,
+        "lineNum": 159,
+        "index": 1,
+        "payload": "`loop"
       }
     ]
   },
   {
     "obj_name": "ArtifactLine",
     "lineNum": 160,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 161,
-    "sourceLen": 39,
-    "source": "    stack_pointer   @DCHW        0x0000",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 4,
-        "posStop": 16,
-        "len": 13,
-        "lineNum": 161,
-        "index": 0,
-        "payload": "stack_pointer"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 24,
-        "len": 5,
-        "lineNum": 161,
-        "index": 1,
-        "payload": "@DCHW"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 38,
-        "len": 6,
-        "lineNum": 161,
-        "index": 2,
-        "payload": "0x0000"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 162,
-    "sourceLen": 39,
-    "source": "                    @DCHW        0x0300",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 24,
-        "len": 5,
-        "lineNum": 162,
-        "index": 0,
-        "payload": "@DCHW"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 38,
-        "len": 6,
-        "lineNum": 162,
-        "index": 1,
-        "payload": "0x0300"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 163,
-    "sourceLen": 39,
-    "source": "    disp_control    @DCHW        0x0000",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 4,
-        "posStop": 15,
-        "len": 12,
-        "lineNum": 163,
-        "index": 0,
-        "payload": "disp_control"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 24,
-        "len": 5,
-        "lineNum": 163,
-        "index": 1,
-        "payload": "@DCHW"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 38,
-        "len": 6,
-        "lineNum": 163,
-        "index": 2,
-        "payload": "0x0000"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 164,
-    "sourceLen": 39,
-    "source": "                    @DCHW        0x0400",
-    "payload": [
-      {
-        "obj_name": "Artifact",
-        "posStart": 20,
-        "posStop": 24,
-        "len": 5,
-        "lineNum": 164,
-        "index": 0,
-        "payload": "@DCHW"
-      },
-      {
-        "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 38,
-        "len": 6,
-        "lineNum": 164,
-        "index": 1,
-        "payload": "0x0400"
-      }
-    ]
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 165,
-    "sourceLen": 0,
-    "source": "",
-    "payload": []
-  },
-  {
-    "obj_name": "ArtifactLine",
-    "lineNum": 166,
     "sourceLen": 4,
     "source": "@END",
     "payload": [
@@ -8948,7 +8921,256 @@
         "posStart": 0,
         "posStop": 3,
         "len": 4,
+        "lineNum": 160,
+        "index": 0,
+        "payload": "@END"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 161,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 162,
+    "sourceLen": 30,
+    "source": "@AREA |Data| @DATA, @READWRITE",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 4,
+        "len": 5,
+        "lineNum": 162,
+        "index": 0,
+        "payload": "@AREA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 6,
+        "posStop": 11,
+        "len": 6,
+        "lineNum": 162,
+        "index": 1,
+        "payload": "|Data|"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 13,
+        "posStop": 17,
+        "len": 5,
+        "lineNum": 162,
+        "index": 2,
+        "payload": "@DATA"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 29,
+        "len": 10,
+        "lineNum": 162,
+        "index": 3,
+        "payload": "@READWRITE"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 163,
+    "sourceLen": 6,
+    "source": "@ENTRY",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 5,
+        "len": 6,
+        "lineNum": 163,
+        "index": 0,
+        "payload": "@ENTRY"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 164,
+    "sourceLen": 0,
+    "source": "",
+    "payload": []
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 165,
+    "sourceLen": 39,
+    "source": "    stack_pointer   @DCHW        0x0000",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 16,
+        "len": 13,
+        "lineNum": 165,
+        "index": 0,
+        "payload": "stack_pointer"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 165,
+        "index": 1,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 38,
+        "len": 6,
+        "lineNum": 165,
+        "index": 2,
+        "payload": "0x0000"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 166,
+    "sourceLen": 39,
+    "source": "                    @DCHW        0x0300",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
         "lineNum": 166,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 38,
+        "len": 6,
+        "lineNum": 166,
+        "index": 1,
+        "payload": "0x0300"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 167,
+    "sourceLen": 39,
+    "source": "    disp_control    @DCHW        0x0000",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 4,
+        "posStop": 15,
+        "len": 12,
+        "lineNum": 167,
+        "index": 0,
+        "payload": "disp_control"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 167,
+        "index": 1,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 38,
+        "len": 6,
+        "lineNum": 167,
+        "index": 2,
+        "payload": "0x0000"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 168,
+    "sourceLen": 39,
+    "source": "                    @DCHW        0x0400",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 168,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 38,
+        "len": 6,
+        "lineNum": 168,
+        "index": 1,
+        "payload": "0x0400"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 169,
+    "sourceLen": 49,
+    "source": "                    @DCHW        0x0000 ;required",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 20,
+        "posStop": 24,
+        "len": 5,
+        "lineNum": 169,
+        "index": 0,
+        "payload": "@DCHW"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 33,
+        "posStop": 38,
+        "len": 6,
+        "lineNum": 169,
+        "index": 1,
+        "payload": "0x0000"
+      },
+      {
+        "obj_name": "Artifact",
+        "posStart": 40,
+        "posStop": 48,
+        "len": 9,
+        "lineNum": 169,
+        "index": 2,
+        "payload": ";required"
+      }
+    ]
+  },
+  {
+    "obj_name": "ArtifactLine",
+    "lineNum": 170,
+    "sourceLen": 4,
+    "source": "@END",
+    "payload": [
+      {
+        "obj_name": "Artifact",
+        "posStart": 0,
+        "posStop": 3,
+        "len": 4,
+        "lineNum": 170,
         "index": 0,
         "payload": "@END"
       }
