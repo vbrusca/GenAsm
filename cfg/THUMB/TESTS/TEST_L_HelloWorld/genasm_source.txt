@@ -27,7 +27,7 @@
         ;$NOP
         LDR     R2, [PC, `disp_control]
         ;$NOP
-        LDR     R4, [PC, `screen_mode]      ;4 = Layer 2 on / 3 = ScreenMode 3
+        LDR     R4, [PC, `screen_mode]  ;4 = Layer 2 on / 3 = ScreenMode 3
 
         ;$NOP
         MOV     R8, R1
@@ -42,18 +42,36 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    print_string                         ;Print 255 terminated string
-        STMFD SP!, {R0-R12, LR}
+    print_string                        ;Print 255 terminated string
+        ;STMFD  SP!, {R0-R12, LR}       ;TODO: Verify    
+        PUSH    {R0-R7}
+        MOV     R0, R8
+        MOV     R1, R9
+        MOV     R2, R10
+        MOV     R3, R11
+        MOV     R4, R12
+        PUSH    {R0-R4, LR}
 
     print_string_again
-        LDRB    R0, [R1], #1
-        CMPS    R0, #255
+        ;LDRB   R0, [R1], #1            ;TODO: Verify
+        LDRB    R0, [R1, #0]
+        ADD     R1, R1, #1
+
+        ;CMPS   R0, #255                ;TODO: Verify
+        CMP     R0, #255
+
         BEQ     `print_string_done      ;Repeat until 255
-        bl      print_char              ;Print char
-        b       print_string_again
+        BL      `print_char             ;Print char
+        B       `print_string_again
 
     print_string_done
-        LDMFD   Sp!, [R0-R12, PC}
+        ;$NOP                           ;TODO: delete this entry
+        ;LDMFD   Sp!, [R0-R12, PC}      ;TODO: CnvSym
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    print_char
+        ;$NOP                           ;TODO: delete this entry
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -75,7 +93,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    bitmap_font:                        ;1 Bit per pixel font
+    bitmap_font                         ;1 Bit per pixel font
                     @DCHW       0x183C 
                     @DCHW       0x6666
                     @DCHW       0x7E66

@@ -2,6 +2,8 @@
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
     ramarea     @EQU    0x02000000
     cursor_x    @EQU    0x02000020
     cursor_y    @EQU    0x02000021
@@ -149,26 +151,64 @@
     
     ;.thumb				;Thumb mode
     program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
-    LDR     R1, [PC, `stack_pointer]
-    MOV	R8, R8		;NOP preprocessor directive
-    LDR     R2, [PC, `disp_control]
-    MOV	R8, R8		;NOP preprocessor directive
-    LDR     R4, [PC, `screen_mode]      ;4 = Layer 2 on / 3 = ScreenMode 3
+        LDR     R1, [PC, `stack_pointer]
+        MOV	R8, R8		;NOP preprocessor directive
+        LDR     R2, [PC, `disp_control]
+        MOV	R8, R8		;NOP preprocessor directive
+        LDR     R4, [PC, `screen_mode]      ;4 = Layer 2 on / 3 = ScreenMode 3
 
-    MOV	R8, R8		;NOP preprocessor directive
-    MOV     R8, R1
-    MOV     R5, R8
-    MOV     SP, R5
-    STR     R2, [R4, #0]
+        MOV	R8, R8		;NOP preprocessor directive
+        MOV     R8, R1
+        MOV     R5, R8
+        MOV     SP, R5
+        STR     R2, [R4, #0]
 
-    LDR     R1, [PC, `hello_world]
+        LDR     R1, [PC, `hello_world]
 
-    loop
-    B       `loop
+        inf_loop
+        B       `inf_loop
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    print_string                        ;Print 255 terminated string
+        ;STMFD  SP!, {R0-R12, LR}       ;CnvSym    
+        PUSH    {R0-R7}
+        MOV     R0, R8
+        MOV     R1, R9
+        MOV     R2, R10
+        MOV     R3, R11
+        MOV     R4, R12
+        PUSH    {R0-R4, LR}
+
+    print_string_again
+        ;LDRB   R0, [R1], #1            ;CnvSym
+        LDRB    R0, [R1, #0]
+        ADD     R1, R1, #1
+
+        ;CMPS   R0, #255                ;TODO: CnvSym
+        CMP     R0, #255
+
+        BEQ     `print_string_done       ;Repeat until 255
+        BL      `print_char              ;Print char
+        B       `print_string_again
+
+    print_string_done
+        MOV	R8, R8		;NOP preprocessor directive
+        ;LDMFD   Sp!, [R0-R12, PC}      ;TODO: CnvSym
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    print_char
+        MOV	R8, R8		;NOP preprocessor directive
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 @END
 
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     stack_pointer   @DCHW   0x0000
                     @DCHW   0x0300
@@ -187,4 +227,140 @@
                     @DCHW #0x6C72		;index: 0008	r l
                     @DCHW #0xFF64		;index: 0010	d ￿
                     
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    bitmap_font                         ;1 Bit per pixel font
+                    @DCHW       0x183C 
+                    @DCHW       0x6666
+                    @DCHW       0x7E66
+                    @DCHW       0x2400	;A
+
+                    @DCHW       0x3C66 
+                    @DCHW       0x667C 
+                    @DCHW       0x6666 
+                    @DCHW       0x3C00	;B
+
+                    @DCHW       0x387C 
+                    @DCHW       0xC0C0 
+                    @DCHW       0xC07C 
+                    @DCHW       0x3800	;C
+
+                    @DCHW       0x3C64 
+                    @DCHW       0x6666
+                    @DCHW       0x6664 
+                    @DCHW       0x3800	;D
+
+                    @DCHW       0x3C7E 
+                    @DCHW       0x6078 
+                    @DCHW       0x607E 
+                    @DCHW       0x3C00	;E
+
+                    @DCHW       0x387C 
+                    @DCHW       0x6078 
+                    @DCHW       0x6060 
+                    @DCHW       0x2000	;F
+
+                    @DCHW       0x3C66
+                    @DCHW       0xC0C0 
+                    @DCHW       0xCC66 
+                    @DCHW       0x3C00	;G
+
+                    @DCHW       0x2466 
+                    @DCHW       0x667E
+                    @DCHW       0x6666 
+                    @DCHW       0x2400	;H
+
+                    @DCHW       0x1018 
+                    @DCHW       0x1818 
+                    @DCHW       0x1818 
+                    @DCHW       0x0800	;I
+
+                    @DCHW       0x080C 
+                    @DCHW       0x0C0C 
+                    @DCHW       0x4CFC 
+                    @DCHW       0x7800	;J
+
+                    @DCHW       0x2466 
+                    @DCHW       0x6C78 
+                    @DCHW       0x6C66 
+                    @DCHW       0x2400	;K
+
+                    @DCHW       0x2060 
+                    @DCHW       0x6060 
+                    @DCHW       0x607E 
+                    @DCHW       0x3E00	;L
+
+                    @DCHW       0x44EE 
+                    @DCHW       0xFED6 
+                    @DCHW       0xD6D6 
+                    @DCHW       0x4400	;M
+
+                    @DCHW       0x44E6 
+                    @DCHW       0xF6DE 
+                    @DCHW       0xCEC6 
+                    @DCHW       0x4400	;N
+
+                    @DCHW       0x386C 
+                    @DCHW       0xC6C6 
+                    @DCHW       0xC66C
+                    @DCHW       0x3800	;O
+
+                    @DCHW       0x386C 
+                    @DCHW       0x647C 
+                    @DCHW       0x6060 
+                    @DCHW       0x2000	;P
+
+                    @DCHW       0x386C 
+                    @DCHW       0xC6C6 
+                    @DCHW       0xCA74 
+                    @DCHW       0x3A00	;Q
+
+                    @DCHW       0x3C66 
+                    @DCHW       0x667C 
+                    @DCHW       0x6C66 
+                    @DCHW       0x2600	;R
+
+                    @DCHW       0x3C7E 
+                    @DCHW       0x603C 
+                    @DCHW       0x067E 
+                    @DCHW       0x3C00	;S
+
+                    @DCHW       0x3C7E 
+                    @DCHW       0x1818 
+                    @DCHW       0x1818 
+                    @DCHW       0x0800	;T
+
+                    @DCHW       0x2466 
+                    @DCHW       0x6666 
+                    @DCHW       0x6666 
+                    @DCHW       0x3C00	;U
+
+                    @DCHW       0x2466 
+                    @DCHW       0x6666 
+                    @DCHW       0x663C 
+                    @DCHW       0x1800	;V
+
+                    @DCHW       0x44C6 
+                    @DCHW       0xD6D6 
+                    @DCHW       0xFEEE 
+                    @DCHW       0x4400	;W
+
+                    @DCHW       0xC6C6 
+                    @DCHW       0x3838 
+                    @DCHW       0x6C6C 
+                    @DCHW       0x4400	;X
+
+                    @DCHW       0x2466 
+                    @DCHW       0x663C 
+                    @DCHW       0x1818 
+                    @DCHW       0x0800	;Y
+
+                    @DCHW       0x7CFC 
+                    @DCHW       0x0C18 
+                    @DCHW       0x307E
+                    @DCHW       0x7C00	;Z
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 @END

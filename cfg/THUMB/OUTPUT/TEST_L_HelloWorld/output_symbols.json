@@ -1,6 +1,434 @@
 {
   "obj_name": "Symbols",
   "symbols": {
+    "print_string_done": {
+      "obj_name": "Symbol",
+      "name": "print_string_done",
+      "line": {
+        "obj_name": "TokenLine",
+        "byteLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 194,
+        "payloadLen": 1,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 194,
+          "sourceLen": 21,
+          "source": "    print_string_done",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 20,
+              "len": 17,
+              "lineNum": 194,
+              "index": 0,
+              "payload": "print_string_done"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 1,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "print_string_done",
+            "lineNumAbs": 194,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 20,
+              "len": 17,
+              "lineNum": 194,
+              "index": 0,
+              "payload": "print_string_done"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "print_string_done",
+        "lineNumAbs": 194,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 20,
+          "len": 17,
+          "lineNum": 194,
+          "index": 0,
+          "payload": "print_string_done"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x8000128",
+      "addressBin": "0000000100101000",
+      "addressInt": 134218024,
+      "lineNumActive": 67109012,
+      "lineNumAbs": 194,
+      "isEmptyLineLabel": true,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "print_string_again": {
+      "obj_name": "Symbol",
+      "name": "print_string_again",
+      "line": {
+        "obj_name": "TokenLine",
+        "byteLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 182,
+        "payloadLen": 1,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 182,
+          "sourceLen": 22,
+          "source": "    print_string_again",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 21,
+              "len": 18,
+              "lineNum": 182,
+              "index": 0,
+              "payload": "print_string_again"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 1,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "print_string_again",
+            "lineNumAbs": 182,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 21,
+              "len": 18,
+              "lineNum": 182,
+              "index": 0,
+              "payload": "print_string_again"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "print_string_again",
+        "lineNumAbs": 182,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 21,
+          "len": 18,
+          "lineNum": 182,
+          "index": 0,
+          "payload": "print_string_again"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x800011A",
+      "addressBin": "0000000100011010",
+      "addressInt": 134218010,
+      "lineNumActive": 67109005,
+      "lineNumAbs": 182,
+      "isEmptyLineLabel": true,
+      "isLabel": true,
+      "isStaticValue": false
+    },
     "program_start": {
       "obj_name": "Symbol",
       "name": "program_start",
@@ -9,7 +437,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 150,
+        "lineNumAbs": 152,
         "payloadLen": 2,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -18,7 +446,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 150,
+          "lineNum": 152,
           "sourceLen": 91,
           "source": "    program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4",
           "payload": [
@@ -27,7 +455,7 @@
               "posStart": 4,
               "posStop": 16,
               "len": 13,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 0,
               "payload": "program_start"
             },
@@ -36,7 +464,7 @@
               "posStart": 40,
               "posStop": 44,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 1,
               "payload": ";Init"
             },
@@ -45,7 +473,7 @@
               "posStart": 46,
               "posStop": 50,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 2,
               "payload": "Stack"
             },
@@ -54,7 +482,7 @@
               "posStart": 52,
               "posStop": 59,
               "len": 8,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 3,
               "payload": "Pointer."
             },
@@ -63,7 +491,7 @@
               "posStart": 61,
               "posStop": 63,
               "len": 3,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 4,
               "payload": "Arm"
             },
@@ -72,7 +500,7 @@
               "posStart": 65,
               "posStop": 65,
               "len": 1,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 5,
               "payload": "2"
             },
@@ -81,7 +509,7 @@
               "posStart": 67,
               "posStop": 71,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 6,
               "payload": "thumb"
             },
@@ -90,7 +518,7 @@
               "posStart": 73,
               "posStop": 77,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 7,
               "payload": "entry"
             },
@@ -99,7 +527,7 @@
               "posStart": 79,
               "posStop": 83,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 8,
               "payload": "point"
             },
@@ -108,7 +536,7 @@
               "posStart": 85,
               "posStop": 90,
               "len": 6,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 9,
               "payload": "0x00F4"
             }
@@ -207,7 +635,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "program_start",
-            "lineNumAbs": 150,
+            "lineNumAbs": 152,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -223,7 +651,7 @@
               "posStart": 4,
               "posStop": 16,
               "len": 13,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 0,
               "payload": "program_start"
             },
@@ -266,7 +694,7 @@
             "obj_name": "Token",
             "type_name": "Comment",
             "source": ";Init",
-            "lineNumAbs": 150,
+            "lineNumAbs": 152,
             "index": 1,
             "payloadLen": 8,
             "payloadArgLen": 0,
@@ -282,7 +710,7 @@
               "posStart": 40,
               "posStop": 44,
               "len": 5,
-              "lineNum": 150,
+              "lineNum": 152,
               "index": 1,
               "payload": ";Init"
             },
@@ -318,7 +746,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "Stack",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 0,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -334,7 +762,7 @@
                   "posStart": 46,
                   "posStop": 50,
                   "len": 5,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 2,
                   "payload": "Stack"
                 },
@@ -371,7 +799,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "Pointer.",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 1,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -387,7 +815,7 @@
                   "posStart": 52,
                   "posStop": 59,
                   "len": 8,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 3,
                   "payload": "Pointer."
                 },
@@ -424,7 +852,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "Arm",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 2,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -440,7 +868,7 @@
                   "posStart": 61,
                   "posStop": 63,
                   "len": 3,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 4,
                   "payload": "Arm"
                 },
@@ -477,7 +905,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "2",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 3,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -493,7 +921,7 @@
                   "posStart": 65,
                   "posStop": 65,
                   "len": 1,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 5,
                   "payload": "2"
                 },
@@ -530,7 +958,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "thumb",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 4,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -546,7 +974,7 @@
                   "posStart": 67,
                   "posStop": 71,
                   "len": 5,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 6,
                   "payload": "thumb"
                 },
@@ -583,7 +1011,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "entry",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 5,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -599,7 +1027,7 @@
                   "posStart": 73,
                   "posStop": 77,
                   "len": 5,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 7,
                   "payload": "entry"
                 },
@@ -636,7 +1064,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "point",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 6,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -652,7 +1080,7 @@
                   "posStart": 79,
                   "posStop": 83,
                   "len": 5,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 8,
                   "payload": "point"
                 },
@@ -689,7 +1117,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "0x00F4",
-                "lineNumAbs": 150,
+                "lineNumAbs": 152,
                 "index": 7,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -705,7 +1133,7 @@
                   "posStart": 85,
                   "posStop": 90,
                   "len": 6,
-                  "lineNum": 150,
+                  "lineNum": 152,
                   "index": 9,
                   "payload": "0x00F4"
                 },
@@ -746,7 +1174,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "program_start",
-        "lineNumAbs": 150,
+        "lineNumAbs": 152,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -762,7 +1190,7 @@
           "posStart": 4,
           "posStop": 16,
           "len": 13,
-          "lineNum": 150,
+          "lineNum": 152,
           "index": 0,
           "payload": "program_start"
         },
@@ -805,7 +1233,7 @@
       "addressBin": "0000000011110100",
       "addressInt": 134217972,
       "lineNumActive": 67108986,
-      "lineNumAbs": 150,
+      "lineNumAbs": 152,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -817,11 +1245,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x800010C",
-        "addressBin": "0000000100001100",
-        "addressInt": 134217996,
-        "lineNumActive": 67108998,
-        "lineNumAbs": 172,
+        "addressHex": "0x800012C",
+        "addressBin": "0000000100101100",
+        "addressInt": 134218028,
+        "lineNumActive": 67109014,
+        "lineNumAbs": 212,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -830,7 +1258,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 172,
+          "lineNum": 212,
           "sourceLen": 34,
           "source": "    stack_pointer   @DCHW   0x0000",
           "payload": [
@@ -839,7 +1267,7 @@
               "posStart": 4,
               "posStop": 16,
               "len": 13,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 0,
               "payload": "stack_pointer"
             },
@@ -848,7 +1276,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -857,7 +1285,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 2,
               "payload": "0x0000"
             }
@@ -1128,7 +1556,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "stack_pointer",
-            "lineNumAbs": 172,
+            "lineNumAbs": 212,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1144,7 +1572,7 @@
               "posStart": 4,
               "posStop": 16,
               "len": 13,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 0,
               "payload": "stack_pointer"
             },
@@ -1187,7 +1615,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 172,
+            "lineNumAbs": 212,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1203,7 +1631,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -1243,7 +1671,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 172,
+            "lineNumAbs": 212,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1259,7 +1687,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 172,
+              "lineNum": 212,
               "index": 2,
               "payload": "0x0000"
             },
@@ -1303,7 +1731,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "stack_pointer",
-        "lineNumAbs": 172,
+        "lineNumAbs": 212,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -1319,7 +1747,7 @@
           "posStart": 4,
           "posStop": 16,
           "len": 13,
-          "lineNum": 172,
+          "lineNum": 212,
           "index": 0,
           "payload": "stack_pointer"
         },
@@ -1358,11 +1786,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x800010C",
-      "addressBin": "0000000100001100",
-      "addressInt": 134217996,
-      "lineNumActive": 67108998,
-      "lineNumAbs": 172,
+      "addressHex": "0x800012C",
+      "addressBin": "0000000100101100",
+      "addressInt": 134218028,
+      "lineNumActive": 67109014,
+      "lineNumAbs": 212,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -1376,7 +1804,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 6,
+        "lineNumAbs": 8,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": true,
@@ -1385,7 +1813,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 6,
+          "lineNum": 8,
           "sourceLen": 34,
           "source": "    cursor_y    @EQU    0x02000021",
           "payload": [
@@ -1394,7 +1822,7 @@
               "posStart": 4,
               "posStop": 11,
               "len": 8,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 0,
               "payload": "cursor_y"
             },
@@ -1403,7 +1831,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 1,
               "payload": "@EQU"
             },
@@ -1412,7 +1840,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 2,
               "payload": "0x02000021"
             }
@@ -1683,7 +2111,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "cursor_y",
-            "lineNumAbs": 6,
+            "lineNumAbs": 8,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1699,7 +2127,7 @@
               "posStart": 4,
               "posStop": 11,
               "len": 8,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 0,
               "payload": "cursor_y"
             },
@@ -1742,7 +2170,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@EQU",
-            "lineNumAbs": 6,
+            "lineNumAbs": 8,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1758,7 +2186,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 1,
               "payload": "@EQU"
             },
@@ -1798,7 +2226,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x02000021",
-            "lineNumAbs": 6,
+            "lineNumAbs": 8,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1814,7 +2242,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 6,
+              "lineNum": 8,
               "index": 2,
               "payload": "0x02000021"
             },
@@ -1858,7 +2286,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "cursor_y",
-        "lineNumAbs": 6,
+        "lineNumAbs": 8,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -1874,7 +2302,7 @@
           "posStart": 4,
           "posStop": 11,
           "len": 8,
-          "lineNum": 6,
+          "lineNum": 8,
           "index": 0,
           "payload": "cursor_y"
         },
@@ -1915,7 +2343,7 @@
       },
       "addressInt": 0,
       "lineNumActive": 0,
-      "lineNumAbs": 6,
+      "lineNumAbs": 8,
       "isEmptyLineLabel": false,
       "isLabel": false,
       "isStaticValue": true,
@@ -1930,7 +2358,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 4,
+        "lineNumAbs": 6,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": true,
@@ -1939,7 +2367,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 4,
+          "lineNum": 6,
           "sourceLen": 34,
           "source": "    ramarea     @EQU    0x02000000",
           "payload": [
@@ -1948,7 +2376,7 @@
               "posStart": 4,
               "posStop": 10,
               "len": 7,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 0,
               "payload": "ramarea"
             },
@@ -1957,7 +2385,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 1,
               "payload": "@EQU"
             },
@@ -1966,7 +2394,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 2,
               "payload": "0x02000000"
             }
@@ -2237,7 +2665,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "ramarea",
-            "lineNumAbs": 4,
+            "lineNumAbs": 6,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2253,7 +2681,7 @@
               "posStart": 4,
               "posStop": 10,
               "len": 7,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 0,
               "payload": "ramarea"
             },
@@ -2296,7 +2724,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@EQU",
-            "lineNumAbs": 4,
+            "lineNumAbs": 6,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2312,7 +2740,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 1,
               "payload": "@EQU"
             },
@@ -2352,7 +2780,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x02000000",
-            "lineNumAbs": 4,
+            "lineNumAbs": 6,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2368,7 +2796,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 4,
+              "lineNum": 6,
               "index": 2,
               "payload": "0x02000000"
             },
@@ -2412,7 +2840,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "ramarea",
-        "lineNumAbs": 4,
+        "lineNumAbs": 6,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -2428,7 +2856,7 @@
           "posStart": 4,
           "posStop": 10,
           "len": 7,
-          "lineNum": 4,
+          "lineNum": 6,
           "index": 0,
           "payload": "ramarea"
         },
@@ -2469,7 +2897,7 @@
       },
       "addressInt": 0,
       "lineNumActive": 0,
-      "lineNumAbs": 4,
+      "lineNumAbs": 6,
       "isEmptyLineLabel": false,
       "isLabel": false,
       "isStaticValue": true,
@@ -2484,7 +2912,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 5,
+        "lineNumAbs": 7,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": true,
@@ -2493,7 +2921,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 5,
+          "lineNum": 7,
           "sourceLen": 34,
           "source": "    cursor_x    @EQU    0x02000020",
           "payload": [
@@ -2502,7 +2930,7 @@
               "posStart": 4,
               "posStop": 11,
               "len": 8,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 0,
               "payload": "cursor_x"
             },
@@ -2511,7 +2939,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 1,
               "payload": "@EQU"
             },
@@ -2520,7 +2948,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 2,
               "payload": "0x02000020"
             }
@@ -2791,7 +3219,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "cursor_x",
-            "lineNumAbs": 5,
+            "lineNumAbs": 7,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2807,7 +3235,7 @@
               "posStart": 4,
               "posStop": 11,
               "len": 8,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 0,
               "payload": "cursor_x"
             },
@@ -2850,7 +3278,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@EQU",
-            "lineNumAbs": 5,
+            "lineNumAbs": 7,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2866,7 +3294,7 @@
               "posStart": 16,
               "posStop": 19,
               "len": 4,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 1,
               "payload": "@EQU"
             },
@@ -2906,7 +3334,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x02000020",
-            "lineNumAbs": 5,
+            "lineNumAbs": 7,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2922,7 +3350,7 @@
               "posStart": 24,
               "posStop": 33,
               "len": 10,
-              "lineNum": 5,
+              "lineNum": 7,
               "index": 2,
               "payload": "0x02000020"
             },
@@ -2966,7 +3394,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "cursor_x",
-        "lineNumAbs": 5,
+        "lineNumAbs": 7,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -2982,7 +3410,7 @@
           "posStart": 4,
           "posStop": 11,
           "len": 8,
-          "lineNum": 5,
+          "lineNum": 7,
           "index": 0,
           "payload": "cursor_x"
         },
@@ -3023,11 +3451,510 @@
       },
       "addressInt": 0,
       "lineNumActive": 0,
-      "lineNumAbs": 5,
+      "lineNumAbs": 7,
       "isEmptyLineLabel": false,
       "isLabel": false,
       "isStaticValue": true,
       "value": 33554464
+    },
+    "print_string": {
+      "obj_name": "Symbol",
+      "name": "print_string",
+      "line": {
+        "obj_name": "TokenLine",
+        "byteLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 172,
+        "payloadLen": 2,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 172,
+          "sourceLen": 68,
+          "source": "    print_string                        ;Print 255 terminated string",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 15,
+              "len": 12,
+              "lineNum": 172,
+              "index": 0,
+              "payload": "print_string"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 45,
+              "len": 6,
+              "lineNum": 172,
+              "index": 1,
+              "payload": ";Print"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 47,
+              "posStop": 49,
+              "len": 3,
+              "lineNum": 172,
+              "index": 2,
+              "payload": "255"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 51,
+              "posStop": 60,
+              "len": 10,
+              "lineNum": 172,
+              "index": 3,
+              "payload": "terminated"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 62,
+              "posStop": 67,
+              "len": 6,
+              "lineNum": 172,
+              "index": 4,
+              "payload": "string"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 2,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Comment"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "print_string",
+            "lineNumAbs": 172,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 15,
+              "len": 12,
+              "lineNum": 172,
+              "index": 0,
+              "payload": "print_string"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Comment",
+            "source": ";Print",
+            "lineNumAbs": 172,
+            "index": 1,
+            "payloadLen": 3,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": true,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 45,
+              "len": 6,
+              "lineNum": 172,
+              "index": 1,
+              "payload": ";Print"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Comment",
+              "type_category": "Comment",
+              "category": "Comment",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  ";"
+                ],
+                "contains": [
+                  "*"
+                ],
+                "ends_with": [
+                  "*"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": [
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "255",
+                "lineNumAbs": 172,
+                "index": 0,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 47,
+                  "posStop": 49,
+                  "len": 3,
+                  "lineNum": 172,
+                  "index": 2,
+                  "payload": "255"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "terminated",
+                "lineNumAbs": 172,
+                "index": 1,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 51,
+                  "posStop": 60,
+                  "len": 10,
+                  "lineNum": 172,
+                  "index": 3,
+                  "payload": "terminated"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "string",
+                "lineNumAbs": 172,
+                "index": 2,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 62,
+                  "posStop": 67,
+                  "len": 6,
+                  "lineNum": 172,
+                  "index": 4,
+                  "payload": "string"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              }
+            ]
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "print_string",
+        "lineNumAbs": 172,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 15,
+          "len": 12,
+          "lineNum": 172,
+          "index": 0,
+          "payload": "print_string"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x800010C",
+      "addressBin": "0000000100001100",
+      "addressInt": 134217996,
+      "lineNumActive": 67108998,
+      "lineNumAbs": 172,
+      "isEmptyLineLabel": true,
+      "isLabel": true,
+      "isStaticValue": false
     },
     "screen_mode": {
       "obj_name": "Symbol",
@@ -3036,11 +3963,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x8000114",
-        "addressBin": "0000000100010100",
-        "addressInt": 134218004,
-        "lineNumActive": 67109002,
-        "lineNumAbs": 176,
+        "addressHex": "0x8000134",
+        "addressBin": "0000000100110100",
+        "addressInt": 134218036,
+        "lineNumActive": 67109018,
+        "lineNumAbs": 216,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -3049,7 +3976,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 176,
+          "lineNum": 216,
           "sourceLen": 34,
           "source": "    screen_mode     @DCHW   0x0403",
           "payload": [
@@ -3058,7 +3985,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 0,
               "payload": "screen_mode"
             },
@@ -3067,7 +3994,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -3076,7 +4003,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 2,
               "payload": "0x0403"
             }
@@ -3347,7 +4274,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "screen_mode",
-            "lineNumAbs": 176,
+            "lineNumAbs": 216,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3363,7 +4290,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 0,
               "payload": "screen_mode"
             },
@@ -3406,7 +4333,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 176,
+            "lineNumAbs": 216,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3422,7 +4349,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -3462,7 +4389,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0403",
-            "lineNumAbs": 176,
+            "lineNumAbs": 216,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3478,7 +4405,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 176,
+              "lineNum": 216,
               "index": 2,
               "payload": "0x0403"
             },
@@ -3522,7 +4449,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "screen_mode",
-        "lineNumAbs": 176,
+        "lineNumAbs": 216,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -3538,7 +4465,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 176,
+          "lineNum": 216,
           "index": 0,
           "payload": "screen_mode"
         },
@@ -3577,12 +4504,226 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000114",
-      "addressBin": "0000000100010100",
-      "addressInt": 134218004,
-      "lineNumActive": 67109002,
-      "lineNumAbs": 176,
+      "addressHex": "0x8000134",
+      "addressBin": "0000000100110100",
+      "addressInt": 134218036,
+      "lineNumActive": 67109018,
+      "lineNumAbs": 216,
       "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "inf_loop": {
+      "obj_name": "Symbol",
+      "name": "inf_loop",
+      "line": {
+        "obj_name": "TokenLine",
+        "byteLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 167,
+        "payloadLen": 1,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 167,
+          "sourceLen": 16,
+          "source": "        inf_loop",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 8,
+              "posStop": 15,
+              "len": 8,
+              "lineNum": 167,
+              "index": 0,
+              "payload": "inf_loop"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 1,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "inf_loop",
+            "lineNumAbs": 167,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 8,
+              "posStop": 15,
+              "len": 8,
+              "lineNum": 167,
+              "index": 0,
+              "payload": "inf_loop"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "inf_loop",
+        "lineNumAbs": 167,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 8,
+          "posStop": 15,
+          "len": 8,
+          "lineNum": 167,
+          "index": 0,
+          "payload": "inf_loop"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x800010A",
+      "addressBin": "0000000100001010",
+      "addressInt": 134217994,
+      "lineNumActive": 67108997,
+      "lineNumAbs": 167,
+      "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
     },
@@ -3594,7 +4735,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 178,
+        "lineNumAbs": 218,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -3603,7 +4744,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 178,
+          "lineNum": 218,
           "sourceLen": 20,
           "source": "    hello_world     ",
           "payload": [
@@ -3612,7 +4753,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 178,
+              "lineNum": 218,
               "index": 0,
               "payload": "hello_world"
             }
@@ -3675,7 +4816,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "hello_world",
-            "lineNumAbs": 178,
+            "lineNumAbs": 218,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3691,7 +4832,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 178,
+              "lineNum": 218,
               "index": 0,
               "payload": "hello_world"
             },
@@ -3736,7 +4877,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "hello_world",
-        "lineNumAbs": 178,
+        "lineNumAbs": 218,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -3752,7 +4893,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 178,
+          "lineNum": 218,
           "index": 0,
           "payload": "hello_world"
         },
@@ -3791,24 +4932,24 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000118",
-      "addressBin": "0000000100011000",
-      "addressInt": 134218008,
-      "lineNumActive": 67109004,
-      "lineNumAbs": 178,
+      "addressHex": "0x8000138",
+      "addressBin": "0000000100111000",
+      "addressInt": 134218040,
+      "lineNumActive": 67109020,
+      "lineNumAbs": 218,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
     },
-    "loop": {
+    "print_char": {
       "obj_name": "Symbol",
-      "name": "loop",
+      "name": "print_char",
       "line": {
         "obj_name": "TokenLine",
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 165,
+        "lineNumAbs": 200,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -3817,18 +4958,18 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 165,
-          "sourceLen": 8,
-          "source": "    loop",
+          "lineNum": 200,
+          "sourceLen": 14,
+          "source": "    print_char",
           "payload": [
             {
               "obj_name": "Artifact",
               "posStart": 4,
-              "posStop": 7,
-              "len": 4,
-              "lineNum": 165,
+              "posStop": 13,
+              "len": 10,
+              "lineNum": 200,
               "index": 0,
-              "payload": "loop"
+              "payload": "print_char"
             }
           ]
         },
@@ -3888,8 +5029,8 @@
           {
             "obj_name": "Token",
             "type_name": "Label",
-            "source": "loop",
-            "lineNumAbs": 165,
+            "source": "print_char",
+            "lineNumAbs": 200,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3903,11 +5044,11 @@
             "artifact": {
               "obj_name": "Artifact",
               "posStart": 4,
-              "posStop": 7,
-              "len": 4,
-              "lineNum": 165,
+              "posStop": 13,
+              "len": 10,
+              "lineNum": 200,
               "index": 0,
-              "payload": "loop"
+              "payload": "print_char"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -3949,8 +5090,8 @@
       "token": {
         "obj_name": "Token",
         "type_name": "Label",
-        "source": "loop",
-        "lineNumAbs": 165,
+        "source": "print_char",
+        "lineNumAbs": 200,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -3964,11 +5105,11 @@
         "artifact": {
           "obj_name": "Artifact",
           "posStart": 4,
-          "posStop": 7,
-          "len": 4,
-          "lineNum": 165,
+          "posStop": 13,
+          "len": 10,
+          "lineNum": 200,
           "index": 0,
-          "payload": "loop"
+          "payload": "print_char"
         },
         "type": {
           "obj_name": "is_entry_type",
@@ -4005,11 +5146,572 @@
         },
         "payload": []
       },
-      "addressHex": "0x800010A",
-      "addressBin": "0000000100001010",
-      "addressInt": 134217994,
-      "lineNumActive": 67108997,
-      "lineNumAbs": 165,
+      "addressHex": "0x800012A",
+      "addressBin": "0000000100101010",
+      "addressInt": 134218026,
+      "lineNumActive": 67109013,
+      "lineNumAbs": 200,
+      "isEmptyLineLabel": true,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "bitmap_font": {
+      "obj_name": "Symbol",
+      "name": "bitmap_font",
+      "line": {
+        "obj_name": "TokenLine",
+        "byteLength": 2,
+        "addressInt": 0,
+        "lineNumActive": 0,
+        "lineNumAbs": 232,
+        "payloadLen": 2,
+        "payloadLenArg": 0,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": false,
+        "isLineLabelDef": true,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 232,
+          "sourceLen": 61,
+          "source": "    bitmap_font                         ;1 Bit per pixel font",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 14,
+              "len": 11,
+              "lineNum": 232,
+              "index": 0,
+              "payload": "bitmap_font"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 41,
+              "len": 2,
+              "lineNum": 232,
+              "index": 1,
+              "payload": ";1"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 43,
+              "posStop": 45,
+              "len": 3,
+              "lineNum": 232,
+              "index": 2,
+              "payload": "Bit"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 47,
+              "posStop": 49,
+              "len": 3,
+              "lineNum": 232,
+              "index": 3,
+              "payload": "per"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 51,
+              "posStop": 55,
+              "len": 5,
+              "lineNum": 232,
+              "index": 4,
+              "payload": "pixel"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 57,
+              "posStop": 60,
+              "len": 4,
+              "lineNum": 232,
+              "index": 5,
+              "payload": "font"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 2,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Comment"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "bitmap_font",
+            "lineNumAbs": 232,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 4,
+              "posStop": 14,
+              "len": 11,
+              "lineNum": 232,
+              "index": 0,
+              "payload": "bitmap_font"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Comment",
+            "source": ";1",
+            "lineNumAbs": 232,
+            "index": 1,
+            "payloadLen": 4,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": true,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 40,
+              "posStop": 41,
+              "len": 2,
+              "lineNum": 232,
+              "index": 1,
+              "payload": ";1"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Comment",
+              "type_category": "Comment",
+              "category": "Comment",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  ";"
+                ],
+                "contains": [
+                  "*"
+                ],
+                "ends_with": [
+                  "*"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": [
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "Bit",
+                "lineNumAbs": 232,
+                "index": 0,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 43,
+                  "posStop": 45,
+                  "len": 3,
+                  "lineNum": 232,
+                  "index": 2,
+                  "payload": "Bit"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "per",
+                "lineNumAbs": 232,
+                "index": 1,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 47,
+                  "posStop": 49,
+                  "len": 3,
+                  "lineNum": 232,
+                  "index": 3,
+                  "payload": "per"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "pixel",
+                "lineNumAbs": 232,
+                "index": 2,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 51,
+                  "posStop": 55,
+                  "len": 5,
+                  "lineNum": 232,
+                  "index": 4,
+                  "payload": "pixel"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              },
+              {
+                "obj_name": "Token",
+                "type_name": "Comment",
+                "source": "font",
+                "lineNumAbs": 232,
+                "index": 3,
+                "payloadLen": 0,
+                "payloadArgLen": 0,
+                "isOpCodeArg": false,
+                "isDirectiveArg": false,
+                "isOpCode": false,
+                "isDirective": false,
+                "isComment": true,
+                "isLabel": false,
+                "isLabelRef": false,
+                "artifact": {
+                  "obj_name": "Artifact",
+                  "posStart": 57,
+                  "posStop": 60,
+                  "len": 4,
+                  "lineNum": 232,
+                  "index": 5,
+                  "payload": "font"
+                },
+                "type": {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Comment",
+                  "type_category": "Comment",
+                  "category": "Comment",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      ";"
+                    ],
+                    "contains": [
+                      "*"
+                    ],
+                    "ends_with": [
+                      "*"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                "payload": []
+              }
+            ]
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "bitmap_font",
+        "lineNumAbs": 232,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 4,
+          "posStop": 14,
+          "len": 11,
+          "lineNum": 232,
+          "index": 0,
+          "payload": "bitmap_font"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x8000144",
+      "addressBin": "0000000101000100",
+      "addressInt": 134218052,
+      "lineNumActive": 67109026,
+      "lineNumAbs": 232,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -4021,11 +5723,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x8000110",
-        "addressBin": "0000000100010000",
-        "addressInt": 134218000,
-        "lineNumActive": 67109000,
-        "lineNumAbs": 174,
+        "addressHex": "0x8000130",
+        "addressBin": "0000000100110000",
+        "addressInt": 134218032,
+        "lineNumActive": 67109016,
+        "lineNumAbs": 214,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -4034,7 +5736,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 174,
+          "lineNum": 214,
           "sourceLen": 34,
           "source": "    disp_control    @DCHW   0x0000",
           "payload": [
@@ -4043,7 +5745,7 @@
               "posStart": 4,
               "posStop": 15,
               "len": 12,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 0,
               "payload": "disp_control"
             },
@@ -4052,7 +5754,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -4061,7 +5763,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 2,
               "payload": "0x0000"
             }
@@ -4332,7 +6034,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "disp_control",
-            "lineNumAbs": 174,
+            "lineNumAbs": 214,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4348,7 +6050,7 @@
               "posStart": 4,
               "posStop": 15,
               "len": 12,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 0,
               "payload": "disp_control"
             },
@@ -4391,7 +6093,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 174,
+            "lineNumAbs": 214,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4407,7 +6109,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -4447,7 +6149,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 174,
+            "lineNumAbs": 214,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4463,7 +6165,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 174,
+              "lineNum": 214,
               "index": 2,
               "payload": "0x0000"
             },
@@ -4507,7 +6209,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "disp_control",
-        "lineNumAbs": 174,
+        "lineNumAbs": 214,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -4523,7 +6225,7 @@
           "posStart": 4,
           "posStop": 15,
           "len": 12,
-          "lineNum": 174,
+          "lineNum": 214,
           "index": 0,
           "payload": "disp_control"
         },
@@ -4562,11 +6264,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000110",
-      "addressBin": "0000000100010000",
-      "addressInt": 134218000,
-      "lineNumActive": 67109000,
-      "lineNumAbs": 174,
+      "addressHex": "0x8000130",
+      "addressBin": "0000000100110000",
+      "addressInt": 134218032,
+      "lineNumActive": 67109016,
+      "lineNumAbs": 214,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false

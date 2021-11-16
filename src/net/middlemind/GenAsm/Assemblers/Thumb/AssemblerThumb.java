@@ -2339,6 +2339,7 @@ public class AssemblerThumb implements Assembler {
             
             for(Token token : line.payload) {
                 lastToken = token;
+
                 res = FindValidLineEntryWithMatchingTokenEntryType(validLine, token, currentEntry, 0);
                 if(res == null) {
                     break;
