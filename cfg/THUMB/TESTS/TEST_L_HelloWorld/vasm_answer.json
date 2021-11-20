@@ -1,9 +1,9 @@
 {
     "obj_name": "line_hex_reps",
     "line_hex_reps": [
-        {"addressHex":"080000F4", "valueHex":"7846"},
-        {"addressHex":"080000F6", "valueHex":"006A"},
-        {"addressHex":"080000F8", "valueHex":"4940"},
+        {"addressHex":"080000F4", "valueHex":"22 49"},
+        {"addressHex":"080000F6", "valueHex":"8D 46"},
+        {"addressHex":"080000B6", "valueHex":"4940"},
         {"addressHex":"080000FA", "valueHex":"5240"},
         {"addressHex":"080000FC", "valueHex":"9288"},
         {"addressHex":"080000FE", "valueHex":"002A"},
