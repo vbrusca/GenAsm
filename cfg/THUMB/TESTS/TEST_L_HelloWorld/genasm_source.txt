@@ -157,8 +157,10 @@
 							@DCHW	0x0000
 	bit_mask				@DCHW	0x0100
 							@DCHW	0x0000
-	hello_world_address		@DCHW	0x01AC
-							@DCHW	0x0800		;should be address of hello_world	
+
+	hello_world_address		@DCWBS	=hello_world	;@DCHW	0x01AC
+							@DCWBF	=hello_world	;@DCHW	0x0800			;should be address of hello_world	
+
     hello_world     
 							;$FLIPSTRING |Hello World|
 

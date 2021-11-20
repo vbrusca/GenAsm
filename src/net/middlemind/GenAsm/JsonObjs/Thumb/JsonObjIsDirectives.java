@@ -44,9 +44,19 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String NAME_DATA = "@DATA";
     
     /**
-     * A static string that represents the full name of a DHCW directive.
+     * A static string that represents the full name of a DCHW directive.
      */    
     public static String NAME_DCHW = "@DCHW";
+    
+    /**
+     * A static string that represents the full name of a DCW0 directive.
+     */    
+    public static String NAME_DCWBF = "@DCWBF";    
+    
+    /**
+     * A static string that represents the full name of a DCW1 directive.
+     */    
+    public static String NAME_DCWBS = "@DCWBS";        
     
     /**
      * A static string that represents the full name of a DCB directive.
@@ -61,7 +71,7 @@ public class JsonObjIsDirectives extends JsonObjBase {
     /**
      * A static string that represents which directives can be associated with labels.
      */    
-    public static String[] LABEL_DIRECTIVES = new String[] { "@DCHW", "@DCB", "@EQU", "@FLPDCHW" };
+    public static String[] LABEL_DIRECTIVES = new String[] { "@DCHW", "@DCB", "@EQU", "@FLPDCHW", "@DCWBF", "@DCWBS" };
     
     /**
      * A static string that represents the full name of a READONLY directive.

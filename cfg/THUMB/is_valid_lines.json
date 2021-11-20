@@ -152,7 +152,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["DirectiveString", "Directive", "Number"],
+                    "is_entry_types": ["DirectiveString", "Directive", "Number", "LabelRef"],
                     "index": 1
                 }
             ]
@@ -169,7 +169,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["DirectiveString", "Directive", "Number"],
+                    "is_entry_types": ["DirectiveString", "Directive", "Number", "LabelRef"],
                     "index": 1
                 },
                 {
@@ -225,7 +225,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef"],
                     "index": 2
                 }
             ]
@@ -247,7 +247,7 @@
                 },
                 {
                     "obj_name": "is_valid_line_entry",                
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef"],
                     "index": 2
                 },
                 {
@@ -256,6 +256,6 @@
                     "index": 3
                 }
             ]
-        }
+        }        
     ]    
 }

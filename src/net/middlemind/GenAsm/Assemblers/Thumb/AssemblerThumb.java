@@ -43,6 +43,7 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirectives;
 import net.middlemind.GenAsm.Loaders.Loader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
@@ -570,7 +571,8 @@ public class AssemblerThumb implements Assembler {
             eventHandler.PopulateDirectiveArgAndAreaDataPre(step, this);
         }
         
-        Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");        
+        Logger.wrl("AssemblerThumb: PopulateDirectiveAndArgData");
+        boolean dataDirectiveFound = false;
         boolean directiveFound = false;
         String directiveName = null;
         int directiveIdx = -1;
@@ -612,6 +614,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             foundOrg = false;
+            dataDirectiveFound= false;
             directiveFound = false;
             directiveName = null;
             directiveIdx = -1;            
@@ -641,6 +644,11 @@ public class AssemblerThumb implements Assembler {
                         lastLabelLine = line;
                         lastLabelToken = token;
                     }                    
+                    
+                } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {                    
+                    if(dataDirectiveFound == true && directiveFound == true && foundArea == true) {
+                        token.isDirectiveArg = true;
+                    }
                     
                 } else if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                     if(directiveFound == true && foundArea == true) {
@@ -828,10 +836,11 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNumAbs + " with source " + line.source.source);
                         }
-                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCHW) || token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCHW) || token.source.equals(JsonObjIsDirectives.NAME_DCB) || token.source.equals(JsonObjIsDirectives.NAME_FLPDCHW) || token.source.equals(JsonObjIsDirectives.NAME_DCWBF) || token.source.equals(JsonObjIsDirectives.NAME_DCWBS)) {
                         if(lastArea == -1 || tmpArea == null) {
                             throw new ExceptionNoAreaDirectiveFound("Could not find AREA directive before directive '" + token.source + "' on line " + line.lineNumAbs + " with source " + line.source.source);
                         } else {
+                            dataDirectiveFound = true;
                             token.isDirective = true;
                             if(!directiveFound) {
                                 directiveFound = true;
@@ -2473,7 +2482,7 @@ public class AssemblerThumb implements Assembler {
      * @throws ExceptionDirectiveArgNotSupported
      * @throws ExceptionMissingDataDirective 
      */
-    public void BuildBinDirective(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective {   
+    public void BuildBinDirective(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective, ExceptionNoSymbolValueFound {   
         if(eventHandler != null) {
             eventHandler.BuildBinDirectivePre(step, this, line);
         }
@@ -2482,30 +2491,47 @@ public class AssemblerThumb implements Assembler {
             boolean isDirDchw = false;
             boolean isDirDcb = false;
             boolean isDirFlpDchw = false;
+            boolean isDirDcw0 = false;
+            boolean isDirDcw1 = false;
             
             for(Token token : line.payload) {
-                lastToken = token;
+                lastToken = token;                
                 if(token.isDirective) {
-                    //Logger.wrl("Found directive...");
                     if(token.source.equals(JsonObjIsDirectives.NAME_DCHW)) {
-                        isDirDchw = true;
+                        isDirDchw = true;                        
                         isDirDcb = false;
                         isDirFlpDchw = false;
+                        isDirDcw0 = false;
+                        isDirDcw1 = false;
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_DCB)) {
-                        isDirDchw = false;
-                        isDirDcb = true;   
-                        isDirFlpDchw = false;                       
-                    } else if(token.source.equals(JsonObjIsDirectives.NAME_FLPDCHW)) {
-                        isDirDchw = false;
                         isDirDcb = true;
-                        isDirFlpDchw = true;
+                        isDirDchw = false;
+                        isDirFlpDchw = false;
+                        isDirDcw0 = false;
+                        isDirDcw1 = false;                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_FLPDCHW)) {
+                        isDirDchw = true;
+                        isDirFlpDchw = true;                        
+                        isDirDcb = false;
+                        isDirDcw0 = false;
+                        isDirDcw1 = false;                        
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCWBF)) {
+                        isDirDchw = true;
+                        isDirDcw0 = true;                        
+                        isDirFlpDchw = false;                       
+                        isDirDcb = false;
+                        isDirDcw1 = false;    
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_DCWBS)) {
+                        isDirDchw = true;
+                        isDirDcw1 = true;                        
+                        isDirFlpDchw = false;                       
+                        isDirDcb = false;
+                        isDirDcw0 = false;
                     }
                     
-                } else if(token.isDirectiveArg && (isDirDchw || isDirDcb)) {
-                    if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == false) {
-                        throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
-                    } else {
-                        //Logger.wrl("Found directive arg...");
+                } else if(token.isDirectiveArg && (isDirDchw || isDirDcb)) {                    
+                    if(token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == true) {
                         String resTmp;
                         Integer tInt = Utils.ParseNumberString(token.source);
                         resTmp = Integer.toBinaryString(tInt);
@@ -2525,9 +2551,28 @@ public class AssemblerThumb implements Assembler {
                         }
                         
                         token.value = tInt;
-                        if(isDirDchw == true) {                            
-                            line.payloadBinRepStrEndianBig1 = resTmp;
-                            line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
+                        if(isDirDchw == true) {
+                            if(isDirDcw0 == true || isDirDcw1 == true) {
+                                byte[] b = Utils.ToBytes(tInt);
+                                short[] shorts = new short[2];
+                                ByteBuffer.wrap(b).asShortBuffer().get(shorts);                                
+                                
+                                if(isDirDcw0 == true) {
+                                    tInt = (int)shorts[0];
+                                } else {
+                                    tInt = (int)shorts[1];
+                                }
+                                
+                                token.value = tInt;
+                                resTmp = Integer.toBinaryString(tInt);
+                                resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                                                            
+                                line.payloadBinRepStrEndianBig1 = resTmp;
+                                line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);                                                                    
+
+                            } else {
+                                line.payloadBinRepStrEndianBig1 = resTmp;
+                                line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
+                            }
                             
                         } else if(isDirDcb == true) {
                             line.payloadBinRepStrEndianBig1 = resTmp;
@@ -2537,6 +2582,143 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionMissingDataDirective("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
                         
                         }
+                    } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) == true) {
+                        String resTmp = "";
+                        char c = token.source.charAt(0);
+                        String label = token.source.substring(1);                        
+                        Symbol sym = symbols.symbols.get(label);
+                        JsonObjIsDirectiveArg entry = line.matchesDirective.get(0).args.get(0);
+                        if(sym != null) {
+                            resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.bit_series.bit_len);
+                        } else {
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + token.lineNumAbs);
+                        }
+                    
+                        Integer tInt = null;
+                        if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
+                            //label address =
+                            tInt = sym.addressInt;
+                            Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
+                            
+                        } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
+                            //label value ~
+                            if(sym.value != null && sym.isStaticValue) {
+                                tInt = sym.value;
+                                Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");                                
+                            } else {
+                                throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + token.lineNumAbs);
+                            }
+                            
+                        } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
+                            //label address offset -
+                            if(line.addressInt < sym.addressInt) {
+                                tInt = (sym.addressInt - line.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes;
+                            } else {
+                                tInt = (line.addressInt - sym.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes;
+                            }
+                            Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
+                            
+                        } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
+                            if(line.addressInt < sym.addressInt) {
+                                tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
+                            } else {
+                                tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
+                            }
+                            Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
+                            
+                        } else {
+                            throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + token.lineNumAbs + " and label prefix " + c);
+                        }
+                       
+                        line.source.source += " [" + tInt + "]";           
+
+                        if(entry.num_range != null && entry.num_range.ones_compliment == true) {
+                            tInt = ~tInt;
+                        }                        
+                        
+                        resTmp = Integer.toBinaryString(tInt);
+                        Integer tInt2 = tInt;
+                        if(entry.bit_shift != null) {
+                            if(entry.bit_shift.shift_amount > 0) {
+                                if(!Utils.IsStringEmpty(entry.bit_shift.shift_dir) && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.bit_shift.shift_amount, false, true);
+                                } else if(!Utils.IsStringEmpty(entry.bit_shift.shift_dir) && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
+                                    resTmp = Utils.ShiftBinStr(resTmp, entry.bit_shift.shift_amount, true, true);
+                                } else {
+                                    throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + token.source + "' with line number " + token.lineNumAbs);
+                                }
+                                
+                                Integer t = Integer.parseInt(resTmp, 2);
+                                if(tInt2 % 4 == 2 && entry.bit_shift.shift_amount == 2 && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
+                                    t++;
+                                    resTmp = Integer.toBinaryString(t);
+                                }                                
+                            }
+                        }
+                                                
+                        resTmp = Utils.FormatBinString(resTmp, entry.bit_series.bit_len * 2);
+                        tInt = Integer.parseInt(resTmp, 2);
+                                                
+                        if(entry.num_range != null && isDirDcw0 == false && isDirDcw1 == false) {
+                            if(tInt < entry.num_range.min_value || tInt >  entry.num_range.max_value) {
+                                throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.num_range.min_value + " to " + entry.num_range.max_value + " for source '" + token.source + "' with line number " + token.lineNumAbs);
+                            }
+                        }
+                                                
+                        Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
+                        line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ") {" + tInt + "}";
+                                     
+                        if(isDirDcb == true && tInt > Byte.MAX_VALUE) {
+                            throw new ExceptionMissingDataDirective("Could not find supported data directive, cannot use a LabelRef that is greater than 255 bytes away, '" + token.source + "' with line number " + token.lineNumAbs);                            
+                        }
+                        
+                        token.value = tInt;                        
+                        if(isDirFlpDchw == true) {
+                            resTmp = Utils.EndianFlipBin(resTmp);
+                        }                        
+                        
+                        if(isDirDchw == true) {
+                            if(isDirDcw0 == true || isDirDcw1 == true) {
+                                byte[] b = Utils.ToBytes(tInt);
+                                short[] shorts = new short[2];
+                                ByteBuffer.wrap(b).asShortBuffer().get(shorts);                                
+                                
+                                if(isDirDcw0 == true) {
+                                    tInt = (int)shorts[0];
+                                } else {
+                                    tInt = (int)shorts[1];
+                                }
+                                
+                                if(entry.num_range != null) {
+
+                                    if(tInt < entry.num_range.min_value || tInt >  entry.num_range.max_value) {
+                                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.num_range.min_value + " to " + entry.num_range.max_value + " for source '" + token.source + "' with line number " + token.lineNumAbs);
+                                    }
+                                }
+                                
+                                token.value = tInt;
+                                resTmp = Integer.toBinaryString(tInt);
+                                resTmp = Utils.FormatBinString(resTmp, lineBitSeries.bit_len);                                                            
+                                line.payloadBinRepStrEndianBig1 = resTmp;
+                                line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);                                                                    
+
+                            } else {
+                                resTmp = Utils.FormatBinString(resTmp, entry.bit_series.bit_len);                        
+                                line.payloadBinRepStrEndianBig1 = resTmp;
+                                line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
+                            }                            
+
+                        } else if(isDirDcb == true) {
+                            resTmp = Utils.FormatBinString(resTmp, entry.bit_series.bit_len);                        
+                            line.payloadBinRepStrEndianBig1 = resTmp;
+                            line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(resTmp);
+                            
+                        } else {
+                            throw new ExceptionMissingDataDirective("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);
+                        
+                        }                        
+                    } else {
+                        throw new ExceptionDirectiveArgNotSupported("Could not find supported data directive '" + token.source + "' with line number " + token.lineNumAbs);                            
                     }
                 }
             }
@@ -3139,9 +3321,7 @@ public class AssemblerThumb implements Assembler {
                         //    throw new ExceptionNoNumberRangeFound("Could not find number range for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
                         //}
                         
-                        if(inBl == true) {
-                            //Logger.wrl("BL line 0: " + Integer.toBinaryString(bltInt));
-                            
+                        if(inBl == true) {                            
                             //in BL OpCode which generates 4 bytes of instructions instead of two
                             if(bltInt < 0) {
                                 resTmp1 = Utils.FormatBinString(blResTmp1, 23, true, "1");
@@ -3155,15 +3335,9 @@ public class AssemblerThumb implements Assembler {
                             resTmp2 = JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_2 + halfLo;
                             tInt = Integer.parseInt(resTmp1, 2);
                             inBl = false;
-                            //Logger.wrl("BL line 1: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_1 + halfHi + ", " + tInt);
-                            //Logger.wrl("BL line 2: " + JsonObjIsOpCodes.BL_OP_CODE_BIN_ENTRY_2 + halfLo);
                             line.byteLength = 4;
                         }
-                        
-                        //if(tInt % 2 != 0) {
-                        //    tInt++;
-                        //}
-                        
+                                                
                         Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
                         line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ") {" + tInt + "}";
                         entry.tokenOpCodeArg.value = tInt;

@@ -11,7 +11,7 @@
                     "obj_name": "is_directive_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef"],
                     "is_arg_type": "Number",
                     "bit_series": {
                         "bit_start": 0,
@@ -42,7 +42,7 @@
                     "obj_name": "is_directive_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef"],
                     "is_arg_type": "Number",
                     "bit_series": {
                         "bit_start": 0,
@@ -66,6 +66,68 @@
         },
         {
             "obj_name": "is_directive",
+            "directive_name": "@DCWBF",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number", "LabelRef"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 15,
+                        "bit_len": 16
+                    },
+                    "num_range": {
+                        "min_value": 0,
+                        "max_value": 65536,
+                        "bit_len": 16,
+                        "twos_compliment": false,
+                        "alignment": "HALFWORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The DCW0 directive is used to write data the first halfword of an int, directly into the data AREA of an assembly file."
+        },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@DCWBS",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number", "LabelRef"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 15,
+                        "bit_len": 16
+                    },
+                    "num_range": {
+                        "min_value": 0,
+                        "max_value": 65536,
+                        "bit_len": 16,
+                        "twos_compliment": false,
+                        "alignment": "HALFWORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file."
+        },        
+        {
+            "obj_name": "is_directive",
             "directive_name": "@FLPDCHW",
             "arg_len": 1,
             "args": [
@@ -73,7 +135,7 @@
                     "obj_name": "is_directive_arg",
                     "arg_index": 0,
                     "bit_index": 0,
-                    "is_entry_types": ["Number"],
+                    "is_entry_types": ["Number", "LabelRef"],
                     "is_arg_type": "Number",
                     "bit_series": {
                         "bit_start": 0,
@@ -144,7 +206,7 @@
                     },
                     "num_range": {
                         "min_value": 0,
-                        "max_value": 4294967295,
+                        "max_value": 2147483647,
                         "bit_len": 32,
                         "twos_compliment": false,
                         "alignment": "WORD"

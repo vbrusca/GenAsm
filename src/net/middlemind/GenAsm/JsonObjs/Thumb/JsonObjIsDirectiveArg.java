@@ -2,6 +2,9 @@ package net.middlemind.GenAsm.JsonObjs.Thumb;
 
 import java.util.List;
 import net.middlemind.GenAsm.JsonObjs.JsonObjBase;
+import net.middlemind.GenAsm.JsonObjs.JsonObjBitSeries;
+import net.middlemind.GenAsm.JsonObjs.JsonObjBitShift;
+import net.middlemind.GenAsm.JsonObjs.JsonObjNumRange;
 import net.middlemind.GenAsm.Logger;
 
 /**
@@ -38,7 +41,22 @@ public class JsonObjIsDirectiveArg extends JsonObjBase {
      * A list of strings that are allowed values for this directive argument.
      */
     public List<String> is_arg_value;
-        
+       
+    /**
+     * An object that represents the start, stop, and length of the binary representation of this instruction set op-code argument.
+     */
+    public JsonObjBitSeries bit_series;
+
+    /**
+     * An object that represents the valid number range of this instruction set argument if applicable.
+     */
+    public JsonObjNumRange num_range;
+
+    /**
+     * An object that represents the bit shift, if applicable, applied to this instruction set op-code argument.
+     */
+    public JsonObjBitShift bit_shift;
+    
     /**
      * A method that is used to print a string representation of this JSON object to standard output.
      */
