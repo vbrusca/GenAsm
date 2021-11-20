@@ -114,7 +114,31 @@ public class GenAsm {
      * @throws Exception    An exception is thrown if any are encountered during the assembler run.
      */
     public static void main(String[] args) throws Exception {
-        if(args == null || args.length < ARG_LEN_TARGET) {
+        //args = new String[] { "compare", "C:\\Users\\variable\\Documents\\GitHub\\GbaAssemblyChecks\\chibi_akumas\\ARMDevTools\\gba_example4_hello_world_thumb\\program.gba", "C:\\Users\\variable\\Documents\\GitHub\\GbaAssemblyChecks\\chibi_akumas\\ARMDevTools\\gba_example4_hello_world_thumb\\output_assembly_listing_endian_lil.bin" };
+        if(args != null && args.length == 3) {
+            String cmd = args[0];
+            if(Utils.IsStringEmpty(cmd) == false && cmd.equals("compare") == true) {
+                String f1 = args[1];
+                String f2 = args[2];
+                byte[] b1 = FileLoader.LoadBin(f1);
+                byte[] b2 = FileLoader.LoadBin(f2);
+                Logger.wrl("File length 1: " + b1.length);
+                Logger.wrl("File length 2: " + b2.length);
+                if(b1.length == b2.length) {
+                    for(int i = 0; i < b1.length; i++) {
+                        String h1 = Integer.toHexString(b1[i]);
+                        String h2 = Integer.toHexString(b2[i]);                                        
+                        if(b1[i] != b2[i]) {
+                            Logger.wrl(i + " " + (i / 2) + " h1: " + Utils.FormatHexString(h1, 2, true) + " h2: " + Utils.FormatHexString(h2, 2, true) + " DIFF");
+                        } else {
+                            Logger.wrl(i + " " + (i / 2) + " h1: " + Utils.FormatHexString(h1, 2, true) + " h2: " + Utils.FormatHexString(h2, 2, true));
+                        }
+                    }
+                }
+                return;
+            }
+            
+        } else if(args == null || args.length < ARG_LEN_TARGET) {
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
@@ -130,7 +154,8 @@ public class GenAsm {
             ASM_PREPROCESSOR = null;  
             ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_L_HelloWorld\\";
             ASM_VERBOSE = false;
-            ASM_QUELL_FILE_OUTPUT = false;            
+            ASM_QUELL_FILE_OUTPUT = false;
+            
         } else {
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
@@ -147,7 +172,8 @@ public class GenAsm {
             ASM_PREPROCESSOR = null;
             ASM_ROOT_OUTPUT_DIR = args[8];
             ASM_VERBOSE = Boolean.parseBoolean(args[9]);
-            ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);            
+            ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);
+            
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {

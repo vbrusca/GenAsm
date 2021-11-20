@@ -3,15 +3,15 @@
 @ENTRY
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-    ramarea     @EQU    0x02000000
-    cursor_x    @EQU    0x02000020
-    cursor_y    @EQU    0x02000021
+	;ORIGINAL VASM CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
+    
+	cursor_x    @EQU    0x02000000
+    cursor_y    @EQU    0x02000001
     
     @ORG 0x08000000
 
     ;need 122 16bit entries to match GBA header
-    ;already little endian, no need to flip
+    ;already little endian, need to flip
     ;++++++++++++++++++++++++++++++++
     ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
     ;Found file with byte count: 232, word count: 116, and padding on: false
@@ -135,7 +135,8 @@
     
     ;++++++++++++++++++++++++++++++++
 
-    ;already little endian, no need to flip
+	program_start
+    ;already little endian, need to flip
     ;++++++++++++++++++++++++++++++++
     ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
     ;Found file with byte count: 12, word count: 6, and padding on: false
@@ -150,57 +151,111 @@
     ;++++++++++++++++++++++++++++++++
     
     ;.thumb				;Thumb mode
-    program_start                       ;Init Stack Pointer. Arm 2 thumb entry point 0x00F4
-        LDR     R1, [PC, `stack_pointer]
-        MOV	R8, R8		;NOP preprocessor directive
-        LDR     R2, [PC, `disp_control]
-        MOV	R8, R8		;NOP preprocessor directive
-        LDR     R4, [PC, `screen_mode]      ;4 = Layer 2 on / 3 = ScreenMode 3
-
-        MOV	R8, R8		;NOP preprocessor directive
-        MOV     R8, R1
-        MOV     R5, R8
-        MOV     SP, R5
-        STR     R2, [R4, #0]
-
-        LDR     R1, [PC, `hello_world]
-
+    thumb_test                       			;Init Stack Pointer SP=0x03000000. Arm 2 thumb entry point 0x00F4
+		LDR		R1, [PC, `sp_address]
+		MOV		SP, R1
+		
+		LDR		R4, [PC, `screen_regs]			;0x04000000 DISPCNT -LCD Control
+		LDR		R2, [PC, `screen_setting]		;0x403 4= Layer 2 on / 3= ScreenMode 3
+		STR		R2, [R4, #0]
+		
+		LDR		R1, [PC, `hello_world_address]	;Address of Hello World Message
+		BL		`print_string
+		
         inf_loop
         B       `inf_loop
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    print_string                        ;Print 255 terminated string
-        ;STMFD  SP!, {R0-R12, LR}       ;CnvSym    
-        PUSH    {R0-R7}
-        MOV     R0, R8
-        MOV     R1, R9
-        MOV     R2, R10
-        MOV     R3, R11
-        MOV     R4, R12
-        PUSH    {R0-R4, LR}
+	print_string
+		PUSH	{R0-R6, LR}
 
-    print_string_again
-        ;LDRB   R0, [R1], #1            ;CnvSym
-        LDRB    R0, [R1, #0]
-        ADD     R1, R1, #1
-
-        ;CMPS   R0, #255                ;TODO: CnvSym
-        CMP     R0, #255
-
-        BEQ     `print_string_done       ;Repeat until 255
-        BL      `print_char              ;Print char
-        B       `print_string_again
-
-    print_string_done
-        MOV	R8, R8		;NOP preprocessor directive
-        ;LDMFD   Sp!, [R0-R12, PC}      ;TODO: CnvSym
+	print_string_again
+		LDRB	R0, [R1, #0]
+		ADD		R1, #1
+		CMP		R0, #255
+		BEQ		`print_string_done
+		BL		`print_char
+		B		`print_string_again
+		
+	print_string_done
+		POP		{R0-R6, PC}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    print_char
-        MOV	R8, R8		;NOP preprocessor directive
+	print_char
+		PUSH	{R0-R7, LR}
+		CMP		R0, #32							;Space?
+		BEQ		`line_done
+		
+		LDR		R3, [PC, `adr_cursor_x]			;LDR Rd, [pc, #immed_8x4]
+		MOV		R4, #0
+		LDRB	R4, [R3, #0]					;CursorX pos
+		
+		LDR		R3, [PC, `adr_cursor_y]
+		MOV		R5, #0
+		LDRB	R5, [R3, #0]					;CursorY pos
+		
+		LDR		R3, [PC, `screen_ram]			;0x06000000 - VRAM
+		
+		MOV		R6, #16							;16 byte per char
+		MUL		R6, R4							;Calc x-offset
+		ADD		R3, R3, R6
+		
+		LDR		R6, [PC, `line_size]			;240*8*2
+		MUL		R6, R5
+		ADD		R3, R3, R6
+		
+		ADD		R4, PC, `bitmap_font			;Font source
+		
+		MOV		R1, #0b11011111					;Convert to upper case
+		AND		R0, R1
+		SUB		R0, #65							;First Char is 65 (A)
+		LSL		R0, R0, #3						;8 bytes per char
+		ADD		R4, R4, R0						;Calculate source address
+		
+		LDR		R2, [PC, `font_color]			;ABBBBBGGGGGRRRRR	A=Alpha
+		LDR		R0,	[PC, `line_size_two]		;480 - 16
+		MOV		R8, R0
+		
+		MOV		R6, #8							;8 Y-lines 
+		
+	draw_line
+		MOV		R7, #8							;8 pixels per X-line
+		LDRB	R1, [R4, #0]					;Load Letter
+		ADD		R4, #1
+		LDR		R5, [PC, `bit_mask]				;Mask - 0b100000000
 
+	draw_pixel
+		TST		R1, R5							;Is bit 1?
+		BEQ		`draw_pixel_skip
+		STRH	R2, [R3, #0]					;Yes? then fill pixel
+		
+	draw_pixel_skip
+		ADD		R3, R3, #2
+		LSR		R5, R5, #1						;Bitshift Mask
+		SUB		R7, R7, #1
+		BNE		`draw_pixel						;Next Hpixel
+		
+		ADD		R3, R8 							;Move Down a line (240 pixels *2 bytes) 
+		SUB		R6, R6, #1						;-1 char (16 px)
+		BNE 	`draw_line						;Next Vline
+		
+	line_done
+		LDR		R3, [PC, `adr_cursor_x]
+		LDRB 	R0, [R3,#0]	
+		ADD 	R0,	R0, #1						;Move across screen
+		STRB 	R0,	[R3, #0]	
+		POP 	{R0-R7, PC}
+		
+	space
+		MOV	R8, R8		;NOP preprocessor directive
+		MOV	R8, R8		;NOP preprocessor directive
+		MOV	R8, R8		;NOP preprocessor directive
+		MOV	R8, R8		;NOP preprocessor directive
+		MOV	R8, R8		;NOP preprocessor directive
+		MOV	R8, R8		;NOP preprocessor directive
+		
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @END
@@ -210,156 +265,176 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    stack_pointer   @DCHW   0x0000
-                    @DCHW   0x0300
-    disp_control    @DCHW   0x0000
-                    @DCHW   0x0400
-    screen_mode     @DCHW   0x0403
-                    @DCHW   0x0000
+    sp_address   			@DCHW   0x0000
+							@DCHW   0x0300
+    screen_regs	    		@DCHW   0x0000
+							@DCHW   0x0400
+    screen_setting  		@DCHW   0x0403
+							@DCHW   0x0000
+	adr_cursor_x			@DCHW	0x0000
+							@DCHW	0x0200
+	adr_cursor_y			@DCHW	0x0001
+							@DCHW	0x0200
+	screen_ram				@DCHW	0x0000
+							@DCHW	0x0600
+	line_size				@DCHW	0x0F00
+							@DCHW	0x0000
+	line_size_two			@DCHW	0x01D0
+							@DCHW	0x0000
+	font_color				@DCHW	0xFF40
+							@DCHW	0x0000
+	bit_mask				@DCHW	0x0100
+							@DCHW	0x0000
+	hello_world_address		@DCHW	0x01AC
+							@DCHW	0x0800		;should be address of hello_world	
     hello_world     
-                    ;$FLIPSTRING |Hello World|
-                    ;Found string byte count: 12, word count: 6, and padding on: false
-                    
-                    @DCHW #0x6548		;index: 0000	H e
-                    @DCHW #0x6C6C		;index: 0002	l l
-                    @DCHW #0x206F		;index: 0004	o  
-                    @DCHW #0x6F57		;index: 0006	W o
-                    @DCHW #0x6C72		;index: 0008	r l
-                    @DCHW #0xFF64		;index: 0010	d ￿
-                    
+							;$FLIPSTRING |Hello World|
+							;Found string byte count: 12, word count: 6, and padding on: false
+							
+							@DCHW #0x6548		;index: 0000	H e
+							@DCHW #0x6C6C		;index: 0002	l l
+							@DCHW #0x206F		;index: 0004	o  
+							@DCHW #0x6F57		;index: 0006	W o
+							@DCHW #0x6C72		;index: 0008	r l
+							@DCHW #0xFF64		;index: 0010	d ￿
+							
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	
+							@DCHW	 0x0000
+							@DCHW	 0x0000
+							@DCHW	 0x0000
+							@DCHW	 0x0000							
+    bitmap_font                         		;1 Bit per pixel font
+							@FLPDCHW 0x183C 
+							@FLPDCHW 0x6666
+							@FLPDCHW 0x7E66
+							@FLPDCHW 0x2400		;A
 
-    bitmap_font                         ;1 Bit per pixel font
-                    @DCHW       0x183C 
-                    @DCHW       0x6666
-                    @DCHW       0x7E66
-                    @DCHW       0x2400	;A
+							@FLPDCHW 0x3C66 
+							@FLPDCHW 0x667C 
+							@FLPDCHW 0x6666 
+							@FLPDCHW 0x3C00		;B
 
-                    @DCHW       0x3C66 
-                    @DCHW       0x667C 
-                    @DCHW       0x6666 
-                    @DCHW       0x3C00	;B
+							@FLPDCHW 0x387C 
+							@FLPDCHW 0xC0C0 
+							@FLPDCHW 0xC07C 
+							@FLPDCHW 0x3800		;C
 
-                    @DCHW       0x387C 
-                    @DCHW       0xC0C0 
-                    @DCHW       0xC07C 
-                    @DCHW       0x3800	;C
+							@FLPDCHW 0x3C64 
+							@FLPDCHW 0x6666
+							@FLPDCHW 0x6664 
+							@FLPDCHW 0x3800		;D
 
-                    @DCHW       0x3C64 
-                    @DCHW       0x6666
-                    @DCHW       0x6664 
-                    @DCHW       0x3800	;D
+							@FLPDCHW 0x3C7E 
+							@FLPDCHW 0x6078 
+							@FLPDCHW 0x607E 
+							@FLPDCHW 0x3C00		;E
 
-                    @DCHW       0x3C7E 
-                    @DCHW       0x6078 
-                    @DCHW       0x607E 
-                    @DCHW       0x3C00	;E
+							@FLPDCHW 0x387C 
+							@FLPDCHW 0x6078 
+							@FLPDCHW 0x6060 
+							@FLPDCHW 0x2000		;F
 
-                    @DCHW       0x387C 
-                    @DCHW       0x6078 
-                    @DCHW       0x6060 
-                    @DCHW       0x2000	;F
+							@FLPDCHW 0x3C66
+							@FLPDCHW 0xC0C0 
+							@FLPDCHW 0xCC66 
+							@FLPDCHW 0x3C00		;G
 
-                    @DCHW       0x3C66
-                    @DCHW       0xC0C0 
-                    @DCHW       0xCC66 
-                    @DCHW       0x3C00	;G
+							@FLPDCHW 0x2466 
+							@FLPDCHW 0x667E
+							@FLPDCHW 0x6666 
+							@FLPDCHW 0x2400		;H
 
-                    @DCHW       0x2466 
-                    @DCHW       0x667E
-                    @DCHW       0x6666 
-                    @DCHW       0x2400	;H
+							@FLPDCHW 0x1018 
+							@FLPDCHW 0x1818 
+							@FLPDCHW 0x1818 
+							@FLPDCHW 0x0800		;I
 
-                    @DCHW       0x1018 
-                    @DCHW       0x1818 
-                    @DCHW       0x1818 
-                    @DCHW       0x0800	;I
+							@FLPDCHW 0x080C 
+							@FLPDCHW 0x0C0C 
+							@FLPDCHW 0x4CFC 
+							@FLPDCHW 0x7800		;J
 
-                    @DCHW       0x080C 
-                    @DCHW       0x0C0C 
-                    @DCHW       0x4CFC 
-                    @DCHW       0x7800	;J
+							@FLPDCHW 0x2466 
+							@FLPDCHW 0x6C78 
+							@FLPDCHW 0x6C66 
+							@FLPDCHW 0x2400		;K
 
-                    @DCHW       0x2466 
-                    @DCHW       0x6C78 
-                    @DCHW       0x6C66 
-                    @DCHW       0x2400	;K
+							@FLPDCHW 0x2060 
+							@FLPDCHW 0x6060 
+							@FLPDCHW 0x607E 
+							@FLPDCHW 0x3E00		;L
 
-                    @DCHW       0x2060 
-                    @DCHW       0x6060 
-                    @DCHW       0x607E 
-                    @DCHW       0x3E00	;L
+							@FLPDCHW 0x44EE 
+							@FLPDCHW 0xFED6 
+							@FLPDCHW 0xD6D6 
+							@FLPDCHW 0x4400		;M
 
-                    @DCHW       0x44EE 
-                    @DCHW       0xFED6 
-                    @DCHW       0xD6D6 
-                    @DCHW       0x4400	;M
+							@FLPDCHW 0x44E6 
+							@FLPDCHW 0xF6DE 
+							@FLPDCHW 0xCEC6 
+							@FLPDCHW 0x4400		;N
 
-                    @DCHW       0x44E6 
-                    @DCHW       0xF6DE 
-                    @DCHW       0xCEC6 
-                    @DCHW       0x4400	;N
+							@FLPDCHW 0x386C 
+							@FLPDCHW 0xC6C6 
+							@FLPDCHW 0xC66C
+							@FLPDCHW 0x3800		;O
 
-                    @DCHW       0x386C 
-                    @DCHW       0xC6C6 
-                    @DCHW       0xC66C
-                    @DCHW       0x3800	;O
+							@FLPDCHW 0x386C 
+							@FLPDCHW 0x647C 
+							@FLPDCHW 0x6060 
+							@FLPDCHW 0x2000		;P
 
-                    @DCHW       0x386C 
-                    @DCHW       0x647C 
-                    @DCHW       0x6060 
-                    @DCHW       0x2000	;P
+							@FLPDCHW 0x386C 
+							@FLPDCHW 0xC6C6 
+							@FLPDCHW 0xCA74 
+							@FLPDCHW 0x3A00		;Q
 
-                    @DCHW       0x386C 
-                    @DCHW       0xC6C6 
-                    @DCHW       0xCA74 
-                    @DCHW       0x3A00	;Q
+							@FLPDCHW 0x3C66 
+							@FLPDCHW 0x667C 
+							@FLPDCHW 0x6C66 
+							@FLPDCHW 0x2600		;R
 
-                    @DCHW       0x3C66 
-                    @DCHW       0x667C 
-                    @DCHW       0x6C66 
-                    @DCHW       0x2600	;R
+							@FLPDCHW 0x3C7E 
+							@FLPDCHW 0x603C 
+							@FLPDCHW 0x067E 
+							@FLPDCHW 0x3C00		;S
 
-                    @DCHW       0x3C7E 
-                    @DCHW       0x603C 
-                    @DCHW       0x067E 
-                    @DCHW       0x3C00	;S
+							@FLPDCHW 0x3C7E 
+							@FLPDCHW 0x1818 
+							@FLPDCHW 0x1818 
+							@FLPDCHW 0x0800		;T
 
-                    @DCHW       0x3C7E 
-                    @DCHW       0x1818 
-                    @DCHW       0x1818 
-                    @DCHW       0x0800	;T
+							@FLPDCHW 0x2466 
+							@FLPDCHW 0x6666 
+							@FLPDCHW 0x6666 
+							@FLPDCHW 0x3C00		;U
 
-                    @DCHW       0x2466 
-                    @DCHW       0x6666 
-                    @DCHW       0x6666 
-                    @DCHW       0x3C00	;U
+							@FLPDCHW 0x2466 
+							@FLPDCHW 0x6666 
+							@FLPDCHW 0x663C 
+							@FLPDCHW 0x1800		;V
 
-                    @DCHW       0x2466 
-                    @DCHW       0x6666 
-                    @DCHW       0x663C 
-                    @DCHW       0x1800	;V
+							@FLPDCHW 0x44C6 
+							@FLPDCHW 0xD6D6 
+							@FLPDCHW 0xFEEE 
+							@FLPDCHW 0x4400		;W
 
-                    @DCHW       0x44C6 
-                    @DCHW       0xD6D6 
-                    @DCHW       0xFEEE 
-                    @DCHW       0x4400	;W
+							@FLPDCHW 0xC6C6 
+							@FLPDCHW 0x3838 
+							@FLPDCHW 0x6C6C 
+							@FLPDCHW 0x4400		;X
 
-                    @DCHW       0xC6C6 
-                    @DCHW       0x3838 
-                    @DCHW       0x6C6C 
-                    @DCHW       0x4400	;X
+							@FLPDCHW 0x2466 
+							@FLPDCHW 0x663C 
+							@FLPDCHW 0x1818 
+							@FLPDCHW 0x0800		;Y
 
-                    @DCHW       0x2466 
-                    @DCHW       0x663C 
-                    @DCHW       0x1818 
-                    @DCHW       0x0800	;Y
-
-                    @DCHW       0x7CFC 
-                    @DCHW       0x0C18 
-                    @DCHW       0x307E
-                    @DCHW       0x7C00	;Z
+							@FLPDCHW 0x7CFC 
+							@FLPDCHW 0x0C18 
+							@FLPDCHW 0x307E
+							@FLPDCHW 0x7C00		;Z
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

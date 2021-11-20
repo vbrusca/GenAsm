@@ -32,7 +32,7 @@
                 }                
             ],
             "description": "The DCB directive is used to write data, one byte written as a halfword, directly into the data AREA of an assembly file."
-        },        
+        },      
         {
             "obj_name": "is_directive",
             "directive_name": "@DCHW",
@@ -64,6 +64,37 @@
             ],
             "description": "The DCHW directive is used to write data, one halfword, directly into the data AREA of an assembly file."
         },
+        {
+            "obj_name": "is_directive",
+            "directive_name": "@FLPDCHW",
+            "arg_len": 1,
+            "args": [
+                {
+                    "obj_name": "is_directive_arg",
+                    "arg_index": 0,
+                    "bit_index": 0,
+                    "is_entry_types": ["Number"],
+                    "is_arg_type": "Number",
+                    "bit_series": {
+                        "bit_start": 0,
+                        "bit_stop": 15,
+                        "bit_len": 16
+                    },
+                    "num_range": {
+                        "min_value": 0,
+                        "max_value": 65536,
+                        "bit_len": 16,
+                        "twos_compliment": false,
+                        "alignment": "HALFWORD"
+                    },
+                    "bit_shift": {
+                        "shift_dir": "NONE",
+                        "shift_amount": -1
+                    }
+                }                
+            ],
+            "description": "The DCHW directive is used to write flipped data, one halfword, directly into the data AREA of an assembly file."
+        },        
         {
             "obj_name": "is_directive",
             "directive_name": "@EQU",
