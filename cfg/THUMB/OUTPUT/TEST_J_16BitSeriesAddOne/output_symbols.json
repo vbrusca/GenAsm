@@ -8,11 +8,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x8000116",
-        "addressBin": "0000000100010110",
-        "addressInt": 134218006,
-        "lineNumActive": 67109003,
-        "lineNumAbs": 156,
+        "addressHex": "0x8000118",
+        "addressBin": "0000000100011000",
+        "addressInt": 134218008,
+        "lineNumActive": 67109004,
+        "lineNumAbs": 157,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -143,7 +143,8 @@
             {
               "obj_name": "is_valid_line_entry",
               "is_entry_types": [
-                "Number"
+                "Number",
+                "LabelRef"
               ],
               "linked_is_entry_types": [
                 {
@@ -177,6 +178,42 @@
                   "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                 }
               ],
               "index": 2
@@ -197,7 +234,8 @@
                 "obj_name": "is_directive_arg",
                 "arg_index": 0,
                 "is_entry_types": [
-                  "Number"
+                  "Number",
+                  "LabelRef"
                 ],
                 "linked_is_entry_types": [
                   {
@@ -304,9 +342,68 @@
                     "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                   }
                 ],
-                "is_arg_type": "Number"
+                "is_arg_type": "Number",
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 15,
+                  "bit_len": 16
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 65536,
+                  "bit_len": 16,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "HALFWORD"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": -1
+                }
               }
             ],
             "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
@@ -549,11 +646,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000116",
-      "addressBin": "0000000100010110",
-      "addressInt": 134218006,
-      "lineNumActive": 67109003,
-      "lineNumAbs": 156,
+      "addressHex": "0x8000118",
+      "addressBin": "0000000100011000",
+      "addressInt": 134218008,
+      "lineNumActive": 67109004,
+      "lineNumAbs": 157,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -779,11 +876,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x8000114",
-        "addressBin": "0000000100010100",
-        "addressInt": 134218004,
-        "lineNumActive": 67109002,
-        "lineNumAbs": 154,
+        "addressHex": "0x8000116",
+        "addressBin": "0000000100010110",
+        "addressInt": 134218006,
+        "lineNumActive": 67109003,
+        "lineNumAbs": 155,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -914,7 +1011,8 @@
             {
               "obj_name": "is_valid_line_entry",
               "is_entry_types": [
-                "Number"
+                "Number",
+                "LabelRef"
               ],
               "linked_is_entry_types": [
                 {
@@ -948,6 +1046,42 @@
                   "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                 }
               ],
               "index": 2
@@ -968,7 +1102,8 @@
                 "obj_name": "is_directive_arg",
                 "arg_index": 0,
                 "is_entry_types": [
-                  "Number"
+                  "Number",
+                  "LabelRef"
                 ],
                 "linked_is_entry_types": [
                   {
@@ -1075,9 +1210,68 @@
                     "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                   }
                 ],
-                "is_arg_type": "Number"
+                "is_arg_type": "Number",
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 15,
+                  "bit_len": 16
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 65536,
+                  "bit_len": 16,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "HALFWORD"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": -1
+                }
               }
             ],
             "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
@@ -1320,11 +1514,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000114",
-      "addressBin": "0000000100010100",
-      "addressInt": 134218004,
-      "lineNumActive": 67109002,
-      "lineNumAbs": 154,
+      "addressHex": "0x8000116",
+      "addressBin": "0000000100010110",
+      "addressInt": 134218006,
+      "lineNumActive": 67109003,
+      "lineNumAbs": 155,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -1338,7 +1532,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 155,
+        "lineNumAbs": 156,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": true,
@@ -1469,7 +1663,8 @@
             {
               "obj_name": "is_valid_line_entry",
               "is_entry_types": [
-                "Number"
+                "Number",
+                "LabelRef"
               ],
               "linked_is_entry_types": [
                 {
@@ -1493,6 +1688,42 @@
                       "0~9",
                       ",",
                       ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
                     ],
                     "must_contain": [],
                     "must_not_contain": [],
@@ -1632,7 +1863,30 @@
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
                   }
                 ],
-                "is_arg_type": "Number"
+                "is_arg_type": "Number",
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 15,
+                  "bit_len": 16
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 65536,
+                  "bit_len": 16,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "WORD"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": -1
+                }
               }
             ],
             "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
@@ -1877,7 +2131,7 @@
       },
       "addressInt": 0,
       "lineNumActive": 0,
-      "lineNumAbs": 155,
+      "lineNumAbs": 156,
       "isEmptyLineLabel": false,
       "isLabel": false,
       "isStaticValue": true,
@@ -1891,7 +2145,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 150,
+        "lineNumAbs": 151,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -2088,11 +2342,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x800010E",
-      "addressBin": "0000000100001110",
-      "addressInt": 134217998,
-      "lineNumActive": 67108999,
-      "lineNumAbs": 150,
+      "addressHex": "0x8000110",
+      "addressBin": "0000000100010000",
+      "addressInt": 134218000,
+      "lineNumActive": 67109000,
+      "lineNumAbs": 151,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false

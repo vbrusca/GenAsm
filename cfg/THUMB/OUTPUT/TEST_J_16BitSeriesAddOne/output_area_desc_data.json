@@ -106,7 +106,8 @@
           "is_entry_types": [
             "DirectiveString",
             "Directive",
-            "Number"
+            "Number",
+            "LabelRef"
           ],
           "linked_is_entry_types": [
             {
@@ -191,6 +192,42 @@
                   "0~9",
                   ",",
                   ";"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            {
+              "obj_name": "is_entry_type",
+              "type_name": "LabelRef",
+              "type_category": "LabelReference",
+              "category": "Arg",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "\u003d",
+                  "~",
+                  "-",
+                  "`"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
                 ],
                 "must_contain": [],
                 "must_not_contain": [],
@@ -848,7 +885,7 @@
     "byteLength": 2,
     "addressInt": 0,
     "lineNumActive": 0,
-    "lineNumAbs": 159,
+    "lineNumAbs": 160,
     "payloadLen": 1,
     "payloadLenArg": 0,
     "isLineEmpty": true,
@@ -1050,7 +1087,7 @@
   },
   "lineNumArea": 147,
   "lineNumEntry": 148,
-  "lineNumEnd": 159,
+  "lineNumEnd": 160,
   "isCode": false,
   "isReadOnly": false,
   "isData": true,
