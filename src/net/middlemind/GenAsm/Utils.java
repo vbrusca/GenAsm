@@ -31,6 +31,11 @@ public class Utils {
     }
     
     public static boolean CheckAssemblerTestProgramAgainstAnswers(JsonObjLineHexReps hexDataLines, Hashtable<String, String> hashMap) {
+        int hmCnt = hashMap.size();
+        int errCnt = 0;
+        double prct = 0.0;
+        double prctMax = 0.10f;
+        
         for(String key : hashMap.keySet()) {
             String val = hashMap.get(key);
             key = key.toUpperCase();
@@ -47,6 +52,12 @@ public class Utils {
             
             if(!found) {
                 Logger.wrl("Could not find a match for key: " + key + " with value: " + val);
+                errCnt++;                
+            }
+            
+            prct = (errCnt/hmCnt);
+            if(prct > prctMax) {
+                Logger.wrl("Reached maximum allowed numbers of errors, " + errCnt + ", with percentage, " + prct);                
                 return false;
             }
         }
