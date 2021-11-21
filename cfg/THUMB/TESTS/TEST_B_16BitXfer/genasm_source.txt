@@ -1,4 +1,4 @@
-@TTL |GbaHelloWorld|
+@TTL |16BitXfer|
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
