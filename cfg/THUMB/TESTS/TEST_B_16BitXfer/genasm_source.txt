@@ -145,6 +145,7 @@
 		STRB 	R0,	[R3, #0]	
 		POP 	{R0-R7, PC}
 		
+							@DCHW	0x0000
 	value_address			@DCWBS	=value
 							@DCWBF	=value
 	result_address			@DCWBS	=result
@@ -153,15 +154,7 @@
 							@DCHW   0x0000
     result  				@DCHW   0x0000
 							@DCHW   0x0000		
-		
-	space
-		;$NOP
-		;$NOP
-		;$NOP
-		;$NOP
-		;$NOP
-		;$NOP
-		
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @END

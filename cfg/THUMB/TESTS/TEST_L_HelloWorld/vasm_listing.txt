@@ -455,7 +455,7 @@ S01  seg8000000
 
 
 Sources:
-F00  GBA_HelloThumb.asm
+F00  Thumb_Lesson1.asm
 
 
 Symbols:

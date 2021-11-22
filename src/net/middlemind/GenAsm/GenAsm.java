@@ -139,6 +139,7 @@ public class GenAsm {
             }
             
         } else if(args == null || args.length < ARG_LEN_TARGET) {
+            String targetProgram = "TEST_L_HelloWorld";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
@@ -147,12 +148,12 @@ public class GenAsm {
             ASM_SET = null;
             ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
             ASM_ASSEMBLER = null;
-            ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\TEST_B_16BitXfer\\genasm_source.txt";
+            ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\" + targetProgram + "\\genasm_source.txt";
             ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
             ASM_LINKER = null;
             ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
             ASM_PREPROCESSOR = null;  
-            ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_B_16BitXfer\\";
+            ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
             ASM_VERBOSE = false;
             ASM_QUELL_FILE_OUTPUT = false;
             
