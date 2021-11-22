@@ -69,8 +69,13 @@ do_work:
 	ldr		r0, result_address
 	ldr		r1, value_address
 	ldr		r2, [r1, #0]
-	str		r2, [r0, #0]		
-					
+	str		r2, [r0, #0]
+	
+	ldr		r3, answer_address
+	ldr		r4, [r3, #0]
+	mov		r8, r4
+	cmp		r2, r8	
+				
 	pop		{r0-r6, pc}	
 	
 PrintChar:
@@ -139,8 +144,10 @@ LineDone:
 	.align 4
 	value_address:			.long	value
 	result_address:			.long	result
+	answer_address:			.long	answer
     value:   				.long   0xC1230000
     result:  				.long	0x00000000
+	answer:					.long	0xC1230000
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	

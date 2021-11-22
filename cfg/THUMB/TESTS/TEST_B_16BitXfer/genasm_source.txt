@@ -75,7 +75,12 @@
 		LDR		R0, [PC, `result_address]
 		LDR		R1, [PC, `value_address]
 		LDR		R2, [R1, #0]
-		STR		R2, [R0, #0]		
+		STR		R2, [R0, #0]
+		
+		LDR		R3, [PC, `answer_address]
+		LDR		R4, [R3, #0]
+		MOV		R8, R4
+		CMP		R2, R8
 						
 		POP		{R0-R6, PC}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -150,10 +155,14 @@
 							@DCWBF	=value
 	result_address			@DCWBS	=result
 							@DCWBF	=result
-    value   				@DCHW   0xC123
-							@DCHW   0x0000
+	answer_address			@DCWBS	=answer
+							@DCWBF	=answer							
+    value   				@DCHW   0x0000
+							@DCHW   0x23C1
     result  				@DCHW   0x0000
 							@DCHW   0x0000		
+	answer   				@DCHW   0x0000
+							@DCHW   0x23C1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -193,10 +202,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	
-							@DCHW	 0x0000
-							@DCHW	 0x0000
-							@DCHW	 0x0000
-							@DCHW	 0x0000							
+							@DCHW	0x0000
+							@DCHW	0x0000
+							@DCHW	0x0000
+							@DCHW	0x0000							
     bitmap_font                         		;1 Bit per pixel font
 							@FLPDCHW 0x183C 
 							@FLPDCHW 0x6666

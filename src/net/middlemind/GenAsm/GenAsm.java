@@ -139,7 +139,7 @@ public class GenAsm {
             }
             
         } else if(args == null || args.length < ARG_LEN_TARGET) {
-            String targetProgram = "TEST_M_YourName";
+            String targetProgram = "TEST_C_OnesComp";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";

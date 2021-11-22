@@ -9,7 +9,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 472,
+        "lineNumAbs": 481,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -18,7 +18,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 472,
+          "lineNum": 481,
           "sourceLen": 20,
           "source": "    test_passed     ",
           "payload": [
@@ -27,7 +27,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 472,
+              "lineNum": 481,
               "index": 0,
               "payload": "test_passed"
             }
@@ -90,7 +90,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "test_passed",
-            "lineNumAbs": 472,
+            "lineNumAbs": 481,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -106,7 +106,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 472,
+              "lineNum": 481,
               "index": 0,
               "payload": "test_passed"
             },
@@ -151,7 +151,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "test_passed",
-        "lineNumAbs": 472,
+        "lineNumAbs": 481,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -167,7 +167,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 472,
+          "lineNum": 481,
           "index": 0,
           "payload": "test_passed"
         },
@@ -206,11 +206,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80002B4",
-      "addressBin": "0000001010110100",
-      "addressInt": 134218420,
-      "lineNumActive": 67109210,
-      "lineNumAbs": 472,
+      "addressHex": "0x80002C4",
+      "addressBin": "0000001011000100",
+      "addressInt": 134218436,
+      "lineNumActive": 67109218,
+      "lineNumAbs": 481,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -222,11 +222,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCWBS",
         "byteLength": 2,
-        "addressHex": "0x80002B0",
-        "addressBin": "0000001010110000",
-        "addressInt": 134218416,
-        "lineNumActive": 67109208,
-        "lineNumAbs": 469,
+        "addressHex": "0x80002C0",
+        "addressBin": "0000001011000000",
+        "addressInt": 134218432,
+        "lineNumActive": 67109216,
+        "lineNumAbs": 478,
         "payloadLen": 4,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -235,7 +235,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 469,
+          "lineNum": 478,
           "sourceLen": 55,
           "source": "\ttest_passed_address\t\t@DCWBS\t\u003dtest_passed\t;@DCHW\t0x01AC",
           "payload": [
@@ -244,7 +244,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 0,
               "payload": "test_passed_address"
             },
@@ -253,7 +253,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -262,7 +262,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 2,
               "payload": "\u003dtest_passed"
             },
@@ -271,7 +271,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -280,7 +280,7 @@
               "posStart": 49,
               "posStop": 54,
               "len": 6,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 4,
               "payload": "0x01AC"
             }
@@ -684,7 +684,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "test_passed_address",
-            "lineNumAbs": 469,
+            "lineNumAbs": 478,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -700,7 +700,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 0,
               "payload": "test_passed_address"
             },
@@ -743,7 +743,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCWBS",
-            "lineNumAbs": 469,
+            "lineNumAbs": 478,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -759,7 +759,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -799,7 +799,7 @@
             "obj_name": "Token",
             "type_name": "LabelRef",
             "source": "\u003dtest_passed",
-            "lineNumAbs": 469,
+            "lineNumAbs": 478,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -815,7 +815,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 2,
               "payload": "\u003dtest_passed"
             },
@@ -861,7 +861,7 @@
             "obj_name": "Token",
             "type_name": "Comment",
             "source": ";@DCHW",
-            "lineNumAbs": 469,
+            "lineNumAbs": 478,
             "index": 3,
             "payloadLen": 1,
             "payloadArgLen": 0,
@@ -877,7 +877,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 469,
+              "lineNum": 478,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -913,7 +913,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "0x01AC",
-                "lineNumAbs": 469,
+                "lineNumAbs": 478,
                 "index": 0,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -929,7 +929,7 @@
                   "posStart": 49,
                   "posStop": 54,
                   "len": 6,
-                  "lineNum": 469,
+                  "lineNum": 478,
                   "index": 4,
                   "payload": "0x01AC"
                 },
@@ -970,7 +970,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "test_passed_address",
-        "lineNumAbs": 469,
+        "lineNumAbs": 478,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -986,7 +986,7 @@
           "posStart": 1,
           "posStop": 19,
           "len": 19,
-          "lineNum": 469,
+          "lineNum": 478,
           "index": 0,
           "payload": "test_passed_address"
         },
@@ -1025,11 +1025,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80002B0",
-      "addressBin": "0000001010110000",
-      "addressInt": 134218416,
-      "lineNumActive": 67109208,
-      "lineNumAbs": 469,
+      "addressHex": "0x80002C0",
+      "addressBin": "0000001011000000",
+      "addressInt": 134218432,
+      "lineNumActive": 67109216,
+      "lineNumAbs": 478,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -1041,11 +1041,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCWBS",
         "byteLength": 2,
-        "addressHex": "0x8000194",
-        "addressBin": "0000000110010100",
-        "addressInt": 134218132,
-        "lineNumActive": 67109066,
-        "lineNumAbs": 278,
+        "addressHex": "0x800019C",
+        "addressBin": "0000000110011100",
+        "addressInt": 134218140,
+        "lineNumActive": 67109070,
+        "lineNumAbs": 283,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -1054,7 +1054,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 278,
+          "lineNum": 283,
           "sourceLen": 32,
           "source": "\tresult_address\t\t\t@DCWBS\t\u003dresult",
           "payload": [
@@ -1063,7 +1063,7 @@
               "posStart": 1,
               "posStop": 14,
               "len": 14,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 0,
               "payload": "result_address"
             },
@@ -1072,7 +1072,7 @@
               "posStart": 18,
               "posStop": 23,
               "len": 6,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -1081,7 +1081,7 @@
               "posStart": 25,
               "posStop": 31,
               "len": 7,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 2,
               "payload": "\u003dresult"
             }
@@ -1449,7 +1449,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "result_address",
-            "lineNumAbs": 278,
+            "lineNumAbs": 283,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1465,7 +1465,7 @@
               "posStart": 1,
               "posStop": 14,
               "len": 14,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 0,
               "payload": "result_address"
             },
@@ -1508,7 +1508,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCWBS",
-            "lineNumAbs": 278,
+            "lineNumAbs": 283,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1524,7 +1524,7 @@
               "posStart": 18,
               "posStop": 23,
               "len": 6,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -1564,7 +1564,7 @@
             "obj_name": "Token",
             "type_name": "LabelRef",
             "source": "\u003dresult",
-            "lineNumAbs": 278,
+            "lineNumAbs": 283,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -1580,7 +1580,7 @@
               "posStart": 25,
               "posStop": 31,
               "len": 7,
-              "lineNum": 278,
+              "lineNum": 283,
               "index": 2,
               "payload": "\u003dresult"
             },
@@ -1628,7 +1628,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "result_address",
-        "lineNumAbs": 278,
+        "lineNumAbs": 283,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -1644,7 +1644,7 @@
           "posStart": 1,
           "posStop": 14,
           "len": 14,
-          "lineNum": 278,
+          "lineNum": 283,
           "index": 0,
           "payload": "result_address"
         },
@@ -1683,11 +1683,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000194",
-      "addressBin": "0000000110010100",
-      "addressInt": 134218132,
-      "lineNumActive": 67109066,
-      "lineNumAbs": 278,
+      "addressHex": "0x800019C",
+      "addressBin": "0000000110011100",
+      "addressInt": 134218140,
+      "lineNumActive": 67109070,
+      "lineNumAbs": 283,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -1913,11 +1913,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001A8",
-        "addressBin": "0000000110101000",
-        "addressInt": 134218152,
-        "lineNumActive": 67109076,
-        "lineNumAbs": 298,
+        "addressHex": "0x80001B8",
+        "addressBin": "0000000110111000",
+        "addressInt": 134218168,
+        "lineNumActive": 67109084,
+        "lineNumAbs": 307,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -1926,7 +1926,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 298,
+          "lineNum": 307,
           "sourceLen": 36,
           "source": "    screen_setting  \t\t@DCHW   0x0403",
           "payload": [
@@ -1935,7 +1935,7 @@
               "posStart": 4,
               "posStop": 17,
               "len": 14,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 0,
               "payload": "screen_setting"
             },
@@ -1944,7 +1944,7 @@
               "posStart": 22,
               "posStop": 26,
               "len": 5,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -1953,7 +1953,7 @@
               "posStart": 30,
               "posStop": 35,
               "len": 6,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 2,
               "payload": "0x0403"
             }
@@ -2321,7 +2321,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "screen_setting",
-            "lineNumAbs": 298,
+            "lineNumAbs": 307,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2337,7 +2337,7 @@
               "posStart": 4,
               "posStop": 17,
               "len": 14,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 0,
               "payload": "screen_setting"
             },
@@ -2380,7 +2380,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 298,
+            "lineNumAbs": 307,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2396,7 +2396,7 @@
               "posStart": 22,
               "posStop": 26,
               "len": 5,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -2436,7 +2436,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0403",
-            "lineNumAbs": 298,
+            "lineNumAbs": 307,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -2452,7 +2452,7 @@
               "posStart": 30,
               "posStop": 35,
               "len": 6,
-              "lineNum": 298,
+              "lineNum": 307,
               "index": 2,
               "payload": "0x0403"
             },
@@ -2496,7 +2496,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "screen_setting",
-        "lineNumAbs": 298,
+        "lineNumAbs": 307,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -2512,7 +2512,7 @@
           "posStart": 4,
           "posStop": 17,
           "len": 14,
-          "lineNum": 298,
+          "lineNum": 307,
           "index": 0,
           "payload": "screen_setting"
         },
@@ -2551,11 +2551,665 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001A8",
-      "addressBin": "0000000110101000",
-      "addressInt": 134218152,
-      "lineNumActive": 67109076,
-      "lineNumAbs": 298,
+      "addressHex": "0x80001B8",
+      "addressBin": "0000000110111000",
+      "addressInt": 134218168,
+      "lineNumActive": 67109084,
+      "lineNumAbs": 307,
+      "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "answer": {
+      "obj_name": "Symbol",
+      "name": "answer",
+      "line": {
+        "obj_name": "TokenLine",
+        "payloadDirective": "@DCHW",
+        "byteLength": 2,
+        "addressHex": "0x80001AC",
+        "addressBin": "0000000110101100",
+        "addressInt": 134218156,
+        "lineNumActive": 67109078,
+        "lineNumAbs": 291,
+        "payloadLen": 3,
+        "payloadLenArg": 1,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": true,
+        "isLineLabelDef": false,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 291,
+          "sourceLen": 28,
+          "source": "\tanswer   \t\t\t\t@DCHW   0x0000",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 1,
+              "posStop": 6,
+              "len": 6,
+              "lineNum": 291,
+              "index": 0,
+              "payload": "answer"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 14,
+              "posStop": 18,
+              "len": 5,
+              "lineNum": 291,
+              "index": 1,
+              "payload": "@DCHW"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 22,
+              "posStop": 27,
+              "len": 6,
+              "lineNum": 291,
+              "index": 2,
+              "payload": "0x0000"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 14,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Directive"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Directive",
+                  "type_category": "Directive",
+                  "category": "Directive",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "@"
+                    ],
+                    "contains": [
+                      "A~Z"
+                    ],
+                    "ends_with": [
+                      "A~Z",
+                      " "
+                    ],
+                    "must_contain": [
+                      "@"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Number",
+                "LabelRef"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Number",
+                  "type_category": "Number",
+                  "category": "Arg",
+                  "category_class": "java.lang.Double",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "#bx",
+                      "#-",
+                      "#",
+                      "0~9"
+                    ],
+                    "contains": [
+                      "0~9"
+                    ],
+                    "ends_with": [
+                      "0~9",
+                      ",",
+                      ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 2
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "matchesDirective": [
+          {
+            "obj_name": "is_directive",
+            "directive_name": "@DCHW",
+            "arg_len": 1,
+            "description": "The DCHW directive is used to write data, one halfword, directly into the data AREA of an assembly file.",
+            "args": [
+              {
+                "obj_name": "is_directive_arg",
+                "arg_index": 0,
+                "is_entry_types": [
+                  "Number",
+                  "LabelRef"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "#bx",
+                        "#-",
+                        "#",
+                        "0~9"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u0026",
+                        "0x",
+                        "#0x"
+                      ],
+                      "contains": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "is_arg_type": "Number",
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 15,
+                  "bit_len": 16
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 65536,
+                  "bit_len": 16,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "HALFWORD"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": -1
+                }
+              }
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+            "fileName": "./cfg/THUMB/is_directives.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives"
+          }
+        ],
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "answer",
+            "lineNumAbs": 291,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 1,
+              "posStop": 6,
+              "len": 6,
+              "lineNum": 291,
+              "index": 0,
+              "payload": "answer"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Directive",
+            "source": "@DCHW",
+            "lineNumAbs": 291,
+            "index": 1,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": true,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 14,
+              "posStop": 18,
+              "len": 5,
+              "lineNum": 291,
+              "index": 1,
+              "payload": "@DCHW"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Directive",
+              "type_category": "Directive",
+              "category": "Directive",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "@"
+                ],
+                "contains": [
+                  "A~Z"
+                ],
+                "ends_with": [
+                  "A~Z",
+                  " "
+                ],
+                "must_contain": [
+                  "@"
+                ],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Number",
+            "source": "0x0000",
+            "lineNumAbs": 291,
+            "index": 2,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": true,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 22,
+              "posStop": 27,
+              "len": 6,
+              "lineNum": 291,
+              "index": 2,
+              "payload": "0x0000"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Number",
+              "type_category": "Number",
+              "category": "Arg",
+              "category_class": "java.lang.Double",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "#bx",
+                  "#-",
+                  "#",
+                  "0~9"
+                ],
+                "contains": [
+                  "0~9"
+                ],
+                "ends_with": [
+                  "0~9",
+                  ",",
+                  ";"
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "answer",
+        "lineNumAbs": 291,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 1,
+          "posStop": 6,
+          "len": 6,
+          "lineNum": 291,
+          "index": 0,
+          "payload": "answer"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x80001AC",
+      "addressBin": "0000000110101100",
+      "addressInt": 134218156,
+      "lineNumActive": 67109078,
+      "lineNumAbs": 291,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -2781,11 +3435,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001B4",
-        "addressBin": "0000000110110100",
-        "addressInt": 134218164,
-        "lineNumActive": 67109082,
-        "lineNumAbs": 304,
+        "addressHex": "0x80001C4",
+        "addressBin": "0000000111000100",
+        "addressInt": 134218180,
+        "lineNumActive": 67109090,
+        "lineNumAbs": 313,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -2794,7 +3448,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 304,
+          "lineNum": 313,
           "sourceLen": 27,
           "source": "\tscreen_ram\t\t\t\t@DCHW\t0x0000",
           "payload": [
@@ -2803,7 +3457,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 0,
               "payload": "screen_ram"
             },
@@ -2812,7 +3466,7 @@
               "posStart": 15,
               "posStop": 19,
               "len": 5,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -2821,7 +3475,7 @@
               "posStart": 21,
               "posStop": 26,
               "len": 6,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 2,
               "payload": "0x0000"
             }
@@ -3189,7 +3843,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "screen_ram",
-            "lineNumAbs": 304,
+            "lineNumAbs": 313,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3205,7 +3859,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 0,
               "payload": "screen_ram"
             },
@@ -3248,7 +3902,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 304,
+            "lineNumAbs": 313,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3264,7 +3918,7 @@
               "posStart": 15,
               "posStop": 19,
               "len": 5,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -3304,7 +3958,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 304,
+            "lineNumAbs": 313,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -3320,7 +3974,7 @@
               "posStart": 21,
               "posStop": 26,
               "len": 6,
-              "lineNum": 304,
+              "lineNum": 313,
               "index": 2,
               "payload": "0x0000"
             },
@@ -3364,7 +4018,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "screen_ram",
-        "lineNumAbs": 304,
+        "lineNumAbs": 313,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -3380,7 +4034,7 @@
           "posStart": 1,
           "posStop": 10,
           "len": 10,
-          "lineNum": 304,
+          "lineNum": 313,
           "index": 0,
           "payload": "screen_ram"
         },
@@ -3419,11 +4073,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001B4",
-      "addressBin": "0000000110110100",
-      "addressInt": 134218164,
-      "lineNumActive": 67109082,
-      "lineNumAbs": 304,
+      "addressHex": "0x80001C4",
+      "addressBin": "0000000111000100",
+      "addressInt": 134218180,
+      "lineNumActive": 67109090,
+      "lineNumAbs": 313,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -3863,11 +4517,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCWBS",
         "byteLength": 2,
-        "addressHex": "0x80002C0",
-        "addressBin": "0000001011000000",
-        "addressInt": 134218432,
-        "lineNumActive": 67109216,
-        "lineNumAbs": 484,
+        "addressHex": "0x80002D0",
+        "addressBin": "0000001011010000",
+        "addressInt": 134218448,
+        "lineNumActive": 67109224,
+        "lineNumAbs": 493,
         "payloadLen": 4,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -3876,7 +4530,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 484,
+          "lineNum": 493,
           "sourceLen": 55,
           "source": "\ttest_failed_address\t\t@DCWBS\t\u003dtest_failed\t;@DCHW\t0x01AC",
           "payload": [
@@ -3885,7 +4539,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 0,
               "payload": "test_failed_address"
             },
@@ -3894,7 +4548,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -3903,7 +4557,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 2,
               "payload": "\u003dtest_failed"
             },
@@ -3912,7 +4566,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -3921,7 +4575,7 @@
               "posStart": 49,
               "posStop": 54,
               "len": 6,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 4,
               "payload": "0x01AC"
             }
@@ -4325,7 +4979,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "test_failed_address",
-            "lineNumAbs": 484,
+            "lineNumAbs": 493,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4341,7 +4995,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 0,
               "payload": "test_failed_address"
             },
@@ -4384,7 +5038,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCWBS",
-            "lineNumAbs": 484,
+            "lineNumAbs": 493,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4400,7 +5054,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -4440,7 +5094,7 @@
             "obj_name": "Token",
             "type_name": "LabelRef",
             "source": "\u003dtest_failed",
-            "lineNumAbs": 484,
+            "lineNumAbs": 493,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -4456,7 +5110,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 2,
               "payload": "\u003dtest_failed"
             },
@@ -4502,7 +5156,7 @@
             "obj_name": "Token",
             "type_name": "Comment",
             "source": ";@DCHW",
-            "lineNumAbs": 484,
+            "lineNumAbs": 493,
             "index": 3,
             "payloadLen": 1,
             "payloadArgLen": 0,
@@ -4518,7 +5172,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 484,
+              "lineNum": 493,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -4554,7 +5208,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "0x01AC",
-                "lineNumAbs": 484,
+                "lineNumAbs": 493,
                 "index": 0,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -4570,7 +5224,7 @@
                   "posStart": 49,
                   "posStop": 54,
                   "len": 6,
-                  "lineNum": 484,
+                  "lineNum": 493,
                   "index": 4,
                   "payload": "0x01AC"
                 },
@@ -4611,7 +5265,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "test_failed_address",
-        "lineNumAbs": 484,
+        "lineNumAbs": 493,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -4627,7 +5281,7 @@
           "posStart": 1,
           "posStop": 19,
           "len": 19,
-          "lineNum": 484,
+          "lineNum": 493,
           "index": 0,
           "payload": "test_failed_address"
         },
@@ -4666,11 +5320,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80002C0",
-      "addressBin": "0000001011000000",
-      "addressInt": 134218432,
-      "lineNumActive": 67109216,
-      "lineNumAbs": 484,
+      "addressHex": "0x80002D0",
+      "addressBin": "0000001011010000",
+      "addressInt": 134218448,
+      "lineNumActive": 67109224,
+      "lineNumAbs": 493,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -4896,11 +5550,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x800019C",
-        "addressBin": "0000000110011100",
-        "addressInt": 134218140,
-        "lineNumActive": 67109070,
-        "lineNumAbs": 282,
+        "addressHex": "0x80001A8",
+        "addressBin": "0000000110101000",
+        "addressInt": 134218152,
+        "lineNumActive": 67109076,
+        "lineNumAbs": 289,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -4909,7 +5563,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 282,
+          "lineNum": 289,
           "sourceLen": 30,
           "source": "    result  \t\t\t\t@DCHW   0x0000",
           "payload": [
@@ -4918,7 +5572,7 @@
               "posStart": 4,
               "posStop": 9,
               "len": 6,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 0,
               "payload": "result"
             },
@@ -4927,7 +5581,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -4936,7 +5590,7 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 2,
               "payload": "0x0000"
             }
@@ -5304,7 +5958,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "result",
-            "lineNumAbs": 282,
+            "lineNumAbs": 289,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -5320,7 +5974,7 @@
               "posStart": 4,
               "posStop": 9,
               "len": 6,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 0,
               "payload": "result"
             },
@@ -5363,7 +6017,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 282,
+            "lineNumAbs": 289,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -5379,7 +6033,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -5419,7 +6073,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 282,
+            "lineNumAbs": 289,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -5435,7 +6089,7 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 282,
+              "lineNum": 289,
               "index": 2,
               "payload": "0x0000"
             },
@@ -5479,7 +6133,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "result",
-        "lineNumAbs": 282,
+        "lineNumAbs": 289,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -5495,7 +6149,7 @@
           "posStart": 4,
           "posStop": 9,
           "len": 6,
-          "lineNum": 282,
+          "lineNum": 289,
           "index": 0,
           "payload": "result"
         },
@@ -5534,11 +6188,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x800019C",
-      "addressBin": "0000000110011100",
-      "addressInt": 134218140,
-      "lineNumActive": 67109070,
-      "lineNumAbs": 282,
+      "addressHex": "0x80001A8",
+      "addressBin": "0000000110101000",
+      "addressInt": 134218152,
+      "lineNumActive": 67109076,
+      "lineNumAbs": 289,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -5551,7 +6205,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 247,
+        "lineNumAbs": 252,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -5560,7 +6214,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 247,
+          "lineNum": 252,
           "sourceLen": 10,
           "source": "\tdraw_line",
           "payload": [
@@ -5569,7 +6223,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 247,
+              "lineNum": 252,
               "index": 0,
               "payload": "draw_line"
             }
@@ -5632,7 +6286,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "draw_line",
-            "lineNumAbs": 247,
+            "lineNumAbs": 252,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -5648,7 +6302,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 247,
+              "lineNum": 252,
               "index": 0,
               "payload": "draw_line"
             },
@@ -5693,7 +6347,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "draw_line",
-        "lineNumAbs": 247,
+        "lineNumAbs": 252,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -5709,7 +6363,7 @@
           "posStart": 1,
           "posStop": 9,
           "len": 9,
-          "lineNum": 247,
+          "lineNum": 252,
           "index": 0,
           "payload": "draw_line"
         },
@@ -5748,11 +6402,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000168",
-      "addressBin": "0000000101101000",
-      "addressInt": 134218088,
-      "lineNumActive": 67109044,
-      "lineNumAbs": 247,
+      "addressHex": "0x8000170",
+      "addressBin": "0000000101110000",
+      "addressInt": 134218096,
+      "lineNumActive": 67109048,
+      "lineNumAbs": 252,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -5765,7 +6419,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 336,
+        "lineNumAbs": 345,
         "payloadLen": 2,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -5774,7 +6428,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 336,
+          "lineNum": 345,
           "sourceLen": 63,
           "source": "    bitmap_font                         \t\t;1 Bit per pixel font",
           "payload": [
@@ -5783,7 +6437,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 0,
               "payload": "bitmap_font"
             },
@@ -5792,7 +6446,7 @@
               "posStart": 42,
               "posStop": 43,
               "len": 2,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 1,
               "payload": ";1"
             },
@@ -5801,7 +6455,7 @@
               "posStart": 45,
               "posStop": 47,
               "len": 3,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 2,
               "payload": "Bit"
             },
@@ -5810,7 +6464,7 @@
               "posStart": 49,
               "posStop": 51,
               "len": 3,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 3,
               "payload": "per"
             },
@@ -5819,7 +6473,7 @@
               "posStart": 53,
               "posStop": 57,
               "len": 5,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 4,
               "payload": "pixel"
             },
@@ -5828,7 +6482,7 @@
               "posStart": 59,
               "posStop": 62,
               "len": 4,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 5,
               "payload": "font"
             }
@@ -5927,7 +6581,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "bitmap_font",
-            "lineNumAbs": 336,
+            "lineNumAbs": 345,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -5943,7 +6597,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 0,
               "payload": "bitmap_font"
             },
@@ -5986,7 +6640,7 @@
             "obj_name": "Token",
             "type_name": "Comment",
             "source": ";1",
-            "lineNumAbs": 336,
+            "lineNumAbs": 345,
             "index": 1,
             "payloadLen": 4,
             "payloadArgLen": 0,
@@ -6002,7 +6656,7 @@
               "posStart": 42,
               "posStop": 43,
               "len": 2,
-              "lineNum": 336,
+              "lineNum": 345,
               "index": 1,
               "payload": ";1"
             },
@@ -6038,7 +6692,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "Bit",
-                "lineNumAbs": 336,
+                "lineNumAbs": 345,
                 "index": 0,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -6054,7 +6708,7 @@
                   "posStart": 45,
                   "posStop": 47,
                   "len": 3,
-                  "lineNum": 336,
+                  "lineNum": 345,
                   "index": 2,
                   "payload": "Bit"
                 },
@@ -6091,7 +6745,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "per",
-                "lineNumAbs": 336,
+                "lineNumAbs": 345,
                 "index": 1,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -6107,7 +6761,7 @@
                   "posStart": 49,
                   "posStop": 51,
                   "len": 3,
-                  "lineNum": 336,
+                  "lineNum": 345,
                   "index": 3,
                   "payload": "per"
                 },
@@ -6144,7 +6798,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "pixel",
-                "lineNumAbs": 336,
+                "lineNumAbs": 345,
                 "index": 2,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -6160,7 +6814,7 @@
                   "posStart": 53,
                   "posStop": 57,
                   "len": 5,
-                  "lineNum": 336,
+                  "lineNum": 345,
                   "index": 4,
                   "payload": "pixel"
                 },
@@ -6197,7 +6851,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "font",
-                "lineNumAbs": 336,
+                "lineNumAbs": 345,
                 "index": 3,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -6213,7 +6867,7 @@
                   "posStart": 59,
                   "posStop": 62,
                   "len": 4,
-                  "lineNum": 336,
+                  "lineNum": 345,
                   "index": 5,
                   "payload": "font"
                 },
@@ -6254,7 +6908,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "bitmap_font",
-        "lineNumAbs": 336,
+        "lineNumAbs": 345,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -6270,7 +6924,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 336,
+          "lineNum": 345,
           "index": 0,
           "payload": "bitmap_font"
         },
@@ -6309,11 +6963,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001E0",
-      "addressBin": "0000000111100000",
-      "addressInt": 134218208,
-      "lineNumActive": 67109104,
-      "lineNumAbs": 336,
+      "addressHex": "0x80001F0",
+      "addressBin": "0000000111110000",
+      "addressInt": 134218224,
+      "lineNumActive": 67109112,
+      "lineNumAbs": 345,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -7553,11 +8207,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001A4",
-        "addressBin": "0000000110100100",
-        "addressInt": 134218148,
-        "lineNumActive": 67109074,
-        "lineNumAbs": 296,
+        "addressHex": "0x80001B4",
+        "addressBin": "0000000110110100",
+        "addressInt": 134218164,
+        "lineNumActive": 67109082,
+        "lineNumAbs": 305,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -7566,7 +8220,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 296,
+          "lineNum": 305,
           "sourceLen": 36,
           "source": "    screen_regs\t    \t\t@DCHW   0x0000",
           "payload": [
@@ -7575,7 +8229,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 0,
               "payload": "screen_regs"
             },
@@ -7584,7 +8238,7 @@
               "posStart": 22,
               "posStop": 26,
               "len": 5,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -7593,7 +8247,7 @@
               "posStart": 30,
               "posStop": 35,
               "len": 6,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 2,
               "payload": "0x0000"
             }
@@ -7961,7 +8615,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "screen_regs",
-            "lineNumAbs": 296,
+            "lineNumAbs": 305,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -7977,7 +8631,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 0,
               "payload": "screen_regs"
             },
@@ -8020,7 +8674,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 296,
+            "lineNumAbs": 305,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -8036,7 +8690,7 @@
               "posStart": 22,
               "posStop": 26,
               "len": 5,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -8076,7 +8730,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 296,
+            "lineNumAbs": 305,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -8092,7 +8746,7 @@
               "posStart": 30,
               "posStop": 35,
               "len": 6,
-              "lineNum": 296,
+              "lineNum": 305,
               "index": 2,
               "payload": "0x0000"
             },
@@ -8136,7 +8790,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "screen_regs",
-        "lineNumAbs": 296,
+        "lineNumAbs": 305,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -8152,7 +8806,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 296,
+          "lineNum": 305,
           "index": 0,
           "payload": "screen_regs"
         },
@@ -8191,11 +8845,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001A4",
-      "addressBin": "0000000110100100",
-      "addressInt": 134218148,
-      "lineNumActive": 67109074,
-      "lineNumAbs": 296,
+      "addressHex": "0x80001B4",
+      "addressBin": "0000000110110100",
+      "addressInt": 134218164,
+      "lineNumActive": 67109082,
+      "lineNumAbs": 305,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -9506,11 +10160,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001B0",
-        "addressBin": "0000000110110000",
-        "addressInt": 134218160,
-        "lineNumActive": 67109080,
-        "lineNumAbs": 302,
+        "addressHex": "0x80001C0",
+        "addressBin": "0000000111000000",
+        "addressInt": 134218176,
+        "lineNumActive": 67109088,
+        "lineNumAbs": 311,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -9519,7 +10173,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 302,
+          "lineNum": 311,
           "sourceLen": 28,
           "source": "\tadr_cursor_y\t\t\t@DCHW\t0x0001",
           "payload": [
@@ -9528,7 +10182,7 @@
               "posStart": 1,
               "posStop": 12,
               "len": 12,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 0,
               "payload": "adr_cursor_y"
             },
@@ -9537,7 +10191,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -9546,7 +10200,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 2,
               "payload": "0x0001"
             }
@@ -9914,7 +10568,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "adr_cursor_y",
-            "lineNumAbs": 302,
+            "lineNumAbs": 311,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -9930,7 +10584,7 @@
               "posStart": 1,
               "posStop": 12,
               "len": 12,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 0,
               "payload": "adr_cursor_y"
             },
@@ -9973,7 +10627,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 302,
+            "lineNumAbs": 311,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -9989,7 +10643,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -10029,7 +10683,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0001",
-            "lineNumAbs": 302,
+            "lineNumAbs": 311,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -10045,7 +10699,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 302,
+              "lineNum": 311,
               "index": 2,
               "payload": "0x0001"
             },
@@ -10089,7 +10743,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "adr_cursor_y",
-        "lineNumAbs": 302,
+        "lineNumAbs": 311,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -10105,7 +10759,7 @@
           "posStart": 1,
           "posStop": 12,
           "len": 12,
-          "lineNum": 302,
+          "lineNum": 311,
           "index": 0,
           "payload": "adr_cursor_y"
         },
@@ -10144,11 +10798,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001B0",
-      "addressBin": "0000000110110000",
-      "addressInt": 134218160,
-      "lineNumActive": 67109080,
-      "lineNumAbs": 302,
+      "addressHex": "0x80001C0",
+      "addressBin": "0000000111000000",
+      "addressInt": 134218176,
+      "lineNumActive": 67109088,
+      "lineNumAbs": 311,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -10160,11 +10814,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001AC",
-        "addressBin": "0000000110101100",
-        "addressInt": 134218156,
-        "lineNumActive": 67109078,
-        "lineNumAbs": 300,
+        "addressHex": "0x80001BC",
+        "addressBin": "0000000110111100",
+        "addressInt": 134218172,
+        "lineNumActive": 67109086,
+        "lineNumAbs": 309,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -10173,7 +10827,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 300,
+          "lineNum": 309,
           "sourceLen": 28,
           "source": "\tadr_cursor_x\t\t\t@DCHW\t0x0000",
           "payload": [
@@ -10182,7 +10836,7 @@
               "posStart": 1,
               "posStop": 12,
               "len": 12,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 0,
               "payload": "adr_cursor_x"
             },
@@ -10191,7 +10845,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -10200,7 +10854,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 2,
               "payload": "0x0000"
             }
@@ -10568,7 +11222,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "adr_cursor_x",
-            "lineNumAbs": 300,
+            "lineNumAbs": 309,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -10584,7 +11238,7 @@
               "posStart": 1,
               "posStop": 12,
               "len": 12,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 0,
               "payload": "adr_cursor_x"
             },
@@ -10627,7 +11281,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 300,
+            "lineNumAbs": 309,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -10643,7 +11297,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -10683,7 +11337,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 300,
+            "lineNumAbs": 309,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -10699,7 +11353,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 300,
+              "lineNum": 309,
               "index": 2,
               "payload": "0x0000"
             },
@@ -10743,7 +11397,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "adr_cursor_x",
-        "lineNumAbs": 300,
+        "lineNumAbs": 309,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -10759,7 +11413,7 @@
           "posStart": 1,
           "posStop": 12,
           "len": 12,
-          "lineNum": 300,
+          "lineNum": 309,
           "index": 0,
           "payload": "adr_cursor_x"
         },
@@ -10798,11 +11452,669 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001AC",
-      "addressBin": "0000000110101100",
-      "addressInt": 134218156,
-      "lineNumActive": 67109078,
-      "lineNumAbs": 300,
+      "addressHex": "0x80001BC",
+      "addressBin": "0000000110111100",
+      "addressInt": 134218172,
+      "lineNumActive": 67109086,
+      "lineNumAbs": 309,
+      "isEmptyLineLabel": false,
+      "isLabel": true,
+      "isStaticValue": false
+    },
+    "answer_address": {
+      "obj_name": "Symbol",
+      "name": "answer_address",
+      "line": {
+        "obj_name": "TokenLine",
+        "payloadDirective": "@DCWBS",
+        "byteLength": 2,
+        "addressHex": "0x80001A0",
+        "addressBin": "0000000110100000",
+        "addressInt": 134218144,
+        "lineNumActive": 67109072,
+        "lineNumAbs": 285,
+        "payloadLen": 3,
+        "payloadLenArg": 1,
+        "isLineEmpty": false,
+        "isLineOpCode": false,
+        "isLineDirective": true,
+        "isLineLabelDef": false,
+        "source": {
+          "obj_name": "ArtifactLine",
+          "lineNum": 285,
+          "sourceLen": 32,
+          "source": "\tanswer_address\t\t\t@DCWBS\t\u003danswer",
+          "payload": [
+            {
+              "obj_name": "Artifact",
+              "posStart": 1,
+              "posStop": 14,
+              "len": 14,
+              "lineNum": 285,
+              "index": 0,
+              "payload": "answer_address"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 18,
+              "posStop": 23,
+              "len": 6,
+              "lineNum": 285,
+              "index": 1,
+              "payload": "@DCWBS"
+            },
+            {
+              "obj_name": "Artifact",
+              "posStart": 25,
+              "posStop": 31,
+              "len": 7,
+              "lineNum": 285,
+              "index": 2,
+              "payload": "\u003danswer"
+            }
+          ]
+        },
+        "validLineEntry": {
+          "obj_name": "is_valid_line",
+          "index": 14,
+          "empty_line": true,
+          "is_valid_line": [
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Label"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Label",
+                  "type_category": "Label",
+                  "category": "Label",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "a~z"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 0
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Directive"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Directive",
+                  "type_category": "Directive",
+                  "category": "Directive",
+                  "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "@"
+                    ],
+                    "contains": [
+                      "A~Z"
+                    ],
+                    "ends_with": [
+                      "A~Z",
+                      " "
+                    ],
+                    "must_contain": [
+                      "@"
+                    ],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 1
+            },
+            {
+              "obj_name": "is_valid_line_entry",
+              "is_entry_types": [
+                "Number",
+                "LabelRef"
+              ],
+              "linked_is_entry_types": [
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "Number",
+                  "type_category": "Number",
+                  "category": "Arg",
+                  "category_class": "java.lang.Double",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "#bx",
+                      "#-",
+                      "#",
+                      "0~9"
+                    ],
+                    "contains": [
+                      "0~9"
+                    ],
+                    "ends_with": [
+                      "0~9",
+                      ",",
+                      ";"
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                },
+                {
+                  "obj_name": "is_entry_type",
+                  "type_name": "LabelRef",
+                  "type_category": "LabelReference",
+                  "category": "Arg",
+                  "category_class": "java.lang.String",
+                  "txt_match": {
+                    "obj_name": "JsonObjTxtMatch",
+                    "starts_with": [
+                      "\u003d",
+                      "~",
+                      "-",
+                      "`"
+                    ],
+                    "contains": [
+                      "a~z",
+                      "a~z0~9",
+                      "_"
+                    ],
+                    "ends_with": [
+                      "a~z0~9",
+                      "a~z",
+                      "_",
+                      ";",
+                      ","
+                    ],
+                    "must_contain": [],
+                    "must_not_contain": [],
+                    "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                  "fileName": "./cfg/THUMB/is_entry_types.json",
+                  "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                }
+              ],
+              "index": 2
+            }
+          ],
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine",
+          "fileName": "./cfg/THUMB/is_valid_lines.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsValidLines"
+        },
+        "matchesDirective": [
+          {
+            "obj_name": "is_directive",
+            "directive_name": "@DCWBS",
+            "arg_len": 1,
+            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "args": [
+              {
+                "obj_name": "is_directive_arg",
+                "arg_index": 0,
+                "is_entry_types": [
+                  "Number",
+                  "LabelRef"
+                ],
+                "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "#bx",
+                        "#-",
+                        "#",
+                        "0~9"
+                      ],
+                      "contains": [
+                        "0~9"
+                      ],
+                      "ends_with": [
+                        "0~9",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u0026",
+                        "0x",
+                        "#0x"
+                      ],
+                      "contains": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "e",
+                        "f",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "LabelRef",
+                    "type_category": "LabelReference",
+                    "category": "Arg",
+                    "category_class": "java.lang.String",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "\u003d",
+                        "~",
+                        "-",
+                        "`"
+                      ],
+                      "contains": [
+                        "a~z",
+                        "a~z0~9",
+                        "_"
+                      ],
+                      "ends_with": [
+                        "a~z0~9",
+                        "a~z",
+                        "_",
+                        ";",
+                        ","
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  }
+                ],
+                "is_arg_type": "Number",
+                "bit_series": {
+                  "obj_name": "JsonObjBitSeries",
+                  "bit_start": 0,
+                  "bit_stop": 15,
+                  "bit_len": 16
+                },
+                "num_range": {
+                  "obj_name": "JsonObjNumRange",
+                  "min_value": 0,
+                  "max_value": 65536,
+                  "bit_len": 16,
+                  "twos_compliment": false,
+                  "ones_compliment": false,
+                  "bcd_encoding": false,
+                  "handle_prefetch": false,
+                  "use_halfword_offset": false,
+                  "alignment": "HALFWORD"
+                },
+                "bit_shift": {
+                  "obj_name": "JsonObjBitSHift",
+                  "shift_dir": "NONE",
+                  "shift_amount": -1
+                }
+              }
+            ],
+            "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+            "fileName": "./cfg/THUMB/is_directives.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsDirectives"
+          }
+        ],
+        "payload": [
+          {
+            "obj_name": "Token",
+            "type_name": "Label",
+            "source": "answer_address",
+            "lineNumAbs": 285,
+            "index": 0,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": true,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 1,
+              "posStop": 14,
+              "len": 14,
+              "lineNum": 285,
+              "index": 0,
+              "payload": "answer_address"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Label",
+              "type_category": "Label",
+              "category": "Label",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "a~z"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "Directive",
+            "source": "@DCWBS",
+            "lineNumAbs": 285,
+            "index": 1,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": false,
+            "isOpCode": false,
+            "isDirective": true,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": false,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 18,
+              "posStop": 23,
+              "len": 6,
+              "lineNum": 285,
+              "index": 1,
+              "payload": "@DCWBS"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "Directive",
+              "type_category": "Directive",
+              "category": "Directive",
+              "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "@"
+                ],
+                "contains": [
+                  "A~Z"
+                ],
+                "ends_with": [
+                  "A~Z",
+                  " "
+                ],
+                "must_contain": [
+                  "@"
+                ],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          },
+          {
+            "obj_name": "Token",
+            "type_name": "LabelRef",
+            "source": "\u003danswer",
+            "lineNumAbs": 285,
+            "index": 2,
+            "payloadLen": 0,
+            "payloadArgLen": 0,
+            "isOpCodeArg": false,
+            "isDirectiveArg": true,
+            "isOpCode": false,
+            "isDirective": false,
+            "isComment": false,
+            "isLabel": false,
+            "isLabelRef": true,
+            "artifact": {
+              "obj_name": "Artifact",
+              "posStart": 25,
+              "posStop": 31,
+              "len": 7,
+              "lineNum": 285,
+              "index": 2,
+              "payload": "\u003danswer"
+            },
+            "type": {
+              "obj_name": "is_entry_type",
+              "type_name": "LabelRef",
+              "type_category": "LabelReference",
+              "category": "Arg",
+              "category_class": "java.lang.String",
+              "txt_match": {
+                "obj_name": "JsonObjTxtMatch",
+                "starts_with": [
+                  "\u003d",
+                  "~",
+                  "-",
+                  "`"
+                ],
+                "contains": [
+                  "a~z",
+                  "a~z0~9",
+                  "_"
+                ],
+                "ends_with": [
+                  "a~z0~9",
+                  "a~z",
+                  "_",
+                  ";",
+                  ","
+                ],
+                "must_contain": [],
+                "must_not_contain": [],
+                "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                "fileName": "./cfg/THUMB/is_entry_types.json",
+                "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+              },
+              "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+              "fileName": "./cfg/THUMB/is_entry_types.json",
+              "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+            },
+            "payload": []
+          }
+        ]
+      },
+      "token": {
+        "obj_name": "Token",
+        "type_name": "Label",
+        "source": "answer_address",
+        "lineNumAbs": 285,
+        "index": 0,
+        "payloadLen": 0,
+        "payloadArgLen": 0,
+        "isOpCodeArg": false,
+        "isDirectiveArg": false,
+        "isOpCode": false,
+        "isDirective": false,
+        "isComment": false,
+        "isLabel": true,
+        "isLabelRef": false,
+        "artifact": {
+          "obj_name": "Artifact",
+          "posStart": 1,
+          "posStop": 14,
+          "len": 14,
+          "lineNum": 285,
+          "index": 0,
+          "payload": "answer_address"
+        },
+        "type": {
+          "obj_name": "is_entry_type",
+          "type_name": "Label",
+          "type_category": "Label",
+          "category": "Label",
+          "category_class": "java.lang.String",
+          "txt_match": {
+            "obj_name": "JsonObjTxtMatch",
+            "starts_with": [
+              "a~z"
+            ],
+            "contains": [
+              "a~z",
+              "a~z0~9",
+              "_"
+            ],
+            "ends_with": [
+              "a~z0~9",
+              "a~z",
+              "_",
+              ";",
+              ","
+            ],
+            "must_contain": [],
+            "must_not_contain": [],
+            "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+            "fileName": "./cfg/THUMB/is_entry_types.json",
+            "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+          },
+          "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+          "fileName": "./cfg/THUMB/is_entry_types.json",
+          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+        },
+        "payload": []
+      },
+      "addressHex": "0x80001A0",
+      "addressBin": "0000000110100000",
+      "addressInt": 134218144,
+      "lineNumActive": 67109072,
+      "lineNumAbs": 285,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -10815,7 +12127,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 487,
+        "lineNumAbs": 496,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -10824,7 +12136,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 487,
+          "lineNum": 496,
           "sourceLen": 20,
           "source": "    test_failed     ",
           "payload": [
@@ -10833,7 +12145,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 487,
+              "lineNum": 496,
               "index": 0,
               "payload": "test_failed"
             }
@@ -10896,7 +12208,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "test_failed",
-            "lineNumAbs": 487,
+            "lineNumAbs": 496,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -10912,7 +12224,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 487,
+              "lineNum": 496,
               "index": 0,
               "payload": "test_failed"
             },
@@ -10957,7 +12269,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "test_failed",
-        "lineNumAbs": 487,
+        "lineNumAbs": 496,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -10973,7 +12285,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 487,
+          "lineNum": 496,
           "index": 0,
           "payload": "test_failed"
         },
@@ -11012,11 +12324,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80002C4",
-      "addressBin": "0000001011000100",
-      "addressInt": 134218436,
-      "lineNumActive": 67109218,
-      "lineNumAbs": 487,
+      "addressHex": "0x80002D4",
+      "addressBin": "0000001011010100",
+      "addressInt": 134218452,
+      "lineNumActive": 67109226,
+      "lineNumAbs": 496,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -11029,7 +12341,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 258,
+        "lineNumAbs": 263,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -11038,7 +12350,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 258,
+          "lineNum": 263,
           "sourceLen": 16,
           "source": "\tdraw_pixel_skip",
           "payload": [
@@ -11047,7 +12359,7 @@
               "posStart": 1,
               "posStop": 15,
               "len": 15,
-              "lineNum": 258,
+              "lineNum": 263,
               "index": 0,
               "payload": "draw_pixel_skip"
             }
@@ -11110,7 +12422,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "draw_pixel_skip",
-            "lineNumAbs": 258,
+            "lineNumAbs": 263,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -11126,7 +12438,7 @@
               "posStart": 1,
               "posStop": 15,
               "len": 15,
-              "lineNum": 258,
+              "lineNum": 263,
               "index": 0,
               "payload": "draw_pixel_skip"
             },
@@ -11171,7 +12483,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "draw_pixel_skip",
-        "lineNumAbs": 258,
+        "lineNumAbs": 263,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -11187,7 +12499,7 @@
           "posStart": 1,
           "posStop": 15,
           "len": 15,
-          "lineNum": 258,
+          "lineNum": 263,
           "index": 0,
           "payload": "draw_pixel_skip"
         },
@@ -11226,11 +12538,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000176",
-      "addressBin": "0000000101110110",
-      "addressInt": 134218102,
-      "lineNumActive": 67109051,
-      "lineNumAbs": 258,
+      "addressHex": "0x800017E",
+      "addressBin": "0000000101111110",
+      "addressInt": 134218110,
+      "lineNumActive": 67109055,
+      "lineNumAbs": 263,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -11242,11 +12554,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001C4",
-        "addressBin": "0000000111000100",
-        "addressInt": 134218180,
-        "lineNumActive": 67109090,
-        "lineNumAbs": 312,
+        "addressHex": "0x80001D4",
+        "addressBin": "0000000111010100",
+        "addressInt": 134218196,
+        "lineNumActive": 67109098,
+        "lineNumAbs": 321,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -11255,7 +12567,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 312,
+          "lineNum": 321,
           "sourceLen": 25,
           "source": "\tbit_mask\t\t\t\t@DCHW\t0x0100",
           "payload": [
@@ -11264,7 +12576,7 @@
               "posStart": 1,
               "posStop": 8,
               "len": 8,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 0,
               "payload": "bit_mask"
             },
@@ -11273,7 +12585,7 @@
               "posStart": 13,
               "posStop": 17,
               "len": 5,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -11282,7 +12594,7 @@
               "posStart": 19,
               "posStop": 24,
               "len": 6,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 2,
               "payload": "0x0100"
             }
@@ -11650,7 +12962,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "bit_mask",
-            "lineNumAbs": 312,
+            "lineNumAbs": 321,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -11666,7 +12978,7 @@
               "posStart": 1,
               "posStop": 8,
               "len": 8,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 0,
               "payload": "bit_mask"
             },
@@ -11709,7 +13021,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 312,
+            "lineNumAbs": 321,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -11725,7 +13037,7 @@
               "posStart": 13,
               "posStop": 17,
               "len": 5,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -11765,7 +13077,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0100",
-            "lineNumAbs": 312,
+            "lineNumAbs": 321,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -11781,7 +13093,7 @@
               "posStart": 19,
               "posStop": 24,
               "len": 6,
-              "lineNum": 312,
+              "lineNum": 321,
               "index": 2,
               "payload": "0x0100"
             },
@@ -11825,7 +13137,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "bit_mask",
-        "lineNumAbs": 312,
+        "lineNumAbs": 321,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -11841,7 +13153,7 @@
           "posStart": 1,
           "posStop": 8,
           "len": 8,
-          "lineNum": 312,
+          "lineNum": 321,
           "index": 0,
           "payload": "bit_mask"
         },
@@ -11880,11 +13192,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001C4",
-      "addressBin": "0000000111000100",
-      "addressInt": 134218180,
-      "lineNumActive": 67109090,
-      "lineNumAbs": 312,
+      "addressHex": "0x80001D4",
+      "addressBin": "0000000111010100",
+      "addressInt": 134218196,
+      "lineNumActive": 67109098,
+      "lineNumAbs": 321,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -11897,7 +13209,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 318,
+        "lineNumAbs": 327,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -11906,7 +13218,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 318,
+          "lineNum": 327,
           "sourceLen": 20,
           "source": "    hello_world     ",
           "payload": [
@@ -11915,7 +13227,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 318,
+              "lineNum": 327,
               "index": 0,
               "payload": "hello_world"
             }
@@ -11978,7 +13290,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "hello_world",
-            "lineNumAbs": 318,
+            "lineNumAbs": 327,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -11994,7 +13306,7 @@
               "posStart": 4,
               "posStop": 14,
               "len": 11,
-              "lineNum": 318,
+              "lineNum": 327,
               "index": 0,
               "payload": "hello_world"
             },
@@ -12039,7 +13351,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "hello_world",
-        "lineNumAbs": 318,
+        "lineNumAbs": 327,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -12055,7 +13367,7 @@
           "posStart": 4,
           "posStop": 14,
           "len": 11,
-          "lineNum": 318,
+          "lineNum": 327,
           "index": 0,
           "payload": "hello_world"
         },
@@ -12094,11 +13406,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001CC",
-      "addressBin": "0000000111001100",
-      "addressInt": 134218188,
-      "lineNumActive": 67109094,
-      "lineNumAbs": 318,
+      "addressHex": "0x80001DC",
+      "addressBin": "0000000111011100",
+      "addressInt": 134218204,
+      "lineNumActive": 67109102,
+      "lineNumAbs": 327,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -12110,11 +13422,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCWBS",
         "byteLength": 2,
-        "addressHex": "0x80001C8",
-        "addressBin": "0000000111001000",
-        "addressInt": 134218184,
-        "lineNumActive": 67109092,
-        "lineNumAbs": 315,
+        "addressHex": "0x80001D8",
+        "addressBin": "0000000111011000",
+        "addressInt": 134218200,
+        "lineNumActive": 67109100,
+        "lineNumAbs": 324,
         "payloadLen": 4,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -12123,7 +13435,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 315,
+          "lineNum": 324,
           "sourceLen": 55,
           "source": "\thello_world_address\t\t@DCWBS\t\u003dhello_world\t;@DCHW\t0x01AC",
           "payload": [
@@ -12132,7 +13444,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 0,
               "payload": "hello_world_address"
             },
@@ -12141,7 +13453,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -12150,7 +13462,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 2,
               "payload": "\u003dhello_world"
             },
@@ -12159,7 +13471,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -12168,7 +13480,7 @@
               "posStart": 49,
               "posStop": 54,
               "len": 6,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 4,
               "payload": "0x01AC"
             }
@@ -12572,7 +13884,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "hello_world_address",
-            "lineNumAbs": 315,
+            "lineNumAbs": 324,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -12588,7 +13900,7 @@
               "posStart": 1,
               "posStop": 19,
               "len": 19,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 0,
               "payload": "hello_world_address"
             },
@@ -12631,7 +13943,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCWBS",
-            "lineNumAbs": 315,
+            "lineNumAbs": 324,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -12647,7 +13959,7 @@
               "posStart": 22,
               "posStop": 27,
               "len": 6,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -12687,7 +13999,7 @@
             "obj_name": "Token",
             "type_name": "LabelRef",
             "source": "\u003dhello_world",
-            "lineNumAbs": 315,
+            "lineNumAbs": 324,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -12703,7 +14015,7 @@
               "posStart": 29,
               "posStop": 40,
               "len": 12,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 2,
               "payload": "\u003dhello_world"
             },
@@ -12749,7 +14061,7 @@
             "obj_name": "Token",
             "type_name": "Comment",
             "source": ";@DCHW",
-            "lineNumAbs": 315,
+            "lineNumAbs": 324,
             "index": 3,
             "payloadLen": 1,
             "payloadArgLen": 0,
@@ -12765,7 +14077,7 @@
               "posStart": 42,
               "posStop": 47,
               "len": 6,
-              "lineNum": 315,
+              "lineNum": 324,
               "index": 3,
               "payload": ";@DCHW"
             },
@@ -12801,7 +14113,7 @@
                 "obj_name": "Token",
                 "type_name": "Comment",
                 "source": "0x01AC",
-                "lineNumAbs": 315,
+                "lineNumAbs": 324,
                 "index": 0,
                 "payloadLen": 0,
                 "payloadArgLen": 0,
@@ -12817,7 +14129,7 @@
                   "posStart": 49,
                   "posStop": 54,
                   "len": 6,
-                  "lineNum": 315,
+                  "lineNum": 324,
                   "index": 4,
                   "payload": "0x01AC"
                 },
@@ -12858,7 +14170,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "hello_world_address",
-        "lineNumAbs": 315,
+        "lineNumAbs": 324,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -12874,7 +14186,7 @@
           "posStart": 1,
           "posStop": 19,
           "len": 19,
-          "lineNum": 315,
+          "lineNum": 324,
           "index": 0,
           "payload": "hello_world_address"
         },
@@ -12913,11 +14225,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001C8",
-      "addressBin": "0000000111001000",
-      "addressInt": 134218184,
-      "lineNumActive": 67109092,
-      "lineNumAbs": 315,
+      "addressHex": "0x80001D8",
+      "addressBin": "0000000111011000",
+      "addressInt": 134218200,
+      "lineNumActive": 67109100,
+      "lineNumAbs": 324,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -12930,7 +14242,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 253,
+        "lineNumAbs": 258,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -12939,7 +14251,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 253,
+          "lineNum": 258,
           "sourceLen": 11,
           "source": "\tdraw_pixel",
           "payload": [
@@ -12948,7 +14260,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 253,
+              "lineNum": 258,
               "index": 0,
               "payload": "draw_pixel"
             }
@@ -13011,7 +14323,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "draw_pixel",
-            "lineNumAbs": 253,
+            "lineNumAbs": 258,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -13027,7 +14339,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 253,
+              "lineNum": 258,
               "index": 0,
               "payload": "draw_pixel"
             },
@@ -13072,7 +14384,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "draw_pixel",
-        "lineNumAbs": 253,
+        "lineNumAbs": 258,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -13088,7 +14400,7 @@
           "posStart": 1,
           "posStop": 10,
           "len": 10,
-          "lineNum": 253,
+          "lineNum": 258,
           "index": 0,
           "payload": "draw_pixel"
         },
@@ -13127,11 +14439,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000170",
-      "addressBin": "0000000101110000",
-      "addressInt": 134218096,
-      "lineNumActive": 67109048,
-      "lineNumAbs": 253,
+      "addressHex": "0x8000178",
+      "addressBin": "0000000101111000",
+      "addressInt": 134218104,
+      "lineNumActive": 67109052,
+      "lineNumAbs": 258,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -13357,11 +14669,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCWBS",
         "byteLength": 2,
-        "addressHex": "0x8000190",
-        "addressBin": "0000000110010000",
-        "addressInt": 134218128,
-        "lineNumActive": 67109064,
-        "lineNumAbs": 276,
+        "addressHex": "0x8000198",
+        "addressBin": "0000000110011000",
+        "addressInt": 134218136,
+        "lineNumActive": 67109068,
+        "lineNumAbs": 281,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -13370,7 +14682,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 276,
+          "lineNum": 281,
           "sourceLen": 30,
           "source": "\tvalue_address\t\t\t@DCWBS\t\u003dvalue",
           "payload": [
@@ -13379,7 +14691,7 @@
               "posStart": 1,
               "posStop": 13,
               "len": 13,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 0,
               "payload": "value_address"
             },
@@ -13388,7 +14700,7 @@
               "posStart": 17,
               "posStop": 22,
               "len": 6,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -13397,7 +14709,7 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 2,
               "payload": "\u003dvalue"
             }
@@ -13765,7 +15077,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "value_address",
-            "lineNumAbs": 276,
+            "lineNumAbs": 281,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -13781,7 +15093,7 @@
               "posStart": 1,
               "posStop": 13,
               "len": 13,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 0,
               "payload": "value_address"
             },
@@ -13824,7 +15136,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCWBS",
-            "lineNumAbs": 276,
+            "lineNumAbs": 281,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -13840,7 +15152,7 @@
               "posStart": 17,
               "posStop": 22,
               "len": 6,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 1,
               "payload": "@DCWBS"
             },
@@ -13880,7 +15192,7 @@
             "obj_name": "Token",
             "type_name": "LabelRef",
             "source": "\u003dvalue",
-            "lineNumAbs": 276,
+            "lineNumAbs": 281,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -13896,7 +15208,7 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 276,
+              "lineNum": 281,
               "index": 2,
               "payload": "\u003dvalue"
             },
@@ -13944,7 +15256,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "value_address",
-        "lineNumAbs": 276,
+        "lineNumAbs": 281,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -13960,7 +15272,7 @@
           "posStart": 1,
           "posStop": 13,
           "len": 13,
-          "lineNum": 276,
+          "lineNum": 281,
           "index": 0,
           "payload": "value_address"
         },
@@ -13999,11 +15311,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000190",
-      "addressBin": "0000000110010000",
-      "addressInt": 134218128,
-      "lineNumActive": 67109064,
-      "lineNumAbs": 276,
+      "addressHex": "0x8000198",
+      "addressBin": "0000000110011000",
+      "addressInt": 134218136,
+      "lineNumActive": 67109068,
+      "lineNumAbs": 281,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -14015,11 +15327,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x8000198",
-        "addressBin": "0000000110011000",
-        "addressInt": 134218136,
-        "lineNumActive": 67109068,
-        "lineNumAbs": 280,
+        "addressHex": "0x80001A4",
+        "addressBin": "0000000110100100",
+        "addressInt": 134218148,
+        "lineNumActive": 67109074,
+        "lineNumAbs": 287,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -14028,16 +15340,16 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 280,
+          "lineNum": 287,
           "sourceLen": 30,
-          "source": "    value   \t\t\t\t@DCHW   0xC123",
+          "source": "    value   \t\t\t\t@DCHW   0x0000",
           "payload": [
             {
               "obj_name": "Artifact",
               "posStart": 4,
               "posStop": 8,
               "len": 5,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 0,
               "payload": "value"
             },
@@ -14046,7 +15358,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -14055,9 +15367,9 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 2,
-              "payload": "0xC123"
+              "payload": "0x0000"
             }
           ]
         },
@@ -14423,7 +15735,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "value",
-            "lineNumAbs": 280,
+            "lineNumAbs": 287,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -14439,7 +15751,7 @@
               "posStart": 4,
               "posStop": 8,
               "len": 5,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 0,
               "payload": "value"
             },
@@ -14482,7 +15794,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 280,
+            "lineNumAbs": 287,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -14498,7 +15810,7 @@
               "posStart": 16,
               "posStop": 20,
               "len": 5,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -14537,8 +15849,8 @@
           {
             "obj_name": "Token",
             "type_name": "Number",
-            "source": "0xC123",
-            "lineNumAbs": 280,
+            "source": "0x0000",
+            "lineNumAbs": 287,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -14554,9 +15866,9 @@
               "posStart": 24,
               "posStop": 29,
               "len": 6,
-              "lineNum": 280,
+              "lineNum": 287,
               "index": 2,
-              "payload": "0xC123"
+              "payload": "0x0000"
             },
             "type": {
               "obj_name": "is_entry_type",
@@ -14598,7 +15910,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "value",
-        "lineNumAbs": 280,
+        "lineNumAbs": 287,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -14614,7 +15926,7 @@
           "posStart": 4,
           "posStop": 8,
           "len": 5,
-          "lineNum": 280,
+          "lineNum": 287,
           "index": 0,
           "payload": "value"
         },
@@ -14653,11 +15965,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000198",
-      "addressBin": "0000000110011000",
-      "addressInt": 134218136,
-      "lineNumActive": 67109068,
-      "lineNumAbs": 280,
+      "addressHex": "0x80001A4",
+      "addressBin": "0000000110100100",
+      "addressInt": 134218148,
+      "lineNumActive": 67109074,
+      "lineNumAbs": 287,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -14669,11 +15981,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001B8",
-        "addressBin": "0000000110111000",
-        "addressInt": 134218168,
-        "lineNumActive": 67109084,
-        "lineNumAbs": 306,
+        "addressHex": "0x80001C8",
+        "addressBin": "0000000111001000",
+        "addressInt": 134218184,
+        "lineNumActive": 67109092,
+        "lineNumAbs": 315,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -14682,7 +15994,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 306,
+          "lineNum": 315,
           "sourceLen": 26,
           "source": "\tline_size\t\t\t\t@DCHW\t0x0F00",
           "payload": [
@@ -14691,7 +16003,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 0,
               "payload": "line_size"
             },
@@ -14700,7 +16012,7 @@
               "posStart": 14,
               "posStop": 18,
               "len": 5,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -14709,7 +16021,7 @@
               "posStart": 20,
               "posStop": 25,
               "len": 6,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 2,
               "payload": "0x0F00"
             }
@@ -15077,7 +16389,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "line_size",
-            "lineNumAbs": 306,
+            "lineNumAbs": 315,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15093,7 +16405,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 0,
               "payload": "line_size"
             },
@@ -15136,7 +16448,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 306,
+            "lineNumAbs": 315,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15152,7 +16464,7 @@
               "posStart": 14,
               "posStop": 18,
               "len": 5,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -15192,7 +16504,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0F00",
-            "lineNumAbs": 306,
+            "lineNumAbs": 315,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15208,7 +16520,7 @@
               "posStart": 20,
               "posStop": 25,
               "len": 6,
-              "lineNum": 306,
+              "lineNum": 315,
               "index": 2,
               "payload": "0x0F00"
             },
@@ -15252,7 +16564,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "line_size",
-        "lineNumAbs": 306,
+        "lineNumAbs": 315,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -15268,7 +16580,7 @@
           "posStart": 1,
           "posStop": 9,
           "len": 9,
-          "lineNum": 306,
+          "lineNum": 315,
           "index": 0,
           "payload": "line_size"
         },
@@ -15307,11 +16619,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001B8",
-      "addressBin": "0000000110111000",
-      "addressInt": 134218168,
-      "lineNumActive": 67109084,
-      "lineNumAbs": 306,
+      "addressHex": "0x80001C8",
+      "addressBin": "0000000111001000",
+      "addressInt": 134218184,
+      "lineNumActive": 67109092,
+      "lineNumAbs": 315,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -15323,11 +16635,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001A0",
-        "addressBin": "0000000110100000",
-        "addressInt": 134218144,
-        "lineNumActive": 67109072,
-        "lineNumAbs": 294,
+        "addressHex": "0x80001B0",
+        "addressBin": "0000000110110000",
+        "addressInt": 134218160,
+        "lineNumActive": 67109080,
+        "lineNumAbs": 303,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -15336,7 +16648,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 294,
+          "lineNum": 303,
           "sourceLen": 34,
           "source": "    sp_address   \t\t\t@DCHW   0x0000",
           "payload": [
@@ -15345,7 +16657,7 @@
               "posStart": 4,
               "posStop": 13,
               "len": 10,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 0,
               "payload": "sp_address"
             },
@@ -15354,7 +16666,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -15363,7 +16675,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 2,
               "payload": "0x0000"
             }
@@ -15731,7 +17043,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "sp_address",
-            "lineNumAbs": 294,
+            "lineNumAbs": 303,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15747,7 +17059,7 @@
               "posStart": 4,
               "posStop": 13,
               "len": 10,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 0,
               "payload": "sp_address"
             },
@@ -15790,7 +17102,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 294,
+            "lineNumAbs": 303,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15806,7 +17118,7 @@
               "posStart": 20,
               "posStop": 24,
               "len": 5,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -15846,7 +17158,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x0000",
-            "lineNumAbs": 294,
+            "lineNumAbs": 303,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -15862,7 +17174,7 @@
               "posStart": 28,
               "posStop": 33,
               "len": 6,
-              "lineNum": 294,
+              "lineNum": 303,
               "index": 2,
               "payload": "0x0000"
             },
@@ -15906,7 +17218,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "sp_address",
-        "lineNumAbs": 294,
+        "lineNumAbs": 303,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -15922,7 +17234,7 @@
           "posStart": 4,
           "posStop": 13,
           "len": 10,
-          "lineNum": 294,
+          "lineNum": 303,
           "index": 0,
           "payload": "sp_address"
         },
@@ -15961,11 +17273,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001A0",
-      "addressBin": "0000000110100000",
-      "addressInt": 134218144,
-      "lineNumActive": 67109072,
-      "lineNumAbs": 294,
+      "addressHex": "0x80001B0",
+      "addressBin": "0000000110110000",
+      "addressInt": 134218160,
+      "lineNumActive": 67109080,
+      "lineNumAbs": 303,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -15978,7 +17290,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 268,
+        "lineNumAbs": 273,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -15987,7 +17299,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 268,
+          "lineNum": 273,
           "sourceLen": 10,
           "source": "\tline_done",
           "payload": [
@@ -15996,7 +17308,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 268,
+              "lineNum": 273,
               "index": 0,
               "payload": "line_done"
             }
@@ -16059,7 +17371,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "line_done",
-            "lineNumAbs": 268,
+            "lineNumAbs": 273,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -16075,7 +17387,7 @@
               "posStart": 1,
               "posStop": 9,
               "len": 9,
-              "lineNum": 268,
+              "lineNum": 273,
               "index": 0,
               "payload": "line_done"
             },
@@ -16120,7 +17432,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "line_done",
-        "lineNumAbs": 268,
+        "lineNumAbs": 273,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -16136,7 +17448,7 @@
           "posStart": 1,
           "posStop": 9,
           "len": 9,
-          "lineNum": 268,
+          "lineNum": 273,
           "index": 0,
           "payload": "line_done"
         },
@@ -16175,11 +17487,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000184",
-      "addressBin": "0000000110000100",
-      "addressInt": 134218116,
-      "lineNumActive": 67109058,
-      "lineNumAbs": 268,
+      "addressHex": "0x800018C",
+      "addressBin": "0000000110001100",
+      "addressInt": 134218124,
+      "lineNumActive": 67109062,
+      "lineNumAbs": 273,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
@@ -16191,11 +17503,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001BC",
-        "addressBin": "0000000110111100",
-        "addressInt": 134218172,
-        "lineNumActive": 67109086,
-        "lineNumAbs": 308,
+        "addressHex": "0x80001CC",
+        "addressBin": "0000000111001100",
+        "addressInt": 134218188,
+        "lineNumActive": 67109094,
+        "lineNumAbs": 317,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -16204,7 +17516,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 308,
+          "lineNum": 317,
           "sourceLen": 29,
           "source": "\tline_size_two\t\t\t@DCHW\t0x01D0",
           "payload": [
@@ -16213,7 +17525,7 @@
               "posStart": 1,
               "posStop": 13,
               "len": 13,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 0,
               "payload": "line_size_two"
             },
@@ -16222,7 +17534,7 @@
               "posStart": 17,
               "posStop": 21,
               "len": 5,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -16231,7 +17543,7 @@
               "posStart": 23,
               "posStop": 28,
               "len": 6,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 2,
               "payload": "0x01D0"
             }
@@ -16599,7 +17911,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "line_size_two",
-            "lineNumAbs": 308,
+            "lineNumAbs": 317,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -16615,7 +17927,7 @@
               "posStart": 1,
               "posStop": 13,
               "len": 13,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 0,
               "payload": "line_size_two"
             },
@@ -16658,7 +17970,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 308,
+            "lineNumAbs": 317,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -16674,7 +17986,7 @@
               "posStart": 17,
               "posStop": 21,
               "len": 5,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -16714,7 +18026,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0x01D0",
-            "lineNumAbs": 308,
+            "lineNumAbs": 317,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -16730,7 +18042,7 @@
               "posStart": 23,
               "posStop": 28,
               "len": 6,
-              "lineNum": 308,
+              "lineNum": 317,
               "index": 2,
               "payload": "0x01D0"
             },
@@ -16815,7 +18127,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "line_size_two",
-        "lineNumAbs": 308,
+        "lineNumAbs": 317,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -16831,7 +18143,7 @@
           "posStart": 1,
           "posStop": 13,
           "len": 13,
-          "lineNum": 308,
+          "lineNum": 317,
           "index": 0,
           "payload": "line_size_two"
         },
@@ -16870,11 +18182,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001BC",
-      "addressBin": "0000000110111100",
-      "addressInt": 134218172,
-      "lineNumActive": 67109086,
-      "lineNumAbs": 308,
+      "addressHex": "0x80001CC",
+      "addressBin": "0000000111001100",
+      "addressInt": 134218188,
+      "lineNumActive": 67109094,
+      "lineNumAbs": 317,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -16886,11 +18198,11 @@
         "obj_name": "TokenLine",
         "payloadDirective": "@DCHW",
         "byteLength": 2,
-        "addressHex": "0x80001C0",
-        "addressBin": "0000000111000000",
-        "addressInt": 134218176,
-        "lineNumActive": 67109088,
-        "lineNumAbs": 310,
+        "addressHex": "0x80001D0",
+        "addressBin": "0000000111010000",
+        "addressInt": 134218192,
+        "lineNumActive": 67109096,
+        "lineNumAbs": 319,
         "payloadLen": 3,
         "payloadLenArg": 1,
         "isLineEmpty": false,
@@ -16899,7 +18211,7 @@
         "isLineLabelDef": false,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 310,
+          "lineNum": 319,
           "sourceLen": 27,
           "source": "\tfont_color\t\t\t\t@DCHW\t0xFF40",
           "payload": [
@@ -16908,7 +18220,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 0,
               "payload": "font_color"
             },
@@ -16917,7 +18229,7 @@
               "posStart": 15,
               "posStop": 19,
               "len": 5,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -16926,7 +18238,7 @@
               "posStart": 21,
               "posStop": 26,
               "len": 6,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 2,
               "payload": "0xFF40"
             }
@@ -17294,7 +18606,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "font_color",
-            "lineNumAbs": 310,
+            "lineNumAbs": 319,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -17310,7 +18622,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 0,
               "payload": "font_color"
             },
@@ -17353,7 +18665,7 @@
             "obj_name": "Token",
             "type_name": "Directive",
             "source": "@DCHW",
-            "lineNumAbs": 310,
+            "lineNumAbs": 319,
             "index": 1,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -17369,7 +18681,7 @@
               "posStart": 15,
               "posStop": 19,
               "len": 5,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 1,
               "payload": "@DCHW"
             },
@@ -17409,7 +18721,7 @@
             "obj_name": "Token",
             "type_name": "Number",
             "source": "0xFF40",
-            "lineNumAbs": 310,
+            "lineNumAbs": 319,
             "index": 2,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -17425,7 +18737,7 @@
               "posStart": 21,
               "posStop": 26,
               "len": 6,
-              "lineNum": 310,
+              "lineNum": 319,
               "index": 2,
               "payload": "0xFF40"
             },
@@ -17469,7 +18781,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "font_color",
-        "lineNumAbs": 310,
+        "lineNumAbs": 319,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -17485,7 +18797,7 @@
           "posStart": 1,
           "posStop": 10,
           "len": 10,
-          "lineNum": 310,
+          "lineNum": 319,
           "index": 0,
           "payload": "font_color"
         },
@@ -17524,11 +18836,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x80001C0",
-      "addressBin": "0000000111000000",
-      "addressInt": 134218176,
-      "lineNumActive": 67109088,
-      "lineNumAbs": 310,
+      "addressHex": "0x80001D0",
+      "addressBin": "0000000111010000",
+      "addressInt": 134218192,
+      "lineNumActive": 67109096,
+      "lineNumAbs": 319,
       "isEmptyLineLabel": false,
       "isLabel": true,
       "isStaticValue": false
@@ -17541,7 +18853,7 @@
         "byteLength": 2,
         "addressInt": 0,
         "lineNumActive": 0,
-        "lineNumAbs": 210,
+        "lineNumAbs": 215,
         "payloadLen": 1,
         "payloadLenArg": 0,
         "isLineEmpty": false,
@@ -17550,7 +18862,7 @@
         "isLineLabelDef": true,
         "source": {
           "obj_name": "ArtifactLine",
-          "lineNum": 210,
+          "lineNum": 215,
           "sourceLen": 11,
           "source": "\tprint_char",
           "payload": [
@@ -17559,7 +18871,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 210,
+              "lineNum": 215,
               "index": 0,
               "payload": "print_char"
             }
@@ -17622,7 +18934,7 @@
             "obj_name": "Token",
             "type_name": "Label",
             "source": "print_char",
-            "lineNumAbs": 210,
+            "lineNumAbs": 215,
             "index": 0,
             "payloadLen": 0,
             "payloadArgLen": 0,
@@ -17638,7 +18950,7 @@
               "posStart": 1,
               "posStop": 10,
               "len": 10,
-              "lineNum": 210,
+              "lineNum": 215,
               "index": 0,
               "payload": "print_char"
             },
@@ -17683,7 +18995,7 @@
         "obj_name": "Token",
         "type_name": "Label",
         "source": "print_char",
-        "lineNumAbs": 210,
+        "lineNumAbs": 215,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -17699,7 +19011,7 @@
           "posStart": 1,
           "posStop": 10,
           "len": 10,
-          "lineNum": 210,
+          "lineNum": 215,
           "index": 0,
           "payload": "print_char"
         },
@@ -17738,11 +19050,11 @@
         },
         "payload": []
       },
-      "addressHex": "0x8000134",
-      "addressBin": "0000000100110100",
-      "addressInt": 134218036,
-      "lineNumActive": 67109018,
-      "lineNumAbs": 210,
+      "addressHex": "0x800013C",
+      "addressBin": "0000000100111100",
+      "addressInt": 134218044,
+      "lineNumActive": 67109022,
+      "lineNumAbs": 215,
       "isEmptyLineLabel": true,
       "isLabel": true,
       "isStaticValue": false
