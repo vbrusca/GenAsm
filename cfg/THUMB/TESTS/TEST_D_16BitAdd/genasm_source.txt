@@ -72,6 +72,18 @@
 		PUSH	{R0-R6, LR}
 		
 		;add work to do here
+		LDR		R0, [PC, `result_address]
+		LDR		R1, [PC, `value_address]
+		LDR		R2, [R1, #0]
+		LDR		R3, [PC, `value_two_address]
+		LDR		R4, [R3, #0]
+		ADD		R2, R4
+		STR		R2, [R0, #0]
+		
+		LDR		R5, [PC, `answer_address]
+		LDR		R6, [R5, #0]
+		MOV		R8, R6
+		CMP		R2, R8		
 									
 		POP		{R0-R6, PC}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -151,13 +163,17 @@
 							@DCWBF	=result
 	answer_address			@DCWBS	=answer
 							@DCWBF	=answer
+	value_two_address		@DCWBS	=value_two
+							@DCWBF	=value_two							
     value   				@DCHW   0x0000
 							@DCHW   0xC123
     result  				@DCHW   0x0000
 							@DCHW   0x0000
 	answer   				@DCHW   0xFFFF
 							@DCHW   0x3EDC
-
+    value_two   			@DCHW   0x0000
+							@DCHW   0x02AA
+							
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @END

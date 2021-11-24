@@ -104,7 +104,7 @@ public class GenAsm {
     public static boolean ASM_QUELL_FILE_OUTPUT = false;
     
     /**
-     * 
+     * A string value that represents the GenAsm project's cfg directory. Should end in a path separator.
      */
     public static String CFG_DIR_PATH = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\";
     
@@ -139,7 +139,7 @@ public class GenAsm {
             }
             
         } else if(args == null || args.length < ARG_LEN_TARGET) {
-            String targetProgram = "TEST_C_OnesComp";
+            String targetProgram = "TEST_E_SplitByte";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";

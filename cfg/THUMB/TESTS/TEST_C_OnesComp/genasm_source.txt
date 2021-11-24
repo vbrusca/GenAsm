@@ -77,7 +77,7 @@
 		LDR		R2, [R1, #0]
 		MVN		R2, R2
 		STR		R2, [R0, #0]
-
+		
 		LDR		R3, [PC, `answer_address]
 		LDR		R4, [R3, #0]
 		MOV		R8, R4
