@@ -12204,8 +12204,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 212,
-    "sourceLen": 38,
-    "source": "\t\tADD\t\tR2, R2, R5\t\t\t\t\t\t\t\t;r2 \u003d r2 + r5",
+    "sourceLen": 37,
+    "source": "\t\tADD\t\tR2, R2, R5\t\t\t\t\t\t\t;r2 \u003d r2 + r5",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -12245,8 +12245,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 25,
-        "posStop": 27,
+        "posStart": 24,
+        "posStop": 26,
         "len": 3,
         "lineNum": 212,
         "index": 4,
@@ -12254,8 +12254,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 29,
-        "posStop": 29,
+        "posStart": 28,
+        "posStop": 28,
         "len": 1,
         "lineNum": 212,
         "index": 5,
@@ -12263,8 +12263,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 31,
-        "posStop": 32,
+        "posStart": 30,
+        "posStop": 31,
         "len": 2,
         "lineNum": 212,
         "index": 6,
@@ -12272,8 +12272,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 34,
-        "posStop": 34,
+        "posStart": 33,
+        "posStop": 33,
         "len": 1,
         "lineNum": 212,
         "index": 7,
@@ -12281,8 +12281,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 36,
-        "posStop": 37,
+        "posStart": 35,
+        "posStop": 36,
         "len": 2,
         "lineNum": 212,
         "index": 8,
