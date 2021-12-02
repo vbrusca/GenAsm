@@ -2630,7 +2630,7 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + token.lineNumAbs + " and label prefix " + c);
                         }
                        
-                        line.source.source += " [" + tInt + "]";           
+                        line.source.source += "; [" + tInt + "]";           
 
                         if(entry.num_range != null && entry.num_range.ones_compliment == true) {
                             tInt = ~tInt;
@@ -3074,7 +3074,7 @@ public class AssemblerThumb implements Assembler {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
                         }
                         
-                        line.source.source += " [" + tInt + "]";
+                        line.source.source += "; [" + tInt + "]";
                         
                         //special rule for ADD OpCode
                         if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
@@ -3258,23 +3258,18 @@ public class AssemblerThumb implements Assembler {
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
                             //label address offset minus prefetch `
-                            //Logger.wrl("AAA:" + opCodeEntry.opCode.op_code_name + ", " + line.source.source);
-                            //Logger.wrl("label address offset minus prefetch AAA: " + line.addressInt + ", " + sym.addressInt + ", " + jsonObjIsOpCodes.pc_prefetch_halfwords);
                             if(line.addressInt < sym.addressInt) {
-                                //Logger.wrl("label address offset minus prefetch AAA 1");
                                 tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
                             } else {
-                                //Logger.wrl("label address offset minus prefetch AAA 2");
                                 tInt =  -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
                             }
-                            //Logger.wrl("label address offset minus prefetch AAA 3: " + tInt);
                             Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else {
                             throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
                         }
                        
-                        line.source.source += " [" + tInt + "]";           
+                        line.source.source += "; [" + tInt + "]";           
                         
                         //special rule for ADD OpCode
                         if(opCodeEntry.binRepStr1.equals(SPECIAL_ADD_OP_CODE_CHECK) && tInt < 0) {
