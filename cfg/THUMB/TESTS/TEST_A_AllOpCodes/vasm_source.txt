@@ -86,7 +86,7 @@ label_:                              ;branch label
 			ADD     R0, SP, #1020
 			ADD     SP, #0          ;5.13
 			ADD     SP, #508
-			;ADD     SP, #-508		;vAsm: "Illegal out of range"	ARMThumb_Sim Asm: B0FC, 1011000011111100	ShellStorm Asm: B0FF, 1011000011111111
+			;ADD     SP, #-2		;vAsm: "Illegal out of range"	ARMThumb_Sim Asm: B0FC, 1011000011111100	ShellStorm Asm: B0FF, 1011000011111111
 			PUSH    {R0, R1}        ;5.14
 			PUSH    {R0, R1, LR}
 			POP     {R0, R1}

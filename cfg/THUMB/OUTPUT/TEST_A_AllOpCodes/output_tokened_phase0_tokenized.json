@@ -44531,22 +44531,22 @@
     "source": {
       "obj_name": "ArtifactLine",
       "lineNum": 207,
-      "sourceLen": 34,
-      "source": "                ;ADD     SP, #-508",
+      "sourceLen": 31,
+      "source": "                ADD     SP, #-2",
       "payload": [
         {
           "obj_name": "Artifact",
           "posStart": 16,
-          "posStop": 19,
-          "len": 4,
+          "posStop": 18,
+          "len": 3,
           "lineNum": 207,
           "index": 0,
-          "payload": ";ADD"
+          "payload": "ADD"
         },
         {
           "obj_name": "Artifact",
-          "posStart": 25,
-          "posStop": 26,
+          "posStart": 24,
+          "posStop": 25,
           "len": 2,
           "lineNum": 207,
           "index": 1,
@@ -44554,56 +44554,56 @@
         },
         {
           "obj_name": "Artifact",
-          "posStart": 29,
-          "posStop": 33,
-          "len": 5,
+          "posStart": 28,
+          "posStop": 30,
+          "len": 3,
           "lineNum": 207,
           "index": 2,
-          "payload": "#-508"
+          "payload": "#-2"
         }
       ]
     },
     "payload": [
       {
         "obj_name": "Token",
-        "type_name": "Comment",
-        "source": ";ADD",
+        "type_name": "OpCode",
+        "source": "ADD",
         "lineNumAbs": 207,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
         "isOpCodeArg": false,
         "isDirectiveArg": false,
-        "isOpCode": false,
+        "isOpCode": true,
         "isDirective": false,
-        "isComment": true,
+        "isComment": false,
         "isLabel": false,
         "isLabelRef": false,
         "artifact": {
           "obj_name": "Artifact",
           "posStart": 16,
-          "posStop": 19,
-          "len": 4,
+          "posStop": 18,
+          "len": 3,
           "lineNum": 207,
           "index": 0,
-          "payload": ";ADD"
+          "payload": "ADD"
         },
         "type": {
           "obj_name": "is_entry_type",
-          "type_name": "Comment",
-          "type_category": "Comment",
-          "category": "Comment",
-          "category_class": "java.lang.String",
+          "type_name": "OpCode",
+          "type_category": "OpCode",
+          "category": "OpCode",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCode",
           "txt_match": {
             "obj_name": "JsonObjTxtMatch",
             "starts_with": [
-              ";"
+              "A~Z"
             ],
             "contains": [
-              "*"
+              "A~Z"
             ],
             "ends_with": [
-              "*"
+              "A~Z"
             ],
             "must_contain": [],
             "must_not_contain": [],
@@ -44619,7 +44619,7 @@
       },
       {
         "obj_name": "Token",
-        "type_name": "Comment",
+        "type_name": "RegisterSp",
         "source": "SP",
         "lineNumAbs": 207,
         "index": 1,
@@ -44629,13 +44629,13 @@
         "isDirectiveArg": false,
         "isOpCode": false,
         "isDirective": false,
-        "isComment": true,
+        "isComment": false,
         "isLabel": false,
         "isLabelRef": false,
         "artifact": {
           "obj_name": "Artifact",
-          "posStart": 25,
-          "posStop": 26,
+          "posStart": 24,
+          "posStop": 25,
           "len": 2,
           "lineNum": 207,
           "index": 1,
@@ -44643,22 +44643,26 @@
         },
         "type": {
           "obj_name": "is_entry_type",
-          "type_name": "Comment",
-          "type_category": "Comment",
-          "category": "Comment",
-          "category_class": "java.lang.String",
+          "type_name": "RegisterSp",
+          "type_category": "RegisterHi",
+          "category": "Arg",
+          "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
           "txt_match": {
             "obj_name": "JsonObjTxtMatch",
             "starts_with": [
-              ";"
+              "S"
             ],
             "contains": [
-              "*"
+              "P"
             ],
             "ends_with": [
-              "*"
+              ",",
+              ";",
+              "P"
             ],
-            "must_contain": [],
+            "must_contain": [
+              "SP"
+            ],
             "must_not_contain": [],
             "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
             "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -44672,8 +44676,8 @@
       },
       {
         "obj_name": "Token",
-        "type_name": "Comment",
-        "source": "#-508",
+        "type_name": "Number",
+        "source": "#-2",
         "lineNumAbs": 207,
         "index": 2,
         "payloadLen": 0,
@@ -44682,34 +44686,39 @@
         "isDirectiveArg": false,
         "isOpCode": false,
         "isDirective": false,
-        "isComment": true,
+        "isComment": false,
         "isLabel": false,
         "isLabelRef": false,
         "artifact": {
           "obj_name": "Artifact",
-          "posStart": 29,
-          "posStop": 33,
-          "len": 5,
+          "posStart": 28,
+          "posStop": 30,
+          "len": 3,
           "lineNum": 207,
           "index": 2,
-          "payload": "#-508"
+          "payload": "#-2"
         },
         "type": {
           "obj_name": "is_entry_type",
-          "type_name": "Comment",
-          "type_category": "Comment",
-          "category": "Comment",
-          "category_class": "java.lang.String",
+          "type_name": "Number",
+          "type_category": "Number",
+          "category": "Arg",
+          "category_class": "java.lang.Double",
           "txt_match": {
             "obj_name": "JsonObjTxtMatch",
             "starts_with": [
-              ";"
+              "#bx",
+              "#-",
+              "#",
+              "0~9"
             ],
             "contains": [
-              "*"
+              "0~9"
             ],
             "ends_with": [
-              "*"
+              "0~9",
+              ",",
+              ";"
             ],
             "must_contain": [],
             "must_not_contain": [],

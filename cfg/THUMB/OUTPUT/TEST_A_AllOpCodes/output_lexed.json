@@ -7038,22 +7038,22 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 207,
-    "sourceLen": 34,
-    "source": "                ;ADD     SP, #-508",
+    "sourceLen": 31,
+    "source": "                ADD     SP, #-2",
     "payload": [
       {
         "obj_name": "Artifact",
         "posStart": 16,
-        "posStop": 19,
-        "len": 4,
+        "posStop": 18,
+        "len": 3,
         "lineNum": 207,
         "index": 0,
-        "payload": ";ADD"
+        "payload": "ADD"
       },
       {
         "obj_name": "Artifact",
-        "posStart": 25,
-        "posStop": 26,
+        "posStart": 24,
+        "posStop": 25,
         "len": 2,
         "lineNum": 207,
         "index": 1,
@@ -7061,12 +7061,12 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 29,
-        "posStop": 33,
-        "len": 5,
+        "posStart": 28,
+        "posStop": 30,
+        "len": 3,
         "lineNum": 207,
         "index": 2,
-        "payload": "#-508"
+        "payload": "#-2"
       }
     ]
   },

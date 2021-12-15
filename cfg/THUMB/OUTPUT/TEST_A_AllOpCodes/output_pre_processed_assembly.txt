@@ -205,7 +205,7 @@
                 ADD     R0, SP, #1020
                 ADD     SP, #0          ;5.13
                 ADD     SP, #508
-                ;ADD     SP, #-508
+                ADD     SP, #-2
                 PUSH    {R0, R1}        ;5.14
                 PUSH    {R0, R1, LR}
                 POP     {R0, R1}
