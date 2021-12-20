@@ -2,354 +2,352 @@
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;ORIGINAL VASM CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;ORIGINAL VASM CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
     
-	cursor_x    @EQU    0x02000000
-    cursor_y    @EQU    0x02000001
+   cursor_x    @EQU    0x02000000
+   cursor_y    @EQU    0x02000001
     
-    @ORG 0x08000000
+   @ORG 0x08000000
 
-    ;need 122 16bit entries to match GBA header
-    ;already little endian, need to flip
-    ;++++++++++++++++++++++++++++++++
-    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
-    ;++++++++++++++++++++++++++++++++
+   ;need 122 16bit entries to match GBA header
+   ;already little endian, need to flip
+   ;++++++++++++++++++++++++++++++++
+   ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
+   ;++++++++++++++++++++++++++++++++
 
-	program_start
-    ;already little endian, need to flip
-    ;++++++++++++++++++++++++++++++++
-    ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
-    ;++++++++++++++++++++++++++++++++
+   program_start
+   ;already little endian, need to flip
+   ;++++++++++++++++++++++++++++++++
+   ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
+   ;++++++++++++++++++++++++++++++++
     
-    ;.thumb				;Thumb mode
-    thumb_test                       			;Init Stack Pointer SP=0x03000000. Arm 2 thumb entry point 0x00F4
-		LDR		R1, [PC, `sp_address]
-		MOV		SP, R1
-		
-		LDR		R4, [PC, `screen_regs]			;0x04000000 DISPCNT -LCD Control
-		LDR		R2, [PC, `screen_setting]		;0x403 4= Layer 2 on / 3= ScreenMode 3
-		STR		R2, [R4, #0]
-		
-		BL		`do_work
-		BEQ		`print_passed_address
-		
-		print_failed_address
-		LDR		R1, [PC, `test_failed_address]
-		BL		`print_string
-        B       `inf_loop
-		
-		print_passed_address
-		LDR		R1, [PC, `test_passed_address]
-		BL		`print_string
-		B       `inf_loop
-		
-		;print_hello_world
-		;LDR		R1, [PC, `hello_world_address]	;Address of Hello World Message		
-		;BL		`print_string
-		;B       `inf_loop		
+   ;.thumb                                                  ;Thumb mode
+   thumb_test                                               ;Init Stack Pointer SP=0x03000000. Arm 2 thumb entry point 0x00F4
+      LDR   R1, [PC, `sp_address]
+      MOV   SP, R1
+      
+      LDR   R4, [PC, `screen_regs]                          ;0x04000000 DISPCNT -LCD Control
+      LDR   R2, [PC, `screen_setting]                       ;0x403 4= Layer 2 on / 3= ScreenMode 3
+      STR   R2, [R4, #0]
+      
+      BL    `do_work
+      BEQ   `print_passed_address
+      
+   print_failed_address
+      LDR   R1, [PC, `test_failed_address]
+      BL    `print_string
+      B     `inf_loop
+      
+   print_passed_address
+      LDR   R1, [PC, `test_passed_address]
+      BL    `print_string
+      B     `inf_loop
+      
+   ;print_hello_world
+      ;LDR  R1, [PC, `hello_world_address]                  ;Address of Hello World Message      
+      ;BL   `print_string
+      ;B    `inf_loop
         
-		inf_loop
-        B       `inf_loop							;Halt
+   inf_loop
+      B     `inf_loop                                       ;Halt
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	print_string
-		PUSH	{R0-R6, LR}
+   print_string
+      PUSH  {R0-R6, LR}
 
-	print_string_again
-		LDRB	R0, [R1, #0]
-		ADD		R1, #1
-		CMP		R0, #255
-		BEQ		`print_string_done
-		BL		`print_char
-		B		`print_string_again
-		
-	print_string_done
-		POP		{R0-R6, PC}
+   print_string_again
+      LDRB  R0, [R1, #0]
+      ADD   R1, #1
+      CMP   R0, #255
+      BEQ   `print_string_done
+      BL    `print_char
+      B     `print_string_again
+      
+   print_string_done
+      POP   {R0-R6, PC}
 
-	do_work
-		PUSH	{R0-R6, LR}
-		
-		;add work to do here
-									
-		POP		{R0-R6, PC}
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   do_work
+      PUSH  {R0-R6, LR}
+      
+      ;add work to do here
+                           
+      POP   {R0-R6, PC}
+   
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	print_char
-		PUSH	{R0-R7, LR}
-		CMP		R0, #32							;Space?
-		BEQ		`line_done
-		
-		LDR		R3, [PC, `adr_cursor_x]			;LDR Rd, [pc, #immed_8x4]
-		MOV		R4, #0
-		LDRB	R4, [R3, #0]					;CursorX pos
-		
-		LDR		R3, [PC, `adr_cursor_y]
-		MOV		R5, #0
-		LDRB	R5, [R3, #0]					;CursorY pos
-		
-		LDR		R3, [PC, `screen_ram]			;0x06000000 - VRAM
-		
-		MOV		R6, #16							;16 byte per char
-		MUL		R6, R4							;Calc x-offset
-		ADD		R3, R3, R6
-		
-		LDR		R6, [PC, `line_size]			;240*8*2
-		MUL		R6, R5
-		ADD		R3, R3, R6
-		
-		ADD		R4, PC, `bitmap_font			;Font source
-		
-		MOV		R1, #0b11011111					;Convert to upper case
-		AND		R0, R1
-		SUB		R0, #65							;First Char is 65 (A)
-		LSL		R0, R0, #3						;8 bytes per char
-		ADD		R4, R4, R0						;Calculate source address
-		
-		LDR		R2, [PC, `font_color]			;ABBBBBGGGGGRRRRR	A=Alpha
-		LDR		R0,	[PC, `line_size_two]		;480 - 16
-		MOV		R8, R0
-		
-		MOV		R6, #8							;8 Y-lines 
-		
-	draw_line
-		MOV		R7, #8							;8 pixels per X-line
-		LDRB	R1, [R4, #0]					;Load Letter
-		ADD		R4, #1
-		LDR		R5, [PC, `bit_mask]				;Mask - 0b100000000
+   print_char
+      PUSH  {R0-R7, LR}
+      CMP   R0, #32                                         ;Space?
+      BEQ   `line_done
+      
+      LDR   R3, [PC, `adr_cursor_x]                         ;LDR Rd, [pc, #immed_8x4]
+      MOV   R4, #0
+      LDRB  R4, [R3, #0]                                    ;CursorX pos
+      
+      LDR   R3, [PC, `adr_cursor_y]
+      MOV   R5, #0
+      LDRB  R5, [R3, #0]                                    ;CursorY pos
+      
+      LDR   R3, [PC, `screen_ram]                           ;0x06000000 - VRAM
+      
+      MOV   R6, #16                                         ;16 byte per char
+      MUL   R6, R4                                          ;Calc x-offset
+      ADD   R3, R3, R6
+      
+      LDR   R6, [PC, `line_size]                            ;240*8*2
+      MUL   R6, R5
+      ADD   R3, R3, R6
+      
+      ADD   R4, PC, `bitmap_font                            ;Font source
+      
+      MOV   R1, #0b11011111                                 ;Convert to upper case
+      AND   R0, R1
+      SUB   R0, #65                                         ;First Char is 65 (A)
+      LSL   R0, R0, #3                                      ;8 bytes per char
+      ADD   R4, R4, R0                                      ;Calculate source address
+      
+      LDR   R2, [PC, `font_color]                           ;ABBBBBGGGGGRRRRR   A=Alpha
+      LDR   R0, [PC, `line_size_two]                        ;480 - 16
+      MOV   R8, R0
+      
+      MOV   R6, #8                                          ;8 Y-lines 
+      
+   draw_line
+      MOV   R7, #8                                          ;8 pixels per X-line
+      LDRB  R1, [R4, #0]                                    ;Load Letter
+      ADD   R4, #1
+      LDR   R5, [PC, `bit_mask]                             ;Mask - 0b100000000
 
-	draw_pixel
-		TST		R1, R5							;Is bit 1?
-		BEQ		`draw_pixel_skip
-		STRH	R2, [R3, #0]					;Yes? then fill pixel
-		
-	draw_pixel_skip
-		ADD		R3, R3, #2
-		LSR		R5, R5, #1						;Bitshift Mask
-		SUB		R7, R7, #1
-		BNE		`draw_pixel						;Next Hpixel
-		
-		ADD		R3, R8 							;Move Down a line (240 pixels *2 bytes) 
-		SUB		R6, R6, #1						;-1 char (16 px)
-		BNE 	`draw_line						;Next Vline
-		
-	line_done
-		LDR		R3, [PC, `adr_cursor_x]
-		LDRB 	R0, [R3,#0]	
-		ADD 	R0,	R0, #1						;Move across screen
-		STRB 	R0,	[R3, #0]	
-		POP 	{R0-R7, PC}
-		
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000							
-	value_address			@DCWBS	=value
-							@DCWBF	=value
-	result_address			@DCWBS	=result
-							@DCWBF	=result
-	answer_address			@DCWBS	=answer
-							@DCWBF	=answer
-    value   				@DCHW   0x0000
-							@DCHW   0xC123
-    result  				@DCHW   0x0000
-							@DCHW   0x0000
-	answer   				@DCHW   0xFFFF
-							@DCHW   0x3EDC
+   draw_pixel
+      TST   R1, R5                                          ;Is bit 1?
+      BEQ   `draw_pixel_skip
+      STRH  R2, [R3, #0]                                    ;Yes? then fill pixel
+      
+   draw_pixel_skip
+      ADD   R3, R3, #2
+      LSR   R5, R5, #1                                      ;Bitshift Mask
+      SUB   R7, R7, #1
+      BNE   `draw_pixel                                     ;Next Hpixel
+      
+      ADD   R3, R8                                          ;Move Down a line (240 pixels *2 bytes) 
+      SUB   R6, R6, #1                                      ;-1 char (16 px)
+      BNE   `draw_line                                      ;Next Vline
+      
+   line_done
+      LDR   R3, [PC, `adr_cursor_x]
+      LDRB  R0, [R3,#0]   
+      ADD   R0,  R0, #1                                     ;Move across screen
+      STRB  R0, [R3, #0]   
+      POP   {R0-R7, PC}
+      
+                     @DCHW    0x0000
+                     @DCHW    0x0000
+                     @DCHW    0x0000
+                     @DCHW    0x0000                     
+   value_address     @DCWBS   =value
+                     @DCWBF   =value
+   result_address    @DCWBS   =result
+                     @DCWBF   =result
+   answer_address    @DCWBS   =answer
+                     @DCWBF   =answer
+   value             @DCHW    0x0000
+                     @DCHW    0xC123
+   result            @DCHW    0x0000
+                     @DCHW    0x0000
+   answer            @DCHW    0xFFFF
+                     @DCHW    0x3EDC
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @END
 
 @AREA |Data| @DATA, @READWRITE
 @ENTRY
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-		
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000	
-    sp_address   			@DCHW   0x0000
-							@DCHW   0x0300
-    screen_regs	    		@DCHW   0x0000
-							@DCHW   0x0400
-    screen_setting  		@DCHW   0x0403
-							@DCHW   0x0000
-	adr_cursor_x			@DCHW	0x0000
-							@DCHW	0x0200
-	adr_cursor_y			@DCHW	0x0001
-							@DCHW	0x0200
-	screen_ram				@DCHW	0x0000
-							@DCHW	0x0600
-	line_size				@DCHW	0x0F00
-							@DCHW	0x0000
-	line_size_two			@DCHW	0x01D0
-							@DCHW	0x0000
-	font_color				@DCHW	0xFF40
-							@DCHW	0x0000
-	bit_mask				@DCHW	0x0100
-							@DCHW	0x0000
+                        @DCHW   0x0000
+                        @DCHW   0x0000
+                        @DCHW   0x0000
+                        @DCHW   0x0000   
+   sp_address           @DCHW   0x0000
+                        @DCHW   0x0300
+   screen_regs          @DCHW   0x0000
+                        @DCHW   0x0400
+   screen_setting       @DCHW   0x0403
+                        @DCHW   0x0000
+   adr_cursor_x         @DCHW   0x0000
+                        @DCHW   0x0200
+   adr_cursor_y         @DCHW   0x0001
+                        @DCHW   0x0200
+   screen_ram           @DCHW   0x0000
+                        @DCHW   0x0600
+   line_size            @DCHW   0x0F00
+                        @DCHW   0x0000
+   line_size_two        @DCHW   0x01D0
+                        @DCHW   0x0000
+   font_color           @DCHW   0xFF40
+                        @DCHW   0x0000
+   bit_mask             @DCHW   0x0100
+                        @DCHW   0x0000
+   hello_world_address  @DCWBS   =hello_world               ;@DCHW   0x01AC
+                        @DCWBF   =hello_world               ;@DCHW   0x0800         ;should be address of hello_world   
+   hello_world     
+                        ;$FLIPSTRING |Hello World|
 
-	hello_world_address		@DCWBS	=hello_world	;@DCHW	0x01AC
-							@DCWBF	=hello_world	;@DCHW	0x0800			;should be address of hello_world	
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   
+                     @DCHW    0x0000
+                     @DCHW    0x0000
+                     @DCHW    0x0000
+                     @DCHW    0x0000                        
+    bitmap_font                                             ;1 Bit per pixel font
+                     @FLPDCHW 0x183C 
+                     @FLPDCHW 0x6666
+                     @FLPDCHW 0x7E66
+                     @FLPDCHW 0x2400                        ;A
 
-    hello_world     
-							;$FLIPSTRING |Hello World|
+                     @FLPDCHW 0x3C66 
+                     @FLPDCHW 0x667C 
+                     @FLPDCHW 0x6666 
+                     @FLPDCHW 0x3C00                        ;B
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000
-							@DCHW	0x0000								
-    bitmap_font                         		;1 Bit per pixel font
-							@FLPDCHW 0x183C 
-							@FLPDCHW 0x6666
-							@FLPDCHW 0x7E66
-							@FLPDCHW 0x2400		;A
+                     @FLPDCHW 0x387C 
+                     @FLPDCHW 0xC0C0 
+                     @FLPDCHW 0xC07C 
+                     @FLPDCHW 0x3800                        ;C
 
-							@FLPDCHW 0x3C66 
-							@FLPDCHW 0x667C 
-							@FLPDCHW 0x6666 
-							@FLPDCHW 0x3C00		;B
+                     @FLPDCHW 0x3C64 
+                     @FLPDCHW 0x6666
+                     @FLPDCHW 0x6664 
+                     @FLPDCHW 0x3800                        ;D
 
-							@FLPDCHW 0x387C 
-							@FLPDCHW 0xC0C0 
-							@FLPDCHW 0xC07C 
-							@FLPDCHW 0x3800		;C
+                     @FLPDCHW 0x3C7E 
+                     @FLPDCHW 0x6078 
+                     @FLPDCHW 0x607E 
+                     @FLPDCHW 0x3C00                        ;E
 
-							@FLPDCHW 0x3C64 
-							@FLPDCHW 0x6666
-							@FLPDCHW 0x6664 
-							@FLPDCHW 0x3800		;D
+                     @FLPDCHW 0x387C 
+                     @FLPDCHW 0x6078 
+                     @FLPDCHW 0x6060 
+                     @FLPDCHW 0x2000                        ;F
 
-							@FLPDCHW 0x3C7E 
-							@FLPDCHW 0x6078 
-							@FLPDCHW 0x607E 
-							@FLPDCHW 0x3C00		;E
+                     @FLPDCHW 0x3C66
+                     @FLPDCHW 0xC0C0 
+                     @FLPDCHW 0xCC66 
+                     @FLPDCHW 0x3C00                        ;G
 
-							@FLPDCHW 0x387C 
-							@FLPDCHW 0x6078 
-							@FLPDCHW 0x6060 
-							@FLPDCHW 0x2000		;F
+                     @FLPDCHW 0x2466 
+                     @FLPDCHW 0x667E
+                     @FLPDCHW 0x6666 
+                     @FLPDCHW 0x2400                        ;H
 
-							@FLPDCHW 0x3C66
-							@FLPDCHW 0xC0C0 
-							@FLPDCHW 0xCC66 
-							@FLPDCHW 0x3C00		;G
+                     @FLPDCHW 0x1018 
+                     @FLPDCHW 0x1818 
+                     @FLPDCHW 0x1818 
+                     @FLPDCHW 0x0800                        ;I
 
-							@FLPDCHW 0x2466 
-							@FLPDCHW 0x667E
-							@FLPDCHW 0x6666 
-							@FLPDCHW 0x2400		;H
+                     @FLPDCHW 0x080C 
+                     @FLPDCHW 0x0C0C 
+                     @FLPDCHW 0x4CFC 
+                     @FLPDCHW 0x7800                        ;J
 
-							@FLPDCHW 0x1018 
-							@FLPDCHW 0x1818 
-							@FLPDCHW 0x1818 
-							@FLPDCHW 0x0800		;I
+                     @FLPDCHW 0x2466 
+                     @FLPDCHW 0x6C78 
+                     @FLPDCHW 0x6C66 
+                     @FLPDCHW 0x2400                        ;K
 
-							@FLPDCHW 0x080C 
-							@FLPDCHW 0x0C0C 
-							@FLPDCHW 0x4CFC 
-							@FLPDCHW 0x7800		;J
+                     @FLPDCHW 0x2060 
+                     @FLPDCHW 0x6060 
+                     @FLPDCHW 0x607E 
+                     @FLPDCHW 0x3E00                        ;L
 
-							@FLPDCHW 0x2466 
-							@FLPDCHW 0x6C78 
-							@FLPDCHW 0x6C66 
-							@FLPDCHW 0x2400		;K
+                     @FLPDCHW 0x44EE 
+                     @FLPDCHW 0xFED6 
+                     @FLPDCHW 0xD6D6 
+                     @FLPDCHW 0x4400                        ;M
 
-							@FLPDCHW 0x2060 
-							@FLPDCHW 0x6060 
-							@FLPDCHW 0x607E 
-							@FLPDCHW 0x3E00		;L
+                     @FLPDCHW 0x44E6 
+                     @FLPDCHW 0xF6DE 
+                     @FLPDCHW 0xCEC6 
+                     @FLPDCHW 0x4400                        ;N
 
-							@FLPDCHW 0x44EE 
-							@FLPDCHW 0xFED6 
-							@FLPDCHW 0xD6D6 
-							@FLPDCHW 0x4400		;M
+                     @FLPDCHW 0x386C 
+                     @FLPDCHW 0xC6C6 
+                     @FLPDCHW 0xC66C
+                     @FLPDCHW 0x3800                        ;O
 
-							@FLPDCHW 0x44E6 
-							@FLPDCHW 0xF6DE 
-							@FLPDCHW 0xCEC6 
-							@FLPDCHW 0x4400		;N
+                     @FLPDCHW 0x386C 
+                     @FLPDCHW 0x647C 
+                     @FLPDCHW 0x6060 
+                     @FLPDCHW 0x2000                        ;P
 
-							@FLPDCHW 0x386C 
-							@FLPDCHW 0xC6C6 
-							@FLPDCHW 0xC66C
-							@FLPDCHW 0x3800		;O
+                     @FLPDCHW 0x386C 
+                     @FLPDCHW 0xC6C6 
+                     @FLPDCHW 0xCA74 
+                     @FLPDCHW 0x3A00                        ;Q
 
-							@FLPDCHW 0x386C 
-							@FLPDCHW 0x647C 
-							@FLPDCHW 0x6060 
-							@FLPDCHW 0x2000		;P
+                     @FLPDCHW 0x3C66 
+                     @FLPDCHW 0x667C 
+                     @FLPDCHW 0x6C66 
+                     @FLPDCHW 0x2600                        ;R
 
-							@FLPDCHW 0x386C 
-							@FLPDCHW 0xC6C6 
-							@FLPDCHW 0xCA74 
-							@FLPDCHW 0x3A00		;Q
+                     @FLPDCHW 0x3C7E 
+                     @FLPDCHW 0x603C 
+                     @FLPDCHW 0x067E 
+                     @FLPDCHW 0x3C00                        ;S
 
-							@FLPDCHW 0x3C66 
-							@FLPDCHW 0x667C 
-							@FLPDCHW 0x6C66 
-							@FLPDCHW 0x2600		;R
+                     @FLPDCHW 0x3C7E 
+                     @FLPDCHW 0x1818 
+                     @FLPDCHW 0x1818 
+                     @FLPDCHW 0x0800                        ;T
 
-							@FLPDCHW 0x3C7E 
-							@FLPDCHW 0x603C 
-							@FLPDCHW 0x067E 
-							@FLPDCHW 0x3C00		;S
+                     @FLPDCHW 0x2466 
+                     @FLPDCHW 0x6666 
+                     @FLPDCHW 0x6666 
+                     @FLPDCHW 0x3C00                        ;U
 
-							@FLPDCHW 0x3C7E 
-							@FLPDCHW 0x1818 
-							@FLPDCHW 0x1818 
-							@FLPDCHW 0x0800		;T
+                     @FLPDCHW 0x2466 
+                     @FLPDCHW 0x6666 
+                     @FLPDCHW 0x663C 
+                     @FLPDCHW 0x1800                        ;V
 
-							@FLPDCHW 0x2466 
-							@FLPDCHW 0x6666 
-							@FLPDCHW 0x6666 
-							@FLPDCHW 0x3C00		;U
+                     @FLPDCHW 0x44C6 
+                     @FLPDCHW 0xD6D6 
+                     @FLPDCHW 0xFEEE 
+                     @FLPDCHW 0x4400                        ;W
 
-							@FLPDCHW 0x2466 
-							@FLPDCHW 0x6666 
-							@FLPDCHW 0x663C 
-							@FLPDCHW 0x1800		;V
+                     @FLPDCHW 0xC6C6 
+                     @FLPDCHW 0x3838 
+                     @FLPDCHW 0x6C6C 
+                     @FLPDCHW 0x4400                        ;X
 
-							@FLPDCHW 0x44C6 
-							@FLPDCHW 0xD6D6 
-							@FLPDCHW 0xFEEE 
-							@FLPDCHW 0x4400		;W
+                     @FLPDCHW 0x2466 
+                     @FLPDCHW 0x663C 
+                     @FLPDCHW 0x1818 
+                     @FLPDCHW 0x0800                        ;Y
 
-							@FLPDCHW 0xC6C6 
-							@FLPDCHW 0x3838 
-							@FLPDCHW 0x6C6C 
-							@FLPDCHW 0x4400		;X
+                     @FLPDCHW 0x7CFC 
+                     @FLPDCHW 0x0C18 
+                     @FLPDCHW 0x307E
+                     @FLPDCHW 0x7C00                        ;Z
 
-							@FLPDCHW 0x2466 
-							@FLPDCHW 0x663C 
-							@FLPDCHW 0x1818 
-							@FLPDCHW 0x0800		;Y
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-							@FLPDCHW 0x7CFC 
-							@FLPDCHW 0x0C18 
-							@FLPDCHW 0x307E
-							@FLPDCHW 0x7C00		;Z
+   test_passed_address  @DCWBS   =test_passed               ;@DCHW   0x01AC
+                        @DCWBF   =test_passed               ;@DCHW   0x0800
+                     
+   test_passed     
+                        ;$FLIPSTRING |TEST PASSED|
+                     
+   test_failed_address  @DCWBS   =test_failed               ;@DCHW   0x01AC
+                        @DCWBF   =test_failed               ;@DCHW   0x0800
+                     
+   test_failed     
+                        ;$FLIPSTRING |TEST FAILED|                     
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-	test_passed_address		@DCWBS	=test_passed	;@DCHW	0x01AC
-							@DCWBF	=test_passed	;@DCHW	0x0800
-							
-    test_passed     
-							;$FLIPSTRING |TEST PASSED|
-							
-	test_failed_address		@DCWBS	=test_failed	;@DCHW	0x01AC
-							@DCWBF	=test_failed	;@DCHW	0x0800
-							
-    test_failed     
-							;$FLIPSTRING |TEST FAILED|							
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @END
