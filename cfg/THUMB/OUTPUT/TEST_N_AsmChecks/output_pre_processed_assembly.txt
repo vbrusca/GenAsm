@@ -1,0 +1,385 @@
+@TTL |AllOpCodeTests|
+@AREA |Program| @CODE, @READONLY
+@ENTRY
+
+    test        @EQU    2
+    overOne
+                BGT     =overOne
+                MOV	R8, R8		;NOP preprocessor directive
+
+    ;++++++++++++++++++++++++++++++++
+    ;$INCASM |.\cfg\THUMB\INCBIN\test_asm_incasm.txt|
+    ;Found file with line count: 4, byte count: 86
+    
+    LDR     R3, [PC, #844]
+    STR     R3, [R2, R6]
+    LDRB    R2, [R0, R7]
+    STRH    R4, [R3, R0]
+    
+    ;++++++++++++++++++++++++++++++++
+
+    label_                              ;branch label
+                LSL     R0, R1, #0      ;5.1
+                LSL     R0, R1, #31
+                LSR     R0, R1, #0
+                LSR     R0, R1, #31
+                ASR     R0, R1, #0
+                ASR     R0, R1, #31
+                ADD     R0, R1, R2      ;5.2
+                ADD     R0, R1, #7
+                SUB     R0, R1, R2
+                SUB     R0, R1, #7
+                MOV     R0, #0          ;5.3
+                MOV     R0, #255
+                CMP     R0, #0
+                CMP     R0, #255
+                ADD     R0, #0
+                ADD     R0, #255
+                SUB     R0, #0
+                SUB     R0, #255
+                AND     R0, R1          ;5.4
+                EOR     R0, R1
+                LSL     R0, R1
+                LSR     R0, R1
+                ASR     R0, R1
+                ADC     R0, R1
+                SBC     R0, R1
+                ROR     R0, R1
+                TST     R0, R1
+                NEG     R0, R1
+                CMP     R0, R1
+                CMN     R0, R1
+                ORR     R0, R1
+                MUL     R0, R1
+                BIC     R0, R1
+                MVN     R0, R1
+                ADD     R0, R8          ;5.5
+                ADD     R8, R0
+                ADD     R8, R9
+                CMP     R0, R8
+                CMP     R8, R0
+                CMP     R8, R9
+                MOV     R0, R8
+                MOV     R8, R0
+                MOV     R8, R9
+                BX      R0
+                BX      R8
+                LDR     R0, [PC, #0]    ;5.6
+                LDR     R0, [PC, #1020]
+                STR     R0, [R1, R2]    ;5.7
+                STRB    R0, [R1, R2]
+                LDR     R0, [R1, R2]
+                LDRB    R0, [R1, R2]
+                STRH    R0, [R1, R2]    ;5.8
+                LDRH    R0, [R1, R2]
+                LDSB    R0, [R1, R2]
+                LDSH    R0, [R1, R2]
+                STR     R0, [R1, #0]    ;5.9
+                STR     R0, [R1, #124]
+                LDR     R0, [R1, #0]
+                LDR     R0, [R1, #124]
+                STRB    R0, [R1, #0]
+                STRB    R0, [R1, #31]
+                LDRB    R0, [R1, #0]
+                LDRB    R0, [R1, #31]
+                STRH    R0, [R1, #0]    ;5.10
+                STRH    R0, [R1, #62]
+                LDRH    R0, [R1, #0]
+                LDRH    R0, [R1, #62]
+                STR     R0, [SP, #0]    ;5.11
+                STR     R0, [SP, #1020]
+                LDR     R0, [SP, #0]
+                LDR     R0, [SP, #1020]
+                ADD     R0, PC, #0      ;5.12
+                ADD     R0, PC, #1020
+                ADD     R0, SP, #0
+                ADD     R0, SP, #1020
+                ADD     SP, #0          ;5.13
+                ADD     SP, #508
+                ADD     SP, #-508
+                PUSH    {R0, R1}        ;5.14
+                PUSH    {R0, R1, LR}
+                POP     {R0, R1}
+                POP     {R0, R1, PC}
+                STMIA   R0!, {R1, R2}   ;5.15
+                LDMIA   R0!, {R1, R2}
+                BEQ     =label_         ;5.16
+                BNE     =label_
+                BCS     =label_
+                BCC     =label_
+                BMI     =label_
+                BPL     =label_
+                BVS     =label_
+                BVC     =label_
+                BHI     =label_
+                BLS     =label_
+                BGE     =label_
+                BLT     =label_
+                BGT     =label_
+                BLE     =label_
+                SWI     #0              ;5.17
+                SWI     #255
+                B       =label_         ;5.18
+                B       =over
+                BL      =label_         ;5.19
+                BL      =over
+                CMP     R0, #45         ;Other 
+                BGT     =over
+                B       =locate
+                LSR     R2, R5, #27
+                ADD     R0, R3, R4
+                SUB     R6, R2, #6
+                MOV     R0, #127
+                CMP     R2, #62
+                ADD     R1, #127
+                SUB     R6, #1
+                EOR     R3, R4
+                ROR     R1, R0
+                NEG     R5, R3
+                CMP     R2, R6
+                MUL     R0, R7
+                EOR     R3, R4
+                ROR     R1, R0
+                NEG     R5, R3
+                CMP     R2, R6
+                MUL     R0, R7
+                ADD     PC, R5
+                CMP     R4, R12
+                MOV     PC, R14
+                LDR     R3, [PC, #844]
+                STR     R3, [R2, R6]
+                LDRB    R2, [R0, R7]
+                STRH    R4, [R3, R0]
+                LDSB    R2, [R7, R1]
+                LDSH    R3, [R4, R2]
+                LDR     R2, [R5, #116]
+                STRB    R1, [R0, #13]
+                STRH    R6, [R1, #56]
+                LDRH    R4, [R7, #4]
+                ADD     R2, PC, #572
+                ADD     R6, SP, #212
+                ADD     SP, #68
+                ADD     SP, #104
+                PUSH    {R0-R4, LR}
+                POP     {R2, R6, PC}
+                STMIA   R0!, {R3, R4, R5, R6, R7}
+    over        CMP     R0, #45
+    here        B       =here
+    locate      LDR     R2, [R2, R6]
+
+    var1        @DCHW   256
+    var2        @DCHW   255
+    var3        @DCHW   254
+
+@END
+
+@AREA |Data| @DATA, @READWRITE
+@ENTRY
+
+    var4        @DCHW   256
+    var5        @DCHW   255
+    var6        @DCHW   254
+
+    ;++++++++++++++++++++++++++++++++
+    ;$INCBIN |.\cfg\THUMB\INCBIN\ninlogo.dat|
+    ;Found file with byte count: 160, word count: 80, and padding on: false
+    
+    @DCHW #0xC860		;index: 0000	address: 0x0000
+    @DCHW #0x4FE2		;index: 0001	address: 0x0002
+    @DCHW #0x0170		;index: 0002	address: 0x0004
+    @DCHW #0x8FE2		;index: 0003	address: 0x0006
+    @DCHW #0x17FF		;index: 0004	address: 0x0008
+    @DCHW #0x2FE1		;index: 0005	address: 0x000A
+    @DCHW #0x124F		;index: 0006	address: 0x000C
+    @DCHW #0x1148		;index: 0007	address: 0x000E
+    @DCHW #0x124C		;index: 0008	address: 0x0010
+    @DCHW #0x2060		;index: 0009	address: 0x0012
+    @DCHW #0x6460		;index: 0010	address: 0x0014
+    @DCHW #0x7C62		;index: 0011	address: 0x0016
+    @DCHW #0x301C		;index: 0012	address: 0x0018
+    @DCHW #0x391C		;index: 0013	address: 0x001A
+    @DCHW #0x104A		;index: 0014	address: 0x001C
+    @DCHW #0x00F0		;index: 0015	address: 0x001E
+    @DCHW #0x14F8		;index: 0016	address: 0x0020
+    @DCHW #0x306A		;index: 0017	address: 0x0022
+    @DCHW #0x8019		;index: 0018	address: 0x0024
+    @DCHW #0xB16A		;index: 0019	address: 0x0026
+    @DCHW #0xF26A		;index: 0020	address: 0x0028
+    @DCHW #0x00F0		;index: 0021	address: 0x002A
+    @DCHW #0x0BF8		;index: 0022	address: 0x002C
+    @DCHW #0x306B		;index: 0023	address: 0x002E
+    @DCHW #0x8019		;index: 0024	address: 0x0030
+    @DCHW #0xB16B		;index: 0025	address: 0x0032
+    @DCHW #0xF26B		;index: 0026	address: 0x0034
+    @DCHW #0x00F0		;index: 0027	address: 0x0036
+    @DCHW #0x08F8		;index: 0028	address: 0x0038
+    @DCHW #0x706A		;index: 0029	address: 0x003A
+    @DCHW #0x776B		;index: 0030	address: 0x003C
+    @DCHW #0x074C		;index: 0031	address: 0x003E
+    @DCHW #0x6060		;index: 0032	address: 0x0040
+    @DCHW #0x3847		;index: 0033	address: 0x0042
+    @DCHW #0x074B		;index: 0034	address: 0x0044
+    @DCHW #0xD218		;index: 0035	address: 0x0046
+    @DCHW #0x9A43		;index: 0036	address: 0x0048
+    @DCHW #0x074B		;index: 0037	address: 0x004A
+    @DCHW #0x9208		;index: 0038	address: 0x004C
+    @DCHW #0xD218		;index: 0039	address: 0x004E
+    @DCHW #0x0CDF		;index: 0040	address: 0x0050
+    @DCHW #0xF746		;index: 0041	address: 0x0052
+    @DCHW #0x04F0		;index: 0042	address: 0x0054
+    @DCHW #0x1FE5		;index: 0043	address: 0x0056
+    @DCHW #0x00FE		;index: 0044	address: 0x0058
+    @DCHW #0x7F02		;index: 0045	address: 0x005A
+    @DCHW #0xF0FF		;index: 0046	address: 0x005C
+    @DCHW #0x7F02		;index: 0047	address: 0x005E
+    @DCHW #0xF001		;index: 0048	address: 0x0060
+    @DCHW #0x0000		;index: 0049	address: 0x0062
+    @DCHW #0xFF01		;index: 0050	address: 0x0064
+    @DCHW #0x0000		;index: 0051	address: 0x0066
+    @DCHW #0x0000		;index: 0052	address: 0x0068
+    @DCHW #0x0004		;index: 0053	address: 0x006A
+    @DCHW #0x0000		;index: 0054	address: 0x006C
+    @DCHW #0x0000		;index: 0055	address: 0x006E
+    @DCHW #0x0000		;index: 0056	address: 0x0070
+    @DCHW #0x0000		;index: 0057	address: 0x0072
+    @DCHW #0x0000		;index: 0058	address: 0x0074
+    @DCHW #0x0000		;index: 0059	address: 0x0076
+    @DCHW #0x0000		;index: 0060	address: 0x0078
+    @DCHW #0x0000		;index: 0061	address: 0x007A
+    @DCHW #0x0000		;index: 0062	address: 0x007C
+    @DCHW #0x0000		;index: 0063	address: 0x007E
+    @DCHW #0x0000		;index: 0064	address: 0x0080
+    @DCHW #0x0000		;index: 0065	address: 0x0082
+    @DCHW #0x0000		;index: 0066	address: 0x0084
+    @DCHW #0x0000		;index: 0067	address: 0x0086
+    @DCHW #0x0000		;index: 0068	address: 0x0088
+    @DCHW #0x0000		;index: 0069	address: 0x008A
+    @DCHW #0x0000		;index: 0070	address: 0x008C
+    @DCHW #0x0000		;index: 0071	address: 0x008E
+    @DCHW #0x0000		;index: 0072	address: 0x0090
+    @DCHW #0x0000		;index: 0073	address: 0x0092
+    @DCHW #0x0000		;index: 0074	address: 0x0094
+    @DCHW #0x0000		;index: 0075	address: 0x0096
+    @DCHW #0x0000		;index: 0076	address: 0x0098
+    @DCHW #0x0000		;index: 0077	address: 0x009A
+    @DCHW #0x1A9E		;index: 0078	address: 0x009C
+    @DCHW #0x7BEB		;index: 0079	address: 0x009E
+    
+    ;++++++++++++++++++++++++++++++++
+
+    ;++++++++++++++++++++++++++++++++
+    ;$FLPINCBIN |.\cfg\THUMB\INCBIN\ninlogo.dat|
+    ;Found file with byte count: 160, word count: 80, and padding on: false
+    
+    @DCHW #0x60C8		;index: 0000	address: 0x0000
+    @DCHW #0xE24F		;index: 0001	address: 0x0002
+    @DCHW #0x7001		;index: 0002	address: 0x0004
+    @DCHW #0xE28F		;index: 0003	address: 0x0006
+    @DCHW #0xFF17		;index: 0004	address: 0x0008
+    @DCHW #0xE12F		;index: 0005	address: 0x000A
+    @DCHW #0x4F12		;index: 0006	address: 0x000C
+    @DCHW #0x4811		;index: 0007	address: 0x000E
+    @DCHW #0x4C12		;index: 0008	address: 0x0010
+    @DCHW #0x6020		;index: 0009	address: 0x0012
+    @DCHW #0x6064		;index: 0010	address: 0x0014
+    @DCHW #0x627C		;index: 0011	address: 0x0016
+    @DCHW #0x1C30		;index: 0012	address: 0x0018
+    @DCHW #0x1C39		;index: 0013	address: 0x001A
+    @DCHW #0x4A10		;index: 0014	address: 0x001C
+    @DCHW #0xF000		;index: 0015	address: 0x001E
+    @DCHW #0xF814		;index: 0016	address: 0x0020
+    @DCHW #0x6A30		;index: 0017	address: 0x0022
+    @DCHW #0x1980		;index: 0018	address: 0x0024
+    @DCHW #0x6AB1		;index: 0019	address: 0x0026
+    @DCHW #0x6AF2		;index: 0020	address: 0x0028
+    @DCHW #0xF000		;index: 0021	address: 0x002A
+    @DCHW #0xF80B		;index: 0022	address: 0x002C
+    @DCHW #0x6B30		;index: 0023	address: 0x002E
+    @DCHW #0x1980		;index: 0024	address: 0x0030
+    @DCHW #0x6BB1		;index: 0025	address: 0x0032
+    @DCHW #0x6BF2		;index: 0026	address: 0x0034
+    @DCHW #0xF000		;index: 0027	address: 0x0036
+    @DCHW #0xF808		;index: 0028	address: 0x0038
+    @DCHW #0x6A70		;index: 0029	address: 0x003A
+    @DCHW #0x6B77		;index: 0030	address: 0x003C
+    @DCHW #0x4C07		;index: 0031	address: 0x003E
+    @DCHW #0x6060		;index: 0032	address: 0x0040
+    @DCHW #0x4738		;index: 0033	address: 0x0042
+    @DCHW #0x4B07		;index: 0034	address: 0x0044
+    @DCHW #0x18D2		;index: 0035	address: 0x0046
+    @DCHW #0x439A		;index: 0036	address: 0x0048
+    @DCHW #0x4B07		;index: 0037	address: 0x004A
+    @DCHW #0x0892		;index: 0038	address: 0x004C
+    @DCHW #0x18D2		;index: 0039	address: 0x004E
+    @DCHW #0xDF0C		;index: 0040	address: 0x0050
+    @DCHW #0x46F7		;index: 0041	address: 0x0052
+    @DCHW #0xF004		;index: 0042	address: 0x0054
+    @DCHW #0xE51F		;index: 0043	address: 0x0056
+    @DCHW #0xFE00		;index: 0044	address: 0x0058
+    @DCHW #0x027F		;index: 0045	address: 0x005A
+    @DCHW #0xFFF0		;index: 0046	address: 0x005C
+    @DCHW #0x027F		;index: 0047	address: 0x005E
+    @DCHW #0x01F0		;index: 0048	address: 0x0060
+    @DCHW #0x0000		;index: 0049	address: 0x0062
+    @DCHW #0x01FF		;index: 0050	address: 0x0064
+    @DCHW #0x0000		;index: 0051	address: 0x0066
+    @DCHW #0x0000		;index: 0052	address: 0x0068
+    @DCHW #0x0400		;index: 0053	address: 0x006A
+    @DCHW #0x0000		;index: 0054	address: 0x006C
+    @DCHW #0x0000		;index: 0055	address: 0x006E
+    @DCHW #0x0000		;index: 0056	address: 0x0070
+    @DCHW #0x0000		;index: 0057	address: 0x0072
+    @DCHW #0x0000		;index: 0058	address: 0x0074
+    @DCHW #0x0000		;index: 0059	address: 0x0076
+    @DCHW #0x0000		;index: 0060	address: 0x0078
+    @DCHW #0x0000		;index: 0061	address: 0x007A
+    @DCHW #0x0000		;index: 0062	address: 0x007C
+    @DCHW #0x0000		;index: 0063	address: 0x007E
+    @DCHW #0x0000		;index: 0064	address: 0x0080
+    @DCHW #0x0000		;index: 0065	address: 0x0082
+    @DCHW #0x0000		;index: 0066	address: 0x0084
+    @DCHW #0x0000		;index: 0067	address: 0x0086
+    @DCHW #0x0000		;index: 0068	address: 0x0088
+    @DCHW #0x0000		;index: 0069	address: 0x008A
+    @DCHW #0x0000		;index: 0070	address: 0x008C
+    @DCHW #0x0000		;index: 0071	address: 0x008E
+    @DCHW #0x0000		;index: 0072	address: 0x0090
+    @DCHW #0x0000		;index: 0073	address: 0x0092
+    @DCHW #0x0000		;index: 0074	address: 0x0094
+    @DCHW #0x0000		;index: 0075	address: 0x0096
+    @DCHW #0x0000		;index: 0076	address: 0x0098
+    @DCHW #0x0000		;index: 0077	address: 0x009A
+    @DCHW #0x9E1A		;index: 0078	address: 0x009C
+    @DCHW #0xEB7B		;index: 0079	address: 0x009E
+    
+    ;++++++++++++++++++++++++++++++++
+
+    ;++++++++++++++++++++++++++++++++
+    ;$STRING |Hello World!|
+    ;Found string byte count: 14, word count: 7, and padding on: true
+    
+    @DCHW #0x4865		;index: 0000	H e
+    @DCHW #0x6C6C		;index: 0002	l l
+    @DCHW #0x6F20		;index: 0004	o  
+    @DCHW #0x576F		;index: 0006	W o
+    @DCHW #0x726C		;index: 0008	r l
+    @DCHW #0x6421		;index: 0010	d !
+    @DCHW #0xFFFF		;index: 0012	￿ ￿
+    
+    ;++++++++++++++++++++++++++++++++
+
+    ;++++++++++++++++++++++++++++++++
+    ;$FLIPSTRING |Hello World!|
+    ;Found string byte count: 14, word count: 7, and padding on: true
+    
+    @DCHW #0x6548		;index: 0000	H e
+    @DCHW #0x6C6C		;index: 0002	l l
+    @DCHW #0x206F		;index: 0004	o  
+    @DCHW #0x6F57		;index: 0006	W o
+    @DCHW #0x6C72		;index: 0008	r l
+    @DCHW #0x2164		;index: 0010	d !
+    @DCHW #0xFFFF		;index: 0012	￿ ￿
+    
+    ;++++++++++++++++++++++++++++++++
+
+@END

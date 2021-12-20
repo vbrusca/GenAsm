@@ -13,13 +13,13 @@
    ;need 122 16bit entries to match GBA header
    ;already little endian, need to flip
    ;++++++++++++++++++++++++++++++++
-   ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_header.bin|
+   ;$FLPINCBIN |.\cfg\THUMB\INCBIN\gba_header.bin|
    ;++++++++++++++++++++++++++++++++
 
    program_start
    ;already little endian, need to flip
    ;++++++++++++++++++++++++++++++++
-   ;$FLPINCBIN |C:\Users\variable\Documents\GitHub\GenAsm\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
+   ;$FLPINCBIN |.\cfg\THUMB\INCBIN\gba_arm2thumb_jump_addr_00F4.bin|
    ;++++++++++++++++++++++++++++++++
     
    ;.thumb                                                  ;Thumb mode
