@@ -34,6 +34,11 @@ public class JsonObjIsDirectives extends JsonObjBase {
     public static String NAME_TITLE = "@TTL";    
     
     /**
+     * A static string that represents the full name of a SUBT directive.
+     */    
+    public static String NAME_SUB_TITLE = "@SUBT";
+    
+    /**
      * A static string that represents the full name of a CODE directive.
      */    
     public static String NAME_CODE = "@CODE";

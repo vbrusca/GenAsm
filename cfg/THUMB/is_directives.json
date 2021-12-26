@@ -93,7 +93,7 @@
                     }
                 }                
             ],
-            "description": "The DCW0 directive is used to write data the first halfword of an int, directly into the data AREA of an assembly file."
+            "description": "The DCWBF directive is used to write data the first halfword of an int, directly into the data AREA of an assembly file."
         },
         {
             "obj_name": "is_directive",
@@ -124,7 +124,7 @@
                     }
                 }                
             ],
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file."
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file."
         },        
         {
             "obj_name": "is_directive",
@@ -155,7 +155,7 @@
                     }
                 }                
             ],
-            "description": "The DCHW directive is used to write flipped data, one halfword, directly into the data AREA of an assembly file."
+            "description": "The FLPDCHW directive is used to write flipped data, one halfword, directly into the data AREA of an assembly file."
         },        
         {
             "obj_name": "is_directive",
@@ -186,7 +186,7 @@
                     }
                 }                
             ],
-            "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup."
+            "description": "The EQU directive is used to store a 16-bit value in the symbol table for value lookup."
         },
         {
             "obj_name": "is_directive",
@@ -217,7 +217,7 @@
                     }
                 }                
             ],
-            "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup."
+            "description": "The ORG directive is used to set the starting memory address of the program."
         },        
         {
             "obj_name": "is_directive",

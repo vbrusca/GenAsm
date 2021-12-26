@@ -307,6 +307,11 @@ public class AssemblerThumb implements Assembler {
     public String assemblyTitle;
 
     /**
+     * A string value representing the sub-title of the assembly source file.
+     */    
+    public String assemblySubTitle;    
+    
+    /**
      * A generic Java object used to customized the assembly process.
      */    
     public Object other;
@@ -522,6 +527,7 @@ public class AssemblerThumb implements Assembler {
             Logger.wrl("");
             Logger.wrl("Assembler Meta Data:");
             Logger.wrl("Title: " + assemblyTitle);
+            Logger.wrl("SubTitle: " + assemblySubTitle);            
             Logger.wrl("LineLengthBytes: " + lineLenBytes);
             Logger.wrl("LineLengthWords: " + lineLenWords);
             Logger.wrl("LineLengthHalfWords: " + lineLenHalfWords);
@@ -599,6 +605,7 @@ public class AssemblerThumb implements Assembler {
         AreaThumb tmpArea = null;
         
         boolean foundTtl = false;
+        boolean foundSubt = false;
         boolean foundArea = false;
         boolean foundOrg = false;
         
@@ -635,6 +642,10 @@ public class AssemblerThumb implements Assembler {
                     foundTtl = false;
                     assemblyTitle = token.source;
                 
+                } else if(foundSubt && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
+                    foundSubt = false;
+                    assemblySubTitle = token.source;                    
+                    
                 } else if(foundArea && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
                     tmpArea.title = token.source;
                     
@@ -685,6 +696,10 @@ public class AssemblerThumb implements Assembler {
                     if(token.source.equals(JsonObjIsDirectives.NAME_TITLE)) {
                         foundTtl = true;
                         line.isLineEmpty = true;
+                        
+                    } else if(token.source.equals(JsonObjIsDirectives.NAME_SUB_TITLE)) {
+                        foundSubt = true;
+                        line.isLineEmpty = true;                        
                         
                     } else if(token.source.equals(JsonObjIsDirectives.NAME_ORG)) {                        
                         foundOrg = true;
@@ -2556,12 +2571,25 @@ public class AssemblerThumb implements Assembler {
                                 byte[] b = Utils.ToBytes(tInt);
                                 short[] shorts = new short[2];
                                 ByteBuffer.wrap(b).asShortBuffer().get(shorts);                                
+                                byte bt;
                                 
                                 if(isDirDcw0 == true) {
-                                    tInt = (int)shorts[0];
+                                    //tInt = (int)shorts[0];
+                                    //tInt = (int)b[b.length - 1];
+                                    bt = b[b.length - 1];
                                 } else {
-                                    tInt = (int)shorts[1];
+                                    //tInt = (int)shorts[1];
+                                    //tInt = (int)b[b.length - 2];
+                                    bt = b[b.length - 2];
                                 }
+                                
+                                if((int)bt < 0) {
+                                    tInt = bt & 0xFF;
+                                } else {
+                                    tInt = (int)bt;
+                                }                         
+
+                                Logger.wrl("B Val: " + tInt);
                                 
                                 token.value = tInt;
                                 resTmp = Integer.toBinaryString(tInt);

@@ -1,4 +1,5 @@
-@TTL |AllOpCodeTests|
+@TTL |AssemblerChecks|
+@SUBT |SubTitleTest|
 @AREA |Program| @CODE, @READONLY
 @ENTRY
 
@@ -163,7 +164,9 @@
     var1        @DCHW   256
     var2        @DCHW   255
     var3        @DCHW   254
-
+                @DCB    5
+                @DCWBS  0x01AC
+                @DCWBF  0x01AC
 @END
 
 @AREA |Data| @DATA, @READWRITE
