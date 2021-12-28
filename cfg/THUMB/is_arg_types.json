@@ -111,6 +111,11 @@
             "obj_name": "is_arg_type",            
             "arg_name": "Value8",
             "is_entry_types": ["Number"]
+        },
+        {
+            "obj_name": "is_arg_type",            
+            "arg_name": "DirectiveString",
+            "is_entry_types": ["DirectiveString"]
         }
     ]
 }

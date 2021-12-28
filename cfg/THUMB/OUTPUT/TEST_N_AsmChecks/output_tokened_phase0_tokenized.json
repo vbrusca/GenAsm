@@ -131,8 +131,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"
@@ -285,8 +284,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"
@@ -457,8 +455,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"
@@ -49294,8 +49291,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"

@@ -332,7 +332,7 @@
             "category_class": "java.lang.String",            
             "txt_match": {
                 "starts_with": ["|"],
-                "contains": ["a~z", "A~Z", "|"],
+                "contains": ["a~z", "A~Z"],
                 "must_contain": ["|"],
                 "must_not_contain": [],
                 "ends_with": ["|"]
