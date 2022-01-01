@@ -1,0 +1,11 @@
+{
+    "obj_name": "is_test_file_vals",
+    "set_name": "THUMB_ARM7TDMI",
+    "is_test_file": true,
+    "is_test_file_vals": [
+        {
+            "obj_name": "is_test_file_val",
+            "is_fake_data": true
+        }
+    ]
+}

@@ -1,44 +1,40 @@
-package net.middlemind.GenAsm.JsonObjs;
+package net.middlemind.GenAsm.JsonObjs.Thumb;
 
+import net.middlemind.GenAsm.JsonObjs.JsonObjBase;
 import net.middlemind.GenAsm.Logger;
 
 /**
- * A class that represents a JSON line hex rep object.
- * @author Victor G. Brusca, Middlemind Games 11/301/2021 2:18 PM EST
+ * A mock class used as part of a project test.
+ * @author Victor G. Brusca, Middlemind Games 01/01/2022 7:25 PM EDT
  */
-public class JsonObjLineHexRep extends JsonObjBase {
+public class JsonObjIsTestFileVal extends JsonObjBase {
     /**
      * A string representing the name of this class. This is used to define the class in JSON output files.
-     */
-    public String obj_name = "JsonObjLineHexRep";
+     */  
+    public String obj_name;
     
     /**
-     * A hex address.
+     * A boolean value indicating that this is a test file.
      */
-    public String addressHex;
-    
-    /**
-     * The value at the associated hex address.
-     */
-    public String valueHex;
-        
+    public boolean is_fake_data;
+
+           
     /**
      * A method that is used to print a string representation of this JSON object to standard output.
-     */
+     */   
     @Override
     public void Print() {
         Print("");
     }    
-    
+
     /**
      * A method that is used to print a string representation of this JSON object to standard output with a string prefix.
      * @param prefix    A string that is used as a prefix to the string representation of this JSON object.
-     */
+     */ 
     @Override
     public void Print(String prefix) {
         super.Print(prefix);
-        Logger.wrl(prefix + "ObjName: " + obj_name);
-        Logger.wrl(prefix + "AddressHex: " + addressHex);
-        Logger.wrl(prefix + "ValueHex: " + valueHex);
-    }    
+        Logger.wrl(prefix + "ObjectName: " + obj_name);
+        Logger.wrl(prefix + "IsFakeData: " + is_fake_data);
+    }
 }

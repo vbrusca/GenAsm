@@ -4,11 +4,11 @@ package net.middlemind.GenAsm.Assemblers;
  * A class that provides helper methods for calculating the two's complement of a binary string.
  * @author Victor G. Brusca, Middlemind Games 09/20/2021 11:50AM EST
  */
-public class TwosCompliment {
+public class TwosComplement {
     /**
-     * A static class that returns the two's compliment of the provided binary string.
-     * @param binStr    The binary string to return the two's compliment for.
-     * @return          The binary two's compliment of the binStr parameter. 
+     * A static class that returns the two's complement of the provided binary string.
+     * @param binStr    The binary string to return the two's complement for.
+     * @return          The binary two's complement of the binStr parameter. 
      */
     public static String GetTwosCompliment(String binStr) {
         int n = binStr.length();
