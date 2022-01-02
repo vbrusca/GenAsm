@@ -53,7 +53,7 @@
                     "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEmptyDataLines",
                     "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEmptyDataLines",
                     "category": "special"
-                }                
+                }
             ]
         }
     ]

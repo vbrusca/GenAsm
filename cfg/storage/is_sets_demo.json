@@ -53,7 +53,14 @@
                     "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEmptyDataLines",
                     "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEmptyDataLines",
                     "category": "special"
-                }                
+                },
+                {
+                    "obj_name": "is_file",
+                    "path": "./cfg/THUMB/is_test_file_vals.json",
+                    "loader_class": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsTestFileVals",
+                    "target_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsTestFileVals",
+                    "category": "special"
+                }
             ]
         }
     ]

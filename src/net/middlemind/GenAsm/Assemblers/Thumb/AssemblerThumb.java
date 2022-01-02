@@ -501,9 +501,9 @@ public class AssemblerThumb implements Assembler {
                     Utils.WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "output_area_desc_code.json", rootOutputDir);
                 }
                 BuildBinLines(lastStep, asmAreaLinesCode, areaThumbCode);
-                if(!quellFileOutput) {
-                    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
-                }
+                //if(!quellFileOutput) {
+                //    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+                //}
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -517,13 +517,17 @@ public class AssemblerThumb implements Assembler {
                     Utils.WriteObject(areaThumbData, "Assembly Source Area Data Desc", "output_area_desc_data.json", rootOutputDir);
                 }
                 BuildBinLines(lastStep, asmAreaLinesData, areaThumbData);
-                if(!quellFileOutput) {
-                    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
-                }
+                //if(!quellFileOutput) {
+                //    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+                //}
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }
 
+            if(!quellFileOutput) {
+                Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
+            }
+            
             Logger.wrl("");
             Logger.wrl("Assembler Meta Data:");
             Logger.wrl("Title: " + assemblyTitle);
