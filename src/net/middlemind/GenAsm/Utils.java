@@ -19,17 +19,26 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
 @SuppressWarnings({"null", "UnusedAssignment"})
 public class Utils {
     
+    /**
+     * A method that converts an integer to an array of bytes.
+     * @param i     The integer to convert to an array of bytes.
+     * @return      An array of bytes.
+     */
     public static byte[] ToBytes(int i) {
         byte[] result = new byte[4];
-
         result[0] = (byte) (i >> 24);
         result[1] = (byte) (i >> 16);
         result[2] = (byte) (i >> 8);
         result[3] = (byte) (i /*>> 0*/);
-
         return result;
     }
     
+    /**
+     * A method used to check the results of a test program against a list of known results.
+     * @param hexDataLines      An object with a list of hexadecimal representations of assembly code.
+     * @param hashMap           A hash mapping that connects line numbers to hexadecimal values.
+     * @return                  A Boolean value indicating if the known data matches the expected data.
+     */
     public static boolean CheckAssemblerTestProgramAgainstAnswers(JsonObjLineHexReps hexDataLines, Hashtable<String, String> hashMap) {
         int hmCnt = hashMap.size();
         int errCnt = 0;
@@ -73,7 +82,7 @@ public class Utils {
      * @throws IOException  Throws an IOException during file IO.
      */
     public static void WriteObject(Object obj, String name, String fileName, String rootOutputDir) throws IOException {
-        Logger.wrl("AssemblerThumb: WriteObject: Name: " + name);
+        Logger.wrl("Utils: WriteObject: Name: " + name);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();            
@@ -87,7 +96,7 @@ public class Utils {
      * @param name      The name of the object that's being written in JSON format.
      */
     public static void PrintObject(Object obj, String name) {
-        Logger.wrl("AssemblerThumb: PrintObject: Name: '" + name + "'");
+        Logger.wrl("Utils: PrintObject: Name: '" + name + "'");
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();            
@@ -110,7 +119,9 @@ public class Utils {
         } else if(s.contains("&")) {
             tInt = Integer.parseInt(s.replace("&", ""), 16);
         } else if(s.contains("#0b")) {
-            tInt = Integer.parseInt(s.replace("#0b", ""), 2);                            
+            tInt = Integer.parseInt(s.replace("#0b", ""), 2);
+        } else if(s.contains("0b")) {
+            tInt = Integer.parseInt(s.replace("0b", ""), 2);
         } else if(s.contains("#")) {
             tInt = Integer.parseInt(s.replace("#", ""), 10);
         } else {
@@ -348,9 +359,9 @@ public class Utils {
             if(s.length() < len) {
                 for(int i = s.length(); i < len; i++) {
                     if(padLeft) {
-                        ret = "0" + ret;
+                        ret = padWith + ret;
                     } else {
-                        ret += "0";
+                        ret += padWith;
                     }
                 }
             } else if(s.length() > len) {

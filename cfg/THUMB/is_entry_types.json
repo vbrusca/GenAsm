@@ -191,6 +191,20 @@
             "category": "Arg",            
             "category_class": "java.lang.Double",
             "txt_match": {
+                "starts_with": ["0b", "#0b"],
+                "contains": ["0", "1"],
+                "must_contain": [],
+                "must_not_contain": [],
+                "ends_with": ["0", "1", ",", ";"]
+            }
+        },   
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "Number",
+            "type_category": "Number",            
+            "category": "Arg",            
+            "category_class": "java.lang.Double",
+            "txt_match": {
                 "starts_with": ["#bx", "#-", "#", "0~9"],
                 "contains": ["0~9"],
                 "must_contain": [],
