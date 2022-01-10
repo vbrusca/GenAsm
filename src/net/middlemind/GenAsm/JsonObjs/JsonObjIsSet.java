@@ -1,7 +1,6 @@
 package net.middlemind.GenAsm.JsonObjs;
 
 import java.util.List;
-import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
 import net.middlemind.GenAsm.Logger;
 
 /**

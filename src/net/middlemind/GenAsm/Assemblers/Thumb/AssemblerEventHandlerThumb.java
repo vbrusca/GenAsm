@@ -3,7 +3,7 @@ package net.middlemind.GenAsm.Assemblers.Thumb;
 import java.util.List;
 import net.middlemind.GenAsm.Assemblers.Assembler;
 import net.middlemind.GenAsm.Assemblers.AssemblerEventHandler;
-import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsFile;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLines;
 import net.middlemind.GenAsm.Tokeners.TokenLine;

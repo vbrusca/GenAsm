@@ -1,6 +1,5 @@
-package net.middlemind.GenAsm.JsonObjs.Thumb;
+package net.middlemind.GenAsm.JsonObjs;
 
-import net.middlemind.GenAsm.JsonObjs.JsonObjBase;
 import net.middlemind.GenAsm.Logger;
 
 /**

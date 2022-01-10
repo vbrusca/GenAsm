@@ -30,7 +30,7 @@ import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLineEntry;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodeArg;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType;
-import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsFile;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsValidLine;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsDirective;
 import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsOpCodes;

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.lang.reflect.InvocationTargetException;
 import net.middlemind.GenAsm.Exceptions.Thumb.ExceptionLoader;
-import net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsFile;
+import net.middlemind.GenAsm.JsonObjs.JsonObjIsFile;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSet;
 import net.middlemind.GenAsm.JsonObjs.JsonObjIsSets;
 import net.middlemind.GenAsm.Logger;
