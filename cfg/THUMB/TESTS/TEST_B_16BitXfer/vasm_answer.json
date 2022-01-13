@@ -7,7 +7,7 @@
         {"addressHex":"080000F8", "valueHex":"2A4C"},
         {"addressHex":"080000FA", "valueHex":"2B4A"},
         {"addressHex":"080000FC", "valueHex":"2260"},
-		{"addressHex":"080000FE", "valueHex":"00F0"},
+        {"addressHex":"080000FE", "valueHex":"00F0"},
         {"addressHex":"08000100", "valueHex":"13F8"},
         {"addressHex":"08000102", "valueHex":"03D0"},
         {"addressHex":"08000104", "valueHex":"6E49"},
