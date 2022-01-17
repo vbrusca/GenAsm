@@ -95,7 +95,7 @@ public class TokenLine {
 
     /**
      * A Boolean value indicating if the token line is considered empty.
-     * An empty line will not have an assembly source that end up in the final binary representation of the assembly source file.
+     * An empty line will not have an assembly source that ends up in the final binary representation of the assembly source file.
      */
     public boolean isLineEmpty;
 

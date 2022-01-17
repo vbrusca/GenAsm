@@ -6,7 +6,7 @@ import java.util.Comparator;
  * An implementation of the comparator class used to sort a list of tokens.
  * @author Victor G. Brusca, Middlemind Games 08/18/2021 10:20 AM EST
  */
-public class TokenSorter  implements Comparator<Token> {
+public class TokenSorter implements Comparator<Token> {
     /**
      * An enumeration that represents the different sort types for this comparator implementation.
      */
