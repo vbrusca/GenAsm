@@ -91,7 +91,7 @@ public class GenAsm {
     /**
      * A static integer representing the target length or arguments needed to perform a customized run.
      */    
-    public static int ARG_LEN_TARGET = 11;
+    public static int ARG_LEN_TARGET = 12;
     
     /**
      * A Boolean value indicating if verbose logging is on, if available.
@@ -106,7 +106,7 @@ public class GenAsm {
     /**
      * A string value that represents the GenAsm project's cfg directory. Should end in a path separator.
      */
-    public static String CFG_DIR_PATH = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\";
+    public static String CFG_DIR_PATH = null;
     
     /**
      * The static main entry point for this assembler run.
@@ -137,9 +137,9 @@ public class GenAsm {
                 }
                 return;
             }
-            
         } else if(args == null || args.length < ARG_LEN_TARGET) {
             String targetProgram = "TEST_N_AsmChecks";
+            CFG_DIR_PATH = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
@@ -156,8 +156,8 @@ public class GenAsm {
             ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
             ASM_VERBOSE = false;
             ASM_QUELL_FILE_OUTPUT = false;
-            
-        } else {
+        } else if(args != null || args.length == ARG_LEN_TARGET) {
+            CFG_DIR_PATH = args[11];
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];
             ASM_SETS_LOADER_CLASS = args[2];
@@ -174,18 +174,29 @@ public class GenAsm {
             ASM_ROOT_OUTPUT_DIR = args[8];
             ASM_VERBOSE = Boolean.parseBoolean(args[9]);
             ASM_QUELL_FILE_OUTPUT = Boolean.parseBoolean(args[10]);
-            
+        } else {
+            System.out.println("Error: incorrect number of arguments.");
+            System.out.println("Please provide the following arguments in the order shown, examples included.");
+            System.out.println("1 \"./cfg/is_sets.json\" (ASM_SETS_FILE_NAME)");
+            System.out.println("2 \"THUMB_ARM7TDMI\" (ASM_TARGET_SET)");
+            System.out.println("3 \"net.middlemind.GenAsm.Loaders.LoaderIsSets\" (ASM_SETS_LOADER_CLASS)");
+            System.out.println("4 \"net.middlemind.GenAsm.JsonObjs.JsonObjIsSets\" (ASM_SETS_TARGET_CLASS)");
+            System.out.println("5 \"net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb\" (ASM_ASSEMBLER_CLASS)");
+            System.out.println("6 \"C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\THUMB\\TESTS\\TEST_N_AsmChecks\\genasm_source.txt\" (ASM_ASSEMBLY_SOURCE_FILE)");
+            System.out.println("7 \"net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb\" (ASM_LINKER_CLASS)");
+            System.out.println("8 \"net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb\" (ASM_PREPROCESSOR_CLASS)");
+            System.out.println("9 \"C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\THUMB\\OUTPUT\\TEST_N_AsmChecks\\\" (ASM_ROOT_OUTPUT_DIR)");
+            System.out.println("10 false (ASM_VERBOSE)");
+            System.out.println("11 false (ASM_QUELL_FILE_OUTPUT)");
+            System.out.println("12 \"C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\\" (CFG_DIR_PATH)");
         }
         
         if(Utils.IsStringEmpty(ASM_SETS_FILE_NAME)) {
-            Logger.wrlErr("GenAsm: Main: Error: No assembly source file provided.");
-            
+            Logger.wrlErr("GenAsm: Main: Error: No assembly source file provided.");            
         } else if(Utils.IsStringEmpty(ASM_TARGET_SET)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly target set provided.");
-            
         } else if(Utils.IsStringEmpty(ASM_SETS_LOADER_CLASS)) {
             Logger.wrlErr("GenAsm: Main: Error: No assembly set loader provided.");
-            
         } else {
             String json;
             Class cTmp;
@@ -204,13 +215,10 @@ public class GenAsm {
                     cTmp = Class.forName(ASM_SETS_LOADER_CLASS);
                     ldrIsSets = (LoaderIsSets)cTmp.getDeclaredConstructor().newInstance();
                     ASM_SETS = ldrIsSets.ParseJson(json, ASM_SETS_TARGET_CLASS, ASM_SETS_FILE_NAME);
-
                     cTmp = Class.forName(ASM_PREPROCESSOR_CLASS);
-                    ASM_PREPROCESSOR = (PreProcessor)cTmp.getDeclaredConstructor().newInstance();                    
-                    
+                    ASM_PREPROCESSOR = (PreProcessor)cTmp.getDeclaredConstructor().newInstance();
                     cTmp = Class.forName(ASM_ASSEMBLER_CLASS);
                     ASM_ASSEMBLER = (Assembler)cTmp.getDeclaredConstructor().newInstance();
-                    
                     cTmp = Class.forName(ASM_LINKER_CLASS);
                     ASM_LINKER = (Linker)cTmp.getDeclaredConstructor().newInstance();                    
                     

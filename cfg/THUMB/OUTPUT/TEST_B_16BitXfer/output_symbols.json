@@ -388,16 +388,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -496,7 +496,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -506,6 +506,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -668,7 +700,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -1189,16 +1221,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -1261,7 +1293,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -1271,6 +1303,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -1433,7 +1497,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -2061,16 +2125,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -2143,6 +2207,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -2305,7 +2401,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -2715,16 +2811,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -2797,6 +2893,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -2959,7 +3087,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -3583,16 +3711,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -3665,6 +3793,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -3827,7 +3987,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -4683,16 +4843,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -4791,7 +4951,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -4801,6 +4961,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -4963,7 +5155,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -5698,16 +5890,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -5780,6 +5972,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -5942,7 +6166,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -7125,16 +7349,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -7197,7 +7421,7 @@
             "obj_name": "is_directive",
             "directive_name": "@EQU",
             "arg_len": 1,
-            "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup.",
+            "description": "The EQU directive is used to store a 16-bit value in the symbol table for value lookup.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -7206,6 +7430,38 @@
                   "Number"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -7332,7 +7588,7 @@
                   "alignment": "WORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -7739,16 +7995,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -7811,7 +8067,7 @@
             "obj_name": "is_directive",
             "directive_name": "@EQU",
             "arg_len": 1,
-            "description": "The EQU directive is used to store a 16bit value in the symbol table for value lookup.",
+            "description": "The EQU directive is used to store a 16-bit value in the symbol table for value lookup.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -7820,6 +8076,38 @@
                   "Number"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -7946,7 +8234,7 @@
                   "alignment": "WORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -8355,16 +8643,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -8437,6 +8725,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -8599,7 +8919,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -10308,16 +10628,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -10390,6 +10710,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -10552,7 +10904,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -10962,16 +11314,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -11044,6 +11396,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -11206,7 +11590,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -11616,16 +12000,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -11688,7 +12072,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -11698,6 +12082,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -11860,7 +12276,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -12702,16 +13118,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -12784,6 +13200,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -12946,7 +13394,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -13588,16 +14036,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -13696,7 +14144,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -13706,6 +14154,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -13868,7 +14348,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -14817,16 +15297,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -14889,7 +15369,7 @@
             "obj_name": "is_directive",
             "directive_name": "@DCWBS",
             "arg_len": 1,
-            "description": "The DCW1 directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
+            "description": "The DCWBS directive is used to write data the second halfword of an int, directly into the data AREA of an assembly file.",
             "args": [
               {
                 "obj_name": "is_directive_arg",
@@ -14899,6 +15379,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -15061,7 +15573,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -15475,16 +15987,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -15557,6 +16069,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -15719,7 +16263,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -16129,16 +16673,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -16211,6 +16755,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -16373,7 +16949,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -16783,16 +17359,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -16865,6 +17441,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -17027,7 +17635,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -17651,16 +18259,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -17733,6 +18341,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -17895,7 +18535,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }
@@ -18346,16 +18986,16 @@
                   "txt_match": {
                     "obj_name": "JsonObjTxtMatch",
                     "starts_with": [
-                      "#bx",
-                      "#-",
-                      "#",
-                      "0~9"
+                      "0b",
+                      "#0b"
                     ],
                     "contains": [
-                      "0~9"
+                      "0",
+                      "1"
                     ],
                     "ends_with": [
-                      "0~9",
+                      "0",
+                      "1",
                       ",",
                       ";"
                     ],
@@ -18428,6 +19068,38 @@
                   "LabelRef"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "Number",
+                    "type_category": "Number",
+                    "category": "Arg",
+                    "category_class": "java.lang.Double",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "0b",
+                        "#0b"
+                      ],
+                      "contains": [
+                        "0",
+                        "1"
+                      ],
+                      "ends_with": [
+                        "0",
+                        "1",
+                        ",",
+                        ";"
+                      ],
+                      "must_contain": [],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "Number",
@@ -18590,7 +19262,7 @@
                   "alignment": "HALFWORD"
                 },
                 "bit_shift": {
-                  "obj_name": "JsonObjBitSHift",
+                  "obj_name": "JsonObjBitShift",
                   "shift_dir": "NONE",
                   "shift_amount": -1
                 }

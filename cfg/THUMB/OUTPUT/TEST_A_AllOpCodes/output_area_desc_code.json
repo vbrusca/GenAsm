@@ -123,8 +123,7 @@
                 ],
                 "contains": [
                   "a~z",
-                  "A~Z",
-                  "|"
+                  "A~Z"
                 ],
                 "ends_with": [
                   "|"
@@ -180,16 +179,16 @@
               "txt_match": {
                 "obj_name": "JsonObjTxtMatch",
                 "starts_with": [
-                  "#bx",
-                  "#-",
-                  "#",
-                  "0~9"
+                  "0b",
+                  "#0b"
                 ],
                 "contains": [
-                  "0~9"
+                  "0",
+                  "1"
                 ],
                 "ends_with": [
-                  "0~9",
+                  "0",
+                  "1",
                   ",",
                   ";"
                 ],
@@ -274,8 +273,7 @@
                   ],
                   "contains": [
                     "a~z",
-                    "A~Z",
-                    "|"
+                    "A~Z"
                   ],
                   "ends_with": [
                     "|"
@@ -483,8 +481,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"
@@ -885,7 +882,7 @@
     "byteLength": 2,
     "addressInt": 0,
     "lineNumActive": 0,
-    "lineNumAbs": 278,
+    "lineNumAbs": 280,
     "payloadLen": 1,
     "payloadLenArg": 0,
     "isLineEmpty": true,
@@ -894,7 +891,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 278,
+      "lineNum": 280,
       "sourceLen": 4,
       "source": "@END",
       "payload": [
@@ -903,7 +900,7 @@
           "posStart": 0,
           "posStop": 3,
           "len": 4,
-          "lineNum": 278,
+          "lineNum": 280,
           "index": 0,
           "payload": "@END"
         }
@@ -975,7 +972,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@END",
-        "lineNumAbs": 278,
+        "lineNumAbs": 280,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -991,7 +988,7 @@
           "posStart": 0,
           "posStop": 3,
           "len": 4,
-          "lineNum": 278,
+          "lineNum": 280,
           "index": 0,
           "payload": "@END"
         },
@@ -1033,7 +1030,7 @@
     "obj_name": "Token",
     "type_name": "Directive",
     "source": "@END",
-    "lineNumAbs": 278,
+    "lineNumAbs": 280,
     "index": 0,
     "payloadLen": 0,
     "payloadArgLen": 0,
@@ -1049,7 +1046,7 @@
       "posStart": 0,
       "posStop": 3,
       "len": 4,
-      "lineNum": 278,
+      "lineNum": 280,
       "index": 0,
       "payload": "@END"
     },
@@ -1087,7 +1084,7 @@
   },
   "lineNumArea": 1,
   "lineNumEntry": 2,
-  "lineNumEnd": 278,
+  "lineNumEnd": 280,
   "isCode": true,
   "isReadOnly": true,
   "isData": false,

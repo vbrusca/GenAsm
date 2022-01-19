@@ -2,278 +2,280 @@
 @AREA |Program| @CODE, @READONLY
 @ENTRY
 
-    @ORG 0x08000000
-    ;need 122 16bit entries to match GBA header
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
-            @DCHW  #0
+   @ORG 0x08000000
 
-    label_                              ;branch label
-                LSL     R0, R1, #0      ;5.1
-                LSL     R0, R1, #31
-                LSR     R0, R1, #0
-                LSR     R0, R1, #31
-                ASR     R0, R1, #0
-                ASR     R0, R1, #31
-                ADD     R0, R1, R2      ;5.2
-                ADD     R0, R1, #7
-                SUB     R0, R1, R2
-                SUB     R0, R1, #7
-                MOV     R0, #0          ;5.3
-                MOV     R0, #255
-                CMP     R0, #0
-                CMP     R0, #255
-                ADD     R0, #0
-                ADD     R0, #255
-                SUB     R0, #0
-                SUB     R0, #255
-                AND     R0, R1          ;5.4
-                EOR     R0, R1
-                LSL     R0, R1
-                LSR     R0, R1
-                ASR     R0, R1
-                ADC     R0, R1
-                SBC     R0, R1
-                ROR     R0, R1
-                TST     R0, R1
-                NEG     R0, R1
-                CMP     R0, R1
-                CMN     R0, R1
-                ORR     R0, R1
-                MUL     R0, R1
-                BIC     R0, R1
-                MVN     R0, R1
-                ADD     R0, R8          ;5.5
-                ADD     R8, R0
-                ADD     R8, R9
-                CMP     R0, R8
-                CMP     R8, R0
-                CMP     R8, R9
-                MOV     R0, R8
-                MOV     R8, R0
-                MOV     R8, R9
-                BX      R0
-                BX      R8
-                LDR     R0, [PC, #0]    ;5.6
-                LDR     R0, [PC, #1020]
-                STR     R0, [R1, R2]    ;5.7
-                STRB    R0, [R1, R2]
-                LDR     R0, [R1, R2]
-                LDRB    R0, [R1, R2]
-                STRH    R0, [R1, R2]    ;5.8
-                LDRH    R0, [R1, R2]
-                LDSB    R0, [R1, R2]
-                LDSH    R0, [R1, R2]
-                STR     R0, [R1, #0]    ;5.9
-                STR     R0, [R1, #124]
-                LDR     R0, [R1, #0]
-                LDR     R0, [R1, #124]
-                STRB    R0, [R1, #0]
-                STRB    R0, [R1, #31]
-                LDRB    R0, [R1, #0]
-                LDRB    R0, [R1, #31]
-                STRH    R0, [R1, #0]    ;5.10
-                STRH    R0, [R1, #62]
-                LDRH    R0, [R1, #0]
-                LDRH    R0, [R1, #62]
-                STR     R0, [SP, #0]    ;5.11
-                STR     R0, [SP, #1020]
-                LDR     R0, [SP, #0]
-                LDR     R0, [SP, #1020]
-                ADD     R0, PC, #0      ;5.12
-                ADD     R0, PC, #1020
-                ADD     R0, SP, #0
-                ADD     R0, SP, #1020
-                ADD     SP, #0          ;5.13
-                ADD     SP, #508
-                ADD     SP, #-2
-                PUSH    {R0, R1}        ;5.14
-                PUSH    {R0, R1, LR}
-                POP     {R0, R1}
-                POP     {R0, R1, PC}
-                STMIA   R0!, {R1, R2}   ;5.15
-                LDMIA   R0!, {R1, R2}
-                BEQ     `label_         ;5.16
-                BNE     `label_
-                BCS     `label_
-                BCC     `label_
-                BMI     `label_
-                BPL     `label_
-                BVS     `label_
-                BVC     `label_
-                BHI     `label_
-                BLS     `label_
-                BGE     `label_
-                BLT     `label_
-                BGT     `label_
-                BLE     `label_
-                SWI     #0              ;5.17
-                SWI     #255
-                B       `label_         ;5.18
-                B       `over
-                BL      `label_         ;5.19
-                BL      `over
-                CMP     R0, #45         ;Other 
-                BGT     `over
-                B       `locate
-                LSR     R2, R5, #27
-                ADD     R0, R3, R4
-                SUB     R6, R2, #6
-                MOV     R0, #127
-                CMP     R2, #62
-                ADD     R1, #127
-                SUB     R6, #1
-                EOR     R3, R4
-                ROR     R1, R0
-                NEG     R5, R3
-                CMP     R2, R6
-                MUL     R0, R7
-                EOR     R3, R4
-                ROR     R1, R0
-                NEG     R5, R3
-                CMP     R2, R6
-                MUL     R0, R7
-                ADD     PC, R5
-                CMP     R4, R12
-                MOV     PC, R14
-                LDR     R3, [PC, #844]
-                STR     R3, [R2, R6]
-                LDRB    R2, [R0, R7]
-                STRH    R4, [R3, R0]
-                LDSB    R2, [R7, R1]
-                LDSH    R3, [R4, R2]
-                LDR     R2, [R5, #116]
-                STRB    R1, [R0, #13]
-                STRH    R6, [R1, #56]
-                LDRH    R4, [R7, #4]
-                ADD     R2, PC, #572
-                ADD     R6, SP, #212
-                ADD     SP, #68
-                ADD     SP, #104
-                PUSH    {R0-R4, LR}
-                POP     {R2, R6, PC}
-                STMIA   R0!, {R3, R4, R5, R6, R7}
-    over        CMP     R0, #45
-    here        B       `here
-    locate      LDR     R2, [R2, R6]
+   ;need 122 16bit entries to match GBA header
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+   @DCHW    #0
+
+   label_                                             ;branch label
+      LSL   R0, R1, #0                                ;5.1
+      LSL   R0, R1, #31
+      LSR   R0, R1, #0
+      LSR   R0, R1, #31
+      ASR   R0, R1, #0
+      ASR   R0, R1, #31
+      ADD   R0, R1, R2                                ;5.2
+      ADD   R0, R1, #7
+      SUB   R0, R1, R2
+      SUB   R0, R1, #7
+      MOV   R0, #0                                    ;5.3
+      MOV   R0, #255
+      CMP   R0, #0
+      CMP   R0, #255
+      ADD   R0, #0
+      ADD   R0, #255
+      SUB   R0, #0
+      SUB   R0, #255
+      AND   R0, R1                                    ;5.4
+      EOR   R0, R1
+      LSL   R0, R1
+      LSR   R0, R1
+      ASR   R0, R1
+      ADC   R0, R1
+      SBC   R0, R1
+      ROR   R0, R1
+      TST   R0, R1
+      NEG   R0, R1
+      CMP   R0, R1
+      CMN   R0, R1
+      ORR   R0, R1
+      MUL   R0, R1
+      BIC   R0, R1
+      MVN   R0, R1
+      ADD   R0, R8                                    ;5.5
+      ADD   R8, R0
+      ADD   R8, R9
+      CMP   R0, R8
+      CMP   R8, R0
+      CMP   R8, R9
+      MOV   R0, R8
+      MOV   R8, R0
+      MOV   R8, R9
+      BX    R0
+      BX    R8
+      LDR   R0, [PC, #0]                              ;5.6
+      LDR   R0, [PC, #1020]
+      STR   R0, [R1, R2]                              ;5.7
+      STRB  R0, [R1, R2]
+      LDR   R0, [R1, R2]
+      LDRB  R0, [R1, R2]
+      STRH  R0, [R1, R2]                              ;5.8
+      LDRH  R0, [R1, R2]
+      LDSB  R0, [R1, R2]
+      LDSH  R0, [R1, R2]
+      STR   R0, [R1, #0]                              ;5.9
+      STR   R0, [R1, #124]
+      LDR   R0, [R1, #0]
+      LDR   R0, [R1, #124]
+      STRB  R0, [R1, #0]
+      STRB  R0, [R1, #31]
+      LDRB  R0, [R1, #0]
+      LDRB  R0, [R1, #31]
+      STRH  R0, [R1, #0]                              ;5.10
+      STRH  R0, [R1, #62]
+      LDRH  R0, [R1, #0]
+      LDRH  R0, [R1, #62]
+      STR   R0, [SP, #0]                              ;5.11
+      STR   R0, [SP, #1020]
+      LDR   R0, [SP, #0]
+      LDR   R0, [SP, #1020]
+      ADD   R0, PC, #0                                ;5.12
+      ADD   R0, PC, #1020
+      ADD   R0, SP, #0
+      ADD   R0, SP, #1020
+      ADD   SP, #0                                    ;5.13
+      ADD   SP, #508
+      ADD   SP, #-2
+      PUSH  {R0, R1}                                  ;5.14
+      PUSH  {R0, R1, LR}
+      POP   {R0, R1}
+      POP   {R0, R1, PC}
+      STMIA  R0!, {R1, R2}                            ;5.15
+      LDMIA  R0!, {R1, R2}
+      BEQ    `label_                                  ;5.16
+      BNE    `label_
+      BCS    `label_
+      BCC    `label_
+      BMI    `label_
+      BPL    `label_
+      BVS    `label_
+      BVC    `label_
+      BHI    `label_
+      BLS    `label_
+      BGE    `label_
+      BLT    `label_
+      BGT    `label_
+      BLE    `label_
+      SWI    #0                                       ;5.17
+      SWI    #255
+      B      `label_                                  ;5.18
+      B      `over
+      BL     `label_                                  ;5.19
+      BL     `over
+      CMP    R0, #45                                  ;Other
+      BGT    `over
+      B      `locate
+      LSR    R2, R5, #27
+      ADD    R0, R3, R4
+      SUB    R6, R2, #6
+      MOV    R0, #127
+      CMP    R2, #62
+      ADD    R1, #127
+      SUB    R6, #1
+      EOR    R3, R4
+      ROR    R1, R0
+      NEG    R5, R3
+      CMP    R2, R6
+      MUL    R0, R7
+      EOR    R3, R4
+      ROR    R1, R0
+      NEG    R5, R3
+      CMP    R2, R6
+      MUL    R0, R7
+      ADD    PC, R5
+      CMP    R4, R12
+      MOV    PC, R14
+      LDR    R3, [PC, #844]
+      STR    R3, [R2, R6]
+      LDRB   R2, [R0, R7]
+      STRH   R4, [R3, R0]
+      LDSB   R2, [R7, R1]
+      LDSH   R3, [R4, R2]
+      LDR    R2, [R5, #116]
+      STRB   R1, [R0, #13]
+      STRH   R6, [R1, #56]
+      LDRH   R4, [R7, #4]
+      ADD    R2, PC, #572
+      ADD    R6, SP, #212
+      ADD    SP, #68
+      ADD    SP, #104
+      PUSH   {R0-R4, LR}
+      POP    {R2, R6, PC}
+      STMIA  R0!, {R3, R4, R5, R6, R7}
+
+    over     CMP  R0, #45
+    here     B    `here
+    locate   LDR  R2, [R2, R6]
 
 @END

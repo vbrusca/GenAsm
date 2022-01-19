@@ -123,8 +123,7 @@
                 ],
                 "contains": [
                   "a~z",
-                  "A~Z",
-                  "|"
+                  "A~Z"
                 ],
                 "ends_with": [
                   "|"
@@ -180,16 +179,16 @@
               "txt_match": {
                 "obj_name": "JsonObjTxtMatch",
                 "starts_with": [
-                  "#bx",
-                  "#-",
-                  "#",
-                  "0~9"
+                  "0b",
+                  "#0b"
                 ],
                 "contains": [
-                  "0~9"
+                  "0",
+                  "1"
                 ],
                 "ends_with": [
-                  "0~9",
+                  "0",
+                  "1",
                   ",",
                   ";"
                 ],
@@ -274,8 +273,7 @@
                   ],
                   "contains": [
                     "a~z",
-                    "A~Z",
-                    "|"
+                    "A~Z"
                   ],
                   "ends_with": [
                     "|"
@@ -483,8 +481,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"

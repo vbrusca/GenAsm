@@ -6,7 +6,7 @@
     "byteLength": 2,
     "addressInt": 0,
     "lineNumActive": 0,
-    "lineNumAbs": 302,
+    "lineNumAbs": 303,
     "payloadLen": 4,
     "payloadLenArg": 1,
     "isLineEmpty": true,
@@ -15,7 +15,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 302,
+      "lineNum": 303,
       "sourceLen": 30,
       "source": "@AREA |Data| @DATA, @READWRITE",
       "payload": [
@@ -24,7 +24,7 @@
           "posStart": 0,
           "posStop": 4,
           "len": 5,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 0,
           "payload": "@AREA"
         },
@@ -33,7 +33,7 @@
           "posStart": 6,
           "posStop": 11,
           "len": 6,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 1,
           "payload": "|Data|"
         },
@@ -42,7 +42,7 @@
           "posStart": 13,
           "posStop": 17,
           "len": 5,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 2,
           "payload": "@DATA"
         },
@@ -51,7 +51,7 @@
           "posStart": 20,
           "posStop": 29,
           "len": 10,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 3,
           "payload": "@READWRITE"
         }
@@ -123,8 +123,7 @@
                 ],
                 "contains": [
                   "a~z",
-                  "A~Z",
-                  "|"
+                  "A~Z"
                 ],
                 "ends_with": [
                   "|"
@@ -180,16 +179,16 @@
               "txt_match": {
                 "obj_name": "JsonObjTxtMatch",
                 "starts_with": [
-                  "#bx",
-                  "#-",
-                  "#",
-                  "0~9"
+                  "0b",
+                  "#0b"
                 ],
                 "contains": [
-                  "0~9"
+                  "0",
+                  "1"
                 ],
                 "ends_with": [
-                  "0~9",
+                  "0",
+                  "1",
                   ",",
                   ";"
                 ],
@@ -274,8 +273,7 @@
                   ],
                   "contains": [
                     "a~z",
-                    "A~Z",
-                    "|"
+                    "A~Z"
                   ],
                   "ends_with": [
                     "|"
@@ -394,7 +392,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@AREA",
-        "lineNumAbs": 302,
+        "lineNumAbs": 303,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -410,7 +408,7 @@
           "posStart": 0,
           "posStop": 4,
           "len": 5,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 0,
           "payload": "@AREA"
         },
@@ -450,7 +448,7 @@
         "obj_name": "Token",
         "type_name": "DirectiveString",
         "source": "Data",
-        "lineNumAbs": 302,
+        "lineNumAbs": 303,
         "index": 1,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -466,7 +464,7 @@
           "posStart": 6,
           "posStop": 11,
           "len": 6,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 1,
           "payload": "|Data|"
         },
@@ -483,8 +481,7 @@
             ],
             "contains": [
               "a~z",
-              "A~Z",
-              "|"
+              "A~Z"
             ],
             "ends_with": [
               "|"
@@ -507,7 +504,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@DATA",
-        "lineNumAbs": 302,
+        "lineNumAbs": 303,
         "index": 2,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -523,7 +520,7 @@
           "posStart": 13,
           "posStop": 17,
           "len": 5,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 2,
           "payload": "@DATA"
         },
@@ -563,7 +560,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@READWRITE",
-        "lineNumAbs": 302,
+        "lineNumAbs": 303,
         "index": 3,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -579,7 +576,7 @@
           "posStart": 20,
           "posStop": 29,
           "len": 10,
-          "lineNum": 302,
+          "lineNum": 303,
           "index": 3,
           "payload": "@READWRITE"
         },
@@ -621,7 +618,7 @@
     "obj_name": "Token",
     "type_name": "Directive",
     "source": "@AREA",
-    "lineNumAbs": 302,
+    "lineNumAbs": 303,
     "index": 0,
     "payloadLen": 0,
     "payloadArgLen": 0,
@@ -637,7 +634,7 @@
       "posStart": 0,
       "posStop": 4,
       "len": 5,
-      "lineNum": 302,
+      "lineNum": 303,
       "index": 0,
       "payload": "@AREA"
     },
@@ -679,7 +676,7 @@
     "byteLength": 2,
     "addressInt": 0,
     "lineNumActive": 0,
-    "lineNumAbs": 303,
+    "lineNumAbs": 304,
     "payloadLen": 1,
     "payloadLenArg": 0,
     "isLineEmpty": true,
@@ -688,7 +685,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 303,
+      "lineNum": 304,
       "sourceLen": 6,
       "source": "@ENTRY",
       "payload": [
@@ -697,7 +694,7 @@
           "posStart": 0,
           "posStop": 5,
           "len": 6,
-          "lineNum": 303,
+          "lineNum": 304,
           "index": 0,
           "payload": "@ENTRY"
         }
@@ -769,7 +766,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@ENTRY",
-        "lineNumAbs": 303,
+        "lineNumAbs": 304,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -785,7 +782,7 @@
           "posStart": 0,
           "posStop": 5,
           "len": 6,
-          "lineNum": 303,
+          "lineNum": 304,
           "index": 0,
           "payload": "@ENTRY"
         },
@@ -827,7 +824,7 @@
     "obj_name": "Token",
     "type_name": "Directive",
     "source": "@ENTRY",
-    "lineNumAbs": 303,
+    "lineNumAbs": 304,
     "index": 0,
     "payloadLen": 0,
     "payloadArgLen": 0,
@@ -843,7 +840,7 @@
       "posStart": 0,
       "posStop": 5,
       "len": 6,
-      "lineNum": 303,
+      "lineNum": 304,
       "index": 0,
       "payload": "@ENTRY"
     },
@@ -885,7 +882,7 @@
     "byteLength": 2,
     "addressInt": 0,
     "lineNumActive": 0,
-    "lineNumAbs": 519,
+    "lineNumAbs": 518,
     "payloadLen": 1,
     "payloadLenArg": 0,
     "isLineEmpty": true,
@@ -894,7 +891,7 @@
     "isLineLabelDef": false,
     "source": {
       "obj_name": "ArtifactLine",
-      "lineNum": 519,
+      "lineNum": 518,
       "sourceLen": 4,
       "source": "@END",
       "payload": [
@@ -903,7 +900,7 @@
           "posStart": 0,
           "posStop": 3,
           "len": 4,
-          "lineNum": 519,
+          "lineNum": 518,
           "index": 0,
           "payload": "@END"
         }
@@ -975,7 +972,7 @@
         "obj_name": "Token",
         "type_name": "Directive",
         "source": "@END",
-        "lineNumAbs": 519,
+        "lineNumAbs": 518,
         "index": 0,
         "payloadLen": 0,
         "payloadArgLen": 0,
@@ -991,7 +988,7 @@
           "posStart": 0,
           "posStop": 3,
           "len": 4,
-          "lineNum": 519,
+          "lineNum": 518,
           "index": 0,
           "payload": "@END"
         },
@@ -1033,7 +1030,7 @@
     "obj_name": "Token",
     "type_name": "Directive",
     "source": "@END",
-    "lineNumAbs": 519,
+    "lineNumAbs": 518,
     "index": 0,
     "payloadLen": 0,
     "payloadArgLen": 0,
@@ -1049,7 +1046,7 @@
       "posStart": 0,
       "posStop": 3,
       "len": 4,
-      "lineNum": 519,
+      "lineNum": 518,
       "index": 0,
       "payload": "@END"
     },
@@ -1085,9 +1082,9 @@
     },
     "payload": []
   },
-  "lineNumArea": 302,
-  "lineNumEntry": 303,
-  "lineNumEnd": 519,
+  "lineNumArea": 303,
+  "lineNumEntry": 304,
+  "lineNumEnd": 518,
   "isCode": false,
   "isReadOnly": false,
   "isData": true,
