@@ -17,7 +17,7 @@ import net.middlemind.GenAsm.PreProcessors.PreProcessor;
 import net.middlemind.GenAsm.Utils;
 
 /**
- * An implementation of the pre-processor interface used to process thumb assembly source code.
+ * An implementation of the preprocessor interface used to process thumb assembly source code.
  * @author Victor G. Brusca, Middlemind Games 10-06-2021 10:04 AM EST
  */
 @SuppressWarnings({"UnusedAssignment", "UseOfObsoleteCollectionType"})
@@ -152,7 +152,6 @@ public class PreProcessorThumb implements PreProcessor {
         for(String s : ret) {
             if(s != null && s.equals("") == false) {
                 idxs = Utils.StringContainsArrayEntry(PP_DIRECTIVES, s);
-                //Logger.wrl(s);
                 if(idxs != null) {
                     directive = PP_DIRECTIVES[idxs[0]];
                     
@@ -160,7 +159,6 @@ public class PreProcessorThumb implements PreProcessor {
                         whiteSpace = s.substring(0, s.indexOf(";"));
                     }
                     
-                    //Logger.wrl("======================Found: " + idxs[0]);
                     if(idxs[0] == PPD_NOP_IDX) {
                         asmFileReplace.put(count, whiteSpace + "MOV\tR8, R8\t\t;NOP preprocessor directive");
 
@@ -275,7 +273,6 @@ public class PreProcessorThumb implements PreProcessor {
                         fileName = "String replacement: " + tmp;                        
                         tmp += ((char)PPD_EOL_BYTE) + "";
                         char[] crs = tmp.toCharArray();
-                        //byte[] crs = tmp.getBytes("US-ASCII");
                         int len = crs.length;
                         if(len % 2 != 0) {
                             paddingOn = true;
@@ -287,7 +284,6 @@ public class PreProcessorThumb implements PreProcessor {
                             if(i < crs.length) {
                                 binCrs[i] = ((byte)crs[i]);
                                 Logger.wrl("Char: " + tmp.charAt(i) + " Val: " + crs[i]);                                        
-                                //binCrs[i] = crs[i];
                             } else {
                                 binCrs[i] = PPD_EOL_BYTE;
                             }
