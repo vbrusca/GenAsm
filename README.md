@@ -99,3 +99,45 @@ ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
 ASM_VERBOSE = false; 
 ASM_QUELL_FILE_OUTPUT = false;
 </pre>
+
+# Description of Output Files
+
+
+## In Process: Output Generated
+
+<pre>
+output_pre_processed_assembly.txt: Output after preprocessor runs.
+output_lexed.json: Output after the lexer runs.
+output_tokened_phase0_tokenized.json: Output after phase0 runs, tokenizer results.
+output_tokened_phase1_valid_lines.json: Output after phase1 runs, opcode valid lines.
+output_tokened_phase2_refactored.json: Output after phase2 runs, refactoring groups, lists, comments.
+output_tokened_phase3_valid_lines.json: Output after phase3 runs, directive valid lines.
+output_tokened_phase4_bin_output.json: Output after phase4, ready for generating binary output.
+</pre>
+
+
+## Building Binary Files: Output Generated
+
+<pre>
+output_symbols.json: A listing of the symbols found during the assembly process.
+output_area_desc_code.json: A listing of area descriptions.
+output_area_lines_code.json: A listing of area associated lines.
+output_linked_area_lines_code.json: A listing of linked area lines of source code.
+output_assembly_listing_endian_big.list: Big endian listing.
+output_assembly_listing_endian_lil.list: Little endian listing.
+output_assembly_listing_endian_big.bin: Big endian binary output.
+output_assembly_listing_endian_lil.bin: Little endian binary output.
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
