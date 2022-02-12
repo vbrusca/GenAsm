@@ -105,11 +105,11 @@ public class PreProcessorThumb implements PreProcessor {
     /**
      * A method used to append a string to each entry in a list of strings.
      * @param lines     A list of strings representing the lines to alter.
-     * @param appendix  The string value to apply as a prefix to the lines arguments.
+     * @param prefix  The string value to apply as a prefix to the lines arguments.
      */
-    public void AddAppendix(List<String> lines, String appendix) {
+    public void AddPrefix(List<String> lines, String prefix) {
         for(int i = 0; i < lines.size(); i++) {
-            lines.set(i, appendix + lines.get(i));
+            lines.set(i, prefix + lines.get(i));
         }
     }
     
@@ -178,7 +178,7 @@ public class PreProcessorThumb implements PreProcessor {
                             
                             asmFileAdjTypes.put(s, idxs[0]);
                             asmFileAdj.put(s, incAsm);
-                            AddAppendix(incAsm, whiteSpace);
+                            AddPrefix(incAsm, whiteSpace);
                             asmFileAdjNames.put(s, fileName);
                             
                         } else {
@@ -260,7 +260,7 @@ public class PreProcessorThumb implements PreProcessor {
                             nret.add("");
                             asmFileAdjTypes.put(s, idxs[0]);                            
                             asmFileAdj.put(s, nret);
-                            AddAppendix(nret, whiteSpace);
+                            AddPrefix(nret, whiteSpace);
                             asmFileAdjNames.put(s, fileName);
                             
                         } else {
@@ -328,7 +328,7 @@ public class PreProcessorThumb implements PreProcessor {
                         
                         nret.add("");
                         asmFileAdj.put(s, nret);
-                        AddAppendix(nret, whiteSpace);
+                        AddPrefix(nret, whiteSpace);
                         asmFileAdjNames.put(s, fileName);                        
                     }
                 }
