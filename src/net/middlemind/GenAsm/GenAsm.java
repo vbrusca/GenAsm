@@ -139,7 +139,7 @@ public class GenAsm {
             }
         } else if(args == null || args.length < ARG_LEN_TARGET) {
             String targetProgram = "TEST_N_AsmChecks";
-            CFG_DIR_PATH = "C:\\Users\\variable\\Documents\\GitHub\\GenAsm\\cfg\\";
+            CFG_DIR_PATH = ".\\cfg\\";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
             ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
