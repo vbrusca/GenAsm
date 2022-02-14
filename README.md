@@ -22,7 +22,7 @@ If you're running the GenAsm assembler outside of the NetBeans project the direc
    -> cfg  
       -> is_sets.json  
       -> THUMB  
-         -> <instruction set data files here>  
+         -> /* instruction set data files here */  
          -> OUTPUT  
             -> TEST_N_AsmChecks  
          -> TESTS  
