@@ -32,7 +32,7 @@ public class TokenerThumb implements Tokener {
      * @param lineNum                   The line number of the artifact line being tokenized.
      * @param entryTypes                An object representing the instruction sets entry types.
      * @return                          A token line derived from the artifact lines.
-     * @throws ExceptionNoTokenerFound  An exception is thrown if there is an error during the tokening process.
+     * @throws ExceptionNoTokenerFound  An exception is thrown if there is an error during the tokenizing process.
      */
     @Override
     @SuppressWarnings({"CallToPrintStackTrace", "null"})
@@ -77,6 +77,7 @@ public class TokenerThumb implements Tokener {
 
                         //Check for starting string match
                         for(String withStarts : type.txt_match.starts_with) {
+                           // <editor-fold defaultstate="collapsed" desc="starts_with">
                             compare = withStarts;
                             withResStarts = withStarts;
                             withStartsLen = withStarts.length();
@@ -114,7 +115,7 @@ public class TokenerThumb implements Tokener {
                                     }
                                     
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
-                                    //Found lower case character range
+                                    //Found lower case character range numeric
                                     char lc = payload.charAt(0);
                                     if(Character.isLowerCase(lc) || Character.isDigit(lc)) {
                                         withStarts = (lc + "");
@@ -134,7 +135,7 @@ public class TokenerThumb implements Tokener {
                                     }
                                     
                                 } else if(withStarts.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
-                                    //Found lower case character range
+                                    //Found upper case character range numeric
                                     char lc = payload.charAt(0);
                                     if(Character.isUpperCase(lc) || Character.isDigit(lc)) {
                                         withStarts = (lc + "");
@@ -150,6 +151,7 @@ public class TokenerThumb implements Tokener {
                                     break;
                                 }
                             }
+                            // </editor-fold>
                         }
                         
                         if(verbose) {
@@ -160,6 +162,7 @@ public class TokenerThumb implements Tokener {
                         if(lfound) {
                             lfound = false;
                             for(String withEnds : type.txt_match.ends_with) {
+                                 // <editor-fold defaultstate="collapsed" desc="ends_with">
                                 compare = withEnds;
                                 withResEnds = withEnds;
                                 withEndsLen = withEnds.length();
@@ -200,7 +203,7 @@ public class TokenerThumb implements Tokener {
                                         }
                                         
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_lowercase_num_range)) {
-                                        //Found lower case character range
+                                        //Found lower case character range numeric
                                         char lc = payload.charAt(payload.length() - 1);
                                         if(Character.isLowerCase(lc) || Character.isDigit(lc)) {
                                             withEnds = (lc + "");
@@ -220,7 +223,7 @@ public class TokenerThumb implements Tokener {
                                         }
                                         
                                     } else if(withEnds.equals(JsonObjTxtMatch.special_uppercase_num_range)) {
-                                        //Found lower case character range
+                                        //Found upper case character range numeric
                                         char lc = payload.charAt(payload.length() - 1);
                                         if(Character.isUpperCase(lc) || Character.isDigit(lc)) {
                                             withEnds = (lc + "");
@@ -248,6 +251,7 @@ public class TokenerThumb implements Tokener {
                                         break;                                        
                                     }
                                 }
+                                 // </editor-fold>
                             }
                         }
                         
@@ -271,6 +275,7 @@ public class TokenerThumb implements Tokener {
                                 boolean llfound = false;
                                 
                                 for(char c : chars) {
+                                    // <editor-fold defaultstate="collapsed" desc="contains_with">
                                     llfound = false;
                                     for(String withContains : type.txt_match.contains) {
                                         compare = withContains;
@@ -348,6 +353,7 @@ public class TokenerThumb implements Tokener {
                                             }
                                         }
                                     }
+                                    // </editor-fold>
                                 }
 
                                 if(llfound) {
@@ -364,10 +370,12 @@ public class TokenerThumb implements Tokener {
                         if(lfound && !Utils.IsListEmpty(type.txt_match.must_contain)) {           
                             lfound = true;
                             for(String s : type.txt_match.must_contain) {
+                                 // <editor-fold defaultstate="collapsed" desc="must_contain">
                                 if(!payload.contains(s)) {
                                     lfound = false;
                                     break;
                                 }
+                                 // </editor-fold>
                             }
                         }
                         
@@ -379,10 +387,12 @@ public class TokenerThumb implements Tokener {
                         if(lfound && !Utils.IsListEmpty(type.txt_match.must_not_contain)) {           
                             lfound = true;
                             for(String s : type.txt_match.must_not_contain) {
+                              // <editor-fold defaultstate="collapsed" desc="must_not_contain">
                                 if(payload.contains(s)) {
                                     lfound = false;
                                     break;
                                 }
+                              // </editor-fold>  
                             }
                         }
                         
