@@ -491,7 +491,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             Logger.wrl("");
-            Logger.wrl("List Assembly Source Areas:");
+            Logger.wrl("STEP 13: List Assembly Source Areas:");
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: Title: " + areaThumbCode.title);                
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
@@ -2500,6 +2500,7 @@ public class AssemblerThumb implements Assembler {
      * @throws ExceptionInvalidAssemblyLine
      * @throws ExceptionDirectiveArgNotSupported
      * @throws ExceptionMissingDataDirective 
+    * @throws net.middlemind.GenAsm.Exceptions.Thumb.ExceptionNoSymbolValueFound 
      */
     public void BuildBinDirective(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionNoSymbolFound, ExceptionUnexpectedTokenWithSubArguments, ExceptionNumberInvalidShift, ExceptionNumberOutOfRange, ExceptionNoNumberRangeFound, ExceptionUnexpectedTokenType, ExceptionInvalidEntry, ExceptionInvalidAssemblyLine, ExceptionDirectiveArgNotSupported, ExceptionMissingDataDirective, ExceptionNoSymbolValueFound {   
         if(eventHandler != null) {
