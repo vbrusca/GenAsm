@@ -11,6 +11,11 @@ The assembler can build binaries the the GameBoy Advance can run. Many of the te
 
 ![image info](./storage/images/arm_hw.jpg)
 
+# IDE Setup
+In order to run the GenAsm project directly from the IDE using the hardcoded test program values you need to configure the project's settings and specify the working directory as the root of the project as shown in the following image.
+
+![image info](./storage/images/genAsm_IdeCfg.png)
+
 
 # Directory Setup
 
