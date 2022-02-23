@@ -29,10 +29,21 @@ If you're running the GenAsm assembler outside of the NetBeans project the direc
       -> THUMB  
          -> /* instruction set data files here */  
          -> OUTPUT  
-            -> TEST_N_AsmChecks  
+            -> TEST_N_AsmChecks 
+               -> /* assembler output files should go here */
          -> TESTS  
             -> TEST_N_AsmChecks  
                -> genasm_source.txt 
+</pre>
+
+# Symbol/Label Reference Types Supported
+Using different characters you can reference a symbol and extract different values in the process.
+
+<pre>
+-Label Reference Address =: Used to return the address of the label referenced. 
+-Label Reference Value ~: Used to return the value, if available, of the label referenced. 
+-Label Reference Offset Address -: Used to return the offset to the address of the label referenced taking into account the pre-fetch offset. 
+-Label Reference Offset Address Less Prefetch `: Used to return the offset to the address of the label referenced ignoring the pre-fetch offset. 
 </pre>
 
 # Example Command Line Execution
