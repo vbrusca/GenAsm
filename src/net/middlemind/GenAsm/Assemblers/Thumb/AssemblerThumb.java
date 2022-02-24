@@ -491,7 +491,7 @@ public class AssemblerThumb implements Assembler {
             }
             
             Logger.wrl("");
-            Logger.wrl("STEP 13: List Assembly Source Areas:");
+            Logger.wrl("STEP 13: List Assembly Source Areas and Build Binary Output:");
             if(areaThumbCode != null) {
                 Logger.wrl("AreaThumbCode: Title: " + areaThumbCode.title);                
                 Logger.wrl("AreaThumbCode: AreaLine: " + areaThumbCode.lineNumArea + " EntryLine: " + areaThumbCode.lineNumEntry + " EndLine: " + areaThumbCode.lineNumEnd);
@@ -501,9 +501,6 @@ public class AssemblerThumb implements Assembler {
                     Utils.WriteObject(areaThumbCode, "Assembly Source Area Code Desc", "output_area_desc_code.json", rootOutputDir);
                 }
                 BuildBinLines(lastStep, asmAreaLinesCode, areaThumbCode);
-                //if(!quellFileOutput) {
-                //    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
-                //}
             } else {
                 Logger.wrl("AreaThumbCode: is null");
             }
@@ -517,9 +514,6 @@ public class AssemblerThumb implements Assembler {
                     Utils.WriteObject(areaThumbData, "Assembly Source Area Data Desc", "output_area_desc_data.json", rootOutputDir);
                 }
                 BuildBinLines(lastStep, asmAreaLinesData, areaThumbData);
-                //if(!quellFileOutput) {
-                //    Utils.WriteObject(asmDataTokened, "Assembly Tokenized Data", "output_tokened_phase4_bin_output.json", rootOutputDir);
-                //}
             } else {
                 Logger.wrl("AreaThumbData: is null");
             }
@@ -1387,28 +1381,6 @@ public class AssemblerThumb implements Assembler {
                         ltoken.isOpCodeArg = true;
 
                     }
-                    /*
-                    else if(ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL)) {
-                        if(ltoken.index == 0) {
-                            lastLabel = ltoken.source;
-                            lastLabelLine = line;
-                            if(symbols.symbols.containsKey(ltoken.source)) {
-                                throw new ExceptionRedefinitionOfLabel("Found symbol '" + ltoken.source + "' redefined on line " + ltoken.lineNumAbs + " originally defned on line " + symbol.lineNumAbs);
-                            } else {
-                                Logger.wrl("AssemblerThumb: PopulateOpCodeAndArgData: Storing symbol with label '" + ltoken.source + "' for line number " + line.lineNumAbs);
-                            }
-                            symbol = new Symbol();
-                            symbol.line = line;
-                            symbol.lineNumAbs = line.lineNumAbs;
-                            symbol.addressBin = line.addressBin;
-                            symbol.addressHex = line.addressHex;
-                            symbol.addressInt = line.addressInt;
-                            symbol.name = ltoken.source;
-                            symbol.token = ltoken;
-                            symbols.symbols.put(ltoken.source, symbol);
-                        }
-                    }
-                    */
                 }
             }
             
@@ -1423,7 +1395,6 @@ public class AssemblerThumb implements Assembler {
                 }
             }
 
-            //Logger.wrl(line.source.source + ", " + opCodeFound + ", " + directiveFound + ", " + labelFound);
             if(!opCodeFound && !directiveFound && labelFound) {
                 line.isLineLabelDef = true;
             }            
@@ -1533,7 +1504,7 @@ public class AssemblerThumb implements Assembler {
     }
     
     /**
-     * A helper method that finds he next op-code line.
+     * A helper method that finds the next op-code line.
      * @param lineNum   An integer representing the line number of the line to start searching on.
      * @param label     A string representing the label that initiated the op-code line search. 
      * @return          A token line if a match is found otherwise null.
@@ -1576,9 +1547,7 @@ public class AssemblerThumb implements Assembler {
             argFound = true;
             argFoundSub = false;
             hasArgsSub = false;
-            
-            //Logger.wrl("========================= Searching for opCode match: " + opCode.index);
-            
+                        
             //Sort Json OpCode arguments so that they are arg_index ascending
             Collections.sort(opCode.args, new JsonObjIsOpCodeArgSorter());
             
@@ -1589,16 +1558,12 @@ public class AssemblerThumb implements Assembler {
                 if(i < args.size()) {
                     argToken = args.get(i);
                 } else {
-                    //Logger.wrl("Exit AAA");
                     argFound = false;
                     break;
                 }
                                 
                 if(opCodeArg != null && argToken != null) {
-                    //if(!(argToken.isLabelRef || argToken.isLabelLocalRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                    //if(!(argToken.isLabelRef || opCodeArg.is_entry_types.contains(argToken.type_name))) {
                     if(!(opCodeArg.is_entry_types.contains(argToken.type_name))) {
-                        //Logger.wrl("Exit BBB: " + argToken.type_name);
                         argFound = false;
                         break;
                     }
@@ -1617,7 +1582,6 @@ public class AssemblerThumb implements Assembler {
                             if(argToken.payload != null && (j + regRangeOffset) < argToken.payload.size()) {
                                 argTokenSub = argToken.payload.get(j + regRangeOffset);
                             } else {
-                                //Logger.wrl("Exit CCC");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1625,31 +1589,25 @@ public class AssemblerThumb implements Assembler {
                             
                             if(opCodeArgSub != null && argTokenSub != null) {
                                 if(opCodeArgSub.is_entry_types.contains("RegisterRangeLow") && argTokenSub.type_name.equals("RegisterLow")) {
-                                    //regRangeOffset = 1;
                                     for(int k = j + 1; k < argToken.payload.size(); k++) {
                                         if(argToken.payload.get(k).type_name.equals("RegisterLow")) {
                                             regRangeOffset++;
                                         }
                                     }
                                 } else if(opCodeArgSub.is_entry_types.contains("RegisterRangeHi") && argTokenSub.type.type_category.equals("RegisterHi")) {
-                                    //regRangeOffset = 1;
                                     for(int k = j + 1; k < argToken.payload.size(); k++) {
                                         if(argToken.payload.get(k).type.type_category.equals("RegisterHi")) {
                                             regRangeOffset++;
                                         }
                                     }
                                 } else {
-                                    //if(!(argTokenSub.isLabelRef || argTokenSub.isLabelLocalRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
-                                    //if(!(argTokenSub.isLabelRef || opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
                                     if(!(opCodeArgSub.is_entry_types.contains(argTokenSub.type_name))) {
-                                        //Logger.wrl("Exit DDD: " + argTokenSub.type_name);
                                         argFound = false;
                                         argFoundSub = false;
                                         break;
                                     }
                                 }
                             } else {
-                                //Logger.wrl("Exit EEE");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1659,7 +1617,6 @@ public class AssemblerThumb implements Assembler {
                         if(regRangeOffset > 0) {
                             //Register range offset is lower by 1 to allow for RegisterRange type, -1 for list close
                             if((argToken.payload.size() - regRangeOffset - 1) != opCodeArg.sub_args.size()) {
-                                //Logger.wrl("Exit FFF");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1667,7 +1624,6 @@ public class AssemblerThumb implements Assembler {
                         } else {
                             //-1 for group close
                             if((argToken.payload.size() - 1) != opCodeArg.sub_args.size()) {
-                                //Logger.wrl("Exit GGG");
                                 argFound = false;
                                 argFoundSub = false;
                                 break;
@@ -1675,14 +1631,12 @@ public class AssemblerThumb implements Assembler {
                         }
                     }
                 } else {
-                    //Logger.wrl("Exit HHH");
                     argFound = false;
                     argFoundSub = false;
                     break;
                 }
             }
             
-            //Logger.wrl("========================= FindOpCodeArgMatches: " + argFound + ", " + hasArgsSub + ", " + argFoundSub);
             if(argFound && !hasArgsSub && !argFoundSub) {
                 return opCode;                
             } else if(argFound && hasArgsSub && argFoundSub) {
@@ -1730,7 +1684,6 @@ public class AssemblerThumb implements Assembler {
      */
     public int CountArgTokens(List<Token> payload, int argCount, String argCategory, boolean isOpCodeArg) {
         for(Token token : payload) {
-            //lastToken = token;
             if(token.type != null && ((JsonObjIsEntryType)token.type).category.equals(argCategory)) {
                 argCount++;
                 if(isOpCodeArg) {
@@ -2579,12 +2532,8 @@ public class AssemblerThumb implements Assembler {
                                 byte bt;
                                 
                                 if(isDirDcw0 == true) {
-                                    //tInt = (int)shorts[0];
-                                    //tInt = (int)b[b.length - 1];
                                     bt = b[b.length - 1];
                                 } else {
-                                    //tInt = (int)shorts[1];
-                                    //tInt = (int)b[b.length - 2];
                                     bt = b[b.length - 2];
                                 }
                                 
@@ -2593,8 +2542,6 @@ public class AssemblerThumb implements Assembler {
                                 } else {
                                     tInt = (int)bt;
                                 }                         
-
-                                Logger.wrl("B Val: " + tInt);
                                 
                                 token.value = tInt;
                                 resTmp = Integer.toBinaryString(tInt);
@@ -2629,12 +2576,12 @@ public class AssemblerThumb implements Assembler {
                     
                         Integer tInt = null;
                         if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                            //label address =
+                            //label address, =
                             tInt = sym.addressInt;
                             Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                            //label value ~
+                            //label value, ~
                             if(sym.value != null && sym.isStaticValue) {
                                 tInt = sym.value;
                                 Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");                                
@@ -2643,7 +2590,7 @@ public class AssemblerThumb implements Assembler {
                             }
                             
                         } else if(c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                            //label address offset -
+                            //label address offset, -
                             if(line.addressInt < sym.addressInt) {
                                 tInt = (sym.addressInt - line.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes;
                             } else {
@@ -2755,10 +2702,7 @@ public class AssemblerThumb implements Assembler {
                     }
                 }
             }
-        } 
-        //else {
-            //throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with Directive line source '" + line.source.source + "' and line number " + line.lineNumAbs);
-        //}
+        }
         
         if(eventHandler != null) {
             eventHandler.BuildBinDirectivePost(step, this);
@@ -2921,6 +2865,7 @@ public class AssemblerThumb implements Assembler {
                 resTmp1 = "";
                 resTmp2 = null;
                 if(entry.isOpCode) {
+                    // <editor-fold defaultstate="collapsed" desc="OpCode">
                     opCodeEntry = entry;
                     resTmp1 = entry.opCode.bit_rep.bit_string;
                     
@@ -2931,7 +2876,7 @@ public class AssemblerThumb implements Assembler {
                     } else if(entry.opCode.index == JsonObjIsOpCodes.BL_INDEX) {
                         inBl = true;
                     }
-                    
+                    // </editor-fold>
                 }else if(entry.isOpCodeArgList) {
                     // <editor-fold defaultstate="collapsed" desc="OpCode Arg List">
                     if(entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {

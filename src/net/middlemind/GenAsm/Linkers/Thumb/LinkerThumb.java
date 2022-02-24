@@ -18,6 +18,7 @@ import net.middlemind.GenAsm.Utils;
  * An implementation of the linker interface used to link areas of a source assembly file for the ARM Thumb instruction set.
  * @author Victor G. Brusca, Middlemind Games 09/24/2021 10:31 AM EST
  */
+@SuppressWarnings("UnusedAssignment")
 public class LinkerThumb implements Linker {
     /**
      * A Boolean value indicating that verbose logging should be used if available.
@@ -65,7 +66,7 @@ public class LinkerThumb implements Linker {
         quellFileOutput = quellOutput;
         AssemblerThumb asm = (AssemblerThumb)assembler;
         Map<Integer, TokenLine> fin = new Hashtable<>();
-        List<String> lstFile = new ArrayList<>();
+        List<String> lstFile = new ArrayList<>();        
         TokenLine line = null;
         
         if(asm.areaThumbCode != null && asm.areaThumbData != null) {
