@@ -36,6 +36,27 @@ If you're running the GenAsm assembler outside of the NetBeans project the direc
                -> genasm_source.txt 
 </pre>
 
+A breakdown of the project's config directory is as follows:
+
+<pre>
+GenAsm                           (NetBeans Project Root) 
+-> cfg                           (Assembler config folder) 
+   -> is_sets.json 
+   -> THUMB                      (ARM Thumb-1 Implementation) 
+      -> is_arg_types.json 
+      -> is_directives.json 
+      -> is_empty_data_lines.json 
+      -> is_entry_types.json 
+      -> is_op_codes.json 
+      -> is_registers.json 
+      -> is_valid_lines.json 
+      -> is_test_file_vals.json 
+      -> EMUS                    (Emulators) 
+      -> INCBIN                  (File Includes) 
+      -> OUTPUT                  (Executed Program Output) 
+      -> TEST                    (Test Programs) 
+</pre>
+
 # Symbol/Label Reference Types Supported
 Using different characters you can reference a symbol and extract different values in the process.
 
