@@ -567,7 +567,6 @@ public class AssemblerThumb implements Assembler {
          if (eventHandler != null) {
             eventHandler.RunAssemblerPost(this);
          }
-
       } catch (Exception e) {
          Logger.wrlErr("Error in RunAssembler method on step: " + lastStep);
          if (lastLine != null) {
@@ -617,15 +616,13 @@ public class AssemblerThumb implements Assembler {
       List<String> reqDirectives = new ArrayList<>(requiredDirectives);
 
       int lastEntry = -1;
-      Token lastEntryToken = null;
-      TokenLine lastEntryTokenLine = null;
-
       int lastEnd = -1;
-      Token lastEndToken = null;
-      TokenLine lastEndTokenLine = null;
-
       int lastArea = -1;
+      Token lastEntryToken = null;
+      Token lastEndToken = null;
       Token lastAreaToken = null;
+      TokenLine lastEntryTokenLine = null;
+      TokenLine lastEndTokenLine = null;
       TokenLine lastAreaTokenLine = null;
 
       int lastCode = -1;
@@ -668,7 +665,6 @@ public class AssemblerThumb implements Assembler {
 
          for (Token token : line.payload) {
             lastToken = token;
-
             if (foundTtl && token.type_name.equals(JsonObjIsDirectives.NAME_DIRECTIVE_TYPE_STRING)) {
                foundTtl = false;
                assemblyTitle = token.source;
@@ -686,12 +682,10 @@ public class AssemblerThumb implements Assembler {
                   lastLabelLine = line;
                   lastLabelToken = token;
                }
-
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                if (dataDirectiveFound == true && directiveFound == true && foundArea == true) {
                   token.isDirectiveArg = true;
                }
-
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER)) {
                if (directiveFound == true && foundArea == true) {
                   token.isDirectiveArg = true;
@@ -711,7 +705,6 @@ public class AssemblerThumb implements Assembler {
                   asmStartLineNumber = Utils.ParseNumberString(token.source);
                   foundOrg = false;
                }
-
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                if (!directiveFound) {
                   directiveFound = true;
@@ -766,7 +759,6 @@ public class AssemblerThumb implements Assembler {
                   } else {
                      throw new ExceptionRedefinitionOfAreaDirective("Redefinition of AREA directive found on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_CODE)) {
                   line.isLineEmpty = true;
                   if (lastCode == -1) {
@@ -777,7 +769,6 @@ public class AssemblerThumb implements Assembler {
                   if (lastData != -1 && lastData == lastCode) {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to CODE when type is DATA, found on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_DATA)) {
                   line.isLineEmpty = true;
                   if (lastData == -1) {
@@ -788,7 +779,6 @@ public class AssemblerThumb implements Assembler {
                   if (lastCode != -1 && lastCode == lastData) {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to DATA when type is CODE, found on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_READONLY)) {
                   line.isLineEmpty = true;
                   if (lastReadOnly == -1) {
@@ -799,7 +789,6 @@ public class AssemblerThumb implements Assembler {
                   if (lastReadOnly != -1 && lastReadOnly == lastReadWrite) {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READONLY when type is READWRITE, found on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_READWRITE)) {
                   line.isLineEmpty = true;
                   if (lastReadWrite == -1) {
@@ -810,7 +799,6 @@ public class AssemblerThumb implements Assembler {
                   if (lastReadWrite != -1 && lastReadWrite == lastReadOnly) {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Cannot set AREA type to READWRITE when type is READONLY, found on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_ENTRY)) {
                   line.isLineEmpty = true;
                   if (lastArea == -1) {
@@ -826,7 +814,6 @@ public class AssemblerThumb implements Assembler {
                   } else {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Found multiple ENTRY directives with a new entry on line " + line.lineNumAbs + " with source " + line.source.source);
                   }
-
                } else if (token.source.equals(JsonObjIsDirectives.NAME_END)) {
                   line.isLineEmpty = true;
                   if (lastArea == -1) {
@@ -1037,7 +1024,6 @@ public class AssemblerThumb implements Assembler {
                   }
                }
             }
-
          } else {
             //process data area first
             asmAreaLinesData = new ArrayList<TokenLine>();
@@ -1071,7 +1057,6 @@ public class AssemblerThumb implements Assembler {
                }
             }
          }
-
       } else if (areaThumbCode != null) {
          //process code area first
          asmAreaLinesCode = new ArrayList<TokenLine>();
@@ -1353,12 +1338,10 @@ public class AssemblerThumb implements Assembler {
                } else {
                   throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNumAbs + " with argument index " + token.index);
                }
-
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_DIRECTIVE)) {
                if (!directiveFound) {
                   directiveFound = true;
                }
-
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {
                token.isOpCodeArg = true;
 
@@ -1387,10 +1370,8 @@ public class AssemblerThumb implements Assembler {
                         symbol.value = null;
                         symbols.symbols.put(token.source, symbol);
                      }
-
                   } else {
                      throw new ExceptionMissingRequiredDirective("Found symbol '" + lastLabel + "' found on line " + lastLabelLine.lineNumAbs + " is missing required directive EQU that is expected when no OpCode is used.");
-
                   }
                }
             }
@@ -1416,10 +1397,8 @@ public class AssemblerThumb implements Assembler {
 
                if (ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_OPCODE)) {
                   throw new ExceptionOpCodeAsArgument("Found OpCode token entry where a sub-argument should be on line " + line.lineNumAbs + " with argument index " + ltoken.index + " and parent argument index " + token.index);
-
                } else if (ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST) || ltoken.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {
                   ltoken.isOpCodeArg = true;
-
                }
             }
          }
@@ -1427,7 +1406,7 @@ public class AssemblerThumb implements Assembler {
          if (opCodeFound) {
             line.payloadOpCode = opCodeName;
             line.isLineOpCode = true;
-            line.payloadLenArg = CountArgTokens(line.payload, 0); // + labelArgs;  /* No longer needed */
+            line.payloadLenArg = CountArgTokens(line.payload, 0);
             line.matchesOpCode = FindOpCodeMatches(line.payloadOpCode, line.payloadLenArg);
 
             if (line.matchesOpCode == null || line.matchesOpCode.isEmpty()) {
@@ -1828,7 +1807,6 @@ public class AssemblerThumb implements Assembler {
             } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_GROUP)) {
                rootStopGroup = token;
                rootStopIdxGroup = rootStopGroup.index;
-
             }
          }
 
@@ -1859,7 +1837,6 @@ public class AssemblerThumb implements Assembler {
                token.index = count;
                count++;
             }
-
          } else if (rootStartIdxGroup != -1 && rootStopIdxGroup != -1) {
             copyStart = (rootStartIdxGroup + 1);
             copyEnd = rootStopIdxGroup;
@@ -2495,13 +2472,11 @@ public class AssemblerThumb implements Assembler {
             BuildBinOpCode(step, line);
             BuildBinDirective(step, line);
          }
-
       } else if (area.isData) {
          for (TokenLine line : areaLines) {
             lastLine = line;
             BuildBinDirective(step, line);
          }
-
       } else {
          throw new ExceptionInvalidArea("Found an invalid area entry at line number " + area.areaLine + " width code: " + area.isCode + " and data: " + area.isData);
       }
@@ -2542,7 +2517,7 @@ public class AssemblerThumb implements Assembler {
          boolean isDirDcw0 = false;
          boolean isDirDcw1 = false;
          Object[] objs = null;
-         
+
          for (Token token : line.payload) {
             lastToken = token;
             if (token.isDirective) {
@@ -2577,7 +2552,6 @@ public class AssemblerThumb implements Assembler {
                   isDirDcb = false;
                   isDirDcw0 = false;
                }
-
             } else if (token.isDirectiveArg && (isDirDchw || isDirDcb)) {
                if (token.type_name.equals(JsonObjIsEntryTypes.NAME_NUMBER) == true) {
                   String resTmp;
@@ -2638,101 +2612,15 @@ public class AssemblerThumb implements Assembler {
                } else if (token.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF) == true) {
                   String resTmp = "";
                   JsonObjIsDirectiveArg entry = line.matchesDirective.get(0).args.get(0);
-
                   objs = ProcessSymbolValue(token.source, entry.bit_series, token.lineNumAbs, line);
-                  Integer tInt = (Integer)objs[0];
-                  String label = (String)objs[1];
-                  
-                  /*
-                  char c = token.source.charAt(0);
-                  String label = token.source.substring(1);
-                  Symbol sym = symbols.symbols.get(label);
-                  JsonObjIsDirectiveArg entry = line.matchesDirective.get(0).args.get(0);
-                  if (sym != null) {
-                     resTmp = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.bit_series.bit_len);
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + token.lineNumAbs);
-                  }
-
-                  Integer tInt = null;
-                  if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                     //label address, =
-                     tInt = sym.addressInt;
-                     Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                     //label value, ~
-                     if (sym.value != null && sym.isStaticValue) {
-                        tInt = sym.value;
-                        Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");
-                     } else {
-                        throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + token.lineNumAbs);
-                     }
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                     //label address offset, -
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = (sym.addressInt - line.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes;
-                     } else {
-                        tInt = (line.addressInt - sym.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes;
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
-                     //label address less offset, `
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
-                     } else {
-                        tInt = -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + token.lineNumAbs + " and label prefix " + c);
-                  }
-                  */
-                  
+                  Integer tInt = (Integer) objs[0];
+                  String label = (String) objs[1];
                   line.source.source += "; [" + tInt + "]";
 
-                  /*
-                  if (entry.num_range != null && entry.num_range.ones_compliment == true) {
-                     tInt = ~tInt;
-                  }
-
-                  resTmp = Integer.toBinaryString(tInt);
-                  Integer tInt2 = tInt;
-                  if (entry.bit_shift != null) {
-                     if (entry.bit_shift.shift_amount > 0) {
-                        if (!Utils.IsStringEmpty(entry.bit_shift.shift_dir) && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                           resTmp = Utils.ShiftBinStr(resTmp, entry.bit_shift.shift_amount, false, true);
-                        } else if (!Utils.IsStringEmpty(entry.bit_shift.shift_dir) && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                           resTmp = Utils.ShiftBinStr(resTmp, entry.bit_shift.shift_amount, true, true);
-                        } else {
-                           throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + token.source + "' with line number " + token.lineNumAbs);
-                        }
-
-                        Integer t = Integer.parseInt(resTmp, 2);
-                        if (tInt2 % 4 == 2 && entry.bit_shift.shift_amount == 2 && entry.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-                           t++;
-                           resTmp = Integer.toBinaryString(t);
-                        }
-                     }
-                  }
-
-                  resTmp = Utils.FormatBinString(resTmp, entry.bit_series.bit_len * 2);
-                  tInt = Integer.parseInt(resTmp, 2);
-
-                  if (entry.num_range != null && isDirDcw0 == false && isDirDcw1 == false) {
-                     if (tInt < entry.num_range.min_value || tInt > entry.num_range.max_value) {
-                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.num_range.min_value + " to " + entry.num_range.max_value + " for source '" + token.source + "' with line number " + token.lineNumAbs);
-                     }
-                  }
-                  */
-
                   objs = ProcessShift(tInt, entry.num_range, entry.bit_shift, entry.bit_series, token.source, token.lineNumAbs, true, (isDirDcw0 == false && isDirDcw1 == false));
-                  resTmp = (String)objs[0];
-                  tInt = (Integer)objs[1];
-                  
+                  resTmp = (String) objs[0];
+                  tInt = (Integer) objs[1];
+
                   Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
                   line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ") {" + tInt + "}";
 
@@ -2795,21 +2683,21 @@ public class AssemblerThumb implements Assembler {
    }
 
    /**
-    * 
+    *
     * @param source
     * @param bit_series
     * @param lineNumAbs
     * @param line
     * @return
     * @throws ExceptionNoSymbolFound
-    * @throws ExceptionNoSymbolValueFound 
+    * @throws ExceptionNoSymbolValueFound
     */
    public Object[] ProcessSymbolValue(String source, JsonObjBitSeries bit_series, int lineNumAbs, TokenLine line) throws ExceptionNoSymbolFound, ExceptionNoSymbolValueFound {
       char c = source.charAt(0);
       String label = source.substring(1);
       Symbol sym = symbols.symbols.get(label);
       String resTmp1 = null;
-      
+
       if (sym != null) {
          resTmp1 = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), bit_series.bit_len);
       } else {
@@ -2852,12 +2740,12 @@ public class AssemblerThumb implements Assembler {
       } else {
          throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + lineNumAbs + " and label prefix " + c);
       }
-      
-      return new Object[] {tInt, label};
+
+      return new Object[]{tInt, label};
    }
-   
+
    /**
-    * 
+    *
     * @param tIntIn
     * @param num_range
     * @param bit_shift
@@ -2868,7 +2756,7 @@ public class AssemblerThumb implements Assembler {
     * @param checkRange
     * @return
     * @throws ExceptionNumberInvalidShift
-    * @throws ExceptionNumberOutOfRange 
+    * @throws ExceptionNumberOutOfRange
     */
    public Object[] ProcessShift(Integer tIntIn, JsonObjNumRange num_range, JsonObjBitShift bit_shift, JsonObjBitSeries bit_series, String source, int lineNumAbs, boolean bitLen2x, boolean checkRange) throws ExceptionNumberInvalidShift, ExceptionNumberOutOfRange {
       Integer tInt = tIntIn;
@@ -2879,7 +2767,7 @@ public class AssemblerThumb implements Assembler {
          tInt = ~tInt;
       }
 
-      resTmp1 = Integer.toBinaryString(tInt);      
+      resTmp1 = Integer.toBinaryString(tInt);
       Integer bltInt = tInt;
       Integer tInt2 = tInt;
       String blResTmp1 = resTmp1;
@@ -2901,20 +2789,20 @@ public class AssemblerThumb implements Assembler {
          }
       }
 
-      if(bitLen2x) {
+      if (bitLen2x) {
          resTmp1 = Utils.FormatBinString(resTmp1, bit_series.bit_len * 2);
       } else {
          resTmp1 = Utils.FormatBinString(resTmp1, bit_series.bit_len);
       }
       tInt = Integer.parseInt(resTmp1, 2);
-      
+
       if (num_range != null && checkRange) {
          if (tInt < num_range.min_value || tInt > num_range.max_value) {
             throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + num_range.min_value + " to " + num_range.max_value + " for source '" + source + "' with line number " + lineNumAbs);
          }
       }
 
-      return new Object[] {resTmp1, tInt, blResTmp1, bltInt};
+      return new Object[]{resTmp1, tInt, blResTmp1, bltInt};
    }
 
    /**
@@ -2946,11 +2834,11 @@ public class AssemblerThumb implements Assembler {
                tmpB.opCodeArg = (JsonObjIsOpCodeArg) opCodeArgs.get(opCodeArgIdx);
                tmpB.bitSeries = tmpB.opCodeArg.bit_series;
                tmpB.tokenOpCodeArg = token;
-               
+
                if (tmpB.opCodeArg.bit_index != -1) {
                   buildEntries.add(tmpB);
                }
-               
+
                opCodeArgIdx++;
 
                if (!Utils.IsListEmpty(token.payload) && !Utils.IsListEmpty(tmpB.opCodeArg.sub_args)) {
@@ -3088,7 +2976,7 @@ public class AssemblerThumb implements Assembler {
          BuildOpCodeThumb inGroupEntry = null;
          BuildOpCodeThumb opCodeEntry = null;
          Object[] objs = null;
-         
+
          for (BuildOpCodeThumb entry : buildEntries) {
             resTmp1 = "";
             resTmp2 = null;
@@ -3135,7 +3023,6 @@ public class AssemblerThumb implements Assembler {
                   } else {
                      throw new ExceptionInvalidEntry("Found invalid LOW register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                   }
-
                } else if (entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
                   if (entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_8)) {
                      inListRegisters[0] = 1;
@@ -3160,31 +3047,28 @@ public class AssemblerThumb implements Assembler {
 
                   } else if (entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_15) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_PC)) {
                      inListRegisters[7] = 1;
+
                   } else {
                      throw new ExceptionInvalidEntry("Found invalid HI register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                   }
-
                } else if (entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
                   if (entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_15) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_LR)) {
                      inListRegisters[7] = 1;
                   } else {
                      throw new ExceptionInvalidEntry("Found invalid PC register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                   }
-
                } else if (entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
                   if (entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_13) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_SP)) {
                      inListRegisters[5] = 1;
                   } else {
                      throw new ExceptionInvalidEntry("Found invalid SP register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                   }
-
                } else if (entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
                   if (entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_14) || entry.tokenOpCodeArgList.source.equals(JsonObjIsRegisters.R_LR)) {
                      inListRegisters[6] = 1;
                   } else {
                      throw new ExceptionInvalidEntry("Found invalid LR register entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                   }
-
                } else if (entry.tokenOpCodeArgList.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                   throw new ExceptionInvalidEntry("Found invalid LABEL entry '" + entry.tokenOpCodeArgList.source + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
 
@@ -3233,58 +3117,8 @@ public class AssemblerThumb implements Assembler {
 
                } else if (entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                   objs = ProcessSymbolValue(entry.tokenOpCodeArgGroup.source, entry.opCodeArgGroup.bit_series, entry.tokenOpCodeArgGroup.lineNumAbs, line);
-                  Integer tInt = (Integer)objs[0];
-                  String label = (String)objs[1];
-                  
-                  /*
-                  char c = entry.tokenOpCodeArgGroup.source.charAt(0);
-                  String label = entry.tokenOpCodeArgGroup.source.substring(1);
-                  Symbol sym = symbols.symbols.get(label);
-
-                  if (sym != null) {
-                     resTmp1 = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArgGroup.bit_series.bit_len);
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                  }
-
-                  Integer tInt = null;
-                  if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                     //label address =
-                     tInt = sym.addressInt;
-                     Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                     //label value ~
-                     if (sym.value != null && sym.isStaticValue) {
-                        tInt = sym.value;
-                        Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");
-                     } else {
-                        throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                     }
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                     //label address offset -
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = (sym.addressInt - line.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes;
-                     } else {
-                        tInt = (line.addressInt - sym.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes;
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
-                     //label address offset minus prefetch `
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
-                     } else {
-                        tInt = -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs + " and label prefix " + c);
-                  }
-                  */
-                  
+                  Integer tInt = (Integer) objs[0];
+                  String label = (String) objs[1];
                   line.source.source += "; [" + tInt + "]";
 
                   //special rule for ADD OpCode
@@ -3292,51 +3126,11 @@ public class AssemblerThumb implements Assembler {
                      opCodeEntry.binRepStr1 = JsonObjIsOpCodes.ADD_OP_CODE_SPECIAL; //"101100001";
                      tInt *= -1;
                   }
-                  
-                  //Integer tInt5 = tInt;
 
-                  /*
-                  if (entry.opCodeArgGroup.num_range != null && entry.opCodeArgGroup.num_range.ones_compliment == true) {
-                     tInt = ~tInt;
-                  }
+                  objs = ProcessShift(tInt, entry.opCodeArgGroup.num_range, entry.opCodeArgGroup.bit_shift, entry.opCodeArgGroup.bit_series, entry.tokenOpCodeArgGroup.source, entry.tokenOpCodeArgGroup.lineNumAbs, false, true);
+                  resTmp1 = (String) objs[0];
+                  tInt = (Integer) objs[1];
 
-                  resTmp1 = Integer.toBinaryString(tInt);
-                  Integer tInt2 = tInt;
-                  if (entry.opCodeArgGroup.bit_shift != null) {
-                     if (entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
-                        if (!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
-                        } else if (!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
-                        } else {
-                           throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                        }
-
-                        Integer t = Integer.parseInt(resTmp1, 2);
-                        if (tInt2 % 4 == 2 && entry.opCodeArgGroup.bit_shift.shift_amount == 2 && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-                           t++;
-                           resTmp1 = Integer.toBinaryString(t);
-                        }
-                     }
-                  }
-
-                  resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len);
-                  tInt = Integer.parseInt(resTmp1, 2);
-
-                  if (entry.opCodeArgGroup.num_range != null) {
-                     if (tInt < entry.opCodeArgGroup.num_range.min_value || tInt > entry.opCodeArgGroup.num_range.max_value) {
-                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                     }
-                  }
-                  */
-                  
-                  objs = ProcessShift(tInt, entry.opCodeArgGroup.num_range, entry.opCodeArgGroup.bit_shift, entry.opCodeArgGroup.bit_series, entry.tokenOpCodeArgGroup.source, entry.tokenOpCodeArgGroup.lineNumAbs, false, true);                  
-                  resTmp1 = (String)objs[0];
-                  tInt = (Integer)objs[1];
-                  
-                  //Logger.wrl("====================================" + tInt4 + ", " + tInt);
-                  //tInt = tInt4;
-                  
                   Logger.wrl("Symbol lookup: Found final symbol value: '" + tInt + "' for symbol, '" + label + "' at line " + line.lineNumAbs);
                   line.source.source += " (" + Utils.Bin2Hex(Integer.toBinaryString(tInt)) + ") {" + tInt + "}";
                   entry.tokenOpCodeArgGroup.value = tInt;
@@ -3353,45 +3147,9 @@ public class AssemblerThumb implements Assembler {
                      tInt *= -1;
                   }
 
-                  /*
-                  if (entry.opCodeArgGroup.num_range != null && entry.opCodeArgGroup.num_range.ones_compliment == true) {
-                     tInt = ~tInt;
-                  }
-
-                  resTmp1 = Integer.toBinaryString(tInt);
-                  Integer tInt2 = tInt;
-                  if (entry.opCodeArgGroup.bit_shift != null) {
-                     if (entry.opCodeArgGroup.bit_shift.shift_amount > 0) {
-                        if (!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, false, true);
-                        } else if (!Utils.IsStringEmpty(entry.opCodeArgGroup.bit_shift.shift_dir) && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArgGroup.bit_shift.shift_amount, true, true);
-                        } else {
-                           throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                        }
-
-                        Integer t = Integer.parseInt(resTmp1, 2);
-                        if (tInt2 % 4 == 2 && entry.opCodeArgGroup.bit_shift.shift_amount == 2 && entry.opCodeArgGroup.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-                           t++;
-                           resTmp1 = Integer.toBinaryString(t);
-                        }
-                     }
-                  }
-
-                  resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArgGroup.bit_series.bit_len);
-                  tInt = Integer.parseInt(resTmp1, 2);
-
-                  if (entry.opCodeArgGroup.num_range != null) {
-                     if (tInt < entry.opCodeArgGroup.num_range.min_value || tInt > entry.opCodeArgGroup.num_range.max_value) {
-                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArgGroup.num_range.min_value + " to " + entry.opCodeArgGroup.num_range.max_value + " for source '" + entry.tokenOpCodeArgGroup.source + "' with line number " + entry.tokenOpCodeArgGroup.lineNumAbs);
-                     }
-                  }
-                  */
-                  
-                  objs = ProcessShift(tInt, entry.opCodeArgGroup.num_range, entry.opCodeArgGroup.bit_shift, entry.opCodeArgGroup.bit_series, entry.tokenOpCodeArgGroup.source, entry.tokenOpCodeArgGroup.lineNumAbs, false, true);                  
-                  resTmp1 = (String)objs[0];
-                  tInt = (Integer)objs[1];
-                  
+                  objs = ProcessShift(tInt, entry.opCodeArgGroup.num_range, entry.opCodeArgGroup.bit_shift, entry.opCodeArgGroup.bit_series, entry.tokenOpCodeArgGroup.source, entry.tokenOpCodeArgGroup.lineNumAbs, false, true);
+                  resTmp1 = (String) objs[0];
+                  tInt = (Integer) objs[1];
                   entry.tokenOpCodeArgGroup.value = tInt;
 
                } else if (entry.tokenOpCodeArgGroup.type_name.equals(JsonObjIsEntryTypes.NAME_STOP_LIST)) {
@@ -3405,7 +3163,6 @@ public class AssemblerThumb implements Assembler {
                   throw new ExceptionUnexpectedTokenType("Found unexpected GROUP sub-token type '" + entry.tokenOpCodeArgGroup.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                }
                //</editor-fold>
-
             } else if (entry.isOpCodeArg) {
                // <editor-fold defaultstate="collapsed" desc="OpCode Arg">
                if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LOW)) {
@@ -3414,89 +3171,34 @@ public class AssemblerThumb implements Assembler {
                      resTmp1 += "000"; //empty register
                      inBxLo = false;
                   }
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_HI)) {
                   resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                   if (inBxHi) {
                      resTmp1 += "000"; //empty register
                      inBxHi = false;
                   }
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_PC)) {
                   resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                   if (inBxHi) {
                      resTmp1 += "000"; //empty register
                      inBxHi = false;
                   }
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_SP)) {
                   resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                   if (inBxHi) {
                      resTmp1 += "000"; //empty register
                      inBxHi = false;
                   }
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_REGISTER_LR)) {
                   resTmp1 = entry.tokenOpCodeArg.register.bit_rep.bit_string;
                   if (inBxHi) {
                      resTmp1 += "000"; //empty register
                      inBxHi = false;
                   }
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_LABEL_REF)) {
                   objs = ProcessSymbolValue(entry.tokenOpCodeArg.source, entry.opCodeArg.bit_series, entry.tokenOpCodeArg.lineNumAbs, line);
-                  Integer tInt = (Integer)objs[0];
-                  String label = (String)objs[1];                  
-                  
-                  /*
-                  char c = entry.tokenOpCodeArg.source.charAt(0);
-                  String label = entry.tokenOpCodeArg.source.substring(1);
-                  Symbol sym = symbols.symbols.get(label);
-
-                  if (sym != null) {
-                     resTmp1 = Utils.FormatBinString(Integer.toBinaryString(sym.addressInt), entry.opCodeArg.bit_series.bit_len);
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                  }
-
-                  Integer tInt = null;
-                  if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_ADDRESS) {
-                     //label address =
-                     tInt = sym.addressInt;
-                     Logger.wrl("Symbol lookup: Found start address, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_VALUE) {
-                     //label value ~
-                     if (sym.value != null && sym.isStaticValue) {
-                        tInt = sym.value;
-                        Logger.wrl("Symbol lookup: Found start value, '" + tInt + "', for symbol, '" + label + "'.");
-                     } else {
-                        throw new ExceptionNoSymbolValueFound("Could not find symbol value for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                     }
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET) {
-                     //label address offset -
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = (sym.addressInt - line.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes;
-                     } else {
-                        tInt = (line.addressInt - sym.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes;
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else if (c == JsonObjIsEntryTypes.NAME_LABEL_REF_START_OFFSET_LESS_PREFETCH) {
-                     //label address offset minus prefetch `
-                     if (line.addressInt < sym.addressInt) {
-                        tInt = ((sym.addressInt - line.addressInt) - jsonObjIsOpCodes.pc_prefetch_bytes);
-                     } else {
-                        tInt = -1 * ((line.addressInt - sym.addressInt) + jsonObjIsOpCodes.pc_prefetch_bytes);
-                     }
-                     Logger.wrl("Symbol lookup: Found REF start offset less pre-fetch, '" + tInt + "', for symbol, '" + label + "'.");
-
-                  } else {
-                     throw new ExceptionNoSymbolFound("Could not find symbol for label '" + label + "' with line number " + entry.tokenOpCodeArg.lineNumAbs + " and label prefix " + c);
-                  }
-                  */
-                  
+                  Integer tInt = (Integer) objs[0];
+                  String label = (String) objs[1];
                   line.source.source += "; [" + tInt + "]";
 
                   //special rule for ADD OpCode
@@ -3505,50 +3207,12 @@ public class AssemblerThumb implements Assembler {
                      tInt *= -1;
                   }
 
-                  /*
-                  if (entry.opCodeArg.num_range != null && entry.opCodeArg.num_range.ones_compliment == true) {
-                     tInt = ~tInt;
-                  }
+                  objs = ProcessShift(tInt, entry.opCodeArg.num_range, entry.opCodeArg.bit_shift, entry.opCodeArg.bit_series, entry.tokenOpCodeArg.source, entry.tokenOpCodeArg.lineNumAbs, false, true);
+                  resTmp1 = (String) objs[0];
+                  tInt = (Integer) objs[1];
+                  String blResTmp1 = (String) objs[2];
+                  Integer bltInt = (Integer) objs[3];
 
-                  resTmp1 = Integer.toBinaryString(tInt);
-                  //Specific for the OpCode BL and its 2 line, 4 byte encoding
-                  Integer bltInt = tInt;
-                  Integer tInt2 = tInt;
-                  String blResTmp1 = resTmp1;
-                  if (entry.opCodeArg.bit_shift != null) {
-                     if (entry.opCodeArg.bit_shift.shift_amount > 0) {
-                        if (!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, false, true);
-                        } else if (!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, true, true);
-                        } else {
-                           throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                        }
-
-                        Integer t = Integer.parseInt(resTmp1, 2);
-                        if (tInt2 % 4 == 2 && entry.opCodeArg.bit_shift.shift_amount == 2 && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-                           t++;
-                           resTmp1 = Integer.toBinaryString(t);
-                        }
-                     }
-                  }
-
-                  resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len);
-                  tInt = Integer.parseInt(resTmp1, 2);
-
-                  if (entry.opCodeArg.num_range != null) {
-                     if (tInt < entry.opCodeArg.num_range.min_value || tInt > entry.opCodeArg.num_range.max_value) {
-                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                     }
-                  }
-                  */
-                  
-                  objs = ProcessShift(tInt, entry.opCodeArg.num_range, entry.opCodeArg.bit_shift, entry.opCodeArg.bit_series, entry.tokenOpCodeArg.source, entry.tokenOpCodeArg.lineNumAbs, false, true);                  
-                  resTmp1 = (String)objs[0];
-                  tInt = (Integer)objs[1];
-                  String blResTmp1 = (String)objs[2];        
-                  Integer bltInt = (Integer)objs[3];
-                  
                   if (inBl == true) {
                      //in BL OpCode which generates 4 bytes of instructions instead of two
                      if (bltInt < 0) {
@@ -3586,60 +3250,20 @@ public class AssemblerThumb implements Assembler {
                      tInt *= -1;
                   }
 
-                  /*
-                  if (entry.opCodeArg.num_range != null && entry.opCodeArg.num_range.ones_compliment == true) {
-                     tInt = ~tInt;
-                  }
-
-                  resTmp1 = Integer.toBinaryString(tInt);
-                  Integer tInt2 = tInt;
-                  if (entry.opCodeArg.bit_shift != null) {
-                     if (entry.opCodeArg.bit_shift.shift_amount > 0) {
-                        if (!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_LEFT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, false, true);
-                        } else if (!Utils.IsStringEmpty(entry.opCodeArg.bit_shift.shift_dir) && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT)) {
-                           resTmp1 = Utils.ShiftBinStr(resTmp1, entry.opCodeArg.bit_shift.shift_amount, true, true);
-                        } else {
-                           throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                        }
-
-                        Integer t = Integer.parseInt(resTmp1, 2);
-                        if (tInt2 % 4 == 2 && entry.opCodeArg.bit_shift.shift_amount == 2 && entry.opCodeArg.bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-                           t++;
-                           resTmp1 = Integer.toBinaryString(t);
-                        }
-                     }
-                  }
-
-                  resTmp1 = Utils.FormatBinString(resTmp1, entry.opCodeArg.bit_series.bit_len);
-                  tInt = Integer.parseInt(resTmp1, 2);
-
-                  if (entry.opCodeArg.num_range != null) {
-                     if (tInt < entry.opCodeArg.num_range.min_value || tInt > entry.opCodeArg.num_range.max_value) {
-                        throw new ExceptionNumberOutOfRange("Integer value " + tInt + " is outside of the specified range " + entry.opCodeArg.num_range.min_value + " to " + entry.opCodeArg.num_range.max_value + " for source '" + entry.tokenOpCodeArg.source + "' with line number " + entry.tokenOpCodeArg.lineNumAbs);
-                     }
-                  }
-                  */
-                  
-                  objs = ProcessShift(tInt, entry.opCodeArg.num_range, entry.opCodeArg.bit_shift, entry.opCodeArg.bit_series, entry.tokenOpCodeArg.source, entry.tokenOpCodeArg.lineNumAbs, false, true);                  
-                  resTmp1 = (String)objs[0];
-                  tInt = (Integer)objs[1];                  
-
+                  objs = ProcessShift(tInt, entry.opCodeArg.num_range, entry.opCodeArg.bit_shift, entry.opCodeArg.bit_series, entry.tokenOpCodeArg.source, entry.tokenOpCodeArg.lineNumAbs, false, true);
+                  resTmp1 = (String) objs[0];
+                  tInt = (Integer) objs[1];
                   entry.tokenOpCodeArg.value = tInt;
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_START_LIST)) {
                   inList = true;
                   inListRegisters = new int[8];
                   inListEntry = entry;
-
                } else if (entry.tokenOpCodeArg.type_name.equals(JsonObjIsEntryTypes.NAME_START_GROUP)) {
                   inGroup = true;
                   inGroupEntry = entry;
-
                } else {
                   throw new ExceptionUnexpectedTokenType("Found unexpected token type '" + entry.tokenOpCodeArg.type_name + "' for line source '" + line.source.source + " and line number " + line.lineNumAbs);
                }
-
                // </editor-fold>
             }
             entry.binRepStr1 = resTmp1;
@@ -3666,7 +3290,6 @@ public class AssemblerThumb implements Assembler {
                res2 += entry.binRepStr2;
             }
          }
-
          line.payloadBinRepStrEndianBig1 = res1;
          line.payloadBinRepStrEndianLil1 = Utils.EndianFlipBin(res1);
 
@@ -3674,7 +3297,6 @@ public class AssemblerThumb implements Assembler {
             line.payloadBinRepStrEndianBig2 = res2;
             line.payloadBinRepStrEndianLil2 = Utils.EndianFlipBin(res2);
          }
-
       } else if (line.isLineLabelDef || line.isLineDirective && line.isLineOpCode) {
          throw new ExceptionInvalidAssemblyLine("Could not find a valid assembly line entry for the given AREA with OpCode line source '" + line.source.source + "' and line number " + line.lineNumAbs + ", " + line.isLineEmpty + ", " + line.isLineDirective + ", " + line.isLineOpCode);
       }
