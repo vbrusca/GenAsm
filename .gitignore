@@ -33,3 +33,4 @@ nbproject/private/private.xml
 private.properties
 */.DS_Store
 cfg/THUMB/EMUS/mGBA/nointro.sqlite3
+*.sqlite3

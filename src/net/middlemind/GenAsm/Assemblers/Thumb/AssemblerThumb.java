@@ -751,7 +751,6 @@ public class AssemblerThumb implements Assembler {
                      lastArea = line.lineNumAbs;
                      lastAreaToken = token;
                      lastAreaTokenLine = line;
-
                      tmpArea = new AreaThumb();
                      tmpArea.area = lastAreaToken;
                      tmpArea.areaLine = lastAreaTokenLine;
@@ -807,7 +806,6 @@ public class AssemblerThumb implements Assembler {
                      lastEntry = line.lineNumAbs;
                      lastEntryToken = token;
                      lastEntryTokenLine = line;
-
                      tmpArea.entry = lastEntryToken;
                      tmpArea.entryLine = lastEntryTokenLine;
                      tmpArea.lineNumEntry = lastEntry;
@@ -824,7 +822,6 @@ public class AssemblerThumb implements Assembler {
                      lastEnd = line.lineNumAbs;
                      lastEndToken = token;
                      lastEndTokenLine = line;
-
                      tmpArea.end = lastEndToken;
                      tmpArea.endLine = lastEndTokenLine;
                      tmpArea.lineNumEnd = lastEnd;
@@ -851,20 +848,16 @@ public class AssemblerThumb implements Assembler {
                      lastArea = -1;
                      lastAreaToken = null;
                      lastAreaTokenLine = null;
-
                      lastEntry = -1;
                      lastEntryToken = null;
                      lastEntryTokenLine = null;
-
                      lastEnd = -1;
                      lastEndToken = null;
                      lastEndTokenLine = null;
-
                      lastCode = -1;
                      lastData = -1;
                      lastReadOnly = -1;
                      lastReadWrite = -1;
-
                      foundArea = false;
                   } else {
                      throw new ExceptionMalformedEntryEndDirectiveSet("Could not find END directive before new ENTRY directive on line " + line.lineNumAbs + " with source " + line.source.source);
@@ -923,6 +916,20 @@ public class AssemblerThumb implements Assembler {
          throw new ExceptionMissingRequiredDirective("Could not find required directive in the source file, '" + lmissing + "'");
       }
 
+      CleanAreas();
+      CleanSymbols();
+      
+      if (eventHandler != null) {
+         eventHandler.PopulateDirectiveArgAndAreaDataPost(step, this);
+      }
+   }
+
+   /**
+    * 
+    * @throws ExceptionMalformedEntryEndDirectiveSet 
+    */
+   public void CleanAreas() throws ExceptionMalformedEntryEndDirectiveSet {
+      int activeLineCount = 0;
       if (areaThumbCode != null && areaThumbData != null) {
          if (areaThumbCode.lineNumEntry < areaThumbData.lineNumEntry) {
             //process code area first
@@ -1076,12 +1083,15 @@ public class AssemblerThumb implements Assembler {
                }
             }
          }
-
       } else {
          throw new ExceptionMalformedEntryEndDirectiveSet("Cannot have only a DATA AREA, CODE AREA is required");
-      }
-
-      //clean symbol values
+      }      
+   }
+   
+   /**
+    * 
+    */
+   public void CleanSymbols() {
       List<String> del = new ArrayList<>();
       for (String key : symbols.symbols.keySet()) {
          Symbol sym = symbols.symbols.get(key);
@@ -1101,12 +1111,8 @@ public class AssemblerThumb implements Assembler {
             symbols.symbols.remove(key);
          }
       }
-
-      if (eventHandler != null) {
-         eventHandler.PopulateDirectiveArgAndAreaDataPost(step, this);
-      }
    }
-
+   
    /**
     * A method to validate the signature of directive lines.
     *
@@ -2809,7 +2815,7 @@ public class AssemblerThumb implements Assembler {
     *
     * @param step
     * @param line
-    * @throws ExceptionOpCodeAsArgument
+    * @throws net.middlemind.GenAsm.Exceptions.Thumb.ExceptionOpCodeAsArgument
     * @throws
     * net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArguments
     */
