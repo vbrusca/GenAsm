@@ -138,7 +138,7 @@ public class GenAsm {
                 return;
             }
         } else if(args == null || args.length < ARG_LEN_TARGET) {
-            String targetProgram = "TEST_B_16BitXfer";
+            String targetProgram = "TEST_O_AsmDemo";
             CFG_DIR_PATH = ".\\cfg\\";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
