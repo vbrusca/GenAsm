@@ -7,12 +7,12 @@ number of output files so that the state of the assembler can be analyzed at dif
 I wrote this project for my brother, Carlo.
 
 # Example Output Showing GameBoy Advance Hello World
-The assembler can build binaries the the GameBoy Advance can run. Many of the test programs are designed to run on the emulator.  
+The assembler can build binaries that the GameBoy Advance can run. Many of the test programs are designed to run on the emulator.  
 
 ![image info](./storage/images/arm_hw.jpg)
 
 # IDE Setup
-In order to run the GenAsm project directly from the IDE using the hardcoded test program values you need to configure the project's settings and specify the working directory as the root of the project as shown in the following image.
+In order to run the GenAsm project directly from the IDE using the hardcoded test program values you need to configure the project's settings and specify the working directory as the root of the project as shown in the following image. You can use a relative path if need be. This setup helps accelerate iterations by allowing you run the configured setup quickly from the IDE.
 
 ![image info](./storage/images/genAsm_IdeCfg.png)
 
@@ -61,10 +61,10 @@ GenAsm                           (NetBeans Project Root)
 Using different characters you can reference a symbol and extract different values in the process.
 
 <pre>
--Label Reference Address =: Used to return the address of the label referenced. 
--Label Reference Value ~: Used to return the value, if available, of the label referenced. 
--Label Reference Offset Address -: Used to return the offset to the address of the label referenced taking into account the pre-fetch offset. 
--Label Reference Offset Address Less Prefetch `: Used to return the offset to the address of the label referenced ignoring the pre-fetch offset. 
+-Label Reference Address: = Used to return the address of the label referenced. 
+-Label Reference Value: ~ Used to return the value, if available, of the label referenced. 
+-Label Reference Offset Address: - Used to return the offset to the address of the label referenced taking into account the pre-fetch offset. 
+-Label Reference Offset Address Less Prefetch: ` Used to return the offset to the address of the label referenced ignoring the pre-fetch offset. 
 </pre>
 
 # Example Command Line Execution
@@ -72,6 +72,8 @@ Using different characters you can reference a symbol and extract different valu
 The arguments have been listed on individual lines for readability.
 The paths shown here are only relevant to my development environment.
 You have to adjust the paths shown here or those hardcoded in the GenAsm.java class.
+Notice that the configuration allows for the specification of classes by full package name, assuming it's in your classpath.
+This allows you to easily add your own classes that support other instruction sets.
 
 <pre>
 java -jar GenAsm.jar   
