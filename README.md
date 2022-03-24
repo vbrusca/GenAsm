@@ -6,6 +6,106 @@ The assembler uses multiple scans to simplify the amount of work done in each sc
 number of output files so that the state of the assembler can be analyzed at different points in the assembly process.
 I wrote this project for my brother, Carlo.
 
+##Project Details
+1. Complete assembler written in Java designed to be data driven and extensible.
+2. Includes a full implementation of the ARM Thumb-1 instruction set.
+3. Includes a set of demonstration programs.
+4. Includes example programs that run on the GameBoy Advance emulator.
+5. Intended to provide an example of how one would go about building an assembler.
+
+##Demonstration Program Details
+My apologies, all of these aren't quite ready yet.
+
+Name: TEST_A_AllOpCodes
+Type: Assembler Validation
+GBA Executble: No
+Unit Test Ready: No
+GenAsm Ready: Yes
+
+Name: TEST_B_16BitXfer 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_C_OnesComp 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_D_16BitAdd 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_E_SplitByte 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_F_CompareNum 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_G_64BitAdd 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_H_ShiftLeft 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_I_Factorial 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_J_16BitSeriesAddOne 
+Type: Example 
+GBA Executble: Yes 
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_K_16BitSeriesAddTwo 
+Type: Example 
+GBA Executble: Yes
+Unit Test Ready: No
+GenAsm Ready: No
+
+Name: TEST_L_HelloWorld 
+Type: Example 
+GBA Executble: Yes 
+Unit Test Ready: No
+GenAsm Ready: Yes
+
+Name: TEST_M_YourName 
+Type: Example 
+GBA Executble: Yes 
+Unit Test Ready: No
+GenAsm Ready: Yes
+
+Name: TEST_N_AsmChecks 
+Type: Assembler Validation 
+GBA Executble: No 
+Unit Test Ready: No
+GenAsm Ready: Yes
+
+Name: TEST_O_AsmDemo 
+Type: Assembler Validation 
+GBA Executble: No 
+Unit Test Ready: No
+GenAsm Ready: Yes
+
 # Example Output Showing GameBoy Advance Hello World
 The assembler can build binaries that the GameBoy Advance can run. Many of the test programs are designed to run on the emulator.  
 

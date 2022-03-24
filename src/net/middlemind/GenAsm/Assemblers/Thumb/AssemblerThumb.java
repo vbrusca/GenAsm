@@ -2689,12 +2689,13 @@ public class AssemblerThumb implements Assembler {
    }
 
    /**
-    *
-    * @param source
-    * @param bit_series
-    * @param lineNumAbs
-    * @param line
-    * @return
+    * A method to process the numeric value associated with a symbol.
+    * 
+    * @param source     Assembly source to process.
+    * @param bit_series The bit series describing this value.
+    * @param lineNumAbs The absolute line number of the symbol reference.
+    * @param line       The current line of the symbol.
+    * @return           An array containing the value and associated label.
     * @throws ExceptionNoSymbolFound
     * @throws ExceptionNoSymbolValueFound
     */
@@ -2751,16 +2752,17 @@ public class AssemblerThumb implements Assembler {
    }
 
    /**
-    *
-    * @param tIntIn
-    * @param num_range
-    * @param bit_shift
-    * @param bit_series
-    * @param source
-    * @param lineNumAbs
-    * @param bitLen2x
-    * @param checkRange
-    * @return
+    * Processes a shift operation.
+    * 
+    * @param tIntIn        The starting integer value to process.
+    * @param num_range     The valid number range allowed after the shift.
+    * @param bit_shift     The number of bits to shift and in which direction.
+    * @param bit_series    The bit series description of the value.
+    * @param source        The original assembly source.
+    * @param lineNumAbs    The current absolute line number.
+    * @param bitLen2x      A special double bit length flag.
+    * @param checkRange    A special check range flag.
+    * @return              An array of values representing the shifted value.
     * @throws ExceptionNumberInvalidShift
     * @throws ExceptionNumberOutOfRange
     */
@@ -2812,12 +2814,12 @@ public class AssemblerThumb implements Assembler {
    }
 
    /**
-    *
-    * @param step
-    * @param line
+    * A method used to prepare the BuildOpCodeThumb objects by connecting the associated tokens and holder classes for each token.
+    * 
+    * @param step The current step this method is run on.
+    * @param line The current line we'll be processing.
     * @throws net.middlemind.GenAsm.Exceptions.Thumb.ExceptionOpCodeAsArgument
-    * @throws
-    * net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArguments
+    * @throws net.middlemind.GenAsm.Exceptions.Thumb.ExceptionUnexpectedTokenWithSubArguments
     */
    public void BuildBinOpCodePrep(int step, TokenLine line) throws ExceptionOpCodeAsArgument, ExceptionUnexpectedTokenWithSubArguments {
       if (!line.isLineEmpty && !line.isLineDirective && line.isLineOpCode) {
