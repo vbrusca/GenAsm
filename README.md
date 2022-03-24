@@ -6,16 +6,17 @@ The assembler uses multiple scans to simplify the amount of work done in each sc
 number of output files so that the state of the assembler can be analyzed at different points in the assembly process.
 I wrote this project for my brother, Carlo.
 
-##Project Details
+## Project Details
 1. Complete assembler written in Java designed to be data driven and extensible.
 2. Includes a full implementation of the ARM Thumb-1 instruction set.
 3. Includes a set of demonstration programs.
 4. Includes example programs that run on the GameBoy Advance emulator.
 5. Intended to provide an example of how one would go about building an assembler.
 
-##Demonstration Program Details
-My apologies, all of these aren't quite ready yet.
+## Demonstration Program Details
+My apologies, all of these aren't quite ready yet. Porting all of the VASM assembly source to GenAsm and plugging it into the GameBoy Advance screen demonstration and the unit tests is needed. I hope to have it done soon.  
 
+<pre>
 Name: TEST_A_AllOpCodes
 Type: Assembler Validation
 GBA Executble: No
@@ -105,6 +106,7 @@ Type: Assembler Validation
 GBA Executble: No 
 Unit Test Ready: No
 GenAsm Ready: Yes
+</pre>
 
 # Example Output Showing GameBoy Advance Hello World
 The assembler can build binaries that the GameBoy Advance can run. Many of the test programs are designed to run on the emulator.  
