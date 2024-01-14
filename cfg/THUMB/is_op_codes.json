@@ -73,7 +73,7 @@
                         "min_value": 0,
                         "max_value": 31,
                         "bit_len": 5,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -139,7 +139,7 @@
                         "min_value": 0,
                         "max_value": 31,
                         "bit_len": 5,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -205,7 +205,7 @@
                         "min_value": 0,
                         "max_value": 31,
                         "bit_len": 5,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -326,7 +326,7 @@
                         "min_value": 0,
                         "max_value": 7,
                         "bit_len": 3,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -447,7 +447,7 @@
                         "min_value": 0,
                         "max_value": 7,
                         "bit_len": 3,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -501,7 +501,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -555,7 +555,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -609,7 +609,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -663,7 +663,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -1879,7 +1879,7 @@
                                 "min_value": 0,
                                 "max_value": 1020,
                                 "bit_len": 10,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "WORD"
                             },
                             "bit_shift": {
@@ -2522,7 +2522,7 @@
                                 "min_value": 0,
                                 "max_value": 124,
                                 "bit_len": 7,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "WORD"
                             },
                             "bit_shift": {
@@ -2603,7 +2603,7 @@
                                 "min_value": 0,
                                 "max_value": 124,
                                 "bit_len": 7,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "WORD"
                             },
                             "bit_shift": {
@@ -2684,7 +2684,7 @@
                                 "min_value": 0,
                                 "max_value": 31,
                                 "bit_len": 5,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "NATURAL"
                             },
                             "bit_shift": {
@@ -2765,7 +2765,7 @@
                                 "min_value": 0,
                                 "max_value": 31,
                                 "bit_len": 5,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "NATURAL"
                             },
                             "bit_shift": {
@@ -2846,7 +2846,7 @@
                                 "min_value": 0,
                                 "max_value": 62,
                                 "bit_len": 6,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "HALFWORD"
                             },
                             "bit_shift": {
@@ -2927,7 +2927,7 @@
                                 "min_value": 0,
                                 "max_value": 62,
                                 "bit_len": 6,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "HALFWORD"
                             },
                             "bit_shift": {
@@ -3009,7 +3009,7 @@
                                 "min_value": 0,
                                 "max_value": 1020,
                                 "bit_len": 10,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "WORD"
                             },
                             "bit_shift": {
@@ -3090,7 +3090,7 @@
                                 "min_value": 0,
                                 "max_value": 1020,
                                 "bit_len": 10,
-                                "twos_compliment": false,
+                                "twos_complement": false,
                                 "alignment": "WORD"
                             },
                             "bit_shift": {
@@ -3158,7 +3158,7 @@
                         "min_value": 0,
                         "max_value": 1020,
                         "bit_len": 10,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {
@@ -3224,7 +3224,7 @@
                         "min_value": 0,
                         "max_value": 1020,
                         "bit_len": 10,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {
@@ -3278,7 +3278,7 @@
                         "min_value": -508,
                         "max_value": 508,
                         "bit_len": 9,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {
@@ -3332,7 +3332,7 @@
                         "min_value": -508,
                         "max_value": 0,
                         "bit_len": 9,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {
@@ -3698,7 +3698,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3742,7 +3742,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3786,7 +3786,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3830,7 +3830,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3874,7 +3874,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3918,7 +3918,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -3962,7 +3962,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4006,7 +4006,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4050,7 +4050,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4094,7 +4094,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4138,7 +4138,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4182,7 +4182,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4226,7 +4226,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4270,7 +4270,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 9,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4314,7 +4314,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "NATURAL"
                     },
                     "bit_shift": {
@@ -4356,7 +4356,7 @@
                         "min_value": -2048,
                         "max_value": 2048,
                         "bit_len": 12,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"
@@ -4400,7 +4400,7 @@
                         "min_value": 0,
                         "max_value": 8388606,
                         "bit_len": 23,
-                        "twos_compliment": true,
+                        "twos_complement": true,
                         "handle_prefetch": true,
                         "use_halfword_offset": true,
                         "alignment": "HALFWORD"

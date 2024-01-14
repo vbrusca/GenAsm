@@ -22,7 +22,7 @@
                         "min_value": 0,
                         "max_value": 255,
                         "bit_len": 8,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -53,7 +53,7 @@
                         "min_value": 0,
                         "max_value": 65536,
                         "bit_len": 16,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -84,7 +84,7 @@
                         "min_value": 0,
                         "max_value": 65536,
                         "bit_len": 16,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -115,7 +115,7 @@
                         "min_value": 0,
                         "max_value": 65536,
                         "bit_len": 16,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -146,7 +146,7 @@
                         "min_value": 0,
                         "max_value": 65536,
                         "bit_len": 16,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "HALFWORD"
                     },
                     "bit_shift": {
@@ -177,7 +177,7 @@
                         "min_value": 0,
                         "max_value": 65536,
                         "bit_len": 16,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {
@@ -208,7 +208,7 @@
                         "min_value": 0,
                         "max_value": 2147483647,
                         "bit_len": 32,
-                        "twos_compliment": false,
+                        "twos_complement": false,
                         "alignment": "WORD"
                     },
                     "bit_shift": {

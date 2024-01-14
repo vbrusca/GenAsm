@@ -28,14 +28,14 @@ public class JsonObjNumRange extends JsonObjBase {
     public int bit_len;
     
     /**
-     * A Boolean value indicating if the two's compliment of the number is required.
+     * A Boolean value indicating if the two's complement of the number is required.
      */    
-    public boolean twos_compliment;
+    public boolean twos_complement;
     
     /**
-     * A Boolean value indicating if the one's compliment of the number is required.
+     * A Boolean value indicating if the one's complement of the number is required.
      */    
-    public boolean ones_compliment;
+    public boolean ones_complement;
     
     /**
      * A Boolean value indicating if the binary coded decimal value of the number is required.
@@ -76,8 +76,8 @@ public class JsonObjNumRange extends JsonObjBase {
         Logger.wrl(prefix + "MinValue: " + min_value);
         Logger.wrl(prefix + "MaxValue: " + max_value);
         Logger.wrl(prefix + "BitLen: " + bit_len);
-        Logger.wrl(prefix + "TwosCompliment: " + twos_compliment);
-        Logger.wrl(prefix + "OnesCompliment: " + ones_compliment);
+        Logger.wrl(prefix + "TwosComplement: " + twos_complement);
+        Logger.wrl(prefix + "OnesComplement: " + ones_complement);
         Logger.wrl(prefix + "BcdEncoding: " + bcd_encoding);
         Logger.wrl(prefix + "HandlePrefetch: " + handle_prefetch);
         Logger.wrl(prefix + "UseHalfWordOffset: " + use_halfword_offset);        

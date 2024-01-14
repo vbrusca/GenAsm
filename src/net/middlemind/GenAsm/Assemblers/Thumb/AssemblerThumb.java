@@ -2191,8 +2191,8 @@ public class AssemblerThumb implements Assembler {
             lineNumRange.obj_name = "JsonObjNumRange";
             lineNumRange.min_value = 0;
             lineNumRange.max_value = 65536;
-            lineNumRange.ones_compliment = false;
-            lineNumRange.twos_compliment = false;
+            lineNumRange.ones_complement = false;
+            lineNumRange.twos_complement = false;
 
             pcPreFetchBytes = jsonObjIsOpCodes.pc_prefetch_bytes;
             pcPreFetchHalfwords = jsonObjIsOpCodes.pc_prefetch_halfwords;
@@ -2771,7 +2771,7 @@ public class AssemblerThumb implements Assembler {
       String resTmp1 = null;
       Integer t = null;
 
-      if (num_range != null && num_range.ones_compliment == true) {
+      if (num_range != null && num_range.ones_complement == true) {
          tInt = ~tInt;
       }
 
