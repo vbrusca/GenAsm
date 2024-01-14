@@ -28,7 +28,12 @@ public class TestProgramA {
     /**
      * 
      */
-    public String assemblySourceFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\genasm_source.txt";
+    public String cfgDir = "C:\\FILES\\DOCUMENTS\\GitHub\\GenAsm\\cfg\\";
+    
+    /**
+     * 
+     */
+    public String assemblySourceFile = cfgDir + "THUMB\\TESTS\\" + testName + "\\genasm_source.txt";
     
     /**
      * 
@@ -48,7 +53,7 @@ public class TestProgramA {
     /**
      * 
      */
-    public String jsonAnswersDataFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_A_AllOpCodes\\vasm_answer.json";
+    public String jsonAnswersDataFile = cfgDir + "THUMB\\TESTS\\" + testName + "\\vasm_answer.json";
     
     /**
      * 
@@ -66,7 +71,7 @@ public class TestProgramA {
     
     @Before
     public void setUp() {
-        mainExeArgs[0] = GenAsm.CFG_DIR_PATH + "\\is_sets.json";
+        mainExeArgs[0] = cfgDir + "is_sets.json";
         mainExeArgs[1] = "THUMB_ARM7TDMI";
         mainExeArgs[2] = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
         mainExeArgs[3] = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
@@ -74,9 +79,31 @@ public class TestProgramA {
         mainExeArgs[5] = assemblySourceFile;
         mainExeArgs[6] = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
         mainExeArgs[7] = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
-        mainExeArgs[8] = GenAsm.CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_A_AllOpCodes\\";
+        mainExeArgs[8] = cfgDir + "THUMB\\OUTPUT\\" + testName + "\\";
         mainExeArgs[9] = "false";
         mainExeArgs[10] = "false";
+        mainExeArgs[11] = cfgDir;
+        
+        /*
+            String targetProgram = "TEST_A_AllOpCodes";
+            11 CFG_DIR_PATH = ".\\cfg\\";
+            0 ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
+            1 ASM_TARGET_SET = "THUMB_ARM7TDMI";
+            2 ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
+            3 ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
+            ASM_SETS = null;
+            ASM_SET = null;
+            4 ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
+            ASM_ASSEMBLER = null;
+            5 ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\" + targetProgram + "\\genasm_source.txt";
+            6 ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
+            ASM_LINKER = null;
+            7 ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
+            ASM_PREPROCESSOR = null;  
+            8 ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
+            9 ASM_VERBOSE = false;
+            10 ASM_QUELL_FILE_OUTPUT = false;        
+        */        
     }
     
     @After
