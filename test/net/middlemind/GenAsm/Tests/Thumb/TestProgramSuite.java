@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
         TestProgramI.class,
         TestProgramJ.class,
         TestProgramK.class,
-        TestProgramL.class        
+        TestProgramL.class
     }
 )
 
