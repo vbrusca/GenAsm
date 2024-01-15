@@ -28,7 +28,12 @@ public class TestProgramH {
     /**
      * 
      */
-    public String assemblySourceFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_H_ShiftLeft\\genasm_source.txt";
+    public String cfgDir = TestProgramSuite.CFG_DIR;    
+    
+    /**
+     * 
+     */
+    public String assemblySourceFile = cfgDir + "THUMB\\TESTS\\" + testName + "\\genasm_source.txt";
     
     /**
      * 
@@ -48,7 +53,7 @@ public class TestProgramH {
     /**
      * 
      */
-    public String jsonAnswersDataFile = GenAsm.CFG_DIR_PATH + "THUMB\\TESTS\\TEST_H_ShiftLeft\\vasm_answer.json";
+    public String jsonAnswersDataFile = cfgDir + "THUMB\\TESTS\\" + testName + "\\vasm_answer.json";
     
     /**
      * 
@@ -56,17 +61,26 @@ public class TestProgramH {
     public TestProgramH() {
     }
     
+    /**
+     * 
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * 
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * 
+     */
     @Before
     public void setUp() {
-        mainExeArgs[0] = GenAsm.CFG_DIR_PATH + "\\is_sets.json";
+        mainExeArgs[0] = cfgDir + "is_sets.json";
         mainExeArgs[1] = "THUMB_ARM7TDMI";
         mainExeArgs[2] = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
         mainExeArgs[3] = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
@@ -74,15 +88,22 @@ public class TestProgramH {
         mainExeArgs[5] = assemblySourceFile;
         mainExeArgs[6] = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
         mainExeArgs[7] = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
-        mainExeArgs[8] = GenAsm.CFG_DIR_PATH + "THUMB\\OUTPUT\\TEST_H_ShiftLeft\\";
+        mainExeArgs[8] = cfgDir + "THUMB\\OUTPUT\\" + testName + "\\";
         mainExeArgs[9] = "false";
-        mainExeArgs[10] = "false";        
+        mainExeArgs[10] = "false";
+        mainExeArgs[11] = cfgDir;        
     }
     
+    /**
+     * 
+     */    
     @After
     public void tearDown() {
     }
     
+    /**
+     * 
+     */    
     @Test
     @SuppressWarnings({"UnusedAssignment", "CallToPrintStackTrace"})
     public void test1() {

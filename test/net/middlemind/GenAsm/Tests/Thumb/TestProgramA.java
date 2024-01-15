@@ -28,7 +28,7 @@ public class TestProgramA {
     /**
      * 
      */
-    public String cfgDir = "C:\\FILES\\DOCUMENTS\\GitHub\\GenAsm\\cfg\\";
+    public String cfgDir = TestProgramSuite.CFG_DIR; //"C:\\FILES\\DOCUMENTS\\GitHub\\GenAsm\\cfg\\";
     
     /**
      * 
@@ -61,14 +61,23 @@ public class TestProgramA {
     public TestProgramA() {
     }
     
+    /**
+     * 
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * 
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * 
+     */
     @Before
     public void setUp() {
         mainExeArgs[0] = cfgDir + "is_sets.json";
@@ -106,10 +115,16 @@ public class TestProgramA {
         */        
     }
     
+    /**
+     * 
+     */
     @After
     public void tearDown() {
     }
     
+    /**
+     * 
+     */
     @Test
     @SuppressWarnings({"UnusedAssignment", "CallToPrintStackTrace"})
     public void test1() {
