@@ -1,5 +1,6 @@
 package net.middlemind.GenAsm;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch;
  * A centralized utility class that provides access to a number of helpful static methods.
  * @author Victor G. Brusca, Middlemind Games 07/30/2021 7:04 AM EST
  */
-@SuppressWarnings({"null", "UnusedAssignment"})
+@SuppressWarnings({"null", "UnusedAssignment", "UseOfObsoleteCollectionType", "UnnecessaryTemporaryOnConversionFromString"})
 public class Utils {
     
     /**
