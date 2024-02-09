@@ -47,7 +47,7 @@ public class LexerThumb implements Lexer {
     /**
      * A string representing the name of this class. This is used to define the class in JSON output files.
      */   
-    public String obj_name = "LexerSimple";
+    public String obj_name = "LexerThumb";
 
     /**
      * A method used to check if the specified subject char is contained by the array argument.

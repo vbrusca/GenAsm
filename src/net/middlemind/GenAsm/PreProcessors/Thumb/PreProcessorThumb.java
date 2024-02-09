@@ -103,6 +103,11 @@ public class PreProcessorThumb implements PreProcessor {
     public Object other = null;
     
     /**
+     * A string representing the name of this class. This is used to define the class in JSON output files.
+     */   
+    public String obj_name = "PreProcessorThumb";    
+    
+    /**
      * A method used to append a string to each entry in a list of strings.
      * @param lines     A list of strings representing the lines to alter.
      * @param prefix  The string value to apply as a prefix to the lines arguments.
