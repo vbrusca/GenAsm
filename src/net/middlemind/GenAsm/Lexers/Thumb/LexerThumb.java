@@ -117,6 +117,8 @@ public class LexerThumb implements Lexer {
                         
                         if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                             artifact.payload += chars[i];
+                            artifact.posStop++;
+                            artifact.len++;                            
                         }
                         
                         ret.payload.add(artifact);                        
@@ -145,6 +147,8 @@ public class LexerThumb implements Lexer {
 
                             if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                                 artifact.payload += chars[i];
+                                artifact.posStop++;
+                                artifact.len++;
                             }
 
                             ret.payload.add(artifact);                        
@@ -170,6 +174,8 @@ public class LexerThumb implements Lexer {
 
                             if(Contains(CHAR_STICKY_SEPARATORS, chars[i])) {
                                 artifact.payload += chars[i];
+                                artifact.posStop++;
+                                artifact.len++;                                
                             }
 
                             ret.payload.add(artifact);                        
