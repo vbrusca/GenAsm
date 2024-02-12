@@ -145,17 +145,17 @@ public class AssemblerThumb implements Assembler {
    public JsonObjIsSet isaDataSet;
 
    /**
-    * A data structure holding the loaded JSON data files by name.
+    * A data structure holding the loaded JSON data files by object name, obj_name.
     */
    public Map<String, JsonObj> isaData;
 
    /**
-    * A data structure holding the JSON data file loaders by name.
+    * A data structure holding the JSON data file loaders by full class name, loader_class.
     */
    public Map<String, Loader> isaLoader;
 
    /**
-    * A data structure holding the source JSON data file by name.
+    * A data structure holding the source JSON data file by full file path, path.
     */
    public Map<String, String> jsonSource;
 
@@ -1185,7 +1185,7 @@ public class AssemblerThumb implements Assembler {
     * A helper method used to find directive argument matches for a list of
     * tokens.
     *
-    * @param directiveMatches A list of supported instruction sets.
+    * @param directiveMatches A list of supported directives.
     * @param args A list of tokens that represent the arguments for a directive.
     * @param directiveToken A token representing the current directive.
     * @return The matched directive.
