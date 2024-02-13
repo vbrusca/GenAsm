@@ -2789,10 +2789,10 @@ public class AssemblerThumb implements Assembler {
                throw new ExceptionNumberInvalidShift("Invalid number shift found for source '" + source + "' with line number " + lineNumAbs);
             }
 
-            t = Integer.parseInt(resTmp1, 2);
+            t = Integer.parseInt(resTmp1, 2);           //this little block of code is used to make sure the numbers are word aligned when performing a certain specific shift
             if (tInt2 % 4 == 2 && bit_shift.shift_amount == 2 && bit_shift.shift_dir.equals(NUMBER_SHIFT_NAME_RIGHT) == true) {
-               t++;
-               resTmp1 = Integer.toBinaryString(t);
+               t++;                                     //we can do this because it only happens in one place that matches this signature 
+               resTmp1 = Integer.toBinaryString(t);     //restores word alignment with a simple to preform increment and converts the value back to a binary string
             }
          }
       }
