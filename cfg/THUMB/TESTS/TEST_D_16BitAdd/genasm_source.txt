@@ -31,7 +31,7 @@
       LDR   R2, [PC, `screen_setting]                       ;0x403 4= Layer 2 on / 3= ScreenMode 3
       STR   R2, [R4, #0]
       
-      BL      `do_work
+      BL    `do_work
       BEQ   `print_passed_address
       
    print_failed_address
@@ -41,7 +41,7 @@
 
    print_passed_address
       LDR   R1, [PC, `test_passed_address]
-      BL      `print_string
+      BL    `print_string
       B     `inf_loop
       
    ;print_hello_world
@@ -58,7 +58,7 @@
       PUSH   {R0-R6, LR}
 
    print_string_again
-      LDRB   R0, [R1, #0]
+      LDRB  R0, [R1, #0]
       ADD   R1, #1
       CMP   R0, #255
       BEQ   `print_string_done
@@ -69,7 +69,7 @@
       POP   {R0-R6, PC}
 
    do_work
-      PUSH   {R0-R6, LR}
+      PUSH  {R0-R6, LR}
       
       ;add work to do here
       LDR   R0, [PC, `result_address]

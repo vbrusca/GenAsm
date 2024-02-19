@@ -16,6 +16,6 @@
         {"addressHex":"0800010C", "valueHex":"0000"},    
         {"addressHex":"0800010E", "valueHex":"0000"},    
         {"addressHex":"08000110", "valueHex":"0000"},    
-        {"addressHex":"08000112", "valueHex":"0000"},            
+        {"addressHex":"08000112", "valueHex":"0000"}            
     ]
 }
