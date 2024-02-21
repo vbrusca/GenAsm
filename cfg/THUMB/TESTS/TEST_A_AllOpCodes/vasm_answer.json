@@ -1,5 +1,5 @@
 {
-    "obj_name": "line_hex_reps",
+    "obj_name": "line_hex_reps: TEST_A_AllOpCodes",
     "line_hex_reps": [
         {"addressHex":"080000F4", "valueHex":"0800"},
         {"addressHex":"080000F6", "valueHex":"C807"},
