@@ -228,5 +228,9 @@
 	{"addressHexVasm":"080001C2", "addressHexGasm":"0x080001B2", "valueHexVasm":"0003", "valueHexGasm":"0003"},
 	{"addressHexVasm":"080001C4", "addressHexGasm":"0x080001B4", "valueHexVasm":"0000", "valueHexGasm":"0000"},
 	{"addressHexVasm":"080001C6", "addressHexGasm":"0x080001B6", "valueHexVasm":"0004", "valueHexGasm":"0004"},
+
+
+	{"addressHexVasm":"080001C8", "addressHexGasm":"0x080001B8", "valueHexVasm":"0304", "valueHexGasm":"0304"},
+	{"addressHexVasm":"080001CA", "addressHexGasm":"0x080001BA", "valueHexVasm":"0000", "valueHexGasm":"0000"},
     ]
 }
