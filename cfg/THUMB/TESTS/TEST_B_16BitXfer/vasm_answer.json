@@ -307,7 +307,8 @@
 	{"addrHexV":"0800025A", "addrHexG":"0x0800024A", "valHexV":"6060", "valHexG":"6060"},
 	{"addrHexV":"0800025C", "addrHexG":"0x0800024C", "valHexV":"607E", "valHexG":"607E"},
 	{"addrHexV":"0800025E", "addrHexG":"0x0800024E", "valHexV":"3E00", "valHexG":"3E00"},
-
+	{"addrHexV":"08000260", "addrHexG":"0x08000250", "valHexV":"44EE", "valHexG":"44EE"},
+	{"addrHexV":"08000262", "addrHexG":"0x08000252", "valHexV":"FED6", "valHexG":"FED6"},
 
     ]
 }
