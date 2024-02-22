@@ -1,9 +1,9 @@
 {
     "obj_name": "line_hex_reps",
-    "program": "TEST_B_16BitXfer",
+    "program": "TEST_A_AllOpCodes",
     "line_hex_reps": [
-        {"addrHex":"08000000", "valHex":"3800"},
-        {"addrHex":"08000002", "valHex":"00EA"},
+	{"addrHexV":"08000000", "addrHexG":"08000000", "valHexV":"3800", "valHexG":"0000"},
+	{"addrHexV":"08000002", "addrHexG":"08000002", "valHexV":"00EA", "valHexG":"0000"},
 	{"addrHex":"08000004", "valHex":"0000"},
 	{"addrHex":"08000006", "valHex":"0000"},
 	{"addrHex":"08000008", "valHex":"0000"},
@@ -93,7 +93,7 @@
 	{"addrHex":"080000B0", "valHex":"0000"},
 	{"addrHex":"080000B2", "valHex":"0000"},
 	{"addrHex":"080000B4", "valHex":"0000"},
-	{"addrHex":"080000B6", "valHex":"9600"},
+	{"addrHexV":"080000B6", "addrHexG":"080000B6", "valHexV":"9600", "valHexG":"0000"},
 	{"addrHex":"080000B8", "valHex":"0000"},
 	{"addrHex":"080000BA", "valHex":"0000"},
 	{"addrHex":"080000BC", "valHex":"0000"},
@@ -118,14 +118,15 @@
 	{"addrHex":"080000E2", "valHex":"0000"},
 	{"addrHex":"080000E4", "valHex":"0000"},
 	{"addrHex":"080000E6", "valHex":"0000"},
-        {"addrHex":"080000E8", "valHex":"0400"},
-        {"addrHex":"080000EA", "valHex":"8FE2"},
-        {"addrHex":"080000EC", "valHex":"0100"},
-        {"addrHex":"080000EE", "valHex":"80E2"},
-        {"addrHex":"080000F0", "valHex":"10FF"},
-        {"addrHex":"080000F2", "valHex":"2FE1"},
-	{"addrHex":"080000F4", "ignore":"true"},
-        {"addrHex":"080000F6", "valHex":"8D46"},
+	{"addrHexV":"080000E8", "addrHexG":"080000E8", "valHexV":"0400", "valHexG":"0000"},
+	{"addrHexV":"080000EA", "addrHexG":"080000EA", "valHexV":"8FE2", "valHexG":"0000"},
+	{"addrHexV":"080000EC", "addrHexG":"080000EC", "valHexV":"0100", "valHexG":"0000"},
+	{"addrHexV":"080000EE", "addrHexG":"080000EE", "valHexV":"08E2", "valHexG":"0000"},
+	{"addrHexV":"080000F0", "addrHexG":"080000F0", "valHexV":"10FF", "valHexG":"0000"},
+	{"addrHexV":"080000F2", "addrHexG":"080000F2", "valHexV":"2FE1", "valHexG":"0000"},
+	{"addrHex":"080000F4", "valHex":"0800"},
+        {"addrHex":"080000F6", "valHex":"C807"},
+
 	{"addrHex":"080000F8", "ignore":"true"},
 	{"addrHex":"080000FA", "ignore":"true"},
         {"addrHex":"080000FC", "valHex":"2260"},
@@ -379,6 +380,12 @@
 	{"addrHexV":"080002E8", "addrHexG":"0x080002D8", "valHexV":"2046", "valHexG":"2046"},
 	{"addrHexV":"080002EA", "addrHexG":"0x080002DA", "valHexV":"4149", "valHexG":"4149"},
 	{"addrHexV":"080002EC", "addrHexG":"0x080002DC", "valHexV":"4C45", "valHexG":"4C45"},
-	{"addrHexV":"080002EE", "addrHexG":"0x080002DE", "valHexV":"44FF", "valHexG":"44FF"}
-    ]
+	{"addrHexV":"080002EE", "addrHexG":"0x080002DE", "valHexV":"44FF", "valHexG":"44FF"}   
+    ]    
 }
+                 
+                 
+                 
+                 
+                 
+                 
