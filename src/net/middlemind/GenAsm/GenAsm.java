@@ -137,8 +137,8 @@ public class GenAsm {
                 }
                 return;
             }
-        } else if(args == null || args.length < ARG_LEN_TARGET) {
-            String targetProgram = "TEST_B_16BitXfer";
+         } else if(args == null || args.length < ARG_LEN_TARGET) {
+            String targetProgram = "TEST_A_AllOpCodes";
             CFG_DIR_PATH = ".\\cfg\\";
             ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
             ASM_TARGET_SET = "THUMB_ARM7TDMI";
@@ -156,7 +156,7 @@ public class GenAsm {
             ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
             ASM_VERBOSE = false;
             ASM_QUELL_FILE_OUTPUT = false;
-        } else if(args != null || args.length == ARG_LEN_TARGET) {
+         } else if(args != null || args.length == ARG_LEN_TARGET) {
             CFG_DIR_PATH = args[11];
             ASM_SETS_FILE_NAME = args[0];
             ASM_TARGET_SET = args[1];

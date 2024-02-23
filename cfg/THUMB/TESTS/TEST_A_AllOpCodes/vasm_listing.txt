@@ -198,537 +198,539 @@ F00:0087       			ADD     SP, #0          ;5.13
 F00:0088       			ADD     SP, #508
                S01:0800018C:  7F B0
 F00:0089       			;ADD     SP, #-2		;vAsm: "Illegal out of range"	ARMThumb_Sim Asm: B0FC, 1011000011111100	ShellStorm Asm: B0FF, 101100
-F00:0090       			PUSH    {R0, R1}        ;5.14
-               S01:0800018E:  03 B4
-F00:0091       			PUSH    {R0, R1, LR}
-               S01:08000190:  03 B5
-F00:0092       			POP     {R0, R1}
-               S01:08000192:  03 BC
-F00:0093       			POP     {R0, R1, PC}
-               S01:08000194:  03 BD
-F00:0094       			STMIA   R0!, {R1, R2}   ;5.15
-               S01:08000196:  06 C0
-F00:0095       			LDMIA   R0!, {R1, R2}
-               S01:08000198:  06 C8
-F00:0096       			BEQ     label_          ;5.16
-               S01:0800019A:  AB D0
-F00:0097       			BNE     label_
-               S01:0800019C:  AA D1
-F00:0098       			BCS     label_
-               S01:0800019E:  A9 D2
-F00:0099       			BCC     label_
-               S01:080001A0:  A8 D3
-F00:0100       			BMI     label_
-               S01:080001A2:  A7 D4
-F00:0101       			BPL     label_
-               S01:080001A4:  A6 D5
-F00:0102       			BVS     label_
-               S01:080001A6:  A5 D6
-F00:0103       			BVC     label_
-               S01:080001A8:  A4 D7
-F00:0104       			BHI     label_
-               S01:080001AA:  A3 D8
-F00:0105       			BLS     label_
-               S01:080001AC:  A2 D9
-F00:0106       			BGE     label_
-               S01:080001AE:  A1 DA
-F00:0107       			BLT     label_
-               S01:080001B0:  A0 DB
-F00:0108       			BGT     label_
-               S01:080001B2:  9F DC
-F00:0109       			BLE     label_
-               S01:080001B4:  9E DD
-F00:0110       			SWI     0              ;5.17
-               S01:080001B6:  00 DF
-F00:0111       			SWI     255
-               S01:080001B8:  FF DF
-F00:0112       			B       label_         ;5.18
-               S01:080001BA:  9B E7
-F00:0113       			B       over
-               S01:080001BC:  2B E0
-F00:0114       			BL      label_         ;5.19
-               S01:080001BE:  FF F7 99 FF
-F00:0115       			BL      over
-               S01:080001C2:  00 F0 28 F8
-F00:0116       			CMP     R0, #45         ;Other
-               S01:080001C6:  2D 28
-F00:0117       			BGT     over
-               S01:080001C8:  25 DC
-F00:0118       			B       locate
-               S01:080001CA:  26 E0
-F00:0119       			LSR     R2, R5, #27
-               S01:080001CC:  EA 0E
-F00:0120       			ADD     R0, R3, R4
-               S01:080001CE:  18 19
-F00:0121       			SUB     R6, R2, #6
-               S01:080001D0:  96 1F
-F00:0122       			MOV     R0, #127
-               S01:080001D2:  7F 20
-F00:0123       			CMP     R2, #62
-               S01:080001D4:  3E 2A
-F00:0124       			ADD     R1, #127
-               S01:080001D6:  7F 31
-F00:0125       			SUB     R6, #1
-               S01:080001D8:  01 3E
-F00:0126       			EOR     R3, R4
-               S01:080001DA:  63 40
-F00:0127       			ROR     R1, R0
-               S01:080001DC:  C1 41
-F00:0128       			NEG     R5, R3
-               S01:080001DE:  5D 42
-F00:0129       			CMP     R2, R6
-               S01:080001E0:  B2 42
-F00:0130       			MUL     R0, R7
-               S01:080001E2:  78 43
-F00:0131       			EOR     R3, R4
-               S01:080001E4:  63 40
-F00:0132       			ROR     R1, R0
-               S01:080001E6:  C1 41
-F00:0133       			NEG     R5, R3
-               S01:080001E8:  5D 42
-F00:0134       			CMP     R2, R6
-               S01:080001EA:  B2 42
-F00:0135       			MUL     R0, R7
-               S01:080001EC:  78 43
-F00:0136       			ADD     PC, R5
-               S01:080001EE:  AF 44
-F00:0137       			CMP     R4, R12
-               S01:080001F0:  64 45
-F00:0138       			MOV     PC, R14
-               S01:080001F2:  F7 46
-F00:0139       			LDR     R3, [PC, #844]
-               S01:080001F4:  D3 4B
-F00:0140       			STR     R3, [R2, R6]
-               S01:080001F6:  93 51
-F00:0141       			LDRB    R2, [R0, R7]
-               S01:080001F8:  C2 5D
-F00:0142       			STRH    R4, [R3, R0]
-               S01:080001FA:  1C 52
-F00:0143       			LDSB    R2, [R7, R1]
-               S01:080001FC:  7A 56
-F00:0144       			LDSH    R3, [R4, R2]
-               S01:080001FE:  A3 5E
-F00:0145       			LDR     R2, [R5, #116]
-               S01:08000200:  6A 6F
-F00:0146       			STRB    R1, [R0, #13]
-               S01:08000202:  41 73
-F00:0147       			STRH    R6, [R1, #56]
-               S01:08000204:  0E 87
-F00:0148       			LDRH    R4, [R7, #4]
-               S01:08000206:  BC 88
-F00:0149       			ADD     R2, PC, #572
-               S01:08000208:  8F A2
-F00:0150       			ADD     R6, SP, #212
-               S01:0800020A:  35 AE
-F00:0151       			ADD     SP, #68
-               S01:0800020C:  11 B0
-F00:0152       			ADD     SP, #104
-               S01:0800020E:  1A B0
-F00:0153       			PUSH    {R0-R4, LR}
-               S01:08000210:  1F B5
-F00:0154       			POP     {R2, R6, PC}
-               S01:08000212:  44 BD
-F00:0155       			STMIA   R0!, {R3, R4, R5, R6, R7}
-               S01:08000214:  F8 C0
-F00:0156       over:       CMP     R0, #45
-               S01:08000216:  2D 28
-F00:0157       here:       B       here
-               S01:08000218:  FE E7
-F00:0158       locate:     LDR     R2, [R2, R6]
-               S01:0800021A:  92 59
-F00:0159       
-F00:0160       	ldr r1,SPAddress	;Init Stack Pointer.
-               S01:0800021C:  44 49
-F00:0161       	mov sp,r1
-               S01:0800021E:  8D 46
-F00:0162       
-F00:0163       	bl ScreenInit		;Init Screen
-               S01:08000220:  00 F0 3E FA
-F00:0164       
-F00:0165       	;b TestMoves
-F00:0166       	;b TestAdds
-F00:0167       	b TestRamRW
-               S01:08000224:  4A E0
-F00:0168       
-F00:0169       ;;;;;;;;;;;;;; Move values and Load immediate ;;;;;;;;;;;;;;
-F00:0170       
-F00:0171       TestMoves:		;MOV Rx,Val Rx = Val
-F00:0172       
-F00:0173       	mov r0,#0x12		;Move limited to 0-255 in thumb :-(
-               S01:08000226:  12 20
-F00:0174       	mov r1,#0xFF
-               S01:08000228:  FF 21
-F00:0175       
-F00:0176       	;mov r1,#256			;This won't work :-(
-F00:0177       
-F00:0178       	bl MonitorR0R1
-               S01:0800022A:  00 F0 8B F8
-F00:0179       
-F00:0180       	mov r0,#0x10			;Load a hexadecimal value into a register
-               S01:0800022E:  10 20
-F00:0181       	mov r1,#0b00000010		;Load a binary into a register (0x02)
-               S01:08000230:  02 21
-F00:0182       
-F00:0183       	bl MonitorR0R1
-               S01:08000232:  00 F0 87 F8
-F00:0184       
-F00:0185       	mov r0,#10				;Decimal 10
-               S01:08000236:  0A 20
-F00:0186       	mov r1,#65				;Ascii A - Decimal 	(0x41)
-               S01:08000238:  41 21
-F00:0187       
-F00:0188       	bl MonitorR0R1
-               S01:0800023A:  00 F0 83 F8
-F00:0189       
-F00:0190       	bl NewLine
-               S01:0800023E:  00 F0 45 FA
-F00:0191       
-F00:0192       	mov r0,r1				;Transfer Reg to Reg
-               S01:08000242:  08 1C
-F00:0193       
-F00:0194       	bl MonitorR0R1
-               S01:08000244:  00 F0 7E F8
-F00:0195       
-F00:0196       	;mov r8,#10				;This won't work, Can't set R8-15 directly
-F00:0197       	;Most commansd on ARM-Thumb only support R0-R7
-F00:0198       
-F00:0199       	mov r0,#10
-               S01:08000248:  0A 20
-F00:0200       	mov r8,r0				;This will work, set low reg r0-r7 first!
-               S01:0800024A:  80 46
-F00:0201       
-F00:0202       	bl MonitorR0R8
-               S01:0800024C:  00 F0 9C F8
-F00:0203       
-F00:0204       	bl NewLine
-               S01:08000250:  00 F0 3C FA
-F00:0205       
-F00:0206       	ldr r0,TestVal			;Load 32 bit value from address after PC
-               S01:08000254:  32 48
-F00:0207       
-F00:0208       	;ldr r8,TestVal			;This won't work, Reg 0-7 only
-F00:0209       	;ldr r0,ThumbTest		;This won't work, Address must be below PC
-F00:0210       
-F00:0211       	bl MonitorR0R8
-               S01:08000256:  00 F0 97 F8
-F00:0212       
-F00:0213       	bl NewLine
-               S01:0800025A:  00 F0 37 FA
-F00:0214       
-F00:0215       	;mov r1,#-4				;This won't work, can only load
-F00:0216       
-F00:0217       	mov r0,#0
-               S01:0800025E:  00 20
-F00:0218       	sub r0,#4				;This will work
-               S01:08000260:  04 38
-F00:0219       
-F00:0220       	bl MonitorR0R1
-               S01:08000262:  00 F0 6F F8
-F00:0221       
-F00:0222       	mov r1,#8				;Load R1 with 8
-               S01:08000266:  08 21
-F00:0223       	mvn r0,r1				;Load R0 with NOT R1
-               S01:08000268:  C8 43
-F00:0224       	;mvn r0,#8				;This won't work, can only use
-F00:0225       								;MVN with Register source
-F00:0226       	bl MonitorR0R1
-               S01:0800026A:  00 F0 6B F8
-F00:0227       
-F00:0228       	neg r1,r1					;Negate R1
-               S01:0800026E:  49 42
-F00:0229       
-F00:0230       	bl MonitorR0R1
-               S01:08000270:  00 F0 68 F8
-F00:0231       
-F00:0232       	b InfLoop					;Halt
-               S01:08000274:  51 E0
-F00:0233       
-F00:0234       ;;;;;;;;;;;;;; Add and Subtract ;;;;;;;;;;;;;;
-F00:0235       
-F00:0236       TestAdds:
-F00:0237       
-F00:0238       	mov r0,#0
-               S01:08000276:  00 20
-F00:0239       	ldr r1,TestVal			;Load 32 bit value from address after PC
-               S01:08000278:  29 49
-F00:0240       
-F00:0241       	bl MonitorR0R1
-               S01:0800027A:  00 F0 63 F8
-F00:0242       
-F00:0243       	add r0,r1,#0x7			;R0=R1+7 (Short form - Values up to 7)
-               S01:0800027E:  C8 1D
-F00:0244       	sub r1,r1,#0x7			;R1=R1-7 (Short form - Values up to 7)
-               S01:08000280:  C9 1F
-F00:0245       
-F00:0246       	;add r0,r1,#10			;This won't work, 0-7 only
-F00:0247       
-F00:0248       	bl MonitorR0R1
-               S01:08000282:  00 F0 5F F8
-F00:0249       
-F00:0250       	add r0,#0x10			;R0=R0+16 (value up to 255)
-               S01:08000286:  10 30
-F00:0251       	sub r1,#0x10			;R1=R1-16 (value up to 255)
-               S01:08000288:  10 39
-F00:0252       
-F00:0253       	bl MonitorR0R1
-               S01:0800028A:  00 F0 5B F8
-F00:0254       
-F00:0255       	bl NewLine
-               S01:0800028E:  00 F0 1D FA
-F00:0256       
-F00:0257       	ldr r1,TestVal			;Load 32 bit value from address after PC
-               S01:08000292:  23 49
-F00:0258       	mov r0,#0x20
-               S01:08000294:  20 20
-F00:0259       	bl MonitorR0R1
-               S01:08000296:  00 F0 55 F8
-F00:0260       
-F00:0261       	add r0,r0,r1			;R0=R0+R1
-               S01:0800029A:  40 18
-F00:0262       	bl MonitorR0R1
-               S01:0800029C:  00 F0 52 F8
-F00:0263       	sub r0,r0,r1			;R0=R0-R1
-               S01:080002A0:  40 1A
-F00:0264       	bl MonitorR0R1
-               S01:080002A2:  00 F0 4F F8
-F00:0265       
-F00:0266       	bl NewLine
-               S01:080002A6:  00 F0 11 FA
-F00:0267       
-F00:0268       	mov r0,#8
-               S01:080002AA:  08 20
-F00:0269       	ldr r1,TestVal
-               S01:080002AC:  1C 49
-F00:0270       	mov r8,r1
-               S01:080002AE:  88 46
-F00:0271       	bl MonitorR0R8
-               S01:080002B0:  00 F0 6A F8
-F00:0272       
-F00:0273       	add r8,r0				;High Reg version of add R8=R8+r0
-               S01:080002B4:  80 44
-F00:0274       	;sub r8,r0				;Doesn't work - no Subtract version
-F00:0275       
-F00:0276       	bl MonitorR0R8
-               S01:080002B6:  00 F0 67 F8
-F00:0277       
-F00:0278       	b InfLoop				;Halt
-               S01:080002BA:  2E E0
-F00:0279       
-F00:0280       ;;;;;;;;;;;;;; Load and Store ;;;;;;;;;;;;;;
-F00:0281       
-F00:0282       TestRamRW:
-F00:0283       
-F00:0284       	bl ShowTestRam
-               S01:080002BC:  00 F0 3A F8
-F00:0285       
-F00:0286       	ldr r0,TestVal		;Load R0 from PC relative TestVal
-               S01:080002C0:  17 48
-F00:0287       	ldr r1,TestRam
-               S01:080002C2:  18 49
-F00:0288       
-F00:0289       	str r0,[r1,#0]		;Store R0 to Address R0+0 (TestRam)
-               S01:080002C4:  08 60
-F00:0290       	str r0,[r1,#8]		;Store R0 to Address R0+8 (TestRam)
-               S01:080002C6:  88 60
-F00:0291       
-F00:0292       	ldr r2,[r1,#0]		;Load R2 from Address R0+0 (TestRam)
-               S01:080002C8:  0A 68
-F00:0293       	ldr r3,[r1,#8]		;Load R3 from Address R0+8 (TestRam)
-               S01:080002CA:  8B 68
-F00:0294       
-F00:0295       	bl MonitorR0R1R2R3
-               S01:080002CC:  00 F0 46 F8
-F00:0296       
-F00:0297       	bl ShowTestRam
-               S01:080002D0:  00 F0 30 F8
-F00:0298       	bl NewLine
-               S01:080002D4:  00 F0 FA F9
-F00:0299       	mov r2,#4			;Final address must be 32 bit aligned for 32 bit load
-               S01:080002D8:  04 22
-F00:0300       	;mov r2,#4			;This will not work! (will work for LDRH)
-F00:0301       	str r0,[r1,r2]		;offset in register
-               S01:080002DA:  88 50
-F00:0302       	bl ShowTestRam
-               S01:080002DC:  00 F0 2A F8
-F00:0303       
-F00:0304       	bl NewLine
-               S01:080002E0:  00 F0 F4 F9
-F00:0305       
-F00:0306       	ldr r2,TestRam		;Load R2 with our test data
-               S01:080002E4:  0F 4A
-F00:0307       
-F00:0308       	ldrb r0,[r2,#0]		;Load Unsigned byte
-               S01:080002E6:  10 78
-F00:0309       	ldrh r1,[r2,#0]		;Load Unsigned Half
-               S01:080002E8:  11 88
-F00:0310       
-F00:0311       	bl MonitorR0R1
-               S01:080002EA:  00 F0 2B F8
-F00:0312       	bl NewLine
-               S01:080002EE:  00 F0 ED F9
-F00:0313       
-F00:0314       	mov r0,#0
-               S01:080002F2:  00 20
-F00:0315       	sub r0,r0,#1		;Set R0,R1 to 0xFFFFFFFF
-               S01:080002F4:  40 1E
-F00:0316       	mov r1,r0
-               S01:080002F6:  01 1C
-F00:0317       
-F00:0318       	strb r0,[r2,#4]		;Load Unsigned byte
-               S01:080002F8:  10 71
-F00:0319       	strh r0,[r2,#8]		;Load Unsigned Half
-               S01:080002FA:  10 81
-F00:0320       	bl MonitorR0R1
-               S01:080002FC:  00 F0 22 F8
-F00:0321       	bl ShowTestRam
-               S01:08000300:  00 F0 18 F8
-F00:0322       
+F00:0090       			ADD     SP, #32
+               S01:0800018E:  08 B0
+F00:0091       			PUSH    {R0, R1}        ;5.14
+               S01:08000190:  03 B4
+F00:0092       			PUSH    {R0, R1, LR}
+               S01:08000192:  03 B5
+F00:0093       			POP     {R0, R1}
+               S01:08000194:  03 BC
+F00:0094       			POP     {R0, R1, PC}
+               S01:08000196:  03 BD
+F00:0095       			STMIA   R0!, {R1, R2}   ;5.15
+               S01:08000198:  06 C0
+F00:0096       			LDMIA   R0!, {R1, R2}
+               S01:0800019A:  06 C8
+F00:0097       			BEQ     label_          ;5.16
+               S01:0800019C:  AA D0
+F00:0098       			BNE     label_
+               S01:0800019E:  A9 D1
+F00:0099       			BCS     label_
+               S01:080001A0:  A8 D2
+F00:0100       			BCC     label_
+               S01:080001A2:  A7 D3
+F00:0101       			BMI     label_
+               S01:080001A4:  A6 D4
+F00:0102       			BPL     label_
+               S01:080001A6:  A5 D5
+F00:0103       			BVS     label_
+               S01:080001A8:  A4 D6
+F00:0104       			BVC     label_
+               S01:080001AA:  A3 D7
+F00:0105       			BHI     label_
+               S01:080001AC:  A2 D8
+F00:0106       			BLS     label_
+               S01:080001AE:  A1 D9
+F00:0107       			BGE     label_
+               S01:080001B0:  A0 DA
+F00:0108       			BLT     label_
+               S01:080001B2:  9F DB
+F00:0109       			BGT     label_
+               S01:080001B4:  9E DC
+F00:0110       			BLE     label_
+               S01:080001B6:  9D DD
+F00:0111       			SWI     0              ;5.17
+               S01:080001B8:  00 DF
+F00:0112       			SWI     255
+               S01:080001BA:  FF DF
+F00:0113       			B       label_         ;5.18
+               S01:080001BC:  9A E7
+F00:0114       			B       over
+               S01:080001BE:  2B E0
+F00:0115       			BL      label_         ;5.19
+               S01:080001C0:  FF F7 98 FF
+F00:0116       			BL      over
+               S01:080001C4:  00 F0 28 F8
+F00:0117       			CMP     R0, #45         ;Other
+               S01:080001C8:  2D 28
+F00:0118       			BGT     over
+               S01:080001CA:  25 DC
+F00:0119       			B       locate
+               S01:080001CC:  26 E0
+F00:0120       			LSR     R2, R5, #27
+               S01:080001CE:  EA 0E
+F00:0121       			ADD     R0, R3, R4
+               S01:080001D0:  18 19
+F00:0122       			SUB     R6, R2, #6
+               S01:080001D2:  96 1F
+F00:0123       			MOV     R0, #127
+               S01:080001D4:  7F 20
+F00:0124       			CMP     R2, #62
+               S01:080001D6:  3E 2A
+F00:0125       			ADD     R1, #127
+               S01:080001D8:  7F 31
+F00:0126       			SUB     R6, #1
+               S01:080001DA:  01 3E
+F00:0127       			EOR     R3, R4
+               S01:080001DC:  63 40
+F00:0128       			ROR     R1, R0
+               S01:080001DE:  C1 41
+F00:0129       			NEG     R5, R3
+               S01:080001E0:  5D 42
+F00:0130       			CMP     R2, R6
+               S01:080001E2:  B2 42
+F00:0131       			MUL     R0, R7
+               S01:080001E4:  78 43
+F00:0132       			EOR     R3, R4
+               S01:080001E6:  63 40
+F00:0133       			ROR     R1, R0
+               S01:080001E8:  C1 41
+F00:0134       			NEG     R5, R3
+               S01:080001EA:  5D 42
+F00:0135       			CMP     R2, R6
+               S01:080001EC:  B2 42
+F00:0136       			MUL     R0, R7
+               S01:080001EE:  78 43
+F00:0137       			ADD     PC, R5
+               S01:080001F0:  AF 44
+F00:0138       			CMP     R4, R12
+               S01:080001F2:  64 45
+F00:0139       			MOV     PC, R14
+               S01:080001F4:  F7 46
+F00:0140       			LDR     R3, [PC, #844]
+               S01:080001F6:  D3 4B
+F00:0141       			STR     R3, [R2, R6]
+               S01:080001F8:  93 51
+F00:0142       			LDRB    R2, [R0, R7]
+               S01:080001FA:  C2 5D
+F00:0143       			STRH    R4, [R3, R0]
+               S01:080001FC:  1C 52
+F00:0144       			LDSB    R2, [R7, R1]
+               S01:080001FE:  7A 56
+F00:0145       			LDSH    R3, [R4, R2]
+               S01:08000200:  A3 5E
+F00:0146       			LDR     R2, [R5, #116]
+               S01:08000202:  6A 6F
+F00:0147       			STRB    R1, [R0, #13]
+               S01:08000204:  41 73
+F00:0148       			STRH    R6, [R1, #56]
+               S01:08000206:  0E 87
+F00:0149       			LDRH    R4, [R7, #4]
+               S01:08000208:  BC 88
+F00:0150       			ADD     R2, PC, #572
+               S01:0800020A:  8F A2
+F00:0151       			ADD     R6, SP, #212
+               S01:0800020C:  35 AE
+F00:0152       			ADD     SP, #68
+               S01:0800020E:  11 B0
+F00:0153       			ADD     SP, #104
+               S01:08000210:  1A B0
+F00:0154       			PUSH    {R0-R4, LR}
+               S01:08000212:  1F B5
+F00:0155       			POP     {R2, R6, PC}
+               S01:08000214:  44 BD
+F00:0156       			STMIA   R0!, {R3, R4, R5, R6, R7}
+               S01:08000216:  F8 C0
+F00:0157       over:       CMP     R0, #45
+               S01:08000218:  2D 28
+F00:0158       here:       B       here
+               S01:0800021A:  FE E7
+F00:0159       locate:     LDR     R2, [R2, R6]
+               S01:0800021C:  92 59
+F00:0160       
+F00:0161       	ldr r1,SPAddress	;Init Stack Pointer.
+               S01:0800021E:  44 49
+F00:0162       	mov sp,r1
+               S01:08000220:  8D 46
+F00:0163       
+F00:0164       	bl ScreenInit		;Init Screen
+               S01:08000222:  00 F0 3D FA
+F00:0165       
+F00:0166       	;b TestMoves
+F00:0167       	;b TestAdds
+F00:0168       	b TestRamRW
+               S01:08000226:  4A E0
+F00:0169       
+F00:0170       ;;;;;;;;;;;;;; Move values and Load immediate ;;;;;;;;;;;;;;
+F00:0171       
+F00:0172       TestMoves:		;MOV Rx,Val Rx = Val
+F00:0173       
+F00:0174       	mov r0,#0x12		;Move limited to 0-255 in thumb :-(
+               S01:08000228:  12 20
+F00:0175       	mov r1,#0xFF
+               S01:0800022A:  FF 21
+F00:0176       
+F00:0177       	;mov r1,#256			;This won't work :-(
+F00:0178       
+F00:0179       	bl MonitorR0R1
+               S01:0800022C:  00 F0 8A F8
+F00:0180       
+F00:0181       	mov r0,#0x10			;Load a hexadecimal value into a register
+               S01:08000230:  10 20
+F00:0182       	mov r1,#0b00000010		;Load a binary into a register (0x02)
+               S01:08000232:  02 21
+F00:0183       
+F00:0184       	bl MonitorR0R1
+               S01:08000234:  00 F0 86 F8
+F00:0185       
+F00:0186       	mov r0,#10				;Decimal 10
+               S01:08000238:  0A 20
+F00:0187       	mov r1,#65				;Ascii A - Decimal 	(0x41)
+               S01:0800023A:  41 21
+F00:0188       
+F00:0189       	bl MonitorR0R1
+               S01:0800023C:  00 F0 82 F8
+F00:0190       
+F00:0191       	bl NewLine
+               S01:08000240:  00 F0 44 FA
+F00:0192       
+F00:0193       	mov r0,r1				;Transfer Reg to Reg
+               S01:08000244:  08 1C
+F00:0194       
+F00:0195       	bl MonitorR0R1
+               S01:08000246:  00 F0 7D F8
+F00:0196       
+F00:0197       	;mov r8,#10				;This won't work, Can't set R8-15 directly
+F00:0198       	;Most commansd on ARM-Thumb only support R0-R7
+F00:0199       
+F00:0200       	mov r0,#10
+               S01:0800024A:  0A 20
+F00:0201       	mov r8,r0				;This will work, set low reg r0-r7 first!
+               S01:0800024C:  80 46
+F00:0202       
+F00:0203       	bl MonitorR0R8
+               S01:0800024E:  00 F0 9B F8
+F00:0204       
+F00:0205       	bl NewLine
+               S01:08000252:  00 F0 3B FA
+F00:0206       
+F00:0207       	ldr r0,TestVal			;Load 32 bit value from address after PC
+               S01:08000256:  32 48
+F00:0208       
+F00:0209       	;ldr r8,TestVal			;This won't work, Reg 0-7 only
+F00:0210       	;ldr r0,ThumbTest		;This won't work, Address must be below PC
+F00:0211       
+F00:0212       	bl MonitorR0R8
+               S01:08000258:  00 F0 96 F8
+F00:0213       
+F00:0214       	bl NewLine
+               S01:0800025C:  00 F0 36 FA
+F00:0215       
+F00:0216       	;mov r1,#-4				;This won't work, can only load
+F00:0217       
+F00:0218       	mov r0,#0
+               S01:08000260:  00 20
+F00:0219       	sub r0,#4				;This will work
+               S01:08000262:  04 38
+F00:0220       
+F00:0221       	bl MonitorR0R1
+               S01:08000264:  00 F0 6E F8
+F00:0222       
+F00:0223       	mov r1,#8				;Load R1 with 8
+               S01:08000268:  08 21
+F00:0224       	mvn r0,r1				;Load R0 with NOT R1
+               S01:0800026A:  C8 43
+F00:0225       	;mvn r0,#8				;This won't work, can only use
+F00:0226       								;MVN with Register source
+F00:0227       	bl MonitorR0R1
+               S01:0800026C:  00 F0 6A F8
+F00:0228       
+F00:0229       	neg r1,r1					;Negate R1
+               S01:08000270:  49 42
+F00:0230       
+F00:0231       	bl MonitorR0R1
+               S01:08000272:  00 F0 67 F8
+F00:0232       
+F00:0233       	b InfLoop					;Halt
+               S01:08000276:  51 E0
+F00:0234       
+F00:0235       ;;;;;;;;;;;;;; Add and Subtract ;;;;;;;;;;;;;;
+F00:0236       
+F00:0237       TestAdds:
+F00:0238       
+F00:0239       	mov r0,#0
+               S01:08000278:  00 20
+F00:0240       	ldr r1,TestVal			;Load 32 bit value from address after PC
+               S01:0800027A:  29 49
+F00:0241       
+F00:0242       	bl MonitorR0R1
+               S01:0800027C:  00 F0 62 F8
+F00:0243       
+F00:0244       	add r0,r1,#0x7			;R0=R1+7 (Short form - Values up to 7)
+               S01:08000280:  C8 1D
+F00:0245       	sub r1,r1,#0x7			;R1=R1-7 (Short form - Values up to 7)
+               S01:08000282:  C9 1F
+F00:0246       
+F00:0247       	;add r0,r1,#10			;This won't work, 0-7 only
+F00:0248       
+F00:0249       	bl MonitorR0R1
+               S01:08000284:  00 F0 5E F8
+F00:0250       
+F00:0251       	add r0,#0x10			;R0=R0+16 (value up to 255)
+               S01:08000288:  10 30
+F00:0252       	sub r1,#0x10			;R1=R1-16 (value up to 255)
+               S01:0800028A:  10 39
+F00:0253       
+F00:0254       	bl MonitorR0R1
+               S01:0800028C:  00 F0 5A F8
+F00:0255       
+F00:0256       	bl NewLine
+               S01:08000290:  00 F0 1C FA
+F00:0257       
+F00:0258       	ldr r1,TestVal			;Load 32 bit value from address after PC
+               S01:08000294:  22 49
+F00:0259       	mov r0,#0x20
+               S01:08000296:  20 20
+F00:0260       	bl MonitorR0R1
+               S01:08000298:  00 F0 54 F8
+F00:0261       
+F00:0262       	add r0,r0,r1			;R0=R0+R1
+               S01:0800029C:  40 18
+F00:0263       	bl MonitorR0R1
+               S01:0800029E:  00 F0 51 F8
+F00:0264       	sub r0,r0,r1			;R0=R0-R1
+               S01:080002A2:  40 1A
+F00:0265       	bl MonitorR0R1
+               S01:080002A4:  00 F0 4E F8
+F00:0266       
+F00:0267       	bl NewLine
+               S01:080002A8:  00 F0 10 FA
+F00:0268       
+F00:0269       	mov r0,#8
+               S01:080002AC:  08 20
+F00:0270       	ldr r1,TestVal
+               S01:080002AE:  1C 49
+F00:0271       	mov r8,r1
+               S01:080002B0:  88 46
+F00:0272       	bl MonitorR0R8
+               S01:080002B2:  00 F0 69 F8
+F00:0273       
+F00:0274       	add r8,r0				;High Reg version of add R8=R8+r0
+               S01:080002B6:  80 44
+F00:0275       	;sub r8,r0				;Doesn't work - no Subtract version
+F00:0276       
+F00:0277       	bl MonitorR0R8
+               S01:080002B8:  00 F0 66 F8
+F00:0278       
+F00:0279       	b InfLoop				;Halt
+               S01:080002BC:  2E E0
+F00:0280       
+F00:0281       ;;;;;;;;;;;;;; Load and Store ;;;;;;;;;;;;;;
+F00:0282       
+F00:0283       TestRamRW:
+F00:0284       
+F00:0285       	bl ShowTestRam
+               S01:080002BE:  00 F0 39 F8
+F00:0286       
+F00:0287       	ldr r0,TestVal		;Load R0 from PC relative TestVal
+               S01:080002C2:  17 48
+F00:0288       	ldr r1,TestRam
+               S01:080002C4:  17 49
+F00:0289       
+F00:0290       	str r0,[r1,#0]		;Store R0 to Address R0+0 (TestRam)
+               S01:080002C6:  08 60
+F00:0291       	str r0,[r1,#8]		;Store R0 to Address R0+8 (TestRam)
+               S01:080002C8:  88 60
+F00:0292       
+F00:0293       	ldr r2,[r1,#0]		;Load R2 from Address R0+0 (TestRam)
+               S01:080002CA:  0A 68
+F00:0294       	ldr r3,[r1,#8]		;Load R3 from Address R0+8 (TestRam)
+               S01:080002CC:  8B 68
+F00:0295       
+F00:0296       	bl MonitorR0R1R2R3
+               S01:080002CE:  00 F0 45 F8
+F00:0297       
+F00:0298       	bl ShowTestRam
+               S01:080002D2:  00 F0 2F F8
+F00:0299       	bl NewLine
+               S01:080002D6:  00 F0 F9 F9
+F00:0300       	mov r2,#4			;Final address must be 32 bit aligned for 32 bit load
+               S01:080002DA:  04 22
+F00:0301       	;mov r2,#4			;This will not work! (will work for LDRH)
+F00:0302       	str r0,[r1,r2]		;offset in register
+               S01:080002DC:  88 50
+F00:0303       	bl ShowTestRam
+               S01:080002DE:  00 F0 29 F8
+F00:0304       
+F00:0305       	bl NewLine
+               S01:080002E2:  00 F0 F3 F9
+F00:0306       
+F00:0307       	ldr r2,TestRam		;Load R2 with our test data
+               S01:080002E6:  0F 4A
+F00:0308       
+F00:0309       	ldrb r0,[r2,#0]		;Load Unsigned byte
+               S01:080002E8:  10 78
+F00:0310       	ldrh r1,[r2,#0]		;Load Unsigned Half
+               S01:080002EA:  11 88
+F00:0311       
+F00:0312       	bl MonitorR0R1
+               S01:080002EC:  00 F0 2A F8
+F00:0313       	bl NewLine
+               S01:080002F0:  00 F0 EC F9
+F00:0314       
+F00:0315       	mov r0,#0
+               S01:080002F4:  00 20
+F00:0316       	sub r0,r0,#1		;Set R0,R1 to 0xFFFFFFFF
+               S01:080002F6:  40 1E
+F00:0317       	mov r1,r0
+               S01:080002F8:  01 1C
+F00:0318       
+F00:0319       	strb r0,[r2,#4]		;Load Unsigned byte
+               S01:080002FA:  10 71
+F00:0320       	strh r0,[r2,#8]		;Load Unsigned Half
+               S01:080002FC:  10 81
+F00:0321       	bl MonitorR0R1
+               S01:080002FE:  00 F0 21 F8
+F00:0322       	bl ShowTestRam
+               S01:08000302:  00 F0 17 F8
 F00:0323       
-F00:0324       	mov r3,#2
-               S01:08000304:  02 23
-F00:0325       	ldrb r0,[r2,r3]		;Load Unsigned byte - note top bits cleared
-               S01:08000306:  D0 5C
-F00:0326       	ldrh r1,[r2,r3]		;Load Unsigned Half - note top bits cleared
-               S01:08000308:  D1 5A
-F00:0327       
-F00:0328       	bl MonitorR0R1
-               S01:0800030A:  00 F0 1B F8
-F00:0329       
-F00:0330       	mov r3,#0			;Need to use 2 register addresses for these
-               S01:0800030E:  00 23
-F00:0331       	ldsb r0,[r2,r3]		;Load signed byte
-               S01:08000310:  D0 56
-F00:0332       	ldsh r1,[r2,r3]		;Load signed Half (16 bit)
-               S01:08000312:  D1 5E
-F00:0333       
-F00:0334       	;Note: No need for signed versions of STR
-F00:0335       	bl MonitorR0R1
-               S01:08000314:  00 F0 16 F8
-F00:0336       
-F00:0337       	b InfLoop					;Halt
-               S01:08000318:  FF E7
-F00:0338       
-F00:0339       InfLoop:
-F00:0340           b InfLoop					;Halt
-               S01:0800031A:  FE E7
-F00:0341       
+F00:0324       
+F00:0325       	mov r3,#2
+               S01:08000306:  02 23
+F00:0326       	ldrb r0,[r2,r3]		;Load Unsigned byte - note top bits cleared
+               S01:08000308:  D0 5C
+F00:0327       	ldrh r1,[r2,r3]		;Load Unsigned Half - note top bits cleared
+               S01:0800030A:  D1 5A
+F00:0328       
+F00:0329       	bl MonitorR0R1
+               S01:0800030C:  00 F0 1A F8
+F00:0330       
+F00:0331       	mov r3,#0			;Need to use 2 register addresses for these
+               S01:08000310:  00 23
+F00:0332       	ldsb r0,[r2,r3]		;Load signed byte
+               S01:08000312:  D0 56
+F00:0333       	ldsh r1,[r2,r3]		;Load signed Half (16 bit)
+               S01:08000314:  D1 5E
+F00:0334       
+F00:0335       	;Note: No need for signed versions of STR
+F00:0336       	bl MonitorR0R1
+               S01:08000316:  00 F0 15 F8
+F00:0337       
+F00:0338       	b InfLoop					;Halt
+               S01:0800031A:  FF E7
+F00:0339       
+F00:0340       InfLoop:
+F00:0341           b InfLoop					;Halt
+               S01:0800031C:  FE E7
 F00:0342       
-F00:0343       	.align 4
-F00:0344       TestVal:
-F00:0345       	.long 0x22446688
+F00:0343       
+F00:0344       	.align 4
+F00:0345       TestVal:
+F00:0346       	.long 0x22446688
                S01:08000320:  88 66 44 22
-F00:0346       
-F00:0347       TestRam:
-F00:0348       	.long 0x0200F000
+F00:0347       
+F00:0348       TestRam:
+F00:0349       	.long 0x0200F000
                S01:08000324:  00 F0 00 02
-F00:0349       
 F00:0350       
-F00:0351       	.align 4
-F00:0352       SPAddress:
-F00:0353       	.long 0x03000000
+F00:0351       
+F00:0352       	.align 4
+F00:0353       SPAddress:
+F00:0354       	.long 0x03000000
                S01:08000330:  00 00 00 03
-F00:0354       
-F00:0355       ShowTestRam:
-F00:0356       	push {r0-r7, lr}
+F00:0355       
+F00:0356       ShowTestRam:
+F00:0357       	push {r0-r7, lr}
                S01:08000334:  FF B5
-F00:0357       		ldr	r0,TestRam2		;Address
+F00:0358       		ldr	r0,TestRam2		;Address
                S01:08000336:  02 48
-F00:0358       		mov r1,#2			;Lines
+F00:0359       		mov r1,#2			;Lines
                S01:08000338:  02 21
-F00:0359       		bl MemDump
+F00:0360       		bl MemDump
                S01:0800033A:  00 F0 B6 FA
-F00:0360       	pop {r0-r7, pc}
+F00:0361       	pop {r0-r7, pc}
                S01:0800033E:  FF BD
-F00:0361       TestRam2:
-F00:0362       	.long 0x0200F000
+F00:0362       TestRam2:
+F00:0363       	.long 0x0200F000
                S01:08000340:  00 F0 00 02
-F00:0363       
 F00:0364       
-F00:0365       MonitorR0R1:
-F00:0366       	push {r0-r7, lr}
+F00:0365       
+F00:0366       MonitorR0R1:
+F00:0367       	push {r0-r7, lr}
                S01:08000344:  FF B5
-F00:0367       		mov r6,#0
+F00:0368       		mov r6,#0
                S01:08000346:  00 26
-F00:0368       		mov r7,r0
+F00:0369       		mov r7,r0
                S01:08000348:  07 1C
-F00:0369       		bl ShowReg ;ShowReg R6=R7
+F00:0370       		bl ShowReg ;ShowReg R6=R7
                S01:0800034A:  00 F0 6B FA
-F00:0370       		mov r6,#1
+F00:0371       		mov r6,#1
                S01:0800034E:  01 26
-F00:0371       		mov r7,r1
+F00:0372       		mov r7,r1
                S01:08000350:  0F 1C
-F00:0372       		bl ShowReg ;ShowReg R6=R7
+F00:0373       		bl ShowReg ;ShowReg R6=R7
                S01:08000352:  00 F0 67 FA
-F00:0373       		bl newline
+F00:0374       		bl newline
                S01:08000356:  00 F0 B9 F9
-F00:0374       	pop {r0-r7, pc}
+F00:0375       	pop {r0-r7, pc}
                S01:0800035A:  FF BD
-F00:0375       
-F00:0376       MonitorR0R1R2R3:
-F00:0377       	push {r0-r7, lr}
+F00:0376       
+F00:0377       MonitorR0R1R2R3:
+F00:0378       	push {r0-r7, lr}
                S01:0800035C:  FF B5
-F00:0378       		mov r6,#0
+F00:0379       		mov r6,#0
                S01:0800035E:  00 26
-F00:0379       		mov r7,r0
+F00:0380       		mov r7,r0
                S01:08000360:  07 1C
-F00:0380       		bl ShowReg ;ShowReg R6=R7
+F00:0381       		bl ShowReg ;ShowReg R6=R7
                S01:08000362:  00 F0 5F FA
-F00:0381       		mov r6,#1
+F00:0382       		mov r6,#1
                S01:08000366:  01 26
-F00:0382       		mov r7,r1
+F00:0383       		mov r7,r1
                S01:08000368:  0F 1C
-F00:0383       		bl ShowReg ;ShowReg R6=R7
+F00:0384       		bl ShowReg ;ShowReg R6=R7
                S01:0800036A:  00 F0 5B FA
-F00:0384       		bl newline
+F00:0385       		bl newline
                S01:0800036E:  00 F0 AD F9
-F00:0385       		mov r6,#2
+F00:0386       		mov r6,#2
                S01:08000372:  02 26
-F00:0386       		mov r7,r2
+F00:0387       		mov r7,r2
                S01:08000374:  17 1C
-F00:0387       		bl ShowReg ;ShowReg R6=R7
+F00:0388       		bl ShowReg ;ShowReg R6=R7
                S01:08000376:  00 F0 55 FA
-F00:0388       		mov r6,#3
+F00:0389       		mov r6,#3
                S01:0800037A:  03 26
-F00:0389       		mov r7,r3
+F00:0390       		mov r7,r3
                S01:0800037C:  1F 1C
-F00:0390       		bl ShowReg ;ShowReg R6=R7
+F00:0391       		bl ShowReg ;ShowReg R6=R7
                S01:0800037E:  00 F0 51 FA
-F00:0391       		bl newline
+F00:0392       		bl newline
                S01:08000382:  00 F0 A3 F9
-F00:0392       	pop {r0-r7, pc}
+F00:0393       	pop {r0-r7, pc}
                S01:08000386:  FF BD
-F00:0393       
-F00:0394       MonitorR0R8:
-F00:0395       	push {r0-r7, lr}
+F00:0394       
+F00:0395       MonitorR0R8:
+F00:0396       	push {r0-r7, lr}
                S01:08000388:  FF B5
-F00:0396       		mov r6,#0
+F00:0397       		mov r6,#0
                S01:0800038A:  00 26
-F00:0397       		mov r7,r0
+F00:0398       		mov r7,r0
                S01:0800038C:  07 1C
-F00:0398       		bl ShowReg ;ShowReg R6=R7
+F00:0399       		bl ShowReg ;ShowReg R6=R7
                S01:0800038E:  00 F0 49 FA
-F00:0399       		mov r7,r8
+F00:0400       		mov r7,r8
                S01:08000392:  47 46
-F00:0400       		bl ShowReg ;ShowReg R6=R7
+F00:0401       		bl ShowReg ;ShowReg R6=R7
                S01:08000394:  00 F0 46 FA
-F00:0401       		bl newline
+F00:0402       		bl newline
                S01:08000398:  00 F0 98 F9
-F00:0402       	pop {r0-r7, pc}
+F00:0403       	pop {r0-r7, pc}
                S01:0800039C:  FF BD
-F00:0403       
 F00:0404       
 F00:0405       
 F00:0406       
 F00:0407       
 F00:0408       
-F00:0409       	.align 4
-F00:0410       
-F00:0411       BitmapFont:
-F00:0412       	.incbin "\ResALL\Font96.FNT"
+F00:0409       
+F00:0410       	.align 4
+F00:0411       
+F00:0412       BitmapFont:
+F00:0413       	.incbin "\ResALL\Font96.FNT"
                S01:080003A0:  00 00 00 00 00 00 00 00 10 18 18 18 18 00 18 00
                S01:080003B0:  28 6C 28 00 00 00 00 00 00 28 7C 28 7C 28 00 00
-F00:0413       
-F00:0414       	.include "/srcALL/V1_Thumb_BitmapMemory.asm"
+F00:0414       
+F00:0415       	.include "/srcALL/V1_Thumb_BitmapMemory.asm"
 F02:0001       	.ifdef BuildROS
 F02:0002       		.include "\SrcROS\V1_Thumb_BitmapMemory.asm"
 F02:0003       	.endif
@@ -978,7 +980,7 @@ F02:0011       	.endif
 F02:0012       	.ifdef BuildNDS
 F02:0013       		.include "\SrcNDS\V1_Thumb_BitmapMemory.asm"
 F02:0014       	.endif
-F00:0415       	.include "/srcALL/V1_Thumb_Monitor.asm"
+F00:0416       	.include "/srcALL/V1_Thumb_Monitor.asm"
 F04:0001       
 F04:0002       Monitor:
 F04:0003       	push {r0-r7, lr}
@@ -1372,12 +1374,12 @@ F04:0234
 F04:0235       	  
 F04:0236       	  
 F04:0237       	  
-F00:0416       
-F00:0417       	.include "/srcALL/V1_Thumb_Footer.asm"
+F00:0417       
+F00:0418       	.include "/srcALL/V1_Thumb_Footer.asm"
 F05:0001       	.ifdef BuildNDS
 F05:0002       		.include "\SrcNDS\V1_Thumb_Footer.asm"
 F05:0003       	.endif
-F00:0418       
+F00:0419       
 
 
 Sections:
@@ -1434,19 +1436,19 @@ TestRam2 EXPR(134218560=0x8000340) ABS
 MonitorR0R1R2R3 EXPR(134218588=0x800035c) ABS 
 TestRam EXPR(134218532=0x8000324) ABS 
 ShowTestRam EXPR(134218548=0x8000334) ABS 
-TestAdds EXPR(134218358=0x8000276) UNUSED ABS 
-InfLoop EXPR(134218522=0x800031a) ABS 
+TestAdds EXPR(134218360=0x8000278) UNUSED ABS 
+InfLoop EXPR(134218524=0x800031c) ABS 
 TestVal EXPR(134218528=0x8000320) ABS 
 MonitorR0R8 EXPR(134218632=0x8000388) ABS 
 NewLine EXPR(134219468=0x80006cc) ABS 
 MonitorR0R1 EXPR(134218564=0x8000344) ABS 
-TestMoves EXPR(134218278=0x8000226) UNUSED ABS 
-TestRamRW EXPR(134218428=0x80002bc) ABS 
+TestMoves EXPR(134218280=0x8000228) UNUSED ABS 
+TestRamRW EXPR(134218430=0x80002be) ABS 
 ScreenInit EXPR(134219424=0x80006a0) ABS 
 SPAddress EXPR(134218544=0x8000330) ABS 
-here EXPR(134218264=0x8000218) ABS 
-locate EXPR(134218266=0x800021a) ABS 
-over EXPR(134218262=0x8000216) ABS 
+here EXPR(134218266=0x800021a) ABS 
+locate EXPR(134218268=0x800021c) ABS 
+over EXPR(134218264=0x8000218) ABS 
 label_ EXPR(134217972=0x80000f4) ABS 
 ThumbTest EXPR(134217972=0x80000f4) UNUSED ABS 
 CursorY EXPR(33554465=0x2000021) 

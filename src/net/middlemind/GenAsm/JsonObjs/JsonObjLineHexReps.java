@@ -15,6 +15,47 @@ public class JsonObjLineHexReps extends JsonObjBase {
     public String obj_name = "JsonObjLineHexReps";
     
     /**
+     * The name of the program that we have test values for.
+     */
+    public String program = "";
+    
+    /**
+     * A string representing the starting line of the range of lines that are checked
+     * by unit tests from the VASM listing.
+     */
+    public String vasm_range_start = "";
+            
+    /**
+     * A string representing the stopping line of the range of lines that are checked
+     * by unit tests from the VASM listing.
+     */
+    public String vasm_range_stop = "";    
+    
+    /**
+     * A string representing the starting line of the range of lines that are checked
+     * by unit tests from the GenAsm listing.
+     */
+    public String genasm_range_start = "";
+    
+    /**
+     * A string representing the stopping line of the range of lines that are checked
+     * by unit tests from the GenAsm listing.
+     */
+    public String genasm_range_stop = "";    
+    
+    /**
+     * An integer representing the line offset difference between the GenAsm listing
+     * and the VASM listing.
+     */
+    public int genasm_line_offset = 0;
+    
+    /**
+     * An integer representing the label offset difference between the GenAsm listing
+     * and the VASM listing.
+     */
+    public int genasm_label_offset_bytes = 0;
+    
+    /**
      * A list of instruction sets to load in order to assemble source files of different types.
      */
     public List<JsonObjLineHexRep> line_hex_reps;

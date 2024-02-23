@@ -94,24 +94,24 @@ public class TestProgramA {
         mainExeArgs[11] = cfgDir;
         
         /*
-            String targetProgram = "TEST_A_AllOpCodes";
-            11 CFG_DIR_PATH = ".\\cfg\\";
-            0 ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
-            1 ASM_TARGET_SET = "THUMB_ARM7TDMI";
-            2 ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
-            3 ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
-            ASM_SETS = null;
-            ASM_SET = null;
-            4 ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
-            ASM_ASSEMBLER = null;
-            5 ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\" + targetProgram + "\\genasm_source.txt";
-            6 ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
-            ASM_LINKER = null;
-            7 ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
-            ASM_PREPROCESSOR = null;  
-            8 ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
-            9 ASM_VERBOSE = false;
-            10 ASM_QUELL_FILE_OUTPUT = false;        
+         String targetProgram = "TEST_A_AllOpCodes";
+         11 CFG_DIR_PATH = ".\\cfg\\";
+         0 ASM_SETS_FILE_NAME = "./cfg/is_sets.json";
+         1 ASM_TARGET_SET = "THUMB_ARM7TDMI";
+         2 ASM_SETS_LOADER_CLASS = "net.middlemind.GenAsm.Loaders.LoaderIsSets";
+         3 ASM_SETS_TARGET_CLASS = "net.middlemind.GenAsm.JsonObjs.JsonObjIsSets";
+         ASM_SETS = null;
+         ASM_SET = null;
+         4 ASM_ASSEMBLER_CLASS = "net.middlemind.GenAsm.Assemblers.Thumb.AssemblerThumb";
+         ASM_ASSEMBLER = null;
+         5 ASM_ASSEMBLY_SOURCE_FILE = CFG_DIR_PATH + "THUMB\\TESTS\\" + targetProgram + "\\genasm_source.txt";
+         6 ASM_LINKER_CLASS = "net.middlemind.GenAsm.Linkers.Thumb.LinkerThumb";
+         ASM_LINKER = null;
+         7 ASM_PREPROCESSOR_CLASS = "net.middlemind.GenAsm.PreProcessors.Thumb.PreProcessorThumb";
+         ASM_PREPROCESSOR = null;  
+         8 ASM_ROOT_OUTPUT_DIR = CFG_DIR_PATH + "THUMB\\OUTPUT\\" + targetProgram + "\\";
+         9 ASM_VERBOSE = false;
+         10 ASM_QUELL_FILE_OUTPUT = false;        
         */        
     }
     
@@ -144,7 +144,7 @@ public class TestProgramA {
             jsonObj = ldr.ParseJson(json, answersTargetClass, jsonAnswersDataFile);
             jsonName = jsonObj.GetName();
             JsonObjLineHexReps hexDataLines = (JsonObjLineHexReps)jsonObj;
-            Logger.LOGGING_ON = true;            
+            Logger.LOGGING_ON = true;
             Logger.wrl(testName + ": Found " + hexDataLines.line_hex_reps.size() + " test program answers in the loaded JSON data file, '" + jsonName + "'.");
             Logger.wrl(testName + ": Found " + linkerThumb.hexMapLe.size() + " test program lines entries in the resulting linked data, '" + assemblySourceFile + "'.");
             res = Utils.CheckAssemblerTestProgramAgainstAnswers(hexDataLines, linkerThumb.hexMapLe);

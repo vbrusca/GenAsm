@@ -7046,7 +7046,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 208,
     "sourceLen": 19,
-    "source": "      ADD   SP, #-2",
+    "source": "      ADD   SP, #32",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -7073,7 +7073,7 @@
         "len": 3,
         "lineNum": 208,
         "index": 2,
-        "payload": "#-2"
+        "payload": "#32"
       }
     ]
   },

@@ -14,10 +14,10 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
    {
-      TestProgramA.class
+      TestProgramA.class,
+      TestProgramB.class
+           
    /*
-       ,
-   TestProgramB.class,
    TestProgramC.class,
    TestProgramD.class,
    TestProgramE.class,
@@ -28,7 +28,7 @@ import org.junit.runners.Suite;
    TestProgramJ.class,
    TestProgramK.class,
    TestProgramL.class
-    */
+   */
    }
 )
 

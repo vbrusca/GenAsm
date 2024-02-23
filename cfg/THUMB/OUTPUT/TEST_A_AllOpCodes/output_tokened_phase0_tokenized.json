@@ -44551,7 +44551,7 @@
       "obj_name": "ArtifactLine",
       "lineNum": 208,
       "sourceLen": 19,
-      "source": "      ADD   SP, #-2",
+      "source": "      ADD   SP, #32",
       "payload": [
         {
           "obj_name": "Artifact",
@@ -44578,7 +44578,7 @@
           "len": 3,
           "lineNum": 208,
           "index": 2,
-          "payload": "#-2"
+          "payload": "#32"
         }
       ]
     },
@@ -44696,7 +44696,7 @@
       {
         "obj_name": "Token",
         "type_name": "Number",
-        "source": "#-2",
+        "source": "#32",
         "lineNumAbs": 208,
         "index": 2,
         "payloadLen": 0,
@@ -44715,7 +44715,7 @@
           "len": 3,
           "lineNum": 208,
           "index": 2,
-          "payload": "#-2"
+          "payload": "#32"
         },
         "type": {
           "obj_name": "is_entry_type",

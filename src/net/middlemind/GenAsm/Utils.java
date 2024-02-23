@@ -41,36 +41,56 @@ public class Utils {
      * @return                  A Boolean value indicating if the known data matches the expected data.
      */
     public static boolean CheckAssemblerTestProgramAgainstAnswers(JsonObjLineHexReps hexDataLines, Hashtable<String, String> hashMap) {
-        int hmCnt = hashMap.size();
+        //int hmCnt = hashMap.size();
         int errCnt = 0;
         double prct = 0.0;
-        double prctMax = 0.10f;
+        double prctMax = 0.05f;
         
         for(String key : hashMap.keySet()) {
             String val = hashMap.get(key);
             key = key.toUpperCase();
             val = val.toUpperCase();
             boolean found = false;
+            boolean exists = false;
             for(JsonObjLineHexRep hexLine : hexDataLines.line_hex_reps) {
                 String aKey = hexLine.addressHex.toUpperCase();
                 String aVal = hexLine.valueHex.toUpperCase();
-                if(aKey.equals(key) && aVal.equals(val)) {
-                    found = true;
-                    break;
+                
+                if(hexDataLines.genasm_line_offset != 0) {
+                   int aKeyInt = Utils.ParseNumberString(aKey).intValue();
+                   aKeyInt += hexDataLines.genasm_line_offset;
+                   aKey = Integer.toHexString(aKeyInt).toUpperCase();
+                }
+                
+                if(aKey.equals(key)) {
+                   exists = true;
+                   if(aVal.equals(val)) {
+                       found = true;
+                       break;
+                   } else if(hexDataLines.genasm_label_offset_bytes != 0) {
+                       int aValInt = Utils.ParseNumberString("0x" + aVal).intValue();
+                       aValInt += hexDataLines.genasm_label_offset_bytes;
+                       aVal = Integer.toHexString(aValInt).toUpperCase();
+                       if(aKey.equals(key) && aVal.equals(val)) {
+                           found = true;
+                           break;
+                       }
+                   }
                 }
             }
             
-            if(!found) {
+            if(exists && !found) {
                 Logger.wrl("Could not find a match for key: " + key + " with value: " + val);
                 errCnt++;                
             }
             
-            prct = (errCnt/hmCnt);
+            prct = (errCnt/hexDataLines.line_hex_reps.size()); //(errCnt/hmCnt);            
             if(prct > prctMax) {
                 Logger.wrl("Reached maximum allowed numbers of errors, " + errCnt + ", with percentage, " + prct);                
                 return false;
             }
         }
+        Logger.wrl("Total of errors, " + errCnt + ", with percentage, " + prct);
         return true;
     }
     
