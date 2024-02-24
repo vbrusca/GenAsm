@@ -3,7 +3,7 @@
     "obj_name": "ArtifactLine",
     "lineNum": 0,
     "sourceLen": 21,
-    "source": "@TTL |OnesCompliment|",
+    "source": "@TTL |OnesComplement|",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -21,7 +21,7 @@
         "len": 16,
         "lineNum": 0,
         "index": 1,
-        "payload": "|OnesCompliment|"
+        "payload": "|OnesComplement|"
       }
     ]
   },

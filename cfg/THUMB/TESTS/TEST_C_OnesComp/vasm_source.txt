@@ -1,4 +1,4 @@
-;@TTL |OnesCompliment|
+;@TTL |OnesComplement|
 ;ORIGINAL VASM GBA HelloWorld CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
 
 ;Text after semicolon is comments, you don't need to type it in
@@ -76,9 +76,6 @@ do_work:
 	ldr		r4, [r3, #0]
 	mov		r8, r4
 	cmp		r2, r8	
-
-		inf_loopr:
-        B       inf_loopr	
 
 	pop		{r0-r6, pc}	
 	

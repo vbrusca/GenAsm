@@ -1,4 +1,4 @@
-@TTL |OnesCompliment|
+@TTL |OnesComplement|
 @AREA |Program| @CODE, @READWRITE
 @ENTRY
 
