@@ -202,15 +202,17 @@
       ;add work to do here
       LDR   R0, [PC, `result_address]
       LDR   R1, [PC, `value_address]
-      LDR   R2, [R1, #0]                                    ;r2 = value
+      LDR   R2, [R1, #0]                    ;r2 = value
+	  MOV   R9, R2							;r2 = C1230000
+
       LDR   R3, [PC, `mask_address]
-      LDR   R4, [R3, #0]                                    ;r4 = mask
+      LDR   R4, [R3, #0]                    ;r4 = mask
 
       LSR   R5, R2, #0x4
-      LSL   R5, R5, #0x8                                    ;r5 = shifted r2
+      LSL   R5, R5, #0x8                    ;r5 = shifted r2
       
-      AND   R2, R4                                          ;r2 = r4 and r2
-      ADD   R2, R2, R5                                      ;r2 = r2 + r5
+      AND   R2, R4                          ;r2 = r4 and r2
+      ADD   R2, R2, R5                      ;r2 = r2 + r5
 
       STR   R2, [R0, #0]
       LDR   R5, [PC, `answer_address]
@@ -303,10 +305,10 @@
                      @DCHW    0xC123
    result            @DCHW    0x0000
                      @DCHW    0x0000
-   answer            @DCHW    0xFFFF
-                     @DCHW    0x3EDC
-   maskval           @DCHW    0x000F
-                     @DCHW    0x0000
+   answer            @DCHW    0x0000
+                     @DCHW    0x1233
+   maskval           @DCHW    0x0000
+                     @DCHW    0x000F
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

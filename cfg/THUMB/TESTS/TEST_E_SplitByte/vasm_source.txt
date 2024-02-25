@@ -1,0 +1,238 @@
+;@TTL |SplitByte|
+;ORIGINAL VASM GBA HelloWorld CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
+
+;Text after semicolon is comments, you don't need to type it in
+
+	.equ CursorX,0x02000000		;Cursor pointer in Ram Area
+	.equ CursorY,0x02000001
+
+	.org  0x08000000   			;GBA Rom Base
+;Header
+	b	ProgramStart			;Jump to our program
+	.space 178					;Logo (omitted) + Program name
+	.byte 0x96					;Fixed value
+	.space 49					;Dummy Header 
+	
+ProgramStart:
+	adr r0,ThumbTest			;Address of thumb code
+	add r0,r0,#1				;Bit 0 set = THUMB ON!
+	bx r0						;Branch and exchange
+
+	.thumb						;We are now in thunb mode
+ThumbTest:
+	ldr r1,SPAddress			;Init Stack Pointer SP=0x03000000
+	mov sp,r1
+	
+	ldr r4,ScreenRegs  			;0x04000000 DISPCNT -LCD Control
+	ldr r2,ScreenSetting   		;0x403 4= Layer 2 on / 3= ScreenMode 3
+	str	r2,[r4,#0]         	
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+	
+	bl		do_work
+	beq		print_passed_address
+	
+	print_failed_address:
+	ldr		r1, test_failed_address
+	bl		PrintString
+	b       InfLoop
+	
+	print_passed_address:
+	ldr		r1, test_passed_address
+	bl		PrintString
+	b       InfLoop	
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+	
+	;ldr r1,HelloWorldAddress	;Address of Hello World Message
+	;bl PrintString				;Show Message
+		
+InfLoop:
+      b InfLoop					;Halt
+	  
+PrintString:					;Print 255 terminated string 
+	push {r0-r6, lr}
+PrintStringAgain:
+		ldrB r0,[r1,#0]			
+		add r1,#1
+		cmp r0,#255
+		beq PrintStringDone		;Repeat until 255
+		bl PrintChar 			;Print Char
+		b PrintStringAgain
+PrintStringDone:
+	pop {r0-r6, pc}
+	
+do_work:
+	push	{r0-r6, lr}
+	
+	;add work to do here
+	ldr		r0, result_address
+	ldr		r1, value_address
+	ldr		r2, [r1, #0]			;r2 = value
+	mov     r9, r2					;r2 = C1230000
+	
+	ldr		r3, mask_address
+	ldr		r4, [r3, #0]			;r4 = mask
+	;mov	r12, r4					;r4 = 000F0000
+
+	lsr		r5, r2, #0x4			;r5 = 0C123000	
+	lsl		r5, r5, #0x8			;r5 = shifted r2
+	;mov    r12, r5					;r5 = 12300000
+	
+	and		r2, r4					;r2 = r4 and r2
+	;mov     r12, r2				;r2 = 00030000
+	add		r2, r2, r5				;r2 = r2 + r5
+	;mov    r12, r2					;r2 = 12330000
+
+	str		r2, [r0, #0]			;store r2 at r0, r0 = result_address
+	ldr		r5, answer_address
+	ldr		r6, [r5, #0]			;r6 = answer
+	mov		r8, r6					;r8 = r6
+	cmp		r2, r8					;compare r2 to r8
+
+	pop		{r0-r6, pc}	
+	
+PrintChar:
+	push {r0-r7, lr}
+		cmp r0,#32				;Space?
+		beq LineDone
+		
+		ldr r3,adrCursorX		;LDR Rd, [pc, #immed_8x4]
+		mov r4,#0
+		ldrB r4,[r3,#0]			;CursorX pos
+		
+		ldr r3,adrCursorY
+		mov r5,#0
+		ldrB r5,[r3,#0]			;CursorY pos
+		
+		ldr r3,ScreenRam 		;0x06000000 - VRAM
+		
+		mov r6,#16				;16 byte per char
+		mul r6,r4				;Calc X-Offset
+		add r3,r3,r6
+		
+		ldr r6,LineSize			;240*8*2 
+		mul r6,r5				;Calc Y-Offset
+		add r3,r3,r6
+		
+		adr r4,BitmapFont 		;Font source
+		
+		mov r1,#0b11011111		;Convert to upper case
+		and r0,r1
+		sub r0,#65				;First Char is 65 (A)
+		lsl r0,r0,#3			;8 bytes per char
+		add r4,r4,r0 			;Calculate source address
+		
+		ldr r2,FontColor		;ABBBBBGGGGGRRRRR	A=Alpha
+		ldr r0,LineSize2		;480-16
+		mov r8,r0				;Amount to add per Y-line
+		
+		mov r6,#8				;8 Y-lines 
+DrawLine:
+		mov r7,#8 				;8 pixels per X-line
+		ldrb r1,[r4,#0]			;Load Letter
+		add r4,#1
+		ldr r5,BitMask			;Mask - 0b100000000
+DrawPixel:
+		tst r1,r5				;Is bit 1?
+		beq DrawPixelSkip 
+		strh r2,[r3,#0]			;Yes? then fill pixel
+DrawPixelSkip:		
+		add r3,r3,#2
+		lsr r5,r5,#1			;Bitshift Mask
+		sub r7,r7,#1
+		bne DrawPixel			;Next Hpixel
+		
+		add r3,r8 				;Move Down a line (240 pixels *2 bytes) 
+		sub r6,r6,#1								;-1 char (16 px)
+		bne DrawLine			;Next Vline
+LineDone:		
+		ldr r3,adrCursorX
+		ldrB r0,[r3,#0]	
+		add r0,r0,#1			;Move across screen
+		strB r0,[r3,#0]	
+	pop {r0-r7, pc}
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+
+	.align 4
+	value_address:			.long	value
+	result_address:			.long	result
+	answer_address:			.long	answer
+	mask_address:			.long	maskval
+    value:   				.long   0xC1230000
+    result:  				.long	0x00000000
+	answer:					.long	0x12330000
+	maskval:				.long	0x000F0000
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	
+	.align 4
+SPAddress:
+	.long 0x03000000			;Stack pointer address
+ScreenRegs:
+	.long 0x04000000			;Video Register base
+ScreenSetting:
+	.long 0x403					;4= Layer 2 on / 3= ScreenMode 3
+adrCursorX:
+	.long CursorX				;Xpos of next char
+adrCursorY:
+	.long CursorY				;Ypos of next char
+ScreenRam:
+	.long 0x06000000			;Vram Base
+LineSize:
+	.long 240*8*2				;Width of one char line (8 pixels)
+LineSize2:
+	.long 480-16				;pixel width of one line - 1 char
+FontColor:
+	.long 0b1111111101000000	; Blue: ABBBBBGGGGGRRRRR	A=Alpha
+BitMask:
+	.long 0b100000000			;Bitmask for getting pixels of our font
+
+HelloWorldAddress:
+	.long HelloWorld			;Pointer to Hello message
+HelloWorld:
+	.byte "Hello World",255
+	
+	.align 4
+BitmapFont:	;1 Bit per pixel font
+	.byte 0x18,0x3C,0x66,0x66,0x7E,0x66,0x24,0x00     ;A
+	.byte 0x3C,0x66,0x66,0x7C,0x66,0x66,0x3C,0x00     ;B
+	.byte 0x38,0x7C,0xC0,0xC0,0xC0,0x7C,0x38,0x00     ;C
+	.byte 0x3C,0x64,0x66,0x66,0x66,0x64,0x38,0x00     ;D
+	.byte 0x3C,0x7E,0x60,0x78,0x60,0x7E,0x3C,0x00     ;E
+	.byte 0x38,0x7C,0x60,0x78,0x60,0x60,0x20,0x00     ;F
+	.byte 0x3C,0x66,0xC0,0xC0,0xCC,0x66,0x3C,0x00     ;G
+	.byte 0x24,0x66,0x66,0x7E,0x66,0x66,0x24,0x00     ;H
+	.byte 0x10,0x18,0x18,0x18,0x18,0x18,0x08,0x00     ;I
+	.byte 0x08,0x0C,0x0C,0x0C,0x4C,0xFC,0x78,0x00     ;J
+	.byte 0x24,0x66,0x6C,0x78,0x6C,0x66,0x24,0x00     ;K
+	.byte 0x20,0x60,0x60,0x60,0x60,0x7E,0x3E,0x00     ;L
+	.byte 0x44,0xEE,0xFE,0xD6,0xD6,0xD6,0x44,0x00     ;M
+	.byte 0x44,0xE6,0xF6,0xDE,0xCE,0xC6,0x44,0x00     ;N
+	.byte 0x38,0x6C,0xC6,0xC6,0xC6,0x6C,0x38,0x00     ;O
+	.byte 0x38,0x6C,0x64,0x7C,0x60,0x60,0x20,0x00     ;P
+	.byte 0x38,0x6C,0xC6,0xC6,0xCA,0x74,0x3A,0x00     ;Q
+	.byte 0x3C,0x66,0x66,0x7C,0x6C,0x66,0x26,0x00     ;R
+	.byte 0x3C,0x7E,0x60,0x3C,0x06,0x7E,0x3C,0x00     ;S
+	.byte 0x3C,0x7E,0x18,0x18,0x18,0x18,0x08,0x00     ;T
+	.byte 0x24,0x66,0x66,0x66,0x66,0x66,0x3C,0x00     ;U
+	.byte 0x24,0x66,0x66,0x66,0x66,0x3C,0x18,0x00     ;V
+	.byte 0x44,0xC6,0xD6,0xD6,0xFE,0xEE,0x44,0x00     ;W
+	.byte 0xC6,0x6C,0x38,0x38,0x6C,0xC6,0x44,0x00     ;X
+	.byte 0x24,0x66,0x66,0x3C,0x18,0x18,0x08,0x00     ;Y
+	.byte 0x7C,0xFC,0x0C,0x18,0x30,0x7E,0x7C,0x00     ;Z
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	.align 4
+	test_passed_address:		.long	test_passed					
+    test_passed:				.byte 	"TEST PASSED", 255
+	
+	.align 4
+	test_failed_address:		.long	test_failed
+    test_failed:     			.byte 	"TEST FAILED", 255
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+	
+	

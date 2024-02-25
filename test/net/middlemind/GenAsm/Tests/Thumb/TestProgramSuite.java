@@ -17,18 +17,19 @@ import org.junit.runners.Suite;
       TestProgramA.class,
       TestProgramB.class,
       TestProgramC.class,
-      TestProgramD.class
+      TestProgramD.class,
+      TestProgramE.class
 
-   /*        
-   TestProgramE.class,
-   TestProgramF.class,
-   TestProgramG.class,
-   TestProgramH.class,
-   TestProgramI.class,
-   TestProgramJ.class,
-   TestProgramK.class,
-   TestProgramL.class
-   */
+      /*
+      ,
+      TestProgramF.class,
+      TestProgramG.class,
+      TestProgramH.class,
+      TestProgramI.class,
+      TestProgramJ.class,
+      TestProgramK.class,
+      TestProgramL.class
+      */
    }
 )
 

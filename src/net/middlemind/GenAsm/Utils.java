@@ -84,7 +84,7 @@ public class Utils {
                 errCnt++;                
             }
             
-            prct = (errCnt/hexDataLines.line_hex_reps.size()); //(errCnt/hmCnt);            
+            prct = ((double)errCnt/hexDataLines.line_hex_reps.size()); //(errCnt/hmCnt);            
             if(prct > prctMax) {
                 Logger.wrl("Reached maximum allowed numbers of errors, " + errCnt + ", with percentage, " + prct);                
                 return false;
