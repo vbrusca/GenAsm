@@ -1,4 +1,3 @@
-//needs to be updated
 {
     "obj_name": "line_hex_reps",
     "program": "TEST_C_OnesComp",
@@ -9,6 +8,7 @@
 	"genasm_line_offset": 0,
 	"genasm_label_offset_bytes": 0,		
     "line_hex_reps": [
+        {"addressHex":"08000128", "valueHex":"7FB5"},	
         {"addressHex":"0800012A", "valueHex":"1E48"},
         {"addressHex":"0800012C", "valueHex":"1C49"},
         {"addressHex":"0800012E", "valueHex":"0A68"},

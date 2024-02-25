@@ -339,14 +339,16 @@
                       "R"
                     ],
                     "contains": [
-                      "8~15"
+                      "8"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "8~15"
+                      "8"
                     ],
-                    "must_contain": [],
+                    "must_contain": [
+                      "8"
+                    ],
                     "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -368,24 +370,17 @@
                       "R"
                     ],
                     "contains": [
-                      "0~7"
+                      "7"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "0~7"
+                      "7"
                     ],
-                    "must_contain": [],
-                    "must_not_contain": [
-                      "R8",
-                      "R9",
-                      "R10",
-                      "R11",
-                      "R12",
-                      "R13",
-                      "R14",
-                      "R15"
+                    "must_contain": [
+                      "7"
                     ],
+                    "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -1490,14 +1485,16 @@
                       "R"
                     ],
                     "contains": [
-                      "8~15"
+                      "8"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "8~15"
+                      "8"
                     ],
-                    "must_contain": [],
+                    "must_contain": [
+                      "8"
+                    ],
                     "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -1519,24 +1516,17 @@
                       "R"
                     ],
                     "contains": [
-                      "0~7"
+                      "7"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "0~7"
+                      "7"
                     ],
-                    "must_contain": [],
-                    "must_not_contain": [
-                      "R8",
-                      "R9",
-                      "R10",
-                      "R11",
-                      "R12",
-                      "R13",
-                      "R14",
-                      "R15"
+                    "must_contain": [
+                      "7"
                     ],
+                    "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -1817,6 +1807,37 @@
                         "R"
                       ],
                       "contains": [
+                        "7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "7"
+                      ],
+                      "must_contain": [
+                        "7"
+                      ],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
                         "0~7"
                       ],
                       "ends_with": [
@@ -1924,6 +1945,37 @@
                             "R"
                           ],
                           "contains": [
+                            "7"
+                          ],
+                          "ends_with": [
+                            ",",
+                            ";",
+                            "7"
+                          ],
+                          "must_contain": [
+                            "7"
+                          ],
+                          "must_not_contain": [],
+                          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                          "fileName": "./cfg/THUMB/is_entry_types.json",
+                          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                        },
+                        "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                        "fileName": "./cfg/THUMB/is_entry_types.json",
+                        "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                      },
+                      {
+                        "obj_name": "is_entry_type",
+                        "type_name": "RegisterLow",
+                        "type_category": "RegisterLow",
+                        "category": "Arg",
+                        "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                        "txt_match": {
+                          "obj_name": "JsonObjTxtMatch",
+                          "starts_with": [
+                            "R"
+                          ],
+                          "contains": [
                             "0~7"
                           ],
                           "ends_with": [
@@ -1972,6 +2024,37 @@
                       "RegisterLow"
                     ],
                     "linked_is_entry_types": [
+                      {
+                        "obj_name": "is_entry_type",
+                        "type_name": "RegisterLow",
+                        "type_category": "RegisterLow",
+                        "category": "Arg",
+                        "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                        "txt_match": {
+                          "obj_name": "JsonObjTxtMatch",
+                          "starts_with": [
+                            "R"
+                          ],
+                          "contains": [
+                            "7"
+                          ],
+                          "ends_with": [
+                            ",",
+                            ";",
+                            "7"
+                          ],
+                          "must_contain": [
+                            "7"
+                          ],
+                          "must_not_contain": [],
+                          "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                          "fileName": "./cfg/THUMB/is_entry_types.json",
+                          "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                        },
+                        "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                        "fileName": "./cfg/THUMB/is_entry_types.json",
+                        "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                      },
                       {
                         "obj_name": "is_entry_type",
                         "type_name": "RegisterLow",
@@ -2226,24 +2309,17 @@
                     "R"
                   ],
                   "contains": [
-                    "0~7"
+                    "7"
                   ],
                   "ends_with": [
                     ",",
                     ";",
-                    "0~7"
+                    "7"
                   ],
-                  "must_contain": [],
-                  "must_not_contain": [
-                    "R8",
-                    "R9",
-                    "R10",
-                    "R11",
-                    "R12",
-                    "R13",
-                    "R14",
-                    "R15"
+                  "must_contain": [
+                    "7"
                   ],
+                  "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -2398,24 +2474,17 @@
                         "R"
                       ],
                       "contains": [
-                        "0~7"
+                        "7"
                       ],
                       "ends_with": [
                         ",",
                         ";",
-                        "0~7"
+                        "7"
                       ],
-                      "must_contain": [],
-                      "must_not_contain": [
-                        "R8",
-                        "R9",
-                        "R10",
-                        "R11",
-                        "R12",
-                        "R13",
-                        "R14",
-                        "R15"
+                      "must_contain": [
+                        "7"
                       ],
+                      "must_not_contain": [],
                       "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                       "fileName": "./cfg/THUMB/is_entry_types.json",
                       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -2518,24 +2587,17 @@
                         "R"
                       ],
                       "contains": [
-                        "0~7"
+                        "7"
                       ],
                       "ends_with": [
                         ",",
                         ";",
-                        "0~7"
+                        "7"
                       ],
-                      "must_contain": [],
-                      "must_not_contain": [
-                        "R8",
-                        "R9",
-                        "R10",
-                        "R11",
-                        "R12",
-                        "R13",
-                        "R14",
-                        "R15"
+                      "must_contain": [
+                        "7"
                       ],
+                      "must_not_contain": [],
                       "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                       "fileName": "./cfg/THUMB/is_entry_types.json",
                       "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -3032,14 +3094,16 @@
                       "R"
                     ],
                     "contains": [
-                      "8~15"
+                      "8"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "8~15"
+                      "8"
                     ],
-                    "must_contain": [],
+                    "must_contain": [
+                      "8"
+                    ],
                     "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
@@ -3061,24 +3125,17 @@
                       "R"
                     ],
                     "contains": [
-                      "0~7"
+                      "7"
                     ],
                     "ends_with": [
                       ",",
                       ";",
-                      "0~7"
+                      "7"
                     ],
-                    "must_contain": [],
-                    "must_not_contain": [
-                      "R8",
-                      "R9",
-                      "R10",
-                      "R11",
-                      "R12",
-                      "R13",
-                      "R14",
-                      "R15"
+                    "must_contain": [
+                      "7"
                     ],
+                    "must_not_contain": [],
                     "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                     "fileName": "./cfg/THUMB/is_entry_types.json",
                     "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
@@ -3347,6 +3404,37 @@
                   "RegisterLow"
                 ],
                 "linked_is_entry_types": [
+                  {
+                    "obj_name": "is_entry_type",
+                    "type_name": "RegisterLow",
+                    "type_category": "RegisterLow",
+                    "category": "Arg",
+                    "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+                    "txt_match": {
+                      "obj_name": "JsonObjTxtMatch",
+                      "starts_with": [
+                        "R"
+                      ],
+                      "contains": [
+                        "7"
+                      ],
+                      "ends_with": [
+                        ",",
+                        ";",
+                        "7"
+                      ],
+                      "must_contain": [
+                        "7"
+                      ],
+                      "must_not_contain": [],
+                      "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
+                      "fileName": "./cfg/THUMB/is_entry_types.json",
+                      "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                    },
+                    "name": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsEntryType",
+                    "fileName": "./cfg/THUMB/is_entry_types.json",
+                    "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"
+                  },
                   {
                     "obj_name": "is_entry_type",
                     "type_name": "RegisterLow",
@@ -3815,24 +3903,17 @@
                     "R"
                   ],
                   "contains": [
-                    "0~7"
+                    "7"
                   ],
                   "ends_with": [
                     ",",
                     ";",
-                    "0~7"
+                    "7"
                   ],
-                  "must_contain": [],
-                  "must_not_contain": [
-                    "R8",
-                    "R9",
-                    "R10",
-                    "R11",
-                    "R12",
-                    "R13",
-                    "R14",
-                    "R15"
+                  "must_contain": [
+                    "7"
                   ],
+                  "must_not_contain": [],
                   "name": "net.middlemind.GenAsm.JsonObjs.JsonObjTxtMatch",
                   "fileName": "./cfg/THUMB/is_entry_types.json",
                   "loader": "net.middlemind.GenAsm.Loaders.Thumb.LoaderIsEntryTypes"

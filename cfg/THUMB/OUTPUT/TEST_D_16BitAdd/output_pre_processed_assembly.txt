@@ -159,7 +159,7 @@
       LDR   R2, [PC, `screen_setting]                       ;0x403 4= Layer 2 on / 3= ScreenMode 3
       STR   R2, [R4, #0]
       
-      BL      `do_work
+      BL    `do_work
       BEQ   `print_passed_address
       
    print_failed_address
@@ -169,7 +169,7 @@
 
    print_passed_address
       LDR   R1, [PC, `test_passed_address]
-      BL      `print_string
+      BL    `print_string
       B     `inf_loop
       
    ;print_hello_world
@@ -186,7 +186,7 @@
       PUSH   {R0-R6, LR}
 
    print_string_again
-      LDRB   R0, [R1, #0]
+      LDRB  R0, [R1, #0]
       ADD   R1, #1
       CMP   R0, #255
       BEQ   `print_string_done
@@ -197,21 +197,25 @@
       POP   {R0-R6, PC}
 
    do_work
-      PUSH   {R0-R6, LR}
+      PUSH  {R0-R6, LR}
       
       ;add work to do here
       LDR   R0, [PC, `result_address]
       LDR   R1, [PC, `value_address]
       LDR   R2, [R1, #0]
+	  MOV   R8, R2
+	  
       LDR   R3, [PC, `value_two_address]
-      LDR   R4, [R3, #0]
-      ADD   R2, R4
+      LDR   R4, [R3, #0]	  
+	  MOV   R9, R4
+	  
+      ADD   R2, R9
       STR   R2, [R0, #0]
-
       LDR   R5, [PC, `answer_address]
       LDR   R6, [R5, #0]
-      MOV   R8, R6
-      CMP   R2, R8      
+      
+	  MOV   R9, R6
+      CMP   R2, R9      
                            
       POP   {R0-R6, PC}
       
@@ -298,8 +302,8 @@
                      @DCHW    0xC123
    result            @DCHW    0x0000
                      @DCHW    0x0000
-   answer            @DCHW    0xFFFF
-                     @DCHW    0x3EDC
+   answer            @DCHW    0x0000
+                     @DCHW    0xC3CD
    value_two         @DCHW    0x0000
                      @DCHW    0x02AA
 

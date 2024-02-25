@@ -256,6 +256,28 @@
                     "index": 3
                 }
             ]
-        }        
+        },
+        {
+            "obj_name": "is_valid_line",
+            "index": 16,
+            "empty_line": false,
+            "is_valid_line": [
+                {
+                    "obj_name": "is_valid_line_entry",                
+                    "is_entry_types": ["OpCode"],
+                    "index": 0
+                },
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "index": 1
+                },
+                {
+                    "obj_name": "is_valid_line_entry",
+                    "is_entry_types": ["RegisterRangeHi", "RegisterRangeLow", "RegisterLr", "RegisterPc", "RegisterSp", "RegisterHi", "RegisterLow", "RegisterWb", "Number", "ListStart", "ListStop", "GroupStart", "GroupStop", "LabelRef"],
+                    "index": 2
+                }
+            ]
+        }
     ]    
 }

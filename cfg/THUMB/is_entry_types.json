@@ -46,18 +46,102 @@
         },
         {
             "obj_name": "is_entry_type",            
+            "type_name": "RegisterLow",
+            "type_category": "RegisterLow",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["7"],
+                "must_contain": ["7"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "7"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
             "type_name": "RegisterHi",
             "type_category": "RegisterHi",            
             "category": "Arg",            
             "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["8~15"],
-                "must_contain": [],
+                "contains": ["8"],
+                "must_contain": ["8"],
                 "must_not_contain": [],
-                "ends_with": [",", ";", "8~15"]
+                "ends_with": [",", ";", "8"]
             }
         },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["9"],
+                "must_contain": ["9"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "9"]
+            }
+        },
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["10", "1"],
+                "must_contain": ["10"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "0"]
+            }
+        },        
+        {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["11", "1"],
+                "must_contain": ["11"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "1"]
+            }
+        },
+       {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["12", "1"],
+                "must_contain": ["12"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "2"]
+            }
+        },
+       {
+            "obj_name": "is_entry_type",            
+            "type_name": "RegisterHi",
+            "type_category": "RegisterHi",            
+            "category": "Arg",            
+            "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
+            "txt_match": {
+                "starts_with": ["R"],
+                "contains": ["12", "1"],
+                "must_contain": ["14"],
+                "must_not_contain": [],
+                "ends_with": [",", ";", "4"]
+            }
+        },         
         {
             "obj_name": "is_entry_type",            
             "type_name": "RegisterSp",
