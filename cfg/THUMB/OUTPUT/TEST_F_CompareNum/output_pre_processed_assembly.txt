@@ -199,8 +199,15 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
-                           
+      LDR   R1, [PC, `value_address]
+	  LDR   R2, [R1, #0]				;r2 = value
+	  MOV   R9, R2						;r2 = 0FFF0000
+
+	  LDR   R5, [PC, `answer_address]
+	  LDR   R6, [R5, #0]				;r6 = answer
+	  MOV   R8, R6						;r8 = answer
+	  CMP   R2, R8
+	  
       POP   {R0-R6, PC}
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -281,11 +288,11 @@
    answer_address    @DCWBS   =answer
                      @DCWBF   =answer
    value             @DCHW    0x0000
-                     @DCHW    0xC123
+                     @DCHW    0x0FFF
    result            @DCHW    0x0000
                      @DCHW    0x0000
-   answer            @DCHW    0xFFFF
-                     @DCHW    0x3EDC
+   answer            @DCHW    0x0000
+                     @DCHW    0x0FFF
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -1,22 +1,21 @@
 {
     "obj_name": "line_hex_reps",
+    "program": "TEST_F_CompareNum",
+	"vasm_range_start": "08000128",
+	"vasm_range_stop": "08000138",
+	"genasm_range_start": "08000128",
+	"genasm_range_stop": "08000138",
+	"genasm_line_offset": 0,
+	"genasm_label_offset_bytes": -256,	
     "line_hex_reps": [
-        {"addressHex":"080000F4", "valueHex":"7946"},
-        {"addressHex":"080000F6", "valueHex":"4969"},
-        {"addressHex":"080000F8", "valueHex":"7A46"},
-        {"addressHex":"080000FA", "valueHex":"5269"},
-        {"addressHex":"080000FC", "valueHex":"9142"},
-        {"addressHex":"080000FE", "valueHex":"01D8"},
-        {"addressHex":"08000100", "valueHex":"9046"},
-        {"addressHex":"08000102", "valueHex":"4146"},
-        {"addressHex":"08000104", "valueHex":"7B46"},
-        {"addressHex":"08000106", "valueHex":"D960"},
-        {"addressHex":"08000108", "valueHex":"11DF"},
-        {"addressHex":"0800010A", "valueHex":"DCFE"},
-        {"addressHex":"0800010C", "valueHex":"87A9"},
-        {"addressHex":"0800010E", "valueHex":"3412"},
-        {"addressHex":"08000110", "valueHex":"7856"},
-        {"addressHex":"08000112", "valueHex":"0000"},
-        {"addressHex":"08000114", "valueHex":"0000"}
+        {"addressHex":"08000128", "valueHex":"7FB5"},
+        {"addressHex":"0800012A", "valueHex":"1D49"},
+        {"addressHex":"0800012C", "valueHex":"0A68"},
+        {"addressHex":"0800012E", "valueHex":"9146"},
+        {"addressHex":"08000130", "valueHex":"1D4D"},
+        {"addressHex":"08000132", "valueHex":"2E68"},
+        {"addressHex":"08000134", "valueHex":"B046"},
+        {"addressHex":"08000136", "valueHex":"4245"},
+        {"addressHex":"08000138", "valueHex":"7FBD"}
     ]
 }
