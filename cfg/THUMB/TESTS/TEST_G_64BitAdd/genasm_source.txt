@@ -31,8 +31,11 @@
       LDR   R2, [PC, `screen_setting]                       ;0x403 4= Layer 2 on / 3= ScreenMode 3
       STR   R2, [R4, #0]
       
-      BL      `do_work
-      BEQ   `print_passed_address
+      BL    `do_work
+	  BNE	`print_failed_address
+      
+	  BL	`do_work2
+	  BEQ   `print_passed_address
       
    print_failed_address
       LDR   R1, [PC, `test_failed_address]
@@ -71,8 +74,41 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
+      LDR   R1, [PC, `value_address]
+      LDR   R2, [R1, #0]		;r2 = value
+
+      LDR   R1, [PC, `value2_address]
+      LDR   R4, [R1, #0]
+      MOV   R8, R4				;r8 = value2
+
+      ADD   R2, R8				;r2 = r8 + r2, high 16
+      MOV   R10, R2
+	
+      LDR   R1, [PC, `answer_address]
+      LDR   R5, [R1, #0]		;r5 = answer
+
+      CMP   R5, R10
                            
+      POP   {R0-R6, PC}
+
+   do_work2
+      PUSH  {R0-R6, LR}
+	
+      LDR   R1, [PC, `value1_address]
+      LDR   R3, [R1, #0]		;r3 = value1	
+
+      LDR   R1, [PC, `value3_address]
+      LDR   R4, [R1, #0]
+      MOV   R9, R4				;r9 = value3
+	
+      ADD   R3, R9				;r3 = r9 + r3, low 16
+      MOV   R11, R3
+	
+      LDR   R1, [PC, `answer1_address]
+      LDR   R6, [R1, #0]		;r6 = answer1	
+	
+      CMP	R6, R11
+	
       POP   {R0-R6, PC}
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -145,19 +181,39 @@
                      @DCHW    0x0000
                      @DCHW    0x0000
                      @DCHW    0x0000
-                     @DCHW    0x0000                     
+                     @DCHW    0x0000
    value_address     @DCWBS   =value
                      @DCWBF   =value
+   value1_address    @DCWBS   =value1
+                     @DCWBF   =value1
+   value2_address    @DCWBS   =value2
+                     @DCWBF   =value2
+   value3_address    @DCWBS   =value3
+                     @DCWBF   =value3					 
    result_address    @DCWBS   =result
                      @DCWBF   =result
+   result1_address   @DCWBS   =result1
+                     @DCWBF   =result1					 
    answer_address    @DCWBS   =answer
                      @DCWBF   =answer
-   value             @DCHW    0x0000
-                     @DCHW    0xC123
+   answer1_address   @DCWBS   =answer1
+                     @DCWBF   =answer1					 
+   value             @DCHW    0xCC23
+                     @DCHW    0x0010
+   value1            @DCHW    0xFFFF
+                     @DCHW    0x000F
+   value2            @DCHW    0x00FF
+                     @DCHW    0x0011
+   value3            @DCHW    0xFCC2
+                     @DCHW    0xF000					 
    result            @DCHW    0x0000
                      @DCHW    0x0000
-   answer            @DCHW    0xFFFF
-                     @DCHW    0x3EDC
+   result1           @DCHW    0x0000
+                     @DCHW    0x0000
+   answer            @DCHW    0xCD22
+                     @DCHW    0x0021
+   answer1           @DCHW    0xFCC1
+                     @DCHW    0xF010					 
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

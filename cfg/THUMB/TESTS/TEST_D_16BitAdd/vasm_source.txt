@@ -64,8 +64,7 @@ PrintStringDone:
 	
 do_work:
 	push	{r0-r6, lr}
-	
-	;add work to do here
+
 	ldr		r0, result_address
 	ldr		r1, value_address
 	ldr		r2, [r1, #0]

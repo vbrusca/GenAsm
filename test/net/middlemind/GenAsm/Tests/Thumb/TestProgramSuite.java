@@ -19,11 +19,10 @@ import org.junit.runners.Suite;
       TestProgramC.class,
       TestProgramD.class,
       TestProgramE.class,
-      TestProgramF.class
-
+      TestProgramF.class,
+      TestProgramG.class
       /*
       ,
-      TestProgramG.class,
       TestProgramH.class,
       TestProgramI.class,
       TestProgramJ.class,

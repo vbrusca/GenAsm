@@ -200,13 +200,13 @@
       PUSH  {R0-R6, LR}
       
       LDR   R1, [PC, `value_address]
-	  LDR   R2, [R1, #0]				;r2 = value
-	  MOV   R9, R2						;r2 = 0FFF0000
+      LDR   R2, [R1, #0]			;r2 = value
+      MOV   R9, R2					;r2 = 0FFF0000
 
-	  LDR   R5, [PC, `answer_address]
-	  LDR   R6, [R5, #0]				;r6 = answer
-	  MOV   R8, R6						;r8 = answer
-	  CMP   R2, R8
+      LDR   R5, [PC, `answer_address]
+      LDR   R6, [R5, #0]			;r6 = answer
+      MOV   R8, R6					;r8 = answer
+      CMP   R2, R8
 	  
       POP   {R0-R6, PC}
 

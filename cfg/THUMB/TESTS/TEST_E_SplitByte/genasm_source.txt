@@ -71,11 +71,10 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
       LDR   R0, [PC, `result_address]
       LDR   R1, [PC, `value_address]
       LDR   R2, [R1, #0]                    ;r2 = value
-	  MOV   R9, R2							;r2 = C1230000
+      MOV   R9, R2			    ;r2 = C1230000
 
       LDR   R3, [PC, `mask_address]
       LDR   R4, [R3, #0]                    ;r4 = mask
