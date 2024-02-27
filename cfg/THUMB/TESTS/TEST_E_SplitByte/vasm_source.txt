@@ -29,17 +29,17 @@ ThumbTest:
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 	
-	bl		do_work
-	beq		print_passed_address
+	bl      do_work
+	beq     print_passed_address
 	
 	print_failed_address:
-	ldr		r1, test_failed_address
-	bl		PrintString
+	ldr     r1, test_failed_address
+	bl      PrintString
 	b       InfLoop
 	
 	print_passed_address:
-	ldr		r1, test_passed_address
-	bl		PrintString
+	ldr     r1, test_passed_address
+	bl      PrintString
 	b       InfLoop	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
@@ -65,31 +65,31 @@ PrintStringDone:
 do_work:
 	push	{r0-r6, lr}
 	
-	ldr		r0, result_address
-	ldr		r1, value_address
-	ldr		r2, [r1, #0]			;r2 = value
-	mov     r9, r2					;r2 = C1230000
+	ldr     r0, result_address
+	ldr     r1, value_address
+	ldr     r2, [r1, #0]               ;r2 = value
+	mov     r9, r2                     ;r2 = C1230000
 	
-	ldr		r3, mask_address
-	ldr		r4, [r3, #0]			;r4 = mask
-	;mov	r12, r4					;r4 = 000F0000
+	ldr     r3, mask_address
+	ldr     r4, [r3, #0]               ;r4 = mask
+	;mov	r12, r4                    ;r4 = 000F0000
 
-	lsr		r5, r2, #0x4			;r5 = 0C123000	
-	lsl		r5, r5, #0x8			;r5 = shifted r2
-	;mov    r12, r5					;r5 = 12300000
+	lsr     r5, r2, #0x4               ;r5 = 0C123000	
+	lsl     r5, r5, #0x8               ;r5 = shifted r2
+	;mov    r12, r5                    ;r5 = 12300000
 	
-	and		r2, r4					;r2 = r4 and r2
-	;mov     r12, r2				;r2 = 00030000
-	add		r2, r2, r5				;r2 = r2 + r5
-	;mov    r12, r2					;r2 = 12330000
+	and     r2, r4                     ;r2 = r4 and r2
+	;mov     r12, r2                   ;r2 = 00030000
+	add     r2, r2, r5                 ;r2 = r2 + r5
+	;mov    r12, r2                    ;r2 = 12330000
 
-	str		r2, [r0, #0]			;store r2 at r0, r0 = result_address
-	ldr		r5, answer_address
-	ldr		r6, [r5, #0]			;r6 = answer
-	mov		r8, r6					;r8 = r6
-	cmp		r2, r8					;compare r2 to r8
+	str     r2, [r0, #0]               ;store r2 at r0, r0 = result_address
+	ldr     r5, answer_address
+	ldr     r6, [r5, #0]               ;r6 = answer
+	mov     r8, r6                     ;r8 = r6
+	cmp     r2, r8                     ;compare r2 to r8
 
-	pop		{r0-r6, pc}	
+	pop     {r0-r6, pc}	
 	
 PrintChar:
 	push {r0-r7, lr}

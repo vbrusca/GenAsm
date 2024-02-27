@@ -11631,8 +11631,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 202,
-    "sourceLen": 38,
-    "source": "      LDR   R2, [R1, #0]\t\t\t;r2 \u003d value",
+    "sourceLen": 59,
+    "source": "      LDR   R2, [R1, #0]                        ;r2 \u003d value",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -11690,8 +11690,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 27,
-        "posStop": 29,
+        "posStart": 48,
+        "posStop": 50,
         "len": 3,
         "lineNum": 202,
         "index": 6,
@@ -11699,8 +11699,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 31,
-        "posStop": 31,
+        "posStart": 52,
+        "posStop": 52,
         "len": 1,
         "lineNum": 202,
         "index": 7,
@@ -11708,8 +11708,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 37,
+        "posStart": 54,
+        "posStop": 58,
         "len": 5,
         "lineNum": 202,
         "index": 8,
@@ -11720,8 +11720,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 203,
-    "sourceLen": 37,
-    "source": "      MOV   R9, R2\t\t\t\t\t;r2 \u003d 0FFF0000",
+    "sourceLen": 62,
+    "source": "      MOV   R9, R2                              ;r2 \u003d 0FFF0000",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -11752,8 +11752,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 23,
-        "posStop": 25,
+        "posStart": 48,
+        "posStop": 50,
         "len": 3,
         "lineNum": 203,
         "index": 3,
@@ -11761,8 +11761,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 27,
-        "posStop": 27,
+        "posStart": 52,
+        "posStop": 52,
         "len": 1,
         "lineNum": 203,
         "index": 4,
@@ -11770,8 +11770,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 29,
-        "posStop": 36,
+        "posStart": 54,
+        "posStop": 61,
         "len": 8,
         "lineNum": 203,
         "index": 5,
@@ -11851,8 +11851,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 206,
-    "sourceLen": 39,
-    "source": "      LDR   R6, [R5, #0]\t\t\t;r6 \u003d answer",
+    "sourceLen": 60,
+    "source": "      LDR   R6, [R5, #0]                        ;r6 \u003d answer",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -11910,8 +11910,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 27,
-        "posStop": 29,
+        "posStart": 48,
+        "posStop": 50,
         "len": 3,
         "lineNum": 206,
         "index": 6,
@@ -11919,8 +11919,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 31,
-        "posStop": 31,
+        "posStart": 52,
+        "posStop": 52,
         "len": 1,
         "lineNum": 206,
         "index": 7,
@@ -11928,8 +11928,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 33,
-        "posStop": 38,
+        "posStart": 54,
+        "posStop": 59,
         "len": 6,
         "lineNum": 206,
         "index": 8,
@@ -11940,8 +11940,8 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 207,
-    "sourceLen": 35,
-    "source": "      MOV   R8, R6\t\t\t\t\t;r8 \u003d answer",
+    "sourceLen": 60,
+    "source": "      MOV   R8, R6                              ;r8 \u003d answer",
     "payload": [
       {
         "obj_name": "Artifact",
@@ -11972,8 +11972,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 23,
-        "posStop": 25,
+        "posStart": 48,
+        "posStop": 50,
         "len": 3,
         "lineNum": 207,
         "index": 3,
@@ -11981,8 +11981,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 27,
-        "posStop": 27,
+        "posStart": 52,
+        "posStop": 52,
         "len": 1,
         "lineNum": 207,
         "index": 4,
@@ -11990,8 +11990,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 29,
-        "posStop": 34,
+        "posStart": 54,
+        "posStop": 59,
         "len": 6,
         "lineNum": 207,
         "index": 5,

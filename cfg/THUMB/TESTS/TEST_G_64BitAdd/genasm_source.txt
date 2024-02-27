@@ -32,10 +32,10 @@
       STR   R2, [R4, #0]
       
       BL    `do_work
-	  BNE	`print_failed_address
+      BNE   `print_failed_address
       
-	  BL	`do_work2
-	  BEQ   `print_passed_address
+      BL    `do_work2
+      BEQ   `print_passed_address
       
    print_failed_address
       LDR   R1, [PC, `test_failed_address]
@@ -79,9 +79,9 @@
 
       LDR   R1, [PC, `value2_address]
       LDR   R4, [R1, #0]
-      MOV   R8, R4				;r8 = value2
+      MOV   R8, R4			;r8 = value2
 
-      ADD   R2, R8				;r2 = r8 + r2, high 16
+      ADD   R2, R8			;r2 = r8 + r2, high 16
       MOV   R10, R2
 	
       LDR   R1, [PC, `answer_address]
@@ -99,15 +99,15 @@
 
       LDR   R1, [PC, `value3_address]
       LDR   R4, [R1, #0]
-      MOV   R9, R4				;r9 = value3
+      MOV   R9, R4			;r9 = value3
 	
-      ADD   R3, R9				;r3 = r9 + r3, low 16
+      ADD   R3, R9			;r3 = r9 + r3, low 16
       MOV   R11, R3
 	
       LDR   R1, [PC, `answer1_address]
       LDR   R6, [R1, #0]		;r6 = answer1	
 	
-      CMP	R6, R11
+      CMP   R6, R11
 	
       POP   {R0-R6, PC}
 

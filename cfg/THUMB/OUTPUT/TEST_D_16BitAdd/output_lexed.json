@@ -11755,13 +11755,13 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 204,
-    "sourceLen": 15,
-    "source": "\t  MOV   R8, R2",
+    "sourceLen": 18,
+    "source": "      MOV   R8, R2",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 3,
-        "posStop": 5,
+        "posStart": 6,
+        "posStop": 8,
         "len": 3,
         "lineNum": 204,
         "index": 0,
@@ -11769,8 +11769,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 9,
-        "posStop": 10,
+        "posStart": 12,
+        "posStop": 13,
         "len": 2,
         "lineNum": 204,
         "index": 1,
@@ -11778,8 +11778,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 13,
-        "posStop": 14,
+        "posStart": 16,
+        "posStop": 17,
         "len": 2,
         "lineNum": 204,
         "index": 2,
@@ -11921,13 +11921,13 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 208,
-    "sourceLen": 15,
-    "source": "\t  MOV   R9, R4",
+    "sourceLen": 18,
+    "source": "      MOV   R9, R4",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 3,
-        "posStop": 5,
+        "posStart": 6,
+        "posStop": 8,
         "len": 3,
         "lineNum": 208,
         "index": 0,
@@ -11935,8 +11935,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 9,
-        "posStop": 10,
+        "posStart": 12,
+        "posStop": 13,
         "len": 2,
         "lineNum": 208,
         "index": 1,
@@ -11944,8 +11944,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 13,
-        "posStop": 14,
+        "posStart": 16,
+        "posStop": 17,
         "len": 2,
         "lineNum": 208,
         "index": 2,
@@ -12191,13 +12191,13 @@
   {
     "obj_name": "ArtifactLine",
     "lineNum": 215,
-    "sourceLen": 15,
-    "source": "\t  MOV   R9, R6",
+    "sourceLen": 18,
+    "source": "      MOV   R9, R6",
     "payload": [
       {
         "obj_name": "Artifact",
-        "posStart": 3,
-        "posStop": 5,
+        "posStart": 6,
+        "posStop": 8,
         "len": 3,
         "lineNum": 215,
         "index": 0,
@@ -12205,8 +12205,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 9,
-        "posStop": 10,
+        "posStart": 12,
+        "posStop": 13,
         "len": 2,
         "lineNum": 215,
         "index": 1,
@@ -12214,8 +12214,8 @@
       },
       {
         "obj_name": "Artifact",
-        "posStart": 13,
-        "posStop": 14,
+        "posStart": 16,
+        "posStop": 17,
         "len": 2,
         "lineNum": 215,
         "index": 2,

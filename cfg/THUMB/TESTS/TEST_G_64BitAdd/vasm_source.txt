@@ -68,42 +68,42 @@ PrintStringDone:
 do_work:
 	push	{r0-r6, lr}
 	
-	ldr		r1, value_address
-	ldr		r2, [r1, #0]		;r2 = value
+	ldr     r1, value_address
+	ldr     r2, [r1, #0]               ;r2 = value
 
-	ldr		r1, value2_address
-	ldr		r4, [r1, #0]
-	mov     r8, r4				;r8 = value2
+	ldr     r1, value2_address
+	ldr     r4, [r1, #0]
+	mov     r8, r4                     ;r8 = value2
 
-	add     r2, r8				;r2 = r8 + r2, high 16
+	add     r2, r8                     ;r2 = r8 + r2, high 16
 	mov     r10, r2
 	
-	ldr		r1, answer_address
-	ldr		r5, [r1, #0]		;r5 = answer
+	ldr     r1, answer_address
+	ldr     r5, [r1, #0]               ;r5 = answer
 
-	cmp		r5, r10
+	cmp     r5, r10
 	
-	pop		{r0-r6, pc}	
+	pop     {r0-r6, pc}	
 	
 do_work2:
 	push	{r0-r6, lr}
 	
-	ldr		r1, value1_address
-	ldr		r3, [r1, #0]		;r3 = value1	
+	ldr     r1, value1_address
+	ldr     r3, [r1, #0]              ;r3 = value1	
 
-	ldr		r1, value3_address
-	ldr		r4, [r1, #0]
-	mov     r9, r4				;r9 = value3
+	ldr     r1, value3_address
+	ldr     r4, [r1, #0]
+	mov     r9, r4                    ;r9 = value3
 	
-	add     r3, r9				;r3 = r9 + r3, low 16
+	add     r3, r9                    ;r3 = r9 + r3, low 16
 	mov     r11, r3
 	
-	ldr		r1, answer1_address
-	ldr		r6, [r1, #0]		;r6 = answer1	
+	ldr     r1, answer1_address
+	ldr     r6, [r1, #0]              ;r6 = answer1	
 	
-	cmp		r6, r11
+	cmp     r6, r11
 	
-	pop		{r0-r6, pc}
+	pop     {r0-r6, pc}
 	
 PrintChar:
 	push {r0-r7, lr}

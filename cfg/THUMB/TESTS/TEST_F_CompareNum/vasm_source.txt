@@ -65,16 +65,16 @@ PrintStringDone:
 do_work:
 	push	{r0-r6, lr}
 	
-	ldr		r1, value_address
-	ldr		r2, [r1, #0]		;r2 = value
-	mov r9, r2					;r2 = 0FFF0000
+	ldr     r1, value_address
+	ldr     r2, [r1, #0]            ;r2 = value
+	mov     r9, r2                  ;r2 = 0FFF0000
 
-	ldr		r5, answer_address
-	ldr		r6, [r5, #0]		;r6 = answer
-	mov		r8, r6				;r8 = answer
-	cmp		r2, r8
-
-	pop		{r0-r6, pc}	
+	ldr     r5, answer_address
+	ldr     r6, [r5, #0]            ;r6 = answer
+	mov     r8, r6                  ;r8 = answer
+	cmp     r2, r8
+        
+	pop     {r0-r6, pc}	
 	
 PrintChar:
 	push {r0-r7, lr}

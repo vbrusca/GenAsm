@@ -202,18 +202,18 @@
       LDR   R0, [PC, `result_address]
       LDR   R1, [PC, `value_address]
       LDR   R2, [R1, #0]
-	  MOV   R8, R2
+      MOV   R8, R2
 	  
       LDR   R3, [PC, `value_two_address]
       LDR   R4, [R3, #0]	  
-	  MOV   R9, R4
+      MOV   R9, R4
 	  
       ADD   R2, R9
       STR   R2, [R0, #0]
       LDR   R5, [PC, `answer_address]
       LDR   R6, [R5, #0]
       
-	  MOV   R9, R6
+      MOV   R9, R6
       CMP   R2, R9      
                            
       POP   {R0-R6, PC}
