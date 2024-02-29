@@ -71,7 +71,18 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
+      LDR   R1, [PC, `value_address]
+      LDR   R2, [R1, #0]            ;r2 = value
+      MOV   R11, R2                 ;r11 = value
+
+      LSL   R3, R2, #2              ;r3 = value shifted left by 2
+      MOV   R10, R3
+
+      LDR   R1, [PC, `answer_address]
+      LDR   R5, [R1, #0]            ;r5 = answer
+      MOV   R9, R5
+	
+      CMP   R5, R9
                            
       POP   {R0-R6, PC}
       

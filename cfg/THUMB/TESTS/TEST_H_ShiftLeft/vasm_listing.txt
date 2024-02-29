@@ -1,19 +1,596 @@
-F00:0013       ;@TTL |ShiftLeft| START
-F00:0014       			MOV     R0, PC
-               S01:000000F4:  78 46
-F00:0015       			LDRH    R0, [R0, #6]
-               S01:000000F6:  C0 88
-F00:0016       			LSL     R1, R1, #1
-               S01:000000F8:  49 00
-F00:0017       			MOV     R2, PC
-               S01:000000FA:  7A 46
-F00:0018       			STRH    R1, [R0, #2]
-               S01:000000FC:  41 80
-F00:0019       			SWI     0x11
-               S01:000000FE:  11 DF
+F00:0001       ;@TTL |ShiftLeft|
+F00:0002       ;ORIGINAL VASM GBA HelloWorld CODE BY Keith Akuma https://www.chibiakumas.com/, https://www.assemblytutorial.com/
+F00:0003       
+F00:0004       ;Text after semicolon is comments, you don't need to type it in
+F00:0005       
+F00:0006       	.equ CursorX,0x02000000		;Cursor pointer in Ram Area
+F00:0007       	.equ CursorY,0x02000001
+F00:0008       
+F00:0009       	.org  0x08000000   			;GBA Rom Base
+F00:0010       ;Header
+F00:0011       	b	ProgramStart			;Jump to our program
+               S01:08000000:  38 00 00 EA
+F00:0012       	.space 178					;Logo (omitted) + Program name
+F00:0013       	.byte 0x96					;Fixed value
+               S01:080000B6:  96
+F00:0014       	.space 49					;Dummy Header 
+F00:0015       	
+F00:0016       ProgramStart:
+F00:0017       	adr r0,ThumbTest			;Address of thumb code
+               S01:080000E8:  04 00 8F E2
+F00:0018       	add r0,r0,#1				;Bit 0 set = THUMB ON!
+               S01:080000EC:  01 00 80 E2
+F00:0019       	bx r0						;Branch and exchange
+               S01:080000F0:  10 FF 2F E1
 F00:0020       
-F00:0021       Value:   	.short  0x4242
-               S01:00000100:  42 42
-F00:0022       Result:  	.short  0x0
-               S01:00000102:  00 00
-F00:0023       ;@TTL |ShiftLeft| END
+F00:0021       	.thumb						;We are now in thunb mode
+F00:0022       ThumbTest:
+F00:0023       	ldr r1,SPAddress			;Init Stack Pointer SP=0x03000000
+               S01:080000F4:  32 49
+F00:0024       	mov sp,r1
+               S01:080000F6:  8D 46
+F00:0025       	
+F00:0026       	ldr r4,ScreenRegs  			;0x04000000 DISPCNT -LCD Control
+               S01:080000F8:  32 4C
+F00:0027       	ldr r2,ScreenSetting   		;0x403 4= Layer 2 on / 3= ScreenMode 3
+               S01:080000FA:  33 4A
+F00:0028       	str	r2,[r4,#0]         	
+               S01:080000FC:  22 60
+F00:0029       	
+F00:0030       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+F00:0031       	
+F00:0032       	bl		do_work
+               S01:080000FE:  00 F0 13 F8
+F00:0033       	beq		print_passed_address
+               S01:08000102:  03 D0
+F00:0034       	
+F00:0035       	print_failed_address:
+F00:0036       	ldr		r1, test_failed_address
+               S01:08000104:  76 49
+F00:0037       	bl		PrintString
+               S01:08000106:  00 F0 06 F8
+F00:0038       	b       InfLoop
+               S01:0800010A:  03 E0
+F00:0039       	
+F00:0040       	print_passed_address:
+F00:0041       	ldr		r1, test_passed_address
+               S01:0800010C:  70 49
+F00:0042       	bl		PrintString
+               S01:0800010E:  00 F0 02 F8
+F00:0043       	b       InfLoop	
+               S01:08000112:  FF E7
+F00:0044       
+F00:0045       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+F00:0046       	
+F00:0047       	;ldr r1,HelloWorldAddress	;Address of Hello World Message
+F00:0048       	;bl PrintString				;Show Message
+F00:0049       		
+F00:0050       InfLoop:
+F00:0051             b InfLoop					;Halt
+               S01:08000114:  FE E7
+F00:0052       	  
+F00:0053       PrintString:					;Print 255 terminated string 
+F00:0054       	push {r0-r6, lr}
+               S01:08000116:  7F B5
+F00:0055       PrintStringAgain:
+F00:0056       		ldrB r0,[r1,#0]			
+               S01:08000118:  08 78
+F00:0057       		add r1,#1
+               S01:0800011A:  01 31
+F00:0058       		cmp r0,#255
+               S01:0800011C:  FF 28
+F00:0059       		beq PrintStringDone		;Repeat until 255
+               S01:0800011E:  02 D0
+F00:0060       		bl PrintChar 			;Print Char
+               S01:08000120:  00 F0 0D F8
+F00:0061       		b PrintStringAgain
+               S01:08000124:  F8 E7
+F00:0062       PrintStringDone:
+F00:0063       	pop {r0-r6, pc}
+               S01:08000126:  7F BD
+F00:0064       	
+F00:0065       do_work:
+F00:0066       	push	{r0-r6, lr}
+               S01:08000128:  7F B5
+F00:0067       	
+F00:0068       	ldr		r1, value_address
+               S01:0800012A:  1D 49
+F00:0069       	ldr		r2, [r1, #0]		;r2 = value
+               S01:0800012C:  0A 68
+F00:0070       	mov     r11, r2				;r11 = value
+               S01:0800012E:  93 46
+F00:0071       	
+F00:0072           lsl     r3, r2, #2          ;r3 = value shifted left by 2
+               S01:08000130:  93 00
+F00:0073       	mov     r10, r3
+               S01:08000132:  9A 46
+F00:0074       	
+F00:0075           ldr		r1, answer_address
+               S01:08000134:  1C 49
+F00:0076       	ldr		r5, [r1, #0]		;r5 = answer
+               S01:08000136:  0D 68
+F00:0077           mov     r9, r5
+               S01:08000138:  A9 46
+F00:0078       	
+F00:0079           cmp		r5, r9
+               S01:0800013A:  4D 45
+F00:0080           
+F00:0081       	pop		{r0-r6, pc}	
+               S01:0800013C:  7F BD
+F00:0082       	
+F00:0083       PrintChar:
+F00:0084       	push {r0-r7, lr}
+               S01:0800013E:  FF B5
+F00:0085       		cmp r0,#32				;Space?
+               S01:08000140:  20 28
+F00:0086       		beq LineDone
+               S01:08000142:  24 D0
+F00:0087       		
+F00:0088       		ldr r3,adrCursorX		;LDR Rd, [pc, #immed_8x4]
+               S01:08000144:  21 4B
+F00:0089       		mov r4,#0
+               S01:08000146:  00 24
+F00:0090       		ldrB r4,[r3,#0]			;CursorX pos
+               S01:08000148:  1C 78
+F00:0091       		
+F00:0092       		ldr r3,adrCursorY
+               S01:0800014A:  21 4B
+F00:0093       		mov r5,#0
+               S01:0800014C:  00 25
+F00:0094       		ldrB r5,[r3,#0]			;CursorY pos
+               S01:0800014E:  1D 78
+F00:0095       		
+F00:0096       		ldr r3,ScreenRam 		;0x06000000 - VRAM
+               S01:08000150:  20 4B
+F00:0097       		
+F00:0098       		mov r6,#16				;16 byte per char
+               S01:08000152:  10 26
+F00:0099       		mul r6,r4				;Calc X-Offset
+               S01:08000154:  66 43
+F00:0100       		add r3,r3,r6
+               S01:08000156:  9B 19
+F00:0101       		
+F00:0102       		ldr r6,LineSize			;240*8*2 
+               S01:08000158:  1F 4E
+F00:0103       		mul r6,r5				;Calc Y-Offset
+               S01:0800015A:  6E 43
+F00:0104       		add r3,r3,r6
+               S01:0800015C:  9B 19
+F00:0105       		
+F00:0106       		adr r4,BitmapFont 		;Font source
+               S01:0800015E:  28 A4
+F00:0107       		
+F00:0108       		mov r1,#0b11011111		;Convert to upper case
+               S01:08000160:  DF 21
+F00:0109       		and r0,r1
+               S01:08000162:  08 40
+F00:0110       		sub r0,#65				;First Char is 65 (A)
+               S01:08000164:  41 38
+F00:0111       		lsl r0,r0,#3			;8 bytes per char
+               S01:08000166:  C0 00
+F00:0112       		add r4,r4,r0 			;Calculate source address
+               S01:08000168:  24 18
+F00:0113       		
+F00:0114       		ldr r2,FontColor		;ABBBBBGGGGGRRRRR	A=Alpha
+               S01:0800016A:  1D 4A
+F00:0115       		ldr r0,LineSize2		;480-16
+               S01:0800016C:  1B 48
+F00:0116       		mov r8,r0				;Amount to add per Y-line
+               S01:0800016E:  80 46
+F00:0117       		
+F00:0118       		mov r6,#8				;8 Y-lines 
+               S01:08000170:  08 26
+F00:0119       DrawLine:
+F00:0120       		mov r7,#8 				;8 pixels per X-line
+               S01:08000172:  08 27
+F00:0121       		ldrb r1,[r4,#0]			;Load Letter
+               S01:08000174:  21 78
+F00:0122       		add r4,#1
+               S01:08000176:  01 34
+F00:0123       		ldr r5,BitMask			;Mask - 0b100000000
+               S01:08000178:  1A 4D
+F00:0124       DrawPixel:
+F00:0125       		tst r1,r5				;Is bit 1?
+               S01:0800017A:  29 42
+F00:0126       		beq DrawPixelSkip 
+               S01:0800017C:  00 D0
+F00:0127       		strh r2,[r3,#0]			;Yes? then fill pixel
+               S01:0800017E:  1A 80
+F00:0128       DrawPixelSkip:		
+F00:0129       		add r3,r3,#2
+               S01:08000180:  9B 1C
+F00:0130       		lsr r5,r5,#1			;Bitshift Mask
+               S01:08000182:  6D 08
+F00:0131       		sub r7,r7,#1
+               S01:08000184:  7F 1E
+F00:0132       		bne DrawPixel			;Next Hpixel
+               S01:08000186:  F8 D1
+F00:0133       		
+F00:0134       		add r3,r8 				;Move Down a line (240 pixels *2 bytes) 
+               S01:08000188:  43 44
+F00:0135       		sub r6,r6,#1								;-1 char (16 px)
+               S01:0800018A:  76 1E
+F00:0136       		bne DrawLine			;Next Vline
+               S01:0800018C:  F1 D1
+F00:0137       LineDone:		
+F00:0138       		ldr r3,adrCursorX
+               S01:0800018E:  0F 4B
+F00:0139       		ldrB r0,[r3,#0]	
+               S01:08000190:  18 78
+F00:0140       		add r0,r0,#1			;Move across screen
+               S01:08000192:  40 1C
+F00:0141       		strB r0,[r3,#0]	
+               S01:08000194:  18 70
+F00:0142       	pop {r0-r7, pc}
+               S01:08000196:  FF BD
+F00:0143       	
+F00:0144       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+F00:0145       
+F00:0146       	.align 4
+F00:0147       	value_address:			.long	value
+               S01:080001A0:  AC 01 00 08
+F00:0148       	result_address:			.long	result
+               S01:080001A4:  B0 01 00 08
+F00:0149       	answer_address:			.long	answer
+               S01:080001A8:  B4 01 00 08
+F00:0150           value:   				.long   0x0000FFFF
+               S01:080001AC:  FF FF 00 00
+F00:0151           result:  				.long	0x00000000
+               S01:080001B0:  00 00 00 00
+F00:0152       	answer:					.long	0x00FFFF00
+               S01:080001B4:  00 FF FF 00
+F00:0153       	
+F00:0154       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+F00:0155       	
+F00:0156       	.align 4
+F00:0157       SPAddress:
+F00:0158       	.long 0x03000000			;Stack pointer address
+               S01:080001C0:  00 00 00 03
+F00:0159       ScreenRegs:
+F00:0160       	.long 0x04000000			;Video Register base
+               S01:080001C4:  00 00 00 04
+F00:0161       ScreenSetting:
+F00:0162       	.long 0x403					;4= Layer 2 on / 3= ScreenMode 3
+               S01:080001C8:  03 04 00 00
+F00:0163       adrCursorX:
+F00:0164       	.long CursorX				;Xpos of next char
+               S01:080001CC:  00 00 00 02
+F00:0165       adrCursorY:
+F00:0166       	.long CursorY				;Ypos of next char
+               S01:080001D0:  01 00 00 02
+F00:0167       ScreenRam:
+F00:0168       	.long 0x06000000			;Vram Base
+               S01:080001D4:  00 00 00 06
+F00:0169       LineSize:
+F00:0170       	.long 240*8*2				;Width of one char line (8 pixels)
+               S01:080001D8:  00 0F 00 00
+F00:0171       LineSize2:
+F00:0172       	.long 480-16				;pixel width of one line - 1 char
+               S01:080001DC:  D0 01 00 00
+F00:0173       FontColor:
+F00:0174       	.long 0b1111111101000000	; Blue: ABBBBBGGGGGRRRRR	A=Alpha
+               S01:080001E0:  40 FF 00 00
+F00:0175       BitMask:
+F00:0176       	.long 0b100000000			;Bitmask for getting pixels of our font
+               S01:080001E4:  00 01 00 00
+F00:0177       
+F00:0178       HelloWorldAddress:
+F00:0179       	.long HelloWorld			;Pointer to Hello message
+               S01:080001E8:  EC 01 00 08
+F00:0180       HelloWorld:
+F00:0181       	.byte "Hello World",255
+               S01:080001EC:  48 65 6C 6C 6F 20 57 6F 72 6C 64
+               S01:080001F7:  FF
+F00:0182       	
+F00:0183       	.align 4
+F00:0184       BitmapFont:	;1 Bit per pixel font
+F00:0185       	.byte 0x18,0x3C,0x66,0x66,0x7E,0x66,0x24,0x00     ;A
+               S01:08000200:  18
+               S01:08000201:  3C
+               S01:08000202:  66
+               S01:08000203:  66
+               S01:08000204:  7E
+               S01:08000205:  66
+               S01:08000206:  24
+               S01:08000207:  00
+F00:0186       	.byte 0x3C,0x66,0x66,0x7C,0x66,0x66,0x3C,0x00     ;B
+               S01:08000208:  3C
+               S01:08000209:  66
+               S01:0800020A:  66
+               S01:0800020B:  7C
+               S01:0800020C:  66
+               S01:0800020D:  66
+               S01:0800020E:  3C
+               S01:0800020F:  00
+F00:0187       	.byte 0x38,0x7C,0xC0,0xC0,0xC0,0x7C,0x38,0x00     ;C
+               S01:08000210:  38
+               S01:08000211:  7C
+               S01:08000212:  C0
+               S01:08000213:  C0
+               S01:08000214:  C0
+               S01:08000215:  7C
+               S01:08000216:  38
+               S01:08000217:  00
+F00:0188       	.byte 0x3C,0x64,0x66,0x66,0x66,0x64,0x38,0x00     ;D
+               S01:08000218:  3C
+               S01:08000219:  64
+               S01:0800021A:  66
+               S01:0800021B:  66
+               S01:0800021C:  66
+               S01:0800021D:  64
+               S01:0800021E:  38
+               S01:0800021F:  00
+F00:0189       	.byte 0x3C,0x7E,0x60,0x78,0x60,0x7E,0x3C,0x00     ;E
+               S01:08000220:  3C
+               S01:08000221:  7E
+               S01:08000222:  60
+               S01:08000223:  78
+               S01:08000224:  60
+               S01:08000225:  7E
+               S01:08000226:  3C
+               S01:08000227:  00
+F00:0190       	.byte 0x38,0x7C,0x60,0x78,0x60,0x60,0x20,0x00     ;F
+               S01:08000228:  38
+               S01:08000229:  7C
+               S01:0800022A:  60
+               S01:0800022B:  78
+               S01:0800022C:  60
+               S01:0800022D:  60
+               S01:0800022E:  20
+               S01:0800022F:  00
+F00:0191       	.byte 0x3C,0x66,0xC0,0xC0,0xCC,0x66,0x3C,0x00     ;G
+               S01:08000230:  3C
+               S01:08000231:  66
+               S01:08000232:  C0
+               S01:08000233:  C0
+               S01:08000234:  CC
+               S01:08000235:  66
+               S01:08000236:  3C
+               S01:08000237:  00
+F00:0192       	.byte 0x24,0x66,0x66,0x7E,0x66,0x66,0x24,0x00     ;H
+               S01:08000238:  24
+               S01:08000239:  66
+               S01:0800023A:  66
+               S01:0800023B:  7E
+               S01:0800023C:  66
+               S01:0800023D:  66
+               S01:0800023E:  24
+               S01:0800023F:  00
+F00:0193       	.byte 0x10,0x18,0x18,0x18,0x18,0x18,0x08,0x00     ;I
+               S01:08000240:  10
+               S01:08000241:  18
+               S01:08000242:  18
+               S01:08000243:  18
+               S01:08000244:  18
+               S01:08000245:  18
+               S01:08000246:  08
+               S01:08000247:  00
+F00:0194       	.byte 0x08,0x0C,0x0C,0x0C,0x4C,0xFC,0x78,0x00     ;J
+               S01:08000248:  08
+               S01:08000249:  0C
+               S01:0800024A:  0C
+               S01:0800024B:  0C
+               S01:0800024C:  4C
+               S01:0800024D:  FC
+               S01:0800024E:  78
+               S01:0800024F:  00
+F00:0195       	.byte 0x24,0x66,0x6C,0x78,0x6C,0x66,0x24,0x00     ;K
+               S01:08000250:  24
+               S01:08000251:  66
+               S01:08000252:  6C
+               S01:08000253:  78
+               S01:08000254:  6C
+               S01:08000255:  66
+               S01:08000256:  24
+               S01:08000257:  00
+F00:0196       	.byte 0x20,0x60,0x60,0x60,0x60,0x7E,0x3E,0x00     ;L
+               S01:08000258:  20
+               S01:08000259:  60
+               S01:0800025A:  60
+               S01:0800025B:  60
+               S01:0800025C:  60
+               S01:0800025D:  7E
+               S01:0800025E:  3E
+               S01:0800025F:  00
+F00:0197       	.byte 0x44,0xEE,0xFE,0xD6,0xD6,0xD6,0x44,0x00     ;M
+               S01:08000260:  44
+               S01:08000261:  EE
+               S01:08000262:  FE
+               S01:08000263:  D6
+               S01:08000264:  D6
+               S01:08000265:  D6
+               S01:08000266:  44
+               S01:08000267:  00
+F00:0198       	.byte 0x44,0xE6,0xF6,0xDE,0xCE,0xC6,0x44,0x00     ;N
+               S01:08000268:  44
+               S01:08000269:  E6
+               S01:0800026A:  F6
+               S01:0800026B:  DE
+               S01:0800026C:  CE
+               S01:0800026D:  C6
+               S01:0800026E:  44
+               S01:0800026F:  00
+F00:0199       	.byte 0x38,0x6C,0xC6,0xC6,0xC6,0x6C,0x38,0x00     ;O
+               S01:08000270:  38
+               S01:08000271:  6C
+               S01:08000272:  C6
+               S01:08000273:  C6
+               S01:08000274:  C6
+               S01:08000275:  6C
+               S01:08000276:  38
+               S01:08000277:  00
+F00:0200       	.byte 0x38,0x6C,0x64,0x7C,0x60,0x60,0x20,0x00     ;P
+               S01:08000278:  38
+               S01:08000279:  6C
+               S01:0800027A:  64
+               S01:0800027B:  7C
+               S01:0800027C:  60
+               S01:0800027D:  60
+               S01:0800027E:  20
+               S01:0800027F:  00
+F00:0201       	.byte 0x38,0x6C,0xC6,0xC6,0xCA,0x74,0x3A,0x00     ;Q
+               S01:08000280:  38
+               S01:08000281:  6C
+               S01:08000282:  C6
+               S01:08000283:  C6
+               S01:08000284:  CA
+               S01:08000285:  74
+               S01:08000286:  3A
+               S01:08000287:  00
+F00:0202       	.byte 0x3C,0x66,0x66,0x7C,0x6C,0x66,0x26,0x00     ;R
+               S01:08000288:  3C
+               S01:08000289:  66
+               S01:0800028A:  66
+               S01:0800028B:  7C
+               S01:0800028C:  6C
+               S01:0800028D:  66
+               S01:0800028E:  26
+               S01:0800028F:  00
+F00:0203       	.byte 0x3C,0x7E,0x60,0x3C,0x06,0x7E,0x3C,0x00     ;S
+               S01:08000290:  3C
+               S01:08000291:  7E
+               S01:08000292:  60
+               S01:08000293:  3C
+               S01:08000294:  06
+               S01:08000295:  7E
+               S01:08000296:  3C
+               S01:08000297:  00
+F00:0204       	.byte 0x3C,0x7E,0x18,0x18,0x18,0x18,0x08,0x00     ;T
+               S01:08000298:  3C
+               S01:08000299:  7E
+               S01:0800029A:  18
+               S01:0800029B:  18
+               S01:0800029C:  18
+               S01:0800029D:  18
+               S01:0800029E:  08
+               S01:0800029F:  00
+F00:0205       	.byte 0x24,0x66,0x66,0x66,0x66,0x66,0x3C,0x00     ;U
+               S01:080002A0:  24
+               S01:080002A1:  66
+               S01:080002A2:  66
+               S01:080002A3:  66
+               S01:080002A4:  66
+               S01:080002A5:  66
+               S01:080002A6:  3C
+               S01:080002A7:  00
+F00:0206       	.byte 0x24,0x66,0x66,0x66,0x66,0x3C,0x18,0x00     ;V
+               S01:080002A8:  24
+               S01:080002A9:  66
+               S01:080002AA:  66
+               S01:080002AB:  66
+               S01:080002AC:  66
+               S01:080002AD:  3C
+               S01:080002AE:  18
+               S01:080002AF:  00
+F00:0207       	.byte 0x44,0xC6,0xD6,0xD6,0xFE,0xEE,0x44,0x00     ;W
+               S01:080002B0:  44
+               S01:080002B1:  C6
+               S01:080002B2:  D6
+               S01:080002B3:  D6
+               S01:080002B4:  FE
+               S01:080002B5:  EE
+               S01:080002B6:  44
+               S01:080002B7:  00
+F00:0208       	.byte 0xC6,0x6C,0x38,0x38,0x6C,0xC6,0x44,0x00     ;X
+               S01:080002B8:  C6
+               S01:080002B9:  6C
+               S01:080002BA:  38
+               S01:080002BB:  38
+               S01:080002BC:  6C
+               S01:080002BD:  C6
+               S01:080002BE:  44
+               S01:080002BF:  00
+F00:0209       	.byte 0x24,0x66,0x66,0x3C,0x18,0x18,0x08,0x00     ;Y
+               S01:080002C0:  24
+               S01:080002C1:  66
+               S01:080002C2:  66
+               S01:080002C3:  3C
+               S01:080002C4:  18
+               S01:080002C5:  18
+               S01:080002C6:  08
+               S01:080002C7:  00
+F00:0210       	.byte 0x7C,0xFC,0x0C,0x18,0x30,0x7E,0x7C,0x00     ;Z
+               S01:080002C8:  7C
+               S01:080002C9:  FC
+               S01:080002CA:  0C
+               S01:080002CB:  18
+               S01:080002CC:  30
+               S01:080002CD:  7E
+               S01:080002CE:  7C
+               S01:080002CF:  00
+F00:0211       	
+F00:0212       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+F00:0213       
+F00:0214       	.align 4
+F00:0215       	test_passed_address:		.long	test_passed					
+               S01:080002D0:  D4 02 00 08
+F00:0216           test_passed:				.byte 	"TEST PASSED", 255
+               S01:080002D4:  54 45 53 54 20 50 41 53 53 45 44
+               S01:080002DF:  FF
+F00:0217       	
+F00:0218       	.align 4
+F00:0219       	test_failed_address:		.long	test_failed
+               S01:080002E0:  E4 02 00 08
+F00:0220           test_failed:     			.byte 	"TEST FAILED", 255
+               S01:080002E4:  54 45 53 54 20 46 41 49 4C 45 44
+               S01:080002EF:  FF
+F00:0221       
+F00:0222       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+F00:0223       	
+F00:0224       	
+
+
+Sections:
+S01  seg8000000
+
+
+Sources:
+F00  Thumb_Lesson1.asm
+
+
+Symbols:
+test_failed EXPR(134218468=0x80002e4) ABS 
+test_passed EXPR(134218452=0x80002d4) ABS 
+HelloWorld EXPR(134218220=0x80001ec) ABS 
+HelloWorldAddress EXPR(134218216=0x80001e8) UNUSED ABS 
+answer EXPR(134218164=0x80001b4) ABS 
+result EXPR(134218160=0x80001b0) ABS 
+result_address EXPR(134218148=0x80001a4) UNUSED ABS 
+value EXPR(134218156=0x80001ac) ABS 
+DrawPixelSkip EXPR(134218112=0x8000180) ABS 
+DrawPixel EXPR(134218106=0x800017a) ABS 
+BitMask EXPR(134218212=0x80001e4) ABS 
+DrawLine EXPR(134218098=0x8000172) ABS 
+LineSize2 EXPR(134218204=0x80001dc) ABS 
+FontColor EXPR(134218208=0x80001e0) ABS 
+BitmapFont EXPR(134218240=0x8000200) ABS 
+LineSize EXPR(134218200=0x80001d8) ABS 
+ScreenRam EXPR(134218196=0x80001d4) ABS 
+adrCursorY EXPR(134218192=0x80001d0) ABS 
+adrCursorX EXPR(134218188=0x80001cc) ABS 
+LineDone EXPR(134218126=0x800018e) ABS 
+answer_address EXPR(134218152=0x80001a8) ABS 
+value_address EXPR(134218144=0x80001a0) ABS 
+PrintChar EXPR(134218046=0x800013e) ABS 
+PrintStringDone EXPR(134218022=0x8000126) ABS 
+PrintStringAgain EXPR(134218008=0x8000118) ABS 
+test_passed_address EXPR(134218448=0x80002d0) ABS 
+InfLoop EXPR(134218004=0x8000114) ABS 
+PrintString EXPR(134218006=0x8000116) ABS 
+test_failed_address EXPR(134218464=0x80002e0) ABS 
+print_failed_address EXPR(134217988=0x8000104) UNUSED ABS 
+print_passed_address EXPR(134217996=0x800010c) ABS 
+do_work EXPR(134218024=0x8000128) ABS 
+ScreenSetting EXPR(134218184=0x80001c8) ABS 
+ScreenRegs EXPR(134218180=0x80001c4) ABS 
+SPAddress EXPR(134218176=0x80001c0) ABS 
+ThumbTest EXPR(134217972=0x80000f4) ABS 
+ProgramStart EXPR(134217960=0x80000e8) ABS 
+CursorY EXPR(33554433=0x2000001) 
+CursorX EXPR(33554432=0x2000000) 
+__VASM EXPR(0=0x0) INTERNAL 
+BuildGBA EXPR(1=0x1) UNUSED 
+vasm EXPR(1=0x1) UNUSED 
+__MSDOSFS EXPR(0=0x0) INTERNAL 
+
+There have been no errors.
