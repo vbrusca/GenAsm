@@ -71,8 +71,34 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
-                           
+	  LDR	R1, [PC, `value_address]
+	  LDR	R0, [R1, #0]			;r0 = value
+	  MOV	R11, R0					;r11 = value
+
+	  ;Input: r0 contains the number whose factorial we want to compute
+	  ;Output: r0 will contain the factorial result
+	  fact_func
+		MOV		R1, #1				;Initialize r1 to 1 (factorial accumulator)
+        MOV		R8, R0				;Copy the input number to r2 (loop counter)
+		MOV		R2, R8
+
+	  fact_loop
+		CMP		R2, #1				;Compare r2 with 1
+		BEQ		`fact_done			;If r2 == 1, we're done
+		MUL		R1, R2				;Multiply r1 by r2
+		SUB		R2, R2, #1			;Decrement r2
+		B		`fact_loop			;Repeat the loop
+
+	  fact_done
+		MOV		R10, R1				;Move the result (factorial) to r0
+		MOV		R0, R10
+
+	  LDR	R1, [PC, `answer_address]
+	  LDR	R5, [R1, #0]			;r5 = answer
+	  MOV	R9, R5
+	
+	  CMP	R0, R9
+	
       POP   {R0-R6, PC}
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -152,12 +178,12 @@
                      @DCWBF  =result
    answer_address    @DCWBS  =answer
                      @DCWBF  =answer
-   value             @DCHW   0x0000
-                     @DCHW   0xC123
+   value             @DCHW   0x000A
+                     @DCHW   0x0000
    result            @DCHW   0x0000
                      @DCHW   0x0000
-   answer            @DCHW   0xFFFF
-                     @DCHW   0x3EDC
+   answer            @DCHW   0x5F00
+                     @DCHW   0x0037
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
