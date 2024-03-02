@@ -71,7 +71,7 @@ do_work:
 	
 	ldr		r2, count_address
 	ldr		r2, [r2, #0]		;r2 = count	
-	;mov		r11, r2
+	mov		r11, r2
 
 	sum_loop:
 		add		r1, r1, #2
@@ -88,7 +88,7 @@ do_work:
 		
 	ldr		r1, answer_address
 	ldr		r5, [r1, #0]		;r5 = answer
-	mov		r9, r5				;r8 = answer
+	mov		r9, r5				;r9 = answer
 	
 	cmp		r0, r9				;sum comp answer
 

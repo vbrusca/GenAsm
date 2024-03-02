@@ -199,8 +199,33 @@
    do_work
       PUSH  {R0-R6, LR}
       
-      ;add work to do here
-                           
+	  MOV	R0, #0							;Initialize the sum (accumulator) to 0
+	  LDR	R1, [PC, `value_address]		;Load the address of the array of numbers
+	  MOV	R12, R1
+
+	  LDR	R2, [PC, `count_address]
+	  LDR	R2, [R2, #0]					;r2 = count
+	  MOV	R11, R2
+	  
+	  sum_loop
+		ADD		R1, R1, #2
+		MOV		R11, R1
+		
+		LDRH	R3, [R1, #0]				;Load the next 16-bit number from memory
+		ADD		R0, R0, R3					;Add the loaded number to the accumulator
+		MOV		R10, R0
+		
+		SUB		R2, #1						;Decrement the loop counter
+		BNE		`sum_loop					;Repeat the loop if there are more numbers
+
+	  sum_done
+
+	  LDR	R1, [PC, `answer_address]
+	  LDR	R5, [R1, #0]					;r5 = answer
+	  MOV	R9, R5							;r9 = answer
+	
+	  CMP	R0, R9							;sum comp answer
+
       POP   {R0-R6, PC}
    
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -273,19 +298,25 @@
                      @DCHW    0x0000
                      @DCHW    0x0000
                      @DCHW    0x0000
-                     @DCHW    0x0000                     
+                     @DCHW    0x0000    
+   count_address     @DCWBS   =count
+                     @DCWBF   =count
    value_address     @DCWBS   =value
                      @DCWBF   =value
    result_address    @DCWBS   =result
                      @DCWBF   =result
    answer_address    @DCWBS   =answer
                      @DCWBF   =answer
+   count             @DCHW    0x0003
+                     @DCHW    0x0000
    value             @DCHW    0x0000
-                     @DCHW    0xC123
+                     @DCHW    0xE9B2
+                     @DCHW    0x2C18
+                     @DCHW    0x5D7A					 
    result            @DCHW    0x0000
                      @DCHW    0x0000
-   answer            @DCHW    0xFFFF
-                     @DCHW    0x3EDC
+   answer            @DCHW    0x7344
+                     @DCHW    0x0001
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

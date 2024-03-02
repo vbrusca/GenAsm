@@ -136,7 +136,7 @@
             "category_class": "net.middlemind.GenAsm.JsonObjs.Thumb.JsonObjIsRegister",
             "txt_match": {
                 "starts_with": ["R"],
-                "contains": ["12", "1"],
+                "contains": ["14", "1"],
                 "must_contain": ["14"],
                 "must_not_contain": [],
                 "ends_with": [",", ";", "4"]

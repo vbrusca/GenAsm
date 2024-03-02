@@ -82,7 +82,7 @@ F00:0058       		cmp r0,#255
 F00:0059       		beq PrintStringDone		;Repeat until 255
                S01:0800011E:  02 D0
 F00:0060       		bl PrintChar 			;Print Char
-               S01:08000120:  00 F0 14 F8
+               S01:08000120:  00 F0 15 F8
 F00:0061       		b PrintStringAgain
                S01:08000124:  F8 E7
 F00:0062       PrintStringDone:
@@ -104,146 +104,147 @@ F00:0072       	ldr		r2, count_address
                S01:08000130:  1F 4A
 F00:0073       	ldr		r2, [r2, #0]		;r2 = count	
                S01:08000132:  12 68
-F00:0074       	;mov		r11, r2
+F00:0074       	mov		r11, r2
+               S01:08000134:  93 46
 F00:0075       
 F00:0076       	sum_loop:
 F00:0077       		add		r1, r1, #2
-               S01:08000134:  89 1C
+               S01:08000136:  89 1C
 F00:0078       		mov		r11, r1
-               S01:08000136:  8B 46
+               S01:08000138:  8B 46
 F00:0079       		
 F00:0080       		ldrh	r3, [r1, #0]	;Load the next 16-bit number from memory
-               S01:08000138:  0B 88
+               S01:0800013A:  0B 88
 F00:0081       		add		r0, r0, r3		;Add the loaded number to the accumulator
-               S01:0800013A:  C0 18
+               S01:0800013C:  C0 18
 F00:0082       		mov		r10, r0
-               S01:0800013C:  82 46
+               S01:0800013E:  82 46
 F00:0083       		
 F00:0084       		sub		r2, #1			;Decrement the loop counter
-               S01:0800013E:  01 3A
+               S01:08000140:  01 3A
 F00:0085       		bne		sum_loop		;Repeat the loop if there are more numbers
-               S01:08000140:  F8 D1
+               S01:08000142:  F8 D1
 F00:0086       
 F00:0087       	sum_done:
 F00:0088       		
 F00:0089       	ldr		r1, answer_address
-               S01:08000142:  1E 49
+               S01:08000144:  1D 49
 F00:0090       	ldr		r5, [r1, #0]		;r5 = answer
-               S01:08000144:  0D 68
-F00:0091       	mov		r9, r5				;r8 = answer
-               S01:08000146:  A9 46
+               S01:08000146:  0D 68
+F00:0091       	mov		r9, r5				;r9 = answer
+               S01:08000148:  A9 46
 F00:0092       	
 F00:0093       	cmp		r0, r9				;sum comp answer
-               S01:08000148:  48 45
+               S01:0800014A:  48 45
 F00:0094       
 F00:0095       	pop		{r0-r6, pc}	
-               S01:0800014A:  7F BD
+               S01:0800014C:  7F BD
 F00:0096       	
 F00:0097       PrintChar:
 F00:0098       	push {r0-r7, lr}
-               S01:0800014C:  FF B5
+               S01:0800014E:  FF B5
 F00:0099       		cmp r0,#32				;Space?
-               S01:0800014E:  20 28
+               S01:08000150:  20 28
 F00:0100       		beq LineDone
-               S01:08000150:  24 D0
+               S01:08000152:  24 D0
 F00:0101       		
 F00:0102       		ldr r3,adrCursorX		;LDR Rd, [pc, #immed_8x4]
-               S01:08000152:  26 4B
+               S01:08000154:  25 4B
 F00:0103       		mov r4,#0
-               S01:08000154:  00 24
+               S01:08000156:  00 24
 F00:0104       		ldrB r4,[r3,#0]			;CursorX pos
-               S01:08000156:  1C 78
+               S01:08000158:  1C 78
 F00:0105       		
 F00:0106       		ldr r3,adrCursorY
-               S01:08000158:  25 4B
+               S01:0800015A:  25 4B
 F00:0107       		mov r5,#0
-               S01:0800015A:  00 25
+               S01:0800015C:  00 25
 F00:0108       		ldrB r5,[r3,#0]			;CursorY pos
-               S01:0800015C:  1D 78
+               S01:0800015E:  1D 78
 F00:0109       		
 F00:0110       		ldr r3,ScreenRam 		;0x06000000 - VRAM
-               S01:0800015E:  25 4B
+               S01:08000160:  24 4B
 F00:0111       		
 F00:0112       		mov r6,#16				;16 byte per char
-               S01:08000160:  10 26
+               S01:08000162:  10 26
 F00:0113       		mul r6,r4				;Calc X-Offset
-               S01:08000162:  66 43
+               S01:08000164:  66 43
 F00:0114       		add r3,r3,r6
-               S01:08000164:  9B 19
+               S01:08000166:  9B 19
 F00:0115       		
 F00:0116       		ldr r6,LineSize			;240*8*2 
-               S01:08000166:  24 4E
+               S01:08000168:  23 4E
 F00:0117       		mul r6,r5				;Calc Y-Offset
-               S01:08000168:  6E 43
+               S01:0800016A:  6E 43
 F00:0118       		add r3,r3,r6
-               S01:0800016A:  9B 19
+               S01:0800016C:  9B 19
 F00:0119       		
 F00:0120       		adr r4,BitmapFont 		;Font source
-               S01:0800016C:  2C A4
+               S01:0800016E:  2C A4
 F00:0121       		
 F00:0122       		mov r1,#0b11011111		;Convert to upper case
-               S01:0800016E:  DF 21
+               S01:08000170:  DF 21
 F00:0123       		and r0,r1
-               S01:08000170:  08 40
+               S01:08000172:  08 40
 F00:0124       		sub r0,#65				;First Char is 65 (A)
-               S01:08000172:  41 38
+               S01:08000174:  41 38
 F00:0125       		lsl r0,r0,#3			;8 bytes per char
-               S01:08000174:  C0 00
+               S01:08000176:  C0 00
 F00:0126       		add r4,r4,r0 			;Calculate source address
-               S01:08000176:  24 18
+               S01:08000178:  24 18
 F00:0127       		
 F00:0128       		ldr r2,FontColor		;ABBBBBGGGGGRRRRR	A=Alpha
-               S01:08000178:  21 4A
+               S01:0800017A:  21 4A
 F00:0129       		ldr r0,LineSize2		;480-16
-               S01:0800017A:  20 48
+               S01:0800017C:  1F 48
 F00:0130       		mov r8,r0				;Amount to add per Y-line
-               S01:0800017C:  80 46
+               S01:0800017E:  80 46
 F00:0131       		
 F00:0132       		mov r6,#8				;8 Y-lines 
-               S01:0800017E:  08 26
+               S01:08000180:  08 26
 F00:0133       DrawLine:
 F00:0134       		mov r7,#8 				;8 pixels per X-line
-               S01:08000180:  08 27
+               S01:08000182:  08 27
 F00:0135       		ldrb r1,[r4,#0]			;Load Letter
-               S01:08000182:  21 78
+               S01:08000184:  21 78
 F00:0136       		add r4,#1
-               S01:08000184:  01 34
+               S01:08000186:  01 34
 F00:0137       		ldr r5,BitMask			;Mask - 0b100000000
-               S01:08000186:  1F 4D
+               S01:08000188:  1E 4D
 F00:0138       DrawPixel:
 F00:0139       		tst r1,r5				;Is bit 1?
-               S01:08000188:  29 42
+               S01:0800018A:  29 42
 F00:0140       		beq DrawPixelSkip 
-               S01:0800018A:  00 D0
+               S01:0800018C:  00 D0
 F00:0141       		strh r2,[r3,#0]			;Yes? then fill pixel
-               S01:0800018C:  1A 80
+               S01:0800018E:  1A 80
 F00:0142       DrawPixelSkip:		
 F00:0143       		add r3,r3,#2
-               S01:0800018E:  9B 1C
+               S01:08000190:  9B 1C
 F00:0144       		lsr r5,r5,#1			;Bitshift Mask
-               S01:08000190:  6D 08
+               S01:08000192:  6D 08
 F00:0145       		sub r7,r7,#1
-               S01:08000192:  7F 1E
+               S01:08000194:  7F 1E
 F00:0146       		bne DrawPixel			;Next Hpixel
-               S01:08000194:  F8 D1
+               S01:08000196:  F8 D1
 F00:0147       		
 F00:0148       		add r3,r8 				;Move Down a line (240 pixels *2 bytes) 
-               S01:08000196:  43 44
+               S01:08000198:  43 44
 F00:0149       		sub r6,r6,#1								;-1 char (16 px)
-               S01:08000198:  76 1E
+               S01:0800019A:  76 1E
 F00:0150       		bne DrawLine			;Next Vline
-               S01:0800019A:  F1 D1
+               S01:0800019C:  F1 D1
 F00:0151       LineDone:		
 F00:0152       		ldr r3,adrCursorX
-               S01:0800019C:  13 4B
+               S01:0800019E:  13 4B
 F00:0153       		ldrB r0,[r3,#0]	
-               S01:0800019E:  18 78
+               S01:080001A0:  18 78
 F00:0154       		add r0,r0,#1			;Move across screen
-               S01:080001A0:  40 1C
+               S01:080001A2:  40 1C
 F00:0155       		strB r0,[r3,#0]	
-               S01:080001A2:  18 70
+               S01:080001A4:  18 70
 F00:0156       	pop {r0-r7, pc}
-               S01:080001A4:  FF BD
+               S01:080001A6:  FF BD
 F00:0157       	
 F00:0158       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 F00:0159       
@@ -592,10 +593,10 @@ result EXPR(134218188=0x80001cc) ABS
 result_address EXPR(134218168=0x80001b8) UNUSED ABS 
 value EXPR(134218180=0x80001c4) ABS 
 count EXPR(134218176=0x80001c0) ABS 
-DrawPixelSkip EXPR(134218126=0x800018e) ABS 
-DrawPixel EXPR(134218120=0x8000188) ABS 
+DrawPixelSkip EXPR(134218128=0x8000190) ABS 
+DrawPixel EXPR(134218122=0x800018a) ABS 
 BitMask EXPR(134218244=0x8000204) ABS 
-DrawLine EXPR(134218112=0x8000180) ABS 
+DrawLine EXPR(134218114=0x8000182) ABS 
 LineSize2 EXPR(134218236=0x80001fc) ABS 
 FontColor EXPR(134218240=0x8000200) ABS 
 BitmapFont EXPR(134218272=0x8000220) ABS 
@@ -603,13 +604,13 @@ LineSize EXPR(134218232=0x80001f8) ABS
 ScreenRam EXPR(134218228=0x80001f4) ABS 
 adrCursorY EXPR(134218224=0x80001f0) ABS 
 adrCursorX EXPR(134218220=0x80001ec) ABS 
-LineDone EXPR(134218140=0x800019c) ABS 
+LineDone EXPR(134218142=0x800019e) ABS 
 answer_address EXPR(134218172=0x80001bc) ABS 
-sum_done EXPR(134218050=0x8000142) UNUSED ABS 
-sum_loop EXPR(134218036=0x8000134) ABS 
+sum_done EXPR(134218052=0x8000144) UNUSED ABS 
+sum_loop EXPR(134218038=0x8000136) ABS 
 count_address EXPR(134218160=0x80001b0) ABS 
 value_address EXPR(134218164=0x80001b4) ABS 
-PrintChar EXPR(134218060=0x800014c) ABS 
+PrintChar EXPR(134218062=0x800014e) ABS 
 PrintStringDone EXPR(134218022=0x8000126) ABS 
 PrintStringAgain EXPR(134218008=0x8000118) ABS 
 test_passed_address EXPR(134218480=0x80002f0) ABS 
