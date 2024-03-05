@@ -1,0 +1,21 @@
+{
+    "obj_name": "line_hex_reps",
+    "program": "TEST_M_YourName",
+	"vasm_range_start": "080000F4",
+	"vasm_range_stop": "08000104",
+	"genasm_range_start": "080000F4",
+	"genasm_range_stop": "08000104",
+	"genasm_line_offset": 0,
+	"genasm_label_offset_bytes": 0,	
+    "line_hex_reps": [
+        {"addressHex":"080000F4", "valueHex":"2249"},
+        {"addressHex":"080000F6", "valueHex":"8D46"},
+        {"addressHex":"080000F8", "valueHex":"224C"},
+        {"addressHex":"080000FA", "valueHex":"234A"},
+        {"addressHex":"080000FC", "valueHex":"2260"},
+        {"addressHex":"080000FE", "valueHex":"2A49"},
+        {"addressHex":"08000100", "valueHex":"00F0"},
+        {"addressHex":"08000102", "valueHex":"01F8"},
+        {"addressHex":"08000104", "valueHex":"FEE7"}
+    ]
+}

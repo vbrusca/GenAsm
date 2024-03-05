@@ -24,11 +24,11 @@ import org.junit.runners.Suite;
       TestProgramH.class,
       TestProgramI.class,
       TestProgramJ.class,
-      TestProgramK.class      
-      
-      /*
-      TestProgramL.class
-      */
+      TestProgramK.class,
+      TestProgramL.class,
+      TestProgramM.class,
+      TestProgramN.class,
+      TestProgramO.class      
    }
 )
 
