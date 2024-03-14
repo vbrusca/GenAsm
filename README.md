@@ -12,6 +12,7 @@ I wrote this project for my brother, Carlo.
 3. Includes a set of demonstration programs.
 4. Includes example programs that run on the GameBoy Advance emulator.
 5. Intended to provide an example of how one would go about building an assembler.
+6. Includes full set of unit tests to verify the binary output of the example programs.
 
 ## Demonstration Program Details
 My apologies, all of these aren't quite ready yet. Porting all of the VASM assembly source to GenAsm and plugging it into the GameBoy Advance screen demonstration and the unit tests is needed. I hope to have it done soon.  
@@ -20,91 +21,91 @@ My apologies, all of these aren't quite ready yet. Porting all of the VASM assem
 Name: TEST_A_AllOpCodes
 Type: Assembler Validation
 GBA Executble: No
-Unit Test Ready: No
+Unit Test Ready: Yes
 GenAsm Ready: Yes
 
 Name: TEST_B_16BitXfer 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_C_OnesComp 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_D_16BitAdd 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_E_SplitByte 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_F_CompareNum 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_G_64BitAdd 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_H_ShiftLeft 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_I_Factorial 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_J_16BitSeriesAddOne 
 Type: Example 
 GBA Executble: Yes 
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_K_16BitSeriesAddTwo 
 Type: Example 
 GBA Executble: Yes
-Unit Test Ready: No
-GenAsm Ready: No
+Unit Test Ready: Yes
+GenAsm Ready: Yes
 
 Name: TEST_L_HelloWorld 
 Type: Example 
 GBA Executble: Yes 
-Unit Test Ready: No
+Unit Test Ready: Yes
 GenAsm Ready: Yes
 
 Name: TEST_M_YourName 
 Type: Example 
 GBA Executble: Yes 
-Unit Test Ready: No
+Unit Test Ready: Yes
 GenAsm Ready: Yes
 
 Name: TEST_N_AsmChecks 
 Type: Assembler Validation 
 GBA Executble: No 
-Unit Test Ready: No
+Unit Test Ready: Yes
 GenAsm Ready: Yes
 
 Name: TEST_O_AsmDemo 
 Type: Assembler Validation 
 GBA Executble: No 
-Unit Test Ready: No
+Unit Test Ready: Yes
 GenAsm Ready: Yes
 </pre>
 
