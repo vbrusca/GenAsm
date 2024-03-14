@@ -6,6 +6,10 @@ The assembler uses multiple scans to simplify the amount of work done in each sc
 number of output files so that the state of the assembler can be analyzed at different points in the assembly process.
 I wrote this project with my brother, Carlo Bruscani, and had a great time doing it.
 
+# Developers
+Carlo Bruscani
+Victor Brusca
+
 ## Project Details
 1. Complete assembler written in Java designed to be data driven and extensible.
 2. Includes a full implementation of the ARM Thumb-1 instruction set.
