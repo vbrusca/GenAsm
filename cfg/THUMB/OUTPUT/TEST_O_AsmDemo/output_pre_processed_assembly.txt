@@ -1,8 +1,0 @@
-@TTL |AssemblerDemo|
-@SUBT |SubTitleTest|
-@AREA |Program| @CODE, @READONLY
-@ENTRY
-
-   LDR     R0, [PC, #0]
-
-@END

@@ -1,4 +1,0 @@
-LDR     R3, [PC, #844]
-STR     R3, [R2, R6]
-LDRB    R2, [R0, R7]
-STRH    R4, [R3, R0]
