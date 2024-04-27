@@ -19,7 +19,7 @@ Victor Brusca
 6. Includes full set of unit tests to verify the binary output of the example programs.
 
 ## Demonstration Program Details
-My apologies, all of these aren't quite ready yet. Porting all of the VASM assembly source to GenAsm and plugging it into the GameBoy Advance screen demonstration and the unit tests is needed. I hope to have it done soon.  
+You can use these as simple examples of running ARM-1 instructions. Some example programs include the ARM-1 assembly code needed to prepare the hardware for the GameBoy Advance emulator so you can actually run the resulting binary on a GBA emulator which is pretty cool.  
 
 <pre>
 Name: TEST_A_AllOpCodes
@@ -396,7 +396,7 @@ Example:
 
 <pre>
 File: is_empty_data_lines.json
-Description: Holds a JSON definition of an empty line of assembly used when process a 2-line branch instruction.
+Description: Holds a JSON definition of an empty line of assembly used when processing a 2-line branch instruction.
 Example:
 See the associated file.
 </pre>
@@ -569,7 +569,7 @@ Example:
 # Example ARM Thumb-1 Assembly Program
 
 An example of a simple ARM Thumb-1 instruction set program. Source code shows the syntax of a number of opcodes. This is test program N of the included test programs.
-The assebler only support simple linking of two areas, CODE and DATA. You can still do a fair amount with this simple implementation.
+The assebler only supports simple linking of two areas, CODE and DATA. You can still do a fair amount with this simple implementation.
 
 <pre>
 @TTL |AssemblerChecks|
