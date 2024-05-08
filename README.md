@@ -10,6 +10,16 @@ I wrote this project with my brother, Carlo Bruscani, and had a great time doing
 Carlo Bruscani<br>
 Victor Brusca
 
+## Project Documentation
+A full book is included with this project. Actually a detailed case study, the text explains how just about every part of the program works line by line.
+There are two versions of the PDF one for browsers and computers and one for smaller ereaders. Enjoy!
+<br>
+<br>
+[Browser version of the PDF book](./docs/intro_to_building_assemblers_bruscani_browser.pdf)
+<br>
+[Ereader version of the PDF book](./docs/intro_to_building_assemblers_bruscani_ereader.pdf)
+<br>
+
 ## Project Details
 1. Complete assembler written in Java designed to be data driven and extensible.
 2. Includes a full implementation of the ARM Thumb-1 instruction set.
