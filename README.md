@@ -1,5 +1,7 @@
 # GenAsm: Intro
 
+** Includes a free book on how to write your own ARM Thumb-1 assembler in Java. **
+
 An extensible assembler project with an ARM Thumb-1 instruction set example implementation.
 This project is meant as a learning tool to help people understand how to write an assembler. 
 The assembler uses multiple scans to simplify the amount of work done in each scan. It also generates a 
@@ -1191,6 +1193,7 @@ The assebler only supports simple linking of two areas, CODE and DATA. You can s
 ;===== BINARY OUTPUT =====
 ;Expected file output size: 678
 </pre>
+
 
 
 
